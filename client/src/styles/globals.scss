@@ -1,0 +1,68 @@
+@import "vars";
+@import "mixins";
+@import "header";
+@import "footer";
+@import "typography";
+@import "layout";
+
+* {
+  &:focus {
+    border: 2px dotted $color1;
+  }
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  background-color: $bg-color;
+  color: $txt-color;
+  font-family: ESRebond;
+  line-height: 1.5;
+  font-size: 18px;
+
+  body {
+    margin: 0;
+    padding: 0;
+    .root-layout {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      .main {
+        height: 100%;
+      }
+    }
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .main,
+  footer {
+    padding: $padding-xs;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .main {
+    padding: $padding-sm;
+    @include grid;
+    .full-width {
+      grid-column: 1/6;
+    }
+  }
+}
+
+// /* Medium devices (landscape tablets, 768px and up) */
+// @media only screen and (min-width: 768px) {...}
+
+// /* Large devices (laptops/desktops, 992px and up) */
+// @media only screen and (min-width: 992px) {...}
+
+// /* Extra large devices (large laptops and desktops, 1200px and up) */
+// @media only screen and (min-width: 1200px) {...}
+
+.red {
+  color: red;
+}

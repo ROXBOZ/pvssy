@@ -1,0 +1,28 @@
+/*-----Links-----*/
+
+@mixin navlink {
+  color: $txt-color;
+  text-decoration: none;
+  padding: $padding-btn;
+  border-radius: $border-radius;
+  border: none;
+  &:hover {
+    background-color: lighten($txt-color, 75%);
+  }
+
+  &:active {
+    border: $border-solid lighten($txt-color, 70%);
+  }
+
+  &.active {
+    background-color: lighten($color2, 30%);
+  }
+}
+
+/*-----Grid-----*/
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: $gap;
+}
