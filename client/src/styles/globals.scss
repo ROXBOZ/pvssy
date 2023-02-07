@@ -24,13 +24,18 @@ html {
   body {
     margin: 0;
     padding: 0;
-    .root-layout {
+
+    .main {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       min-height: 100vh;
-      .main {
-        height: 100%;
+      height: 100%;
+      .title-area {
+        padding-bottom: $padding-xs;
+      }
+      .grid-area {
+        @include grid;
       }
     }
   }
@@ -48,10 +53,6 @@ html {
 @media only screen and (min-width: 600px) {
   .main {
     padding: $padding-sm;
-    @include grid;
-    .full-width {
-      grid-column: 1/6;
-    }
   }
 }
 

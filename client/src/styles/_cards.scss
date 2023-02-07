@@ -1,7 +1,10 @@
 .pain-card-grid {
   @include card-grid;
-
-  .pain-card {
-    @include card;
+  .link-card {
+    border-bottom: none;
+    color: $txt-color;
+    .pain-card {
+      @include card;
+    }
   }
 }

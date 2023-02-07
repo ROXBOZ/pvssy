@@ -163,7 +163,11 @@ h1,
   grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
 }
-.pain-card-grid .pain-card {
+.pain-card-grid .link-card {
+  border-bottom: none;
+  color: #303030;
+}
+.pain-card-grid .link-card .pain-card {
   border: 2px solid #f5733c;
   border-radius: 0.25em;
   padding: 50px;
@@ -171,7 +175,7 @@ h1,
   align-items: center;
   justify-content: center;
 }
-.pain-card-grid .pain-card p {
+.pain-card-grid .link-card .pain-card p {
   margin: 0;
   padding: 0;
 }
@@ -193,20 +197,26 @@ html body {
   margin: 0;
   padding: 0;
 }
-html body .root-layout {
+html body .main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-}
-html body .root-layout .main {
   height: 100%;
+}
+html body .main .title-area {
+  padding-bottom: 0.5em;
+}
+html body .main .grid-area {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .main,
-footer {
+  footer {
     padding: 0.5em;
   }
 }
@@ -214,12 +224,6 @@ footer {
 @media only screen and (min-width: 600px) {
   .main {
     padding: 50px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2rem;
-  }
-  .main .full-width {
-    grid-column: 1/6;
   }
 }
 .red {

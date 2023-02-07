@@ -1,25 +1,22 @@
 import React, { useEffect, useContext } from "react";
-import { PainsContext } from "../contexts/PainsContext";
+import { PainsContext } from "../../contexts/PainsContext";
 import PainCard from "./PainCard";
 
-const Douleurs = () => {
+const Pains = () => {
   const { data, url, fetchData, Error, Loading } = useContext(PainsContext);
 
   useEffect(() => {
     fetchData(url);
   }, [url]);
 
-  console.log("data", data.allPains);
-
   return (
     <div>
       <h1>Douleurs</h1>
+
       <div className="pain-card-grid">
-        {data.allPains &&
-          data.allPains.map((p) => {
-            const name = p.name;
-            const def = p.def;
-            return <PainCard name={name} def={def} />;
+        {data &&
+          data.map((p) => {
+            return <PainCard key={p.id} p={p} />;
           })}
       </div>
       {Error && <p>Error</p>}
@@ -28,4 +25,4 @@ const Douleurs = () => {
   );
 };
 
-export default Douleurs;
+export default Pains;

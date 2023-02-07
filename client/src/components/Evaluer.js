@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Douleurs from "./Douleurs";
+import Douleurs from "./Pains/Pains";
 import Tutos from "./Tutos";
 
 const Evaluer = () => {

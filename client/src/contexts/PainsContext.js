@@ -12,8 +12,7 @@ export const PainsContextProvider = (props) => {
       setLoading(true);
       const response = await fetch(url);
       const result = await response.json();
-      setData(result);
-      // console.log("result fetch all Pains", result);
+      setData(result.allPains);
       setLoading(false);
     } catch (error) {
       setLoading(false);
