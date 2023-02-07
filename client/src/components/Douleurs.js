@@ -1,23 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useContext } from "react";
+// import { PainsContext } from "../contexts/PainsContext";
 
 const Douleurs = () => {
+  // const { data, url, fetchData } = useContext(PainsContext);
+
+  // useEffect(() => {
+  //   fetchData(url);
+  // }, [fetchData, url]);
+
+  // console.log("data", data);
+
   return (
     <div>
       <h1>Douleurs</h1>
-      <ul>
-        <li>
-          <Link to="/Douleur">Dyspareunie</Link>
-        </li>
-        <li>Vaginisme</li>
-        <li>Vulvodynie/vestibulodynie/clitorodynie</li>
-        <li>Mutilations vaginales</li>
-        <li>Ovaires polykystiques</li>
-        <li>Utérus rétroversé</li>
-        <li>Dysphorie</li>
-        <li>Cystite</li>
-        <li>Lichen</li>
-      </ul>
     </div>
   );
 };
