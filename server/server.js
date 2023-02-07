@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import router from "./routes/test.js";
+// import router from "./routes/test.js";
 import * as dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
@@ -25,7 +25,6 @@ const mongoDBConnexion = async () => {
 };
 
 const loadRoutes = () => {
-  app.use("/api", router);
   app.use("/api/pains", painRoutes);
 };
 
@@ -43,12 +42,14 @@ const addMiddlewares = () => {
     })
   );
 
-  let corsOptions = {
-    origin: "http://localhost.3000",
-    credentials: true,
-  };
+  // let corsOptions = {
+  //   origin: "http://localhost.3000",
+  //   credentials: true,
+  // };
 
-  app.use(cors(corsOptions));
+  // app.use(cors(corsOptions));
+
+  app.use(cors);
 };
 
 (async function controller() {

@@ -26,3 +26,23 @@
   grid-template-columns: repeat(5, 1fr);
   gap: $gap;
 }
+
+/*-----Cards-----*/
+
+@mixin card-grid {
+  @include grid;
+}
+
+@mixin card {
+  border: $border-solid $color1;
+  border-radius: $border-radius;
+  padding: $padding-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}

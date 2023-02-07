@@ -12,6 +12,7 @@
 /*-----Borders-----*/
 /*-----Links-----*/
 /*-----Grid-----*/
+/*-----Cards-----*/
 header {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -157,6 +158,24 @@ h1,
     grid-column: 3/6;
   }
 }
+.pain-card-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+}
+.pain-card-grid .pain-card {
+  border: 2px solid #f5733c;
+  border-radius: 0.25em;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pain-card-grid .pain-card p {
+  margin: 0;
+  padding: 0;
+}
+
 *:focus {
   border: 2px dotted #f5733c;
 }

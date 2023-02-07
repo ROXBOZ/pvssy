@@ -2,10 +2,10 @@ import { createContext, useState } from "react";
 
 export const PainsContext = createContext();
 export const PainsContextProvider = (props) => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const url = "http://localhost:5000/api/pains/all";
-  const [, setLoading] = useState(true);
-  const [, setError] = useState(null);
+  const [Loading, setLoading] = useState(true);
+  const [Error, setError] = useState(null);
 
   const fetchData = async (url) => {
     try {
@@ -13,9 +13,10 @@ export const PainsContextProvider = (props) => {
       const response = await fetch(url);
       const result = await response.json();
       setData(result);
-      console.log("result fetch all Pains", result);
+      // console.log("result fetch all Pains", result);
       setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.log("Catch", error);
       setError(error);
     }
@@ -24,6 +25,8 @@ export const PainsContextProvider = (props) => {
   return (
     <PainsContext.Provider
       value={{
+        Loading,
+        Error,
         data,
         url,
         fetchData,

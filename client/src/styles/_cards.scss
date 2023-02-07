@@ -1,0 +1,7 @@
+.pain-card-grid {
+  @include card-grid;
+
+  .pain-card {
+    @include card;
+  }
+}

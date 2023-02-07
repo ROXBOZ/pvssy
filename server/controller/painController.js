@@ -1,9 +1,9 @@
 import painModel from "../models/painModel.js";
 
 const getAllPains = async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   try {
     const allPains = await painModel.find({});
-    console.log("allPains", allPains);
     res.status(200).json({
       number: allPains.length,
       allPains,
