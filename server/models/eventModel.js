@@ -1,12 +1,7 @@
 import mongoose from "mongoose";
 
 const eventSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-    required: true,
-    unique: true,
-  },
-
+  // basic info
   title: {
     type: String,
     required: true,
@@ -14,10 +9,11 @@ const eventSchema = new mongoose.Schema({
   },
 
   date: {
-    type: Number,
+    type: Date,
     required: true,
   },
 
+  // def
   shortDef: {
     type: String,
     required: true,
@@ -27,60 +23,67 @@ const eventSchema = new mongoose.Schema({
     type: String,
   },
 
+  // online
   onLine: {
     type: Boolean,
     required: true,
   },
 
-  Adresse: {
+  meetingLink: {
+    type: String,
+    required: function () {
+      return this.onLine;
+    },
+  },
+
+  // adresse
+  adresse: {
+    type: String,
+    required: function () {
+      return !this.onLine;
+    },
+  },
+
+  city: {
+    type: String,
+    required: function () {
+      return !this.onLine;
+    },
+  },
+
+  // contact
+  email: {
     type: String,
   },
 
-  City: {
+  tel: {
     type: String,
   },
 
-  Contact: {
+  // entry and reservation
+  freeEntry: {
+    type: Boolean,
+    default: false,
+  },
+
+  entryFee: {
+    type: Number,
+    required: function () {
+      return !this.FreeEntry;
+    },
+  },
+
+  //
+  categories: {
     type: Array,
     required: true,
   },
 
-  FreeEntry: {
+  hightlight: {
     type: Boolean,
     required: true,
-  },
-  /// Entry Fee only if FreeEntry = false
-  EntryFee: {
-    type: Number,
-    required: true,
-  },
-
-  Categories: {
-    type: Array,
-    required: true,
-  },
-
-  Pains: {
-    type: Array,
   },
 });
 
 const eventModel = mongoose.model("event", eventSchema);
 export default eventModel;
-
-// {
-//     "_id": { "$oid": "63e2664dbab569835dbac956" },
-//     "id" : 1,
-//         "title": "Test Event",
-//             "date" : 080720232000,
-//                 "shortDef" : "very short def about the event",
-//                     "longDef" : "quite long def about the event",
-//                         "onLine" : false,
-//                             "Adresse" : "Rue du Lac 20",
-//                                 "City" : "Renens",
-//                                     "Contact" : ["roxboz@gmail.com", "+49 17 438 64 312"]
-//     "FreeEntry" : false,
-//         "EntryFee" : "20",
-//             "Categories" : "Community"
-//     "Pains" : ["xx", "yy"]
-// }

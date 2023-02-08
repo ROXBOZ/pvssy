@@ -1,0 +1,24 @@
+button {
+  @include button;
+}
+
+.button-countdown {
+  margin: 1em 0 0;
+  display: flex;
+  gap: $gap;
+  align-items: center;
+  justify-items: center;
+  p {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.show-counter {
+  color: $color3;
+  display: flex;
+  gap: 1em;
+  div {
+    display: flex;
+  }
+}

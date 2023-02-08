@@ -11,12 +11,13 @@ const Pains = () => {
 
   return (
     <div>
-      <h1>Douleurs</h1>
-
-      <div className="pain-card-grid">
+      <div className="full-width-area">
+        <h1>Douleurs</h1>
+      </div>
+      <div className="card-grid">
         {data &&
           data.map((p) => {
-            return <PainCard key={p.id} p={p} />;
+            return <PainCard key={p._id} p={p} />;
           })}
       </div>
       {Error && <p>Error</p>}

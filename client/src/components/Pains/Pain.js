@@ -6,20 +6,22 @@ const Pain = () => {
   let location = useLocation();
   const { name, def } = location.state.content;
   const ressourcesLink = `Ressources ${name}`;
-  const annuaireLink = `Annuaire ${name}`;
+  // const annuaireLink = `Annuaire ${name}`;
+  const agendaLink = `Évènements ${name}`;
 
   console.log("name", name);
 
   return (
     <>
-      <div className="title-area">
+      <div className="full-width-area">
         <h1>{name}</h1>
         <ul className="category-submenu">
           <li>
             <Link to="/">{ressourcesLink}</Link>
           </li>
+
           <li>
-            <Link to="/">{annuaireLink}</Link>
+            <Link to="/connect">{agendaLink}</Link>
           </li>
         </ul>
       </div>

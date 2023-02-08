@@ -5,6 +5,7 @@
 @import "typography";
 @import "layout";
 @import "cards";
+@import "buttons";
 
 * {
   &:focus {
@@ -17,9 +18,9 @@ html {
   padding: 0;
   background-color: $bg-color;
   color: $txt-color;
-  font-family: ESRebond;
+  font-family: $font;
   line-height: 1.5;
-  font-size: 18px;
+  font-size: $font-size-basis;
 
   body {
     margin: 0;
@@ -28,10 +29,10 @@ html {
     .main {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-around;
       min-height: 100vh;
       height: 100%;
-      .title-area {
+      .full-width-area {
         padding-bottom: $padding-xs;
       }
       .grid-area {

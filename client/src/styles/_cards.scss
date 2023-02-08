@@ -1,9 +1,9 @@
-.pain-card-grid {
+.card-grid {
   @include card-grid;
   .link-card {
     border-bottom: none;
     color: $txt-color;
-    .pain-card {
+    .card {
       @include card;
     }
   }

@@ -12,10 +12,31 @@
 
   &:active {
     border: $border-solid lighten($txt-color, 70%);
+    background-color: lighten($color2, 30%);
+  }
+}
+
+/*-----Buttons-----*/
+
+@mixin button {
+  padding: 0.5em 1em;
+  border-radius: $border-radius;
+  border: $border-solid;
+  background-color: $bg-color;
+  font-size: $font-size-basis;
+  font-family: $font;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten($txt-color, 75%);
+    border: transparent $border-solid;
   }
 
-  &.active {
-    background-color: lighten($color2, 30%);
+  &:disabled {
+    background-color: $bg-color;
+    opacity: 60%;
+    cursor: auto;
+    border: $border-solid;
   }
 }
 
@@ -38,6 +59,7 @@
   border-radius: $border-radius;
   padding: $padding-sm;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 

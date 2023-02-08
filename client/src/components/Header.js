@@ -19,7 +19,7 @@ const Header = () => {
             <NavLink to="shop">Shop</NavLink>
           </li>
           <li>
-            <NavLink to="agenda">Agenda</NavLink>
+            <NavLink to="connect">Connect</NavLink>
           </li>
           <li>
             <NavLink to="a-propos">À propos</NavLink>
