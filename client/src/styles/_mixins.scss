@@ -68,3 +68,13 @@
     padding: 0;
   }
 }
+
+/*-----Separators-----*/
+
+@mixin hr {
+  content: "";
+  border: 1px solid $color1;
+  // border-image: $gradient;
+  align-self: stretch;
+  border-radius: 1px;
+}

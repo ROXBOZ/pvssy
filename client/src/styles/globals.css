@@ -14,6 +14,7 @@
 /*-----Buttons-----*/
 /*-----Grid-----*/
 /*-----Cards-----*/
+/*-----Separators-----*/
 header {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -94,12 +95,20 @@ a:hover {
   border: none;
 }
 
+hr {
+  content: "";
+  border: 1px solid #f5733c;
+  align-self: stretch;
+  border-radius: 1px;
+}
+
 /*-----Ratio Scale-----*/
 h4,
 .h4 {
   font-size: 1.25rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
+  font-weight: 400;
   font-size: clamp(
         1rem,
         4.25vw + 1rem,
@@ -112,6 +121,7 @@ h3,
   font-size: 1.5625rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
+  font-weight: 400;
   font-size: clamp(
         1.046875rem,
         4.515625vw + 1rem,
@@ -124,6 +134,7 @@ h2,
   font-size: 1.953125rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
+  font-weight: 400;
   font-size: clamp(
         1.30859375rem,
         4.64453125vw + 1rem,
@@ -136,6 +147,7 @@ h1,
   font-size: 2.44140625rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
+  font-weight: 400;
   font-size: clamp(
         1.6357421875rem,
         4.8056640625vw + 1rem,
@@ -231,6 +243,37 @@ button:disabled {
 }
 .show-counter div {
   display: flex;
+}
+
+.filter-dashboard {
+  padding: 50px 0;
+  display: flex;
+  gap: 1rem;
+}
+.filter-dashboard .filter {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.filter-dashboard .filter input {
+  border: 2px solid transparent;
+  border-radius: 0.25em;
+  font-family: "ESRebond";
+  font-size: 100%;
+  background-color: #fffdf8;
+  padding: 0.5em;
+}
+.filter-dashboard .filter input:focus {
+  outline: none;
+  border: 2px solid #fab99d;
+}
+.filter-dashboard .filter:not(:first-child):before {
+  content: "";
+  border: 1px solid #f5733c;
+  align-self: stretch;
+  border-radius: 1px;
 }
 
 *:focus {

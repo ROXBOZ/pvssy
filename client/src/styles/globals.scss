@@ -6,6 +6,7 @@
 @import "layout";
 @import "cards";
 @import "buttons";
+@import "filter";
 
 * {
   &:focus {
@@ -33,6 +34,8 @@ html {
       min-height: 100vh;
       height: 100%;
       .full-width-area {
+        // @include grid;
+        // grid-area: 2/5;
         padding-bottom: $padding-xs;
       }
       .grid-area {

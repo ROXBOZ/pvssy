@@ -49,8 +49,6 @@ const addMiddlewares = () => {
   };
 
   app.use(cors(corsOptions));
-
-  app.use(cors);
 };
 
 (async function controller() {
