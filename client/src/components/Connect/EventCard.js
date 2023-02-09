@@ -19,7 +19,9 @@ const EventCard = ({ e }) => {
     minute: "numeric",
   };
   const dateTimeoptions = { ...dateOptions, ...timeOptions };
-  const date = newDate.toLocaleDateString("fr-CH", dateOptions);
+  const date = newDate
+    .toLocaleDateString("fr-CH", dateOptions)
+    .replace(/ /g, "\u00A0");
   const dateTime = newDate.toLocaleDateString("fr-CH", dateTimeoptions);
 
   const shortDef = e.shortDef;
@@ -56,8 +58,8 @@ const EventCard = ({ e }) => {
   };
 
   let shortTitle;
-  if (title.length > 20) {
-    shortTitle = title.substring(0, 20) + "...";
+  if (title.length > 30) {
+    shortTitle = title.substring(0, 30) + "...";
   } else {
     shortTitle = title;
   }
@@ -71,13 +73,15 @@ const EventCard = ({ e }) => {
       style={highlight ? hightlighted : null}
       state={{ content: eventDetail }}
       className="link-card"
-      to={{ pathname: `/connect/${id}` }}
+      to={{
+        pathname: `/connect/${title.toLowerCase().replace(/\s/g, "-")}`,
+      }}
       key={id}
       alt={title}
     >
       <div className="card">
         <h3>{shortTitle}</h3>
-        <p>{date}</p>
+        <p className="card-date">{date}</p>
         {onLine ? <p>ONLINE</p> : <p>{city}</p>}
       </div>
     </Link>

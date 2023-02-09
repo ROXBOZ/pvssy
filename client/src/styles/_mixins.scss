@@ -44,18 +44,23 @@
 
 @mixin grid {
   display: grid;
+  //grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-template-columns: repeat(5, 1fr);
+  //grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: masonry;
   gap: $gap;
 }
 
 /*-----Cards-----*/
+
+// THIS IS WEIRD NEED TO BE IMPROVED
 
 @mixin card-grid {
   @include grid;
 }
 
 @mixin card {
-  border: $border-solid $color1;
+  border: $border-solid $color3;
   border-radius: $border-radius;
   padding: $padding-sm;
   display: flex;
@@ -74,7 +79,6 @@
 @mixin hr {
   content: "";
   border: 1px solid $color1;
-  // border-image: $gradient;
   align-self: stretch;
   border-radius: 1px;
 }

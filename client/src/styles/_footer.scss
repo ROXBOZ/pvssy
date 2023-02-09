@@ -3,3 +3,10 @@ footer {
   color: $bg-color;
   padding: $padding-sm;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  footer {
+    padding: $padding-xs;
+  }
+}

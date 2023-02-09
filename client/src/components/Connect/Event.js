@@ -27,12 +27,28 @@ const Event = () => {
 
   return (
     <>
-      <div className="full-width-area">
+      <div className="heading-area">
         <h1>{title}</h1>
         <p>
           {dateTime}
           <br />
+          {!onLine && (
+            <p>
+              {adresse}, {city}
+            </p>
+          )}
 
+          <p>
+            {freeEntry ? (
+              <span>entrée libre</span>
+            ) : (
+              <span>Entrée : {entryFee} CHF</span>
+            )}
+            <br />
+            <a href={`mailto:${email}`}>{email}</a>
+            <br />
+            {tel && <a href={`tel:${tel}`}>{tel}</a>}
+          </p>
           {onLine && (
             <span className="button-countdown">
               <button
@@ -44,11 +60,6 @@ const Event = () => {
               <CountdownTimer isoDate={isoDate} />
             </span>
           )}
-          {!onLine && (
-            <span>
-              {adresse}, {city}
-            </span>
-          )}
         </p>
       </div>
       <div className="grid-area">
@@ -58,20 +69,6 @@ const Event = () => {
         <div className="col-right">
           <p className="subtitle">{shortDef}</p>
           <p>{longDef}</p>
-          <hr />
-          <h2>Prix</h2>
-          {freeEntry ? <p>entrée libre</p> : <p>Entrée : {entryFee} CHF</p>}
-          <hr />
-          <h2>Réservations</h2>
-          <p>
-            <a mailto={email}>{email}</a>
-            {tel && (
-              <>
-                {" "}
-                / <a href={`tel:${tel}`}>{tel}</a>
-              </>
-            )}
-          </p>
         </div>
       </div>
     </>

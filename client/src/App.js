@@ -1,11 +1,7 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
-
-// css
 import "./styles/globals.css";
 
 // pages and components
-// import Layout from "./layout/Layout";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -18,9 +14,11 @@ import Pain from "./components/Pains/Pain";
 import Ressources from "./pages/Ressources";
 import Annuaire from "./components/Annuaire";
 import Shop from "./pages/Shop";
-import Agenda from "./pages/Agenda";
-import Event from "./components/Agenda/Event";
+import Connect from "./pages/Connect";
+import Event from "./components/Connect/Event";
 import About from "./pages/About";
+import ScrollToTop from "./components/ScrollToTop";
+// import Breadcrumbs from "./components/Breadcrumbs";
 
 //contexts
 import { PainsContextProvider } from "./contexts/PainsContext";
@@ -31,6 +29,8 @@ function App() {
     <>
       <Header />
       <div className="main">
+        {/* <Breadcrumbs /> */}
+        <ScrollToTop />
         <EventsContextProvider>
           <PainsContextProvider>
             <Routes>
@@ -44,8 +44,8 @@ function App() {
               <Route path="ressources" element={<Ressources />} />
               <Route path="annuaire" element={<Annuaire />} />
               <Route path="shop" element={<Shop />} />
-              <Route path="connect" element={<Agenda />} />
-              <Route path="connect/:id" element={<Event />} />
+              <Route path="connect" element={<Connect />} />
+              <Route path="connect/:title" element={<Event />} />
               <Route path="a-propos" element={<About />} />
             </Routes>
           </PainsContextProvider>

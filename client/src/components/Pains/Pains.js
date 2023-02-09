@@ -11,7 +11,7 @@ const Pains = () => {
 
   return (
     <div>
-      <div className="full-width-area">
+      <div className="heading-area">
         <h1>Douleurs</h1>
       </div>
       <div className="card-grid">

@@ -12,6 +12,11 @@
   &:focus {
     border: 2px dotted $color1;
   }
+
+  &::selection {
+    color: $bg-color;
+    background: $txt-color;
+  }
 }
 
 html {
@@ -33,22 +38,13 @@ html {
       justify-content: space-around;
       min-height: 100vh;
       height: 100%;
-      .full-width-area {
-        // @include grid;
-        // grid-area: 2/5;
-        padding-bottom: $padding-xs;
-      }
-      .grid-area {
-        @include grid;
-      }
     }
   }
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  .main,
-  footer {
+  .main {
     padding: $padding-xs;
   }
 }

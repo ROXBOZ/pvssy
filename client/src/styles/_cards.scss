@@ -3,8 +3,16 @@
   .link-card {
     border-bottom: none;
     color: $txt-color;
+    display: flex;
     .card {
+      flex: max-content;
       @include card;
+      h3 {
+        text-align: center;
+      }
+      .card-date {
+        text-align: center;
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import Breadcrumbs from "./Breadcrumbs";
 const Header = () => {
   return (
     <header>
@@ -25,9 +26,8 @@ const Header = () => {
             <NavLink to="a-propos">À propos</NavLink>
           </li>
         </ul>
-
-        {/* <button>s'enregistrer</button> */}
       </nav>
+      <Breadcrumbs />
     </header>
   );
 };

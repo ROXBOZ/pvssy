@@ -10,8 +10,8 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
       <DateTimeDisplay value={hours} type={"hrs"} />
       <span>·</span>
       <DateTimeDisplay value={minutes} type={"min"} />
-      <span>·</span>
-      <DateTimeDisplay value={seconds} type={"sec"} />
+      {/* <span>·</span>
+      <DateTimeDisplay value={seconds} type={"sec"} /> */}
     </span>
   );
 };
@@ -27,6 +27,8 @@ const CountdownTimer = ({ isoDate }) => {
         seconds={seconds}
       />
     );
+  } else {
+    return <p>L’évènement est terminé</p>;
   }
 };
 

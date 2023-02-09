@@ -13,7 +13,7 @@ const Pain = () => {
 
   return (
     <>
-      <div className="full-width-area">
+      <div className="heading-area">
         <h1>{name}</h1>
         <ul className="category-submenu">
           <li>

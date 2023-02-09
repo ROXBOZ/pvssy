@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from "react";
 import { EventsContext } from "../contexts/eventsContext";
-import EventCard from "../components/Agenda/EventCard";
+import EventCard from "../components/Connect/EventCard";
 import { Link } from "react-router-dom";
 
-const Agenda = () => {
+const Connect = () => {
   // fetch data
   const { data, url, fetchData, Error, Loading } = useContext(EventsContext);
   useEffect(() => {
@@ -11,6 +11,20 @@ const Agenda = () => {
   }, [url]);
 
   // filter : where
+
+  const regions = [
+    "Berne",
+    "Fribourg",
+    "Genève",
+    "La Chaux-de-Fonds",
+    "Lausanne",
+    "Montreux",
+    "Neuchâtel",
+    "Nyon",
+    "Sion",
+    "Vevey",
+    "Yverdon-les-Bains",
+  ];
   const handleRegionInputOnChange = () => {
     alert("fetch events by region + suggest drop down");
     // to lower case
@@ -39,45 +53,32 @@ const Agenda = () => {
 
   return (
     <>
-      <div className="full-width-area">
-        <p className="pretitle">Pvssy Connect</p>
-        <h1>Blablabla</h1>
-        <ul className="category-submenu">
-          {/* <li>
-            <Link to="/">Évènements passés</Link>
-          </li> */}
-        </ul>
+      <div className="heading-area">
+        <div className="heading">
+          <p className="pretitle">Pvssy Connect</p>
+          <h1>
+            Agenda d'évènements collaboratif pour organiser des réunions et des
+            activités en temps réel
+          </h1>
+        </div>
 
         <div className="filter-dashboard">
           <div className="filter">
-            <input
-              type="radio"
-              id="thisWeek"
-              name="dateFilter"
-              value="cette semaine"
-            ></input>
-            <label for="thisWeek">Cette semaine</label>
-
-            <input
-              type="radio"
-              id="thisMonth"
-              name="dateFilter"
-              value="ce mois"
-            ></input>
-            <label for="thisWeek">
-              {currentMonthName} {currentYear}
-            </label>
+            <label for="date">Quand ?</label>
+            <input type="date" id="date" name="date" />
           </div>
+
           <div className="filter">
             <label htmlFor="region">Où ?</label>
             <input
               onChange={handleRegionInputOnChange}
-              placeholder="...Lausanne"
+              placeholder="Région"
               type="text"
               id="region"
               name="region"
             />
           </div>
+
           <div className="filter">
             <label htmlFor="category">Quoi ?</label>
             <input
@@ -90,6 +91,7 @@ const Agenda = () => {
           </div>
         </div>
       </div>
+
       <div className="card-grid">
         {data &&
           data.map((e) => {
@@ -103,4 +105,4 @@ const Agenda = () => {
   );
 };
 
-export default Agenda;
+export default Connect;

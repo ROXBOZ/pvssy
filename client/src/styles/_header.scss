@@ -18,13 +18,32 @@ header {
       flex-direction: row;
       justify-content: space-between;
       text-align: left;
-      gap: $gap;
+      // gap: $gap;
 
       a {
         @include navlink;
       }
       li {
         list-style: none;
+      }
+    }
+  }
+}
+
+.breadcrumbs {
+  grid-column: 1;
+  display: flex;
+  color: lighten($txt-color, 50%);
+  .crumb {
+    &:after {
+      color: $txt-color;
+      content: "→";
+      padding: 0 $padding-xs;
+    }
+
+    &:last-child {
+      &:after {
+        display: none;
       }
     }
   }

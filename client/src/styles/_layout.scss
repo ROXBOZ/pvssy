@@ -1,3 +1,18 @@
+// .heading-area {
+//   @include grid;
+//   padding-bottom: $padding-xs;
+//   .heading {
+//     grid-column: 1/6;
+//   }
+//   .filter-dashboard {
+//     grid-column: 1/6;
+//   }
+// }
+
+.grid-area {
+  @include grid;
+}
+
 .category-submenu {
   padding-left: 0;
   li {
