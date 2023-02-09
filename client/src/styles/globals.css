@@ -204,6 +204,7 @@ h1,
   min-height: 600px;
   width: 100%;
   background: linear-gradient(180deg, rgba(255, 82, 215, 0.8) 0%, rgba(245, 116, 60, 0.8) 100%);
+  border-radius: 0.25em;
 }
 
 /* Extra small devices (phones, 600px and down) */

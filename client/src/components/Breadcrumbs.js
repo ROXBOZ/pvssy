@@ -16,7 +16,11 @@ export default function Breadcrumbs() {
         <div className="crumb" key={crumb}>
           {isLastCrumb ? (
             <span>
-              {crumb.replaceAll("%C3%A9", "é").replaceAll("%20", " ")}
+              {crumb
+                .replaceAll("%C3%A9", "é")
+                .replaceAll("%20", " ")
+                .replaceAll("%C3%A8", "è")
+                .replaceAll("%C3%A0", "à")}
             </span>
           ) : (
             <Link to={currentLink}>{crumb}</Link>

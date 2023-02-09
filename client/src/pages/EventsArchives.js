@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { EventsContext } from "../contexts/eventsContext";
 import EventCard from "../components/Connect/EventCard";
+import { Link } from "react-router-dom";
 
 const Connect = () => {
   const { data, archivedEventEP, fetchData, Error, Loading } =
@@ -27,10 +28,13 @@ const Connect = () => {
           data.archivedEvents.map((e) => {
             return <EventCard key={e._id} e={e} />;
           })}
+        {Error && <p>Erreur</p>}
+        {Loading && <p>...chargement...</p>}
       </div>
 
-      {Error && <p>Erreur</p>}
-      {Loading && <p>...chargement...</p>}
+      <Link to="/connect" className="simple-link">
+        Retour aux évènements à venir
+      </Link>
     </>
   );
 };

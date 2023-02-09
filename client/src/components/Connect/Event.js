@@ -1,7 +1,10 @@
 import React from "react";
 import CountdownTimer from "../CountdownTimer";
 import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+console.log("today", today);
 
 const Event = () => {
   let location = useLocation();
@@ -52,7 +55,7 @@ const Event = () => {
           {onLine && (
             <span className="button-countdown">
               <button
-                disabled={new Date(isoDate) > new Date() ? true : false}
+                disabled={new Date(isoDate) != today ? true : false}
                 onClick={redirectToMeeting}
               >
                 Rejoindre la réunion

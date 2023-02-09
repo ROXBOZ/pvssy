@@ -8,6 +8,7 @@ export const EventsContextProvider = (props) => {
   const archivedEventEP = `${baseURL}/archived`;
   const [Loading, setLoading] = useState(true);
   const [Error, setError] = useState(null);
+
   // by region
   const [region, setRegion] = useState([]);
   const EventsByRegionEP = `${baseURL}${region}`;
@@ -32,6 +33,7 @@ export const EventsContextProvider = (props) => {
       const response = await fetch(url);
       const result = await response.json();
       console.log("result", result);
+
       setData(result);
       setLoading(false);
     } catch (error) {
