@@ -57,6 +57,7 @@
 
 @mixin card-grid {
   @include grid;
+  padding-bottom: 1rem;
 }
 
 @mixin card {

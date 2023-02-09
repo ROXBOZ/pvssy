@@ -15,10 +15,11 @@ import Ressources from "./pages/Ressources";
 import Annuaire from "./components/Annuaire";
 import Shop from "./pages/Shop";
 import Connect from "./pages/Connect";
+import EventsArchives from "./pages/EventsArchives";
+
 import Event from "./components/Connect/Event";
 import About from "./pages/About";
 import ScrollToTop from "./components/ScrollToTop";
-// import Breadcrumbs from "./components/Breadcrumbs";
 
 //contexts
 import { PainsContextProvider } from "./contexts/PainsContext";
@@ -46,6 +47,7 @@ function App() {
               <Route path="shop" element={<Shop />} />
               <Route path="connect" element={<Connect />} />
               <Route path="connect/:title" element={<Event />} />
+              <Route path="connect/archives" element={<EventsArchives />} />
               <Route path="a-propos" element={<About />} />
             </Routes>
           </PainsContextProvider>

@@ -29,6 +29,9 @@ a {
   text-decoration: none;
   color: $color3;
   border-bottom: $border-solid;
+  &.simple-link {
+    width: fit-content;
+  }
   &:hover {
     border: none;
   }

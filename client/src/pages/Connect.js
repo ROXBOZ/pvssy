@@ -3,53 +3,36 @@ import { EventsContext } from "../contexts/eventsContext";
 import EventCard from "../components/Connect/EventCard";
 import { Link } from "react-router-dom";
 
+import Autocomplete from "../components/Autocomplete";
+console.log(new Date());
 const Connect = () => {
-  // fetch data
-  const { data, url, fetchData, Error, Loading } = useContext(EventsContext);
+  const { data, upComingEventEP, fetchData, Error, Loading, regions } =
+    useContext(EventsContext);
+  console.log();
+
   useEffect(() => {
-    fetchData(url);
-  }, [url]);
-
-  // filter : where
-
-  const regions = [
-    "Berne",
-    "Fribourg",
-    "Genève",
-    "La Chaux-de-Fonds",
-    "Lausanne",
-    "Montreux",
-    "Neuchâtel",
-    "Nyon",
-    "Sion",
-    "Vevey",
-    "Yverdon-les-Bains",
-  ];
-  const handleRegionInputOnChange = () => {
-    alert("fetch events by region + suggest drop down");
-    // to lower case
-    // check box ONLINE disable Input
-  };
+    fetchData(upComingEventEP);
+  }, [upComingEventEP]);
 
   // filter : when
-  const monthNames = [
-    "Janvier",
-    "Février",
-    "Mars",
-    "Avril",
-    "Mai",
-    "Juin",
-    "Juillet",
-    "Août",
-    "Septembre",
-    "Octobre",
-    "Novembre",
-    "Décembre",
-  ];
-  const currentDate = new Date();
-  const currentMonthIndex = currentDate.getMonth();
-  const currentMonthName = monthNames[currentMonthIndex];
-  const currentYear = currentDate.getFullYear();
+  // const monthNames = [
+  //   "Janvier",
+  //   "Février",
+  //   "Mars",
+  //   "Avril",
+  //   "Mai",
+  //   "Juin",
+  //   "Juillet",
+  //   "Août",
+  //   "Septembre",
+  //   "Octobre",
+  //   "Novembre",
+  //   "Décembre",
+  // ];
+  // const currentDate = new Date();
+  // const currentMonthIndex = currentDate.getMonth();
+  // const currentMonthName = monthNames[currentMonthIndex];
+  // const currentYear = currentDate.getFullYear();
 
   return (
     <>
@@ -64,26 +47,14 @@ const Connect = () => {
 
         <div className="filter-dashboard">
           <div className="filter">
-            <label for="date">Quand ?</label>
             <input type="date" id="date" name="date" />
           </div>
 
-          <div className="filter">
-            <label htmlFor="region">Où ?</label>
-            <input
-              onChange={handleRegionInputOnChange}
-              placeholder="Région"
-              type="text"
-              id="region"
-              name="region"
-            />
-          </div>
+          <Autocomplete suggestions={regions} />
 
           <div className="filter">
-            <label htmlFor="category">Quoi ?</label>
             <input
-              // onChange={handleCategoryInputOnChange}
-              placeholder="...Culturel"
+              placeholder="Culture"
               type="text"
               id="category"
               name="category"
@@ -93,14 +64,17 @@ const Connect = () => {
       </div>
 
       <div className="card-grid">
-        {data &&
-          data.map((e) => {
+        {data.upcomingEvents &&
+          data.upcomingEvents.map((e) => {
             return <EventCard key={e._id} e={e} />;
           })}
+        {Error && <p>Erreur</p>}
+        {Loading && <p>...chargement...</p>}
       </div>
 
-      {Error && <p>Error</p>}
-      {Loading && <p>...loading...</p>}
+      <Link to="archives" className="simple-link">
+        Consulter les évènements passés
+      </Link>
     </>
   );
 };

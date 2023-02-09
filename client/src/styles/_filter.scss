@@ -3,28 +3,67 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
+  align-items: flex-start;
 
   .filter {
-    width: fit-content;
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 1rem;
+  }
 
-    input {
-      border: $border-solid transparent;
-      border-radius: $border-radius;
-      font-family: $font;
-      font-size: 100%;
-      background-color: $bg-color;
-      padding: $padding-xs;
-      &:focus {
-        outline: none;
-        border: $border-solid lighten($color1, 20%);
-      }
+  .filter-dropdown {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.filter,
+.filter-dropdown {
+  input {
+    border: $border-solid $color1;
+    border-radius: $border-radius;
+    font-family: $font;
+    font-size: 100%;
+    background-color: $bg-color;
+    padding: $padding-xs;
+    width: 300px;
+    &:focus {
+      outline: none;
+      border: $border-solid lighten($color1, 20%);
+    }
+  }
+}
+
+.no-suggestions {
+  color: $color3;
+  padding: $padding-xs;
+}
+
+.suggestions {
+  border-top-width: 0;
+  list-style: none;
+  margin-top: 2px;
+  overflow-y: auto;
+  padding-left: 0;
+  width: calc(300px + 1rem);
+
+  li {
+    padding: $padding-xs;
+    border-radius: $border-radius;
+
+    :not(:last-of-type) {
+      border-bottom: 1px solid $color3;
     }
 
-    &:not(:first-child):before {
-      @include hr;
+    &:hover {
+      color: $color3;
+      cursor: pointer;
     }
+  }
+
+  .suggestion-active {
+    color: $color3;
+    cursor: pointer;
   }
 }

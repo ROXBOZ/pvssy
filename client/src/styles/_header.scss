@@ -31,7 +31,7 @@ header {
 }
 
 .breadcrumbs {
-  grid-column: 1;
+  grid-column: 1/6;
   display: flex;
   color: lighten($txt-color, 50%);
   .crumb {

@@ -60,7 +60,7 @@ header nav ul li {
 }
 
 .breadcrumbs {
-  grid-column: 1;
+  grid-column: 1/6;
   display: flex;
   color: #b0b0b0;
 }
@@ -114,6 +114,10 @@ a {
   text-decoration: none;
   color: #9637f0;
   border-bottom: 2px solid;
+}
+a.simple-link {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 a:hover {
   border: none;
@@ -217,6 +221,7 @@ h1,
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: masonry;
   gap: 2rem;
+  padding-bottom: 1rem;
 }
 .card-grid .link-card {
   border-bottom: none;
@@ -290,31 +295,62 @@ button:disabled {
   display: flex;
   gap: 1rem;
   justify-content: center;
+  align-items: flex-start;
 }
 .filter-dashboard .filter {
-  width: -moz-fit-content;
-  width: fit-content;
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 1rem;
 }
-.filter-dashboard .filter input {
-  border: 2px solid transparent;
+.filter-dashboard .filter-dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter input,
+.filter-dropdown input {
+  border: 2px solid #f5733c;
   border-radius: 0.25em;
   font-family: "ESRebond";
   font-size: 100%;
   background-color: #fffdf8;
   padding: 0.5em;
+  width: 300px;
 }
-.filter-dashboard .filter input:focus {
+.filter input:focus,
+.filter-dropdown input:focus {
   outline: none;
   border: 2px solid #fab99d;
 }
-.filter-dashboard .filter:not(:first-child):before {
-  content: "";
-  border: 1px solid #f5733c;
-  align-self: stretch;
-  border-radius: 1px;
+
+.no-suggestions {
+  color: #9637f0;
+  padding: 0.5em;
+}
+
+.suggestions {
+  border-top-width: 0;
+  list-style: none;
+  margin-top: 2px;
+  overflow-y: auto;
+  padding-left: 0;
+  width: calc(300px + 1rem);
+}
+.suggestions li {
+  padding: 0.5em;
+  border-radius: 0.25em;
+}
+.suggestions li :not(:last-of-type) {
+  border-bottom: 1px solid #9637f0;
+}
+.suggestions li:hover {
+  color: #9637f0;
+  cursor: pointer;
+}
+.suggestions .suggestion-active {
+  color: #9637f0;
+  cursor: pointer;
 }
 
 *:focus {
