@@ -5,11 +5,19 @@ const PainCard = ({ p }) => {
   const id = p._id;
   const name = p.name;
   const def = p.def;
+  const diag = p.diagnostic;
+  const sympt = p.symptomes;
+  const aides = p.aides;
+  const auto = p.auto;
 
   const painDetail = {
     id,
     name,
     def,
+    diag,
+    sympt,
+    aides,
+    auto,
   };
 
   return (

@@ -17,6 +17,7 @@ export default function Breadcrumbs() {
           {isLastCrumb ? (
             <span>
               {crumb
+                // batch this
                 .replaceAll("%C3%A9", "é")
                 .replaceAll("%20", " ")
                 .replaceAll("%C3%A8", "è")

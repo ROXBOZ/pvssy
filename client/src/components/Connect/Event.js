@@ -4,7 +4,12 @@ import { useLocation } from "react-router-dom";
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
-console.log("today", today);
+// console.log("today", today.getHours());
+
+// const findoutIfItIsOpen = (todayDate) => {
+//   //use todayDate.getHours/getDate() to find out the exact hour/day
+//   //and add if() conditions to return true or false, depending on our requiremnts
+// }
 
 const Event = () => {
   let location = useLocation();
@@ -23,6 +28,8 @@ const Event = () => {
     freeEntry,
     entryFee,
   } = location.state.content;
+  console.log("today", today);
+  console.log("newDate(isoDate)", new Date(isoDate).getHours());
 
   const redirectToMeeting = () => {
     window.location.href = meetingLink;
@@ -55,7 +62,7 @@ const Event = () => {
           {onLine && (
             <span className="button-countdown">
               <button
-                disabled={new Date(isoDate) != today ? true : false}
+                disabled={new Date(isoDate) !== today ? true : false}
                 onClick={redirectToMeeting}
               >
                 Rejoindre la réunion

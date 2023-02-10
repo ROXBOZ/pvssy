@@ -9,10 +9,6 @@ export const EventsContextProvider = (props) => {
   const [Loading, setLoading] = useState(true);
   const [Error, setError] = useState(null);
 
-  // by region
-  const [region, setRegion] = useState([]);
-  const EventsByRegionEP = `${baseURL}${region}`;
-
   const regions = [
     "Berne",
     "Fribourg",
@@ -32,8 +28,7 @@ export const EventsContextProvider = (props) => {
       setLoading(true);
       const response = await fetch(url);
       const result = await response.json();
-      console.log("result", result);
-
+      // console.log("result", result);
       setData(result);
       setLoading(false);
     } catch (error) {
@@ -52,8 +47,7 @@ export const EventsContextProvider = (props) => {
         allEventEP,
         fetchData,
         regions,
-        setRegion,
-        EventsByRegionEP,
+        baseURL,
         archivedEventEP,
         upComingEventEP,
       }}
