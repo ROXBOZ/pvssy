@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 const Pain = () => {
   let location = useLocation();
   const { name, def, diag, sympt, pros, auto } = location.state.content;
-  const tutos = `Tutos ${name}`;
-  const annuaire = `Annuaire ${name}`;
-  const articles = `Articles ${name}`;
+  // const tutos = `Tutos ${name}`;
+  // const annuaire = `Annuaire ${name}`;
+  // const articles = `Articles ${name}`;
+
   const createParagraphs = (arr) => arr.map((p) => <p>{p}</p>);
 
   return (
@@ -15,14 +16,18 @@ const Pain = () => {
       <div className="heading-area">
         <h1>{name}</h1>
         <ul className="category-submenu">
+          Ressources :{" "}
           <li>
-            <Link to="/gerer-soi-meme/tutos">{tutos}</Link>
+            <Link to="/gerer-soi-meme/ressources/tutos">Tutos</Link>
           </li>
           <li>
-            <Link to="/trouver-de-l-aide/annuaire">{annuaire}</Link>
+            <Link to="/trouver-de-l-aide/annuaire">Annuaire</Link>
           </li>
           <li>
-            <Link to="/gerer-soi-meme/articles">{articles}</Link>
+            <Link to="/gerer-soi-meme/ressources/articles">Articles</Link>
+          </li>
+          <li>
+            <Link to="/">Lexique</Link>
           </li>
         </ul>
       </div>
@@ -41,7 +46,7 @@ const Pain = () => {
           <h2>Pourquoi ça m’arrive ?</h2>
           <h2>Que puis-je faire seule ?</h2>
           {createParagraphs(auto)}
-          <h2>Quelles pros existent ?</h2>
+          <h2>Quelles aides existent ?</h2>
           {pros.intro}
           {pros.gyne && (
             <>

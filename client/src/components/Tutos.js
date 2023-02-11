@@ -4,7 +4,9 @@ const Tutos = () => {
   return (
     <div>
       <h3>Tutos</h3>
-      <p>filtre : santé ou plaisir / douleur</p>
+      <p>
+        filtre : toggle entre santé et plaisir. Si santé : option choix douleurs
+      </p>
     </div>
   );
 };

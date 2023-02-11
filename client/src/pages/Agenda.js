@@ -78,8 +78,11 @@ const Agenda = () => {
           <p className="pretitle">Pvssy Connect</p>
           <h1>
             Agenda d'évènements collaboratif pour organiser des réunions et des
-            activités en temps réel
+            activités blablablabla.
           </h1>
+          <p>
+            Tu as un évènement à publier ? <Link to="/login">Connecte-toi</Link>
+          </p>
         </div>
 
         <div className="filter-dashboard">

@@ -4,16 +4,13 @@ const Annuaire = () => {
   return (
     <div>
       <h2>Annuaire</h2>
-      <p>filtre : douleurs</p>
-      <ul>
-        <li>soignant·es (type, pratiques, approche, selon type de douleurs)</li>
-        <li>associations (intro, contacts)</li>
-        <li>groupes de paroles</li>
-        <li>pages insta/réseaux sociaux d’éducation sexuelle/sexo</li>
-
-        <li>sites spécialisés</li>
-        <li> agasins de ressources menstruelles + douleurs + plaisir</li>
-      </ul>
+      <h3>Soignant·es</h3>
+      <p>filtre : type, pratiques, approche, selon type de douleurs</p>
+      <h3>Associations</h3>
+      <h3>Groupes de paroles</h3>
+      <h3>Sites spécialisés</h3>
+      <h3>Comptes Insta</h3>
+      <h3>Magasins</h3>
     </div>
   );
 };

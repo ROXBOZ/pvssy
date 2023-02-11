@@ -50,11 +50,29 @@ header nav ul a {
   border: none;
 }
 header nav ul a:hover {
-  background-color: #efefef;
-}
-header nav ul a:active {
-  border: 2px solid #e3e3e3;
   background-color: #ffe9fa;
+}
+header nav ul a.active {
+  background-color: #fcdbce;
+}
+header nav ul a.btn {
+  padding: 0.5em 1em;
+  border-radius: 0.25em;
+  border: 2px solid;
+  background-color: #fffdf8;
+  font-size: 18px;
+  font-family: "ESRebond";
+  cursor: pointer;
+}
+header nav ul a.btn:hover {
+  background-color: #ffe9fa;
+  border: transparent 2px solid;
+}
+header nav ul a.btn:disabled {
+  background-color: #fffdf8;
+  opacity: 60%;
+  cursor: auto;
+  border: 2px solid;
 }
 header nav ul li {
   list-style: none;
@@ -78,6 +96,9 @@ footer {
   background-color: #303030;
   color: #fffdf8;
   padding: 50px;
+}
+footer a {
+  color: #fffdf8;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -265,7 +286,7 @@ button {
   cursor: pointer;
 }
 button:hover {
-  background-color: #efefef;
+  background-color: #ffe9fa;
   border: transparent 2px solid;
 }
 button:disabled {
@@ -375,8 +396,11 @@ button:disabled {
   cursor: pointer;
 }
 
+* {
+  outline: none;
+}
 *:focus {
-  border: 2px dotted #f5733c;
+  border: 2px solid #fcdbce;
 }
 *::-moz-selection {
   color: #fffdf8;

@@ -25,7 +25,11 @@ const Header = () => {
           <li>
             <NavLink to="agenda">Agenda</NavLink>
           </li>
-          <button>S’enregistrer</button>
+          <li>
+            <NavLink className="btn" to="login">
+              Se connecter
+            </NavLink>
+          </li>
         </ul>
       </nav>
       <Breadcrumbs />

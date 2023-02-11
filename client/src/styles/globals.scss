@@ -9,8 +9,10 @@
 @import "filter";
 
 * {
+  outline: none;
   &:focus {
-    border: 2px dotted $color1;
+    // create vars for the lightens
+    border: $border-solid lighten($color1, 30%);
   }
 
   &::selection {

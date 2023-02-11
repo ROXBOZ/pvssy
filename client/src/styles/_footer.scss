@@ -2,6 +2,10 @@ footer {
   background-color: $txt-color;
   color: $bg-color;
   padding: $padding-sm;
+
+  a {
+    color: $bg-color;
+  }
 }
 
 /* Extra small devices (phones, 600px and down) */

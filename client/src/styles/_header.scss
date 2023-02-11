@@ -23,6 +23,9 @@ header {
 
       a {
         @include navlink;
+        &.btn {
+          @include button;
+        }
       }
       li {
         list-style: none;

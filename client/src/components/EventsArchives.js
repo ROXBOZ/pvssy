@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { EventsContext } from "../contexts/eventsContext";
-import EventCard from "../components/Agenda/EventCard";
+import EventCard from "./Agenda/EventCard";
 import { Link } from "react-router-dom";
 
 const Connect = () => {

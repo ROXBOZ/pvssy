@@ -18,8 +18,8 @@ const Pains = () => {
             return <PainCard key={p._id} p={p} />;
           })}
       </div>
-      {Error && <p>Error</p>}
-      {Loading && <p>...loading...</p>}
+      {Error && <p>erreur</p>}
+      {Loading && <p>chargement</p>}
     </div>
   );
 };
