@@ -1,6 +1,12 @@
-import mongoose from "mongoose";
+import mongoose, { isValidObjectId } from "mongoose";
 
 const painSchema = new mongoose.Schema({
+  // id: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   unique: true,
+  //   required: true,
+  // },
+
   name: {
     type: String,
     required: true,
@@ -12,22 +18,22 @@ const painSchema = new mongoose.Schema({
   },
   diag: {
     type: Array,
-    required: true,
   },
   sympt: {
     type: Array,
-    required: true,
   },
-  aides: {
+
+  pro: {
     type: Object,
     required: true,
+
     intro: {
       type: String,
     },
-    gyné: {
+    gyne: {
       type: String,
     },
-    kiné: {
+    kine: {
       type: String,
     },
     psyc: {
@@ -40,5 +46,4 @@ const painSchema = new mongoose.Schema({
 });
 
 const painModel = mongoose.model("pain", painSchema);
-
 export default painModel;

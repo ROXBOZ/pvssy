@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 
 const Pain = () => {
   let location = useLocation();
-  const { name, def, diag, sympt, aides, auto } = location.state.content;
-  const ressourcesLink = `Ressources ${name}`;
-  const agendaLink = `Évènements ${name}`;
+  const { name, def, diag, sympt, pros, auto } = location.state.content;
+  const tutos = `Tutos ${name}`;
+  const annuaire = `Annuaire ${name}`;
+  const articles = `Articles ${name}`;
   const createParagraphs = (arr) => arr.map((p) => <p>{p}</p>);
 
   return (
@@ -15,11 +16,13 @@ const Pain = () => {
         <h1>{name}</h1>
         <ul className="category-submenu">
           <li>
-            <Link to="/">{ressourcesLink}</Link>
+            <Link to="/gerer-soi-meme/tutos">{tutos}</Link>
           </li>
-
           <li>
-            <Link to="/connect">{agendaLink}</Link>
+            <Link to="/trouver-de-l-aide/annuaire">{annuaire}</Link>
+          </li>
+          <li>
+            <Link to="/gerer-soi-meme/articles">{articles}</Link>
           </li>
         </ul>
       </div>
@@ -38,30 +41,30 @@ const Pain = () => {
           <h2>Pourquoi ça m’arrive ?</h2>
           <h2>Que puis-je faire seule ?</h2>
           {createParagraphs(auto)}
-          <h2>Quelles aides existent ?</h2>
-          {aides.intro}
-          {aides.gyné && (
+          <h2>Quelles pros existent ?</h2>
+          {pros.intro}
+          {pros.gyne && (
             <>
               <h3>Gynécologue</h3>
-              {aides.gyné}
+              {pros.gyne}
             </>
           )}
-          {aides.kiné && (
+          {pros.kine && (
             <>
               <h3>Kinésithérapeute</h3>
-              {aides.kiné}
+              {pros.kine}
             </>
           )}
-          {aides.psyc && (
+          {pros.psyc && (
             <>
               <h3>Psychologue</h3>
-              {aides.psyc}
+              {pros.psyc}
             </>
           )}
-          {aides.sexo && (
+          {pros.sexo && (
             <>
               <h3>Sexologue</h3>
-              {aides.sexo}
+              {pros.sexo}
             </>
           )}
         </div>

@@ -11,9 +11,7 @@ const Pains = () => {
 
   return (
     <div>
-      <div className="heading-area">
-        <h1>Douleurs</h1>
-      </div>
+      <h2>Douleurs</h2>
       <div className="card-grid">
         {data &&
           data.map((p) => {

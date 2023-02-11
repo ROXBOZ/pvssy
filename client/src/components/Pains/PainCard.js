@@ -5,9 +5,9 @@ const PainCard = ({ p }) => {
   const id = p._id;
   const name = p.name;
   const def = p.def;
-  const diag = p.diagnostic;
-  const sympt = p.symptomes;
-  const aides = p.aides;
+  const diag = p.diag;
+  const sympt = p.sympt;
+  const pros = p.pros;
   const auto = p.auto;
 
   const painDetail = {
@@ -16,7 +16,7 @@ const PainCard = ({ p }) => {
     def,
     diag,
     sympt,
-    aides,
+    pros,
     auto,
   };
 
@@ -24,7 +24,7 @@ const PainCard = ({ p }) => {
     <Link
       state={{ content: painDetail }}
       className="link-card"
-      to={{ pathname: `/douleurs/${name.toLowerCase()}` }}
+      to={{ pathname: `/gerer-soi-meme/douleurs/${name.toLowerCase()}` }}
       key={id}
     >
       <div className="card">

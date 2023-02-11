@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { EventsContext } from "../contexts/eventsContext";
-import EventCard from "../components/Connect/EventCard";
+import EventCard from "../components/Agenda/EventCard";
 import { Link } from "react-router-dom";
 
 const Connect = () => {
@@ -32,7 +32,7 @@ const Connect = () => {
         {Loading && <p>...chargement...</p>}
       </div>
 
-      <Link to="/connect" className="simple-link">
+      <Link to="/agenda" className="simple-link">
         Retour aux évènements à venir
       </Link>
     </>

@@ -7,24 +7,25 @@ const Header = () => {
       <Link to="/" className="logo">
         pvssy talk
       </Link>
+
       <nav>
         <ul>
           <li>
-            <NavLink to="agir">Agir & comprendre</NavLink>
+            <NavLink to="a-propos">À propos</NavLink>
           </li>
-
           <li>
-            <NavLink to="ressources">Ressources</NavLink>
+            <NavLink to="gerer-soi-meme">Gérer soi-même</NavLink>
+          </li>
+          <li>
+            <NavLink to="trouver-de-l-aide">Trouver de l’aide</NavLink>
           </li>
           <li>
             <NavLink to="shop">Shop</NavLink>
           </li>
           <li>
-            <NavLink to="connect">Connect</NavLink>
+            <NavLink to="agenda">Agenda</NavLink>
           </li>
-          <li>
-            <NavLink to="a-propos">À propos</NavLink>
-          </li>
+          <button>S’enregistrer</button>
         </ul>
       </nav>
       <Breadcrumbs />

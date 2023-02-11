@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const eventSchema = new mongoose.Schema({
-  // basic info
   title: {
     type: String,
     required: true,
@@ -13,7 +12,6 @@ const eventSchema = new mongoose.Schema({
     required: true,
   },
 
-  // def
   shortDef: {
     type: String,
     required: true,
@@ -23,7 +21,8 @@ const eventSchema = new mongoose.Schema({
     type: String,
   },
 
-  // online
+  // online event : 1 object with two strings > online boolean and link
+  // or 1 boolean online/offline and an object access link, email, tel
   onLine: {
     type: Boolean,
     required: true,
@@ -36,22 +35,17 @@ const eventSchema = new mongoose.Schema({
     },
   },
 
-  // adresse
+  // onsite event : 1 object with street, city and region // online switch off onsite
   adresse: {
     type: String,
-    required: function () {
-      return !this.onLine;
-    },
   },
 
   city: {
     type: String,
-    required: function () {
-      return !this.onLine;
-    },
   },
 
-  // contact
+  // entry object with email and tel and entry fee. If no entry fee, entry is free
+
   email: {
     type: String,
   },
@@ -60,28 +54,8 @@ const eventSchema = new mongoose.Schema({
     type: String,
   },
 
-  // entry and reservation
-  freeEntry: {
-    type: Boolean,
-    default: false,
-  },
-
   entryFee: {
     type: Number,
-    required: function () {
-      return !this.FreeEntry;
-    },
-  },
-
-  //
-  categories: {
-    type: Array,
-    required: true,
-  },
-
-  hightlight: {
-    type: Boolean,
-    required: true,
   },
 });
 

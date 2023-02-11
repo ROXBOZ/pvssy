@@ -2,14 +2,8 @@ import React from "react";
 import CountdownTimer from "../CountdownTimer";
 import { useLocation } from "react-router-dom";
 
-const today = new Date();
-today.setHours(0, 0, 0, 0);
-// console.log("today", today.getHours());
-
-// const findoutIfItIsOpen = (todayDate) => {
-//   //use todayDate.getHours/getDate() to find out the exact hour/day
-//   //and add if() conditions to return true or false, depending on our requiremnts
-// }
+const today = new Date().getDay;
+console.log("today", today);
 
 const Event = () => {
   let location = useLocation();
@@ -43,9 +37,9 @@ const Event = () => {
           {dateTime}
           <br />
           {!onLine && (
-            <p>
+            <span>
               {adresse}, {city}
-            </p>
+            </span>
           )}
 
           <p>
@@ -54,10 +48,16 @@ const Event = () => {
             ) : (
               <span>Entrée : {entryFee} CHF</span>
             )}
-            <br />
-            <a href={`mailto:${email}`}>{email}</a>
-            <br />
-            {tel && <a href={`tel:${tel}`}>{tel}</a>}
+          </p>
+          <p>
+            {(email || tel) && <span>Réservation : </span>}
+            {email && <a href={`mailto:${email}`}>{email}</a>}
+            {email && tel && <span> ou </span>}
+            {tel && (
+              <span>
+                <a href={`tel:${tel}`}>{tel}</a>
+              </span>
+            )}
           </p>
           {onLine && (
             <span className="button-countdown">

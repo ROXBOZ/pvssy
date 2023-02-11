@@ -7,14 +7,34 @@
 
   .filter {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    // flex-direction: row;
+    align-items: top;
     gap: 1rem;
   }
 
   .filter-dropdown {
     display: flex;
     flex-direction: column;
+    gap: 1em;
+    align-items: left;
+    .input-icon {
+      display: flex;
+      flex-direction: row;
+      gap: 1em;
+      align-items: center;
+      #chevron-icon {
+        &.open {
+          transform: rotate(90deg);
+          transition: $animation-transition;
+        }
+        &.close {
+          transition: $animation-transition;
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
   }
 }
 
@@ -35,10 +55,8 @@
   }
 }
 
-// WHAT IF THERE IS NO EVENT FOR THE VALUE INPUTTED
 .no-suggestions {
-  color: $color3;
-  padding: $padding-xs;
+  color: $color1;
 }
 
 .suggestions {
@@ -50,7 +68,7 @@
   width: calc(300px + 1rem);
 
   li {
-    padding: $padding-xs;
+    padding: $padding-xs $padding-xs $padding-xs 4.5rem;
     border-radius: $border-radius;
 
     :not(:last-of-type) {

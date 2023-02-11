@@ -74,7 +74,7 @@ const EventCard = ({ e }) => {
       state={{ content: eventDetail }}
       className="link-card"
       to={{
-        pathname: `/connect/${title.toLowerCase().replace(/\s/g, "-")}`,
+        pathname: `/agenda/${title.toLowerCase().replace(/\s/g, "-")}`,
       }}
       key={id}
       alt={title}

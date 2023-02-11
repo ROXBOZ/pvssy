@@ -57,3 +57,26 @@ const addMiddlewares = () => {
   startServer();
   addMiddlewares();
 })();
+
+/*-------------------- Populating DB --------------------*/
+
+// import pain from "./models/painModel.js";
+
+// async function run() {
+//   const Pain = new pain({
+//     // id: ObjectId(),
+//     name: "Douleur",
+//     def: "definition",
+//     diag: "diagnostic",
+//     sympt: "symptomes",
+//     pro: {
+//       intro: "pros intro",
+//       gyne: "gynécologue",
+//       kine: "kinésithérapeute",
+//       sexo: "sexologue",
+//       psyc: "psychologue",
+//     },
+//   });
+//   await Pain.save();
+// }
+// run();
