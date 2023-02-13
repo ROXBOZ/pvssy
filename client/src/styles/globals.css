@@ -16,6 +16,7 @@
 /*-----Grid-----*/
 /*-----Cards-----*/
 /*-----Separators-----*/
+/*-----Inputs-----*/
 header {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -127,6 +128,7 @@ h1 {
 
 p {
   margin-top: 0;
+  max-width: 70ch;
 }
 p.subtitle {
   font-size: x-large;
@@ -397,18 +399,31 @@ button:disabled {
 }
 
 form {
-  border: 2px solid;
-  padding: 0.5em;
-  border-radius: 0.25em;
+  padding: 1em;
   margin: 1em 0;
 }
+form.grid-form {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  gap: 1em;
+}
 form div {
-  margin: 1em 0;
-  padding: 0.5em 0;
-  background-color: yellow;
   display: flex;
   gap: 2em;
   align-items: center;
+}
+form div input {
+  border: 2px solid #f5733c;
+  border-radius: 0.25em;
+  font-family: "ESRebond";
+  font-size: 100%;
+  background-color: #fffdf8;
+  padding: 0.5em;
+  width: 300px;
+}
+form div input:focus {
+  outline: none;
+  border: 2px solid #fab99d;
 }
 
 * {

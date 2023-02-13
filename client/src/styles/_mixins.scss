@@ -82,3 +82,19 @@
   align-self: stretch;
   border-radius: 1px;
 }
+
+/*-----Inputs-----*/
+
+@mixin input {
+  border: $border-solid $color1;
+  border-radius: $border-radius;
+  font-family: $font;
+  font-size: 100%;
+  background-color: $bg-color;
+  padding: $padding-xs;
+  width: 300px;
+  &:focus {
+    outline: none;
+    border: $border-solid lighten($color1, 20%);
+  }
+}

@@ -41,17 +41,7 @@
 .filter,
 .filter-dropdown {
   input {
-    border: $border-solid $color1;
-    border-radius: $border-radius;
-    font-family: $font;
-    font-size: 100%;
-    background-color: $bg-color;
-    padding: $padding-xs;
-    width: 300px;
-    &:focus {
-      outline: none;
-      border: $border-solid lighten($color1, 20%);
-    }
+    @include input;
   }
 }
 
@@ -88,16 +78,20 @@
 }
 
 form {
-  border: $border-solid;
-  padding: $padding-xs;
-  border-radius: $border-radius;
+  padding: 1em;
   margin: 1em 0;
+  &.grid-form {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    gap: 1em;
+  }
+
   div {
-    margin: 1em 0;
-    padding: $padding-xs 0;
-    background-color: yellow;
     display: flex;
     gap: 2em;
     align-items: center;
+    input {
+      @include input;
+    }
   }
 }

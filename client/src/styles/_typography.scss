@@ -19,7 +19,7 @@ h1 {
 
 p {
   margin-top: 0;
-  // max-width: 70ch; // SHOULD BE REINSTALLED, FIND A WAY FOR SUBTITLE TOO
+  max-width: 70ch;
   &.subtitle {
     font-size: x-large;
   }
