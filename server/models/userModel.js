@@ -1,21 +1,24 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  name: {
+  userName: {
+    type: String,
+    required: true,
+  },
+  // should not be required in case its an association but it should be required if it is a person
+  userFirstname: {
+    type: String,
+  },
+  userEmail: {
     type: String,
     required: true,
     unique: true,
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
+  userPassword: {
     type: String,
     required: true,
   },
-  avatar: {
+  userAvatar: {
     type: String,
   },
 });
