@@ -16,18 +16,36 @@ const Pain = () => {
       <div className="heading-area">
         <h1>{name}</h1>
         <ul className="category-submenu">
-          Ressources :{" "}
+          Ressources {name} :{" "}
           <li>
-            <Link to="/gerer-soi-meme/ressources/tutos">Tutos</Link>
+            <Link
+              to={{
+                pathname: `/gerer-soi-meme/ressources/tutos/${name.toLowerCase()}`,
+              }}
+            >
+              Tutos
+            </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/trouver-de-l-aide/annuaire">Annuaire</Link>
+          </li> */}
+          <li>
+            <Link
+              to={{
+                pathname: `/gerer-soi-meme/ressources/articles/${name.toLowerCase()}`,
+              }}
+            >
+              Articles
+            </Link>
           </li>
           <li>
-            <Link to="/gerer-soi-meme/ressources/articles">Articles</Link>
-          </li>
-          <li>
-            <Link to="/">Lexique</Link>
+            <Link
+              to={{
+                pathname: `/gerer-soi-meme/ressources/lexique/${name.toLowerCase()}`,
+              }}
+            >
+              Lexique
+            </Link>
           </li>
         </ul>
       </div>

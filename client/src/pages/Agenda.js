@@ -86,10 +86,6 @@ const Agenda = () => {
         </div>
 
         <div className="filter-dashboard">
-          {/* <div className="filter">
-            <input type="date" id="date" name="date" />
-          </div> */}
-
           <div className="filter">
             <div className="filter-dropdown">
               <div className="input-icon">
@@ -130,22 +126,11 @@ const Agenda = () => {
               )}
             </div>
           </div>
-
-          {/* <div className="filter">
-            <input
-              placeholder="Culture"
-              type="text"
-              id="category"
-              name="category"
-            />
-          </div> */}
         </div>
       </div>
 
       <div className="card-grid">
         {data.upcomingEvents &&
-        /* Filter events based on the value inputted and if event has a region or not */
-        /* Check if the filtered events have a length greater than 0 */
         data.upcomingEvents
           .filter((e) => {
             return (
@@ -154,11 +139,9 @@ const Agenda = () => {
               !e.region
             );
           })
-          /* Sort the events by date */
           .sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
           }).length > 0 ? (
-          /* Map over the filtered and sorted events */
           data.upcomingEvents
             .filter((e) => {
               return (

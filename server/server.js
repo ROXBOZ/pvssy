@@ -5,6 +5,7 @@ dotenv.config();
 import mongoose from "mongoose";
 import painRoutes from "./routes/painRoutes.js";
 import eventRoutes from "./routes/eventRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -27,6 +28,7 @@ const mongoDBConnexion = async () => {
 const loadRoutes = () => {
   app.use("/api/pains", painRoutes);
   app.use("/api/events", eventRoutes);
+  app.use("/api/users", userRoutes);
 };
 
 const startServer = () => {

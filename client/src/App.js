@@ -21,6 +21,7 @@ import Annuaire from "./components/Annuaire";
 import Ressources from "./components/Ressources";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import AddEvent from "./components/AddEvent";
 //contexts
 import { PainsContextProvider } from "./contexts/PainsContext";
 import { EventsContextProvider } from "./contexts/eventsContext";
@@ -30,7 +31,6 @@ function App() {
     <>
       <Header />
       <div className="main">
-        {/* <Breadcrumbs /> */}
         <ScrollToTop />
         <EventsContextProvider>
           <PainsContextProvider>
@@ -40,6 +40,18 @@ function App() {
               <Route path="gerer-soi-meme" element={<GererSoiMeme />} />
               <Route path="gerer-soi-meme/douleurs" element={<Pains />} />
               <Route path="gerer-soi-meme/douleurs/:name" element={<Pain />} />
+              <Route
+                path="gerer-soi-meme/douleurs/tutos/:name"
+                element={<Pain />}
+              />
+              <Route
+                path="gerer-soi-meme/douleurs/articles/:name"
+                element={<Pain />}
+              />
+              <Route
+                path="gerer-soi-meme/douleurs/lexique/:name"
+                element={<Pain />}
+              />
               <Route
                 path="gerer-soi-meme/ressources"
                 element={<Ressources />}
@@ -52,15 +64,19 @@ function App() {
                 path="gerer-soi-meme/ressources/articles"
                 element={<Articles />}
               />
-
               <Route path="trouver-de-l-aide" element={<TrouverDeLAide />} />
               <Route path="trouver-de-l-aide/annuaire" element={<Annuaire />} />
+              <Route
+                path="trouver-de-l-aide/annuaire/:name"
+                element={<Pain />}
+              />
               <Route path="shop" element={<Shop />} />
               <Route path="agenda" element={<Agenda />} />
               <Route path="agenda/:title" element={<Event />} />
               <Route path="agenda/archives" element={<EventsArchives />} />
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />
+              <Route path="nouvel-evenement" element={<AddEvent />} />
             </Routes>
           </PainsContextProvider>
         </EventsContextProvider>
