@@ -21,7 +21,6 @@ import Annuaire from "./components/Annuaire";
 import Ressources from "./components/Ressources";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import AddEvent from "./components/AddEvent";
 //contexts
 import { PainsContextProvider } from "./contexts/PainsContext";
 import { EventsContextProvider } from "./contexts/eventsContext";
@@ -76,7 +75,6 @@ function App() {
               <Route path="agenda/archives" element={<EventsArchives />} />
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />
-              <Route path="nouvel-evenement" element={<AddEvent />} />
             </Routes>
           </PainsContextProvider>
         </EventsContextProvider>

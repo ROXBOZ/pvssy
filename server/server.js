@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import painRoutes from "./routes/painRoutes.js";
 import eventRoutes from "./routes/eventRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import cloudinaryConfig from "./config/cloudinaryConfig.js";
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -51,6 +52,7 @@ const addMiddlewares = () => {
   };
 
   app.use(cors(corsOptions));
+  cloudinaryConfig();
 };
 
 (async function controller() {

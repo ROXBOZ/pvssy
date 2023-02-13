@@ -2,9 +2,9 @@ import { v2 as cloudinary } from "cloudinary";
 
 const cloudinaryConfig = () => {
   cloudinary.config({
-    cloud_name: "dkyialww7",
-    api_key: "252867222822417",
-    api_secret: "7JMJwL5bjpmYUKxikhJgzUPkmto",
+    cloud_name: process.env.cloud_name,
+    api_key: process.env.api_key,
+    api_secret: process.env.api_secret,
   });
 };
 

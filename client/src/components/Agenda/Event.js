@@ -3,7 +3,6 @@ import CountdownTimer from "../CountdownTimer";
 import { useLocation } from "react-router-dom";
 
 const today = new Date().getDay;
-console.log("today", today);
 
 const Event = () => {
   let location = useLocation();
@@ -22,8 +21,6 @@ const Event = () => {
     freeEntry,
     entryFee,
   } = location.state.content;
-  console.log("today", today);
-  console.log("newDate(isoDate)", new Date(isoDate).getHours());
 
   const redirectToMeeting = () => {
     window.location.href = meetingLink;

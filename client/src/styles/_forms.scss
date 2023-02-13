@@ -86,3 +86,18 @@
     cursor: pointer;
   }
 }
+
+form {
+  border: $border-solid;
+  padding: $padding-xs;
+  border-radius: $border-radius;
+  margin: 1em 0;
+  div {
+    margin: 1em 0;
+    padding: $padding-xs 0;
+    background-color: yellow;
+    display: flex;
+    gap: 2em;
+    align-items: center;
+  }
+}

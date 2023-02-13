@@ -396,6 +396,21 @@ button:disabled {
   cursor: pointer;
 }
 
+form {
+  border: 2px solid;
+  padding: 0.5em;
+  border-radius: 0.25em;
+  margin: 1em 0;
+}
+form div {
+  margin: 1em 0;
+  padding: 0.5em 0;
+  background-color: yellow;
+  display: flex;
+  gap: 2em;
+  align-items: center;
+}
+
 * {
   outline: none;
 }
