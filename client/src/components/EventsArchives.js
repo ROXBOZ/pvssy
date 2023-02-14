@@ -1,18 +1,17 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { EventsContext } from "../contexts/eventsContext";
 import EventCard from "./Agenda/EventCard";
 import { Link } from "react-router-dom";
 
 const Connect = () => {
-  const { data, archivedEventEP, fetchData, Error, Loading } =
-    useContext(EventsContext);
+  const { data, archivedEventEP, Error, Loading } = useContext(EventsContext);
 
   console.log("ArchivedEventEP", archivedEventEP);
   console.log("data", data);
 
-  useEffect(() => {
-    fetchData(archivedEventEP);
-  }, [archivedEventEP]);
+  // useEffect(() => {
+  //   fetchData(archivedEventEP);
+  // }, [archivedEventEP]);
 
   return (
     <>

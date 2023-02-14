@@ -26,18 +26,6 @@ const mongoDBConnexion = async () => {
   }
 };
 
-const loadRoutes = () => {
-  app.use("/api/pains", painRoutes);
-  app.use("/api/events", eventRoutes);
-  app.use("/api/users", userRoutes);
-};
-
-const startServer = () => {
-  app.listen(port, () => {
-    console.log(`Server is running on port : ${port}`);
-  });
-};
-
 const addMiddlewares = () => {
   app.use(express.json());
   app.use(
@@ -51,15 +39,28 @@ const addMiddlewares = () => {
     credentials: true,
   };
 
-  app.use(cors(corsOptions));
+  // app.use(cors(corsOptions));
+  app.use(cors());
   cloudinaryConfig();
+};
+
+const loadRoutes = () => {
+  app.use("/api/pains", painRoutes);
+  app.use("/api/events", eventRoutes);
+  app.use("/api/users", userRoutes);
+};
+
+const startServer = () => {
+  app.listen(port, () => {
+    console.log(`Server is running on port : ${port}`);
+  });
 };
 
 (async function controller() {
   await mongoDBConnexion();
   loadRoutes();
-  startServer();
   addMiddlewares();
+  startServer();
 })();
 
 /*-------------------- Populating DB --------------------*/

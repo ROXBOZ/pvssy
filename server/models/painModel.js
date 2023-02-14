@@ -1,12 +1,6 @@
 import mongoose, { isValidObjectId } from "mongoose";
 
 const painSchema = new mongoose.Schema({
-  // id: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   unique: true,
-  //   required: true,
-  // },
-
   name: {
     type: String,
     required: true,

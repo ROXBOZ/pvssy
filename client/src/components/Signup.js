@@ -6,28 +6,43 @@ const Signup = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [newUser, setNewUser] = useState({});
   const [userType, setUserType] = useState("association");
-  const [fileName, setFileName] = useState("Aucun fichier choisi");
 
   const handleAttachImg = (e) => {
-    setFileName(e.target.value.split("\\").pop() || "Aucun fichier choisi");
     setSelectedFile(e.target.files[0]);
   };
 
-  const submitImg = (e) => {
+  const submitImg = async (e) => {
     e.preventDefault();
-
     const formdata = new FormData();
     formdata.append("image", selectedFile);
-
     const requestOptions = {
       method: "POST",
       body: formdata,
     };
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/users/imageUpload",
+        requestOptions
+      );
+      console.log("response", response);
+      const result = await response.json();
+      setNewUser({ ...newUser, userAvatar: result.userAvatar });
 
-    fetch("http://localhost:5000/api/users/imageUpload", requestOptions)
-      .then((response) => response.json())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error!!!", error));
+      console.log("result", result);
+    } catch (error) {
+      console.log("error", error);
+    }
+
+    //REVIEW why fetch.then() is not converting response.json()
+    // fetch("http://localhost:5000/api/users/imageUpload", requestOptions)
+    //   .then((response) => {
+    //     console.log("response", response.json());
+    //     response.json();
+    //   })
+    //   .then((result) => {
+    //     console.log("result", result);
+    //   })
+    //   .catch((error) => console.log("error!!!", error.message));
   };
 
   const handleInputChange = (e) => {
@@ -37,7 +52,7 @@ const Signup = () => {
 
   return (
     <div>
-      <div>
+      <div className="title-area">
         <h1>Créer un compte</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error quasi
@@ -46,6 +61,16 @@ const Signup = () => {
           voluptates placeat voluptatum.
         </p>
       </div>
+
+      {newUser ? (
+        <img
+          className="user-avatar"
+          src={newUser.userAvatar}
+          alt="user avatar"
+        />
+      ) : (
+        <p>no avatar</p>
+      )}
 
       <form className="grid-form">
         <span>
@@ -144,9 +169,7 @@ const Signup = () => {
         <div>
           <button onClick={submitImg}>téléverser</button>
         </div>
-        <div>
-          {newUser && <img src={newUser.userAvatar} alt="user avatar" />}
-        </div>
+        <div></div>
         <div>
           <label htmlFor="password">Mot de passe</label>
         </div>
@@ -170,7 +193,6 @@ const Signup = () => {
           <button>Créer un compte</button>
         </div>
       </form>
-
       <p>
         Déjà inscrit·e ? <Link to="/login">Se connecter</Link>
       </p>

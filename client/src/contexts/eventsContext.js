@@ -27,8 +27,9 @@ export const EventsContextProvider = (props) => {
     try {
       setLoading(true);
       const response = await fetch(url);
+      console.log("response", response);
       const result = await response.json();
-      // console.log("result", result);
+      console.log("result", result);
       setData(result);
       setLoading(false);
     } catch (error) {
@@ -37,6 +38,15 @@ export const EventsContextProvider = (props) => {
       setError(error);
     }
   };
+
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const response = await fetch(baseURL);
+  //     const result = await response.json();
+  //     console.log("result", result);
+  //   };
+  //   getData();
+  // }, []);
 
   return (
     <EventsContext.Provider
