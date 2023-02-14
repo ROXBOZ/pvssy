@@ -3,7 +3,6 @@ import userModel from "../models/userModel.js";
 import { passwordEncryption } from "../utils/bcrypt.js";
 
 const imageUpload = async (req, res) => {
-  // res.header("Access-Control-Allow-Origin", "*");
   console.log("req.file", req.file);
   try {
     const imgUpload = await cloudinary.uploader.upload(req.file.path, {

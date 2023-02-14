@@ -36,6 +36,9 @@ const EventCard = ({ e }) => {
   const categories = e.categories;
   const entryFee = e.entryFee;
   const highlight = e.highlight;
+  const cover = e.imgCover;
+  const caption = e.imgCaption;
+  const credits = e.imgCredits;
 
   const eventDetail = {
     id,
@@ -55,6 +58,9 @@ const EventCard = ({ e }) => {
     categories,
     entryFee,
     highlight,
+    cover,
+    caption,
+    credits,
   };
 
   let shortTitle;
@@ -68,6 +74,10 @@ const EventCard = ({ e }) => {
     gridColumn: "span 2",
   };
 
+  let backgroundImg = {
+    backgroundImage: `url(${cover})`,
+  };
+
   return (
     <Link
       style={highlight ? hightlighted : null}
@@ -79,10 +89,10 @@ const EventCard = ({ e }) => {
       key={id}
       alt={title}
     >
-      <div className="card">
+      <div className="card" style={cover ? backgroundImg : null}>
         <h3>{shortTitle}</h3>
         <p className="card-date">{date}</p>
-        {onLine ? <p>ONLINE</p> : <p>{city}</p>}
+        {onLine ? <p>ONLINE</p> : <p className="card-location">{city}</p>}
       </div>
     </Link>
   );

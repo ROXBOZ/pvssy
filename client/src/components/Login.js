@@ -6,7 +6,8 @@ const Login = () => {
     <div>
       <h1>Se connecter</h1>
       <p>
-        Pas encore inscrit·e ? <Link to="/signup">Créer un compte</Link>
+        Pas encore inscrit·e ?{" "}
+        <Link to="/creer-un-compte">Créer un compte</Link>
       </p>
     </div>
   );

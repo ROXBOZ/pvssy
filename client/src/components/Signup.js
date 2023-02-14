@@ -37,7 +37,7 @@ const Signup = () => {
     // fetch("http://localhost:5000/api/users/imageUpload", requestOptions)
     //   .then((response) => {
     //     console.log("response", response.json());
-    //     response.json();
+    //     return response.json();
     //   })
     //   .then((result) => {
     //     console.log("result", result);
@@ -62,16 +62,19 @@ const Signup = () => {
         </p>
       </div>
 
-      {newUser ? (
+      {newUser.userAvatar ? (
         <img
           className="user-avatar"
           src={newUser.userAvatar}
           alt="user avatar"
         />
       ) : (
-        <p>no avatar</p>
+        <img
+          className="user-avatar"
+          src="../assets/images/default-avatar.jpg"
+          alt="user avatar"
+        />
       )}
-
       <form className="grid-form">
         <span>
           <input
@@ -176,10 +179,8 @@ const Signup = () => {
         <div>
           <input type="text" id="password" onChange={handleInputChange} />
         </div>
-        <div>
-          {/* <label htmlFor="password">Répéter le mot de passe</label> */}
-        </div>
-        <div>{/* <input type="text" id="passwordRepeat" /> */}</div>
+        <div></div>
+        <div></div>
         <span>
           <input id="conditionsCheckbox" type="checkbox" required />
           <label htmlFor="conditionsCheckbox">

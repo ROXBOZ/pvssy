@@ -6,12 +6,16 @@
     display: flex;
     .card {
       flex: max-content;
+      background-size: cover;
       @include card;
       h3 {
         text-align: center;
+        background-color: white;
       }
-      .card-date {
+      .card-date,
+      .card-location {
         text-align: center;
+        background-color: white;
       }
     }
   }

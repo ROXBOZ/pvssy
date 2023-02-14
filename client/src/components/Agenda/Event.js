@@ -20,6 +20,9 @@ const Event = () => {
     tel,
     freeEntry,
     entryFee,
+    cover,
+    caption,
+    credits,
   } = location.state.content;
 
   const redirectToMeeting = () => {
@@ -71,7 +74,21 @@ const Event = () => {
       </div>
       <div className="grid-area">
         <div className="col-left">
-          <div className="img-holder"></div>
+          {cover ? (
+            <>
+              <img className="event-img" src={cover} alt={title} />
+              <p className="event-img-text">
+                <span className="event-img-caption">{caption}</span>
+                {credits && (
+                  <span className="event-img-credits">
+                    &nbsp;©&nbsp;{credits}
+                  </span>
+                )}
+              </p>
+            </>
+          ) : (
+            <div className="img-holder" />
+          )}
         </div>
         <div className="col-right">
           <p className="subtitle">{shortDef}</p>
