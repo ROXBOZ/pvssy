@@ -12,7 +12,7 @@ export const TermsContextProvider = (props) => {
       setLoading(true);
       const response = await fetch(url);
       const result = await response.json();
-      setData(result.allTerms);
+      setData(result);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -27,6 +27,7 @@ export const TermsContextProvider = (props) => {
         Loading,
         Error,
         data,
+        setData,
         url,
         fetchData,
       }}

@@ -11,7 +11,7 @@ const Agenda = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
   const [iconClicked, setIconClicked] = useState(false);
-  const { data, upComingEventEP, fetchData, Error, Loading, regions } =
+  const { data, upComingEventEP, fetchData, Error, regions } =
     useContext(EventsContext);
 
   useEffect(() => {
@@ -162,7 +162,7 @@ const Agenda = () => {
           </p>
         )}
         {Error && <p>Erreur</p>}
-        {Loading && <p>...chargement...</p>}
+        {/* {Loading && <p>...chargement...</p>} */}
       </div>
 
       <Link to="archives" className="simple-link">

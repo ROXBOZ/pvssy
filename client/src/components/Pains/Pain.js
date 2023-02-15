@@ -1,26 +1,43 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { TermsContext } from "../../contexts/termsContext";
 
 const Pain = () => {
   let location = useLocation();
-  const { name, def, diag, sympt, pro, auto, why } = location.state.content;
+  const { name, def, diag, sympt, pro, auto, why, terms } =
+    location.state.content;
   const createParagraphs = (arr) => arr.map((p) => <p>{p}</p>);
+  const [termTerm, setTermTerm] = useState("contraction musculaire");
+  const [painTerms, setPainTerms] = useState("");
+  const { data, fetchData } = useContext(TermsContext);
 
-  // All terms are fetched here... >>> only the terms that are connected to the pain!!!!
-  // Query parameters ?????
-  const { data, url, fetchData } = useContext(TermsContext);
+  //FIXME this logic can not work because I am can only get one result with a fetch using name or id.
 
   useEffect(() => {
-    fetchData(url);
-  }, [url]);
+    fetchData(`http://localhost:5000/api/terms/relatedTerms?term=${termTerm}`);
+  }, []);
 
-  console.log("terms", data);
+  //TODO getTermsByPain > in terms collection, add a field "relatedPains" to terms
+
+  // FIXME these two maps only works if I first display the page, then uncomment them, I need to receive them earlier
+
+  // data.requestedTerm.map((r) => {
+  //   console.log("term being fetched from lexico", r._id); // contraction musculaire _id
+  // });
+
+  // terms.map((t) => {
+  //   console.log("term from the pain", t);
+  //   setPainTerms(t);
+  // }); // pain fetch
+
+  // console.log("painTerm", painTerms);
 
   return (
     <>
       <div className="heading-area">
+        {/* <p>LEXIQUE</p> */}
+        {/* {t.includes(termTerm) && <p className="term-label">{termTerm}</p>} */}
         <h1>{name}</h1>
         <ul className="category-submenu">
           Ressources {name} :{" "}
@@ -33,9 +50,6 @@ const Pain = () => {
               Tutos
             </Link>
           </li>
-          {/* <li>
-            <Link to="/trouver-de-l-aide/annuaire">Annuaire</Link>
-          </li> */}
           <li>
             <Link
               to={{

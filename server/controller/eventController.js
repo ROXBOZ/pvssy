@@ -62,7 +62,7 @@ const getArchivedEvents = async (req, res) => {
 
 // get FUTURE event by regions
 const getEventsByRegion = async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Origin", "*");
   try {
     const requestedEvents = await eventModel
       .find({ region: req.params.region })

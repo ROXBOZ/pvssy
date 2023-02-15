@@ -1,17 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { EventsContext } from "../contexts/eventsContext";
 import EventCard from "./Agenda/EventCard";
 import { Link } from "react-router-dom";
 
 const Connect = () => {
-  const { data, archivedEventEP, Error, Loading } = useContext(EventsContext);
+  const { data, archivedEventEP, Error, fetchData } = useContext(EventsContext);
 
   console.log("ArchivedEventEP", archivedEventEP);
   console.log("data", data);
 
-  // useEffect(() => {
-  //   fetchData(archivedEventEP);
-  // }, [archivedEventEP]);
+  useEffect(() => {
+    fetchData(archivedEventEP);
+  }, [archivedEventEP]);
 
   return (
     <>
@@ -28,7 +28,7 @@ const Connect = () => {
             return <EventCard key={e._id} e={e} />;
           })}
         {Error && <p>Erreur</p>}
-        {Loading && <p>...chargement...</p>}
+        {/* {Loading && <p>...chargement...</p>} */}
       </div>
 
       <Link to="/agenda" className="simple-link">

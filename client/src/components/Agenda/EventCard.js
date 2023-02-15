@@ -86,10 +86,15 @@ const EventCard = ({ e }) => {
       alt={title}
     >
       <div className="card" style={cover ? backgroundImg : null}>
-        <h3>{shortTitle}</h3>
-        <p className="card-date">{date}</p>
-
-        {online ? <p>ONLINE</p> : <p className="card-location">{city}</p>}
+        <div className="card-text">
+          <h3>{shortTitle}</h3>
+          <p className="card-date">{date}</p>
+          {online ? (
+            <p className="card-location">ONLINE</p>
+          ) : (
+            <p className="card-location">{city}</p>
+          )}
+        </div>
       </div>
     </Link>
   );

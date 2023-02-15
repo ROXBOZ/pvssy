@@ -3,7 +3,7 @@ import { PainsContext } from "../../contexts/PainsContext";
 import PainCard from "./PainCard";
 
 const Pains = () => {
-  const { data, url, fetchData, Error, Loading } = useContext(PainsContext);
+  const { data, url, fetchData, Error } = useContext(PainsContext);
 
   useEffect(() => {
     fetchData(url);

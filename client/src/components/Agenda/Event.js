@@ -33,15 +33,19 @@ const Event = () => {
       <div className="heading-area">
         <h1>{title}</h1>
 
-        <p>
-          {dateTime}
-          <br />
-          {!online && (
-            <span>
-              {address}, {city}
-            </span>
-          )}
-        </p>
+        {online ? (
+          <p></p>
+        ) : (
+          <>
+            <p>
+              {dateTime}
+              <br />
+              <span>
+                {address}, {city}
+              </span>
+            </p>
+          </>
+        )}
 
         <p>
           {!entryFee ? (
@@ -81,6 +85,7 @@ const Event = () => {
           {cover ? (
             <>
               <img className="event-img" src={cover} alt={title} />
+
               <p className="event-img-text">
                 <span className="event-img-caption">{caption}</span>
                 {credits && (
