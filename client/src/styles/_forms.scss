@@ -78,21 +78,83 @@
 }
 
 form {
-  padding: 1em 0;
-  margin: 1em 0;
-  width: max-content;
+  margin: 2em 0;
+
   &.grid-form {
     display: grid;
-    grid-template-columns: repeat(4, max-content);
     gap: 1em;
-  }
+    grid-template-columns: repeat(4, max-content);
 
-  div {
-    display: flex;
-    gap: 2em;
-    align-items: center;
-    input {
-      @include input;
+    .user-type {
+      grid-column: 1/5;
+      display: flex;
+    }
+    .user-name-label {
+      grid-column: 1/2;
+      display: flex;
+      align-items: center;
+    }
+    .user-name-input {
+      grid-column: 2/3;
+      input {
+        @include input;
+      }
+    }
+    .user-firstname-label {
+      display: flex;
+      align-items: center;
+      grid-column: 3/4;
+    }
+
+    .user-firstname-input {
+      input {
+        @include input;
+      }
+    }
+    .user-email-label {
+      display: flex;
+      align-items: center;
+    }
+    .user-email-input {
+      input {
+        @include input;
+      }
+    }
+    .user-avatar-label {
+      display: flex;
+      align-items: center;
+      grid-column: 1/2;
+    }
+    .user-avatar-input {
+      input {
+        @include input;
+      }
+    }
+    .user-avatar-button {
+      display: flex;
+      align-items: center;
+    }
+    .user-password-label {
+      display: flex;
+      align-items: center;
+      grid-column: 1/2;
+    }
+
+    .user-password-input {
+      input {
+        @include input;
+      }
+    }
+    .user-password-requirements {
+      display: flex;
+      align-items: center;
+      grid-column: 3/5;
+    }
+    .conditions-generales {
+      grid-column: 1/5;
+    }
+    .submit-button {
+      grid-column: 1/2;
     }
   }
 }

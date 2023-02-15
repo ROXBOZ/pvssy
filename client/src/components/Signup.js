@@ -24,11 +24,8 @@ const SignupForm = () => {
         "http://localhost:5000/api/users/imageUpload",
         requestOptions
       );
-      // console.log("response", response);
       const result = await response.json();
       setNewUser({ ...newUser, userAvatar: result.userAvatar });
-
-      // console.log("result", result);
     } catch (error) {
       console.log("error", error);
     }
@@ -91,38 +88,40 @@ const SignupForm = () => {
           alt="user avatar"
         />
       ) : (
-        <p className="avatar-placeholder"></p>
+        <p className="avatar-placeholder" />
       )}
+
       <form className="grid-form">
-        <span>
-          <input
-            id="asso"
-            type="radio"
-            name="userType"
-            checked={userType === "association"}
-            onChange={() => setUserType("association")}
-          />
-          <label htmlFor="asso">Association</label>
-          <input
-            id="person"
-            type="radio"
-            name="userType"
-            checked={userType === "personne"}
-            onChange={() => setUserType("personne")}
-          />
-          <label htmlFor="person">Personne</label>
-        </span>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div>
+        <div className="user-type">
+          <span>
+            <input
+              id="asso"
+              type="radio"
+              name="userType"
+              checked={userType === "association"}
+              onChange={() => setUserType("association")}
+            />
+            <label htmlFor="asso">Association</label>
+          </span>
+          <span>
+            <input
+              id="person"
+              type="radio"
+              name="userType"
+              checked={userType === "personne"}
+              onChange={() => setUserType("personne")}
+            />
+            <label htmlFor="person">Personne</label>
+          </span>
+        </div>
+        <div className="user-name-label">
           {userType === "association" ? (
             <label htmlFor="assoName">Nom de l’association</label>
           ) : (
             <label htmlFor="userName">Nom</label>
           )}
         </div>
-        <div>
+        <div className="user-name-input">
           {userType === "association" ? (
             <input
               name="userName"
@@ -141,14 +140,14 @@ const SignupForm = () => {
             />
           )}
         </div>
-        <div>
+        <div className="user-firstname-label">
           {userType === "association" ? (
             ""
           ) : (
             <label htmlFor="userFirstname">Prénom</label>
           )}
         </div>
-        <div>
+        <div className="user-firstname-input">
           {userType === "association" ? (
             ""
           ) : (
@@ -161,10 +160,10 @@ const SignupForm = () => {
             />
           )}
         </div>
-        <div>
+        <div className="user-email-label">
           <label htmlFor="userEmail">Adresse Email</label>
         </div>
-        <div>
+        <div className="user-email-input">
           <input
             placeholder="Adresse email"
             id="userEmail"
@@ -173,16 +172,14 @@ const SignupForm = () => {
             onChange={handleInputChange}
           />
         </div>
-        <div></div>
-        <div></div>
-        <div>
+        <div className="user-avatar-label">
           <label htmlFor="avatar">
             {userType === "association"
               ? "Logo de l’association"
               : "Photo de profil"}
           </label>
         </div>
-        <div>
+        <div className="user-avatar-input">
           <input
             type="file"
             id="avatar"
@@ -190,38 +187,33 @@ const SignupForm = () => {
             onChange={handleAttachImg}
           ></input>
         </div>
-        <div>
+        <div className="user-avatar-button">
           <button onClick={submitImg}>choisir</button>
         </div>
-        <div></div>
-        <div>
+        <div className="user-password-label">
           <label htmlFor="userPassword">Mot de passe</label>
         </div>
-        <div>
+        <div className="user-password-input">
           <input
+            placeholder="mot de passe"
             type="text"
             id="userPassword"
             name="userPassword"
             onChange={handleInputChange}
           />
         </div>
-        <div>min. 6 ch.</div>
-        <div></div>
-        <span>
+        <div className="user-password-requirements">min. 6 charactères</div>
+        <div className="conditions-generales">
           <input id="conditionsCheckbox" type="checkbox" required />
           <label htmlFor="conditionsCheckbox">
-            J’ai lu et j’accepte
-            <br />
-            les <Link to="/">conditions générales</Link>.
+            J’ai lu et j’accepte les <Link to="/">conditions générales</Link>.
           </label>
-        </span>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div>
+        </div>
+        <div className="submit-button">
           <button onClick={signup}>Créer un compte</button>
         </div>
       </form>
+
       <p>
         Déjà inscrit·e ? <Link to="/login">Se connecter</Link>
       </p>

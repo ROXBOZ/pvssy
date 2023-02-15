@@ -414,22 +414,26 @@ button:disabled {
 }
 
 form {
-  padding: 1em 0;
-  margin: 1em 0;
-  width: -moz-max-content;
-  width: max-content;
+  margin: 2em 0;
 }
 form.grid-form {
   display: grid;
-  grid-template-columns: repeat(4, max-content);
   gap: 1em;
+  grid-template-columns: repeat(4, max-content);
 }
-form div {
+form.grid-form .user-type {
+  grid-column: 1/5;
   display: flex;
-  gap: 2em;
+}
+form.grid-form .user-name-label {
+  grid-column: 1/2;
+  display: flex;
   align-items: center;
 }
-form div input {
+form.grid-form .user-name-input {
+  grid-column: 2/3;
+}
+form.grid-form .user-name-input input {
   border: 2px solid #f5733c;
   border-radius: 0.25em;
   font-family: "ESRebond";
@@ -438,9 +442,95 @@ form div input {
   padding: 0.5em;
   width: 300px;
 }
-form div input:focus {
+form.grid-form .user-name-input input:focus {
   outline: none;
   border: 2px solid #fab99d;
+}
+form.grid-form .user-firstname-label {
+  display: flex;
+  align-items: center;
+  grid-column: 3/4;
+}
+form.grid-form .user-firstname-input input {
+  border: 2px solid #f5733c;
+  border-radius: 0.25em;
+  font-family: "ESRebond";
+  font-size: 100%;
+  background-color: #fffdf8;
+  padding: 0.5em;
+  width: 300px;
+}
+form.grid-form .user-firstname-input input:focus {
+  outline: none;
+  border: 2px solid #fab99d;
+}
+form.grid-form .user-email-label {
+  display: flex;
+  align-items: center;
+}
+form.grid-form .user-email-input input {
+  border: 2px solid #f5733c;
+  border-radius: 0.25em;
+  font-family: "ESRebond";
+  font-size: 100%;
+  background-color: #fffdf8;
+  padding: 0.5em;
+  width: 300px;
+}
+form.grid-form .user-email-input input:focus {
+  outline: none;
+  border: 2px solid #fab99d;
+}
+form.grid-form .user-avatar-label {
+  display: flex;
+  align-items: center;
+  grid-column: 1/2;
+}
+form.grid-form .user-avatar-input input {
+  border: 2px solid #f5733c;
+  border-radius: 0.25em;
+  font-family: "ESRebond";
+  font-size: 100%;
+  background-color: #fffdf8;
+  padding: 0.5em;
+  width: 300px;
+}
+form.grid-form .user-avatar-input input:focus {
+  outline: none;
+  border: 2px solid #fab99d;
+}
+form.grid-form .user-avatar-button {
+  display: flex;
+  align-items: center;
+}
+form.grid-form .user-password-label {
+  display: flex;
+  align-items: center;
+  grid-column: 1/2;
+}
+form.grid-form .user-password-input input {
+  border: 2px solid #f5733c;
+  border-radius: 0.25em;
+  font-family: "ESRebond";
+  font-size: 100%;
+  background-color: #fffdf8;
+  padding: 0.5em;
+  width: 300px;
+}
+form.grid-form .user-password-input input:focus {
+  outline: none;
+  border: 2px solid #fab99d;
+}
+form.grid-form .user-password-requirements {
+  display: flex;
+  align-items: center;
+  grid-column: 3/5;
+}
+form.grid-form .conditions-generales {
+  grid-column: 1/5;
+}
+form.grid-form .submit-button {
+  grid-column: 1/2;
 }
 
 .user-avatar {
