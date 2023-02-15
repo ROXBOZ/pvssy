@@ -35,18 +35,10 @@ const SignupForm = () => {
   };
 
   const handleInputChange = (e) => {
-    // console.log("e.target.name, e.target.value", e.target.name, e.target.value);
-    // computed property names
-    setNewUser({ ...newUser, [e.target.name]: e.target.value });
-    //
-    console.log("userName", newUser.userName);
-    console.log("userPassword", newUser.userPassword);
-    console.log("userEmail", newUser.userEmail);
-    console.log("userAvatar", newUser.userAvatar);
+    setNewUser({ ...newUser, [e.target.name]: e.target.value }); // computed property names
   };
 
   const signup = async () => {
-    // check email format + password length
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -58,7 +50,7 @@ const SignupForm = () => {
       "userAvatar",
       newUser.userAvatar
         ? newUser.userAvatar
-        : "https://cdn-icons-png.flaticon.com/512/634/634742.png"
+        : "https://res.cloudinary.com/dkyialww7/image/upload/v1676473404/pvssy-avatar/default-avatar_hffziv.jpg"
     );
 
     const requestOptions = {
@@ -93,6 +85,7 @@ const SignupForm = () => {
 
       {newUser.userAvatar ? (
         <img
+          name="userAvatar"
           className="user-avatar"
           src={newUser.userAvatar}
           alt="user avatar"
@@ -124,7 +117,7 @@ const SignupForm = () => {
         <div></div>
         <div>
           {userType === "association" ? (
-            <label htmlFor="AssoName">Nom de l’association</label>
+            <label htmlFor="assoName">Nom de l’association</label>
           ) : (
             <label htmlFor="userName">Nom</label>
           )}
@@ -132,16 +125,18 @@ const SignupForm = () => {
         <div>
           {userType === "association" ? (
             <input
-              id="AssoName"
+              name="userName"
+              id="assoNameName"
               type="text"
               placeholder="Nom Association"
               onChange={handleInputChange}
             />
           ) : (
             <input
-              id="newUserName"
+              id="userName"
               type="text"
               placeholder="Nom"
+              name="userName"
               onChange={handleInputChange}
             />
           )}
@@ -150,7 +145,7 @@ const SignupForm = () => {
           {userType === "association" ? (
             ""
           ) : (
-            <label htmlFor="userName">Prénom</label>
+            <label htmlFor="userFirstname">Prénom</label>
           )}
         </div>
         <div>
@@ -158,23 +153,23 @@ const SignupForm = () => {
             ""
           ) : (
             <input
-              // value={newUser.userName}
-              id="newUserName"
+              id="userFirstname"
               type="text"
               placeholder="Prénom"
+              name="userFirstname"
               onChange={handleInputChange}
             />
           )}
         </div>
         <div>
-          <label htmlFor="newUserEmail">Adresse Email</label>
+          <label htmlFor="userEmail">Adresse Email</label>
         </div>
         <div>
           <input
-            // value={newUser.userEmail}
             placeholder="Adresse email"
-            id="newUserEmail"
+            id="userEmail"
             type="text"
+            name="userEmail"
             onChange={handleInputChange}
           />
         </div>
@@ -189,10 +184,9 @@ const SignupForm = () => {
         </div>
         <div>
           <input
-            // value={newUser.userAvatar}
             type="file"
             id="avatar"
-            name="avatar"
+            name="userAvatar"
             onChange={handleAttachImg}
           ></input>
         </div>
@@ -201,13 +195,13 @@ const SignupForm = () => {
         </div>
         <div></div>
         <div>
-          <label htmlFor="password">Mot de passe</label>
+          <label htmlFor="userPassword">Mot de passe</label>
         </div>
         <div>
           <input
-            // value={newUser.userPassword}
             type="text"
-            id="password"
+            id="userPassword"
+            name="userPassword"
             onChange={handleInputChange}
           />
         </div>
