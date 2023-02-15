@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { TermsContext } from "../../contexts/termsContext";
 
 const Pain = () => {
   let location = useLocation();
   const { name, def, diag, sympt, pro, auto, why } = location.state.content;
-  console.log("why", why);
-  // const tutos = `Tutos ${name}`;
-  // const annuaire = `Annuaire ${name}`;
-  // const articles = `Articles ${name}`;
-
   const createParagraphs = (arr) => arr.map((p) => <p>{p}</p>);
+
+  // All terms are fetched here... >>> only the terms that are connected to the pain!!!!
+  // Query parameters ?????
+  const { data, url, fetchData } = useContext(TermsContext);
+
+  useEffect(() => {
+    fetchData(url);
+  }, [url]);
+
+  console.log("terms", data);
 
   return (
     <>

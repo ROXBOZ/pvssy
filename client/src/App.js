@@ -25,6 +25,7 @@ import NotFound from "./pages/NotFound";
 //contexts
 import { PainsContextProvider } from "./contexts/PainsContext";
 import { EventsContextProvider } from "./contexts/eventsContext";
+import { TermsContextProvider } from "./contexts/termsContext";
 
 function App() {
   return (
@@ -34,50 +35,58 @@ function App() {
         <ScrollToTop />
         <EventsContextProvider>
           <PainsContextProvider>
-            <Routes>
-              <Route index element={<Home />} />
-              <Route path="a-propos" element={<About />} />
-              <Route path="gerer-soi-meme" element={<GererSoiMeme />} />
-              <Route path="gerer-soi-meme/douleurs" element={<Pains />} />
-              <Route path="gerer-soi-meme/douleurs/:name" element={<Pain />} />
-              <Route
-                path="gerer-soi-meme/douleurs/tutos/:name"
-                element={<Pain />}
-              />
-              <Route
-                path="gerer-soi-meme/douleurs/articles/:name"
-                element={<Pain />}
-              />
-              <Route
-                path="gerer-soi-meme/douleurs/lexique/:name"
-                element={<Pain />}
-              />
-              <Route
-                path="gerer-soi-meme/ressources"
-                element={<Ressources />}
-              />
-              <Route
-                path="gerer-soi-meme/ressources/tutos"
-                element={<Tutos />}
-              />
-              <Route
-                path="gerer-soi-meme/ressources/articles"
-                element={<Articles />}
-              />
-              <Route path="trouver-de-l-aide" element={<TrouverDeLAide />} />
-              <Route path="trouver-de-l-aide/annuaire" element={<Annuaire />} />
-              <Route
-                path="trouver-de-l-aide/annuaire/:name"
-                element={<Pain />}
-              />
-              <Route path="shop" element={<Shop />} />
-              <Route path="agenda" element={<Agenda />} />
-              <Route path="agenda/:title" element={<Event />} />
-              <Route path="agenda/archives" element={<EventsArchives />} />
-              <Route path="login" element={<Login />} />
-              <Route path="creer-un-compte" element={<Signup />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <TermsContextProvider>
+              <Routes>
+                <Route index element={<Home />} />
+                <Route path="a-propos" element={<About />} />
+                <Route path="gerer-soi-meme" element={<GererSoiMeme />} />
+                <Route path="gerer-soi-meme/douleurs" element={<Pains />} />
+                <Route
+                  path="gerer-soi-meme/douleurs/:name"
+                  element={<Pain />}
+                />
+                <Route
+                  path="gerer-soi-meme/douleurs/tutos/:name"
+                  element={<Pain />}
+                />
+                <Route
+                  path="gerer-soi-meme/douleurs/articles/:name"
+                  element={<Pain />}
+                />
+                <Route
+                  path="gerer-soi-meme/douleurs/lexique/:name"
+                  element={<Pain />}
+                />
+                <Route
+                  path="gerer-soi-meme/ressources"
+                  element={<Ressources />}
+                />
+                <Route
+                  path="gerer-soi-meme/ressources/tutos"
+                  element={<Tutos />}
+                />
+                <Route
+                  path="gerer-soi-meme/ressources/articles"
+                  element={<Articles />}
+                />
+                <Route path="trouver-de-l-aide" element={<TrouverDeLAide />} />
+                <Route
+                  path="trouver-de-l-aide/annuaire"
+                  element={<Annuaire />}
+                />
+                <Route
+                  path="trouver-de-l-aide/annuaire/:name"
+                  element={<Pain />}
+                />
+                <Route path="shop" element={<Shop />} />
+                <Route path="agenda" element={<Agenda />} />
+                <Route path="agenda/:title" element={<Event />} />
+                <Route path="agenda/archives" element={<EventsArchives />} />
+                <Route path="login" element={<Login />} />
+                <Route path="creer-un-compte" element={<Signup />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </TermsContextProvider>
           </PainsContextProvider>
         </EventsContextProvider>
       </div>
