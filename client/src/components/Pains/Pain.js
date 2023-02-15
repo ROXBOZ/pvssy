@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 
 const Pain = () => {
   let location = useLocation();
-  const { name, def, diag, sympt, pros, auto } = location.state.content;
+  const { name, def, diag, sympt, pro, auto, why } = location.state.content;
+  console.log("why", why);
   // const tutos = `Tutos ${name}`;
   // const annuaire = `Annuaire ${name}`;
   // const articles = `Articles ${name}`;
@@ -62,32 +63,33 @@ const Pain = () => {
           <h2>Symptômes</h2>
           {createParagraphs(sympt)}
           <h2>Pourquoi ça m’arrive ?</h2>
+          {createParagraphs(why)}
           <h2>Que puis-je faire seule ?</h2>
           {createParagraphs(auto)}
           <h2>Quelles aides existent ?</h2>
-          {pros.intro}
-          {pros.gyne && (
+          {pro.intro}
+          {pro.gyne && (
             <>
               <h3>Gynécologue</h3>
-              {pros.gyne}
+              {pro.gyne}
             </>
           )}
-          {pros.kine && (
+          {pro.kine && (
             <>
               <h3>Kinésithérapeute</h3>
-              {pros.kine}
+              {pro.kine}
             </>
           )}
-          {pros.psyc && (
+          {pro.psyc && (
             <>
               <h3>Psychologue</h3>
-              {pros.psyc}
+              {pro.psyc}
             </>
           )}
-          {pros.sexo && (
+          {pro.sexo && (
             <>
               <h3>Sexologue</h3>
-              {pros.sexo}
+              {pro.sexo}
             </>
           )}
         </div>

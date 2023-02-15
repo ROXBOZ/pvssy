@@ -3,27 +3,28 @@ import mongoose, { isValidObjectId } from "mongoose";
 const painSchema = new mongoose.Schema({
   name: {
     type: String,
-    // required: true,
+    required: true,
+    //  unique: true,
   },
   def: {
     type: Array,
-    // type: [String],
-    // required: true,
+    required: true,
   },
   diag: {
     type: Array,
-    // type: [String],
-    // required: true,
-  },
-  auto: {
-    type: Array,
-    // type: [String],
-    // required: true,
+    required: true,
   },
   sympt: {
     type: Array,
-    // type: [String],
-    // required: true,
+    required: true,
+  },
+  why: {
+    type: Array,
+    required: true,
+  },
+  auto: {
+    type: Array,
+    required: true,
   },
   pro: {
     intro: {

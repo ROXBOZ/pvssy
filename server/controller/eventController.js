@@ -41,7 +41,6 @@ const getUpcomingEvents = async (req, res) => {
 };
 
 // get passed events
-
 const getArchivedEvents = async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   // handling error if there are no event planned.
@@ -86,7 +85,74 @@ const getEventsByRegion = async (req, res) => {
   }
 };
 
-export { getAllEvents };
-export { getUpcomingEvents };
-export { getArchivedEvents };
-export { getEventsByRegion };
+const addEvent = async (req, res) => {
+  const {
+    title,
+    date,
+    shortDef,
+    longDef,
+    online,
+    onlineMeeting,
+    address,
+    city,
+    email,
+    tel,
+    entryFee,
+    imgCover,
+    imgCaption,
+    imgCredits,
+  } = req.body;
+
+  try {
+    const newEvent = new eventModel({
+      title,
+      date,
+      shortDef,
+      longDef,
+      online,
+      onlineMeeting,
+      address,
+      city,
+      email,
+      tel,
+      entryFee,
+      imgCover,
+      imgCaption,
+      imgCredits,
+    });
+    const savedEvent = await newEvent.save();
+
+    res.status(201).json({
+      msg: "new event added successfully",
+      event: {
+        title: savedEvent.title,
+        date: savedEvent.date,
+        shortDef: savedEvent.shortDef,
+        longDef: savedEvent.longDef,
+        online: savedEvent.online,
+        onlineMeeting: savedEvent.onlineMeeting,
+        address: savedEvent.address,
+        city: savedEvent.city,
+        email: savedEvent.email,
+        tel: savedEvent.tel,
+        entryFee: savedEvent.entryFee,
+        imgCover: savedEvent.imgCover,
+        imgCaption: savedEvent.imgCaption,
+        imgCredits: savedEvent.imgCredits,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      error,
+      msg: "you can't add a new event",
+    });
+  }
+};
+
+export {
+  getAllEvents,
+  getUpcomingEvents,
+  getArchivedEvents,
+  getEventsByRegion,
+  addEvent,
+};

@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const Signup = () => {
+const SignupForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [newUser, setNewUser] = useState({});
-  const [userType, setUserType] = useState("association");
 
+  const [userType, setUserType] = useState("association");
   const handleAttachImg = (e) => {
     setSelectedFile(e.target.files[0]);
   };
@@ -24,30 +24,59 @@ const Signup = () => {
         "http://localhost:5000/api/users/imageUpload",
         requestOptions
       );
-      console.log("response", response);
+      // console.log("response", response);
       const result = await response.json();
       setNewUser({ ...newUser, userAvatar: result.userAvatar });
 
-      console.log("result", result);
+      // console.log("result", result);
     } catch (error) {
       console.log("error", error);
     }
-
-    //REVIEW why fetch.then() is not converting response.json()
-    // fetch("http://localhost:5000/api/users/imageUpload", requestOptions)
-    //   .then((response) => {
-    //     console.log("response", response.json());
-    //     return response.json();
-    //   })
-    //   .then((result) => {
-    //     console.log("result", result);
-    //   })
-    //   .catch((error) => console.log("error!!!", error.message));
   };
 
   const handleInputChange = (e) => {
-    console.log("e.target.name, e.target.value", e.target.name, e.target.value);
+    // console.log("e.target.name, e.target.value", e.target.name, e.target.value);
+    // computed property names
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
+    //
+    console.log("userName", newUser.userName);
+    console.log("userPassword", newUser.userPassword);
+    console.log("userEmail", newUser.userEmail);
+    console.log("userAvatar", newUser.userAvatar);
+  };
+
+  const signup = async () => {
+    // check email format + password length
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+    const urlencoded = new URLSearchParams();
+    urlencoded.append("userName", newUser.userName);
+    urlencoded.append("userEmail", newUser.userEmail);
+    urlencoded.append("userPassword", newUser.userPassword);
+    urlencoded.append(
+      "userAvatar",
+      newUser.userAvatar
+        ? newUser.userAvatar
+        : "https://cdn-icons-png.flaticon.com/512/634/634742.png"
+    );
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: urlencoded,
+    };
+
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/users/signup",
+        requestOptions
+      );
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   return (
@@ -69,11 +98,7 @@ const Signup = () => {
           alt="user avatar"
         />
       ) : (
-        <img
-          className="user-avatar"
-          src="../assets/images/default-avatar.jpg"
-          alt="user avatar"
-        />
+        <p className="avatar-placeholder"></p>
       )}
       <form className="grid-form">
         <span>
@@ -133,6 +158,7 @@ const Signup = () => {
             ""
           ) : (
             <input
+              // value={newUser.userName}
               id="newUserName"
               type="text"
               placeholder="Prénom"
@@ -145,10 +171,10 @@ const Signup = () => {
         </div>
         <div>
           <input
-            name="email"
-            cid="newUserEmail"
+            // value={newUser.userEmail}
+            placeholder="Adresse email"
+            id="newUserEmail"
             type="text"
-            id="email"
             onChange={handleInputChange}
           />
         </div>
@@ -163,6 +189,7 @@ const Signup = () => {
         </div>
         <div>
           <input
+            // value={newUser.userAvatar}
             type="file"
             id="avatar"
             name="avatar"
@@ -170,28 +197,35 @@ const Signup = () => {
           ></input>
         </div>
         <div>
-          <button onClick={submitImg}>téléverser</button>
+          <button onClick={submitImg}>choisir</button>
         </div>
         <div></div>
         <div>
           <label htmlFor="password">Mot de passe</label>
         </div>
         <div>
-          <input type="text" id="password" onChange={handleInputChange} />
+          <input
+            // value={newUser.userPassword}
+            type="text"
+            id="password"
+            onChange={handleInputChange}
+          />
         </div>
-        <div></div>
+        <div>min. 6 ch.</div>
         <div></div>
         <span>
           <input id="conditionsCheckbox" type="checkbox" required />
           <label htmlFor="conditionsCheckbox">
-            J’ai lu et j’accepte les <Link to="/">conditions générales</Link>.
+            J’ai lu et j’accepte
+            <br />
+            les <Link to="/">conditions générales</Link>.
           </label>
         </span>
         <div></div>
         <div></div>
         <div></div>
         <div>
-          <button>Créer un compte</button>
+          <button onClick={signup}>Créer un compte</button>
         </div>
       </form>
       <p>
@@ -201,4 +235,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignupForm;

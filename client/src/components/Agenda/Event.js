@@ -2,7 +2,7 @@ import React from "react";
 import CountdownTimer from "../CountdownTimer";
 import { useLocation } from "react-router-dom";
 
-const today = new Date().getDay;
+// const today = new Date().getDay;
 
 const Event = () => {
   let location = useLocation();
@@ -12,13 +12,12 @@ const Event = () => {
     dateTime,
     shortDef,
     longDef,
-    onLine,
-    meetingLink,
-    adresse,
+    online,
+    onlineMeeting,
+    address,
     city,
     email,
     tel,
-    freeEntry,
     entryFee,
     cover,
     caption,
@@ -26,48 +25,53 @@ const Event = () => {
   } = location.state.content;
 
   const redirectToMeeting = () => {
-    window.location.href = meetingLink;
+    window.location.href = onlineMeeting;
   };
 
   return (
     <>
       <div className="heading-area">
         <h1>{title}</h1>
+
         <p>
           {dateTime}
           <br />
-          {!onLine && (
+          {!online && (
             <span>
-              {adresse}, {city}
+              {address}, {city}
             </span>
           )}
+        </p>
 
+        <p>
+          {!entryFee ? (
+            <span>entrée libre</span>
+          ) : (
+            <span>Entrée : {entryFee} CHF</span>
+          )}
+        </p>
+
+        {online && (
           <p>
-            {freeEntry ? (
-              <span>entrée libre</span>
-            ) : (
-              <span>Entrée : {entryFee} CHF</span>
-            )}
-          </p>
-          <p>
-            {(email || tel) && <span>Réservation : </span>}
-            {email && <a href={`mailto:${email}`}>{email}</a>}
-            {email && tel && <span> ou </span>}
-            {tel && (
-              <span>
-                <a href={`tel:${tel}`}>{tel}</a>
-              </span>
-            )}
-          </p>
-          {onLine && (
             <span className="button-countdown">
               <button
-                disabled={new Date(isoDate) !== today ? true : false}
+                // disabled={new Date(isoDate) !== today ? true : false}
                 onClick={redirectToMeeting}
               >
                 Rejoindre la réunion
               </button>
               <CountdownTimer isoDate={isoDate} />
+            </span>
+          </p>
+        )}
+
+        <p>
+          {(email || tel) && <span>Réservation : </span>}
+          {email && <a href={`mailto:${email}`}>{email}</a>}
+          {email && tel && <span> ou </span>}
+          {tel && (
+            <span>
+              <a href={`tel:${tel}`}>{tel}</a>
             </span>
           )}
         </p>

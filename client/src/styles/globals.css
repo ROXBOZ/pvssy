@@ -448,7 +448,16 @@ form div input:focus {
   width: 10rem;
   border-radius: 50%;
   display: flex;
-  border: 1px solid red;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.avatar-placeholder {
+  background-image: url("../assets/images/default-avatar.jpg");
+  background-size: contain;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
 }
 
 * {

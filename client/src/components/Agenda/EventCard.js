@@ -26,14 +26,12 @@ const EventCard = ({ e }) => {
 
   const shortDef = e.shortDef;
   const longDef = e.longDef;
-  const onLine = e.onLine;
-  const meetingLink = e.meetingLink;
-  const adresse = e.adresse;
+  const online = e.online;
+  const onlineMeeting = e.onlineMeeting;
+  const address = e.address;
   const city = e.city;
   const email = e.email;
   const tel = e.tel;
-  const freeEntry = e.freeEntry;
-  const categories = e.categories;
   const entryFee = e.entryFee;
   const highlight = e.highlight;
   const cover = e.imgCover;
@@ -48,14 +46,12 @@ const EventCard = ({ e }) => {
     dateTime,
     shortDef,
     longDef,
-    onLine,
-    meetingLink,
-    adresse,
+    online,
+    onlineMeeting,
+    address,
     city,
     email,
     tel,
-    freeEntry,
-    categories,
     entryFee,
     highlight,
     cover,
@@ -92,7 +88,8 @@ const EventCard = ({ e }) => {
       <div className="card" style={cover ? backgroundImg : null}>
         <h3>{shortTitle}</h3>
         <p className="card-date">{date}</p>
-        {onLine ? <p>ONLINE</p> : <p className="card-location">{city}</p>}
+
+        {online ? <p>ONLINE</p> : <p className="card-location">{city}</p>}
       </div>
     </Link>
   );

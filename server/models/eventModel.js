@@ -4,7 +4,7 @@ const eventSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
-    unique: true,
+    // unique: true,
   },
 
   date: {
@@ -21,30 +21,22 @@ const eventSchema = new mongoose.Schema({
     type: String,
   },
 
-  // online event : 1 object with two strings > online boolean and link
-  // or 1 boolean online/offline and an object access link, email, tel
-  onLine: {
+  online: {
     type: Boolean,
     required: true,
   },
 
-  meetingLink: {
+  onlineMeeting: {
     type: String,
-    required: function () {
-      return this.onLine;
-    },
   },
 
-  // onsite event : 1 object with street, city and region // online switch off onsite
-  adresse: {
+  address: {
     type: String,
   },
 
   city: {
     type: String,
   },
-
-  // entry object with email and tel and entry fee. If no entry fee, entry is free
 
   email: {
     type: String,
@@ -56,6 +48,20 @@ const eventSchema = new mongoose.Schema({
 
   entryFee: {
     type: Number,
+  },
+
+  imgCover: {
+    type: String,
+    required: true,
+  },
+
+  imgCaption: {
+    type: String,
+    required: true,
+  },
+
+  imgCredits: {
+    type: String,
   },
 });
 

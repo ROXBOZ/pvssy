@@ -1,7 +1,6 @@
 import painModel from "../models/painModel.js";
 
 const getAllPains = async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
   try {
     const allPains = await painModel.find({});
     res.status(200).json({
@@ -17,20 +16,20 @@ const getAllPains = async (req, res) => {
 };
 
 const addPain = async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  console.log("req.body", req.body);
-  const { name, def, diag, sympt, auto, pro } = req.body;
-  // console.log("req.body", req.body);
+  const { name, def, diag, sympt, auto, pro, why } = req.body;
+
   try {
-    const newPain = new painModel({ name, def, diag, sympt, auto, pro });
+    const newPain = new painModel({ name, def, diag, sympt, auto, pro, why });
     const savedPain = await newPain.save();
+
     res.status(201).json({
       msg: "new pain added successfully",
-      user: {
+      pain: {
         name: savedPain.name,
         def: savedPain.def,
         diag: savedPain.diag,
         sympt: savedPain.sympt,
+        sympt: savedPain.why,
         auto: savedPain.auto,
         pro: {
           intro: savedPain.pro.intro,
@@ -49,4 +48,8 @@ const addPain = async (req, res) => {
   }
 };
 
-export { getAllPains, addPain };
+const editPain = () => {
+  console.log("first", first);
+};
+
+export { getAllPains, addPain, editPain };

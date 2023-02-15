@@ -21,9 +21,8 @@ const imageUpload = async (req, res) => {
   }
 };
 
-const signup = async (req, res) => {
+const addUser = async (req, res) => {
   console.log("req.body", req.body);
-  const { userName, userEmail, userPassword, userAvatar } = req.body;
 
   try {
     const existingUser = await userModel.findOne({
@@ -44,6 +43,7 @@ const signup = async (req, res) => {
         userPassword: hashedPassword,
         userAvatar: req.body.userAvatar,
       });
+      console.log("newUser", newUser);
       try {
         const savedUser = await newUser.save();
         res.status(201).json({
@@ -63,4 +63,4 @@ const signup = async (req, res) => {
   }
 };
 
-export { imageUpload, signup };
+export { imageUpload, addUser };
