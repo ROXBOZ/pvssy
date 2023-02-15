@@ -1,16 +1,16 @@
-// import mongoose from "mongoose";
+import mongoose from "mongoose";
 
-// const termSchema = new mongoose.Schema({
-//   term: {
-//     type: String,
-//     required: true,
-//   },
+const termSchema = new mongoose.Schema({
+  termName: {
+    type: String,
+    required: true,
+  },
 
-//   def: {
-//     type: String,
-//     required: true,
-//   },
-// });
+  termDef: {
+    type: String,
+    required: true,
+  },
+});
 
-// const termModel = mongoose.model("term", termSchema);
-// export default termModel;
+const termModel = mongoose.model("term", termSchema);
+export default termModel;

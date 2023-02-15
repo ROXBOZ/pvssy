@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 import painRoutes from "./routes/painRoutes.js";
 import eventRoutes from "./routes/eventRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
-// import termRoutes from "./routes/termRoutes.js";
+import termRoutes from "./routes/termRoutes.js";
 import cloudinaryConfig from "./config/cloudinaryConfig.js";
 
 const app = express();
@@ -48,7 +48,7 @@ const loadRoutes = () => {
   app.use("/api/pains", painRoutes);
   app.use("/api/events", eventRoutes);
   app.use("/api/users", userRoutes);
-  // app.use("/api/terms", termRoutes);
+  app.use("/api/terms", termRoutes);
 };
 
 const startServer = () => {
