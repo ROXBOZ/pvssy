@@ -15,16 +15,20 @@ const getAllTerms = async (req, res) => {
   }
 };
 
-// getTermsByPain
-const getTermsByName = async (req, res) => {
+const getTermsByPain = async (req, res) => {
   try {
-    const requestedTerm = await termModel.find({ term: req.query.term }).exec();
-    if (requestedTerm.length === 0) {
+    const requestedTerms = await termModel
+      .find({ relatedPain: { $in: [req.query.relatedPain] } })
+      .exec();
+    if (requestedTerms.length === 0) {
       res.status(200).json({
         msg: "Pas de terme correspondants à la recherche",
       });
     } else {
-      res.status(200).json({ requestedTerm });
+      res.status(200).json({
+        number: requestedTerms.length,
+        requestedTerms,
+      });
     }
   } catch (error) {
     res.status(500).json({
@@ -34,4 +38,4 @@ const getTermsByName = async (req, res) => {
   }
 };
 
-export { getAllTerms, getTermsByName };
+export { getAllTerms, getTermsByPain };

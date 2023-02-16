@@ -10,7 +10,7 @@ const PainCard = ({ p }) => {
   const auto = p.auto;
   const pro = p.pro;
   const why = p.why;
-  const terms = p.terms;
+  //const terms = p.terms;
 
   const painDetail = {
     id,
@@ -21,7 +21,7 @@ const PainCard = ({ p }) => {
     pro,
     auto,
     why,
-    terms,
+    // terms,
   };
 
   return (

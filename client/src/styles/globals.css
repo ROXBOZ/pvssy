@@ -550,6 +550,21 @@ form.grid-form .submit-button {
   border-radius: 50%;
 }
 
+.tag-container {
+  margin: 0.5em 0;
+  display: flex;
+  gap: 0.5em;
+}
+.tag-container .term-tag {
+  background-color: #630db4;
+  color: #fffdf8;
+  padding: 0.5em;
+  border-radius: 0.25em;
+}
+.tag-container .term-tag:hover {
+  background-color: #9637f0;
+}
+
 * {
   outline: none;
 }

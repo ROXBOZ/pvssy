@@ -5,39 +5,43 @@ import { TermsContext } from "../../contexts/termsContext";
 
 const Pain = () => {
   let location = useLocation();
-  const { name, def, diag, sympt, pro, auto, why, terms } =
-    location.state.content;
+  const { name, def, diag, sympt, pro, auto, why } = location.state.content;
   const createParagraphs = (arr) => arr.map((p) => <p>{p}</p>);
-  const [termTerm, setTermTerm] = useState("contraction musculaire");
-  const [painTerms, setPainTerms] = useState("");
-  const { data, fetchData } = useContext(TermsContext);
 
-  //FIXME this logic can not work because I am can only get one result with a fetch using name or id.
+  // TODO
+  // const { data, fetchData } = useContext(TermsContext);
+  // const [displayRelatedTerms, setDisplayRelatedTerms] = useState("");
 
-  useEffect(() => {
-    fetchData(`http://localhost:5000/api/terms/relatedTerms?term=${termTerm}`);
-  }, []);
+  // useEffect(() => {
+  //   fetchData(`http://localhost:5000/api/terms/byPain?relatedPains=${name}`);
+  // }, []);
 
-  //TODO getTermsByPain > in terms collection, add a field "relatedPains" to terms
+  // const relatedTerms = data.requestedTerms;
+  // console.log("relatedTerms", relatedTerms);
 
-  // FIXME these two maps only works if I first display the page, then uncomment them, I need to receive them earlier
+  // const whatRelatedTerms = () => {
+  //   if (relatedTerms && relatedTerms.length) {
+  //     setDisplayRelatedTerms(
+  //       <div className="tag-container">
+  //         {relatedTerms.map((i) => (
+  //           <Link to="/" className="term-tag" key={i._id}>
+  //             <span>{i.term}</span>
+  //           </Link>
+  //         ))}
+  //       </div>
+  //     );
+  //   } else {
+  //     setDisplayRelatedTerms("");
+  //   }
+  // };
 
-  // data.requestedTerm.map((r) => {
-  //   console.log("term being fetched from lexico", r._id); // contraction musculaire _id
-  // });
-
-  // terms.map((t) => {
-  //   console.log("term from the pain", t);
-  //   setPainTerms(t);
-  // }); // pain fetch
-
-  // console.log("painTerm", painTerms);
+  // useEffect(() => {
+  //   whatRelatedTerms();
+  // }, []);
 
   return (
     <>
       <div className="heading-area">
-        {/* <p>LEXIQUE</p> */}
-        {/* {t.includes(termTerm) && <p className="term-label">{termTerm}</p>} */}
         <h1>{name}</h1>
         <ul className="category-submenu">
           Ressources {name} :{" "}
@@ -73,6 +77,7 @@ const Pain = () => {
       <div className="grid-area">
         <div className="col-left">
           <div className="img-holder"></div>
+          {/* <div className="tag-container">{displayRelatedTerms}</div> */}
         </div>
 
         <div className="col-right">
