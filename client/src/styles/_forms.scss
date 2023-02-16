@@ -88,6 +88,7 @@ form {
     .user-type {
       grid-column: 1/5;
       display: flex;
+      gap: 2em;
     }
     .user-name-label {
       grid-column: 1/2;

@@ -371,7 +371,7 @@ button:disabled {
 
 .filter input,
 .filter-dropdown input {
-  border: 2px solid #f5733c;
+  border: 2px solid #9637f0;
   border-radius: 0.25em;
   font-family: "ESRebond";
   font-size: 100%;
@@ -382,7 +382,7 @@ button:disabled {
 .filter input:focus,
 .filter-dropdown input:focus {
   outline: none;
-  border: 2px solid #fab99d;
+  border: 2px solid #c896f7;
 }
 
 .no-suggestions {
@@ -424,6 +424,7 @@ form.grid-form {
 form.grid-form .user-type {
   grid-column: 1/5;
   display: flex;
+  gap: 2em;
 }
 form.grid-form .user-name-label {
   grid-column: 1/2;
@@ -434,7 +435,7 @@ form.grid-form .user-name-input {
   grid-column: 2/3;
 }
 form.grid-form .user-name-input input {
-  border: 2px solid #f5733c;
+  border: 2px solid #9637f0;
   border-radius: 0.25em;
   font-family: "ESRebond";
   font-size: 100%;
@@ -444,7 +445,7 @@ form.grid-form .user-name-input input {
 }
 form.grid-form .user-name-input input:focus {
   outline: none;
-  border: 2px solid #fab99d;
+  border: 2px solid #c896f7;
 }
 form.grid-form .user-firstname-label {
   display: flex;
@@ -452,7 +453,7 @@ form.grid-form .user-firstname-label {
   grid-column: 3/4;
 }
 form.grid-form .user-firstname-input input {
-  border: 2px solid #f5733c;
+  border: 2px solid #9637f0;
   border-radius: 0.25em;
   font-family: "ESRebond";
   font-size: 100%;
@@ -462,14 +463,14 @@ form.grid-form .user-firstname-input input {
 }
 form.grid-form .user-firstname-input input:focus {
   outline: none;
-  border: 2px solid #fab99d;
+  border: 2px solid #c896f7;
 }
 form.grid-form .user-email-label {
   display: flex;
   align-items: center;
 }
 form.grid-form .user-email-input input {
-  border: 2px solid #f5733c;
+  border: 2px solid #9637f0;
   border-radius: 0.25em;
   font-family: "ESRebond";
   font-size: 100%;
@@ -479,7 +480,7 @@ form.grid-form .user-email-input input {
 }
 form.grid-form .user-email-input input:focus {
   outline: none;
-  border: 2px solid #fab99d;
+  border: 2px solid #c896f7;
 }
 form.grid-form .user-avatar-label {
   display: flex;
@@ -487,7 +488,7 @@ form.grid-form .user-avatar-label {
   grid-column: 1/2;
 }
 form.grid-form .user-avatar-input input {
-  border: 2px solid #f5733c;
+  border: 2px solid #9637f0;
   border-radius: 0.25em;
   font-family: "ESRebond";
   font-size: 100%;
@@ -497,7 +498,7 @@ form.grid-form .user-avatar-input input {
 }
 form.grid-form .user-avatar-input input:focus {
   outline: none;
-  border: 2px solid #fab99d;
+  border: 2px solid #c896f7;
 }
 form.grid-form .user-avatar-button {
   display: flex;
@@ -509,7 +510,7 @@ form.grid-form .user-password-label {
   grid-column: 1/2;
 }
 form.grid-form .user-password-input input {
-  border: 2px solid #f5733c;
+  border: 2px solid #9637f0;
   border-radius: 0.25em;
   font-family: "ESRebond";
   font-size: 100%;
@@ -519,7 +520,7 @@ form.grid-form .user-password-input input {
 }
 form.grid-form .user-password-input input:focus {
   outline: none;
-  border: 2px solid #fab99d;
+  border: 2px solid #c896f7;
 }
 form.grid-form .user-password-requirements {
   display: flex;
@@ -563,6 +564,44 @@ form.grid-form .submit-button {
 }
 .tag-container .term-tag:hover {
   background-color: #9637f0;
+}
+
+.form-check-input {
+  margin-right: 0.5em;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: top;
+  background-position: center;
+  border: 2px solid #c896f7;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 0.25em;
+}
+.form-check-input:active {
+  filter: brightness(90%);
+}
+.form-check-input:focus {
+  border-color: #9637f0;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #c896f7;
+}
+.form-check-input:checked {
+  background-color: #9637f0;
+  border-color: #9637f0;
+}
+
+.form-check-input[type=radio] {
+  border-radius: 50%;
+  background-color: #9637f0;
+}
+
+.form-check-input:checked[type=checkbox] {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+}
+
+.form-check-input:checked[type=radio] {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
 }
 
 * {

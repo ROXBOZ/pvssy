@@ -97,6 +97,7 @@ const SignupForm = () => {
         <div className="user-type">
           <span>
             <input
+              className="form-check-input"
               id="asso"
               type="radio"
               name="userType"
@@ -107,6 +108,7 @@ const SignupForm = () => {
           </span>
           <span>
             <input
+              className="form-check-input"
               id="person"
               type="radio"
               name="userType"
@@ -174,12 +176,13 @@ const SignupForm = () => {
             onChange={handleInputChange}
           />
         </div>
-        <div className="user-email-requirements">
+        {/* FIXME */}
+        {/* <div className="user-email-requirements">
           {(!newUser.userEmail.includes("@") ||
             !newUser.userEmail.includes(".")) && (
             <span>L’adresse Email semble invalide</span>
           )}
-        </div>
+        </div> */}
         <div className="user-avatar-label">
           <label htmlFor="avatar">
             {userType === "association"
@@ -210,31 +213,35 @@ const SignupForm = () => {
             onChange={handleInputChange}
           />
         </div>
-
-        <div className="user-password-requirements">
+        {/* FIXME */}
+        {/* <div className="user-password-requirements">
           {newUser.userPassword && newUser.userPassword.length < 6 && (
             <span>min. 6 charactères</span>
           )}
-        </div>
+        </div> */}
         <div className="conditions-generales">
-          <input id="conditionsCheckbox" type="checkbox" required />
+          <input
+            className="form-check-input"
+            id="conditionsCheckbox"
+            type="checkbox"
+            required
+          />
           <label htmlFor="conditionsCheckbox">
             J’ai lu et j’accepte les{" "}
             <Link to="/conditions-generales ">conditions générales</Link>.
           </label>
         </div>
-
         <div className="submit-button">
-          {console.log("newUser.userPassword", newUser.userPassword)}
-          {console.log("newUser.userEmail", newUser.userEmail)}
+          {/* FIXME */}
           <button
-            disabled={
-              newUser.userPassword.length < 6 ||
-              !newUser.userEmail.includes("@") ||
-              !newUser.userEmail.includes(".")
-                ? true
-                : false
-            }
+            // disabled={
+            //   (newUser.userEmail &&
+            //     (!newUser.userEmail.includes("@") ||
+            //       !newUser.userEmail.includes("."))) ||
+            //   (newUser.userPassword && newUser.userPassword.length < 6)
+            //     ? true
+            //     : false
+            // }
             onClick={signup}
           >
             Créer un compte

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function LoginForm() {
@@ -8,10 +8,8 @@ function LoginForm() {
     setLoginUser({ ...loginUser, [e.target.name]: e.target.value });
   };
 
-  console.log("loginUser", loginUser);
-
-  const login = () => {
-    //TODO Check email format, password lenght ...avoid making useless requests to the server
+  const login = (e) => {
+    e.preventDefault();
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -25,17 +23,34 @@ function LoginForm() {
       body: urlencoded,
     };
 
+    //FIXME async
+
     fetch("http://localhost:5000/api/users/login", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log("result", result);
         if (result.token) {
-          console.log("result.token", result.token);
-          localStorage.setItem("token", result.token);
           setLoginUser(result.user);
         }
       })
       .catch((error) => console.log("error", error));
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      console.log("token", token);
+      console.log("LOGGED IN");
+    } else {
+      console.log("NOT LOGGED IN");
+    }
+  }, [loginUser]);
+
+  const logout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    console.log("LOGGED OUT");
+    setLoginUser(null);
   };
 
   return (
@@ -55,6 +70,16 @@ function LoginForm() {
             onChange={handleInputChange}
           />
         </div>
+        <div className="user-email-requirements">
+          <div className="user-email-requirements">
+            {/* FIXME */}
+            {/* {loginUser.userEmail &&
+              (!loginUser.userEmail.includes("@") ||
+                !loginUser.userEmail.includes(".")) && (
+                <span>L’adresse Email semble invalide</span>
+              )} */}
+          </div>
+        </div>
         <div className="user-password-label">
           <label htmlFor="userPassword">Mot de passe</label>
         </div>
@@ -67,9 +92,28 @@ function LoginForm() {
             onChange={handleInputChange}
           />
         </div>
+        {/* FIXME */}
+        {/* <div className="user-password-requirements">
+          {loginUser.userPassword && loginUser.userPassword.length < 6 && (
+            <span>min. 6 charactères</span>
+          )}
+        </div> */}
         <div className="submit-button">
-          <button onClick={login}>Se connecter</button>
-          {/* <button onClick={logout}>Se déconnecter</button> */}
+          {/* FIXME */}
+          <button
+            onClick={login}
+            // disabled={
+            //   (loginUser.userEmail &&
+            //     (!loginUser.userEmail.includes("@") ||
+            //       !loginUser.userEmail.includes("."))) ||
+            //   (loginUser.userPassword && loginUser.userPassword.length < 6)
+            //     ? true
+            //     : false
+            // }
+          >
+            Se connecter
+          </button>
+          <button onClick={logout}>Se déconnecter</button>
         </div>
       </form>
 

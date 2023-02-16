@@ -84,7 +84,7 @@ const logUser = async (req, res) => {
         const token = generateToken(existingUser._id);
 
         res.status(200).json({
-          msg: "you are logged in!!!",
+          msg: "you are logged in",
           user: {
             id: existingUser._id,
             userName: existingUser.userName,
