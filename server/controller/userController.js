@@ -1,6 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
 import userModel from "../models/userModel.js";
-import { passwordEncryption } from "../utils/bcrypt.js";
+import { passwordEncryption, verifyPassword } from "../utils/bcrypt.js";
+import generateToken from "../utils/jwt.js";
 
 const imageUpload = async (req, res) => {
   console.log("req.file", req.file);
@@ -63,4 +64,40 @@ const addUser = async (req, res) => {
   }
 };
 
-export { imageUpload, addUser };
+const logUser = async (req, res) => {
+  try {
+    const existingUser = await userModel.findOne({
+      userEmail: req.body.userEmail,
+    });
+    if (!existingUser) {
+      res.status(401).json({ msg: "wrong email" });
+    } else {
+      //TODO verify or check user's password
+
+      const isPasswordMatch = await verifyPassword(
+        req.body.userPassword,
+        existingUser.userPassword
+      );
+      if (!isPasswordMatch) {
+        res.status(401).json({ msg: "wrong password" });
+      } else {
+        const token = generateToken(existingUser._id);
+
+        res.status(200).json({
+          msg: "you are logged in!!!",
+          user: {
+            id: existingUser._id,
+            userName: existingUser.userName,
+            userEmail: existingUser.userEmail,
+            userAvatar: existingUser.userAvatar,
+          },
+          token,
+        });
+      }
+    }
+  } catch (error) {
+    res.status(400).json({ msg: "something went wrong" });
+  }
+};
+
+export { imageUpload, addUser, logUser };

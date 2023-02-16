@@ -22,6 +22,7 @@ import Ressources from "./components/Ressources";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NotFound from "./pages/NotFound";
+import GeneralConditions from "./pages/GeneralConditions";
 //contexts
 import { PainsContextProvider } from "./contexts/PainsContext";
 import { EventsContextProvider } from "./contexts/eventsContext";
@@ -85,6 +86,10 @@ function App() {
                 <Route path="login" element={<Login />} />
                 <Route path="creer-un-compte" element={<Signup />} />
                 <Route path="*" element={<NotFound />} />
+                <Route
+                  path="conditions-generales"
+                  element={<GeneralConditions />}
+                />
               </Routes>
             </TermsContextProvider>
           </PainsContextProvider>

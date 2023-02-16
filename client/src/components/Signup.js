@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const SignupForm = () => {
+  //TODO check email format, password length, etc.
+
   const [selectedFile, setSelectedFile] = useState(null);
   const [newUser, setNewUser] = useState({});
-
   const [userType, setUserType] = useState("association");
+
   const handleAttachImg = (e) => {
     setSelectedFile(e.target.files[0]);
   };
@@ -165,12 +167,18 @@ const SignupForm = () => {
         </div>
         <div className="user-email-input">
           <input
-            placeholder="Adresse email"
+            placeholder="Adresse Email"
             id="userEmail"
             type="text"
             name="userEmail"
             onChange={handleInputChange}
           />
+        </div>
+        <div className="user-email-requirements">
+          {(!newUser.userEmail.includes("@") ||
+            !newUser.userEmail.includes(".")) && (
+            <span>L’adresse Email semble invalide</span>
+          )}
         </div>
         <div className="user-avatar-label">
           <label htmlFor="avatar">
@@ -196,21 +204,41 @@ const SignupForm = () => {
         <div className="user-password-input">
           <input
             placeholder="Mot de passe"
-            type="text"
+            type="password"
             id="userPassword"
             name="userPassword"
             onChange={handleInputChange}
           />
         </div>
-        <div className="user-password-requirements">min. 6 charactères</div>
+
+        <div className="user-password-requirements">
+          {newUser.userPassword && newUser.userPassword.length < 6 && (
+            <span>min. 6 charactères</span>
+          )}
+        </div>
         <div className="conditions-generales">
           <input id="conditionsCheckbox" type="checkbox" required />
           <label htmlFor="conditionsCheckbox">
-            J’ai lu et j’accepte les <Link to="/">conditions générales</Link>.
+            J’ai lu et j’accepte les{" "}
+            <Link to="/conditions-generales ">conditions générales</Link>.
           </label>
         </div>
+
         <div className="submit-button">
-          <button onClick={signup}>Créer un compte</button>
+          {console.log("newUser.userPassword", newUser.userPassword)}
+          {console.log("newUser.userEmail", newUser.userEmail)}
+          <button
+            disabled={
+              newUser.userPassword.length < 6 ||
+              !newUser.userEmail.includes("@") ||
+              !newUser.userEmail.includes(".")
+                ? true
+                : false
+            }
+            onClick={signup}
+          >
+            Créer un compte
+          </button>
         </div>
       </form>
 
