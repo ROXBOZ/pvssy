@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { TermsContext } from "../../contexts/termsContext";
+// import { TermsContext } from "../../contexts/termsContext";
 
 const Pain = () => {
   let location = useLocation();

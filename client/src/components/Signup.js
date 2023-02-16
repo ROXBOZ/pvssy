@@ -195,7 +195,7 @@ const SignupForm = () => {
         </div>
         <div className="user-password-input">
           <input
-            placeholder="mot de passe"
+            placeholder="Mot de passe"
             type="text"
             id="userPassword"
             name="userPassword"
