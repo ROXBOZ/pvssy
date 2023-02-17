@@ -37,11 +37,14 @@ const addMiddlewares = () => {
     })
   );
 
-  let corsOptions = {
-    origin: "http://localhost.3000",
-    credentials: true,
-  };
-  app.use(cors(corsOptions));
+  //REVIEW
+  // let corsOptions = {
+  //   origin: "http://localhost:3000",
+  //   credentials: true,
+  // };
+  // app.use(cors(corsOptions));
+
+  app.use(cors());
 
   cloudinaryConfig();
 
@@ -57,7 +60,8 @@ const loadRoutes = () => {
 };
 
 const startServer = () => {
-  app.listen(port, () => {
+  a;
+  pp.listen(port, () => {
     console.log(`Server is running on port : ${port}`);
   });
 };

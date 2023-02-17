@@ -8,7 +8,9 @@ const generateToken = (userId) => {
     expiresIn: "2d",
     issuer: "Pvssy Talk",
   };
-  const privateKey = process.env.privateKey;
+
+  //FIXME + CHANGE ME
+  const privateKey = "something";
   const token = jwt.sign(payload, privateKey, options);
   return token;
 };

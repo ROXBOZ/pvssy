@@ -14,8 +14,10 @@ const jwtStrategy = new JwtStrategy(options, function (jwt_payload, done) {
       return done(error, false);
     }
     if (user) {
+      console.log("sending user");
       return done(null, user);
     } else {
+      console.log("no user found");
       return done(null, false);
     }
   });

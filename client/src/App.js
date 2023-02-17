@@ -20,6 +20,7 @@ import Articles from "./components/Articles";
 import Annuaire from "./components/Annuaire";
 import Ressources from "./components/Ressources";
 import Login from "./components/Login";
+import Logout from "./components/Logout";
 import Signup from "./components/Signup";
 import NotFound from "./pages/NotFound";
 import GeneralConditions from "./pages/GeneralConditions";
@@ -87,6 +88,7 @@ function App() {
                 <Route path="agenda/:title" element={<Event />} />
                 <Route path="agenda/archives" element={<EventsArchives />} />
                 <Route path="login" element={<Login />} />
+                <Route path="logout" element={<Logout />} />
                 <Route path="creer-un-compte" element={<Signup />} />
                 <Route path="profil" element={<Profile />} />
 

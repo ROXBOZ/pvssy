@@ -16,6 +16,12 @@ const getAllTerms = async (req, res) => {
 };
 
 const getTermsByPain = async (req, res) => {
+  // REVIEW
+  // res.setHeader("Access-Control-Allow-Origin", "*");
+  // res.setHeader("Access-Control-Allow-Methods", "*");
+  // res.setHeader("Access-Control-Allow-Headers", "*");
+  // res.setHeader("Access-Control-Allow-Credentials", "*");
+
   try {
     const requestedTerms = await termModel
       .find({ relatedPain: { $in: [req.query.relatedPain] } })

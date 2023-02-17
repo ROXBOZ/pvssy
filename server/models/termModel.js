@@ -10,6 +10,11 @@ const termSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  relatedPain: {
+    type: Array,
+    required: true,
+  },
 });
 
 const termModel = mongoose.model("term", termSchema);

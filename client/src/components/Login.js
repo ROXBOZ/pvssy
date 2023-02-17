@@ -30,9 +30,11 @@ function LoginForm() {
         requestOptions
       );
       const result = await response.json();
+      // console.log("result", result);
       if (result.token) {
-        console.log("result.token", result.token);
+        // console.log("result.token", result.token);
         localStorage.setItem("token", result.token);
+        // console.log("localStorage.getItem();", localStorage.getItem("token"));
         setLoginUser(result.user);
         redirectTo("/profil");
       }
@@ -51,13 +53,6 @@ function LoginForm() {
       console.log("token", token);
     }
   }, [loginUser]);
-
-  const logout = (e) => {
-    e.preventDefault();
-    localStorage.removeItem("token");
-    console.log("Login.js : LOGGED OUT");
-    setLoginUser(null);
-  };
 
   return (
     <div>
@@ -119,7 +114,7 @@ function LoginForm() {
           >
             Se connecter
           </button>
-          <button onClick={logout}>Se déconnecter</button>
+          {/* <button onClick={logout}>Se déconnecter</button> */}
         </div>
       </form>
 

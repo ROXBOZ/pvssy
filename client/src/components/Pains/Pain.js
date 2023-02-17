@@ -1,43 +1,32 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-// import { TermsContext } from "../../contexts/termsContext";
 
 const Pain = () => {
   let location = useLocation();
   const { name, def, diag, sympt, pro, auto, why } = location.state.content;
   const createParagraphs = (arr) => arr.map((p) => <p>{p}</p>);
+  const [requestedTerms, setRequestedTerms] = useState(null);
+  const fetchRelatedTerms = async () => {
+    const requestOptions = {
+      method: "GET",
+    };
 
-  // TODO
-  // const { data, fetchData } = useContext(TermsContext);
-  // const [displayRelatedTerms, setDisplayRelatedTerms] = useState("");
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/terms/byPain?relatedPain=Vaginisme",
+        requestOptions
+      );
+      const result = await response.json();
+      setRequestedTerms(result.requestedTerms);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 
-  // useEffect(() => {
-  //   fetchData(`http://localhost:5000/api/terms/byPain?relatedPains=${name}`);
-  // }, []);
-
-  // const relatedTerms = data.requestedTerms;
-  // console.log("relatedTerms", relatedTerms);
-
-  // const whatRelatedTerms = () => {
-  //   if (relatedTerms && relatedTerms.length) {
-  //     setDisplayRelatedTerms(
-  //       <div className="tag-container">
-  //         {relatedTerms.map((i) => (
-  //           <Link to="/" className="term-tag" key={i._id}>
-  //             <span>{i.term}</span>
-  //           </Link>
-  //         ))}
-  //       </div>
-  //     );
-  //   } else {
-  //     setDisplayRelatedTerms("");
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   whatRelatedTerms();
-  // }, []);
+  useEffect(() => {
+    fetchRelatedTerms();
+  }, []);
 
   return (
     <>
@@ -80,7 +69,17 @@ const Pain = () => {
       <div className="grid-area">
         <div className="col-left">
           <div className="img-holder"></div>
-          {/* <div className="tag-container">{displayRelatedTerms}</div> */}
+
+          <div className="related-terms-container">
+            {requestedTerms &&
+              requestedTerms.map((t) => {
+                return (
+                  <Link to="lexique">
+                    <tag>{t.term}</tag>
+                  </Link>
+                );
+              })}
+          </div>
         </div>
 
         <div className="col-right">

@@ -104,8 +104,13 @@ const logUser = async (req, res) => {
 };
 
 const getProfile = async (req, res) => {
-  console.log("req.user", req.user);
-  console.log("req", res);
+  // REVIEW
+  // res.setHeader("Access-Control-Allow-Origin", "*");
+  // res.setHeader("Access-Control-Allow-Methods", "*");
+  // res.setHeader("Access-Control-Allow-Headers", "*");
+  // res.setHeader("Access-Control-Allow-Credentials", "*");
+
+  console.log("req arrived");
   res.status(200).json({
     user: {
       userName: req.user.userName,

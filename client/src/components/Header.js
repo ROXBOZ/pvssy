@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Breadcrumbs from "./Breadcrumbs";
-import { useContext } from "react";
-import { authContext } from "../contexts/authContext";
+import getToken from "../utils/getToken";
 
 const Header = () => {
-  // const { logout } = useContext(authContext);
-  // console.log("logout", logout);
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    let storedToken = getToken();
+    setToken(storedToken);
+  }, [token]);
 
   return (
     <header>
@@ -32,8 +35,8 @@ const Header = () => {
             <NavLink to="agenda">Agenda</NavLink>
           </li>
           <li>
-            <NavLink className="btn" to="login">
-              Se connecter
+            <NavLink to={!token ? "login" : "logout"}>
+              {!token ? "Se connecter" : "Se déconnecter"}
             </NavLink>
           </li>
         </ul>
