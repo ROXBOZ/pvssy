@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import getToken from "../utils/getToken";
 
 function LoginForm() {
   const [loginUser, setLoginUser] = useState({});
-
+  const redirectTo = useNavigate();
   const handleInputChange = (e) => {
     setLoginUser({ ...loginUser, [e.target.name]: e.target.value });
   };
 
-  const login = (e) => {
+  const login = async (e) => {
     e.preventDefault();
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -23,33 +24,38 @@ function LoginForm() {
       body: urlencoded,
     };
 
-    //FIXME async
-
-    fetch("http://localhost:5000/api/users/login", requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log("result", result);
-        if (result.token) {
-          setLoginUser(result.user);
-        }
-      })
-      .catch((error) => console.log("error", error));
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/users/login",
+        requestOptions
+      );
+      const result = await response.json();
+      if (result.token) {
+        console.log("result.token", result.token);
+        localStorage.setItem("token", result.token);
+        setLoginUser(result.user);
+        redirectTo("/profil");
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = getToken();
     if (token) {
+      console.log("Login.js : LOGGED IN");
       console.log("token", token);
-      console.log("LOGGED IN");
     } else {
-      console.log("NOT LOGGED IN");
+      console.log("Login.js : NOT LOGGED IN");
+      console.log("token", token);
     }
   }, [loginUser]);
 
   const logout = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
-    console.log("LOGGED OUT");
+    console.log("Login.js : LOGGED OUT");
     setLoginUser(null);
   };
 

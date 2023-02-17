@@ -1,7 +1,13 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Breadcrumbs from "./Breadcrumbs";
+import { useContext } from "react";
+import { authContext } from "../contexts/authContext";
+
 const Header = () => {
+  // const { logout } = useContext(authContext);
+  // console.log("logout", logout);
+
   return (
     <header>
       <Link to="/" className="logo">

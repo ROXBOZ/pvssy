@@ -1,10 +1,10 @@
-// const getToken = () => {
-//   const token = localStorage.getItem("token");
-//   if (token) {
-//     console.log("LOGGED IN");
-//   } else {
-//     console.log("NOT LOGGED IN");
-//   }
-// };
+const getToken = () => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    return token;
+  } else {
+    return false;
+  }
+};
 
-// export { getToken };
+export default getToken;

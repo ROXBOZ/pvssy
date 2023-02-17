@@ -64,6 +64,9 @@ const Pain = () => {
             </Link>
           </li>
           <li>
+            <Link to="/">Shémas</Link>
+          </li>
+          <li>
             <Link
               to={{
                 pathname: `/gerer-soi-meme/ressources/lexique/${name.toLowerCase()}`,

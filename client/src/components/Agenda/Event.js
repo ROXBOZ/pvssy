@@ -32,21 +32,23 @@ const Event = () => {
     <>
       <div className="heading-area">
         <h1>{title}</h1>
-
-        {online ? (
-          <p></p>
-        ) : (
-          <>
-            <p>
-              {dateTime}
-              <br />
-              <span>
-                {address}, {city}
-              </span>
-            </p>
-          </>
-        )}
-
+        <p>
+          <span>
+            Un évènement organisé par <a href="/">NO DOLOR</a>,
+            <br />
+            {/* //FIXME Capital first letter */}
+            {dateTime}
+          </span>
+          <br />
+          {/* //FIXME why I can't write !online && */}
+          {online ? (
+            <span></span>
+          ) : (
+            <span>
+              {address}, {city}
+            </span>
+          )}
+        </p>
         <p>
           {!entryFee ? (
             <span>entrée libre</span>

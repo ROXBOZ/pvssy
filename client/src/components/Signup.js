@@ -73,7 +73,9 @@ const SignupForm = () => {
   return (
     <div>
       <div className="title-area">
-        <h1>Créer un compte</h1>
+        <h1>
+          Créer un compte<sup>prototype</sup>
+        </h1>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error quasi
           eum debitis dicta minus, molestiae quidem necessitatibus fuga optio

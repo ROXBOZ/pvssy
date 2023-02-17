@@ -27,10 +27,13 @@ import GeneralConditions from "./pages/GeneralConditions";
 import { PainsContextProvider } from "./contexts/PainsContext";
 import { EventsContextProvider } from "./contexts/eventsContext";
 import { TermsContextProvider } from "./contexts/termsContext";
+// import { authContextProvider } from "./contexts/authContext";
+import Profile from "./components/Profile";
 
 function App() {
   return (
     <>
+      {/* <authContextProvider> */}
       <Header />
       <div className="main">
         <ScrollToTop />
@@ -85,7 +88,10 @@ function App() {
                 <Route path="agenda/archives" element={<EventsArchives />} />
                 <Route path="login" element={<Login />} />
                 <Route path="creer-un-compte" element={<Signup />} />
+                <Route path="profil" element={<Profile />} />
+
                 <Route path="*" element={<NotFound />} />
+
                 <Route
                   path="conditions-generales"
                   element={<GeneralConditions />}
@@ -96,6 +102,7 @@ function App() {
         </EventsContextProvider>
       </div>
       <Footer />
+      {/* </authContextProvider> */}
     </>
   );
 }

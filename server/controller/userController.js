@@ -66,14 +66,18 @@ const addUser = async (req, res) => {
 
 const logUser = async (req, res) => {
   try {
+    // REVIEW
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "*");
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    res.setHeader("Access-Control-Allow-Credentials", "*");
+
     const existingUser = await userModel.findOne({
       userEmail: req.body.userEmail,
     });
     if (!existingUser) {
       res.status(401).json({ msg: "wrong email" });
     } else {
-      //TODO verify or check user's password
-
       const isPasswordMatch = await verifyPassword(
         req.body.userPassword,
         existingUser.userPassword
@@ -82,9 +86,8 @@ const logUser = async (req, res) => {
         res.status(401).json({ msg: "wrong password" });
       } else {
         const token = generateToken(existingUser._id);
-
         res.status(200).json({
-          msg: "you are logged in",
+          msg: "userController.js : you are logged in",
           user: {
             id: existingUser._id,
             userName: existingUser.userName,
@@ -100,4 +103,16 @@ const logUser = async (req, res) => {
   }
 };
 
-export { imageUpload, addUser, logUser };
+const getProfile = async (req, res) => {
+  console.log("req.user", req.user);
+  console.log("req", res);
+  res.status(200).json({
+    user: {
+      userName: req.user.userName,
+      userEmail: req.user.userEmail,
+      userAvatar: req.user.userAvatar,
+    },
+  });
+};
+
+export { imageUpload, addUser, logUser, getProfile };

@@ -41,6 +41,12 @@ hr {
   @include hr;
 }
 
+sup {
+  padding: 0 0.5em;
+  color: $color3;
+  font-size: 40%;
+}
+
 /*-----Ratio Scale-----*/
 
 $type-ratios: (

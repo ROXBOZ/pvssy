@@ -5,17 +5,17 @@
     color: $txt-color;
     display: flex;
     .card {
-      flex: max-content;
-      background-size: cover;
       @include card;
+      border: none;
+      flex: max-content;
+      // background-image: $gradient;
+      // background-size: cover;
       h3 {
         text-align: center;
-        background-color: white;
       }
       .card-date,
       .card-location {
         text-align: center;
-        background-color: white;
       }
     }
   }
