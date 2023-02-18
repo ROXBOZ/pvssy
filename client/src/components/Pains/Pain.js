@@ -5,7 +5,19 @@ import { Link } from "react-router-dom";
 const Pain = () => {
   let location = useLocation();
   const { name, def, diag, sympt, pro, auto, why } = location.state.content;
-  const createParagraphs = (arr) => arr.map((p) => <p>{p}</p>);
+  const createParagraphs = (arr) => {
+    return arr.map((p, index) => {
+      if (typeof p === "string") {
+        return (
+          <p key={index}>
+            <span key={index}>{p}</span>
+          </p>
+        );
+      } else {
+        return <p key={index}>{p}</p>;
+      }
+    });
+  };
   const [requestedTerms, setRequestedTerms] = useState(null);
 
   const fetchRelatedTerms = async () => {
@@ -62,7 +74,6 @@ const Pain = () => {
                     name={name}
                     to={{
                       pathname: `lexique/#${t.term}`,
-                      // state: { t: t },
                     }}
                   >
                     <p className="tag">{t.term}</p>
