@@ -49,7 +49,6 @@ function App() {
                 <Route path="gerer-soi-meme" element={<GererSoiMeme />} />
                 <Route path="gerer-soi-meme/douleurs" element={<Pains />} />
 
-                {/* FIXME only works if from by clicking on the card */}
                 <Route
                   path="gerer-soi-meme/douleurs/:name"
                   element={<Pain />}
@@ -72,6 +71,11 @@ function App() {
 
                 <Route
                   path="gerer-soi-meme/douleurs/:name/lexique"
+                  element={<PainLex />}
+                />
+
+                <Route
+                  path="gerer-soi-meme/douleurs/:name/lexique/#:term"
                   element={<PainLex />}
                 />
 

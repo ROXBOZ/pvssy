@@ -72,6 +72,22 @@ const Pain = () => {
     });
   };
 
+  // redirection for terms anchors
+
+  function redirectToLexique(term) {
+    const url = `lexique/#${term}`;
+    window.location.href = url;
+
+    window.onload = function () {
+      if (location.hash) {
+        const target = document.querySelector(location.hash);
+        if (target) {
+          target.scrollIntoView();
+        }
+      }
+    };
+  }
+
   return (
     <>
       <div className="heading-area">
@@ -99,12 +115,16 @@ const Pain = () => {
           <div className="related-terms-container">
             {requestedTerms &&
               requestedTerms.map((t) => {
+                const termAnchor = t.term
+                  .normalize("NFD")
+                  .replace(/[\u0300-\u036f]/g, "")
+                  .replace(/\s+/g, "-")
+                  .toLowerCase();
                 return (
                   <Link
                     key={t._id}
-                    name={name}
                     to={{
-                      pathname: `lexique/#${t.term}`,
+                      pathname: `lexique/#${termAnchor}`,
                     }}
                   >
                     <p className="tag">{t.term}</p>
