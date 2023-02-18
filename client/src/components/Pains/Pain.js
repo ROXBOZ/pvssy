@@ -7,9 +7,6 @@ const Pain = () => {
   const { name, def, diag, sympt, pro, auto, why } = location.state.content;
   const createParagraphs = (arr) => arr.map((p) => <p>{p}</p>);
   const [requestedTerms, setRequestedTerms] = useState(null);
-  const tutosPath = `/gerer-soi-meme/douleurs/${name.toLowerCase()}/tutos`;
-  const lexiquePath = `/gerer-soi-meme/douleurs/${name.toLowerCase()}/lexique`;
-  const articlesPath = `/gerer-soi-meme/douleurs/${name.toLowerCase()}/articles`;
 
   const fetchRelatedTerms = async () => {
     const requestOptions = {
@@ -32,9 +29,6 @@ const Pain = () => {
     fetchRelatedTerms();
   }, []);
 
-  // const cardDetail = { name };
-  // console.log("name", name);
-
   return (
     <>
       <div className="heading-area">
@@ -42,31 +36,16 @@ const Pain = () => {
         <ul className="category-submenu">
           Ressources {name} :{" "}
           <li>
-            <Link
-              to={{ pathname: tutosPath }}
-              // state={{ content: cardDetail }}
-            >
-              Tutos
-            </Link>
+            <Link to="tutos">Tutos</Link>
           </li>
           <li>
-            <Link
-              to={{ pathname: articlesPath }}
-              // state={{ content: cardDetail }}
-            >
-              Articles
-            </Link>
+            <Link to="articles">Articles</Link>
           </li>
           <li>
             <Link to="/">Shémas</Link>
           </li>
           <li>
-            <Link
-              to={{ pathname: lexiquePath }}
-              // state={{ content: cardDetail }}
-            >
-              Lexique
-            </Link>
+            <Link to="lexique">Lexique</Link>
           </li>
         </ul>
       </div>
@@ -81,9 +60,9 @@ const Pain = () => {
                   <Link
                     key={t._id}
                     name={name}
-                    // state={{ content: cardDetail }}
                     to={{
-                      pathname: `${lexiquePath}/#${t.term}`,
+                      pathname: `lexique/#${t.term}`,
+                      // state: { t: t },
                     }}
                   >
                     <p className="tag">{t.term}</p>

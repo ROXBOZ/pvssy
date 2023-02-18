@@ -5,8 +5,8 @@
     color: $txt-color;
     display: flex;
     .card {
-      @include card;
       border: none;
+      @include card;
       flex: max-content;
       // background-image: $gradient;
       // background-size: cover;

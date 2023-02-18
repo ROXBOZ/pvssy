@@ -26,7 +26,7 @@ import Logout from "./components/Logout";
 import Signup from "./components/Signup";
 import NotFound from "./pages/NotFound";
 import Profile from "./components/Profile";
-import Lexique from "./components/Lexique";
+import PainLex from "./components/Pains/PainLex";
 import AllLexique from "./components/AllLexique";
 //contexts
 import { PainsContextProvider } from "./contexts/PainsContext";
@@ -72,7 +72,7 @@ function App() {
 
                 <Route
                   path="gerer-soi-meme/douleurs/:name/lexique"
-                  element={<Lexique />}
+                  element={<PainLex />}
                 />
 
                 <Route
