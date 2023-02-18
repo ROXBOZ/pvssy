@@ -48,8 +48,21 @@ const addPain = async (req, res) => {
   }
 };
 
-const editPain = () => {
-  console.log("first", first);
+const getOnePain = async (req, res) => {
+  const name = req.params.name;
+
+  try {
+    const pain = await painModel.findOne({ name: name }).exec();
+    if (!pain) {
+      return res.status(404).json({ msg: "Pain not found" });
+    }
+    res.json(pain);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error, msg: "Something went wrong with the server" });
+  }
 };
 
-export { getAllPains, addPain, editPain };
+export { getAllPains, addPain, getOnePain };

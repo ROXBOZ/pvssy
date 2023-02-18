@@ -4,7 +4,60 @@ import { Link } from "react-router-dom";
 
 const Pain = () => {
   let location = useLocation();
-  const { name, def, diag, sympt, pro, auto, why } = location.state.content;
+  const [requestedTerms, setRequestedTerms] = useState(null);
+  const [painData, setPainData] = useState(null);
+
+  // since the name of the pain is capitalized in the database, but in lowerCase in the URL.
+  const painName =
+    location.pathname.split("/").pop().slice(0, 1).toUpperCase() +
+    location.pathname.split("/").pop().slice(1);
+
+  const fetchSinglePain = async () => {
+    const requestOptions = {
+      method: "GET",
+    };
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/pains/spec/${painName}`,
+        requestOptions
+      );
+      const result = await response.json();
+
+      setPainData(result);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+  const fetchRelatedTerms = async () => {
+    const requestOptions = {
+      method: "GET",
+    };
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/terms/byPain?relatedPain=${painName}`,
+        requestOptions
+      );
+      const result = await response.json();
+      setRequestedTerms(result.requestedTerms);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSinglePain();
+    fetchRelatedTerms();
+  }, []);
+
+  // this is super important to avoid crash
+  if (!painData) {
+    return <div>Loading...</div>;
+  }
+
+  //this has to be defined here, after the fetch
+  const { name, def, diag, sympt, pro, auto, why } = painData;
   const createParagraphs = (arr) => {
     return arr.map((p, index) => {
       if (typeof p === "string") {
@@ -18,28 +71,6 @@ const Pain = () => {
       }
     });
   };
-  const [requestedTerms, setRequestedTerms] = useState(null);
-
-  const fetchRelatedTerms = async () => {
-    const requestOptions = {
-      method: "GET",
-    };
-
-    try {
-      const response = await fetch(
-        "http://localhost:5000/api/terms/byPain?relatedPain=Vaginisme",
-        requestOptions
-      );
-      const result = await response.json();
-      setRequestedTerms(result.requestedTerms);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchRelatedTerms();
-  }, []);
 
   return (
     <>
