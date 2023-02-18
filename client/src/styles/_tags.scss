@@ -1,8 +1,10 @@
 .related-terms-container {
   margin: 1em 0;
+  display: flex;
+  gap: 0.1em;
   a {
     border-bottom: none;
-    tag {
+    .tag {
       padding: $padding-xs;
       border-radius: $border-radius;
       font-size: 80%;

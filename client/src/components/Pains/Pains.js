@@ -19,7 +19,6 @@ const Pains = () => {
           })}
       </div>
       {Error && <p>erreur</p>}
-      {/* {Loading && <p>chargement</p>} */}
     </div>
   );
 };

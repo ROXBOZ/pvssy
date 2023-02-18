@@ -54,6 +54,7 @@ const EventCard = ({ e }) => {
   // };
   const color1 = "#f5733c";
   const color2 = "#ff50d7";
+
   const generateColor = (color1, color2) => {
     const r1 = parseInt(color1.slice(1, 3), 16); // red component of the first color
     const g1 = parseInt(color1.slice(3, 5), 16); // green component of the first color

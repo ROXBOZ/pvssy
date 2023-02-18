@@ -7,6 +7,10 @@ const Pain = () => {
   const { name, def, diag, sympt, pro, auto, why } = location.state.content;
   const createParagraphs = (arr) => arr.map((p) => <p>{p}</p>);
   const [requestedTerms, setRequestedTerms] = useState(null);
+  const tutosPath = `/gerer-soi-meme/douleurs/${name.toLowerCase()}/tutos`;
+  const lexiquePath = `/gerer-soi-meme/douleurs/${name.toLowerCase()}/lexique`;
+  const articlesPath = `/gerer-soi-meme/douleurs/${name.toLowerCase()}/articles`;
+
   const fetchRelatedTerms = async () => {
     const requestOptions = {
       method: "GET",
@@ -28,6 +32,9 @@ const Pain = () => {
     fetchRelatedTerms();
   }, []);
 
+  // const cardDetail = { name };
+  // console.log("name", name);
+
   return (
     <>
       <div className="heading-area">
@@ -36,18 +43,16 @@ const Pain = () => {
           Ressources {name} :{" "}
           <li>
             <Link
-              to={{
-                pathname: `/gerer-soi-meme/ressources/tutos/${name.toLowerCase()}`,
-              }}
+              to={{ pathname: tutosPath }}
+              // state={{ content: cardDetail }}
             >
               Tutos
             </Link>
           </li>
           <li>
             <Link
-              to={{
-                pathname: `/gerer-soi-meme/ressources/articles/${name.toLowerCase()}`,
-              }}
+              to={{ pathname: articlesPath }}
+              // state={{ content: cardDetail }}
             >
               Articles
             </Link>
@@ -57,9 +62,8 @@ const Pain = () => {
           </li>
           <li>
             <Link
-              to={{
-                pathname: `/gerer-soi-meme/ressources/lexique/${name.toLowerCase()}`,
-              }}
+              to={{ pathname: lexiquePath }}
+              // state={{ content: cardDetail }}
             >
               Lexique
             </Link>
@@ -74,8 +78,15 @@ const Pain = () => {
             {requestedTerms &&
               requestedTerms.map((t) => {
                 return (
-                  <Link to="lexique">
-                    <tag>{t.term}</tag>
+                  <Link
+                    key={t._id}
+                    name={name}
+                    // state={{ content: cardDetail }}
+                    to={{
+                      pathname: `${lexiquePath}/#${t.term}`,
+                    }}
+                  >
+                    <p className="tag">{t.term}</p>
                   </Link>
                 );
               })}

@@ -557,11 +557,13 @@ form.grid-form .submit-button {
 
 .related-terms-container {
   margin: 1em 0;
+  display: flex;
+  gap: 0.1em;
 }
 .related-terms-container a {
   border-bottom: none;
 }
-.related-terms-container a tag {
+.related-terms-container a .tag {
   padding: 0.5em;
   border-radius: 0.25em;
   font-size: 80%;
@@ -569,7 +571,7 @@ form.grid-form .submit-button {
   background-color: #490a84;
   color: #fffdf8;
 }
-.related-terms-container a tag:hover {
+.related-terms-container a .tag:hover {
   background-color: #9637f0;
   cursor: pointer;
 }

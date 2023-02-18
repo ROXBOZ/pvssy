@@ -2,18 +2,20 @@ import { Routes, Route } from "react-router-dom";
 import "./styles/globals.css";
 
 // pages and components
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import TrouverDeLAide from "./pages/TrouverDeLAide";
+import About from "./pages/About";
 import GererSoiMeme from "./pages/GererSoiMeme";
-import Pains from "./components/Pains/Pains";
-import Pain from "./components/Pains/Pain";
+import TrouverDeLAide from "./pages/TrouverDeLAide";
 import Shop from "./pages/Shop";
 import Agenda from "./pages/Agenda";
+import GeneralConditions from "./pages/GeneralConditions";
+
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Pains from "./components/Pains/Pains";
+import Pain from "./components/Pains/Pain";
 import EventsArchives from "./components/EventsArchives";
 import Event from "./components/Agenda/Event";
-import About from "./pages/About";
 import ScrollToTop from "./components/ScrollToTop";
 import Tutos from "./components/Tutos";
 import Articles from "./components/Articles";
@@ -23,13 +25,13 @@ import Login from "./components/Login";
 import Logout from "./components/Logout";
 import Signup from "./components/Signup";
 import NotFound from "./pages/NotFound";
-import GeneralConditions from "./pages/GeneralConditions";
+import Profile from "./components/Profile";
+import Lexique from "./components/Lexique";
+import AllLexique from "./components/AllLexique";
 //contexts
 import { PainsContextProvider } from "./contexts/PainsContext";
 import { EventsContextProvider } from "./contexts/eventsContext";
 import { TermsContextProvider } from "./contexts/termsContext";
-// import { authContextProvider } from "./contexts/authContext";
-import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -46,34 +48,48 @@ function App() {
                 <Route path="a-propos" element={<About />} />
                 <Route path="gerer-soi-meme" element={<GererSoiMeme />} />
                 <Route path="gerer-soi-meme/douleurs" element={<Pains />} />
+
+                {/* FIXME only works if from by clicking on the card */}
                 <Route
                   path="gerer-soi-meme/douleurs/:name"
                   element={<Pain />}
                 />
-                <Route
-                  path="gerer-soi-meme/douleurs/tutos/:name"
-                  element={<Pain />}
-                />
-                <Route
-                  path="gerer-soi-meme/douleurs/articles/:name"
-                  element={<Pain />}
-                />
-                <Route
-                  path="gerer-soi-meme/douleurs/lexique/:name"
-                  element={<Pain />}
-                />
-                <Route
-                  path="gerer-soi-meme/ressources"
-                  element={<Ressources />}
-                />
+
                 <Route
                   path="gerer-soi-meme/ressources/tutos"
                   element={<Tutos />}
                 />
+
+                <Route
+                  path="gerer-soi-meme/douleurs/:name/tutos"
+                  element={<Tutos />}
+                />
+
+                <Route
+                  path="gerer-soi-meme/ressources/lexique"
+                  element={<AllLexique />}
+                />
+
+                <Route
+                  path="gerer-soi-meme/douleurs/:name/lexique"
+                  element={<Lexique />}
+                />
+
                 <Route
                   path="gerer-soi-meme/ressources/articles"
                   element={<Articles />}
                 />
+
+                <Route
+                  path="gerer-soi-meme/douleurs/:name/articles"
+                  element={<Articles />}
+                />
+
+                <Route
+                  path="gerer-soi-meme/ressources"
+                  element={<Ressources />}
+                />
+
                 <Route path="trouver-de-l-aide" element={<TrouverDeLAide />} />
                 <Route
                   path="trouver-de-l-aide/annuaire"

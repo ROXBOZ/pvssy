@@ -11,17 +11,7 @@ const PainCard = ({ p }) => {
   const pro = p.pro;
   const why = p.why;
 
-  const painDetail = {
-    id,
-    name,
-    def,
-    diag,
-    sympt,
-    pro,
-    auto,
-    why,
-    // terms,
-  };
+  const painDetail = { id, name, def, diag, sympt, pro, auto, why };
 
   return (
     <Link
