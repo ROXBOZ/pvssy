@@ -45,48 +45,70 @@ const Pain = () => {
       console.log("error", error);
     }
   };
-
   useEffect(() => {
     fetchSinglePain();
     fetchRelatedTerms();
   }, []);
 
-  // this is super important to avoid crash
+  // this is essential to avoid crash
   if (!painData) {
     return <div>Loading...</div>;
   }
 
-  //this has to be defined here, after the fetch
+  //this has to be defined  after the fetch
   const { name, def, diag, sympt, pro, auto, why } = painData;
+
+  // TODO this should be moved stored somewhere else, so I can reuse it everywhere
+
+  //Creating paragraphs + highlighting related Terms.
   const createParagraphs = (arr) => {
+    const highlightedTerms = requestedTerms
+      ? requestedTerms.map((term) => term.term)
+      : [];
+    const regex = new RegExp(`\\b(${highlightedTerms.join("|")})\\b`, "ig");
+
     return arr.map((p, index) => {
       if (typeof p === "string") {
-        return (
-          <p key={index}>
-            <span key={index}>{p}</span>
-          </p>
-        );
+        const matches = p.match(regex);
+        if (matches) {
+          const parts = p.split(regex);
+          return (
+            <p key={index}>
+              {parts.map((part, i) => {
+                if (matches.includes(part)) {
+                  return (
+                    <Link
+                      key={i}
+                      className="highlighted-term"
+                      to={{
+                        pathname: `lexique/#${part
+                          .normalize("NFD")
+                          .replace(/[\u0300-\u036f]/g, "")
+                          .replace(/\s+/g, "-")
+                          .toLowerCase()}`,
+                      }}
+                    >
+                      {part}
+                    </Link>
+                  );
+                } else {
+                  return <span key={i}>{part}</span>;
+                }
+              })}
+            </p>
+          );
+        } else {
+          return (
+            <p key={index}>
+              <span key={index}>{p}</span>
+            </p>
+          );
+        }
       } else {
         return <p key={index}>{p}</p>;
       }
     });
   };
-
-  // redirection for terms anchors
-
-  function redirectToLexique(term) {
-    const url = `lexique/#${term}`;
-    window.location.href = url;
-
-    window.onload = function () {
-      if (location.hash) {
-        const target = document.querySelector(location.hash);
-        if (target) {
-          target.scrollIntoView();
-        }
-      }
-    };
-  }
 
   return (
     <>
@@ -112,7 +134,9 @@ const Pain = () => {
         <div className="col-left">
           <div className="img-holder"></div>
 
-          <div className="related-terms-container">
+          {/* NOTE this should not be deleted, in case we want to display tags somewhere}
+
+          {/* <div className="related-terms-container">
             {requestedTerms &&
               requestedTerms.map((t) => {
                 const termAnchor = t.term
@@ -131,7 +155,7 @@ const Pain = () => {
                   </Link>
                 );
               })}
-          </div>
+          </div> */}
         </div>
 
         <div className="col-right">
