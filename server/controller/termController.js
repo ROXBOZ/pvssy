@@ -44,4 +44,27 @@ const getTermsByPain = async (req, res) => {
   }
 };
 
-export { getAllTerms, getTermsByPain };
+const addTerm = async (req, res) => {
+  const { term, def, relatedPain } = req.body;
+
+  try {
+    const newTerm = new termModel({ term, def, relatedPain });
+    const savedTerm = await newTerm.save();
+
+    res.status(201).json({
+      msg: "new term added successfully",
+      term: {
+        term: savedTerm.term,
+        def: savedTerm.def,
+        relatedPain: savedTerm.relatedPain,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      error,
+      msg: "you can't add a new term",
+    });
+  }
+};
+
+export { getAllTerms, getTermsByPain, addTerm };

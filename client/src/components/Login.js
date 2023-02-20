@@ -30,13 +30,10 @@ function LoginForm() {
         requestOptions
       );
       const result = await response.json();
-      // console.log("result", result);
       if (result.token) {
-        // console.log("result.token", result.token);
         localStorage.setItem("token", result.token);
-        // console.log("localStorage.getItem();", localStorage.getItem("token"));
         setLoginUser(result.user);
-        redirectTo("/profil");
+        redirectTo("/ajouter-un-evenement");
       }
     } catch (error) {
       console.log("error", error);
@@ -47,10 +44,8 @@ function LoginForm() {
     const token = getToken();
     if (token) {
       console.log("Login.js : LOGGED IN");
-      console.log("token", token);
     } else {
       console.log("Login.js : NOT LOGGED IN");
-      console.log("token", token);
     }
   }, [loginUser]);
 

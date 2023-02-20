@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
 
 const termSchema = new mongoose.Schema({
-  termName: {
+  term: {
     type: String,
     required: true,
+    unique: true,
   },
 
-  termDef: {
-    type: String,
+  def: {
+    type: Array,
     required: true,
   },
 

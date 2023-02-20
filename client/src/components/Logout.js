@@ -5,15 +5,12 @@ import getToken from "../utils/getToken";
 const Logout = () => {
   let token = getToken();
   const redirectTo = useNavigate();
-  console.log("token", token);
 
   const logout = (e) => {
     localStorage.removeItem("token");
-    console.log("Login.js : LOGGED OUT");
   };
 
   useEffect(() => {
-    console.log("logout run");
     logout();
   }, []);
 

@@ -85,6 +85,16 @@ form {
     gap: 1em;
     grid-template-columns: repeat(4, max-content);
 
+    div {
+      input[type="text"],
+      input[type="password"],
+      input[type="file"],
+      input[type="date"],
+      textarea {
+        @include input;
+      }
+    }
+
     .user-type {
       grid-column: 1/5;
       display: flex;
@@ -97,39 +107,20 @@ form {
     }
     .user-name-input {
       grid-column: 2/3;
-      input {
-        @include input;
-      }
     }
     .user-firstname-label {
       display: flex;
       align-items: center;
       grid-column: 3/4;
     }
-
-    .user-firstname-input {
-      input {
-        @include input;
-      }
-    }
     .user-email-label {
       display: flex;
       align-items: center;
-    }
-    .user-email-input {
-      input {
-        @include input;
-      }
     }
     .user-avatar-label {
       display: flex;
       align-items: center;
       grid-column: 1/2;
-    }
-    .user-avatar-input {
-      input {
-        @include input;
-      }
     }
     .user-avatar-button {
       display: flex;
@@ -139,12 +130,6 @@ form {
       display: flex;
       align-items: center;
       grid-column: 1/2;
-    }
-
-    .user-password-input {
-      input {
-        @include input;
-      }
     }
     .user-password-requirements {
       display: flex;
@@ -156,6 +141,48 @@ form {
     }
     .submit-button {
       grid-column: 1/2;
+    }
+    //
+    .event-title-label {
+      display: flex;
+      align-items: center;
+      grid-column: 1/2;
+    }
+
+    .event-title-input {
+      grid-column: 2/3;
+    }
+    .event-date-label {
+      display: flex;
+      align-items: center;
+      grid-column: 3/4;
+    }
+    .event-date-input {
+      grid-column: 4/5;
+    }
+
+    .event-shortDef-label,
+    .event-longDef-label,
+    .event-address-label,
+    .event-onlineMeeting-label {
+      display: flex;
+      align-items: center;
+      grid-column: 1/2;
+    }
+    .event-shortDef-input,
+    .event-longDef-input {
+      grid-column: 2/5;
+      display: flex;
+      padding: 0;
+      textarea {
+        box-sizing: border-box;
+        width: calc(100% - 2px);
+        grid-column: 2/5;
+      }
+    }
+    .event-city-label {
+      display: flex;
+      align-items: center;
     }
   }
 }

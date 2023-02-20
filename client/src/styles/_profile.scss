@@ -1,0 +1,11 @@
+.userProfile-info {
+  display: flex;
+  gap: 2em;
+  align-items: center;
+  padding-bottom: $padding-sm;
+
+  .userProfile-avatar {
+    height: 10rem;
+    border-radius: 50%;
+  }
+}

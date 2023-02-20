@@ -32,8 +32,11 @@ import AllLexique from "./components/AllLexique";
 import { PainsContextProvider } from "./contexts/PainsContext";
 import { EventsContextProvider } from "./contexts/eventsContext";
 import { TermsContextProvider } from "./contexts/termsContext";
+// utils
+import getToken from "./utils/getToken";
 
 function App() {
+  const token = getToken();
   return (
     <>
       {/* <authContextProvider> */}
@@ -110,7 +113,11 @@ function App() {
                 <Route path="login" element={<Login />} />
                 <Route path="logout" element={<Logout />} />
                 <Route path="creer-un-compte" element={<Signup />} />
-                <Route path="profil" element={<Profile />} />
+                <Route
+                  path="ajouter-un-evenement"
+                  element={<Profile />}
+                  key={token}
+                />
 
                 <Route path="*" element={<NotFound />} />
 
