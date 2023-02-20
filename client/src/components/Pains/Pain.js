@@ -79,7 +79,6 @@ const Pain = () => {
                   return (
                     <Link
                       key={i}
-                      className="highlighted-term"
                       to={{
                         pathname: `lexique/#${part
                           .normalize("NFD")
@@ -117,13 +116,13 @@ const Pain = () => {
         <ul className="category-submenu">
           Ressources {name} :{" "}
           <li>
-            <Link to="tutos">Tutos</Link>
+            <Link to="*">Tutos</Link>
           </li>
           <li>
-            <Link to="articles">Articles</Link>
+            <Link to="*">Articles</Link>
           </li>
           <li>
-            <Link to="/">Shémas</Link>
+            <Link to="*">Shémas</Link>
           </li>
           <li>
             <Link to="lexique">Lexique</Link>
@@ -195,6 +194,8 @@ const Pain = () => {
               {pro.sexo}
             </>
           )}
+          <hr />
+          <h4>Bibliographie</h4>
         </div>
       </div>
     </>

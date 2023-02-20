@@ -77,10 +77,8 @@
 /*-----Separators-----*/
 
 @mixin hr {
-  content: "";
+  margin-top: 3rem;
   border: 1px solid $color1;
-  align-self: stretch;
-  border-radius: 1px;
 }
 
 /*-----Inputs-----*/

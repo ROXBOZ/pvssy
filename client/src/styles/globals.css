@@ -148,10 +148,8 @@ a:hover {
 }
 
 hr {
-  content: "";
+  margin-top: 3rem;
   border: 1px solid #f5733c;
-  align-self: stretch;
-  border-radius: 1px;
 }
 
 sup {
