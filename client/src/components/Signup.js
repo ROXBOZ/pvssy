@@ -96,7 +96,7 @@ const SignupForm = () => {
       )}
 
       <form className="grid-form">
-        <div className="user-type">
+        <div className="user-type flex-center">
           <span>
             <input
               className="form-check-input"
@@ -120,7 +120,7 @@ const SignupForm = () => {
             <label htmlFor="person">Personne</label>
           </span>
         </div>
-        <div className="user-name-label">
+        <div className="user-name-label flex-center">
           {userType === "association" ? (
             <label htmlFor="assoName">Nom de l’association</label>
           ) : (
@@ -146,7 +146,7 @@ const SignupForm = () => {
             />
           )}
         </div>
-        <div className="user-firstname-label">
+        <div className="user-firstname-label flex-center">
           {userType === "association" ? (
             ""
           ) : (
@@ -166,7 +166,7 @@ const SignupForm = () => {
             />
           )}
         </div>
-        <div className="user-email-label">
+        <div className="user-email-label flex-center">
           <label htmlFor="userEmail">Adresse Email</label>
         </div>
         <div className="user-email-input">
@@ -185,7 +185,7 @@ const SignupForm = () => {
             <span>L’adresse Email semble invalide</span>
           )}
         </div> */}
-        <div className="user-avatar-label">
+        <div className="user-avatar-label flex-center">
           <label htmlFor="avatar">
             {userType === "association"
               ? "Logo de l’association"
@@ -200,10 +200,10 @@ const SignupForm = () => {
             onChange={handleAttachImg}
           ></input>
         </div>
-        <div className="user-avatar-button">
+        <div className="user-avatar-button flex-center">
           <button onClick={submitImg}>choisir</button>
         </div>
-        <div className="user-password-label">
+        <div className="user-password-label flex-center">
           <label htmlFor="userPassword">Mot de passe</label>
         </div>
         <div className="user-password-input">
@@ -216,7 +216,7 @@ const SignupForm = () => {
           />
         </div>
         {/* FIXME */}
-        {/* <div className="user-password-requirements">
+        {/* <div className="user-password-requirements flex-center">
           {newUser.userPassword && newUser.userPassword.length < 6 && (
             <span>min. 6 charactères</span>
           )}

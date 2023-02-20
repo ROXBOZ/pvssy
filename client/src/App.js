@@ -34,6 +34,7 @@ import { EventsContextProvider } from "./contexts/eventsContext";
 import { TermsContextProvider } from "./contexts/termsContext";
 // utils
 import getToken from "./utils/getToken";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   const token = getToken();
@@ -113,9 +114,10 @@ function App() {
                 <Route path="login" element={<Login />} />
                 <Route path="logout" element={<Logout />} />
                 <Route path="creer-un-compte" element={<Signup />} />
+
                 <Route
-                  path="ajouter-un-evenement"
-                  element={<Profile />}
+                  path="proposer-un-evenement"
+                  element={<ProtectedRoute />}
                   key={token}
                 />
 

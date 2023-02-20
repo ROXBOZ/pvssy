@@ -1,10 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import getToken from "../utils/getToken";
+import { Link } from "react-router-dom";
+import { EventsContext } from "../contexts/eventsContext";
 
 const Profile = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [eventType, setEventType] = useState("offline");
+  const [eventEntry, setEventEntry] = useState("gratuite");
   const [error, setError] = useState(null);
+
+  // const for region dropdown
+  const { regions } = useContext(EventsContext);
+  const [value, setValue] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
 
   const getProfile = async () => {
     const token = getToken();
@@ -40,6 +50,46 @@ const Profile = () => {
     getProfile();
   }, []);
 
+  // Region Dropdown
+
+  const handleInputChange = (event) => {
+    const newValue = event.target.value;
+    setValue(newValue);
+
+    if (newValue.length === 0) {
+      setSuggestions([]);
+      setShowSuggestions(false);
+      return;
+    }
+
+    const matchingSuggestions = regions.filter((suggestion) =>
+      suggestion.toLowerCase().includes(newValue.toLowerCase())
+    );
+    setSuggestions(matchingSuggestions);
+    setShowSuggestions(matchingSuggestions.length > 0);
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setValue(suggestion);
+    setShowSuggestions(false);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSelectedSuggestionIndex(
+        (selectedSuggestionIndex + 1) % suggestions.length
+      );
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedSuggestionIndex(
+        (selectedSuggestionIndex - 1 + suggestions.length) % suggestions.length
+      );
+    } else if (e.key === "Enter" && selectedSuggestionIndex >= 0) {
+      handleSuggestionClick(suggestions[selectedSuggestionIndex]);
+    }
+  };
+
   return (
     <div>
       {userProfile && (
@@ -53,131 +103,288 @@ const Profile = () => {
             {userProfile.userName}
             <br />
             {userProfile.userEmail}
+            <br />
+            <span>éditeur·ice</span>
           </p>
         </div>
       )}
-      <h1>Ajouter un évènement</h1>
+      <h1>
+        Proposer un évènement<sup>prototype</sup>
+      </h1>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis amet
-        in reiciendis nobis dolorum ad facilis rem modi assumenda nesciunt
-        exercitationem ipsum totam, error dicta dolorem alias velit hic
-        corporis.
+        Nous examinons toutes les soumissions et ajoutons les évènements
+        approuvés à notre calendrier. Veuillez noter que nous ne pouvons pas
+        garantir la publication d'un événement qui aurait lieu moins de trois
+        jours après sa soumission.
       </p>
 
       <form className="grid-form">
-        <div className="event-title-label">
-          <label htmlFor="eventTitle">Titre</label>
-        </div>
-        <div className="event-title-input">
-          <input
-            name="eventTitle"
-            id="eventTitle"
-            type="text"
-            placeholder="Titre de l’évènement"
-          />
-        </div>
-        <div className="event-date-label">
-          <label htmlFor="eventDate">Date</label>
-        </div>
-        <div className="event-date-input">
-          <input
-            placeholder="Date de l’évènement"
-            id="eventDate"
-            type="date"
-            name="eventDate"
-          />
-        </div>
-        <div className="event-shortDef-label">
-          <label htmlFor="eventShortDef">En bref</label>
-        </div>
-        <div className="event-shortDef-input">
-          <textarea
-            name="event-shortDef"
-            id="eventShortDef"
-            placeholder="Veuillez entrer une définition de l'événement courte et concise de max. 60 mots."
-          />
-        </div>
-        <div className="event-longDef-label">
-          <label htmlFor="eventLongDef">En détails</label>
-        </div>
-        <div className="event-longDef-input">
-          <textarea
-            name="event-longDef"
-            id="eventLongDef"
-            rows="4"
-            cols="50"
-            placeholder="La définition devrait expliquer brièvement de quoi il s'agit, le public cible et les objectifs de l'événement. Vous pouvez également inclure d'autres informations pertinentes, telles que les sujets abordés ou les intervenant·e·s invité·e·s."
-          />
-        </div>
-        <div className="event-type-label">
-          <label htmlFor="eventType">Format</label>
-        </div>
-        <div className="user-type-input">
-          <span>
+        <h2>Formulaire à compléter</h2>
+        <div className="form-section">
+          <h3>Informations essentielles</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
+            dolore quibusdam quasi eum possimus et dolor facere quia totam.
+            Provident repellendus animi cumque inventore unde asperiores debitis
+            quo sit nemo!
+          </p>
+          <div className="event-title-label flex-center">
+            <label htmlFor="eventTitle">Titre *</label>
+          </div>
+          <div className="event-title-input">
             <input
-              className="form-check-input"
-              id="online"
-              type="radio"
-              name="eventType"
-              checked={eventType === "online"}
-              onChange={() => setEventType("online")}
+              name="eventTitle"
+              id="eventTitle"
+              type="text"
+              placeholder="Titre de l’évènement"
+              required
             />
-            <label htmlFor="online">Online</label>
-          </span>
-          <span>
+          </div>
+          <div className="event-date-label flex-center">
+            <label htmlFor="eventDate">Date *</label>
+          </div>
+          <div className="event-date-input">
             <input
-              className="form-check-input"
-              id="offline"
-              type="radio"
-              name="eventType"
-              checked={eventType === "offline"}
-              onChange={() => setEventType("offline")}
+              name="eventDate"
+              id="eventDate"
+              type="date"
+              placeholder="Date de l’évènement"
+              required
             />
-            <label htmlFor="offline">Sur place</label>
-          </span>
+          </div>
+          <div className="event-shortDef-label flex-center">
+            <label htmlFor="eventShortDef">En bref *</label>
+          </div>
+          <div className="event-shortDef-input">
+            <textarea
+              name="eventShortDef"
+              id="eventShortDef"
+              placeholder="Veuillez entrer une définition de l'événement courte et concise de max. 60 mots."
+              required
+            />
+          </div>
+          <div className="event-longDef-label flex-center">
+            <label htmlFor="eventLongDef">En détails</label>
+          </div>
+          <div className="event-longDef-input">
+            <textarea
+              name="eventLongDef"
+              id="eventLongDef"
+              rows="5"
+              placeholder="La définition en détails n’est pas obligatoire mais fortement recommandée. Elle devrait expliquer brièvement de quoi il s'agit, le public cible et les objectifs de l'événement. Vous pouvez également inclure d'autres informations pertinentes, telles que les sujets abordés ou les intervenant·e·s invité·e·s."
+            />
+          </div>
         </div>
-        {eventType === "offline" && (
-          <>
-            <div className="event-address-label">
-              <label htmlFor="eventAddress">Adresse</label>
-            </div>
-            <div className="event-address-input">
+        <div className="form-section">
+          <h3>Format</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam
+            numquam ut accusamus aliquid quas, a voluptatem quam reiciendis
+            voluptatibus expedita aliquam rem magni doloribus tempore corporis
+            culpa deserunt repudiandae iusto.
+          </p>
+          <div className="event-type-label flex-center">
+            <label htmlFor="eventType">Format *</label>
+          </div>
+          <div className="user-type-input">
+            <span>
               <input
-                name="eventAddress"
-                id="eventAddress"
-                type="text"
-                placeholder="Rue, numéro"
+                className="form-check-input"
+                id="online"
+                type="radio"
+                name="eventType"
+                checked={eventType === "online"}
+                onChange={() => setEventType("online")}
               />
-            </div>
-            <div className="event-city-label">
-              <label htmlFor="eventCity">Lieu</label>
-            </div>
-            <div className="event-city-input">
+              <label htmlFor="online">Online</label>
+            </span>
+            <span>
               <input
-                name="eventCity"
-                id="eventCity"
-                type="text"
-                placeholder="ZIP, Lieu"
+                className="form-check-input"
+                id="offline"
+                type="radio"
+                name="eventType"
+                checked={eventType === "offline"}
+                onChange={() => setEventType("offline")}
               />
-            </div>
-          </>
-        )}
-        {eventType === "online" && (
-          <>
-            <div className="event-onlineMeeting-label">
-              <label htmlFor="onlineMeeting">Lien</label>
-            </div>
-            <div className="event-onlineMeeting-input">
+              <label htmlFor="offline">Sur place</label>
+            </span>
+          </div>
+          {eventType === "offline" && (
+            <>
+              <div className="event-address-label flex-center">
+                <label htmlFor="eventAddress">Adresse *</label>
+              </div>
+              <div className="event-address-input">
+                <input
+                  name="eventAddress"
+                  id="eventAddress"
+                  type="text"
+                  placeholder="Rue, numéro"
+                  required
+                />
+              </div>
+              <div className="event-city-label flex-center">
+                <label htmlFor="eventCity">Lieu *</label>
+              </div>
+              <div className="event-city-input">
+                <input
+                  name="eventCity"
+                  id="eventCity"
+                  type="text"
+                  placeholder="ZIP, Lieu"
+                  required
+                />
+              </div>
+              <div className="event-region-label flex-center">
+                <label htmlFor="eventRegion">Région *</label>
+              </div>
+              <div className="event-region-input">
+                <input
+                  name="eventRegion"
+                  id="eventRegion"
+                  type="text"
+                  placeholder="Région"
+                  value={value}
+                  onChange={handleInputChange}
+                  onKeyDown={handleKeyDown}
+                  required
+                />
+              </div>
+              {showSuggestions && (
+                <ul className="suggestions form-dropdown-suggestions">
+                  {suggestions.map((suggestion, index) => (
+                    <li
+                      key={index}
+                      className={
+                        index === selectedSuggestionIndex
+                          ? "suggestion-active"
+                          : ""
+                      }
+                      onClick={() => handleSuggestionClick(suggestion)}
+                    >
+                      {suggestion}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </>
+          )}
+          {eventType === "online" && (
+            <>
+              <div className="event-onlineMeeting-label flex-center">
+                <label htmlFor="onlineMeeting">Lien *</label>
+              </div>
+              <div className="event-onlineMeeting-input">
+                <input
+                  name="onlineMeeting"
+                  id="onlineMeeting"
+                  type="text"
+                  placeholder="https://..."
+                  required
+                />
+              </div>
+            </>
+          )}
+        </div>
+        <div className="form-section">
+          <h3>Réservations</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
+            accusamus officia quae nisi. Dolorem nihil, sapiente corrupti nulla
+            omnis veritatis, asperiores totam quisquam a maxime error quibusdam
+            sit aliquam accusamus!
+          </p>
+          <div className="event-tel-label flex-center">
+            <label htmlFor="eventTel">Téléphone</label>
+          </div>
+          <div className="event-tel-input">
+            <input
+              name="eventTel"
+              id="eventTel"
+              type="tel"
+              pattern="\+\d{2}\(\d\)\d{2}\s\d{3}\s\d{2}\s\d{2}"
+              placeholder="+41(0)..."
+            />
+          </div>
+          <div className="event-email-label flex-center">
+            <label htmlFor="eventTel">Adresse Email</label>
+          </div>
+          <div className="event-email-input">
+            <input
+              name="email"
+              id="email"
+              type="text"
+              placeholder="info@asso..."
+            />
+          </div>
+        </div>
+        <div className="form-section">
+          <h3>Entrées</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel itaque
+            iusto aliquid distinctio neque? Impedit, ullam cum nobis,
+            consectetur, harum rem sunt aperiam hic magni ratione soluta
+            delectus. Natus, aliquam.
+          </p>
+          <div className="event-entry-label flex-center">
+            <label htmlFor="eventEntry">Participation *</label>
+          </div>
+          <div className="event-entry-input flex-center">
+            <span>
               <input
-                name="onlineMeeting"
-                id="onlineMeeting"
-                type="text"
-                placeholder="https://..."
+                className="form-check-input"
+                id="freeEntry"
+                type="radio"
+                name="eventEntry"
+                checked={eventEntry === "gratuite"}
+                onChange={() => setEventEntry("gratuite")}
               />
-            </div>
-          </>
-        )}
+              <label htmlFor="admissionFee">gratuite</label>
+              <input
+                className="form-check-input"
+                id="admissionFee"
+                type="radio"
+                name="eventEntry"
+                checked={eventEntry === "payante"}
+                onChange={() => setEventEntry("payante")}
+              />
+              <label htmlFor="online">payante</label>
+            </span>
+          </div>
+          {eventEntry === "payante" && (
+            <>
+              <div className="event-admissionFee-label flex-center">
+                <label htmlFor="admissionFee">Prix d’entrée</label>
+              </div>
+              <div className="event-admissionFee-input">
+                <input
+                  name="admissionFee"
+                  id="admissionFee"
+                  type="number"
+                  step="0.01"
+                  min="0"
+                  max="999.99"
+                  placeholder="10.5"
+                />
+              </div>
+            </>
+          )}
+        </div>
+        <div className="conditions-generales">
+          <input
+            className="form-check-input"
+            id="conditionsCheckbox"
+            type="checkbox"
+            required
+          />
+          <label htmlFor="conditionsCheckbox">
+            J’ai lu et j’accepte les{" "}
+            <Link to="/conditions-generales ">conditions générales</Link>.
+          </label>
+        </div>
       </form>
+      <button>soumettre l’évènement</button>
     </div>
   );
 };

@@ -33,7 +33,7 @@ function LoginForm() {
       if (result.token) {
         localStorage.setItem("token", result.token);
         setLoginUser(result.user);
-        redirectTo("/ajouter-un-evenement");
+        redirectTo("/proposer-un-evenement");
       }
     } catch (error) {
       console.log("error", error);

@@ -77,11 +77,17 @@ const Agenda = () => {
         <div className="heading">
           <p className="pretitle">Pvssy Connect</p>
           <h1>
-            Agenda d'évènements collaboratif pour organiser des réunions et des
-            activités blablablabla.
+            Agenda collaboratif<sup>prototype</sup>
           </h1>
           <p>
-            Tu as un évènement à publier ? <Link to="/login">Connecte-toi</Link>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
+            accusantium optio dolore dolorum suscipit ducimus neque quaerat!
+            Quas repellendus laudantium, excepturi iusto architecto neque natus
+            adipisci, eligendi nesciunt eos odit!
+          </p>
+          <p>
+            Tu as un évènement à proposer ?{" "}
+            <Link to="/login">Connecte-toi</Link>.
           </p>
         </div>
 

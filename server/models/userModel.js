@@ -24,6 +24,11 @@ const userSchema = new mongoose.Schema({
   userAvatar: {
     type: String,
   },
+
+  userIsAdmin: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 const userModel = mongoose.model("user", userSchema);

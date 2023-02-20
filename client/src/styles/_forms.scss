@@ -7,7 +7,6 @@
 
   .filter {
     display: flex;
-    // flex-direction: row;
     align-items: top;
     gap: 1rem;
   }
@@ -80,7 +79,8 @@
 form {
   margin: 2em 0;
 
-  &.grid-form {
+  &.grid-form,
+  .form-section {
     display: grid;
     gap: 1em;
     grid-template-columns: repeat(4, max-content);
@@ -90,6 +90,8 @@ form {
       input[type="password"],
       input[type="file"],
       input[type="date"],
+      input[type="number"],
+      input[type="tel"],
       textarea {
         @include input;
       }
@@ -97,55 +99,75 @@ form {
 
     .user-type {
       grid-column: 1/5;
-      display: flex;
-      gap: 2em;
     }
     .user-name-label {
       grid-column: 1/2;
-      display: flex;
-      align-items: center;
     }
     .user-name-input {
       grid-column: 2/3;
     }
     .user-firstname-label {
-      display: flex;
-      align-items: center;
       grid-column: 3/4;
     }
-    .user-email-label {
-      display: flex;
-      align-items: center;
-    }
-    .user-avatar-label {
-      display: flex;
-      align-items: center;
-      grid-column: 1/2;
-    }
-    .user-avatar-button {
-      display: flex;
-      align-items: center;
-    }
-    .user-password-label {
-      display: flex;
-      align-items: center;
+    .user-avatar-label,
+    .user-password-label,
+    .submit-button {
       grid-column: 1/2;
     }
     .user-password-requirements {
-      display: flex;
-      align-items: center;
       grid-column: 3/5;
     }
     .conditions-generales {
       grid-column: 1/5;
     }
-    .submit-button {
-      grid-column: 1/2;
+
+    h2 {
+      border: 0;
+      clip: rect(1px, 1px, 1px, 1px);
+      clip-path: inset(50%);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute !important;
+      width: 1px;
+      word-wrap: normal !important;
+      word-break: normal;
     }
-    //
-    .event-title-label {
+    .form-section {
+      padding: $padding-sm $padding-sm;
+      background-color: lighten($color3, 40%);
+      border-radius: $border-radius;
+      grid-column: 1/5;
+      border: $border-solid lighten($color3, 20%);
+
+      h3 {
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        grid-column: 1/5;
+      }
+
+      p {
+        grid-column: 1/5;
+      }
+    }
+
+    .flex-center {
       display: flex;
       align-items: center;
+      gap: 2em;
+    }
+
+    .event-title-label,
+    .event-shortDef-label,
+    .event-longDef-label,
+    .event-address-label,
+    .event-type-label,
+    .event-onlineMeeting-label,
+    .event-region-label,
+    .event-tel-label,
+    .event-entry-label {
       grid-column: 1/2;
     }
 
@@ -153,36 +175,31 @@ form {
       grid-column: 2/3;
     }
     .event-date-label {
-      display: flex;
-      align-items: center;
       grid-column: 3/4;
     }
     .event-date-input {
       grid-column: 4/5;
+      input {
+        box-sizing: border-box;
+        width: calc(100% - 1px);
+      }
     }
 
-    .event-shortDef-label,
-    .event-longDef-label,
-    .event-address-label,
-    .event-onlineMeeting-label {
-      display: flex;
-      align-items: center;
-      grid-column: 1/2;
-    }
     .event-shortDef-input,
     .event-longDef-input {
       grid-column: 2/5;
       display: flex;
-      padding: 0;
       textarea {
         box-sizing: border-box;
-        width: calc(100% - 2px);
-        grid-column: 2/5;
+        width: calc(100% - 1px);
       }
     }
-    .event-city-label {
-      display: flex;
-      align-items: center;
+
+    .form-dropdown-suggestions {
+      grid-column: 2/5;
+      li {
+        padding-left: 0 !important;
+      }
     }
   }
 }

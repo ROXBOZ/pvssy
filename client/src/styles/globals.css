@@ -59,7 +59,7 @@ header nav ul a.active {
 header nav ul a.btn {
   padding: 0.5em 1em;
   border-radius: 0.25em;
-  border: 2px solid;
+  border: 1.5px solid;
   background-color: #fffdf8;
   font-size: 18px;
   font-family: "ESRebond";
@@ -67,13 +67,13 @@ header nav ul a.btn {
 }
 header nav ul a.btn:hover {
   background-color: #ffe9fa;
-  border: transparent 2px solid;
+  border: transparent 1.5px solid;
 }
 header nav ul a.btn:disabled {
   background-color: #fffdf8;
   opacity: 60%;
   cursor: auto;
-  border: 2px solid;
+  border: 1.5px solid;
 }
 header nav ul li {
   list-style: none;
@@ -82,17 +82,17 @@ header nav ul li {
 }
 header nav ul li a.user-icon-link {
   padding: 0;
-  border: 2px solid transparent;
+  border: 1.5px solid transparent;
   height: -moz-fit-content;
   height: fit-content;
   display: flex;
   border-radius: 50%;
 }
 header nav ul li a.user-icon-link:hover {
-  border: 2px solid transparent;
+  border: 1.5px solid transparent;
 }
 header nav ul li .user-icon {
-  border: 2px solid;
+  border: 1.5px solid;
   padding: 0.5em;
   border-radius: 50%;
   aspect-ratio: 1/1;
@@ -159,7 +159,7 @@ p.subtitle {
 a {
   text-decoration: none;
   color: #9637f0;
-  border-bottom: 2px solid;
+  border-bottom: 1.5px solid;
 }
 a.simple-link {
   width: -moz-fit-content;
@@ -167,11 +167,6 @@ a.simple-link {
 }
 a:hover {
   border: none;
-}
-
-hr {
-  margin-top: 3rem;
-  border: 1px solid #f5733c;
 }
 
 sup {
@@ -296,7 +291,7 @@ h1,
 }
 .card-grid .link-card .card {
   border: none;
-  border: 2px solid #9637f0;
+  border: 1.5px solid #9637f0;
   border-radius: 0.25em;
   padding: 50px;
   display: flex;
@@ -320,7 +315,7 @@ h1,
 button {
   padding: 0.5em 1em;
   border-radius: 0.25em;
-  border: 2px solid;
+  border: 1.5px solid;
   background-color: #fffdf8;
   font-size: 18px;
   font-family: "ESRebond";
@@ -328,13 +323,13 @@ button {
 }
 button:hover {
   background-color: #ffe9fa;
-  border: transparent 2px solid;
+  border: transparent 1.5px solid;
 }
 button:disabled {
   background-color: #fffdf8;
   opacity: 60%;
   cursor: auto;
-  border: 2px solid;
+  border: 1.5px solid;
 }
 
 .button-countdown {
@@ -395,7 +390,7 @@ button:disabled {
 
 .filter input,
 .filter-dropdown input {
-  border: 2px solid #9637f0;
+  border: 1.5px solid #9637f0;
   border-radius: 0.25em;
   font-family: "ESRebond";
   font-size: 100%;
@@ -406,7 +401,7 @@ button:disabled {
 .filter input:focus,
 .filter-dropdown input:focus {
   outline: none;
-  border: 2px solid #c896f7;
+  border: 1.5px solid #c896f7;
 }
 
 .no-suggestions {
@@ -440,7 +435,8 @@ button:disabled {
 form {
   margin: 2em 0;
 }
-form.grid-form {
+form.grid-form,
+form .form-section {
   display: grid;
   gap: 1em;
   grid-template-columns: repeat(4, max-content);
@@ -449,8 +445,17 @@ form.grid-form div input[type=text],
 form.grid-form div input[type=password],
 form.grid-form div input[type=file],
 form.grid-form div input[type=date],
-form.grid-form div textarea {
-  border: 2px solid #9637f0;
+form.grid-form div input[type=number],
+form.grid-form div input[type=tel],
+form.grid-form div textarea,
+form .form-section div input[type=text],
+form .form-section div input[type=password],
+form .form-section div input[type=file],
+form .form-section div input[type=date],
+form .form-section div input[type=number],
+form .form-section div input[type=tel],
+form .form-section div textarea {
+  border: 1.5px solid #9637f0;
   border-radius: 0.25em;
   font-family: "ESRebond";
   font-size: 100%;
@@ -462,96 +467,149 @@ form.grid-form div input[type=text]:focus,
 form.grid-form div input[type=password]:focus,
 form.grid-form div input[type=file]:focus,
 form.grid-form div input[type=date]:focus,
-form.grid-form div textarea:focus {
+form.grid-form div input[type=number]:focus,
+form.grid-form div input[type=tel]:focus,
+form.grid-form div textarea:focus,
+form .form-section div input[type=text]:focus,
+form .form-section div input[type=password]:focus,
+form .form-section div input[type=file]:focus,
+form .form-section div input[type=date]:focus,
+form .form-section div input[type=number]:focus,
+form .form-section div input[type=tel]:focus,
+form .form-section div textarea:focus {
   outline: none;
-  border: 2px solid #c896f7;
+  border: 1.5px solid #c896f7;
 }
-form.grid-form .user-type {
+form.grid-form .user-type,
+form .form-section .user-type {
   grid-column: 1/5;
-  display: flex;
-  gap: 2em;
 }
-form.grid-form .user-name-label {
+form.grid-form .user-name-label,
+form .form-section .user-name-label {
   grid-column: 1/2;
-  display: flex;
-  align-items: center;
 }
-form.grid-form .user-name-input {
+form.grid-form .user-name-input,
+form .form-section .user-name-input {
   grid-column: 2/3;
 }
-form.grid-form .user-firstname-label {
-  display: flex;
-  align-items: center;
+form.grid-form .user-firstname-label,
+form .form-section .user-firstname-label {
   grid-column: 3/4;
 }
-form.grid-form .user-email-label {
-  display: flex;
-  align-items: center;
-}
-form.grid-form .user-avatar-label {
-  display: flex;
-  align-items: center;
+form.grid-form .user-avatar-label,
+form.grid-form .user-password-label,
+form.grid-form .submit-button,
+form .form-section .user-avatar-label,
+form .form-section .user-password-label,
+form .form-section .submit-button {
   grid-column: 1/2;
 }
-form.grid-form .user-avatar-button {
-  display: flex;
-  align-items: center;
-}
-form.grid-form .user-password-label {
-  display: flex;
-  align-items: center;
-  grid-column: 1/2;
-}
-form.grid-form .user-password-requirements {
-  display: flex;
-  align-items: center;
+form.grid-form .user-password-requirements,
+form .form-section .user-password-requirements {
   grid-column: 3/5;
 }
-form.grid-form .conditions-generales {
+form.grid-form .conditions-generales,
+form .form-section .conditions-generales {
   grid-column: 1/5;
 }
-form.grid-form .submit-button {
-  grid-column: 1/2;
+form.grid-form h2,
+form .form-section h2 {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  word-break: normal;
 }
-form.grid-form .event-title-label {
+form.grid-form .form-section,
+form .form-section .form-section {
+  padding: 50px 50px;
+  background-color: #faf5fe;
+  border-radius: 0.25em;
+  grid-column: 1/5;
+  border: 1.5px solid #c896f7;
+}
+form.grid-form .form-section h3,
+form .form-section .form-section h3 {
+  margin-top: 0;
   display: flex;
   align-items: center;
-  grid-column: 1/2;
+  grid-column: 1/5;
 }
-form.grid-form .event-title-input {
-  grid-column: 2/3;
+form.grid-form .form-section p,
+form .form-section .form-section p {
+  grid-column: 1/5;
 }
-form.grid-form .event-date-label {
+form.grid-form .flex-center,
+form .form-section .flex-center {
   display: flex;
   align-items: center;
-  grid-column: 3/4;
+  gap: 2em;
 }
-form.grid-form .event-date-input {
-  grid-column: 4/5;
-}
+form.grid-form .event-title-label,
 form.grid-form .event-shortDef-label,
 form.grid-form .event-longDef-label,
 form.grid-form .event-address-label,
-form.grid-form .event-onlineMeeting-label {
-  display: flex;
-  align-items: center;
+form.grid-form .event-type-label,
+form.grid-form .event-onlineMeeting-label,
+form.grid-form .event-region-label,
+form.grid-form .event-tel-label,
+form.grid-form .event-entry-label,
+form .form-section .event-title-label,
+form .form-section .event-shortDef-label,
+form .form-section .event-longDef-label,
+form .form-section .event-address-label,
+form .form-section .event-type-label,
+form .form-section .event-onlineMeeting-label,
+form .form-section .event-region-label,
+form .form-section .event-tel-label,
+form .form-section .event-entry-label {
   grid-column: 1/2;
 }
+form.grid-form .event-title-input,
+form .form-section .event-title-input {
+  grid-column: 2/3;
+}
+form.grid-form .event-date-label,
+form .form-section .event-date-label {
+  grid-column: 3/4;
+}
+form.grid-form .event-date-input,
+form .form-section .event-date-input {
+  grid-column: 4/5;
+}
+form.grid-form .event-date-input input,
+form .form-section .event-date-input input {
+  box-sizing: border-box;
+  width: calc(100% - 1px);
+}
 form.grid-form .event-shortDef-input,
-form.grid-form .event-longDef-input {
+form.grid-form .event-longDef-input,
+form .form-section .event-shortDef-input,
+form .form-section .event-longDef-input {
   grid-column: 2/5;
   display: flex;
-  padding: 0;
 }
 form.grid-form .event-shortDef-input textarea,
-form.grid-form .event-longDef-input textarea {
+form.grid-form .event-longDef-input textarea,
+form .form-section .event-shortDef-input textarea,
+form .form-section .event-longDef-input textarea {
   box-sizing: border-box;
-  width: calc(100% - 2px);
+  width: calc(100% - 1px);
+}
+form.grid-form .form-dropdown-suggestions,
+form .form-section .form-dropdown-suggestions {
   grid-column: 2/5;
 }
-form.grid-form .event-city-label {
-  display: flex;
-  align-items: center;
+form.grid-form .form-dropdown-suggestions li,
+form .form-section .form-dropdown-suggestions li {
+  padding-left: 0 !important;
 }
 
 .user-avatar {
@@ -645,7 +703,7 @@ form.grid-form .event-city-label {
   outline: none;
 }
 *:focus {
-  border: 2px solid #fcdbce;
+  border: 1.5px solid #fcdbce;
 }
 *::-moz-selection {
   color: #fffdf8;

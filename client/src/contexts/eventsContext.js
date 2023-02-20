@@ -39,15 +39,6 @@ export const EventsContextProvider = (props) => {
     }
   };
 
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const response = await fetch(baseURL);
-  //     const result = await response.json();
-  //     console.log("result", result);
-  //   };
-  //   getData();
-  // }, []);
-
   return (
     <EventsContext.Provider
       value={{

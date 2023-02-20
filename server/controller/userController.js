@@ -23,8 +23,6 @@ const imageUpload = async (req, res) => {
 };
 
 const addUser = async (req, res) => {
-  console.log("req.body", req.body);
-
   try {
     const existingUser = await userModel.findOne({
       userEmail: req.body.userEmail,
@@ -33,16 +31,16 @@ const addUser = async (req, res) => {
 
     if (existingUser) {
       res.status(500).json({
-        msg: "ups, email already in use....you might have an account and forgot",
+        msg: "Email already in use",
       });
     } else {
       const hashedPassword = await passwordEncryption(req.body.userPassword);
-      console.log("hashedPassword", hashedPassword);
       const newUser = new userModel({
         userName: req.body.userName,
         userEmail: req.body.userEmail,
         userPassword: hashedPassword,
         userAvatar: req.body.userAvatar,
+        userIsAdmin: req.user.userIsAdmin,
       });
       console.log("newUser", newUser);
       try {
@@ -53,6 +51,7 @@ const addUser = async (req, res) => {
             userName: savedUser.userName,
             userEmail: savedUser.userEmail,
             userAvatar: savedUser.userAvatar,
+            userIsAdmin: savedUser.userIsAdmin,
           },
         });
       } catch (error) {
@@ -104,12 +103,6 @@ const logUser = async (req, res) => {
 };
 
 const getProfile = async (req, res) => {
-  // REVIEW
-  // res.setHeader("Access-Control-Allow-Origin", "*");
-  // res.setHeader("Access-Control-Allow-Methods", "*");
-  // res.setHeader("Access-Control-Allow-Headers", "*");
-  // res.setHeader("Access-Control-Allow-Credentials", "*");
-
   console.log("req arrived");
   res.status(200).json({
     user: {

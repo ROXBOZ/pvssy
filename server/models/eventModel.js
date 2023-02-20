@@ -50,19 +50,19 @@ const eventSchema = new mongoose.Schema({
     type: Number,
   },
 
-  imgCover: {
-    type: String,
-    required: true,
-  },
+  // imgCover: {
+  //   type: String,
+  //   required: true,
+  // },
 
-  imgCaption: {
-    type: String,
-    required: true,
-  },
+  // imgCaption: {
+  //   type: String,
+  //   required: true,
+  // },
 
-  imgCredits: {
-    type: String,
-  },
+  // imgCredits: {
+  //   type: String,
+  // },
 });
 
 const eventModel = mongoose.model("event", eventSchema);

@@ -55,7 +55,7 @@ const Header = () => {
             {isLoggedIn && (
               <Link
                 className="user-icon-link"
-                to="/ajouter-un-evenement"
+                to="/proposer-un-evenement"
                 aria-label="profil"
               >
                 <FontAwesomeIcon
