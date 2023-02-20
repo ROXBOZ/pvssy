@@ -2,10 +2,12 @@
   display: flex;
   gap: 2em;
   align-items: center;
-  padding-bottom: $padding-sm;
+  padding: $padding-sm 0;
 
   .userProfile-avatar {
     height: 10rem;
+    width: 10rem;
+    object-fit: cover;
     border-radius: 50%;
   }
 }

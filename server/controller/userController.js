@@ -40,9 +40,8 @@ const addUser = async (req, res) => {
         userEmail: req.body.userEmail,
         userPassword: hashedPassword,
         userAvatar: req.body.userAvatar,
-        userIsAdmin: req.user.userIsAdmin,
+        userIsAdmin: req.body.userIsAdmin,
       });
-      console.log("newUser", newUser);
       try {
         const savedUser = await newUser.save();
         res.status(201).json({

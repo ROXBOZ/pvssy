@@ -100,7 +100,8 @@ form {
     .user-type {
       grid-column: 1/5;
     }
-    .user-name-label {
+    .user-name-label,
+    .user-email-label {
       grid-column: 1/2;
     }
     .user-name-input {

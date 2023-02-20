@@ -36,6 +36,7 @@ const SignupForm = () => {
   const handleInputChange = (e) => {
     setNewUser({ ...newUser, [e.target.name]: e.target.value }); // computed property names
   };
+  console.log("newUser.userName", newUser.userName);
 
   const signup = async () => {
     const myHeaders = new Headers();
@@ -124,7 +125,7 @@ const SignupForm = () => {
           {userType === "association" ? (
             <label htmlFor="assoName">Nom de l’association</label>
           ) : (
-            <label htmlFor="userName">Nom</label>
+            <label htmlFor="userName">Prénom</label>
           )}
         </div>
         <div className="user-name-input">
@@ -140,28 +141,8 @@ const SignupForm = () => {
             <input
               id="userName"
               type="text"
-              placeholder="Nom"
-              name="userName"
-              onChange={handleInputChange}
-            />
-          )}
-        </div>
-        <div className="user-firstname-label flex-center">
-          {userType === "association" ? (
-            ""
-          ) : (
-            <label htmlFor="userFirstname">Prénom</label>
-          )}
-        </div>
-        <div className="user-firstname-input">
-          {userType === "association" ? (
-            ""
-          ) : (
-            <input
-              id="userFirstname"
-              type="text"
               placeholder="Prénom"
-              name="userFirstname"
+              name="userName"
               onChange={handleInputChange}
             />
           )}

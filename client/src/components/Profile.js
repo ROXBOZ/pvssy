@@ -38,6 +38,7 @@ const Profile = () => {
         userName: result.user.userName,
         userEmail: result.user.userEmail,
         userAvatar: result.user.userAvatar,
+        userIsAdmin: result.user.userIsAdmin,
       });
       setError(null);
     } catch (error) {
@@ -104,7 +105,12 @@ const Profile = () => {
             <br />
             {userProfile.userEmail}
             <br />
-            <span>éditeur·ice</span>
+            {console.log("userProfile.userIsAdmin", userProfile.userIsAdmin)}
+            {userProfile.userIsAdmin ? (
+              <span>administrateur·ice</span>
+            ) : (
+              <span>éditeur·ice</span>
+            )}
           </p>
         </div>
       )}

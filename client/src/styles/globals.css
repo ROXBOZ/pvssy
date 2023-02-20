@@ -485,7 +485,9 @@ form .form-section .user-type {
   grid-column: 1/5;
 }
 form.grid-form .user-name-label,
-form .form-section .user-name-label {
+form.grid-form .user-email-label,
+form .form-section .user-name-label,
+form .form-section .user-email-label {
   grid-column: 1/2;
 }
 form.grid-form .user-name-input,
@@ -692,10 +694,13 @@ form .form-section .form-dropdown-suggestions li {
   display: flex;
   gap: 2em;
   align-items: center;
-  padding-bottom: 50px;
+  padding: 50px 0;
 }
 .userProfile-info .userProfile-avatar {
   height: 10rem;
+  width: 10rem;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
 }
 
