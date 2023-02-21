@@ -73,7 +73,7 @@ const Pain = () => {
         if (matches) {
           const parts = p.split(regex);
           return (
-            <p key={index}>
+            <span key={index}>
               {parts.map((part, i) => {
                 if (matches.includes(part)) {
                   return (
@@ -94,7 +94,7 @@ const Pain = () => {
                   return <span key={i}>{part}</span>;
                 }
               })}
-            </p>
+            </span>
           );
         } else {
           return (

@@ -23,6 +23,7 @@ const imageUpload = async (req, res) => {
 };
 
 const addUser = async (req, res) => {
+  console.log("req.body", req.body);
   try {
     const existingUser = await userModel.findOne({
       userEmail: req.body.userEmail,
@@ -108,6 +109,7 @@ const getProfile = async (req, res) => {
       userName: req.user.userName,
       userEmail: req.user.userEmail,
       userAvatar: req.user.userAvatar,
+      userIsAdmin: req.user.userIsAdmin,
     },
   });
 };

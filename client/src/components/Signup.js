@@ -42,7 +42,8 @@ const SignupForm = () => {
   // console.log("newUser.userAvatar", newUser.userAvatar);
   // console.log("newUser.userIsadmin", newUser.userIsadmin);
 
-  const signup = async () => {
+  const signup = async (e) => {
+    e.preventDefault();
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -55,6 +56,7 @@ const SignupForm = () => {
         : "https://res.cloudinary.com/dkyialww7/image/upload/v1676473404/pvssy-avatar/default-avatar_hffziv.jpg",
       userIsAdmin: false,
     });
+    console.log("raw", raw);
 
     const requestOptions = {
       method: "POST",

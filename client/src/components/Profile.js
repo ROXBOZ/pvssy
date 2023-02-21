@@ -17,7 +17,6 @@ const Profile = () => {
 
   const getProfile = async () => {
     const token = getToken();
-    // console.log("token", token);
     const myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${token}`);
 
@@ -32,7 +31,6 @@ const Profile = () => {
         requestOptions
       );
       const result = await response.json();
-      console.log("result!!", result);
 
       setUserProfile({
         userName: result.user.userName,
@@ -52,9 +50,6 @@ const Profile = () => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value }); // computed property names
   };
 
-  console.log("newEvent", newEvent);
-  console.log("eventType", eventType);
-
   // FOR ADMIN users
   const addEvent = async () => {
     const myHeaders = new Headers();
@@ -62,19 +57,13 @@ const Profile = () => {
 
     const raw = JSON.stringify({
       title: newEvent.eventTitle,
-      date: newEvent.eventDate, // DEAL WITH FORMAT
+      date: newEvent.eventDateTime,
       shortDef: newEvent.eventShortDef,
       longDef: newEvent.eventLongDef,
-
-      // if(eventType == "online") {
-      //   online: true,
-      //   onlineMeeting: newEvent.onlineMeeting,
-      // } else {
-      //   online: false,
-      //   address: newEvent.eventAddress,
-      //  city: newEvent.eventCity,
-      // },
-
+      online: eventType === "online" ? true : false,
+      onlineMeeting: eventType === "online" ? newEvent.onlineMeeting : null,
+      address: eventType === "online" ? null : newEvent.eventAddress,
+      city: eventType === "online" ? null : newEvent.eventCity,
       email: newEvent.eventEmail,
       tel: newEvent.eventTel,
       entryFee: newEvent.admissionFee,
@@ -195,14 +184,13 @@ const Profile = () => {
             />
           </div>
           <div className="event-date-label flex-center">
-            <label htmlFor="eventDate">Date *</label>
+            <label htmlFor="eventDate">Date et heure *</label>
           </div>
           <div className="event-date-input">
             <input
-              name="eventDate"
-              id="eventDate"
-              type="date"
-              placeholder="Date de l’évènement"
+              name="eventDateTime"
+              id="eventDateTime"
+              type="datetime-local"
               onChange={handleInputChange}
               required
             />
@@ -447,7 +435,7 @@ const Profile = () => {
           </label>
         </div>
       </form>
-      <button>soumettre l’évènement</button>
+      <button onClick={addEvent}>soumettre l’évènement</button>
     </div>
   );
 };

@@ -6,26 +6,28 @@ import Breadcrumbs from "./Breadcrumbs";
 import getToken from "../utils/getToken";
 
 const Header = () => {
-  const [token, setToken] = useState(null);
+  // const [token, setToken] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // useEffect(() => {
+  //   let storedToken = getToken();
+  //   setToken(storedToken);
+  //   // console.log("token, 1st useEffect", token);
+  // }, []);
 
   useEffect(() => {
     let storedToken = getToken();
-    setToken(storedToken);
-    // console.log("token, 1st useEffect", token);
-  }, []);
 
-  useEffect(() => {
-    if (token) {
+    if (storedToken) {
       setIsLoggedIn(true);
       // console.log("token, 2nd useEffect", token);
-      // console.log("isLoggedIn", isLoggedIn);
+      console.log("isLoggedIn", isLoggedIn);
     } else {
       setIsLoggedIn(false);
       // console.log("token, 2nd useEffect", token);
-      // console.log("isLoggedIn", isLoggedIn);
+      console.log("isLoggedIn", isLoggedIn);
     }
-  }, [token]);
+  }, []);
 
   return (
     <header>
