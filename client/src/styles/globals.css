@@ -357,6 +357,10 @@ button:disabled {
   display: flex;
   gap: 1em;
 }
+.action-container .action-button.active {
+  border: transparent;
+  background-color: #faf5fe;
+}
 
 .filter-dashboard {
   padding: 50px 0;

@@ -27,9 +27,10 @@ button {
   display: flex;
   gap: 1em;
 
-  // .action-button {
-  //   &:active {
-  //     background-color: red;
-  //   }
-  // }
+  .action-button {
+    &.active {
+      border: transparent;
+      background-color: lighten($color3, 40%);
+    }
+  }
 }

@@ -5,9 +5,11 @@ import getToken from "../utils/getToken";
 
 export const AuthContext = createContext();
 export const AuthContextProvider = (props) => {
+  //// super confusing, there is also logginUser on Login.js
   const [userProfile, setUserProfile] = useState(null);
   const [user, setUser] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const [token, setToken] = useState(getToken());
   const [, setError] = useState(null);
 

@@ -9,6 +9,8 @@ const Profile = () => {
   const [showModifyEvent, setShowModifyEvent] = useState(false);
   const [showDeleteEvent, setShowDeleteEvent] = useState(false);
 
+  const [activeButton, setActiveButton] = useState(null);
+
   const handleEventClick = (eventType) => {
     switch (eventType) {
       case "add":
@@ -31,6 +33,11 @@ const Profile = () => {
         setShowModifyEvent(false);
         setShowDeleteEvent(false);
     }
+    setActiveButton(eventType);
+  };
+
+  const isActive = (buttonType) => {
+    return activeButton === buttonType ? "active" : "";
   };
 
   return (
@@ -39,7 +46,7 @@ const Profile = () => {
 
       <div className="action-container">
         <button
-          className="action-button"
+          className={`action-button ${isActive("add")}`}
           onClick={() => handleEventClick("add")}
         >
           {userProfile && userProfile.userIsAdmin === true ? (
@@ -51,14 +58,14 @@ const Profile = () => {
         </button>
         {userProfile && userProfile.userIsAdmin === true && (
           <button
-            className="action-button"
+            className={`action-button ${isActive("modify")}`}
             onClick={() => handleEventClick("modify")}
           >
             Modifier un évènement
           </button>
         )}
         <button
-          className="action-button"
+          className={`action-button ${isActive("delete")}`}
           onClick={() => handleEventClick("delete")}
         >
           Supprimer un évènement
