@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/authContext";
 import getToken from "../utils/getToken";
 
 function LoginForm() {
   const [loginUser, setLoginUser] = useState({});
+  const { isLoggedIn, user } = useContext(AuthContext);
   const redirectTo = useNavigate();
   const handleInputChange = (e) => {
     setLoginUser({ ...loginUser, [e.target.name]: e.target.value });
@@ -33,7 +35,7 @@ function LoginForm() {
       if (result.token) {
         localStorage.setItem("token", result.token);
         setLoginUser(result.user);
-        redirectTo("/proposer-un-evenement");
+        redirectTo("/profile");
       }
     } catch (error) {
       console.log("error", error);
@@ -41,13 +43,8 @@ function LoginForm() {
   };
 
   useEffect(() => {
-    const token = getToken();
-    if (token) {
-      console.log("Login.js : LOGGED IN");
-    } else {
-      console.log("Login.js : NOT LOGGED IN");
-    }
-  }, [loginUser]);
+    login();
+  }, []);
 
   return (
     <div>
@@ -109,13 +106,12 @@ function LoginForm() {
           >
             Se connecter
           </button>
-          {/* <button onClick={logout}>Se déconnecter</button> */}
         </div>
       </form>
 
       <p>
-        Mot de passe perdu ? <Link to="/">Renouveler le mot de passe</Link>.
-        <br />
+        {/* Mot de passe perdu ? <Link to="/">Renouveler le mot de passe</Link>.
+        <br /> */}
         Pas encore inscrit·e ?{" "}
         <Link to="/creer-un-compte">Créer un compte</Link>.
       </p>

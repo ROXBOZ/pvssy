@@ -1,51 +1,19 @@
-import React, { useEffect, useState, useContext } from "react";
-import getToken from "../utils/getToken";
+import React from "react";
 import { Link } from "react-router-dom";
 import { EventsContext } from "../contexts/eventsContext";
+import { useState, useContext } from "react";
+import { AuthContext } from "../contexts/authContext";
 
-const Profile = () => {
-  const [userProfile, setUserProfile] = useState(null);
+const AddEvent = () => {
+  const { userProfile } = useContext(AuthContext);
   const [eventType, setEventType] = useState("offline");
   const [eventEntry, setEventEntry] = useState("gratuite");
-  const [error, setError] = useState(null);
   const { regions } = useContext(EventsContext);
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
   const [newEvent, setNewEvent] = useState(null);
-
-  const getProfile = async () => {
-    const token = getToken();
-    const myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
-
-    const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-    };
-
-    try {
-      const response = await fetch(
-        "http://localhost:5000/api/users/profile",
-        requestOptions
-      );
-      const result = await response.json();
-
-      setUserProfile({
-        userName: result.user.userName,
-        userEmail: result.user.userEmail,
-        userAvatar: result.user.userAvatar,
-        userIsAdmin: result.user.userIsAdmin,
-      });
-      setError(null);
-    } catch (error) {
-      console.log("can not fetch", error);
-      setUserProfile(null);
-    }
-  };
-
-  // For everyone using the form
   const handleInputChange = (e) => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value }); // computed property names
   };
@@ -87,10 +55,6 @@ const Profile = () => {
     }
   };
 
-  useEffect(() => {
-    getProfile();
-  }, []);
-
   // Region Dropdown
   const handleInputRegionChange = (event) => {
     const newValue = event.target.value;
@@ -129,36 +93,25 @@ const Profile = () => {
   };
 
   return (
-    <div>
-      {userProfile && (
-        <div className="userProfile-info">
-          <img
-            className="userProfile-avatar"
-            src={userProfile.userAvatar}
-            alt={userProfile.userName}
-          />
-          <p>
-            {userProfile.userName}
-            <br />
-            {userProfile.userEmail}
-            <br />
-            {userProfile.userIsAdmin ? (
-              <span>administrateur·ice</span>
-            ) : (
-              <span>éditeur·ice</span>
-            )}
-          </p>
-        </div>
+    <>
+      {userProfile && userProfile.userIsAdmin === true ? (
+        <h1>
+          Ajouter un évènement au calendrier<sup>prototype</sup>
+        </h1>
+      ) : (
+        <h1>
+          Proposer un évènement<sup>prototype</sup>
+        </h1>
       )}
-      <h1>
-        Proposer un évènement<sup>prototype</sup>
-      </h1>
-      <p>
-        Nous examinons toutes les soumissions et ajoutons les évènements
-        approuvés à notre calendrier. Veuillez noter que nous ne pouvons pas
-        garantir la publication d'un événement qui aurait lieu moins de trois
-        jours après sa soumission.
-      </p>
+
+      {userProfile && userProfile.userIsAdmin === false && (
+        <p>
+          Nous examinons toutes les soumissions et ajoutons les évènements
+          approuvés à notre calendrier. Veuillez noter que nous ne pouvons pas
+          garantir la publication d'un événement qui aurait lieu moins de trois
+          jours après sa soumission.
+        </p>
+      )}
 
       <form className="grid-form">
         <h2>Formulaire à compléter</h2>
@@ -434,10 +387,14 @@ const Profile = () => {
             <Link to="/conditions-generales ">conditions générales</Link>.
           </label>
         </div>
+        {userProfile && userProfile.userIsAdmin === true ? (
+          <button onClick={addEvent}>Ajouter au calendrier</button>
+        ) : (
+          <button>Proposer l’évènement</button>
+        )}
       </form>
-      <button onClick={addEvent}>soumettre l’évènement</button>
-    </div>
+    </>
   );
 };
 
-export default Profile;
+export default AddEvent;

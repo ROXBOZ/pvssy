@@ -25,13 +25,13 @@ import Login from "./components/Login";
 import Logout from "./components/Logout";
 import Signup from "./components/Signup";
 import NotFound from "./pages/NotFound";
-import Profile from "./components/Profile";
 import PainLex from "./components/Pains/PainLex";
 import AllLexique from "./components/AllLexique";
 //contexts
 import { PainsContextProvider } from "./contexts/PainsContext";
 import { EventsContextProvider } from "./contexts/eventsContext";
 import { TermsContextProvider } from "./contexts/termsContext";
+import { AuthContextProvider } from "./contexts/authContext";
 // utils
 import getToken from "./utils/getToken";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -40,100 +40,103 @@ function App() {
   const token = getToken();
   return (
     <>
-      {/* <authContextProvider> */}
-      <Header />
-      <div className="main">
-        <ScrollToTop />
-        <EventsContextProvider>
-          <PainsContextProvider>
-            <TermsContextProvider>
-              <Routes>
-                <Route index element={<Home />} />
-                <Route path="a-propos" element={<About />} />
-                <Route path="gerer-soi-meme" element={<GererSoiMeme />} />
-                <Route path="gerer-soi-meme/douleurs" element={<Pains />} />
+      <AuthContextProvider>
+        <Header />
+        <div className="main">
+          <ScrollToTop />
+          <EventsContextProvider>
+            <PainsContextProvider>
+              <TermsContextProvider>
+                <Routes>
+                  <Route index element={<Home />} />
+                  <Route path="a-propos" element={<About />} />
+                  <Route path="gerer-soi-meme" element={<GererSoiMeme />} />
+                  <Route path="gerer-soi-meme/douleurs" element={<Pains />} />
 
-                <Route
-                  path="gerer-soi-meme/douleurs/:name"
-                  element={<Pain />}
-                />
+                  <Route
+                    path="gerer-soi-meme/douleurs/:name"
+                    element={<Pain />}
+                  />
 
-                <Route
-                  path="gerer-soi-meme/ressources/tutos"
-                  element={<Tutos />}
-                />
+                  <Route
+                    path="gerer-soi-meme/ressources/tutos"
+                    element={<Tutos />}
+                  />
 
-                <Route
-                  path="gerer-soi-meme/douleurs/:name/tutos"
-                  element={<Tutos />}
-                />
+                  <Route
+                    path="gerer-soi-meme/douleurs/:name/tutos"
+                    element={<Tutos />}
+                  />
 
-                <Route
-                  path="gerer-soi-meme/ressources/lexique"
-                  element={<AllLexique />}
-                />
+                  <Route
+                    path="gerer-soi-meme/ressources/lexique"
+                    element={<AllLexique />}
+                  />
 
-                <Route
-                  path="gerer-soi-meme/douleurs/:name/lexique"
-                  element={<PainLex />}
-                />
+                  <Route
+                    path="gerer-soi-meme/douleurs/:name/lexique"
+                    element={<PainLex />}
+                  />
 
-                <Route
-                  path="gerer-soi-meme/douleurs/:name/lexique/#:term"
-                  element={<PainLex />}
-                />
+                  <Route
+                    path="gerer-soi-meme/douleurs/:name/lexique/#:term"
+                    element={<PainLex />}
+                  />
 
-                <Route
-                  path="gerer-soi-meme/ressources/articles"
-                  element={<Articles />}
-                />
+                  <Route
+                    path="gerer-soi-meme/ressources/articles"
+                    element={<Articles />}
+                  />
 
-                <Route
-                  path="gerer-soi-meme/douleurs/:name/articles"
-                  element={<Articles />}
-                />
+                  <Route
+                    path="gerer-soi-meme/douleurs/:name/articles"
+                    element={<Articles />}
+                  />
 
-                <Route
-                  path="gerer-soi-meme/ressources"
-                  element={<Ressources />}
-                />
+                  <Route
+                    path="gerer-soi-meme/ressources"
+                    element={<Ressources />}
+                  />
 
-                <Route path="trouver-de-l-aide" element={<TrouverDeLAide />} />
-                <Route
-                  path="trouver-de-l-aide/annuaire"
-                  element={<Annuaire />}
-                />
-                <Route
-                  path="trouver-de-l-aide/annuaire/:name"
-                  element={<Pain />}
-                />
-                <Route path="shop" element={<Shop />} />
-                <Route path="agenda" element={<Agenda />} />
-                <Route path="agenda/:title" element={<Event />} />
-                <Route path="agenda/archives" element={<EventsArchives />} />
-                <Route path="login" element={<Login />} />
-                <Route path="logout" element={<Logout />} />
-                <Route path="creer-un-compte" element={<Signup />} />
+                  <Route
+                    path="trouver-de-l-aide"
+                    element={<TrouverDeLAide />}
+                  />
+                  <Route
+                    path="trouver-de-l-aide/annuaire"
+                    element={<Annuaire />}
+                  />
+                  <Route
+                    path="trouver-de-l-aide/annuaire/:name"
+                    element={<Pain />}
+                  />
+                  <Route path="shop" element={<Shop />} />
+                  <Route path="agenda" element={<Agenda />} />
+                  <Route path="agenda/:title" element={<Event />} />
+                  <Route path="agenda/archives" element={<EventsArchives />} />
+                  <Route path="login" element={<Login />} />
+                  <Route path="logout" element={<Logout />} />
+                  <Route path="creer-un-compte" element={<Signup />} />
 
-                <Route
-                  path="proposer-un-evenement"
-                  element={<ProtectedRoute />}
-                  key={token}
-                />
+                  <Route
+                    path="profile"
+                    element={<ProtectedRoute />}
+                    key={token}
+                  />
 
-                <Route path="*" element={<NotFound />} />
+                  <Route path="*" element={<NotFound />} />
 
-                <Route
-                  path="conditions-generales"
-                  element={<GeneralConditions />}
-                />
-              </Routes>
-            </TermsContextProvider>
-          </PainsContextProvider>
-        </EventsContextProvider>
-      </div>
-      <Footer />
-      {/* </authContextProvider> */}
+                  <Route
+                    path="conditions-generales"
+                    element={<GeneralConditions />}
+                  />
+                </Routes>
+              </TermsContextProvider>
+            </PainsContextProvider>
+          </EventsContextProvider>
+        </div>
+        <Footer />
+      </AuthContextProvider>
     </>
   );
 }

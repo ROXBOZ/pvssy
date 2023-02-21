@@ -1,33 +1,14 @@
-import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Breadcrumbs from "./Breadcrumbs";
-import getToken from "../utils/getToken";
+
+import { AuthContext } from "../contexts/authContext";
+import { useContext } from "react";
 
 const Header = () => {
-  // const [token, setToken] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // useEffect(() => {
-  //   let storedToken = getToken();
-  //   setToken(storedToken);
-  //   // console.log("token, 1st useEffect", token);
-  // }, []);
-
-  useEffect(() => {
-    let storedToken = getToken();
-
-    if (storedToken) {
-      setIsLoggedIn(true);
-      // console.log("token, 2nd useEffect", token);
-      console.log("isLoggedIn", isLoggedIn);
-    } else {
-      setIsLoggedIn(false);
-      // console.log("token, 2nd useEffect", token);
-      console.log("isLoggedIn", isLoggedIn);
-    }
-  }, []);
+  const { user, isLoggedIn, userProfile } = useContext(AuthContext);
+  console.log("isLoggedIn >>>", isLoggedIn);
 
   return (
     <header>
@@ -52,27 +33,24 @@ const Header = () => {
           <li>
             <NavLink to="agenda">Agenda</NavLink>
           </li>
-
           <li>
-            {isLoggedIn && (
-              <Link
-                className="user-icon-link"
-                to="/proposer-un-evenement"
-                aria-label="profil"
-              >
-                <FontAwesomeIcon
-                  className="user-icon"
-                  id="userIcon"
-                  icon={faUser}
-                />
-              </Link>
-            )}
-
-            {/* {console.log("isLoggedIn in Body", isLoggedIn)} */}
             {isLoggedIn ? (
-              <Link to="/logout">Se déconnecter</Link>
+              <>
+                <Link
+                  className="user-icon-link"
+                  to="/profile"
+                  aria-label="profil"
+                >
+                  <FontAwesomeIcon
+                    className="user-icon"
+                    id="userIcon"
+                    icon={faUser}
+                  />
+                </Link>
+                <Link to="/logout">se déconnecter</Link>
+              </>
             ) : (
-              <Link to="/login">Se connecter</Link>
+              <Link to="/login">se connecter</Link>
             )}
           </li>
         </ul>

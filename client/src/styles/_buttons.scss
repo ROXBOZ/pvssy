@@ -22,3 +22,14 @@ button {
     display: flex;
   }
 }
+
+.action-container {
+  display: flex;
+  gap: 1em;
+
+  // .action-button {
+  //   &:active {
+  //     background-color: red;
+  //   }
+  // }
+}

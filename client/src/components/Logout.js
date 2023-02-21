@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import getToken from "../utils/getToken";
+import { AuthContext } from "../contexts/authContext";
 
 const Logout = () => {
-  let token = getToken();
   const redirectTo = useNavigate();
+  const { setUser } = useContext(AuthContext);
 
   const logout = (e) => {
     localStorage.removeItem("token");
+    setUser("");
   };
 
   useEffect(() => {
@@ -16,8 +17,8 @@ const Logout = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      redirectTo("/");
-    }, 3000);
+      redirectTo("/login");
+    }, 0);
     return () => clearTimeout(timer);
   }, [redirectTo]);
 
