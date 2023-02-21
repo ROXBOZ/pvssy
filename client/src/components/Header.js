@@ -12,18 +12,18 @@ const Header = () => {
   useEffect(() => {
     let storedToken = getToken();
     setToken(storedToken);
-    console.log("token, 1st useEffect", token);
+    // console.log("token, 1st useEffect", token);
   }, []);
 
   useEffect(() => {
     if (token) {
       setIsLoggedIn(true);
-      console.log("token, 2nd useEffect", token);
-      console.log("isLoggedIn", isLoggedIn);
+      // console.log("token, 2nd useEffect", token);
+      // console.log("isLoggedIn", isLoggedIn);
     } else {
       setIsLoggedIn(false);
-      console.log("token, 2nd useEffect", token);
-      console.log("isLoggedIn", isLoggedIn);
+      // console.log("token, 2nd useEffect", token);
+      // console.log("isLoggedIn", isLoggedIn);
     }
   }, [token]);
 
@@ -66,7 +66,7 @@ const Header = () => {
               </Link>
             )}
 
-            {console.log("isLoggedIn in Body", isLoggedIn)}
+            {/* {console.log("isLoggedIn in Body", isLoggedIn)} */}
             {isLoggedIn ? (
               <Link to="/logout">Se déconnecter</Link>
             ) : (

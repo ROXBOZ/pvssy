@@ -8,16 +8,16 @@ const Profile = () => {
   const [eventType, setEventType] = useState("offline");
   const [eventEntry, setEventEntry] = useState("gratuite");
   const [error, setError] = useState(null);
-
-  // const for region dropdown
   const { regions } = useContext(EventsContext);
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
+  const [newEvent, setNewEvent] = useState(null);
 
   const getProfile = async () => {
     const token = getToken();
+    // console.log("token", token);
     const myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${token}`);
 
@@ -31,9 +31,9 @@ const Profile = () => {
         "http://localhost:5000/api/users/profile",
         requestOptions
       );
-
       const result = await response.json();
-      console.log("result", result);
+      console.log("result!!", result);
+
       setUserProfile({
         userName: result.user.userName,
         userEmail: result.user.userEmail,
@@ -47,13 +47,63 @@ const Profile = () => {
     }
   };
 
+  // For everyone using the form
+  const handleInputChange = (e) => {
+    setNewEvent({ ...newEvent, [e.target.name]: e.target.value }); // computed property names
+  };
+
+  console.log("newEvent", newEvent);
+  console.log("eventType", eventType);
+
+  // FOR ADMIN users
+  const addEvent = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+      title: newEvent.eventTitle,
+      date: newEvent.eventDate, // DEAL WITH FORMAT
+      shortDef: newEvent.eventShortDef,
+      longDef: newEvent.eventLongDef,
+
+      // if(eventType == "online") {
+      //   online: true,
+      //   onlineMeeting: newEvent.onlineMeeting,
+      // } else {
+      //   online: false,
+      //   address: newEvent.eventAddress,
+      //  city: newEvent.eventCity,
+      // },
+
+      email: newEvent.eventEmail,
+      tel: newEvent.eventTel,
+      entryFee: newEvent.admissionFee,
+    });
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+    };
+
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/events/all",
+        requestOptions
+      );
+      const result = response.json();
+      console.log("result", result);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   useEffect(() => {
     getProfile();
   }, []);
 
   // Region Dropdown
-
-  const handleInputChange = (event) => {
+  const handleInputRegionChange = (event) => {
     const newValue = event.target.value;
     setValue(newValue);
 
@@ -69,12 +119,10 @@ const Profile = () => {
     setSuggestions(matchingSuggestions);
     setShowSuggestions(matchingSuggestions.length > 0);
   };
-
   const handleSuggestionClick = (suggestion) => {
     setValue(suggestion);
     setShowSuggestions(false);
   };
-
   const handleKeyDown = (e) => {
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -105,7 +153,6 @@ const Profile = () => {
             <br />
             {userProfile.userEmail}
             <br />
-            {console.log("userProfile.userIsAdmin", userProfile.userIsAdmin)}
             {userProfile.userIsAdmin ? (
               <span>administrateur·ice</span>
             ) : (
@@ -143,6 +190,7 @@ const Profile = () => {
               id="eventTitle"
               type="text"
               placeholder="Titre de l’évènement"
+              onChange={handleInputChange}
               required
             />
           </div>
@@ -155,6 +203,7 @@ const Profile = () => {
               id="eventDate"
               type="date"
               placeholder="Date de l’évènement"
+              onChange={handleInputChange}
               required
             />
           </div>
@@ -166,6 +215,7 @@ const Profile = () => {
               name="eventShortDef"
               id="eventShortDef"
               placeholder="Veuillez entrer une définition de l'événement courte et concise de max. 60 mots."
+              onChange={handleInputChange}
               required
             />
           </div>
@@ -178,6 +228,7 @@ const Profile = () => {
               id="eventLongDef"
               rows="5"
               placeholder="La définition en détails n’est pas obligatoire mais fortement recommandée. Elle devrait expliquer brièvement de quoi il s'agit, le public cible et les objectifs de l'événement. Vous pouvez également inclure d'autres informations pertinentes, telles que les sujets abordés ou les intervenant·e·s invité·e·s."
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -227,6 +278,7 @@ const Profile = () => {
                   id="eventAddress"
                   type="text"
                   placeholder="Rue, numéro"
+                  onChange={handleInputChange}
                   required
                 />
               </div>
@@ -239,6 +291,7 @@ const Profile = () => {
                   id="eventCity"
                   type="text"
                   placeholder="ZIP, Lieu"
+                  onChange={handleInputChange}
                   required
                 />
               </div>
@@ -252,7 +305,7 @@ const Profile = () => {
                   type="text"
                   placeholder="Région"
                   value={value}
-                  onChange={handleInputChange}
+                  onChange={handleInputRegionChange}
                   onKeyDown={handleKeyDown}
                   required
                 />
@@ -287,6 +340,7 @@ const Profile = () => {
                   id="onlineMeeting"
                   type="text"
                   placeholder="https://..."
+                  onChange={handleInputChange}
                   required
                 />
               </div>
@@ -311,6 +365,7 @@ const Profile = () => {
               type="tel"
               pattern="\+\d{2}\(\d\)\d{2}\s\d{3}\s\d{2}\s\d{2}"
               placeholder="+41(0)..."
+              onChange={handleInputChange}
             />
           </div>
           <div className="event-email-label flex-center">
@@ -318,10 +373,11 @@ const Profile = () => {
           </div>
           <div className="event-email-input">
             <input
-              name="email"
-              id="email"
+              name="eventEmail"
+              id="eventEmail"
               type="text"
               placeholder="info@asso..."
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -372,6 +428,7 @@ const Profile = () => {
                   min="0"
                   max="999.99"
                   placeholder="10.5"
+                  onChange={handleInputChange}
                 />
               </div>
             </>

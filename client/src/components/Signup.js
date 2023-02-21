@@ -36,27 +36,30 @@ const SignupForm = () => {
   const handleInputChange = (e) => {
     setNewUser({ ...newUser, [e.target.name]: e.target.value }); // computed property names
   };
-  console.log("newUser.userName", newUser.userName);
+  // console.log("newUser.userName", newUser.userName);
+  // console.log("newUser.userEmail", newUser.userEmail);
+  // console.log("newUser.userPassword", newUser.userPassword);
+  // console.log("newUser.userAvatar", newUser.userAvatar);
+  // console.log("newUser.userIsadmin", newUser.userIsadmin);
 
   const signup = async () => {
     const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    myHeaders.append("Content-Type", "application/json");
 
-    const urlencoded = new URLSearchParams();
-    urlencoded.append("userName", newUser.userName);
-    urlencoded.append("userEmail", newUser.userEmail);
-    urlencoded.append("userPassword", newUser.userPassword);
-    urlencoded.append(
-      "userAvatar",
-      newUser.userAvatar
+    const raw = JSON.stringify({
+      userName: newUser.userName,
+      userEmail: newUser.userEmail,
+      userPassword: newUser.userPassword,
+      userAvatar: newUser.userAvatar
         ? newUser.userAvatar
-        : "https://res.cloudinary.com/dkyialww7/image/upload/v1676473404/pvssy-avatar/default-avatar_hffziv.jpg"
-    );
+        : "https://res.cloudinary.com/dkyialww7/image/upload/v1676473404/pvssy-avatar/default-avatar_hffziv.jpg",
+      userIsAdmin: false,
+    });
 
     const requestOptions = {
       method: "POST",
       headers: myHeaders,
-      body: urlencoded,
+      body: raw,
     };
 
     try {
@@ -65,7 +68,7 @@ const SignupForm = () => {
         requestOptions
       );
       const result = await response.json();
-      console.log(result);
+      console.log("result", result);
     } catch (error) {
       console.log("error", error);
     }
