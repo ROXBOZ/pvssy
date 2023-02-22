@@ -85,6 +85,10 @@ form {
     gap: 1em;
     grid-template-columns: repeat(4, max-content);
 
+    .check-list {
+      margin-top: 0;
+    }
+
     div {
       input[type="text"],
       input[type="password"],
@@ -233,6 +237,9 @@ form {
 .warning-msg {
   color: $warning-color;
   font-family: "ESKlarheit-Bold";
+  &:before {
+    content: ("⚠️  ");
+  }
 }
 
 .check-list {

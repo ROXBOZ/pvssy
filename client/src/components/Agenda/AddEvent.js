@@ -102,7 +102,7 @@ const AddEvent = () => {
     <>
       {userProfile && userProfile.userIsAdmin === true ? (
         <h1>
-          Ajouter un évènement au calendrier<sup>prototype</sup>
+          Ajouter un évènement<sup>prototype</sup>
         </h1>
       ) : (
         <h1>
@@ -110,13 +110,19 @@ const AddEvent = () => {
         </h1>
       )}
 
-      {userProfile && userProfile.userIsAdmin === false && (
-        <p>
-          Nous examinons toutes les soumissions et ajoutons les évènements
-          approuvés à notre calendrier. Veuillez noter que nous ne pouvons pas
-          garantir la publication d'un événement qui aurait lieu moins de trois
-          jours après sa soumission.
-        </p>
+      {userProfile && userProfile.userIsAdmin === false ? (
+        <>
+          <p className="warning-msg">
+            Nous ne pouvons pas garantir la publication d'un événement qui
+            aurait lieu moins de trois jours après sa soumission.
+          </p>
+        </>
+      ) : (
+        <>
+          {/* <p className="warning-msg">
+            L’évènement sera ajouté immédiatement au calendrier.
+          </p> */}
+        </>
       )}
 
       <form className="grid-form">

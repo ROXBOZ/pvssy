@@ -19,10 +19,25 @@ const getAllEvents = async (req, res) => {
     });
   }
 };
-
+// get pending events
+const getPendingEvents = async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  try {
+    const pendingEvents = await eventModel.find({}).exec();
+    res.status(200).json({
+      number: pendingEvents.length,
+      pendingEvents,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error,
+      msg: "Problème serveur",
+    });
+  }
+};
 // get future events
 const getUpcomingEvents = async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  //res.header("Access-Control-Allow-Origin", "*");
   // handling error if there are no event planned.
   try {
     const upcomingEvents = await eventModel
@@ -150,6 +165,71 @@ const addEvent = async (req, res) => {
   }
 };
 
+// add pending event
+const addPendingEvent = async (req, res) => {
+  const {
+    title,
+    date,
+    shortDef,
+    longDef,
+    online,
+    onlineMeeting,
+    address,
+    city,
+    email,
+    tel,
+    entryFee,
+    imgCover,
+    imgCaption,
+    imgCredits,
+  } = req.body;
+
+  try {
+    const newEvent = new eventModel({
+      title,
+      date,
+      shortDef,
+      longDef,
+      online,
+      onlineMeeting,
+      address,
+      city,
+      email,
+      tel,
+      entryFee,
+      imgCover,
+      imgCaption,
+      imgCredits,
+    });
+    const savedEvent = await newEvent.save();
+
+    res.status(201).json({
+      msg: "new event added successfully",
+      event: {
+        title: savedEvent.title,
+        date: savedEvent.date,
+        shortDef: savedEvent.shortDef,
+        longDef: savedEvent.longDef,
+        online: savedEvent.online,
+        onlineMeeting: savedEvent.onlineMeeting,
+        address: savedEvent.address,
+        city: savedEvent.city,
+        email: savedEvent.email,
+        tel: savedEvent.tel,
+        entryFee: savedEvent.entryFee,
+        imgCover: savedEvent.imgCover,
+        imgCaption: savedEvent.imgCaption,
+        imgCredits: savedEvent.imgCredits,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      error,
+      msg: "you can't add a new event",
+    });
+  }
+};
+
 // delete event
 const deleteEvent = async (req, res) => {
   const { _id } = req.body;
@@ -187,4 +267,6 @@ export {
   getEventsByRegion,
   addEvent,
   deleteEvent,
+  getPendingEvents,
+  addPendingEvent,
 };

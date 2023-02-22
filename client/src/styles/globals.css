@@ -481,6 +481,10 @@ form .form-section {
   gap: 1em;
   grid-template-columns: repeat(4, max-content);
 }
+form.grid-form .check-list,
+form .form-section .check-list {
+  margin-top: 0;
+}
 form.grid-form div input[type=text],
 form.grid-form div input[type=password],
 form.grid-form div input[type=file],
@@ -683,6 +687,9 @@ form .form-section .form-dropdown-suggestions li {
 .warning-msg {
   color: red;
   font-family: "ESKlarheit-Bold";
+}
+.warning-msg:before {
+  content: "⚠️  ";
 }
 
 .check-list {

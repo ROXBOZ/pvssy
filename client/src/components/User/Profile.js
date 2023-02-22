@@ -3,6 +3,7 @@ import UserDashboard from "./UserDashboard";
 import { useContext, useState } from "react";
 import AddEvent from "../Agenda/AddEvent";
 import DeleteEvent from "../Agenda/DeleteEvent";
+import ModifyEvent from "../Agenda/ModifyEvent";
 
 const Profile = () => {
   const { userProfile } = useContext(AuthContext);
@@ -73,7 +74,7 @@ const Profile = () => {
         </button>
       </div>
       {showAddEvent && <AddEvent />}
-      {showModifyEvent && <h1>Modifier un évènement</h1>}
+      {showModifyEvent && <ModifyEvent />}
       {showDeleteEvent && <DeleteEvent />}
     </div>
   );

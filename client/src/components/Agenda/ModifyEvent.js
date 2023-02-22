@@ -1,60 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { EventsContext } from "../../contexts/eventsContext";
 
-const DeleteEvent = () => {
+const ModifyEvent = () => {
   const { userProfile } = useContext(AuthContext);
   const { data, fetchData, upComingEventEP } = useContext(EventsContext);
-  const [selectedEvents, setSelectedEvents] = useState([]);
 
-  console.log("selectedEvents", selectedEvents);
   useEffect(() => {
     fetchData(upComingEventEP);
   }, [upComingEventEP]);
 
-  const handleChange = (e) => {
-    const eventId = e.target.value;
-    const isChecked = e.target.checked;
-    if (isChecked) {
-      setSelectedEvents([...selectedEvents, eventId]);
-    } else {
-      setSelectedEvents(selectedEvents.filter((id) => id !== eventId));
-    }
-  };
-
-  const handleDelete = () => {
-    selectedEvents.map((e) => {
-      console.log("element to delete", e);
-      const myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
-      const urlencoded = new URLSearchParams();
-      urlencoded.append("_id", e);
-
-      const requestOptions = {
-        method: "DELETE",
-        headers: myHeaders,
-        body: urlencoded,
-      };
-
-      fetch("http://localhost:5000/api/events/all", requestOptions)
-        .then((response) => response.json())
-        .then((result) => console.log(result))
-        .catch((error) => console.log("error", error));
-    });
-  };
-
   return (
     <>
       <h1>
-        Supprimer un évènement<sup>prototype</sup>
+        Modifier un évènement<sup>prototype</sup>
       </h1>
-      <p className="warning-msg">
-        Une fois supprimé, l’évènement ne peut PAS être récupéré.
-      </p>
-
-      {userProfile && userProfile.userIsAdmin === true && (
+      {userProfile && userProfile.userIsAdmin === true ? (
         <form className="grid-form">
           <div className="form-section">
             <div>
@@ -82,10 +43,11 @@ const DeleteEvent = () => {
                     return (
                       <li key={e._id}>
                         <input
-                          type="checkbox"
+                          type="radio"
+                          name="modifyEvent"
                           className="form-check-input"
                           value={e._id}
-                          onChange={(e) => handleChange(e)}
+                          //  onChange={(e) => handleChange(e)}
                         />
                         <strong>{e.title}</strong>&nbsp;(<span>{dateTime}</span>
                         )
@@ -94,15 +56,19 @@ const DeleteEvent = () => {
                   })}
               </ul>
 
-              <button onClick={handleDelete}>
-                Supprimer le(s) évènement(s) sélectionné(s)
+              <button
+              //   onClick={handleDelete}
+              >
+                Modifier l’évènement sélectionné
               </button>
             </div>
           </div>
         </form>
+      ) : (
+        <p>...</p>
       )}
     </>
   );
 };
 
-export default DeleteEvent;
+export default ModifyEvent;
