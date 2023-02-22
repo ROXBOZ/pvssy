@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import getToken from "../utils/getToken";
@@ -12,6 +12,7 @@ export const AuthContextProvider = (props) => {
   const redirectTo = useNavigate();
   const [token, setToken] = useState(getToken());
   const [, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
@@ -40,21 +41,19 @@ export const AuthContextProvider = (props) => {
       const result = await response.json();
       if (result.token) {
         localStorage.setItem("token", result.token);
-        // getProfile();
         setUser(result.user);
         setIsLoggedIn(true);
+        setToken(result.token); // Update the token state
+        await getProfile(result.token); // Call getProfile with the new token
         redirectTo("/profile");
-        console.log("LOGIN FUNCTION");
-        console.log("user", user); //FIXME this is still null
-        console.log("isLoggedIn", isLoggedIn); //FIXME this is still false
       }
     } catch (error) {
       console.log("error", error);
     }
   };
-
   const getProfile = async () => {
-    if (token) {
+    try {
+      setLoading(true);
       const myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${token}`);
 
@@ -63,23 +62,24 @@ export const AuthContextProvider = (props) => {
         headers: myHeaders,
       };
 
-      try {
-        const response = await fetch(
-          "http://localhost:5000/api/users/profile",
-          requestOptions
-        );
-        const result = await response.json();
+      const response = await fetch(
+        "http://localhost:5000/api/users/profile",
+        requestOptions
+      );
+      const result = await response.json();
 
-        setUserProfile({
-          userName: result.user.userName,
-          userEmail: result.user.userEmail,
-          userAvatar: result.user.userAvatar,
-          userIsAdmin: result.user.userIsAdmin,
-        });
-        setError(null);
-      } catch (error) {
-        console.log("can not fetch", error);
-      }
+      setUserProfile({
+        userName: result.user.userName,
+        userEmail: result.user.userEmail,
+        userAvatar: result.user.userAvatar,
+        userIsAdmin: result.user.userIsAdmin,
+      });
+      console.log("userProfile", result.user.userName);
+      setError(null);
+      setLoading(false);
+    } catch (error) {
+      console.log("can not fetch", error);
+      setLoading(false);
     }
   };
 
@@ -90,26 +90,27 @@ export const AuthContextProvider = (props) => {
     setUserProfile(null);
     redirectTo("/login");
     console.log("LOGOUT FUNCTION");
-    console.log("isLoggedIn", isLoggedIn); // this is false
-    console.log("userProfile", userProfile); //FIXME this is not null
-    console.log("user", user); // this null
   };
+
+  useEffect(() => {}, [user, isLoggedIn]);
+
+  useEffect(() => {}, [userProfile]);
 
   useEffect(() => {
     if (token) {
       getProfile();
       setIsLoggedIn(true);
       setToken(token);
-      console.log("IS LOGGED IN");
-      console.log("token", token);
-      console.log("isLoggedIn", isLoggedIn); //FIXME this should be true
     } else {
       setIsLoggedIn(false);
       setUserProfile(null);
       setToken(null);
-      console.log("IS NOT LOGGED IN");
     }
-  }, [user]);
+  }, [token]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <AuthContext.Provider
