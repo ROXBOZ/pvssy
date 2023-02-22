@@ -1,50 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/authContext";
-import getToken from "../utils/getToken";
 
 function LoginForm() {
-  const [loginUser, setLoginUser] = useState({});
-  const { isLoggedIn, user } = useContext(AuthContext);
+  const { login, handleInputChange } = useContext(AuthContext);
   const redirectTo = useNavigate();
-  const handleInputChange = (e) => {
-    setLoginUser({ ...loginUser, [e.target.name]: e.target.value });
-  };
-
-  const login = async (e) => {
-    e.preventDefault();
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
-    const urlencoded = new URLSearchParams();
-    urlencoded.append("userEmail", loginUser.userEmail);
-    urlencoded.append("userPassword", loginUser.userPassword);
-
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: urlencoded,
-    };
-
-    try {
-      const response = await fetch(
-        "http://localhost:5000/api/users/login",
-        requestOptions
-      );
-      const result = await response.json();
-      if (result.token) {
-        localStorage.setItem("token", result.token);
-        setLoginUser(result.user);
-        redirectTo("/profile");
-      }
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-
-  useEffect(() => {
-    login();
-  }, []);
 
   return (
     <div>

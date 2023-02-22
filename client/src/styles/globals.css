@@ -115,6 +115,12 @@ header nav ul li .user-icon:hover {
   display: none;
 }
 
+.logout-header {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
+
 footer {
   background-color: #303030;
   color: #fffdf8;

@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 
-const UserDashboard = () => {
-  const { userProfile } = useContext(AuthContext);
+const UserDashboard = ({ userProfile }) => {
+  const { logout } = useContext(AuthContext);
 
   return (
     <div>
@@ -25,7 +25,6 @@ const UserDashboard = () => {
               <span>éditeur·ice</span>
             )}
             <br />
-            <Link to="/logout">se déconnecter</Link>
           </p>
         </div>
       )}

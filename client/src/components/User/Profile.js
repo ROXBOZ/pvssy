@@ -42,7 +42,7 @@ const Profile = () => {
 
   return (
     <div>
-      <UserDashboard />
+      <UserDashboard userProfile={userProfile} />
 
       <div className="action-container">
         <button

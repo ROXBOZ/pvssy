@@ -7,8 +7,7 @@ import { AuthContext } from "../contexts/authContext";
 import { useContext } from "react";
 
 const Header = () => {
-  const { user, isLoggedIn, userProfile } = useContext(AuthContext);
-  console.log("isLoggedIn >>>", isLoggedIn);
+  const { logout, userProfile } = useContext(AuthContext);
 
   return (
     <header>
@@ -34,8 +33,8 @@ const Header = () => {
             <NavLink to="agenda">Agenda</NavLink>
           </li>
           <li>
-            {isLoggedIn ? (
-              <>
+            {userProfile ? (
+              <div className="logout-header">
                 <Link
                   className="user-icon-link"
                   to="/profile"
@@ -47,8 +46,8 @@ const Header = () => {
                     icon={faUser}
                   />
                 </Link>
-                <Link to="/logout">se déconnecter</Link>
-              </>
+                <button onClick={logout}>se déconnecter</button>
+              </div>
             ) : (
               <Link to="/login">se connecter</Link>
             )}
