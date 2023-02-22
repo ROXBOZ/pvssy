@@ -79,6 +79,7 @@ $level-size: $type-base-size;
     font-size: $level-size;
     line-height: calc(2px + 2ex + 2px);
     margin-bottom: 0.65em;
+    font-weight: 500;
 
     @if ($type-size-ratio > 1.2) {
       $level-unitless: $level-size / ($level-size * 0 + 1);
