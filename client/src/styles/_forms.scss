@@ -221,3 +221,27 @@ form {
   width: 10rem;
   border-radius: 50%;
 }
+
+.success-msg {
+  // display: flex;
+  // flex-direction: column;
+  // grid-column: 1/2;
+  color: $success-color;
+  font-weight: bold;
+}
+
+.warning-msg {
+  color: $warning-color;
+  font-weight: bold;
+}
+
+.check-list {
+  line-height: 2.5;
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+  }
+}

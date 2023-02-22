@@ -38,7 +38,9 @@
 
 .col-right {
   h2 {
-    margin-top: 0;
+    &:first-child {
+      margin-top: 0;
+    }
   }
 }
 

@@ -85,6 +85,7 @@ const getEventsByRegion = async (req, res) => {
   }
 };
 
+// add event
 const addEvent = async (req, res) => {
   const {
     title,
@@ -149,10 +150,41 @@ const addEvent = async (req, res) => {
   }
 };
 
+// delete event
+const deleteEvent = async (req, res) => {
+  const { _id } = req.body;
+
+  try {
+    const existingEvent = await eventModel.findOne({
+      _id: _id,
+    });
+
+    if (existingEvent) {
+      await eventModel.findOneAndDelete({
+        _id: _id,
+      });
+
+      res.status(200).json({
+        msg: "Event deleted successfully",
+      });
+    } else {
+      res.status(404).json({
+        msg: "Event not found",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      msg: "Error during delete",
+      error: error,
+    });
+  }
+};
+
 export {
   getAllEvents,
   getUpcomingEvents,
   getArchivedEvents,
   getEventsByRegion,
   addEvent,
+  deleteEvent,
 };

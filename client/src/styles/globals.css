@@ -3,8 +3,19 @@
 /*-----Fonts-----*/
 @font-face {
   font-family: "ESRebond";
-  font-style: normal;
   src: url("../assets/fonts/ESRebondGrotesque-Semibold.otf") format("otf"), url("../assets/fonts/ESRebondGrotesque-Semibold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "ESKlarheit-Book";
+  src: url("../assets/fonts/ESKlarheitGrotesk-Book.woff") format("woff"), url("../assets/fonts/ESKlarheitGrotesk-Book.woff") format("woff2");
+}
+@font-face {
+  font-family: "ESKlarheit-Medium";
+  src: url("../assets/fonts/ESKlarheitGrotesk-Medium.woff") format("woff"), url("../assets/fonts/ESKlarheitGrotesk-Medium.woff") format("woff2");
+}
+@font-face {
+  font-family: "ESKlarheit-Bold";
+  src: url("../assets/fonts/ESKlarheitGrotesk-Bold.woff") format("woff"), url("../assets/fonts/ESKlarheitGrotesk-Bold.woff") format("woff2");
 }
 /*-----Margins-----*/
 /*-----Paddings-----*/
@@ -24,6 +35,7 @@ header {
   padding: 0 50px;
 }
 header .logo {
+  font-family: "ESRebond";
   color: #303030;
   text-decoration: none;
   display: flex;
@@ -62,7 +74,7 @@ header nav ul a.btn {
   border: 1.5px solid;
   background-color: #fffdf8;
   font-size: 18px;
-  font-family: "ESRebond";
+  font-family: "ESKlarheit-Bold";
   cursor: pointer;
 }
 header nav ul a.btn:hover {
@@ -166,6 +178,7 @@ a {
   text-decoration: none;
   color: #9637f0;
   border-bottom: 1.5px solid;
+  font-family: "ESKlarheit-Bold";
 }
 a.simple-link {
   width: -moz-fit-content;
@@ -184,10 +197,10 @@ sup {
 /*-----Ratio Scale-----*/
 h4,
 .h4 {
+  font-family: "ESKlarheit-Medium";
   font-size: 1.25rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
-  font-weight: 400;
   font-size: clamp(
         1rem,
         4.25vw + 1rem,
@@ -197,10 +210,10 @@ h4,
 
 h3,
 .h3 {
+  font-family: "ESKlarheit-Medium";
   font-size: 1.5625rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
-  font-weight: 400;
   font-size: clamp(
         1.046875rem,
         4.515625vw + 1rem,
@@ -210,10 +223,10 @@ h3,
 
 h2,
 .h2 {
+  font-family: "ESKlarheit-Medium";
   font-size: 1.953125rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
-  font-weight: 400;
   font-size: clamp(
         1.30859375rem,
         4.64453125vw + 1rem,
@@ -223,10 +236,10 @@ h2,
 
 h1,
 .h1 {
+  font-family: "ESKlarheit-Medium";
   font-size: 2.44140625rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
-  font-weight: 400;
   font-size: clamp(
         1.6357421875rem,
         4.8056640625vw + 1rem,
@@ -270,7 +283,7 @@ h1,
   font-size: 80%;
 }
 
-.col-right h2 {
+.col-right h2:first-child {
   margin-top: 0;
 }
 
@@ -324,7 +337,7 @@ button {
   border: 1.5px solid;
   background-color: #fffdf8;
   font-size: 18px;
-  font-family: "ESRebond";
+  font-family: "ESKlarheit-Bold";
   cursor: pointer;
 }
 button:hover {
@@ -407,7 +420,7 @@ button:disabled {
 .filter-dropdown input {
   border: 1.5px solid #9637f0;
   border-radius: 0.25em;
-  font-family: "ESRebond";
+  font-family: "ESKlarheit-Medium";
   font-size: 100%;
   background-color: #fffdf8;
   padding: 0.5em;
@@ -474,7 +487,7 @@ form .form-section div input[type=tel],
 form .form-section div textarea {
   border: 1.5px solid #9637f0;
   border-radius: 0.25em;
-  font-family: "ESRebond";
+  font-family: "ESKlarheit-Medium";
   font-size: 100%;
   background-color: #fffdf8;
   padding: 0.5em;
@@ -650,6 +663,26 @@ form .form-section .form-dropdown-suggestions li {
   border-radius: 50%;
 }
 
+.success-msg {
+  color: green;
+  font-weight: bold;
+}
+
+.warning-msg {
+  color: red;
+  font-weight: bold;
+}
+
+.check-list {
+  line-height: 2.5;
+  list-style: none;
+  padding-left: 0;
+}
+.check-list li {
+  display: flex;
+  align-items: center;
+}
+
 .related-terms-container {
   margin: 1em 0;
   display: flex;
@@ -743,9 +776,12 @@ html {
   padding: 0;
   background-color: #fffdf8;
   color: #303030;
-  font-family: "ESRebond";
+  font-family: "ESKlarheit-Book";
   line-height: 1.5;
   font-size: 18px;
+}
+html strong {
+  font-family: "ESKlarheit-Bold";
 }
 html body {
   margin: 0;

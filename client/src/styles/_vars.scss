@@ -7,6 +7,9 @@ $color1: #f5733c;
 $color2: #ff50d7;
 $color3: #9637f0;
 
+$success-color: green;
+$warning-color: red;
+
 $gradient: linear-gradient(
   180deg,
   rgba(255, 82, 215, 0.8) 0%,
@@ -19,14 +22,30 @@ $bg-darker: rgba(48, 48, 48, 0.1);
 
 @font-face {
   font-family: "ESRebond";
-  font-style: normal;
   src: url("../assets/fonts/ESRebondGrotesque-Semibold.otf") format("otf"),
     url("../assets/fonts/ESRebondGrotesque-Semibold.ttf") format("truetype");
 }
+$font-logo: "ESRebond";
 
-$font: "ESRebond";
+@font-face {
+  font-family: "ESKlarheit-Book";
+  src: url("../assets/fonts/ESKlarheitGrotesk-Book.woff") format("woff"),
+    url("../assets/fonts/ESKlarheitGrotesk-Book.woff") format("woff2");
+}
+
+@font-face {
+  font-family: "ESKlarheit-Medium";
+  src: url("../assets/fonts/ESKlarheitGrotesk-Medium.woff") format("woff"),
+    url("../assets/fonts/ESKlarheitGrotesk-Medium.woff") format("woff2");
+}
+
+@font-face {
+  font-family: "ESKlarheit-Bold";
+  src: url("../assets/fonts/ESKlarheitGrotesk-Bold.woff") format("woff"),
+    url("../assets/fonts/ESKlarheitGrotesk-Bold.woff") format("woff2");
+}
+
 $font-size-basis: 18px;
-$font-weight-heading: 400;
 
 /*-----Margins-----*/
 
@@ -49,6 +68,3 @@ $border-radius: 0.25em;
 
 /*-----Animations-----*/
 $animation-transition: 0.2s;
-
-$yellow: #ffff00;
-$blue: #0000ff;

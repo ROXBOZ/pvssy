@@ -73,7 +73,7 @@ const Pain = () => {
         if (matches) {
           const parts = p.split(regex);
           return (
-            <span key={index}>
+            <p key={index}>
               {parts.map((part, i) => {
                 if (matches.includes(part)) {
                   return (
@@ -94,7 +94,7 @@ const Pain = () => {
                   return <span key={i}>{part}</span>;
                 }
               })}
-            </span>
+            </p>
           );
         } else {
           return (
@@ -169,29 +169,29 @@ const Pain = () => {
           <h2>Que puis-je faire seule ?</h2>
           {createParagraphs(auto)}
           <h2>Quelles aides existent ?</h2>
-          {pro.intro}
+          <p>{pro.intro}</p>
           {pro.gyne && (
             <>
               <h3>Gynécologue</h3>
-              {pro.gyne}
+              <p>{pro.gyne}</p>
             </>
           )}
           {pro.kine && (
             <>
               <h3>Kinésithérapeute</h3>
-              {pro.kine}
+              <p>{pro.kine}</p>
             </>
           )}
           {pro.psyc && (
             <>
               <h3>Psychologue</h3>
-              {pro.psyc}
+              <p>{pro.psyc}</p>
             </>
           )}
           {pro.sexo && (
             <>
               <h3>Sexologue</h3>
-              {pro.sexo}
+              <p>{pro.sexo}</p>
             </>
           )}
           <hr />

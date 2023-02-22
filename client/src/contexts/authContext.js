@@ -43,8 +43,8 @@ export const AuthContextProvider = (props) => {
         localStorage.setItem("token", result.token);
         setUser(result.user);
         setIsLoggedIn(true);
-        setToken(result.token); // Update the token state
-        await getProfile(result.token); // Call getProfile with the new token
+        setToken(result.token);
+        await getProfile(result.token);
         redirectTo("/profile");
       }
     } catch (error) {
@@ -74,11 +74,9 @@ export const AuthContextProvider = (props) => {
         userAvatar: result.user.userAvatar,
         userIsAdmin: result.user.userIsAdmin,
       });
-      console.log("userProfile", result.user.userName);
       setError(null);
       setLoading(false);
     } catch (error) {
-      console.log("can not fetch", error);
       setLoading(false);
     }
   };
@@ -89,7 +87,6 @@ export const AuthContextProvider = (props) => {
     setIsLoggedIn(false);
     setUserProfile(null);
     redirectTo("/login");
-    console.log("LOGOUT FUNCTION");
   };
 
   useEffect(() => {}, [user, isLoggedIn]);

@@ -23,7 +23,7 @@
   border: $border-solid;
   background-color: $bg-color;
   font-size: $font-size-basis;
-  font-family: $font;
+  font-family: "ESKlarheit-Bold";
   cursor: pointer;
 
   &:hover {
@@ -86,7 +86,7 @@
 @mixin input {
   border: $border-solid $color3;
   border-radius: $border-radius;
-  font-family: $font;
+  font-family: "ESKlarheit-Medium";
   font-size: 100%;
   background-color: $bg-color;
   padding: $padding-xs;

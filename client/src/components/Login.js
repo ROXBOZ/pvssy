@@ -11,7 +11,7 @@ function LoginForm() {
       <h1>Se connecter</h1>
 
       <form className="grid-form">
-        <div className="user-email-label">
+        <div className="user-email-label flex-center">
           <label htmlFor="userEmail">Adresse Email </label>
         </div>
         <div className="user-email-input">
@@ -33,7 +33,7 @@ function LoginForm() {
               )} */}
           </div>
         </div>
-        <div className="user-password-label">
+        <div className="user-password-label flex-center">
           <label htmlFor="userPassword">Mot de passe</label>
         </div>
         <div className="user-password-input">

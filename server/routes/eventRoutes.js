@@ -5,6 +5,7 @@ import {
   getArchivedEvents,
   getEventsByRegion,
   addEvent,
+  deleteEvent,
 } from "../controller/eventController.js";
 
 const router = express.Router();
@@ -14,5 +15,6 @@ router.get("/upcoming", getUpcomingEvents);
 router.get("/archived", getArchivedEvents);
 router.get("/:region", getEventsByRegion);
 router.post("/all", addEvent);
+router.delete("/all", deleteEvent);
 
 export default router;

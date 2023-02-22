@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+
 import { AuthContext } from "../../contexts/authContext";
 
 const UserDashboard = ({ userProfile }) => {
-  const { logout } = useContext(AuthContext);
-
   return (
     <div>
       {userProfile && (
@@ -15,7 +13,7 @@ const UserDashboard = ({ userProfile }) => {
             alt={userProfile.userName}
           />
           <p>
-            {userProfile.userName}
+            <strong> {userProfile.userName}</strong>
             <br />
             {userProfile.userEmail}
             <br />

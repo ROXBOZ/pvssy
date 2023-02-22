@@ -29,9 +29,12 @@ html {
   padding: 0;
   background-color: $bg-color;
   color: $txt-color;
-  font-family: $font;
+  font-family: "ESKlarheit-Book";
   line-height: 1.5;
   font-size: $font-size-basis;
+  strong {
+    font-family: "ESKlarheit-Bold";
+  }
 
   body {
     margin: 0;

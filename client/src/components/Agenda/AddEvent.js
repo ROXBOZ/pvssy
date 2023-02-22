@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { EventsContext } from "../contexts/eventsContext";
+import { EventsContext } from "../../contexts/eventsContext";
 import { useState, useContext } from "react";
-import { AuthContext } from "../contexts/authContext";
+import { AuthContext } from "../../contexts/authContext";
 
 const AddEvent = () => {
   const { userProfile } = useContext(AuthContext);
@@ -14,11 +14,12 @@ const AddEvent = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
   const [newEvent, setNewEvent] = useState(null);
+  const [successfulPost, setSuccessfulPost] = useState(false);
+
   const handleInputChange = (e) => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value }); // computed property names
   };
 
-  // FOR ADMIN users
   const addEvent = async () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -50,9 +51,14 @@ const AddEvent = () => {
       );
       const result = response.json();
       console.log("result", result);
+      setSuccessfulPost(true);
     } catch (error) {
       console.log("error", error);
     }
+  };
+
+  const addPendingEvent = async () => {
+    console.log("add pending event");
   };
 
   // Region Dropdown
@@ -375,22 +381,30 @@ const AddEvent = () => {
             </>
           )}
         </div>
-        <div className="conditions-generales">
-          <input
-            className="form-check-input"
-            id="conditionsCheckbox"
-            type="checkbox"
-            required
-          />
-          <label htmlFor="conditionsCheckbox">
-            J’ai lu et j’accepte les{" "}
-            <Link to="/conditions-generales ">conditions générales</Link>.
-          </label>
-        </div>
+
+        {userProfile && userProfile.userIsAdmin === false && (
+          <div className="conditions-generales">
+            <input
+              className="form-check-input"
+              id="conditionsCheckbox"
+              type="checkbox"
+              required
+            />
+            <label htmlFor="conditionsCheckbox">
+              J’ai lu et j’accepte les{" "}
+              <Link to="/conditions-generales ">conditions générales</Link>.
+            </label>
+          </div>
+        )}
+
         {userProfile && userProfile.userIsAdmin === true ? (
           <button onClick={addEvent}>Ajouter au calendrier</button>
         ) : (
-          <button>Proposer l’évènement</button>
+          <button onClick={addPendingEvent}>Proposer l’évènement</button>
+        )}
+
+        {successfulPost && (
+          <p className="success-msg">L’évènement a été ajouté au calendrier</p>
         )}
       </form>
     </>

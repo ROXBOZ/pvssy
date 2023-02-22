@@ -1,7 +1,8 @@
 import { AuthContext } from "../../contexts/authContext";
 import UserDashboard from "./UserDashboard";
 import { useContext, useState } from "react";
-import AddEvent from "../AddEvent";
+import AddEvent from "../Agenda/AddEvent";
+import DeleteEvent from "../Agenda/DeleteEvent";
 
 const Profile = () => {
   const { userProfile } = useContext(AuthContext);
@@ -56,14 +57,14 @@ const Profile = () => {
           )}{" "}
           un évènement
         </button>
-        {userProfile && userProfile.userIsAdmin === true && (
-          <button
-            className={`action-button ${isActive("modify")}`}
-            onClick={() => handleEventClick("modify")}
-          >
-            Modifier un évènement
-          </button>
-        )}
+        {/* {userProfile && userProfile.userIsAdmin === true && ( */}
+        <button
+          className={`action-button ${isActive("modify")}`}
+          onClick={() => handleEventClick("modify")}
+        >
+          Modifier un évènement
+        </button>
+        {/* )} */}
         <button
           className={`action-button ${isActive("delete")}`}
           onClick={() => handleEventClick("delete")}
@@ -73,7 +74,7 @@ const Profile = () => {
       </div>
       {showAddEvent && <AddEvent />}
       {showModifyEvent && <h1>Modifier un évènement</h1>}
-      {showDeleteEvent && <h1>Supprimer un évènement</h1>}
+      {showDeleteEvent && <DeleteEvent />}
     </div>
   );
 };

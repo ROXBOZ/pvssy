@@ -20,6 +20,7 @@ h1 {
 p {
   margin-top: 0;
   max-width: 70ch;
+
   &.subtitle {
     font-size: x-large;
   }
@@ -29,16 +30,15 @@ a {
   text-decoration: none;
   color: $color3;
   border-bottom: $border-solid;
+  font-family: "ESKlarheit-Bold";
+
   &.simple-link {
     width: fit-content;
   }
+
   &:hover {
     border: none;
   }
-}
-
-hr {
-  // @include hr;
 }
 
 sup {
@@ -75,10 +75,10 @@ $level-size: $type-base-size;
 
   h#{$level},
   .h#{$level} {
+    font-family: "ESKlarheit-Medium";
     font-size: $level-size;
     line-height: calc(2px + 2ex + 2px);
     margin-bottom: 0.65em;
-    font-weight: $font-weight-heading;
 
     @if ($type-size-ratio > 1.2) {
       $level-unitless: $level-size / ($level-size * 0 + 1);
