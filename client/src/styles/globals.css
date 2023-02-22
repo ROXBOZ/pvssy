@@ -75,6 +75,10 @@ header nav ul a.btn {
   background-color: #fffdf8;
   font-size: 18px;
   font-family: "ESKlarheit-Bold";
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   cursor: pointer;
 }
 header nav ul a.btn:hover {
@@ -338,6 +342,10 @@ button {
   background-color: #fffdf8;
   font-size: 18px;
   font-family: "ESKlarheit-Bold";
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   cursor: pointer;
 }
 button:hover {
@@ -670,7 +678,7 @@ form .form-section .form-dropdown-suggestions li {
 
 .warning-msg {
   color: red;
-  font-weight: bold;
+  font-family: "ESKlarheit-Bold";
 }
 
 .check-list {
@@ -727,6 +735,10 @@ form .form-section .form-dropdown-suggestions li {
 .form-check-input:checked {
   background-color: #9637f0;
   border-color: #9637f0;
+}
+
+.form-check-input {
+  background-color: white;
 }
 
 .form-check-input[type=radio] {

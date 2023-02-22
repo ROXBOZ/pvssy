@@ -8,6 +8,7 @@ const DeleteEvent = () => {
   const { data, fetchData, upComingEventEP } = useContext(EventsContext);
   const [selectedEvents, setSelectedEvents] = useState([]);
 
+  console.log("selectedEvents", selectedEvents);
   useEffect(() => {
     fetchData(upComingEventEP);
   }, [upComingEventEP]);
@@ -46,52 +47,60 @@ const DeleteEvent = () => {
 
   return (
     <>
-      <h1>Supprimer un évènement</h1>
-      <p className="warning-msg">
-        ⚠️ Danger : une fois supprimé, l’évènement ne peut PAS être récupéré.
-      </p>
+      <h1>
+        Supprimer un évènement<sup>prototype</sup>
+      </h1>
 
       {userProfile && userProfile.userIsAdmin === true && (
-        <>
-          <ul className="check-list">
-            {data.upcomingEvents &&
-              data.upcomingEvents.map((e) => {
-                const isoDate = e.date;
-                const newDate = new Date(isoDate);
-                const dateOptions = {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                };
-                const timeOptions = {
-                  hour: "numeric",
-                  minute: "numeric",
-                };
-                const dateTimeoptions = { ...dateOptions, ...timeOptions };
+        <form className="grid-form">
+          <div className="form-section">
+            <div>
+              <p className="warning-msg">
+                ⚠️ Danger : une fois supprimé, l’évènement ne peut PAS être
+                récupéré.
+              </p>
+              <ul className="check-list">
+                {data.upcomingEvents &&
+                  data.upcomingEvents.map((e) => {
+                    const isoDate = e.date;
+                    const newDate = new Date(isoDate);
+                    const dateOptions = {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    };
+                    const timeOptions = {
+                      hour: "numeric",
+                      minute: "numeric",
+                    };
+                    const dateTimeoptions = { ...dateOptions, ...timeOptions };
 
-                const dateTime = newDate.toLocaleDateString(
-                  "fr-CH",
-                  dateTimeoptions
-                );
-                return (
-                  <li key={e._id}>
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      value={e._id}
-                      onChange={(e) => handleChange(e)}
-                    />
-                    <strong>{e.title}</strong>&nbsp;(<span>{dateTime}</span>)
-                  </li>
-                );
-              })}
-          </ul>
+                    const dateTime = newDate.toLocaleDateString(
+                      "fr-CH",
+                      dateTimeoptions
+                    );
+                    return (
+                      <li key={e._id}>
+                        <input
+                          type="checkbox"
+                          className="form-check-input"
+                          value={e._id}
+                          onChange={(e) => handleChange(e)}
+                        />
+                        <strong>{e.title}</strong>&nbsp;(<span>{dateTime}</span>
+                        )
+                      </li>
+                    );
+                  })}
+              </ul>
 
-          <button onClick={handleDelete}>
-            Supprimer le(s) évènement(s) sélectionné(s)
-          </button>
-        </>
+              <button onClick={handleDelete}>
+                Supprimer le(s) évènement(s) sélectionné(s)
+              </button>
+            </div>
+          </div>
+        </form>
       )}
     </>
   );

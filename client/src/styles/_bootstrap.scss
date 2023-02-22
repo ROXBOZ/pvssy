@@ -24,6 +24,10 @@
 // .form-check-input[type="checkbox"] {
 // }
 
+.form-check-input {
+  background-color: white;
+}
+
 .form-check-input[type="radio"] {
   border-radius: 50%;
   background-color: $color3;

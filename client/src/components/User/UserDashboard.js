@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 
 const UserDashboard = ({ userProfile }) => {
+  const { logout } = useContext(AuthContext);
   return (
     <div>
       {userProfile && (
@@ -22,8 +23,8 @@ const UserDashboard = ({ userProfile }) => {
             ) : (
               <span>éditeur·ice</span>
             )}
-            <br />
           </p>
+          <button onClick={logout}>se déconnecter</button>
         </div>
       )}
     </div>

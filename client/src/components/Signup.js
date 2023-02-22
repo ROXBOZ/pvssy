@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const SignupForm = () => {
@@ -8,7 +8,7 @@ const SignupForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [newUser, setNewUser] = useState({});
   const [userType, setUserType] = useState("association");
-
+  const redirectTo = useNavigate();
   const handleAttachImg = (e) => {
     setSelectedFile(e.target.files[0]);
   };
@@ -34,13 +34,8 @@ const SignupForm = () => {
   };
 
   const handleInputChange = (e) => {
-    setNewUser({ ...newUser, [e.target.name]: e.target.value }); // computed property names
+    setNewUser({ ...newUser, [e.target.name]: e.target.value });
   };
-  // console.log("newUser.userName", newUser.userName);
-  // console.log("newUser.userEmail", newUser.userEmail);
-  // console.log("newUser.userPassword", newUser.userPassword);
-  // console.log("newUser.userAvatar", newUser.userAvatar);
-  // console.log("newUser.userIsadmin", newUser.userIsadmin);
 
   const signup = async (e) => {
     e.preventDefault();
@@ -74,6 +69,8 @@ const SignupForm = () => {
     } catch (error) {
       console.log("error", error);
     }
+    alert("compte créé, veuillez vous connecter");
+    redirectTo("/login");
   };
 
   return (
