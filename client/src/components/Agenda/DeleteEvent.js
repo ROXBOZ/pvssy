@@ -45,12 +45,26 @@ const DeleteEvent = () => {
     });
   };
 
+  if (!data.upcomingEvents || data.upcomingEvents.length === 0) {
+    return (
+      <>
+        {" "}
+        <h1>
+          Supprimer un évènement<sup>prototype</sup>
+        </h1>{" "}
+        <p className="warning msg">
+          <strong>Aucun évènement dans le calendrier!</strong>
+        </p>
+      </>
+    );
+  }
+
   return (
     <>
       <h1>
         Supprimer un évènement<sup>prototype</sup>
       </h1>
-      <p className="warning-msg">
+      <p className="warning msg">
         Une fois supprimé, l’évènement ne peut PAS être récupéré.
       </p>
 

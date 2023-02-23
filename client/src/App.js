@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./styles/globals.css";
 import { Navigate } from "react-router-dom";
 
@@ -35,15 +35,14 @@ import { AuthContextProvider } from "./contexts/authContext";
 // utils
 import getToken from "./utils/getToken";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import { useEffect } from "react";
 
 function App() {
   const token = getToken();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    navigate("*", { replace: true });
-  }, []);
+  // useEffect(() => {
+  //   navigate("*", { replace: true });
+  // }, []);
 
   return (
     <>

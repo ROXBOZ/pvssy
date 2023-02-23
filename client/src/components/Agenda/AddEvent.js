@@ -19,20 +19,21 @@ const AddEvent = () => {
   const handleInputChange = (e) => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value }); // computed property names
   };
-
-  const addEvent = async () => {
+  const addApprovedEvent = async () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
+      isPending: false,
       title: newEvent.eventTitle,
       date: newEvent.eventDateTime,
       shortDef: newEvent.eventShortDef,
       longDef: newEvent.eventLongDef,
-      online: eventType === "online" ? true : false,
+      isOnline: eventType === "online" ? true : false,
       onlineMeeting: eventType === "online" ? newEvent.onlineMeeting : null,
       address: eventType === "online" ? null : newEvent.eventAddress,
       city: eventType === "online" ? null : newEvent.eventCity,
+      region: "Lausanne",
       email: newEvent.eventEmail,
       tel: newEvent.eventTel,
       entryFee: newEvent.admissionFee,
@@ -56,9 +57,43 @@ const AddEvent = () => {
       console.log("error", error);
     }
   };
-
   const addPendingEvent = async () => {
-    console.log("add pending event");
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+      isPending: true,
+      title: newEvent.eventTitle,
+      date: newEvent.eventDateTime,
+      shortDef: newEvent.eventShortDef,
+      longDef: newEvent.eventLongDef,
+      isOnline: eventType === "online" ? true : false,
+      onlineMeeting: eventType === "online" ? newEvent.onlineMeeting : null,
+      address: eventType === "online" ? null : newEvent.eventAddress,
+      city: eventType === "online" ? null : newEvent.eventCity,
+      region: "Lausanne",
+      email: newEvent.eventEmail,
+      tel: newEvent.eventTel,
+      entryFee: newEvent.admissionFee,
+    });
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+    };
+
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/events/all",
+        requestOptions
+      );
+      const result = response.json();
+      console.log("result", result);
+      setSuccessfulPost(true);
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   // Region Dropdown
@@ -112,16 +147,16 @@ const AddEvent = () => {
 
       {userProfile && userProfile.userIsAdmin === false ? (
         <>
-          <p className="warning-msg">
+          <p className="warning msg">
             Nous ne pouvons pas garantir la publication d'un événement qui
             aurait lieu moins de trois jours après sa soumission.
           </p>
         </>
       ) : (
         <>
-          {/* <p className="warning-msg">
+          <p className="warning msg">
             L’évènement sera ajouté immédiatement au calendrier.
-          </p> */}
+          </p>
         </>
       )}
 
@@ -404,7 +439,7 @@ const AddEvent = () => {
         )}
 
         {userProfile && userProfile.userIsAdmin === true ? (
-          <button onClick={addEvent}>Ajouter au calendrier</button>
+          <button onClick={addApprovedEvent}>Ajouter au calendrier</button>
         ) : (
           <button onClick={addPendingEvent}>Proposer l’évènement</button>
         )}

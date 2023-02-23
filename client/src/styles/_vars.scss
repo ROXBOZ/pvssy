@@ -7,7 +7,7 @@ $color1: #f5733c;
 $color2: #ff50d7;
 $color3: #9637f0;
 
-$success-color: darken(#c8ffa5, 30%);
+$success-color: darken(#c8ffa5, 60%);
 $warning-color: darken($color1, 10%);
 
 $gradient: linear-gradient(
@@ -55,7 +55,7 @@ $margin-sm: 50px;
 /*-----Paddings-----*/
 
 $padding-xs: 0.5em;
-$padding-sm: 50px;
+$padding-sm: 2em;
 $padding-btn: 0.5em 1.5em;
 
 /*-----Gap-----*/

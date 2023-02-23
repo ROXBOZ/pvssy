@@ -47,6 +47,15 @@
   gap: $gap;
 }
 
+/*-----Forms-----*/
+
+@mixin form-section {
+  grid-column: 1/2;
+  background-color: lighten($color3, 40%);
+  border-radius: $border-radius;
+  border: $border-solid lighten($color3, 20%);
+}
+
 /*-----Cards-----*/
 
 @mixin card-grid {

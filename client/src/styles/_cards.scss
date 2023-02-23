@@ -8,8 +8,6 @@
       border: none;
       @include card;
       flex: max-content;
-      // background-image: $gradient;
-      // background-size: cover;
       h3 {
         text-align: center;
       }
@@ -18,5 +16,32 @@
         text-align: center;
       }
     }
+  }
+}
+
+.pending-event-card {
+  @include form-section;
+  padding: $padding-sm;
+  margin: $demi-gap 0;
+  height: fit-content;
+  .collapsed {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    p {
+      font-size: larger;
+      margin-bottom: 0;
+    }
+  }
+  .pending-event-detail {
+    .pending-event-detail-content {
+      margin-top: $demi-gap;
+    }
+  }
+  .button-flex {
+    display: flex;
+    gap: $demi-gap;
   }
 }

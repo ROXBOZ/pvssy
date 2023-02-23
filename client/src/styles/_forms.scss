@@ -27,22 +27,21 @@ input {
       flex-direction: row;
       gap: $gap;
       align-items: center;
-      #chevron-icon {
-        &.open {
-          transform: rotate(90deg);
-          transition: $animation-transition;
-        }
-        &.close {
-          transition: $animation-transition;
-        }
-        &:hover {
-          cursor: pointer;
-        }
-      }
     }
   }
 }
-
+#chevron-icon {
+  &.open {
+    transform: rotate(90deg);
+    transition: $animation-transition;
+  }
+  &.close {
+    transition: $animation-transition;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
 .filter,
 .filter-dropdown {
   input {
@@ -151,10 +150,7 @@ form {
     }
     .form-section {
       padding: $padding-sm $padding-sm;
-      background-color: lighten($color3, 40%);
-      border-radius: $border-radius;
-      grid-column: 1/5;
-      border: $border-solid lighten($color3, 20%);
+      @include form-section;
 
       h3 {
         margin-top: 0;
@@ -188,8 +184,6 @@ form {
 
     .event-title-input {
       grid-column: 2/3;
-      input {
-      }
     }
     .event-date-label {
       grid-column: 3/4;
@@ -236,22 +230,6 @@ form {
   height: 10rem;
   width: 10rem;
   border-radius: 50%;
-}
-
-.success-msg {
-  // display: flex;
-  // flex-direction: column;
-  // grid-column: 1/2;
-  color: $success-color;
-  font-weight: bold;
-}
-
-.warning-msg {
-  color: $warning-color;
-  font-family: $font-medium;
-  &:before {
-    content: ("⚠️  ");
-  }
 }
 
 .check-list {

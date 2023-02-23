@@ -1,0 +1,13 @@
+.msg {
+  margin: $gap 0;
+  font-family: $font-medium;
+  &.success {
+    color: $success-color;
+  }
+  &.warning {
+    color: $warning-color;
+    &:before {
+      content: ("⚠️  ");
+    }
+  }
+}

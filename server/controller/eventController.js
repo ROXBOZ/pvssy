@@ -1,9 +1,10 @@
-import eventModel from "../models/eventModel.js";
+import { eventModel } from "../models/eventModel.js";
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
-// get all events
+// GET
+
 const getAllEvents = async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   try {
@@ -19,29 +20,11 @@ const getAllEvents = async (req, res) => {
     });
   }
 };
-// get pending events
-const getPendingEvents = async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  try {
-    const pendingEvents = await eventModel.find({}).exec();
-    res.status(200).json({
-      number: pendingEvents.length,
-      pendingEvents,
-    });
-  } catch (error) {
-    res.status(500).json({
-      error,
-      msg: "Problème serveur",
-    });
-  }
-};
-// get future events
+
 const getUpcomingEvents = async (req, res) => {
-  //res.header("Access-Control-Allow-Origin", "*");
-  // handling error if there are no event planned.
   try {
     const upcomingEvents = await eventModel
-      .find({ date: { $gte: today } })
+      .find({ date: { $gte: today }, isPending: false })
       .exec();
     res.status(200).json({
       number: upcomingEvents.length,
@@ -55,13 +38,12 @@ const getUpcomingEvents = async (req, res) => {
   }
 };
 
-// get passed events
 const getArchivedEvents = async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   // handling error if there are no event planned.
   try {
     const archivedEvents = await eventModel
-      .find({ date: { $lt: today } })
+      .find({ date: { $lt: today }, isPending: false })
       .exec();
     res.status(200).json({
       number: archivedEvents.length,
@@ -75,12 +57,34 @@ const getArchivedEvents = async (req, res) => {
   }
 };
 
-// get FUTURE event by regions
+const getEventById = async (req, res) => {
+  try {
+    const requestedEvents = await eventModel
+      .find({ _id: req.params._id })
+      .exec();
+    if (requestedEvents.length === 0) {
+      res.status(200).json({
+        msg: "Pas d'évènements avec cet _id",
+      });
+    } else {
+      res.status(200).json({
+        number: requestedEvents.length,
+        requestedEvents,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      error,
+      msg: "Problème serveur",
+    });
+  }
+};
+
 const getEventsByRegion = async (req, res) => {
   // res.header("Access-Control-Allow-Origin", "*");
   try {
     const requestedEvents = await eventModel
-      .find({ region: req.params.region })
+      .find({ region: req.params.region, isPending: false })
       .exec();
     if (requestedEvents.length === 0) {
       res.status(200).json({
@@ -100,61 +104,89 @@ const getEventsByRegion = async (req, res) => {
   }
 };
 
-// add event
+const getApprovedEvents = async (req, res) => {
+  try {
+    const approvedEvents = await eventModel.find({ isPending: false }).exec();
+    res.status(200).json({
+      number: approvedEvents.length,
+      approvedEvents,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error,
+      msg: "Problème serveur",
+    });
+  }
+};
+
+const getPendingEvents = async (req, res) => {
+  try {
+    const pendingEvents = await eventModel.find({ isPending: true }).exec();
+    res.status(200).json({
+      number: pendingEvents.length,
+      pendingEvents,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error,
+      msg: "Problème serveur",
+    });
+  }
+};
+
+// POST
+
 const addEvent = async (req, res) => {
   const {
+    isPending,
     title,
     date,
     shortDef,
     longDef,
-    online,
+    isOnline,
     onlineMeeting,
     address,
     city,
+    region,
     email,
     tel,
     entryFee,
-    imgCover,
-    imgCaption,
-    imgCredits,
   } = req.body;
 
   try {
     const newEvent = new eventModel({
+      isPending,
       title,
       date,
       shortDef,
       longDef,
-      online,
+      isOnline,
       onlineMeeting,
       address,
       city,
+      region,
       email,
       tel,
       entryFee,
-      imgCover,
-      imgCaption,
-      imgCredits,
     });
     const savedEvent = await newEvent.save();
 
     res.status(201).json({
       msg: "new event added successfully",
       event: {
+        isPending: savedEvent.isPending,
         title: savedEvent.title,
         date: savedEvent.date,
         shortDef: savedEvent.shortDef,
         longDef: savedEvent.longDef,
-        online: savedEvent.online,
+        isOnline: savedEvent.isOnline,
         onlineMeeting: savedEvent.onlineMeeting,
         address: savedEvent.address,
         city: savedEvent.city,
+        region: savedEvent.region,
         email: savedEvent.email,
         tel: savedEvent.tel,
         entryFee: savedEvent.entryFee,
-        imgCover: savedEvent.imgCover,
-        imgCaption: savedEvent.imgCaption,
-        imgCredits: savedEvent.imgCredits,
       },
     });
   } catch (error) {
@@ -165,72 +197,34 @@ const addEvent = async (req, res) => {
   }
 };
 
-// add pending event
-const addPendingEvent = async (req, res) => {
-  const {
-    title,
-    date,
-    shortDef,
-    longDef,
-    online,
-    onlineMeeting,
-    address,
-    city,
-    email,
-    tel,
-    entryFee,
-    imgCover,
-    imgCaption,
-    imgCredits,
-  } = req.body;
+// PUT
 
+const approveEvent = async (req, res) => {
   try {
-    const newEvent = new eventModel({
-      title,
-      date,
-      shortDef,
-      longDef,
-      online,
-      onlineMeeting,
-      address,
-      city,
-      email,
-      tel,
-      entryFee,
-      imgCover,
-      imgCaption,
-      imgCredits,
-    });
-    const savedEvent = await newEvent.save();
+    const existingEvent = await eventModel.findOne({ _id: req.params._id });
 
-    res.status(201).json({
-      msg: "new event added successfully",
-      event: {
-        title: savedEvent.title,
-        date: savedEvent.date,
-        shortDef: savedEvent.shortDef,
-        longDef: savedEvent.longDef,
-        online: savedEvent.online,
-        onlineMeeting: savedEvent.onlineMeeting,
-        address: savedEvent.address,
-        city: savedEvent.city,
-        email: savedEvent.email,
-        tel: savedEvent.tel,
-        entryFee: savedEvent.entryFee,
-        imgCover: savedEvent.imgCover,
-        imgCaption: savedEvent.imgCaption,
-        imgCredits: savedEvent.imgCredits,
-      },
-    });
+    if (existingEvent) {
+      existingEvent.isPending = false;
+      await existingEvent.save();
+
+      res.status(200).json({
+        msg: "Event is approved",
+      });
+    } else {
+      res.status(404).json({
+        msg: "Event not found",
+      });
+    }
   } catch (error) {
     res.status(500).json({
-      error,
-      msg: "you can't add a new event",
+      msg: "Error during modification",
+      error: error,
     });
   }
 };
 
-// delete event
+//DELETE
+
 const deleteEvent = async (req, res) => {
   const { _id } = req.body;
 
@@ -267,6 +261,8 @@ export {
   getEventsByRegion,
   addEvent,
   deleteEvent,
+  getApprovedEvents,
   getPendingEvents,
-  addPendingEvent,
+  approveEvent,
+  getEventById,
 };

@@ -6,20 +6,29 @@ import {
   getEventsByRegion,
   addEvent,
   deleteEvent,
-  //
+  getApprovedEvents,
   getPendingEvents,
-  addPendingEvent,
+  approveEvent,
+  getEventById,
 } from "../controller/eventController.js";
 
 const router = express.Router();
-
+// GET
 router.get("/all", getAllEvents);
-router.get("/pending", getPendingEvents);
 router.get("/upcoming", getUpcomingEvents);
 router.get("/archived", getArchivedEvents);
-router.get("/:region", getEventsByRegion);
+router.get("/approved", getApprovedEvents);
+router.get("/pending", getPendingEvents);
+router.get("/byRegion/:region", getEventsByRegion);
+router.get("/byId/:_id", getEventById);
+
+//POST
 router.post("/all", addEvent);
-router.post("/pending", addPendingEvent); //FIXME
+
+//PUT
+router.put("/byId/:_id", approveEvent);
+
+//DELETE
 router.delete("/all", deleteEvent);
 
 export default router;

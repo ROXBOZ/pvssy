@@ -1,10 +1,14 @@
 import mongoose from "mongoose";
 
 const eventSchema = new mongoose.Schema({
+  isPending: {
+    type: Boolean,
+    required: true,
+  },
+
   title: {
     type: String,
     required: true,
-    // unique: true,
   },
 
   date: {
@@ -21,21 +25,35 @@ const eventSchema = new mongoose.Schema({
     type: String,
   },
 
-  online: {
+  isOnline: {
     type: Boolean,
     required: true,
   },
 
   onlineMeeting: {
     type: String,
+    required: function () {
+      return this.isOnline;
+    },
   },
 
   address: {
     type: String,
+    required: function () {
+      return !this.isOnline;
+    },
   },
-
   city: {
     type: String,
+    required: function () {
+      return !this.isOnline;
+    },
+  },
+  region: {
+    type: String,
+    required: function () {
+      return !this.isOnline;
+    },
   },
 
   email: {
@@ -49,21 +67,6 @@ const eventSchema = new mongoose.Schema({
   entryFee: {
     type: Number,
   },
-
-  // imgCover: {
-  //   type: String,
-  //   required: true,
-  // },
-
-  // imgCaption: {
-  //   type: String,
-  //   required: true,
-  // },
-
-  // imgCredits: {
-  //   type: String,
-  // },
 });
-
 const eventModel = mongoose.model("event", eventSchema);
-export default eventModel;
+export { eventModel };
