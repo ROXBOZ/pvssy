@@ -7,16 +7,14 @@ $color1: #f5733c;
 $color2: #ff50d7;
 $color3: #9637f0;
 
-$success-color: green;
-$warning-color: red;
+$success-color: darken(#c8ffa5, 30%);
+$warning-color: darken($color1, 10%);
 
 $gradient: linear-gradient(
   180deg,
   rgba(255, 82, 215, 0.8) 0%,
   rgba(245, 116, 60, 0.8) 100%
 );
-
-$bg-darker: rgba(48, 48, 48, 0.1);
 
 /*-----Fonts-----*/
 
@@ -25,7 +23,6 @@ $bg-darker: rgba(48, 48, 48, 0.1);
   src: url("../assets/fonts/ESRebondGrotesque-Semibold.otf") format("otf"),
     url("../assets/fonts/ESRebondGrotesque-Semibold.ttf") format("truetype");
 }
-$font-logo: "ESRebond";
 
 @font-face {
   font-family: "ESKlarheit-Book";
@@ -45,7 +42,11 @@ $font-logo: "ESRebond";
     url("../assets/fonts/ESKlarheitGrotesk-Bold.woff") format("woff2");
 }
 
-$font-size-basis: 18px;
+$font-logo: "ESRebond";
+$font-bold: "ESKlarheit-Bold";
+$font-medium: "ESKlarheit-Medium";
+$font-regular: "ESKlarheit-Book";
+$font-size-basis: 16px;
 
 /*-----Margins-----*/
 
@@ -55,11 +56,12 @@ $margin-sm: 50px;
 
 $padding-xs: 0.5em;
 $padding-sm: 50px;
-$padding-btn: 0.25em 0.5em;
+$padding-btn: 0.5em 1.5em;
 
 /*-----Gap-----*/
 
-$gap: 2rem;
+$demi-gap: 1em;
+$gap: 2em;
 
 /*-----Borders-----*/
 
@@ -67,4 +69,5 @@ $border-solid: 1.5px solid;
 $border-radius: 0.25em;
 
 /*-----Animations-----*/
+
 $animation-transition: 0.2s;

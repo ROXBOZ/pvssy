@@ -7,7 +7,7 @@
 .category-submenu {
   padding-left: 0;
   display: flex;
-  gap: 1em;
+  gap: $gap;
   li {
     &:before {
       content: "↗ ";

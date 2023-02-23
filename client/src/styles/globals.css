@@ -26,12 +26,12 @@
 /*-----Buttons-----*/
 /*-----Grid-----*/
 /*-----Cards-----*/
-/*-----Separators-----*/
 /*-----Inputs-----*/
+/*-----Placeholder-----*/
 header {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 2em;
   padding: 0 50px;
 }
 header .logo {
@@ -56,9 +56,10 @@ header nav ul {
   align-items: center;
 }
 header nav ul a {
+  font-family: "ESKlarheit-Medium";
   color: #303030;
   text-decoration: none;
-  padding: 0.25em 0.5em;
+  padding: 0.5em 1.5em;
   border-radius: 0.25em;
   border: none;
 }
@@ -67,29 +68,6 @@ header nav ul a:hover {
 }
 header nav ul a.active {
   background-color: #fcdbce;
-}
-header nav ul a.btn {
-  padding: 0.5em 1em;
-  border-radius: 0.25em;
-  border: 1.5px solid;
-  background-color: #fffdf8;
-  font-size: 18px;
-  font-family: "ESKlarheit-Bold";
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  cursor: pointer;
-}
-header nav ul a.btn:hover {
-  background-color: #ffe9fa;
-  border: transparent 1.5px solid;
-}
-header nav ul a.btn:disabled {
-  background-color: #fffdf8;
-  opacity: 60%;
-  cursor: auto;
-  border: 1.5px solid;
 }
 header nav ul li {
   list-style: none;
@@ -134,7 +112,7 @@ header nav ul li .user-icon:hover {
 .logout-header {
   display: flex;
   flex-direction: row;
-  gap: 0.5em;
+  gap: 2em;
 }
 
 footer {
@@ -158,12 +136,16 @@ footer a {
   margin-top: 20vh;
 }
 .heading-area .pretitle {
+  font-family: "ESKlarheit-Bold";
   text-transform: uppercase;
   color: #f5733c;
   letter-spacing: 0.5px;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 .heading-area .pretitle + h1 {
   margin-top: 0;
+  padding-top: 0;
 }
 
 h1 {
@@ -193,6 +175,7 @@ a:hover {
 }
 
 sup {
+  font-family: "ESKlarheit-Bold";
   padding: 0 0.5em;
   color: #9637f0;
   font-size: 40%;
@@ -258,14 +241,14 @@ h1,
 .grid-area {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 2em;
 }
 
 /*-----Pain page, Event page-----*/
 .category-submenu {
   padding-left: 0;
   display: flex;
-  gap: 1em;
+  gap: 2em;
 }
 .category-submenu li {
   list-style: none;
@@ -308,8 +291,8 @@ h1,
 .card-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  padding-bottom: 1rem;
+  gap: 2em;
+  padding-bottom: 2em;
 }
 .card-grid .link-card {
   border-bottom: none;
@@ -340,12 +323,12 @@ h1,
 }
 
 button {
-  padding: 0.5em 1em;
+  padding: 0.5em 1.5em;
   border-radius: 0.25em;
   border: 1.5px solid;
   background-color: #fffdf8;
-  font-size: 18px;
-  font-family: "ESKlarheit-Bold";
+  font-size: 16px;
+  font-family: "ESKlarheit-Medium";
   width: -moz-fit-content;
   width: fit-content;
   height: -moz-fit-content;
@@ -366,7 +349,7 @@ button:disabled {
 .button-countdown {
   margin: 1em 0 0;
   display: flex;
-  gap: 2rem;
+  gap: 2em;
   align-items: center;
   justify-content: left;
 }
@@ -378,7 +361,7 @@ button:disabled {
 .show-counter {
   color: #9637f0;
   display: flex;
-  gap: 1em;
+  gap: 2em;
 }
 .show-counter div {
   display: flex;
@@ -386,35 +369,73 @@ button:disabled {
 
 .action-container {
   display: flex;
-  gap: 1em;
+  gap: 2em;
 }
 .action-container .action-button.active {
   border: transparent;
   background-color: #faf5fe;
 }
 
+.tabbed-navigation {
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 40px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: auto;
+  margin-top: 1em;
+}
+.tabbed-navigation a {
+  color: #303030;
+  padding: 1em;
+  border-bottom: none;
+  border-radius: 40px;
+}
+.tabbed-navigation a:hover {
+  background-color: #ebebeb;
+}
+.tabbed-navigation a.active {
+  background-color: #ffb6ee;
+}
+.tabbed-navigation a.active:hover {
+  background-color: #ffd0f4;
+}
+
+input::-moz-placeholder {
+  font-family: "ESKlarheit-Book";
+}
+
+input::placeholder {
+  font-family: "ESKlarheit-Book";
+}
+
 .filter-dashboard {
   padding: 50px 0;
   display: flex;
-  gap: 1rem;
+  gap: 2em;
   justify-content: center;
   align-items: flex-start;
 }
 .filter-dashboard .filter {
   display: flex;
   align-items: top;
-  gap: 1rem;
+  gap: 2em;
 }
 .filter-dashboard .filter-dropdown {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 2em;
   align-items: left;
 }
 .filter-dashboard .filter-dropdown .input-icon {
   display: flex;
   flex-direction: row;
-  gap: 1em;
+  gap: 2em;
   align-items: center;
 }
 .filter-dashboard .filter-dropdown .input-icon #chevron-icon.open {
@@ -430,9 +451,10 @@ button:disabled {
 
 .filter input,
 .filter-dropdown input {
+  color: #303030;
   border: 1.5px solid #9637f0;
   border-radius: 0.25em;
-  font-family: "ESKlarheit-Medium";
+  font-family: "ESKlarheit-Book";
   font-size: 100%;
   background-color: #fffdf8;
   padding: 0.5em;
@@ -501,9 +523,10 @@ form .form-section div input[type=datetime-local],
 form .form-section div input[type=number],
 form .form-section div input[type=tel],
 form .form-section div textarea {
+  color: #303030;
   border: 1.5px solid #9637f0;
   border-radius: 0.25em;
-  font-family: "ESKlarheit-Medium";
+  font-family: "ESKlarheit-Book";
   font-size: 100%;
   background-color: #fffdf8;
   padding: 0.5em;
@@ -527,6 +550,27 @@ form .form-section div input[type=tel]:focus,
 form .form-section div textarea:focus {
   outline: none;
   border: 1.5px solid #c896f7;
+}
+form.grid-form div input[type=text]::-moz-placeholder, form.grid-form div input[type=password]::-moz-placeholder, form.grid-form div input[type=file]::-moz-placeholder, form.grid-form div input[type=date]::-moz-placeholder, form.grid-form div input[type=datetime-local]::-moz-placeholder, form.grid-form div input[type=number]::-moz-placeholder, form.grid-form div input[type=tel]::-moz-placeholder, form.grid-form div textarea::-moz-placeholder, form .form-section div input[type=text]::-moz-placeholder, form .form-section div input[type=password]::-moz-placeholder, form .form-section div input[type=file]::-moz-placeholder, form .form-section div input[type=date]::-moz-placeholder, form .form-section div input[type=datetime-local]::-moz-placeholder, form .form-section div input[type=number]::-moz-placeholder, form .form-section div input[type=tel]::-moz-placeholder, form .form-section div textarea::-moz-placeholder {
+  font-family: "ESKlarheit-Book";
+}
+form.grid-form div input[type=text]::placeholder,
+form.grid-form div input[type=password]::placeholder,
+form.grid-form div input[type=file]::placeholder,
+form.grid-form div input[type=date]::placeholder,
+form.grid-form div input[type=datetime-local]::placeholder,
+form.grid-form div input[type=number]::placeholder,
+form.grid-form div input[type=tel]::placeholder,
+form.grid-form div textarea::placeholder,
+form .form-section div input[type=text]::placeholder,
+form .form-section div input[type=password]::placeholder,
+form .form-section div input[type=file]::placeholder,
+form .form-section div input[type=date]::placeholder,
+form .form-section div input[type=datetime-local]::placeholder,
+form .form-section div input[type=number]::placeholder,
+form .form-section div input[type=tel]::placeholder,
+form .form-section div textarea::placeholder {
+  font-family: "ESKlarheit-Book";
 }
 form.grid-form .user-type,
 form .form-section .user-type {
@@ -680,13 +724,13 @@ form .form-section .form-dropdown-suggestions li {
 }
 
 .success-msg {
-  color: green;
+  color: #6bff0c;
   font-weight: bold;
 }
 
 .warning-msg {
-  color: red;
-  font-family: "ESKlarheit-Bold";
+  color: #f2510c;
+  font-family: "ESKlarheit-Medium";
 }
 .warning-msg:before {
   content: "⚠️  ";
@@ -700,27 +744,6 @@ form .form-section .form-dropdown-suggestions li {
 .check-list li {
   display: flex;
   align-items: center;
-}
-
-.related-terms-container {
-  margin: 1em 0;
-  display: flex;
-  gap: 0.1em;
-}
-.related-terms-container a {
-  border-bottom: none;
-}
-.related-terms-container a .tag {
-  padding: 0.5em;
-  border-radius: 0.25em;
-  font-size: 80%;
-  margin: 0 0.5em;
-  background-color: #490a84;
-  color: #fffdf8;
-}
-.related-terms-container a .tag:hover {
-  background-color: #9637f0;
-  cursor: pointer;
 }
 
 .form-check-input {
@@ -741,7 +764,7 @@ form .form-section .form-dropdown-suggestions li {
 .form-check-input:focus {
   border-color: #9637f0;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem #c896f7;
+  box-shadow: 0 0 0 0.15em #c896f7;
 }
 .form-check-input:checked {
   background-color: #9637f0;
@@ -801,10 +824,10 @@ html {
   color: #303030;
   font-family: "ESKlarheit-Book";
   line-height: 1.5;
-  font-size: 18px;
+  font-size: 16px;
 }
 html strong {
-  font-family: "ESKlarheit-Bold";
+  font-family: "ESKlarheit-Medium";
 }
 html body {
   margin: 0;

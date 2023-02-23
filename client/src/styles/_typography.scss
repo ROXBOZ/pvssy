@@ -3,12 +3,15 @@
   margin-top: 20vh;
 
   .pretitle {
+    font-family: $font-bold;
     text-transform: uppercase;
     color: $color1;
     letter-spacing: 0.5px;
-
+    padding-bottom: 0;
+    margin-bottom: 0;
     & + h1 {
       margin-top: 0;
+      padding-top: 0;
     }
   }
 }
@@ -30,7 +33,7 @@ a {
   text-decoration: none;
   color: $color3;
   border-bottom: $border-solid;
-  font-family: "ESKlarheit-Bold";
+  font-family: $font-bold;
 
   &.simple-link {
     width: fit-content;
@@ -42,6 +45,7 @@ a {
 }
 
 sup {
+  font-family: $font-bold;
   padding: 0 0.5em;
   color: $color3;
   font-size: 40%;
@@ -75,7 +79,7 @@ $level-size: $type-base-size;
 
   h#{$level},
   .h#{$level} {
-    font-family: "ESKlarheit-Medium";
+    font-family: $font-medium;
     font-size: $level-size;
     line-height: calc(2px + 2ex + 2px);
     margin-bottom: 0.65em;

@@ -5,6 +5,13 @@ export default function Breadcrumbs() {
 
   let currentLink = "";
 
+  if (
+    location.pathname === "/" ||
+    (location.state && location.state.notFound)
+  ) {
+    return null;
+  }
+
   const crumbs = location.pathname
     .split("/")
     .filter((crumb) => crumb !== "")

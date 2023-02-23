@@ -25,7 +25,7 @@ const DeleteEvent = () => {
 
   const handleDelete = () => {
     selectedEvents.map((e) => {
-      console.log("element to delete", e);
+      alert("Une fois supprimé, l’évènement ne peut PAS être récupéré.");
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 

@@ -1,6 +1,7 @@
 /*-----Links-----*/
 
 @mixin navlink {
+  font-family: $font-medium;
   color: $txt-color;
   text-decoration: none;
   padding: $padding-btn;
@@ -9,7 +10,6 @@
   &:hover {
     background-color: lighten($color2, 30%);
   }
-
   &.active {
     background-color: lighten($color1, 30%);
   }
@@ -18,21 +18,19 @@
 /*-----Buttons-----*/
 
 @mixin button {
-  padding: 0.5em 1em;
+  padding: $padding-btn;
   border-radius: $border-radius;
   border: $border-solid;
   background-color: $bg-color;
   font-size: $font-size-basis;
-  font-family: "ESKlarheit-Bold";
+  font-family: $font-medium;
   width: fit-content;
   height: fit-content;
   cursor: pointer;
-
   &:hover {
     background-color: lighten($color2, 30%);
     border: transparent $border-solid;
   }
-
   &:disabled {
     background-color: $bg-color;
     opacity: 60%;
@@ -45,20 +43,15 @@
 
 @mixin grid {
   display: grid;
-  //grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  //grid-template-columns: repeat(5, 1fr);
   grid-template-columns: repeat(4, 1fr);
-  //grid-template-rows: masonry;
   gap: $gap;
 }
 
 /*-----Cards-----*/
 
-// THIS IS WEIRD NEED TO BE IMPROVED
-
 @mixin card-grid {
   @include grid;
-  padding-bottom: 1rem;
+  padding-bottom: $gap;
 }
 
 @mixin card {
@@ -76,19 +69,13 @@
   }
 }
 
-/*-----Separators-----*/
-
-// @mixin hr {
-//   margin-top: 3rem;
-//   border: 1px solid $color1;
-// }
-
 /*-----Inputs-----*/
 
 @mixin input {
+  color: $txt-color;
   border: $border-solid $color3;
   border-radius: $border-radius;
-  font-family: "ESKlarheit-Medium";
+  font-family: $font-regular;
   font-size: 100%;
   background-color: $bg-color;
   padding: $padding-xs;
@@ -97,4 +84,10 @@
     outline: none;
     border: $border-solid lighten($color3, 20%);
   }
+}
+
+/*-----Placeholder-----*/
+
+@mixin placeholder {
+  font-family: $font-regular;
 }

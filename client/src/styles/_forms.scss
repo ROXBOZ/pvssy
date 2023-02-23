@@ -1,25 +1,31 @@
+input {
+  &::placeholder {
+    @include placeholder;
+  }
+}
+
 .filter-dashboard {
   padding: $padding-sm 0;
   display: flex;
-  gap: 1rem;
+  gap: $gap;
   justify-content: center;
   align-items: flex-start;
 
   .filter {
     display: flex;
     align-items: top;
-    gap: 1rem;
+    gap: $gap;
   }
 
   .filter-dropdown {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: $gap;
     align-items: left;
     .input-icon {
       display: flex;
       flex-direction: row;
-      gap: 1em;
+      gap: $gap;
       align-items: center;
       #chevron-icon {
         &.open {
@@ -82,7 +88,7 @@ form {
   &.grid-form,
   .form-section {
     display: grid;
-    gap: 1em;
+    gap: $demi-gap;
     grid-template-columns: repeat(4, max-content);
 
     .check-list {
@@ -99,6 +105,9 @@ form {
       input[type="tel"],
       textarea {
         @include input;
+        &::placeholder {
+          @include placeholder;
+        }
       }
     }
 
@@ -162,7 +171,7 @@ form {
     .flex-center {
       display: flex;
       align-items: center;
-      gap: 2em;
+      gap: $gap;
     }
 
     .event-title-label,
@@ -179,12 +188,15 @@ form {
 
     .event-title-input {
       grid-column: 2/3;
+      input {
+      }
     }
     .event-date-label {
       grid-column: 3/4;
     }
     .event-date-input {
       grid-column: 4/5;
+
       input {
         box-sizing: border-box;
         width: calc(100% - 1px);
@@ -236,7 +248,7 @@ form {
 
 .warning-msg {
   color: $warning-color;
-  font-family: "ESKlarheit-Bold";
+  font-family: $font-medium;
   &:before {
     content: ("⚠️  ");
   }

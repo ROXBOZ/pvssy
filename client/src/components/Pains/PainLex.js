@@ -31,8 +31,10 @@ const PainLex = () => {
         requestOptions
       );
       const result = await response.json();
-      setRequestedTerms(result.requestedTerms);
-      // console.log("result", requestedTerms);
+      const sortedTerms = result.requestedTerms.sort((a, b) =>
+        a.term.localeCompare(b.term)
+      );
+      setRequestedTerms(sortedTerms);
     } catch (error) {
       console.log("error", error);
     }

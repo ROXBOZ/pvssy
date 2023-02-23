@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Pain = () => {
@@ -132,7 +132,12 @@ const Pain = () => {
       <div className="grid-area">
         <div className="col-left">
           <div className="img-holder"></div>
-
+          <div className="tabbed-navigation">
+            <NavLink className="active" to="/">
+              Approche X
+            </NavLink>
+            <NavLink to="/">Approche Y</NavLink>
+          </div>
           {/* NOTE this should not be deleted, in case we want to display tags somewhere}
 
           {/* <div className="related-terms-container">

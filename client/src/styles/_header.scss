@@ -23,10 +23,8 @@ header {
 
       a {
         @include navlink;
-        &.btn {
-          @include button;
-        }
       }
+
       li {
         list-style: none;
         display: flex;
@@ -78,5 +76,5 @@ header {
 .logout-header {
   display: flex;
   flex-direction: row;
-  gap: 0.5em;
+  gap: $gap;
 }

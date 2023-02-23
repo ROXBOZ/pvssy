@@ -17,7 +17,7 @@ button {
 .show-counter {
   color: $color3;
   display: flex;
-  gap: 1em;
+  gap: $gap;
   div {
     display: flex;
   }
@@ -25,12 +25,41 @@ button {
 
 .action-container {
   display: flex;
-  gap: 1em;
+  gap: $gap;
 
   .action-button {
     &.active {
       border: transparent;
       background-color: lighten($color3, 40%);
+    }
+  }
+}
+
+.tabbed-navigation {
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+  height: fit-content;
+  width: fit-content;
+  border-radius: 40px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: auto;
+  margin-top: $demi-gap;
+
+  a {
+    color: $txt-color;
+    padding: $demi-gap;
+    border-bottom: none;
+    border-radius: 40px;
+    &:hover {
+      background-color: #ebebeb;
+    }
+    &.active {
+      background-color: lighten($color2, 20%);
+      &:hover {
+        background-color: lighten($color2, 25%);
+      }
     }
   }
 }

@@ -7,7 +7,6 @@
 @import "cards";
 @import "buttons";
 @import "forms";
-@import "tags";
 @import "bootstrap";
 @import "profile";
 
@@ -29,11 +28,11 @@ html {
   padding: 0;
   background-color: $bg-color;
   color: $txt-color;
-  font-family: "ESKlarheit-Book";
+  font-family: $font-regular;
   line-height: 1.5;
   font-size: $font-size-basis;
   strong {
-    font-family: "ESKlarheit-Bold";
+    font-family: $font-medium;
   }
 
   body {

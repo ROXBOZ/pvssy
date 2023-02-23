@@ -55,22 +55,21 @@ const Profile = () => {
             <span>Ajouter</span>
           ) : (
             <span>Proposer</span>
-          )}{" "}
-          un évènement
+          )}
         </button>
         {/* {userProfile && userProfile.userIsAdmin === true && ( */}
         <button
           className={`action-button ${isActive("modify")}`}
           onClick={() => handleEventClick("modify")}
         >
-          Modifier un évènement
+          Modifier
         </button>
         {/* )} */}
         <button
           className={`action-button ${isActive("delete")}`}
           onClick={() => handleEventClick("delete")}
         >
-          Supprimer un évènement
+          Supprimer
         </button>
       </div>
       {showAddEvent && <AddEvent />}
