@@ -25,6 +25,11 @@ const eventSchema = new mongoose.Schema({
     type: String,
   },
 
+  organizerContact: {
+    type: String,
+    required: true,
+  },
+
   shortDef: {
     type: String,
     required: true,

@@ -381,6 +381,7 @@ h1,
 .pending-event-card .button-flex {
   display: flex;
   gap: 1em;
+  align-items: center;
 }
 
 button {
@@ -863,7 +864,7 @@ form .form-section .form-dropdown-suggestions li {
   color: #2c7200;
 }
 .msg.success:before {
-  content: "🏝️  ";
+  content: "👏  ";
 }
 .msg.pending {
   color: #7d11e3;

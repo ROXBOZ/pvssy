@@ -99,7 +99,7 @@ const PendingEventCard = ({ event, dateTime }) => {
                 <p>
                   <span>Évènement online</span>
                   <br />
-                  <Link to={event.onlineMeeting}>{event.onlineMeeting}</Link>
+                  <Link to={event.onlineMeeting}>Lien vers la réunion</Link>
                 </p>
               </div>
             ) : (
@@ -115,6 +115,7 @@ const PendingEventCard = ({ event, dateTime }) => {
             )}
             <p>En bref: {event.shortDef}</p>
             <p>En détails: {event.longDef}</p>
+
             <p>
               Téléphone: {event.tel ? event.tel : <span>N/A</span>} <br />
               Adresse Email:{" "}
@@ -127,9 +128,10 @@ const PendingEventCard = ({ event, dateTime }) => {
             <div className="button-flex">
               <button onClick={() => approveEvent(event._id)}>approuver</button>
               <button onClick={() => declineEvent(event._id)}>supprimer</button>
-              <p>
-                <Link to="/">Email à l’organisateur·ice</Link>
-              </p>
+
+              <a href={`mailto:${event.organizerContact}`}>
+                Contacter l’organisateur·ice
+              </a>
             </div>
           </div>
         )}

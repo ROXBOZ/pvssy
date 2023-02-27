@@ -9,7 +9,6 @@ const DeleteEvent = () => {
   const { data, fetchData, upComingEvent } = useContext(EventsContext);
   const [selectedEvents, setSelectedEvents] = useState([]);
   const [myEvents, setMyEvents] = useState(null);
-
   useEffect(() => {
     fetchData(upComingEvent);
   }, [upComingEvent]);
@@ -116,7 +115,6 @@ const DeleteEvent = () => {
               </ul>
             ) : (
               <ul className="check-list">
-                {console.log("myEvents dehfghbjk :", myEvents)}
                 {myEvents &&
                   myEvents.map((e) => {
                     const dateTime = dateTimeConverter(e.date);

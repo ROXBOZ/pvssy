@@ -32,7 +32,7 @@ const ApproveEvent = () => {
     return (
       <>
         <h1>
-          Approuver un évènement en attente<sup>prototype</sup>
+          Évènements en attente<sup>prototype</sup>
         </h1>
         <p className="success msg">
           <strong>Pas d’évènement en attente.</strong>

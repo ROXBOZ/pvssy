@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { EventsContext } from "../../../contexts/eventsContext";
 import { AuthContext } from "../../../contexts/authContext";
 import { useState, useContext } from "react";
@@ -69,6 +69,7 @@ const AddEvent = () => {
       title: newEvent.eventTitle,
       date: newEvent.eventDateTime,
       organizer: userProfile.userName,
+      organizerContact: userProfile.userEmail,
       organizerWebsite: userProfile.userWebsite,
       shortDef: newEvent.eventShortDef,
       longDef: newEvent.eventLongDef,
