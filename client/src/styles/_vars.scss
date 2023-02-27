@@ -8,6 +8,7 @@ $color2: #ff50d7;
 $color3: #9637f0;
 
 $success-color: darken(#c8ffa5, 60%);
+$pending-color: darken($color3, 10%);
 $warning-color: darken($color1, 10%);
 
 $gradient: linear-gradient(

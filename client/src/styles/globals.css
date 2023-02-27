@@ -862,6 +862,15 @@ form .form-section .form-dropdown-suggestions li {
 .msg.success {
   color: #2c7200;
 }
+.msg.success:before {
+  content: "🏝️  ";
+}
+.msg.pending {
+  color: #7d11e3;
+}
+.msg.pending:before {
+  content: "⌛  ";
+}
 .msg.warning {
   color: #f2510c;
 }

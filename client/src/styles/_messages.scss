@@ -3,7 +3,18 @@
   font-family: $font-medium;
   &.success {
     color: $success-color;
+    &:before {
+      content: ("🏝️  ");
+    }
   }
+
+  &.pending {
+    color: $pending-color;
+    &:before {
+      content: ("⌛  ");
+    }
+  }
+
   &.warning {
     color: $warning-color;
     &:before {
