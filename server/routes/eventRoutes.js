@@ -10,6 +10,7 @@ import {
   getPendingEvents,
   approveEvent,
   getEventById,
+  getEventByOrganizer,
 } from "../controller/eventController.js";
 
 const router = express.Router();
@@ -21,6 +22,7 @@ router.get("/approved", getApprovedEvents);
 router.get("/pending", getPendingEvents);
 router.get("/byRegion/:region", getEventsByRegion);
 router.get("/byId/:_id", getEventById);
+router.get("/byOrganizer/:organizer", getEventByOrganizer);
 
 //POST
 router.post("/all", addEvent);

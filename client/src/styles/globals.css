@@ -10,8 +10,16 @@
   src: url("../assets/fonts/ESKlarheitGrotesk-Book.woff") format("woff"), url("../assets/fonts/ESKlarheitGrotesk-Book.woff") format("woff2");
 }
 @font-face {
+  font-family: "ESKlarheit-Book-italic";
+  src: url("../assets/fonts/ESKlarheitGrotesk-BookItalic.woff") format("woff"), url("../assets/fonts/ESKlarheitGrotesk-BookItalic.woff") format("woff2");
+}
+@font-face {
   font-family: "ESKlarheit-Medium";
   src: url("../assets/fonts/ESKlarheitGrotesk-Medium.woff") format("woff"), url("../assets/fonts/ESKlarheitGrotesk-Medium.woff") format("woff2");
+}
+@font-face {
+  font-family: "ESKlarheit-Medium-Italic";
+  src: url("../assets/fonts/ESKlarheitGrotesk-MediumItalic.woff") format("woff"), url("../assets/fonts/ESKlarheitGrotesk-MediumItalic.woff") format("woff2");
 }
 @font-face {
   font-family: "ESKlarheit-Bold";
@@ -29,6 +37,20 @@
 /*-----Cards-----*/
 /*-----Inputs-----*/
 /*-----Placeholder-----*/
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal;
+}
+
 header {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -135,6 +157,7 @@ footer a {
   max-height: -moz-fit-content;
   max-height: fit-content;
   margin-top: 20vh;
+  padding-bottom: 2em;
 }
 .heading-area .pretitle {
   font-family: "ESKlarheit-Bold";
@@ -146,7 +169,7 @@ footer a {
 }
 .heading-area .pretitle + h1 {
   margin-top: 0;
-  padding-top: 0;
+  padding-top: 0.25em;
 }
 
 h1 {
@@ -165,9 +188,7 @@ a {
   text-decoration: none;
   color: #9637f0;
   border-bottom: 1.5px solid;
-  font-family: "ESKlarheit-Bold";
-}
-a.simple-link {
+  font-family: "ESKlarheit-Medium";
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -180,6 +201,15 @@ sup {
   padding: 0 0.5em;
   color: #9637f0;
   font-size: 40%;
+}
+
+.source {
+  font-family: "ESKlarheit-Medium-Italic";
+  text-transform: italic;
+}
+
+.source-ref em {
+  font-family: "ESKlarheit-Medium-Italic";
 }
 
 /*-----Ratio Scale-----*/
@@ -299,6 +329,7 @@ h1,
   border-bottom: none;
   color: #303030;
   display: flex;
+  width: 100%;
 }
 .card-grid .link-card .card {
   border: none;
@@ -409,11 +440,10 @@ button:disabled {
 .tabbed-navigation {
   background-color: #f5f5f5;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: -moz-fit-content;
   height: fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   border-radius: 40px;
   text-align: center;
   white-space: nowrap;
@@ -425,6 +455,11 @@ button:disabled {
   padding: 1em;
   border-bottom: none;
   border-radius: 40px;
+  transition: 0.4s;
+}
+.tabbed-navigation a:focus {
+  outline: 0;
+  border: 0;
 }
 .tabbed-navigation a:hover {
   background-color: #ebebeb;
@@ -471,10 +506,10 @@ input::placeholder {
 
 #chevron-icon.open {
   transform: rotate(90deg);
-  transition: 0.2s;
+  transition: 0.4s;
 }
 #chevron-icon.close {
-  transition: 0.2s;
+  transition: 0.4s;
 }
 #chevron-icon:hover {
   cursor: pointer;
@@ -860,6 +895,7 @@ html {
 }
 html strong {
   font-family: "ESKlarheit-Medium";
+  font-weight: 500;
 }
 html body {
   margin: 0;
@@ -868,9 +904,9 @@ html body {
 html body .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   min-height: 100vh;
   height: 100%;
+  padding-top: 20vh;
 }
 
 /* Extra small devices (phones, 600px and down) */

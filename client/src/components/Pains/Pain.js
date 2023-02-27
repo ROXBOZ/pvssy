@@ -114,7 +114,7 @@ const Pain = () => {
       <div className="heading-area">
         <h1>{name}</h1>
         <ul className="category-submenu">
-          Ressources {name} :{" "}
+          <strong>Ressources {name} :</strong>{" "}
           <li>
             <Link to="*">Tutos</Link>
           </li>
@@ -138,32 +138,21 @@ const Pain = () => {
             </NavLink>
             <NavLink to="/">Approche Y</NavLink>
           </div>
-          {/* NOTE this should not be deleted, in case we want to display tags somewhere}
-
-          {/* <div className="related-terms-container">
-            {requestedTerms &&
-              requestedTerms.map((t) => {
-                const termAnchor = t.term
-                  .normalize("NFD")
-                  .replace(/[\u0300-\u036f]/g, "")
-                  .replace(/\s+/g, "-")
-                  .toLowerCase();
-                return (
-                  <Link
-                    key={t._id}
-                    to={{
-                      pathname: `lexique/#${termAnchor}`,
-                    }}
-                  >
-                    <p className="tag">{t.term}</p>
-                  </Link>
-                );
-              })}
-          </div> */}
         </div>
 
         <div className="col-right">
           <h2>Définition</h2>
+          <p>
+            Lors de la nouvelle édition du{" "}
+            <span className="source">
+              Manuel Diagnostique et Statistique des troubles mentaux
+              <sup>1</sup>
+            </span>
+            , ce terme a été abandonné et regroupé avec toutes les dyspareunies
+            sous “trouble lié à des douleurs génito-pelviennes ou à la
+            pénétration”. Il s’agit en vérité de troubles différents. Tu peux
+            découvrir les autres formes sur le reste de l’application.
+          </p>
           {createParagraphs(def)}
           <h2>Diagnostic</h2>
           {createParagraphs(diag)}
@@ -200,7 +189,18 @@ const Pain = () => {
             </>
           )}
           <hr />
-          <h4>Bibliographie</h4>
+          <h4>Références</h4>
+          <div className="source-ref">
+            <ol>
+              <li>
+                American Psychiatric Association, Marc-Antoine Crocq,
+                Julien-Daniel Guelfi, Patrice Boyer, Charles-Bernard Pull,
+                Marie-Claire Pull (2015).{" "}
+                <em>Manuel Diagnostique et Statistique des troubles mentaux</em>{" "}
+                (5e éd.). Elsevier Masson.
+              </li>
+            </ol>
+          </div>
         </div>
       </div>
     </>

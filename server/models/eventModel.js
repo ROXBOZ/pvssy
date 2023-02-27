@@ -16,6 +16,15 @@ const eventSchema = new mongoose.Schema({
     required: true,
   },
 
+  organizer: {
+    type: String,
+    required: true,
+  },
+
+  organizerWebsite: {
+    type: String,
+  },
+
   shortDef: {
     type: String,
     required: true,

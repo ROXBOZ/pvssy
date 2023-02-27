@@ -4,6 +4,7 @@
     border-bottom: none;
     color: $txt-color;
     display: flex;
+    width: 100%;
     .card {
       border: none;
       @include card;

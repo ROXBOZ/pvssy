@@ -31,9 +31,21 @@ $gradient: linear-gradient(
 }
 
 @font-face {
+  font-family: "ESKlarheit-Book-italic";
+  src: url("../assets/fonts/ESKlarheitGrotesk-BookItalic.woff") format("woff"),
+    url("../assets/fonts/ESKlarheitGrotesk-BookItalic.woff") format("woff2");
+}
+
+@font-face {
   font-family: "ESKlarheit-Medium";
   src: url("../assets/fonts/ESKlarheitGrotesk-Medium.woff") format("woff"),
     url("../assets/fonts/ESKlarheitGrotesk-Medium.woff") format("woff2");
+}
+
+@font-face {
+  font-family: "ESKlarheit-Medium-Italic";
+  src: url("../assets/fonts/ESKlarheitGrotesk-MediumItalic.woff") format("woff"),
+    url("../assets/fonts/ESKlarheitGrotesk-MediumItalic.woff") format("woff2");
 }
 
 @font-face {
@@ -43,9 +55,13 @@ $gradient: linear-gradient(
 }
 
 $font-logo: "ESRebond";
-$font-bold: "ESKlarheit-Bold";
-$font-medium: "ESKlarheit-Medium";
 $font-regular: "ESKlarheit-Book";
+$font-regular-italic: "ESKlarheit-Book-Italic";
+$font-medium: "ESKlarheit-Medium";
+$font-medium-italic: "ESKlarheit-Medium-Italic";
+
+$font-bold: "ESKlarheit-Bold";
+
 $font-size-basis: 16px;
 
 /*-----Margins-----*/
@@ -70,4 +86,4 @@ $border-radius: 0.25em;
 
 /*-----Animations-----*/
 
-$animation-transition: 0.2s;
+$animation-transition: 0.4s;

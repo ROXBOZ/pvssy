@@ -11,14 +11,12 @@ const Agenda = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
   const [iconClicked, setIconClicked] = useState(false);
-  const { data, upComingEventEP, fetchData, Error, regions } =
+  const { data, upComingEvent, fetchData, Error, regions } =
     useContext(EventsContext);
 
   useEffect(() => {
-    fetchData(upComingEventEP);
-  }, [upComingEventEP]);
-
-  // Filter per Region
+    fetchData(upComingEvent);
+  }, [upComingEvent]);
 
   const handleInputChange = (event) => {
     const newValue = event.target.value;
@@ -38,23 +36,19 @@ const Agenda = () => {
     setShowSuggestions(matchingSuggestions.length > 0);
     setIconClicked(true);
   };
-
   const handleSuggestionClick = (suggestion) => {
     setValue(suggestion);
     setShowSuggestions(false);
     setIconClicked(false);
   };
-
   const toggleIconClicked = () => {
     setIconClicked(!iconClicked);
   };
-
   const handleIconClick = () => {
     toggleIconClicked();
     setSuggestions([...regions]);
     setShowSuggestions(showSuggestions ? false : true);
   };
-
   const handleKeyDown = (e) => {
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -72,22 +66,22 @@ const Agenda = () => {
   };
 
   return (
-    <>
+    <div>
       <div className="heading-area">
         <div className="heading">
-          <p className="pretitle">Pvssy Connect</p>
+          <p className="pretitle">Let’s connect</p>
           <h1>
             Agenda collaboratif<sup>prototype</sup>
           </h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
             accusantium optio dolore dolorum suscipit ducimus neque quaerat!
-            Quas repellendus laudantium, excepturi iusto architecto neque natus
+            Quas rellendus laudantium, excturi iusto architecto neque natus
             adipisci, eligendi nesciunt eos odit!
           </p>
           <p>
-            Tu as un évènement à proposer ?{" "}
-            <Link to="/login">Connecte-toi</Link>.
+            Vous avez un évènement à proposer ?{" "}
+            <Link to="/login">Connectez-vous</Link> et soumettez-le!
           </p>
         </div>
 
@@ -168,13 +162,10 @@ const Agenda = () => {
           </p>
         )}
         {Error && <p>Erreur</p>}
-        {/* {Loading && <p>...chargement...</p>} */}
       </div>
 
-      <Link to="archives" className="simple-link">
-        Consulter les évènements passés
-      </Link>
-    </>
+      <Link to="archives">Consulter les évènements passés</Link>
+    </div>
   );
 };
 

@@ -38,6 +38,7 @@ const addUser = async (req, res) => {
       const newUser = new userModel({
         userName: req.body.userName,
         userEmail: req.body.userEmail,
+        userWebsite: req.body.userWebsite,
         userPassword: hashedPassword,
         userAvatar: req.body.userAvatar,
         userIsAdmin: req.body.userIsAdmin,
@@ -49,6 +50,7 @@ const addUser = async (req, res) => {
           user: {
             userName: savedUser.userName,
             userEmail: savedUser.userEmail,
+            userWebsite: savedUser.userWebsite,
             userAvatar: savedUser.userAvatar,
             userIsAdmin: savedUser.userIsAdmin,
           },
@@ -91,6 +93,7 @@ const logUser = async (req, res) => {
             userName: existingUser.userName,
             userEmail: existingUser.userEmail,
             userAvatar: existingUser.userAvatar,
+            userWebsite: existingUser.userWebsite,
           },
           token,
         });
@@ -107,6 +110,7 @@ const getProfile = async (req, res) => {
     user: {
       userName: req.user.userName,
       userEmail: req.user.userEmail,
+      userWebsite: req.user.userWebsite,
       userAvatar: req.user.userAvatar,
       userIsAdmin: req.user.userIsAdmin,
     },

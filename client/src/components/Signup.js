@@ -45,6 +45,7 @@ const SignupForm = () => {
     const raw = JSON.stringify({
       userName: newUser.userName,
       userEmail: newUser.userEmail,
+      userWebsite: newUser.userWebsite,
       userPassword: newUser.userPassword,
       userAvatar: newUser.userAvatar
         ? newUser.userAvatar
@@ -158,6 +159,18 @@ const SignupForm = () => {
             id="userEmail"
             type="text"
             name="userEmail"
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="user-website-label flex-center">
+          <label htmlFor="userWebsite">Site internet</label>
+        </div>
+        <div className="user-website-input">
+          <input
+            name="userWebsite"
+            id="userWebsite"
+            type="text"
+            placeholder="Site internet"
             onChange={handleInputChange}
           />
         </div>

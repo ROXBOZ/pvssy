@@ -17,7 +17,7 @@ import Pains from "./components/Pains/Pains";
 import Pain from "./components/Pains/Pain";
 import EventsArchives from "./components/EventsArchives";
 import Event from "./components/Agenda/Event";
-import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTop from "./utils/ScrollToTop";
 import Tutos from "./components/Tutos";
 import Articles from "./components/Articles";
 import Annuaire from "./components/Annuaire";
@@ -27,6 +27,10 @@ import Signup from "./components/Signup";
 import NotFound from "./pages/NotFound";
 import PainLex from "./components/Pains/PainLex";
 import AllLexique from "./components/AllLexique";
+import AddEvent from "./components/User/Agenda/AddEvent";
+import DeleteEvent from "./components/User/Agenda/DeleteEvent";
+import ModifyEvent from "./components/User/Agenda/ModifyEvent";
+import ApproveEvent from "./components/User/Agenda/ApproveEvent";
 //contexts
 import { PainsContextProvider } from "./contexts/PainsContext";
 import { EventsContextProvider } from "./contexts/eventsContext";
@@ -38,12 +42,6 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   const token = getToken();
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   navigate("*", { replace: true });
-  // }, []);
-
   return (
     <>
       <AuthContextProvider>
@@ -116,7 +114,12 @@ function App() {
                     path="profile"
                     element={<ProtectedRoute />}
                     key={token}
-                  />
+                  >
+                    <Route path="ajouter" element={<AddEvent />} />
+                    <Route path="approuver" element={<ApproveEvent />} />
+                    <Route path="modifier" element={<ModifyEvent />} />
+                    <Route path="supprimer" element={<DeleteEvent />} />
+                  </Route>
                   <Route
                     path="conditions-generales"
                     element={<GeneralConditions />}

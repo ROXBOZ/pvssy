@@ -37,7 +37,7 @@ const Header = () => {
               <div className="logout-header">
                 <Link
                   className="user-icon-link"
-                  to="/profile"
+                  to="/profile/ajouter"
                   aria-label="profil"
                 >
                   <FontAwesomeIcon

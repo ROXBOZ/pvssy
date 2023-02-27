@@ -25,6 +25,7 @@ export const AuthContextProvider = (props) => {
 
     const urlencoded = new URLSearchParams();
     urlencoded.append("userEmail", inputValue.userEmail);
+    urlencoded.append("userWebsite", inputValue.userWebsite);
     urlencoded.append("userPassword", inputValue.userPassword);
 
     const requestOptions = {
@@ -45,7 +46,7 @@ export const AuthContextProvider = (props) => {
         setIsLoggedIn(true);
         setToken(result.token);
         await getProfile(result.token);
-        redirectTo("/profile");
+        redirectTo("/profile/ajouter");
       }
     } catch (error) {
       console.log("error", error);
@@ -71,6 +72,7 @@ export const AuthContextProvider = (props) => {
       setUserProfile({
         userName: result.user.userName,
         userEmail: result.user.userEmail,
+        userWebsite: result.user.userWebsite,
         userAvatar: result.user.userAvatar,
         userIsAdmin: result.user.userIsAdmin,
       });
@@ -80,7 +82,6 @@ export const AuthContextProvider = (props) => {
       setLoading(false);
     }
   };
-
   const logout = (e) => {
     localStorage.removeItem("token");
     setUser(null);
@@ -88,10 +89,6 @@ export const AuthContextProvider = (props) => {
     setUserProfile(null);
     redirectTo("/login");
   };
-
-  useEffect(() => {}, [user, isLoggedIn]);
-
-  useEffect(() => {}, [userProfile]);
 
   useEffect(() => {
     if (token) {

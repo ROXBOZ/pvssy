@@ -1,8 +1,9 @@
 import React from "react";
 import DateTimeDisplay from "./DateTimeDisplay";
 import useCountdown from "../hooks/useCountdown";
+import { fromNowToDate } from "../utils/fromNowToDate";
 
-const ShowCounter = ({ days, hours, minutes, seconds }) => {
+const ShowCounter = ({ days, hours, minutes }) => {
   return (
     <span className="show-counter">
       <DateTimeDisplay value={days} type={"jrs"} />
@@ -10,25 +11,20 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
       <DateTimeDisplay value={hours} type={"hrs"} />
       <span>·</span>
       <DateTimeDisplay value={minutes} type={"min"} />
-      {/* <span>·</span>
-      <DateTimeDisplay value={seconds} type={"sec"} /> */}
     </span>
   );
 };
 
 const CountdownTimer = ({ isoDate }) => {
-  const [days, hours, minutes, seconds] = useCountdown(isoDate);
-  if (days + hours + minutes + seconds > 0) {
-    return (
-      <ShowCounter
-        days={days}
-        hours={hours}
-        minutes={minutes}
-        seconds={seconds}
-      />
-    );
+  const { eventDateInMilli, todayStartinMilli, todayEndinMilli } =
+    fromNowToDate(isoDate);
+  const [days, hours, minutes] = useCountdown(isoDate);
+  if (eventDateInMilli > todayEndinMilli) {
+    return <ShowCounter days={days} hours={hours} minutes={minutes} />;
+  } else if (eventDateInMilli < todayStartinMilli) {
+    return <span>L’évènement est terminé</span>;
   } else {
-    return <p>L’évènement est terminé</p>;
+    return <span>L’évènement a lieu aujourd’hui. Soyez à l’heure!</span>;
   }
 };
 

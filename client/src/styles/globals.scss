@@ -1,5 +1,6 @@
 @import "vars";
 @import "mixins";
+@import "accessibility";
 @import "header";
 @import "footer";
 @import "typography";
@@ -32,8 +33,11 @@ html {
   font-family: $font-regular;
   line-height: 1.5;
   font-size: $font-size-basis;
+
   strong {
     font-family: $font-medium;
+    //FIXME this is hacky
+    font-weight: 500;
   }
 
   body {
@@ -43,9 +47,10 @@ html {
     .main {
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      // justify-content: space-around;
       min-height: 100vh;
       height: 100%;
+      padding-top: 20vh;
     }
   }
 }
