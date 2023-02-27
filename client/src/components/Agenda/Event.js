@@ -1,32 +1,38 @@
 import React from "react";
 import CountdownTimer from "../CountdownTimer";
-import { useLocation } from "react-router-dom";
-
-// const today = new Date().getDay;
+import { Link, useLocation } from "react-router-dom";
+import { fromNowToDate } from "../../utils/fromNowToDate";
+import { dateTimeConverter } from "../../utils/dateConverter";
 
 const Event = () => {
   let location = useLocation();
   const {
     title,
     isoDate,
-    dateTime,
+    organizer,
+    organizerWebsite,
     shortDef,
     longDef,
-    online,
+    isOnline,
     onlineMeeting,
     address,
     city,
     email,
     tel,
     entryFee,
-    cover,
-    caption,
-    credits,
   } = location.state.content;
+
+  const { eventDateInMilli, todayStartinMilli, todayEndinMilli } =
+    fromNowToDate(isoDate);
+
+  const dateTime = dateTimeConverter(isoDate);
 
   const redirectToMeeting = () => {
     window.location.href = onlineMeeting;
   };
+
+  console.log("organizer Event :", organizer);
+  console.log("organizerWebsite Event :", organizerWebsite);
 
   return (
     <>
@@ -34,16 +40,21 @@ const Event = () => {
         <h1>{title}</h1>
         <p>
           <span>
-            Un évènement organisé par <a href="/">NO DOLOR</a>,
+            Un évènement organisé par{" "}
+            <Link
+              //REVIEW
+              to={`https://${organizerWebsite}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {organizer}
+              <span className="screen-reader-text">ouvre un nouvel onglet</span>
+            </Link>
             <br />
-            {/* //FIXME Capital first letter */}
             {dateTime}
           </span>
           <br />
-          {/* //FIXME why I can't write !online && */}
-          {online ? (
-            <span></span>
-          ) : (
+          {!isOnline && (
             <span>
               {address}, {city}
             </span>
@@ -57,11 +68,16 @@ const Event = () => {
           )}
         </p>
 
-        {online && (
+        {isOnline && (
           <p>
             <span className="button-countdown">
               <button
-                // disabled={new Date(isoDate) !== today ? true : false}
+                disabled={
+                  eventDateInMilli < todayStartinMilli ||
+                  eventDateInMilli > todayEndinMilli
+                    ? true
+                    : false
+                }
                 onClick={redirectToMeeting}
               >
                 Rejoindre la réunion
@@ -81,30 +97,9 @@ const Event = () => {
             </span>
           )}
         </p>
-      </div>
-      <div className="grid-area">
-        <div className="col-left">
-          {cover ? (
-            <>
-              <img className="event-img" src={cover} alt={title} />
-
-              <p className="event-img-text">
-                <span className="event-img-caption">{caption}</span>
-                {credits && (
-                  <span className="event-img-credits">
-                    &nbsp;©&nbsp;{credits}
-                  </span>
-                )}
-              </p>
-            </>
-          ) : (
-            <div className="img-holder" />
-          )}
-        </div>
-        <div className="col-right">
-          <p className="subtitle">{shortDef}</p>
-          <p>{longDef}</p>
-        </div>
+        <hr />
+        <p className="subtitle">{shortDef}</p>
+        <p>{longDef}</p>
       </div>
     </>
   );

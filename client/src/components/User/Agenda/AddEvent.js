@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { EventsContext } from "../../contexts/eventsContext";
+import { Link, useNavigate } from "react-router-dom";
+import { EventsContext } from "../../../contexts/eventsContext";
+import { AuthContext } from "../../../contexts/authContext";
 import { useState, useContext } from "react";
-import { AuthContext } from "../../contexts/authContext";
 
 const AddEvent = () => {
   const { userProfile } = useContext(AuthContext);
@@ -15,10 +15,10 @@ const AddEvent = () => {
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
   const [newEvent, setNewEvent] = useState(null);
   const [successfulPost, setSuccessfulPost] = useState(false);
-
   const handleInputChange = (e) => {
-    setNewEvent({ ...newEvent, [e.target.name]: e.target.value }); // computed property names
+    setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
   };
+
   const addApprovedEvent = async () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -27,6 +27,8 @@ const AddEvent = () => {
       isPending: false,
       title: newEvent.eventTitle,
       date: newEvent.eventDateTime,
+      organizer: userProfile.userName,
+      organizerWebsite: userProfile.userWebsite,
       shortDef: newEvent.eventShortDef,
       longDef: newEvent.eventLongDef,
       isOnline: eventType === "online" ? true : false,
@@ -57,6 +59,7 @@ const AddEvent = () => {
       console.log("error", error);
     }
   };
+
   const addPendingEvent = async () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -65,12 +68,15 @@ const AddEvent = () => {
       isPending: true,
       title: newEvent.eventTitle,
       date: newEvent.eventDateTime,
+      organizer: userProfile.userName,
+      organizerWebsite: userProfile.userWebsite,
       shortDef: newEvent.eventShortDef,
       longDef: newEvent.eventLongDef,
       isOnline: eventType === "online" ? true : false,
       onlineMeeting: eventType === "online" ? newEvent.onlineMeeting : null,
       address: eventType === "online" ? null : newEvent.eventAddress,
       city: eventType === "online" ? null : newEvent.eventCity,
+      //FIXME
       region: "Lausanne",
       email: newEvent.eventEmail,
       tel: newEvent.eventTel,
@@ -90,6 +96,7 @@ const AddEvent = () => {
       );
       const result = response.json();
       console.log("result", result);
+
       setSuccessfulPost(true);
     } catch (error) {
       console.log("error", error);

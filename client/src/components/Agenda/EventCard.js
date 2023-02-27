@@ -1,43 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { dateConverter } from "../../utils/dateConverter";
 
 const EventCard = ({ e }) => {
   const id = e._id;
   const title = e.title;
+  const isoDate = e.date;
+  const organizer = e.organizer;
+  const organizerWebsite = e.organizerWebsite;
   const shortDef = e.shortDef;
   const longDef = e.longDef;
-  const online = e.online;
+  const isOnline = e.isOnline;
   const onlineMeeting = e.onlineMeeting;
   const address = e.address;
   const city = e.city;
   const email = e.email;
   const tel = e.tel;
   const entryFee = e.entryFee;
-  const highlight = e.highlight;
-  const cover = e.imgCover;
-  const caption = e.imgCaption;
-  const credits = e.imgCredits;
-
-  // Date and Time formating
-  const isoDate = e.date;
-  const newDate = new Date(isoDate);
-  const dateOptions = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-  const timeOptions = {
-    hour: "numeric",
-    minute: "numeric",
-  };
-  const dateTimeoptions = { ...dateOptions, ...timeOptions };
-  const date = newDate
-    .toLocaleDateString("fr-CH", dateOptions)
-    .replace(/ /g, "\u00A0");
-  const dateTime = newDate.toLocaleDateString("fr-CH", dateTimeoptions);
-
-  //NOTE Title max. length >>> make a const
+  const dateTime = dateConverter(e.date);
 
   let shortTitle;
   if (title.length > 30) {
@@ -46,12 +26,6 @@ const EventCard = ({ e }) => {
     shortTitle = title;
   }
 
-  // Random Color Generator
-  // const generateGradient = () => {
-  //   const color1 = generateColor("#f4a07c", "#ff50d7");
-  //   const color2 = generateColor("#f5733c", "#fd97e5");
-  //   return `linear-gradient(${color1}, ${color2})`;
-  // };
   const color1 = "#f5733c";
   const color2 = "#ff50d7";
 
@@ -73,36 +47,21 @@ const EventCard = ({ e }) => {
     id,
     title,
     isoDate,
-    date,
-    dateTime,
+    organizer,
+    organizerWebsite,
     shortDef,
     longDef,
-    online,
+    isOnline,
     onlineMeeting,
     address,
     city,
     email,
     tel,
     entryFee,
-    highlight,
-    cover,
-    caption,
-    credits,
   };
-
-  //NOTE - obsolete ???
-  // let hightlighted = {
-  //   gridColumn: "span 2",
-  // };
-
-  //NOTE - obsolete ???
-  // let backgroundImg = {
-  //   backgroundImage: `url(${cover})`,
-  // };
-
+  console.log("organizerWebsite CARD :", organizerWebsite);
   return (
     <Link
-      // style={highlight ? hightlighted : null}
       state={{ content: eventDetail }}
       className="link-card"
       to={{
@@ -111,15 +70,14 @@ const EventCard = ({ e }) => {
       key={id}
       alt={title}
     >
-      {/* <div className="card" style={cover ? backgroundImg : null}> */}
       <div
         className="card"
         style={{ background: generateColor(color1, color2) }}
       >
         <div className="card-text">
           <h3>{shortTitle}</h3>
-          <p className="card-date">{date}</p>
-          {online ? (
+          <p className="card-date">{dateTime}</p>
+          {isOnline ? (
             <p className="card-location">ONLINE</p>
           ) : (
             <p className="card-location">{city}</p>

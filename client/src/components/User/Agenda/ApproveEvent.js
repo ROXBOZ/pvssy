@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PendingEventCard from "./PendingEventCard";
+import { dateTimeConverter } from "../../../utils/dateConverter";
 
 const ApproveEvent = () => {
   const [pendingEvents, setPendingEvents] = useState(null);
@@ -16,9 +17,7 @@ const ApproveEvent = () => {
         requestOptions
       );
       const result = await response.json();
-      console.log("result :", result.pendingEvents);
       setPendingEvents(result.pendingEvents);
-      console.log("pendingEvents :", pendingEvents);
     } catch (error) {
       console.log("error", error);
     }
@@ -28,6 +27,7 @@ const ApproveEvent = () => {
     getPendingEvent();
   }, []);
 
+  // if no pending events
   if (!pendingEvents || pendingEvents.length === 0) {
     return (
       <>
@@ -41,15 +41,24 @@ const ApproveEvent = () => {
     );
   }
 
+  // in alphabetical order
+  const sortedEvents = [...pendingEvents].sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
+
   return (
     <div>
       <h1>
         Évènements en attente<sup>prototype</sup>
       </h1>
-      {console.log("pendingEvents :", pendingEvents)}
-      {pendingEvents &&
-        pendingEvents.map((e) => {
-          return <PendingEventCard event={e} key={e._id} />;
+      <p className="msg warning">
+        Une fois approuvé, un évènement ne peut qu’être supprimé via l’onglet.
+      </p>
+
+      {sortedEvents &&
+        sortedEvents.map((e) => {
+          const dateTime = dateTimeConverter(e.date);
+          return <PendingEventCard event={e} key={e._id} dateTime={dateTime} />;
         })}
     </div>
   );

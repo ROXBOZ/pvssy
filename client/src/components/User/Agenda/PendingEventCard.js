@@ -1,24 +1,20 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-const PendingEventCard = ({ event }) => {
+const PendingEventCard = ({ event, dateTime }) => {
   const [showDetail, setShowDetail] = useState(false);
   const [iconClicked, setIconClicked] = useState(false);
-
   const handleShowButton = () => {
     setShowDetail((prevState) => !prevState);
     toggleIconClicked();
   };
-
   const toggleIconClicked = () => {
     setIconClicked(!iconClicked);
   };
 
   const approveEvent = async (eventId) => {
-    console.log("event._id :", event._id);
     const urlencoded = new URLSearchParams();
     const requestOptions = {
       method: "PUT",
@@ -31,11 +27,11 @@ const PendingEventCard = ({ event }) => {
       );
       const result = await response.json();
       console.log("result :", result);
+      window.location.reload();
     } catch (error) {
       console.log("error :", error);
     }
   };
-
   const declineEvent = async (eventId) => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -54,17 +50,29 @@ const PendingEventCard = ({ event }) => {
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
   };
+  const getDaysFromNow = (date) => {
+    let now = new Date();
+    let eventDate = new Date(date);
+    const diffInTime = eventDate.getTime() - now.getTime();
+    const diffInDays = Math.ceil(diffInTime / (1000 * 3600 * 24));
+    return diffInDays;
+  };
+  const daysFromNow = getDaysFromNow(event.date);
 
   return (
-    <div className="pending-event-card">
+    <div className="pending-event-card" onClick={handleShowButton}>
       <div className="collapsed">
         <p>
-          <strong>{event.title}</strong>, <span>(J-24)</span>
+          <strong>{event.title}</strong>
+          &nbsp;
+          <span className={daysFromNow < 3 && "msg warning"}>
+            (J-{daysFromNow})
+          </span>{" "}
+          par {event.organizer}
         </p>
         <FontAwesomeIcon
           id="chevron-icon"
           className={iconClicked ? "open" : "close"}
-          onClick={handleShowButton}
           icon={faChevronDown}
         />
       </div>
@@ -72,7 +80,19 @@ const PendingEventCard = ({ event }) => {
       <div className="pending-event-detail">
         {showDetail && showDetail === true && (
           <div className="pending-event-detail-content">
-            <p>{event.date}</p>
+            <p>
+              {dateTime}, par{" "}
+              <Link
+                to={`https://${event.organizerWebsite}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {event.organizer}
+                <span className="screen-reader-text">
+                  ouvre un nouvel onglet
+                </span>
+              </Link>
+            </p>
 
             {event.isOnline === true ? (
               <div>
@@ -107,6 +127,9 @@ const PendingEventCard = ({ event }) => {
             <div className="button-flex">
               <button onClick={() => approveEvent(event._id)}>approuver</button>
               <button onClick={() => declineEvent(event._id)}>supprimer</button>
+              <p>
+                <Link to="/">Email à l’organisateur·ice</Link>
+              </p>
             </div>
           </div>
         )}
