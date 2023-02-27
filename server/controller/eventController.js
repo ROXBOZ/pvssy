@@ -80,6 +80,29 @@ const getEventById = async (req, res) => {
   }
 };
 
+const getEventByOrganizer = async (req, res) => {
+  try {
+    const requestedEvents = await eventModel
+      .find({ organizer: req.params.organizer })
+      .exec();
+    if (requestedEvents.length === 0) {
+      res.status(200).json({
+        msg: "Pas d'évènements avec cet organisateurice",
+      });
+    } else {
+      res.status(200).json({
+        number: requestedEvents.length,
+        requestedEvents,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      error,
+      msg: "Problème serveur",
+    });
+  }
+};
+
 const getEventsByRegion = async (req, res) => {
   // res.header("Access-Control-Allow-Origin", "*");
   try {
@@ -141,6 +164,8 @@ const addEvent = async (req, res) => {
     isPending,
     title,
     date,
+    organizer,
+    organizerWebsite,
     shortDef,
     longDef,
     isOnline,
@@ -158,6 +183,8 @@ const addEvent = async (req, res) => {
       isPending,
       title,
       date,
+      organizer,
+      organizerWebsite,
       shortDef,
       longDef,
       isOnline,
@@ -177,6 +204,8 @@ const addEvent = async (req, res) => {
         isPending: savedEvent.isPending,
         title: savedEvent.title,
         date: savedEvent.date,
+        organizer: savedEvent.organizer,
+        organizerWebsite: savedEvent.organizerWebsite,
         shortDef: savedEvent.shortDef,
         longDef: savedEvent.longDef,
         isOnline: savedEvent.isOnline,
@@ -265,4 +294,5 @@ export {
   getPendingEvents,
   approveEvent,
   getEventById,
+  getEventByOrganizer,
 };

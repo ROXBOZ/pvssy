@@ -3,9 +3,9 @@ export const EventsContext = createContext();
 export const EventsContextProvider = (props) => {
   const [data, setData] = useState([]);
   const baseURL = "http://localhost:5000/api/events";
-  const allEventEP = `${baseURL}/all`;
-  const upComingEventEP = `${baseURL}/upcoming`;
-  const archivedEventEP = `${baseURL}/archived`;
+  const allEvent = `${baseURL}/all`;
+  const upComingEvent = `${baseURL}/upcoming`;
+  const archivedEvent = `${baseURL}/archived`;
   const [Loading, setLoading] = useState(true);
   const [Error, setError] = useState(null);
 
@@ -43,12 +43,12 @@ export const EventsContextProvider = (props) => {
         Loading,
         Error,
         data,
-        allEventEP,
+        allEvent,
         fetchData,
         regions,
         baseURL,
-        archivedEventEP,
-        upComingEventEP,
+        archivedEvent,
+        upComingEvent,
       }}
     >
       {props.children}
