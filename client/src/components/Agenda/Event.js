@@ -21,18 +21,12 @@ const Event = () => {
     tel,
     entryFee,
   } = location.state.content;
-
   const { eventDateInMilli, todayStartinMilli, todayEndinMilli } =
     fromNowToDate(isoDate);
-
   const dateTime = dateTimeConverter(isoDate);
-
   const redirectToMeeting = () => {
     window.location.href = onlineMeeting;
   };
-
-  console.log("organizer Event :", organizer);
-  console.log("organizerWebsite Event :", organizerWebsite);
 
   return (
     <>
@@ -42,8 +36,7 @@ const Event = () => {
           <span>
             Un évènement organisé par{" "}
             <Link
-              //REVIEW
-              to={`https://${organizerWebsite}`}
+              to={`${organizerWebsite}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -86,16 +79,10 @@ const Event = () => {
             </span>
           </p>
         )}
-
         <p>
-          {(email || tel) && <span>Réservation : </span>}
           {email && <a href={`mailto:${email}`}>{email}</a>}
           {email && tel && <span> ou </span>}
-          {tel && (
-            <span>
-              <a href={`tel:${tel}`}>{tel}</a>
-            </span>
-          )}
+          {tel && <a href={`tel:${tel}`}>{tel}</a>}
         </p>
         <hr />
         <p className="subtitle">{shortDef}</p>

@@ -5,13 +5,13 @@ import getToken from "../utils/getToken";
 
 export const AuthContext = createContext();
 export const AuthContextProvider = (props) => {
+  const redirectTo = useNavigate();
   const [inputValue, setInputValue] = useState({});
   const [userProfile, setUserProfile] = useState(null);
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const redirectTo = useNavigate();
   const [token, setToken] = useState(getToken());
-  const [, setError] = useState(null);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
@@ -111,10 +111,10 @@ export const AuthContextProvider = (props) => {
       value={{
         userProfile,
         isLoggedIn,
-        setIsLoggedIn,
         user,
-        setUser,
         token,
+        setUser,
+        setIsLoggedIn,
         logout,
         login,
         handleInputChange,

@@ -3,8 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const SignupForm = () => {
-  //TODO check email format, password length, etc.
-
   const [selectedFile, setSelectedFile] = useState(null);
   const [newUser, setNewUser] = useState({});
   const [userType, setUserType] = useState("association");
@@ -174,13 +172,10 @@ const SignupForm = () => {
             onChange={handleInputChange}
           />
         </div>
-        {/* FIXME */}
-        {/* <div className="user-email-requirements">
-          {(!newUser.userEmail.includes("@") ||
-            !newUser.userEmail.includes(".")) && (
-            <span>L’adresse Email semble invalide</span>
-          )}
-        </div> */}
+
+        {/* <div className="user-email-requirements"> */}
+        {/* TODO */}
+        {/* </div> */}
         <div className="user-avatar-label flex-center">
           <label htmlFor="avatar">
             {userType === "association"
@@ -211,12 +206,9 @@ const SignupForm = () => {
             onChange={handleInputChange}
           />
         </div>
-        {/* FIXME */}
-        {/* <div className="user-password-requirements flex-center">
-          {newUser.userPassword && newUser.userPassword.length < 6 && (
-            <span>min. 6 charactères</span>
-          )}
-        </div> */}
+        {/* <div className="user-password-requirements flex-center"> */}
+        {/* TODO */}
+        {/* </div> */}
         <div className="conditions-generales">
           <input
             className="form-check-input"
@@ -230,20 +222,7 @@ const SignupForm = () => {
           </label>
         </div>
         <div className="submit-button">
-          {/* FIXME */}
-          <button
-            // disabled={
-            //   (newUser.userEmail &&
-            //     (!newUser.userEmail.includes("@") ||
-            //       !newUser.userEmail.includes("."))) ||
-            //   (newUser.userPassword && newUser.userPassword.length < 6)
-            //     ? true
-            //     : false
-            // }
-            onClick={signup}
-          >
-            Créer un compte
-          </button>
+          <button onClick={signup}>Créer un compte</button>
         </div>
       </form>
 

@@ -15,6 +15,7 @@ const AddEvent = () => {
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
   const [newEvent, setNewEvent] = useState(null);
   const [successfulPost, setSuccessfulPost] = useState(false);
+
   const handleInputChange = (e) => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
   };
@@ -54,9 +55,11 @@ const AddEvent = () => {
       );
       const result = response.json();
       console.log("result", result);
+      console.log("it works");
       setSuccessfulPost(true);
     } catch (error) {
       console.log("error", error);
+      console.log("fail ");
     }
   };
 

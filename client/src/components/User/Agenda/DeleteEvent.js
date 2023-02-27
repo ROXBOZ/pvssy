@@ -9,9 +9,12 @@ const DeleteEvent = () => {
   const { data, fetchData, upComingEvent } = useContext(EventsContext);
   const [selectedEvents, setSelectedEvents] = useState([]);
   const [myEvents, setMyEvents] = useState(null);
+
   useEffect(() => {
     fetchData(upComingEvent);
   }, [upComingEvent]);
+
+  console.log("data.upcomingEvents :", data.upcomingEvents);
 
   const eventsByOrganizer = async () => {
     const requestOptions = {
@@ -45,6 +48,7 @@ const DeleteEvent = () => {
       setSelectedEvents(selectedEvents.filter((id) => id !== eventId));
     }
   };
+
   const handleDelete = () => {
     selectedEvents.map((e) => {
       const myHeaders = new Headers();
@@ -69,18 +73,18 @@ const DeleteEvent = () => {
     });
   };
 
-  if (!data.upcomingEvents || data.upcomingEvents.length === 0) {
-    return (
-      <>
-        <h1>
-          Supprimer un évènement<sup>prototype</sup>
-        </h1>
-        <p className="warning msg">
-          <strong>Aucun évènement dans le calendrier!</strong>
-        </p>
-      </>
-    );
-  }
+  // if (!data.upcomingEvents || data.upcomingEvents.length === 0) {
+  //   return (
+  //     <>
+  //       <h1>
+  //         Supprimer un évènement<sup>prototype</sup>
+  //       </h1>
+  //       <p className="warning msg">
+  //         <strong>Aucun évènement dans le calendrier!</strong>
+  //       </p>
+  //     </>
+  //   );
+  // }
 
   return (
     <>
@@ -94,26 +98,31 @@ const DeleteEvent = () => {
       <form className="grid-form">
         <div className="form-section">
           <div>
-            {userProfile && userProfile.userIsAdmin === true ? (
-              <ul className="check-list">
-                {data.upcomingEvents &&
-                  data.upcomingEvents.map((e) => {
-                    const dateTime = dateTimeConverter(e.date);
-                    return (
-                      <li key={e._id}>
-                        <input
-                          type="checkbox"
-                          className="form-check-input"
-                          value={e._id}
-                          onChange={(e) => handleChange(e)}
-                        />
-                        <strong>{e.title}</strong>&nbsp;(<span>{dateTime}</span>
-                        ) par {e.organizer}
-                      </li>
-                    );
-                  })}
-              </ul>
-            ) : (
+            {userProfile && userProfile.userIsAdmin === true && (
+              <>
+                <ul className="check-list">
+                  {console.log("data.upcomingEvents :", data.upcomingEvents)}
+                  {data.upcomingEvents &&
+                    data.upcomingEvents.map((e) => {
+                      const dateTime = dateTimeConverter(e.date);
+                      return (
+                        <li key={e._id}>
+                          <input
+                            type="checkbox"
+                            className="form-check-input"
+                            value={e._id}
+                            onChange={(e) => handleChange(e)}
+                          />
+                          <strong>{e.title}</strong>&nbsp;(
+                          <span>{dateTime}</span>) par {e.organizer}
+                        </li>
+                      );
+                    })}
+                </ul>
+              </>
+            )}
+
+            {userProfile && userProfile.userIsAdmin === false && (
               <ul className="check-list">
                 {myEvents &&
                   myEvents.map((e) => {

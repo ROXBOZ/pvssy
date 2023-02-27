@@ -59,7 +59,7 @@ const EventCard = ({ e }) => {
     tel,
     entryFee,
   };
-  console.log("organizerWebsite CARD :", organizerWebsite);
+
   return (
     <Link
       state={{ content: eventDetail }}
