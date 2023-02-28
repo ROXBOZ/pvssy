@@ -6,7 +6,6 @@ today.setHours(0, 0, 0, 0);
 // GET
 
 const getAllEvents = async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
   try {
     const allEvents = await eventModel.find({}).exec();
     res.status(200).json({
@@ -24,7 +23,7 @@ const getAllEvents = async (req, res) => {
 const getUpcomingEvents = async (req, res) => {
   try {
     const upcomingEvents = await eventModel
-      .find({ date: { $gte: today }, isPending: false })
+      .find({ date: { $gte: today } })
       .exec();
     res.status(200).json({
       number: upcomingEvents.length,
@@ -39,8 +38,6 @@ const getUpcomingEvents = async (req, res) => {
 };
 
 const getArchivedEvents = async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  // handling error if there are no event planned.
   try {
     const archivedEvents = await eventModel
       .find({ date: { $lt: today }, isPending: false })

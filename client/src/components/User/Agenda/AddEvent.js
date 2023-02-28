@@ -6,14 +6,14 @@ import { useState, useContext } from "react";
 
 const AddEvent = () => {
   const { userProfile } = useContext(AuthContext);
-  const { regions } = useContext(EventsContext);
+  // const { regions } = useContext(EventsContext);
   //
+  // const [eventRegion, setEventRegion] = useState(null);
   const [eventType, setEventType] = useState("offline");
   const [eventEntry, setEventEntry] = useState("gratuite");
-  const [value, setValue] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
+  // const [suggestions, setSuggestions] = useState([]);
+  // const [showSuggestions, setShowSuggestions] = useState(false);
+  // const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
   const [newEvent, setNewEvent] = useState(null);
   const [successfulPost, setSuccessfulPost] = useState(false);
 
@@ -21,6 +21,8 @@ const AddEvent = () => {
   const handleInputChange = (e) => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
   };
+
+  console.log("newEvent !! :", newEvent);
 
   // ADD EVENTS
   const addApprovedEvent = async () => {
@@ -40,7 +42,7 @@ const AddEvent = () => {
       onlineMeeting: eventType === "online" ? newEvent.onlineMeeting : null,
       address: eventType === "online" ? null : newEvent.eventAddress,
       city: eventType === "online" ? null : newEvent.eventCity,
-      region: "Lausanne",
+      region: newEvent.eventRegion,
       email: newEvent.eventEmail,
       tel: newEvent.eventTel,
       entryFee: newEvent.admissionFee,
@@ -81,8 +83,7 @@ const AddEvent = () => {
       onlineMeeting: eventType === "online" ? newEvent.onlineMeeting : null,
       address: eventType === "online" ? null : newEvent.eventAddress,
       city: eventType === "online" ? null : newEvent.eventCity,
-      //FIXME
-      region: "Lausanne",
+      region: newEvent.eventRegion,
       email: newEvent.eventEmail,
       tel: newEvent.eventTel,
       entryFee: newEvent.admissionFee,
@@ -100,50 +101,48 @@ const AddEvent = () => {
         requestOptions
       );
       const result = response.json();
-      console.log("result", result);
-
       setSuccessfulPost(true);
     } catch (error) {
       console.log("error", error);
     }
   };
 
-  // Region Dropdown REVIEW context??? not repeat with agenda
-  const handleInputRegionChange = (event) => {
-    const newValue = event.target.value;
-    setValue(newValue);
+  // REVIEW Region Dropdown context??? not repeat with agenda
+  // const handleInputRegionChange = (event) => {
+  //   const region = event.target.value;
 
-    if (newValue.length === 0) {
-      setSuggestions([]);
-      setShowSuggestions(false);
-      return;
-    }
+  //   if (region.length === 0) {
+  //     setSuggestions([]);
+  //     setShowSuggestions(false);
+  //     return;
+  //   }
 
-    const matchingSuggestions = regions.filter((suggestion) =>
-      suggestion.toLowerCase().includes(newValue.toLowerCase())
-    );
-    setSuggestions(matchingSuggestions);
-    setShowSuggestions(matchingSuggestions.length > 0);
-  };
-  const handleSuggestionClick = (suggestion) => {
-    setValue(suggestion);
-    setShowSuggestions(false);
-  };
-  const handleKeyDown = (e) => {
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      setSelectedSuggestionIndex(
-        (selectedSuggestionIndex + 1) % suggestions.length
-      );
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      setSelectedSuggestionIndex(
-        (selectedSuggestionIndex - 1 + suggestions.length) % suggestions.length
-      );
-    } else if (e.key === "Enter" && selectedSuggestionIndex >= 0) {
-      handleSuggestionClick(suggestions[selectedSuggestionIndex]);
-    }
-  };
+  //   const matchingSuggestions = regions.filter((suggestion) =>
+  //     suggestion.toLowerCase().includes(region.toLowerCase())
+  //   );
+  //   setSuggestions(matchingSuggestions);
+  //   setShowSuggestions(matchingSuggestions.length > 0);
+  // };
+  // const handleSuggestionClick = (suggestion) => {
+  //   setEventRegion(suggestion);
+
+  //   setShowSuggestions(false);
+  // };
+  // const handleKeyDown = (e) => {
+  //   if (e.key === "ArrowDown") {
+  //     e.preventDefault();
+  //     setSelectedSuggestionIndex(
+  //       (selectedSuggestionIndex + 1) % suggestions.length
+  //     );
+  //   } else if (e.key === "ArrowUp") {
+  //     e.preventDefault();
+  //     setSelectedSuggestionIndex(
+  //       (selectedSuggestionIndex - 1 + suggestions.length) % suggestions.length
+  //     );
+  //   } else if (e.key === "Enter" && selectedSuggestionIndex >= 0) {
+  //     handleSuggestionClick(suggestions[selectedSuggestionIndex]);
+  //   }
+  // };
 
   return (
     <>
@@ -288,13 +287,14 @@ const AddEvent = () => {
                   id="eventRegion"
                   type="text"
                   placeholder="Région"
-                  value={value}
-                  onChange={handleInputRegionChange}
-                  onKeyDown={handleKeyDown}
+                  // value={eventRegion}
+                  // onChange={handleInputRegionChange}
+                  onChange={handleInputChange}
+                  // onKeyDown={handleKeyDown}
                   required
                 />
               </div>
-              {showSuggestions && (
+              {/* {showSuggestions && (
                 <ul className="suggestions form-dropdown-suggestions">
                   {suggestions.map((suggestion, index) => (
                     <li
@@ -310,7 +310,7 @@ const AddEvent = () => {
                     </li>
                   ))}
                 </ul>
-              )}
+              )} */}
             </>
           )}
           {eventType === "online" && (
@@ -424,13 +424,23 @@ const AddEvent = () => {
       </form>
 
       {userProfile && userProfile.userIsAdmin === true ? (
-        <button onClick={addApprovedEvent}>Ajouter au calendrier</button>
+        <>
+          <button onClick={addApprovedEvent}>Ajouter au calendrier</button>
+          {successfulPost && (
+            <p className="success msg">
+              L’évènement a été ajouté au calendrier
+            </p>
+          )}
+        </>
       ) : (
-        <button onClick={addPendingEvent}>Proposer l’évènement</button>
-      )}
-
-      {successfulPost && (
-        <p className="success-msg">L’évènement a été ajouté au calendrier</p>
+        <>
+          <button onClick={addPendingEvent}>Proposer l’évènement</button>
+          {successfulPost && (
+            <p className="success msg">
+              L’évènement va être révisé par notre équipe.
+            </p>
+          )}
+        </>
       )}
     </>
   );

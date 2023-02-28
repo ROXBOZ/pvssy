@@ -9,8 +9,8 @@ const DeleteEvent = () => {
   const { data, fetchData, upComingEvent } = useContext(EventsContext);
   const [selectedEvents, setSelectedEvents] = useState([]);
   const [myEvents, setMyEvents] = useState(null);
+  //
 
-  // unify with another similar pages
   useEffect(() => {
     fetchData(upComingEvent);
   }, [upComingEvent]);
@@ -34,24 +34,24 @@ const DeleteEvent = () => {
     }
   };
 
-  console.log("userProfile :", userProfile);
+  console.log("myEvents :", myEvents);
 
   useEffect(() => {
     eventsByOrganizer();
   }, []);
 
-  if (!data.upcomingEvents || data.upcomingEvents.length === 0) {
-    return (
-      <>
-        <h1>
-          Supprimer un évènement<sup>prototype</sup>
-        </h1>
-        <p className="warning msg">
-          <strong>Aucun évènement dans le calendrier!</strong>
-        </p>
-      </>
-    );
-  }
+  // if (!data.upcomingEvents || data.upcomingEvents.length === 0) {
+  //   return (
+  //     <>
+  //       <h1>
+  //         Supprimer un évènement<sup>prototype</sup>
+  //       </h1>
+  //       <p className="warning msg">
+  //         <strong>Aucun évènement dans le calendrier!</strong>
+  //       </p>
+  //     </>
+  //   );
+  // }
 
   // REVIEW this should be in context
   const handleChange = (e) => {
@@ -64,7 +64,6 @@ const DeleteEvent = () => {
     }
   };
 
-  // FIXME ERROR WHEN ATTEMPTING TO FETCH THE RESOURCE
   const handleDelete = async (event) => {
     event.preventDefault();
     selectedEvents.map(async (e) => {
@@ -87,7 +86,6 @@ const DeleteEvent = () => {
           requestOptions
         );
         const result = await response.json();
-        console.log("result :", result);
         fetchData(upComingEvent);
       } catch (error) {
         console.log("error :", error);

@@ -7,6 +7,7 @@ export const EventsContextProvider = (props) => {
   const allEvent = `${baseURL}/all`;
   const upComingEvent = `${baseURL}/upcoming`;
   const archivedEvent = `${baseURL}/archived`;
+
   const [Loading, setLoading] = useState(true);
   const [Error, setError] = useState(null);
 

@@ -145,9 +145,10 @@ const Agenda = () => {
           data.upcomingEvents
             .filter((e) => {
               return (
-                value === "" ||
-                (e.region && e.region.includes(value)) ||
-                !e.region
+                (value === "" ||
+                  (e.region && e.region.includes(value)) ||
+                  !e.region) &&
+                !e.isPending
               );
             })
             .sort((a, b) => {

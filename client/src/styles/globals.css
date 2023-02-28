@@ -459,7 +459,7 @@ h1,
   background-color: #faf5fe;
   border-radius: 0.25em;
   border: 1.5px solid #c896f7;
-  padding: 2em;
+  padding: 1em;
   margin: 1em 0;
   height: -moz-fit-content;
   height: fit-content;
@@ -472,7 +472,6 @@ h1,
   padding-bottom: 0;
 }
 .pending-event-card .collapsed p {
-  font-size: larger;
   margin-bottom: 0;
 }
 .pending-event-card .pending-event-detail .pending-event-detail-content {

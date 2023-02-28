@@ -22,7 +22,7 @@
 
 .pending-event-card {
   @include form-section;
-  padding: $padding-sm;
+  padding: $demi-gap;
   margin: $demi-gap 0;
   height: fit-content;
   .collapsed {
@@ -32,7 +32,6 @@
     margin-bottom: 0;
     padding-bottom: 0;
     p {
-      font-size: larger;
       margin-bottom: 0;
     }
   }
