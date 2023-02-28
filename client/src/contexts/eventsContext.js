@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 export const EventsContext = createContext();
+
 export const EventsContextProvider = (props) => {
   const [data, setData] = useState([]);
   const baseURL = "http://localhost:5000/api/events";
@@ -43,10 +44,10 @@ export const EventsContextProvider = (props) => {
         Loading,
         Error,
         data,
-        allEvent,
         fetchData,
         regions,
         baseURL,
+        allEvent,
         archivedEvent,
         upComingEvent,
       }}

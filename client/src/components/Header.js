@@ -8,22 +8,32 @@ import { useContext, useState } from "react";
 
 const Header = () => {
   const { logout, userProfile } = useContext(AuthContext);
-  const [verticalMenu, setVerticalMenu] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const openMenu = () => {
-    setVerticalMenu(!verticalMenu);
+    setIsOpen((prevState) => !prevState);
   };
 
   return (
     <header>
-      <button class="burger-menu" aria-label="Menu" onClick={openMenu}>
-        menu
+      <button
+        className="burger-menu"
+        aria-label="Menu"
+        onClick={() => openMenu()}
+      >
+        <span id="nav-icon" className={!isOpen ? "close" : "open"}>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <span>menu</span>
       </button>
       <Link to="/" className="logo">
         pvssy talk
       </Link>
 
-      <nav className={verticalMenu === true ? "vertical" : "horizontal"}>
+      <nav className={isOpen ? "vertical" : "horizontal"}>
         <ul>
           <li>
             <NavLink to="a-propos">À propos</NavLink>

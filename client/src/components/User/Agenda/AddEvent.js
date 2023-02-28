@@ -6,9 +6,10 @@ import { useState, useContext } from "react";
 
 const AddEvent = () => {
   const { userProfile } = useContext(AuthContext);
+  const { regions } = useContext(EventsContext);
+  //
   const [eventType, setEventType] = useState("offline");
   const [eventEntry, setEventEntry] = useState("gratuite");
-  const { regions } = useContext(EventsContext);
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);

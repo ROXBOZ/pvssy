@@ -11,36 +11,17 @@ header {
     grid-column: 1/2;
     border: none;
   }
+
   nav {
-    grid-column: 2/6;
     ul {
       padding-left: 0;
       margin-left: 0;
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      text-align: left;
-      align-items: center;
-
-      a {
-        @include navlink;
-      }
 
       li {
         list-style: none;
         display: flex;
-        align-items: center;
 
-        a.user-icon-link {
-          padding: 0;
-          border: $border-solid transparent;
-          height: fit-content;
-          display: flex;
-          border-radius: 50%;
-          &:hover {
-            border: $border-solid transparent;
-          }
-        }
         .user-icon {
           border: $border-solid;
           padding: $padding-xs;
@@ -74,24 +55,153 @@ header {
   }
 }
 
-.logout-header {
-  display: flex;
-  flex-direction: row;
-  gap: $gap;
-}
-
 @media (max-width: 767px) {
   .burger-menu {
-    display: block;
+    &:focus {
+      outline: 0;
+      border: 0;
+    }
+    z-index: 99;
+    background-color: transparent;
+    width: 100vw;
+    padding: $gap 0;
+    border: 0;
+    display: flex;
+    gap: $demi-gap;
+    align-items: center;
+    span {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 80%;
+      font-family: $font-bold;
+    }
+    #nav-icon {
+      width: 30px;
+      height: 23px;
+      position: relative;
+      transform: rotate(0deg);
+      transition: 0.5s ease-in-out;
+      cursor: pointer;
+
+      span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: $txt-color;
+        border-radius: $border-radius;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: 0.25s ease-in-out;
+
+        &:nth-child(2),
+        &:nth-child(3) {
+          top: 9px;
+        }
+
+        &:nth-child(4) {
+          top: 18px;
+        }
+      }
+
+      &.open {
+        span:nth-child(1) {
+          top: 18px;
+          width: 0%;
+          left: 50%;
+        }
+
+        span:nth-child(2) {
+          transform: rotate(45deg);
+        }
+
+        span:nth-child(3) {
+          transform: rotate(-45deg);
+        }
+
+        span:nth-child(4) {
+          top: 18px;
+          width: 0%;
+          left: 50%;
+        }
+      }
+    }
   }
 
-  .horizontal {
-    display: none;
+  nav {
+    &.vertical {
+      position: absolute;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: $gradient;
+      background-color: white;
+
+      ul {
+        margin-left: $gap;
+        flex-direction: column;
+        margin-top: 6em;
+
+        li {
+          line-height: 4;
+          a {
+            padding: 0;
+            border-bottom: none;
+            color: $txt-color;
+          }
+
+          .logout-header {
+            margin-top: $gap;
+            border-top: $border-solid;
+            padding-top: $padding-sm;
+            display: flex;
+            flex-direction: column-reverse;
+          }
+        }
+      }
+    }
   }
 }
 
 @media (min-width: 768px) {
   .burger-menu {
-    display: none;
+    display: none !important;
+  }
+
+  nav {
+    &.horizontal {
+      grid-column: 2/6;
+      ul {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        li {
+          align-items: center;
+
+          a {
+            @include navlink;
+            &.user-icon-link {
+              padding: 0;
+              border: $border-solid transparent;
+              height: fit-content;
+              display: flex;
+              border-radius: 50%;
+              &:hover {
+                border: $border-solid transparent;
+              }
+            }
+          }
+
+          .logout-header {
+            display: flex;
+            flex-direction: row;
+            gap: $gap;
+            align-items: center;
+          }
+        }
+      }
+    }
   }
 }

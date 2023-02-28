@@ -66,47 +66,14 @@ header .logo {
   grid-column: 1/2;
   border: none;
 }
-header nav {
-  grid-column: 2/6;
-}
 header nav ul {
   padding-left: 0;
   margin-left: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: left;
-  align-items: center;
-}
-header nav ul a {
-  font-family: "ESKlarheit-Medium";
-  color: #303030;
-  text-decoration: none;
-  padding: 0.5em 1.5em;
-  border-radius: 0.25em;
-  border: none;
-}
-header nav ul a:hover {
-  background-color: #ffe9fa;
-}
-header nav ul a.active {
-  background-color: #fcdbce;
 }
 header nav ul li {
   list-style: none;
   display: flex;
-  align-items: center;
-}
-header nav ul li a.user-icon-link {
-  padding: 0;
-  border: 1.5px solid transparent;
-  height: -moz-fit-content;
-  height: fit-content;
-  display: flex;
-  border-radius: 50%;
-}
-header nav ul li a.user-icon-link:hover {
-  border: 1.5px solid transparent;
 }
 header nav ul li .user-icon {
   border: 1.5px solid;
@@ -132,23 +99,143 @@ header nav ul li .user-icon:hover {
   display: none;
 }
 
-.logout-header {
-  display: flex;
-  flex-direction: row;
-  gap: 2em;
-}
-
 @media (max-width: 767px) {
   .burger-menu {
-    display: block;
+    z-index: 99;
+    background-color: transparent;
+    width: 100vw;
+    padding: 2em 0;
+    border: 0;
+    display: flex;
+    gap: 1em;
+    align-items: center;
   }
-  .horizontal {
-    display: none;
+  .burger-menu:focus {
+    outline: 0;
+    border: 0;
+  }
+  .burger-menu span {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 80%;
+    font-family: "ESKlarheit-Bold";
+  }
+  .burger-menu #nav-icon {
+    width: 30px;
+    height: 23px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+  }
+  .burger-menu #nav-icon span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #303030;
+    border-radius: 0.25em;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+  }
+  .burger-menu #nav-icon span:nth-child(2), .burger-menu #nav-icon span:nth-child(3) {
+    top: 9px;
+  }
+  .burger-menu #nav-icon span:nth-child(4) {
+    top: 18px;
+  }
+  .burger-menu #nav-icon.open span:nth-child(1) {
+    top: 18px;
+    width: 0%;
+    left: 50%;
+  }
+  .burger-menu #nav-icon.open span:nth-child(2) {
+    transform: rotate(45deg);
+  }
+  .burger-menu #nav-icon.open span:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+  .burger-menu #nav-icon.open span:nth-child(4) {
+    top: 18px;
+    width: 0%;
+    left: 50%;
+  }
+  nav.vertical {
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(255, 82, 215, 0.8) 0%, rgba(245, 116, 60, 0.8) 100%);
+    background-color: white;
+  }
+  nav.vertical ul {
+    margin-left: 2em;
+    flex-direction: column;
+    margin-top: 6em;
+  }
+  nav.vertical ul li {
+    line-height: 4;
+  }
+  nav.vertical ul li a {
+    padding: 0;
+    border-bottom: none;
+    color: #303030;
+  }
+  nav.vertical ul li .logout-header {
+    margin-top: 2em;
+    border-top: 1.5px solid;
+    padding-top: 2em;
+    display: flex;
+    flex-direction: column-reverse;
   }
 }
 @media (min-width: 768px) {
   .burger-menu {
-    display: none;
+    display: none !important;
+  }
+  nav.horizontal {
+    grid-column: 2/6;
+  }
+  nav.horizontal ul {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav.horizontal ul li {
+    align-items: center;
+  }
+  nav.horizontal ul li a {
+    font-family: "ESKlarheit-Medium";
+    color: #303030;
+    text-decoration: none;
+    padding: 0.5em 1.5em;
+    border-radius: 0.25em;
+    border: none;
+  }
+  nav.horizontal ul li a:hover {
+    background-color: #ffe9fa;
+  }
+  nav.horizontal ul li a.active {
+    background-color: #fcdbce;
+  }
+  nav.horizontal ul li a.user-icon-link {
+    padding: 0;
+    border: 1.5px solid transparent;
+    height: -moz-fit-content;
+    height: fit-content;
+    display: flex;
+    border-radius: 50%;
+  }
+  nav.horizontal ul li a.user-icon-link:hover {
+    border: 1.5px solid transparent;
+  }
+  nav.horizontal ul li .logout-header {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    align-items: center;
   }
 }
 footer {
