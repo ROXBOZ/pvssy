@@ -65,8 +65,9 @@ const DeleteEvent = () => {
   };
 
   // FIXME ERROR WHEN ATTEMPTING TO FETCH THE RESOURCE
-  const handleDelete = () => {
-    selectedEvents.map((e) => {
+  const handleDelete = async (event) => {
+    event.preventDefault();
+    selectedEvents.map(async (e) => {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -80,10 +81,17 @@ const DeleteEvent = () => {
         redirect: "follow",
       };
 
-      return fetch("http://localhost:5000/api/events/all", requestOptions)
-        .then((response) => response.text())
-        .then((result) => console.log(result))
-        .catch((error) => console.log("error", error));
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/events/all",
+          requestOptions
+        );
+        const result = await response.json();
+        console.log("result :", result);
+        fetchData(upComingEvent);
+      } catch (error) {
+        console.log("error :", error);
+      }
     });
   };
 

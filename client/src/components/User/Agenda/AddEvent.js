@@ -31,6 +31,7 @@ const AddEvent = () => {
       title: newEvent.eventTitle,
       date: newEvent.eventDateTime,
       organizer: userProfile.userName,
+      organizerContact: userProfile.userEmail,
       organizerWebsite: userProfile.userWebsite,
       shortDef: newEvent.eventShortDef,
       longDef: newEvent.eventLongDef,
@@ -55,13 +56,11 @@ const AddEvent = () => {
         "http://localhost:5000/api/events/all",
         requestOptions
       );
-      const result = response.json();
+      const result = await response.json();
       console.log("result", result);
-      console.log("it works");
       setSuccessfulPost(true);
     } catch (error) {
       console.log("error", error);
-      console.log("fail ");
     }
   };
   const addPendingEvent = async () => {

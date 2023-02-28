@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-const PendingEventCard = ({ event, dateTime }) => {
+const PendingEventCard = ({ event, dateTime, getPendingEvent }) => {
   const [showDetail, setShowDetail] = useState(false);
   const [iconClicked, setIconClicked] = useState(false);
 
-  // this is repeating with agenda
+  // REVIEW this is repeating with agenda
   const handleShowButton = () => {
     setShowDetail((prevState) => !prevState);
     toggleIconClicked();
@@ -16,7 +16,7 @@ const PendingEventCard = ({ event, dateTime }) => {
     setIconClicked(!iconClicked);
   };
 
-  // this is repeating with the one in utils
+  // REVIEW this is repeating with the one in utils
   const getDaysFromNow = (date) => {
     let now = new Date();
     let eventDate = new Date(date);
@@ -38,7 +38,7 @@ const PendingEventCard = ({ event, dateTime }) => {
         requestOptions
       );
       const result = await response.json();
-      window.location.reload();
+      getPendingEvent();
     } catch (error) {
       console.log("error :", error);
     }
@@ -62,7 +62,7 @@ const PendingEventCard = ({ event, dateTime }) => {
         requestOptions
       );
       const result = await response.json();
-      window.location.reload();
+      getPendingEvent();
     } catch (error) {
       console.log("error :", error);
     }

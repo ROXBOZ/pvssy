@@ -105,6 +105,7 @@ const logUser = async (req, res) => {
 };
 
 const getProfile = async (req, res) => {
+  console.log("req.user :", req.user);
   console.log("req arrived");
   res.status(200).json({
     user: {

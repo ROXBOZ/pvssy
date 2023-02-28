@@ -258,6 +258,7 @@ const approveEvent = async (req, res) => {
 //DELETE
 
 const deleteEvent = async (req, res) => {
+  // console.log("req.user :", req.user);
   const { _id } = req.body;
 
   try {
@@ -266,10 +267,10 @@ const deleteEvent = async (req, res) => {
     });
 
     if (existingEvent) {
-      await eventModel.findOneAndDelete({
+      const deletedEvent = await eventModel.findOneAndDelete({
         _id: _id,
       });
-
+      console.log("deletedEvent ::: :", deletedEvent);
       res.status(200).json({
         msg: "Event deleted successfully",
       });

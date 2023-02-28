@@ -58,7 +58,14 @@ const ApproveEvent = () => {
       {sortedEvents &&
         sortedEvents.map((e) => {
           const dateTime = dateTimeConverter(e.date);
-          return <PendingEventCard event={e} key={e._id} dateTime={dateTime} />;
+          return (
+            <PendingEventCard
+              event={e}
+              key={e._id}
+              dateTime={dateTime}
+              getPendingEvent={getPendingEvent}
+            />
+          );
         })}
     </div>
   );
