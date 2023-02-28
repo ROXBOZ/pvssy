@@ -4,18 +4,26 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Breadcrumbs from "./Breadcrumbs";
 
 import { AuthContext } from "../contexts/authContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const Header = () => {
   const { logout, userProfile } = useContext(AuthContext);
+  const [verticalMenu, setVerticalMenu] = useState(false);
+
+  const openMenu = () => {
+    setVerticalMenu(!verticalMenu);
+  };
 
   return (
     <header>
+      <button class="burger-menu" aria-label="Menu" onClick={openMenu}>
+        menu
+      </button>
       <Link to="/" className="logo">
         pvssy talk
       </Link>
 
-      <nav>
+      <nav className={verticalMenu === true ? "vertical" : "horizontal"}>
         <ul>
           <li>
             <NavLink to="a-propos">À propos</NavLink>

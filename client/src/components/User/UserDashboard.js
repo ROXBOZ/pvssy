@@ -34,7 +34,6 @@ const UserDashboard = ({ userProfile }) => {
               <span>éditeur·ice</span>
             )}
           </p>
-          <button>éditer profil</button>
           <button onClick={logout}>se déconnecter</button>
         </div>
       )}

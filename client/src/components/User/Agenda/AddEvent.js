@@ -16,10 +16,12 @@ const AddEvent = () => {
   const [newEvent, setNewEvent] = useState(null);
   const [successfulPost, setSuccessfulPost] = useState(false);
 
+  // REVIEW put this in context
   const handleInputChange = (e) => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
   };
 
+  // ADD EVENTS
   const addApprovedEvent = async () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -62,7 +64,6 @@ const AddEvent = () => {
       console.log("fail ");
     }
   };
-
   const addPendingEvent = async () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -107,7 +108,7 @@ const AddEvent = () => {
     }
   };
 
-  // Region Dropdown
+  // Region Dropdown REVIEW context??? not repeat with agenda
   const handleInputRegionChange = (event) => {
     const newValue = event.target.value;
     setValue(newValue);
@@ -147,26 +148,22 @@ const AddEvent = () => {
   return (
     <>
       {userProfile && userProfile.userIsAdmin === true ? (
-        <h1>
-          Ajouter un évènement<sup>prototype</sup>
-        </h1>
-      ) : (
-        <h1>
-          Proposer un évènement<sup>prototype</sup>
-        </h1>
-      )}
-
-      {userProfile && userProfile.userIsAdmin === false ? (
         <>
+          <h1>
+            Ajouter un évènement<sup>prototype</sup>
+          </h1>
           <p className="warning msg">
-            Nous ne pouvons pas garantir la publication d'un événement qui
-            aurait lieu moins de trois jours après sa soumission.
+            L’évènement sera ajouté immédiatement au calendrier.
           </p>
         </>
       ) : (
         <>
+          <h1>
+            Proposer un évènement<sup>prototype</sup>
+          </h1>
           <p className="warning msg">
-            L’évènement sera ajouté immédiatement au calendrier.
+            Nous ne pouvons pas garantir la publication d'un événement qui
+            aurait lieu moins de trois jours après sa soumission.
           </p>
         </>
       )}
@@ -175,12 +172,6 @@ const AddEvent = () => {
         <h2>Formulaire à compléter</h2>
         <div className="form-section">
           <h3>Informations essentielles</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
-            dolore quibusdam quasi eum possimus et dolor facere quia totam.
-            Provident repellendus animi cumque inventore unde asperiores debitis
-            quo sit nemo!
-          </p>
           <div className="event-title-label flex-center">
             <label htmlFor="eventTitle">Titre *</label>
           </div>
@@ -233,12 +224,6 @@ const AddEvent = () => {
         </div>
         <div className="form-section">
           <h3>Format</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam
-            numquam ut accusamus aliquid quas, a voluptatem quam reiciendis
-            voluptatibus expedita aliquam rem magni doloribus tempore corporis
-            culpa deserunt repudiandae iusto.
-          </p>
           <div className="event-type-label flex-center">
             <label htmlFor="eventType">Format *</label>
           </div>
@@ -348,12 +333,6 @@ const AddEvent = () => {
         </div>
         <div className="form-section">
           <h3>Réservations</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-            accusamus officia quae nisi. Dolorem nihil, sapiente corrupti nulla
-            omnis veritatis, asperiores totam quisquam a maxime error quibusdam
-            sit aliquam accusamus!
-          </p>
           <div className="event-tel-label flex-center">
             <label htmlFor="eventTel">Téléphone</label>
           </div>
@@ -362,7 +341,7 @@ const AddEvent = () => {
               name="eventTel"
               id="eventTel"
               type="tel"
-              pattern="\+\d{2}\(\d\)\d{2}\s\d{3}\s\d{2}\s\d{2}"
+              // pattern="\+\d{2}\(\d\)\d{2}\s\d{3}\s\d{2}\s\d{2}"
               placeholder="+41(0)..."
               onChange={handleInputChange}
             />
@@ -382,12 +361,6 @@ const AddEvent = () => {
         </div>
         <div className="form-section">
           <h3>Entrées</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel itaque
-            iusto aliquid distinctio neque? Impedit, ullam cum nobis,
-            consectetur, harum rem sunt aperiam hic magni ratione soluta
-            delectus. Natus, aliquam.
-          </p>
           <div className="event-entry-label flex-center">
             <label htmlFor="eventEntry">Participation *</label>
           </div>
@@ -448,17 +421,17 @@ const AddEvent = () => {
             </label>
           </div>
         )}
-
-        {userProfile && userProfile.userIsAdmin === true ? (
-          <button onClick={addApprovedEvent}>Ajouter au calendrier</button>
-        ) : (
-          <button onClick={addPendingEvent}>Proposer l’évènement</button>
-        )}
-
-        {successfulPost && (
-          <p className="success-msg">L’évènement a été ajouté au calendrier</p>
-        )}
       </form>
+
+      {userProfile && userProfile.userIsAdmin === true ? (
+        <button onClick={addApprovedEvent}>Ajouter au calendrier</button>
+      ) : (
+        <button onClick={addPendingEvent}>Proposer l’évènement</button>
+      )}
+
+      {successfulPost && (
+        <p className="success-msg">L’évènement a été ajouté au calendrier</p>
+      )}
     </>
   );
 };

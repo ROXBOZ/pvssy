@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 const PendingEventCard = ({ event, dateTime }) => {
   const [showDetail, setShowDetail] = useState(false);
   const [iconClicked, setIconClicked] = useState(false);
+
+  // this is repeating with agenda
   const handleShowButton = () => {
     setShowDetail((prevState) => !prevState);
     toggleIconClicked();
@@ -13,6 +15,16 @@ const PendingEventCard = ({ event, dateTime }) => {
   const toggleIconClicked = () => {
     setIconClicked(!iconClicked);
   };
+
+  // this is repeating with the one in utils
+  const getDaysFromNow = (date) => {
+    let now = new Date();
+    let eventDate = new Date(date);
+    const diffInTime = eventDate.getTime() - now.getTime();
+    const diffInDays = Math.ceil(diffInTime / (1000 * 3600 * 24));
+    return diffInDays;
+  };
+  const daysFromNow = getDaysFromNow(event.date);
 
   const approveEvent = async (eventId) => {
     const urlencoded = new URLSearchParams();
@@ -26,7 +38,6 @@ const PendingEventCard = ({ event, dateTime }) => {
         requestOptions
       );
       const result = await response.json();
-      console.log("result :", result);
       window.location.reload();
     } catch (error) {
       console.log("error :", error);
@@ -45,19 +56,17 @@ const PendingEventCard = ({ event, dateTime }) => {
       body: urlencoded,
     };
 
-    fetch("http://localhost:5000/api/events/all", requestOptions)
-      .then((response) => response.json())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/events/all",
+        requestOptions
+      );
+      const result = await response.json();
+      window.location.reload();
+    } catch (error) {
+      console.log("error :", error);
+    }
   };
-  const getDaysFromNow = (date) => {
-    let now = new Date();
-    let eventDate = new Date(date);
-    const diffInTime = eventDate.getTime() - now.getTime();
-    const diffInDays = Math.ceil(diffInTime / (1000 * 3600 * 24));
-    return diffInDays;
-  };
-  const daysFromNow = getDaysFromNow(event.date);
 
   return (
     <div className="pending-event-card" onClick={handleShowButton}>

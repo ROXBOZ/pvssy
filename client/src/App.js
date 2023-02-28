@@ -29,7 +29,6 @@ import PainLex from "./components/Pains/PainLex";
 import AllLexique from "./components/AllLexique";
 import AddEvent from "./components/User/Agenda/AddEvent";
 import DeleteEvent from "./components/User/Agenda/DeleteEvent";
-import ModifyEvent from "./components/User/Agenda/ModifyEvent";
 import ApproveEvent from "./components/User/Agenda/ApproveEvent";
 //contexts
 import { PainsContextProvider } from "./contexts/PainsContext";
@@ -117,7 +116,6 @@ function App() {
                   >
                     <Route path="ajouter" element={<AddEvent />} />
                     <Route path="approuver" element={<ApproveEvent />} />
-                    <Route path="modifier" element={<ModifyEvent />} />
                     <Route path="supprimer" element={<DeleteEvent />} />
                   </Route>
                   <Route

@@ -1,6 +1,7 @@
 header {
   @include grid;
   padding: 0 $padding-sm;
+
   .logo {
     font-family: $font-logo;
     color: $txt-color;
@@ -77,4 +78,20 @@ header {
   display: flex;
   flex-direction: row;
   gap: $gap;
+}
+
+@media (max-width: 767px) {
+  .burger-menu {
+    display: block;
+  }
+
+  .horizontal {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .burger-menu {
+    display: none;
+  }
 }

@@ -138,6 +138,19 @@ header nav ul li .user-icon:hover {
   gap: 2em;
 }
 
+@media (max-width: 767px) {
+  .burger-menu {
+    display: block;
+  }
+  .horizontal {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .burger-menu {
+    display: none;
+  }
+}
 footer {
   background-color: #303030;
   color: #fffdf8;
@@ -445,7 +458,7 @@ button:disabled {
   height: -moz-fit-content;
   height: fit-content;
   width: 100%;
-  border-radius: 40px;
+  border-radius: 0.25em;
   text-align: center;
   white-space: nowrap;
   overflow: auto;
@@ -455,7 +468,7 @@ button:disabled {
   color: #303030;
   padding: 1em;
   border-bottom: none;
-  border-radius: 40px;
+  border-radius: 0.25em;
   transition: 0.4s;
 }
 .tabbed-navigation a:focus {
@@ -463,13 +476,11 @@ button:disabled {
   border: 0;
 }
 .tabbed-navigation a:hover {
-  background-color: #ebebeb;
+  background-color: #e8e8e8;
 }
 .tabbed-navigation a.active {
-  background-color: #ffb6ee;
-}
-.tabbed-navigation a.active:hover {
-  background-color: #ffd0f4;
+  background-color: #fffdf8;
+  border: 1.5px solid;
 }
 
 input::-moz-placeholder {

@@ -10,11 +10,10 @@ const DeleteEvent = () => {
   const [selectedEvents, setSelectedEvents] = useState([]);
   const [myEvents, setMyEvents] = useState(null);
 
+  // unify with another similar pages
   useEffect(() => {
     fetchData(upComingEvent);
   }, [upComingEvent]);
-
-  console.log("data.upcomingEvents :", data.upcomingEvents);
 
   const eventsByOrganizer = async () => {
     const requestOptions = {
@@ -35,10 +34,26 @@ const DeleteEvent = () => {
     }
   };
 
+  console.log("userProfile :", userProfile);
+
   useEffect(() => {
     eventsByOrganizer();
   }, []);
 
+  if (!data.upcomingEvents || data.upcomingEvents.length === 0) {
+    return (
+      <>
+        <h1>
+          Supprimer un évènement<sup>prototype</sup>
+        </h1>
+        <p className="warning msg">
+          <strong>Aucun évènement dans le calendrier!</strong>
+        </p>
+      </>
+    );
+  }
+
+  // REVIEW this should be in context
   const handleChange = (e) => {
     const eventId = e.target.value;
     const isChecked = e.target.checked;
@@ -49,6 +64,7 @@ const DeleteEvent = () => {
     }
   };
 
+  // FIXME ERROR WHEN ATTEMPTING TO FETCH THE RESOURCE
   const handleDelete = () => {
     selectedEvents.map((e) => {
       const myHeaders = new Headers();
@@ -61,30 +77,15 @@ const DeleteEvent = () => {
         method: "DELETE",
         headers: myHeaders,
         body: urlencoded,
+        redirect: "follow",
       };
 
-      fetch("http://localhost:5000/api/events/all", requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
-          console.log(result);
-          window.location.reload();
-        })
+      return fetch("http://localhost:5000/api/events/all", requestOptions)
+        .then((response) => response.text())
+        .then((result) => console.log(result))
         .catch((error) => console.log("error", error));
     });
   };
-
-  // if (!data.upcomingEvents || data.upcomingEvents.length === 0) {
-  //   return (
-  //     <>
-  //       <h1>
-  //         Supprimer un évènement<sup>prototype</sup>
-  //       </h1>
-  //       <p className="warning msg">
-  //         <strong>Aucun évènement dans le calendrier!</strong>
-  //       </p>
-  //     </>
-  //   );
-  // }
 
   return (
     <>
@@ -98,10 +99,9 @@ const DeleteEvent = () => {
       <form className="grid-form">
         <div className="form-section">
           <div>
-            {userProfile && userProfile.userIsAdmin === true && (
+            {userProfile && userProfile.userIsAdmin === true ? (
               <>
                 <ul className="check-list">
-                  {console.log("data.upcomingEvents :", data.upcomingEvents)}
                   {data.upcomingEvents &&
                     data.upcomingEvents.map((e) => {
                       const dateTime = dateTimeConverter(e.date);
@@ -120,9 +120,7 @@ const DeleteEvent = () => {
                     })}
                 </ul>
               </>
-            )}
-
-            {userProfile && userProfile.userIsAdmin === false && (
+            ) : (
               <ul className="check-list">
                 {myEvents &&
                   myEvents.map((e) => {
@@ -148,6 +146,7 @@ const DeleteEvent = () => {
                   })}
               </ul>
             )}
+
             <button onClick={handleDelete}>
               Supprimer le(s) évènement(s) sélectionné(s)
             </button>
