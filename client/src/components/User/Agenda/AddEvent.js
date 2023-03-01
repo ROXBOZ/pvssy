@@ -6,26 +6,13 @@ import { useState, useContext } from "react";
 
 const AddEvent = () => {
   const { userProfile } = useContext(AuthContext);
-  // const { regions } = useContext(EventsContext);
-  //
-  // const [eventRegion, setEventRegion] = useState(null);
   const [eventType, setEventType] = useState("offline");
   const [eventEntry, setEventEntry] = useState("gratuite");
-  // const [suggestions, setSuggestions] = useState([]);
-  // const [showSuggestions, setShowSuggestions] = useState(false);
-  // const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
-  const [newEvent, setNewEvent] = useState(null);
-  const [successfulPost, setSuccessfulPost] = useState(false);
+  const [newEvent, setNewEvent] = useState({
+    isOnline: false,
+    freeEntry: true,
+  });
 
-  // REVIEW put this in context
-  const handleInputChange = (e) => {
-    setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
-  };
-
-  console.log("newEvent !! :", newEvent);
-  console.log("userProfile. :", userProfile);
-
-  // ADD EVENTS
   const addApprovedEvent = async () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -106,6 +93,38 @@ const AddEvent = () => {
       console.log("error", error);
     }
   };
+  const submitForm = (e) => {
+    e.preventDefault();
+    if (!newEvent.eventTitle) {
+      alert("Titre manquant");
+    } else if (!newEvent.eventDateTime) {
+      alert("Date et/ou heure manquante");
+    } else if (!newEvent.eventShortDef) {
+      alert("Description 'En bref' manquante");
+    } else if (newEvent.isOnline === true && !newEvent.onlineMeeting) {
+      alert("Lien manquant pour la réunion en ligne");
+    } else if (newEvent.isOnline === false && !newEvent.eventAddress) {
+      alert("Rue et numéro manquants");
+    } else if (newEvent.isOnline === false && !newEvent.eventCity) {
+      alert("Ville manquante");
+    } else if (newEvent.isOnline === false && !newEvent.eventRegion) {
+      alert("Région manquante");
+    } else if (newEvent.freeEntry === false && !newEvent.entryFee) {
+      alert("Prix manquant");
+    } else {
+      userProfile && userProfile.userIsAdmin === true
+        ? addApprovedEvent()
+        : addPendingEvent();
+    }
+  };
+
+  // const { regions } = useContext(EventsContext);
+  // const [eventRegion, setEventRegion] = useState(null);
+  // const [suggestions, setSuggestions] = useState([]);
+  // const [showSuggestions, setShowSuggestions] = useState(false);
+  // const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
+
+  // ADD EVENTS
 
   // REVIEW Region Dropdown context??? not repeat with agenda
   // const handleInputRegionChange = (event) => {
@@ -143,6 +162,10 @@ const AddEvent = () => {
   //     handleSuggestionClick(suggestions[selectedSuggestionIndex]);
   //   }
   // };
+
+  const handleInputChange = (e) => {
+    setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
+  };
 
   return (
     <>
@@ -234,7 +257,12 @@ const AddEvent = () => {
                 type="radio"
                 name="eventType"
                 checked={eventType === "online"}
-                onChange={() => setEventType("online")}
+                onChange={(e) => {
+                  setEventType("online");
+                  if (e.target.checked) {
+                    setNewEvent({ ...newEvent, isOnline: true });
+                  }
+                }}
               />
               <label htmlFor="online">Online</label>
             </span>
@@ -245,7 +273,12 @@ const AddEvent = () => {
                 type="radio"
                 name="eventType"
                 checked={eventType === "offline"}
-                onChange={() => setEventType("offline")}
+                onChange={(e) => {
+                  setEventType("offline");
+                  if (e.target.checked) {
+                    setNewEvent({ ...newEvent, isOnline: false });
+                  }
+                }}
               />
               <label htmlFor="offline">Sur place</label>
             </span>
@@ -291,7 +324,7 @@ const AddEvent = () => {
                   // onChange={handleInputRegionChange}
                   onChange={handleInputChange}
                   // onKeyDown={handleKeyDown}
-                  required
+                  // required
                 />
               </div>
               {/* {showSuggestions && (
@@ -333,6 +366,10 @@ const AddEvent = () => {
         </div>
         <div className="form-section">
           <h3>Réservations</h3>
+          <p>
+            S’il n’est pas possible de faire de réservations, laisser les champs
+            libre.
+          </p>
           <div className="event-tel-label flex-center">
             <label htmlFor="eventTel">Téléphone</label>
           </div>
@@ -354,7 +391,7 @@ const AddEvent = () => {
               name="eventEmail"
               id="eventEmail"
               type="text"
-              placeholder="info@asso..."
+              placeholder="info@..."
               onChange={handleInputChange}
             />
           </div>
@@ -372,7 +409,12 @@ const AddEvent = () => {
                 type="radio"
                 name="eventEntry"
                 checked={eventEntry === "gratuite"}
-                onChange={() => setEventEntry("gratuite")}
+                onChange={(e) => {
+                  setEventEntry("gratuite");
+                  if (e.target.checked) {
+                    setNewEvent({ ...newEvent, freeEntry: true });
+                  }
+                }}
               />
               <label htmlFor="admissionFee">gratuite</label>
               <input
@@ -381,7 +423,12 @@ const AddEvent = () => {
                 type="radio"
                 name="eventEntry"
                 checked={eventEntry === "payante"}
-                onChange={() => setEventEntry("payante")}
+                onChange={(e) => {
+                  setEventEntry("payante");
+                  if (e.target.checked) {
+                    setNewEvent({ ...newEvent, freeEntry: false });
+                  }
+                }}
               />
               <label htmlFor="online">payante</label>
             </span>
@@ -401,6 +448,7 @@ const AddEvent = () => {
                   max="999.99"
                   placeholder="10.5"
                   onChange={handleInputChange}
+                  required
                 />
               </div>
             </>
@@ -425,21 +473,13 @@ const AddEvent = () => {
 
       {userProfile && userProfile.userIsAdmin === true ? (
         <>
-          <button onClick={addApprovedEvent}>Ajouter au calendrier</button>
-          {successfulPost && (
-            <p className="success msg">
-              L’évènement a été ajouté au calendrier
-            </p>
-          )}
+          <button onClick={submitForm}>Ajouter au calendrier</button>
+
+          {/* <p className="success msg">L’évènement a été ajouté au calendrier.</p> */}
         </>
       ) : (
         <>
-          <button onClick={addPendingEvent}>Proposer l’évènement</button>
-          {successfulPost && (
-            <p className="success msg">
-              L’évènement va être révisé par notre équipe.
-            </p>
-          )}
+          <button onClick={submitForm}>Proposer l’évènement</button>
         </>
       )}
     </>
