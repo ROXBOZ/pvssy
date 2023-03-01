@@ -1,0 +1,18 @@
+.breadcrumbs {
+  grid-column: 1/6;
+  display: flex;
+  color: lighten($txt-color, 50%);
+  .crumb {
+    &:after {
+      color: $txt-color;
+      content: "→";
+      padding: 0 $padding-xs;
+    }
+
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+  }
+}

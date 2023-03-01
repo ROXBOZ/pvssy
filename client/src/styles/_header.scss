@@ -1,204 +1,228 @@
-header {
-  @include grid;
-  padding: 0 $padding-sm;
-
-  .logo {
-    font-family: $font-logo;
-    color: $txt-color;
-    text-decoration: none;
+/*-----Mobile-----*/
+@media (max-width: 767px) {
+  header {
     display: flex;
     align-items: center;
-    grid-column: 1/2;
-    border: none;
-  }
+    padding: $demi-gap;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    height: fit-content;
+    .logo {
+      z-index: 99;
+      border-bottom: 0;
+      color: $txt-color;
+      font-family: $font-logo;
+      font-size: 1.25rem;
+    }
 
-  nav {
-    ul {
-      padding-left: 0;
-      margin-left: 0;
+    .burger-menu {
+      position: relative;
+      z-index: 99;
+      background-color: transparent;
+      border: 0;
       display: flex;
+      gap: 0.5em;
+      align-items: center;
+      padding: 0;
+      #nav-icon,
+      .menu-label {
+        position: fixed;
+        background-color: red;
+      }
+      &:hover {
+        background-color: transparent;
+      }
 
-      li {
-        list-style: none;
-        display: flex;
+      &:focus {
+        outline: 0;
+        border: 0;
+      }
+      span {
+        color: $txt-color;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 60%;
+        font-family: $font-bold;
+        &.menu-label {
+          padding-top: 2px;
+        }
+      }
 
-        .user-icon {
-          border: $border-solid;
-          padding: $padding-xs;
-          border-radius: 50%;
-          aspect-ratio: 1/1;
-          &:hover {
-            cursor: pointer;
+      #nav-icon {
+        width: 30px;
+        height: 21px;
+        position: relative;
+        transform: rotate(0deg);
+        transition: 0.5s ease-in-out;
+        cursor: pointer;
+
+        span {
+          display: block;
+          position: absolute;
+          height: 3px;
+          width: 100%;
+          background: $txt-color;
+          border-radius: $border-radius;
+          opacity: 1;
+          left: 0;
+          transform: rotate(0deg);
+          transition: 0.25s ease-in-out;
+
+          &:nth-child(2),
+          &:nth-child(3) {
+            top: 9px;
+          }
+
+          &:nth-child(4) {
+            top: 18px;
+          }
+        }
+
+        &.open {
+          span:nth-child(1) {
+            top: 18px;
+            width: 0%;
+            left: 50%;
+          }
+
+          span:nth-child(2) {
+            transform: rotate(45deg);
+          }
+
+          span:nth-child(3) {
+            transform: rotate(-45deg);
+          }
+
+          span:nth-child(4) {
+            top: 18px;
+            width: 0%;
+            left: 50%;
           }
         }
       }
     }
-  }
-}
 
-.breadcrumbs {
-  grid-column: 1/6;
-  display: flex;
-  color: lighten($txt-color, 50%);
-  .crumb {
-    &:after {
-      color: $txt-color;
-      content: "→";
-      padding: 0 $padding-xs;
-    }
-
-    &:last-child {
-      &:after {
+    nav {
+      &.horizontal {
         display: none;
       }
-    }
-  }
-}
-
-@media (max-width: 767px) {
-  .burger-menu {
-    &:focus {
-      outline: 0;
-      border: 0;
-    }
-    z-index: 99;
-    background-color: transparent;
-    width: 100vw;
-    padding: $gap 0;
-    border: 0;
-    display: flex;
-    gap: $demi-gap;
-    align-items: center;
-    span {
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 80%;
-      font-family: $font-bold;
-    }
-    #nav-icon {
-      width: 30px;
-      height: 23px;
-      position: relative;
-      transform: rotate(0deg);
-      transition: 0.5s ease-in-out;
-      cursor: pointer;
-
-      span {
-        display: block;
-        position: absolute;
-        height: 3px;
-        width: 100%;
-        background: $txt-color;
-        border-radius: $border-radius;
-        opacity: 1;
+      &.vertical {
+        position: fixed;
+        margin: 0;
+        right: 0;
         left: 0;
-        transform: rotate(0deg);
-        transition: 0.25s ease-in-out;
+        top: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        background: $gradient;
+        background-color: white;
 
-        &:nth-child(2),
-        &:nth-child(3) {
-          top: 9px;
-        }
+        ul {
+          padding-left: $demi-gap;
+          margin-left: 0;
+          flex-direction: column;
+          margin-top: 6em;
 
-        &:nth-child(4) {
-          top: 18px;
-        }
-      }
-
-      &.open {
-        span:nth-child(1) {
-          top: 18px;
-          width: 0%;
-          left: 50%;
-        }
-
-        span:nth-child(2) {
-          transform: rotate(45deg);
-        }
-
-        span:nth-child(3) {
-          transform: rotate(-45deg);
-        }
-
-        span:nth-child(4) {
-          top: 18px;
-          width: 0%;
-          left: 50%;
-        }
-      }
-    }
-  }
-
-  nav {
-    &.vertical {
-      position: absolute;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: $gradient;
-      background-color: white;
-
-      ul {
-        margin-left: $gap;
-        flex-direction: column;
-        margin-top: 6em;
-
-        li {
-          line-height: 4;
-          a {
-            padding: 0;
-            border-bottom: none;
-            color: $txt-color;
-          }
-
-          .logout-header {
-            margin-top: $gap;
-            border-top: $border-solid;
-            padding-top: $padding-sm;
-            display: flex;
-            flex-direction: column-reverse;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 768px) {
-  .burger-menu {
-    display: none !important;
-  }
-
-  nav {
-    &.horizontal {
-      grid-column: 2/6;
-      ul {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-
-        li {
-          align-items: center;
-
-          a {
-            @include navlink;
-            &.user-icon-link {
+          li {
+            list-style: none;
+            line-height: 4;
+            a {
               padding: 0;
-              border: $border-solid transparent;
-              height: fit-content;
+              border-bottom: none;
+              color: $txt-color;
+            }
+
+            .logout-header {
+              margin-top: $gap;
+              border-top: $border-solid;
+              padding-top: $padding-sm;
               display: flex;
-              border-radius: 50%;
-              &:hover {
-                border: $border-solid transparent;
-              }
+              flex-direction: column-reverse;
+              background-color: yellow;
             }
           }
+        }
+      }
+    }
+  }
+}
 
-          .logout-header {
+/*-----Desktop-----*/
+@media (min-width: 768px) {
+  header {
+    @include grid;
+    padding: 0 $padding-sm;
+    .logo {
+      font-size: 1.5rem;
+      font-family: $font-logo;
+      color: $txt-color;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      grid-column: 1/2;
+      border: none;
+      &:focus {
+        outline: 0;
+        border: 0;
+      }
+    }
+    .menu-container {
+      grid-column: 2/5;
+      .burger-menu {
+        display: none !important;
+      }
+
+      nav {
+        &.horizontal {
+          ul {
+            padding-left: 0;
+            margin-left: 0;
             display: flex;
             flex-direction: row;
-            gap: $gap;
+            justify-content: space-between;
             align-items: center;
+            li {
+              align-items: center;
+              list-style: none;
+              display: flex;
+
+              a {
+                @include navlink;
+              }
+
+              .logout-header {
+                display: flex;
+                align-items: center;
+                gap: $gap;
+
+                .user-icon-link {
+                  padding: 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  gap: 0.25em;
+
+                  &:hover {
+                    background-color: transparent;
+                  }
+
+                  #userIcon {
+                    border: $border-solid;
+                    padding: $padding-xs;
+                    border-radius: 50%;
+                    aspect-ratio: 1/1;
+                    &:hover {
+                      cursor: pointer;
+                    }
+                  }
+
+                  p {
+                    margin: 0;
+                  }
+                }
+              }
+            }
           }
         }
       }
