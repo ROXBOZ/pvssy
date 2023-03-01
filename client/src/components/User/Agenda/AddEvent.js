@@ -13,12 +13,12 @@ const AddEvent = () => {
     freeEntry: true,
   });
 
-  const addApprovedEvent = async () => {
+  const addNewEvent = async (isPending) => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
-      isPending: false,
+      isPending: isPending,
       title: newEvent.eventTitle,
       date: newEvent.eventDateTime,
       organizer: userProfile.userName,
@@ -53,46 +53,7 @@ const AddEvent = () => {
       console.log("error", error);
     }
   };
-  const addPendingEvent = async () => {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
 
-    const raw = JSON.stringify({
-      isPending: true,
-      title: newEvent.eventTitle,
-      date: newEvent.eventDateTime,
-      organizer: userProfile.userName,
-      organizerContact: userProfile.userEmail,
-      organizerWebsite: userProfile.userWebsite,
-      shortDef: newEvent.eventShortDef,
-      longDef: newEvent.eventLongDef,
-      isOnline: eventType === "online" ? true : false,
-      onlineMeeting: eventType === "online" ? newEvent.onlineMeeting : null,
-      address: eventType === "online" ? null : newEvent.eventAddress,
-      city: eventType === "online" ? null : newEvent.eventCity,
-      region: newEvent.eventRegion,
-      email: newEvent.eventEmail,
-      tel: newEvent.eventTel,
-      entryFee: newEvent.admissionFee,
-    });
-
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-    };
-
-    try {
-      const response = await fetch(
-        "http://localhost:5000/api/events/all",
-        requestOptions
-      );
-      const result = response.json();
-      console.log("result", result);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
   const submitForm = (e) => {
     e.preventDefault();
     if (!newEvent.eventTitle) {
@@ -113,8 +74,8 @@ const AddEvent = () => {
       alert("Prix manquant");
     } else {
       userProfile && userProfile.userIsAdmin === true
-        ? addApprovedEvent()
-        : addPendingEvent();
+        ? addNewEvent(false)
+        : addNewEvent(true);
     }
   };
 
