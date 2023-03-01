@@ -4,14 +4,11 @@ import EventCard from "./Agenda/EventCard";
 import { Link } from "react-router-dom";
 
 const Connect = () => {
-  const { data, archivedEvent, Error, fetchData } = useContext(EventsContext);
-
-  console.log("ArchivedEvent", archivedEvent);
-  console.log("data", data);
+  const { data, archivesURL, Error, fetchData } = useContext(EventsContext);
 
   useEffect(() => {
-    fetchData(archivedEvent);
-  }, [archivedEvent]);
+    fetchData(archivesURL);
+  }, [archivesURL]);
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { EventsContext } from "../../../contexts/eventsContext";
+// import { EventsContext } from "../../../contexts/eventsContext";
 import { AuthContext } from "../../../contexts/authContext";
 import { useState, useContext } from "react";
 
@@ -8,6 +8,8 @@ const AddEvent = () => {
   const { userProfile } = useContext(AuthContext);
   const [eventType, setEventType] = useState("offline");
   const [eventEntry, setEventEntry] = useState("gratuite");
+  // const { regions } = useContext(EventsContext);
+
   const [newEvent, setNewEvent] = useState({
     isOnline: false,
     freeEntry: true,
@@ -53,7 +55,6 @@ const AddEvent = () => {
       console.log("error", error);
     }
   };
-
   const submitForm = (e) => {
     e.preventDefault();
     if (!newEvent.eventTitle) {
@@ -79,7 +80,6 @@ const AddEvent = () => {
     }
   };
 
-  // const { regions } = useContext(EventsContext);
   // const [eventRegion, setEventRegion] = useState(null);
   // const [suggestions, setSuggestions] = useState([]);
   // const [showSuggestions, setShowSuggestions] = useState(false);

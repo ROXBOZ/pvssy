@@ -6,14 +6,14 @@ import { dateTimeConverter } from "../../../utils/dateConverter";
 
 const DeleteEvent = () => {
   const { userProfile } = useContext(AuthContext);
-  const { data, fetchData, upComingEvent } = useContext(EventsContext);
+  const { data, fetchData, agendaURL } = useContext(EventsContext);
   const [selectedEvents, setSelectedEvents] = useState([]);
   const [myEvents, setMyEvents] = useState(null);
   //
 
   useEffect(() => {
-    fetchData(upComingEvent);
-  }, [upComingEvent]);
+    fetchData(agendaURL);
+  }, [agendaURL]);
 
   const eventsByOrganizer = async () => {
     const requestOptions = {

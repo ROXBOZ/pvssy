@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { EventsContext } from "../contexts/eventsContext";
 import EventCard from "../components/Agenda/EventCard";
@@ -6,64 +6,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const Agenda = () => {
-  const [value, setValue] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
-  const [iconClicked, setIconClicked] = useState(false);
-  const { data, upComingEvent, fetchData, Error, regions } =
-    useContext(EventsContext);
+  const {
+    fetchData,
+    Error,
+    data,
+    agendaURL,
+    value,
+    suggestions,
+    showSuggestions,
+    selectedSuggestionIndex,
+    iconClicked,
+    handleInputChange,
+    handleSuggestionClick,
+    handleIconClick,
+    handleKeyDown,
+  } = useContext(EventsContext);
 
   useEffect(() => {
-    fetchData(upComingEvent);
-  }, [upComingEvent]);
-
-  const handleInputChange = (event) => {
-    const newValue = event.target.value;
-    setValue(newValue);
-
-    if (newValue.length === 0) {
-      setSuggestions([]);
-      setShowSuggestions(false);
-      setIconClicked(false);
-      return;
-    }
-
-    const matchingSuggestions = regions.filter((suggestion) =>
-      suggestion.toLowerCase().includes(newValue.toLowerCase())
-    );
-    setSuggestions(matchingSuggestions);
-    setShowSuggestions(matchingSuggestions.length > 0);
-    setIconClicked(true);
-  };
-  const handleSuggestionClick = (suggestion) => {
-    setValue(suggestion);
-    setShowSuggestions(false);
-    setIconClicked(false);
-  };
-  const toggleIconClicked = () => {
-    setIconClicked(!iconClicked);
-  };
-  const handleIconClick = () => {
-    toggleIconClicked();
-    setSuggestions([...regions]);
-    setShowSuggestions(showSuggestions ? false : true);
-  };
-  const handleKeyDown = (e) => {
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      setSelectedSuggestionIndex(
-        (selectedSuggestionIndex + 1) % suggestions.length
-      );
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      setSelectedSuggestionIndex(
-        (selectedSuggestionIndex - 1 + suggestions.length) % suggestions.length
-      );
-    } else if (e.key === "Enter" && selectedSuggestionIndex >= 0) {
-      handleSuggestionClick(suggestions[selectedSuggestionIndex]);
-    }
-  };
+    fetchData(agendaURL);
+  }, [agendaURL]);
 
   return (
     <div>
