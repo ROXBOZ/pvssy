@@ -1,3 +1,8 @@
+$success-color: mediumseagreen;
+$pending-color: mediumslateblue;
+$warning-color: tomato;
+$error-color: crimson;
+
 .msg {
   margin: $gap 0;
   font-family: $font-medium;
@@ -25,7 +30,29 @@
   &.error {
     color: $error-color;
     &:before {
-      content: ("❌  ");
+      content: ("🚨  ");
+    }
+  }
+}
+
+.error-list {
+  display: none;
+  & li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.error-list:not(:empty) {
+  display: block;
+  padding: 0;
+  line-height: 2;
+  color: $error-color;
+  grid-column: 1/2;
+  li {
+    list-style: none;
+    &:before {
+      content: ("🚨  ");
     }
   }
 }

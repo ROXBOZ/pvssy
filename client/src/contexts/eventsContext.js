@@ -14,6 +14,7 @@ export const EventsContextProvider = (props) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
   const [iconClicked, setIconClicked] = useState(false);
+  const [eventRegion, setEventRegion] = useState(null);
 
   const regions = [
     "Berne",
@@ -28,7 +29,6 @@ export const EventsContextProvider = (props) => {
     "Vevey",
     "Yverdon-les-Bains",
   ];
-
   const fetchData = async (url) => {
     try {
       setLoading(true);
@@ -42,8 +42,7 @@ export const EventsContextProvider = (props) => {
       setError(error);
     }
   };
-
-  const handleInputChange = (event) => {
+  const handleRegionInputChange = (event) => {
     const newValue = event.target.value;
     setValue(newValue);
 
@@ -112,11 +111,13 @@ export const EventsContextProvider = (props) => {
         setSelectedSuggestionIndex,
         iconClicked,
         setIconClicked,
-        handleInputChange,
+        handleRegionInputChange,
         handleSuggestionClick,
         toggleIconClicked,
         handleIconClick,
         handleKeyDown,
+        eventRegion,
+        setEventRegion,
       }}
     >
       {props.children}

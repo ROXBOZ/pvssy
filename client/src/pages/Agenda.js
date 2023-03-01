@@ -16,7 +16,7 @@ const Agenda = () => {
     showSuggestions,
     selectedSuggestionIndex,
     iconClicked,
-    handleInputChange,
+    handleRegionInputChange,
     handleSuggestionClick,
     handleIconClick,
     handleKeyDown,
@@ -57,7 +57,7 @@ const Agenda = () => {
                   type="text"
                   value={value}
                   onClick={handleIconClick}
-                  onChange={handleInputChange}
+                  onChange={handleRegionInputChange}
                   onKeyDown={handleKeyDown}
                 />
                 <FontAwesomeIcon

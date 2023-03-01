@@ -985,28 +985,50 @@ form .form-section .form-dropdown-suggestions li {
   font-family: "ESKlarheit-Medium";
 }
 .msg.success {
-  color: #2c7200;
+  color: mediumseagreen;
 }
 .msg.success:before {
   content: "👏  ";
 }
 .msg.pending {
-  color: #7d11e3;
+  color: mediumslateblue;
 }
 .msg.pending:before {
   content: "⌛  ";
 }
 .msg.warning {
-  color: #f2510c;
+  color: tomato;
 }
 .msg.warning:before {
   content: "⚠️  ";
 }
 .msg.error {
-  color: #e900b4;
+  color: crimson;
 }
 .msg.error:before {
-  content: "❌  ";
+  content: "🚨  ";
+}
+
+.error-list {
+  display: none;
+}
+.error-list li {
+  margin: 0;
+  padding: 0;
+}
+
+.error-list:not(:empty) {
+  display: block;
+  padding: 0;
+  line-height: 2;
+  color: crimson;
+  grid-column: 1/2;
+}
+.error-list:not(:empty) li {
+  list-style: none;
+}
+.error-list:not(:empty) li:before {
+  content: "🚨  ";
 }
 
 .breadcrumbs {

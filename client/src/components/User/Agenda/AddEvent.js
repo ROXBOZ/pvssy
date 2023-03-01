@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { EventsContext } from "../../../contexts/eventsContext";
+import { EventsContext } from "../../../contexts/eventsContext";
 import { AuthContext } from "../../../contexts/authContext";
 import { useState, useContext } from "react";
 
@@ -8,7 +8,24 @@ const AddEvent = () => {
   const { userProfile } = useContext(AuthContext);
   const [eventType, setEventType] = useState("offline");
   const [eventEntry, setEventEntry] = useState("gratuite");
-  // const { regions } = useContext(EventsContext);
+  const [conditionsAccepted, setConditionsAccepted] = useState(null);
+  const today = new Date();
+  const todayISO = today.toISOString();
+  const addressRegex = /^(?=.*[a-zA-Z])(?=.*\d).+$/;
+  const cityRegex = /^(?=.*[a-zA-Z])(?=.*\d{4}).+$/;
+  const swissTelRegex =
+    /(\b(0041|0)|\B\+41)(\s?\(0\))?(\s)?[1-9]{2}(\s)?[0-9]{3}(\s)?[0-9]{2}(\s)?[0-9]{2}\b/;
+  const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+  const {
+    suggestions,
+    showSuggestions,
+    selectedSuggestionIndex,
+    handleRegionInputChange,
+    handleSuggestionClick,
+    handleKeyDown,
+    eventRegion,
+  } = useContext(EventsContext);
 
   const [newEvent, setNewEvent] = useState({
     isOnline: false,
@@ -79,55 +96,10 @@ const AddEvent = () => {
         : addNewEvent(true);
     }
   };
-
-  // const [eventRegion, setEventRegion] = useState(null);
-  // const [suggestions, setSuggestions] = useState([]);
-  // const [showSuggestions, setShowSuggestions] = useState(false);
-  // const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
-
-  // ADD EVENTS
-
-  // REVIEW Region Dropdown context??? not repeat with agenda
-  // const handleInputRegionChange = (event) => {
-  //   const region = event.target.value;
-
-  //   if (region.length === 0) {
-  //     setSuggestions([]);
-  //     setShowSuggestions(false);
-  //     return;
-  //   }
-
-  //   const matchingSuggestions = regions.filter((suggestion) =>
-  //     suggestion.toLowerCase().includes(region.toLowerCase())
-  //   );
-  //   setSuggestions(matchingSuggestions);
-  //   setShowSuggestions(matchingSuggestions.length > 0);
-  // };
-  // const handleSuggestionClick = (suggestion) => {
-  //   setEventRegion(suggestion);
-
-  //   setShowSuggestions(false);
-  // };
-  // const handleKeyDown = (e) => {
-  //   if (e.key === "ArrowDown") {
-  //     e.preventDefault();
-  //     setSelectedSuggestionIndex(
-  //       (selectedSuggestionIndex + 1) % suggestions.length
-  //     );
-  //   } else if (e.key === "ArrowUp") {
-  //     e.preventDefault();
-  //     setSelectedSuggestionIndex(
-  //       (selectedSuggestionIndex - 1 + suggestions.length) % suggestions.length
-  //     );
-  //   } else if (e.key === "Enter" && selectedSuggestionIndex >= 0) {
-  //     handleSuggestionClick(suggestions[selectedSuggestionIndex]);
-  //   }
-  // };
-
   const handleInputChange = (e) => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
   };
-
+  console.log("newEvent :", newEvent);
   return (
     <>
       {userProfile && userProfile.userIsAdmin === true ? (
@@ -187,7 +159,7 @@ const AddEvent = () => {
             <textarea
               name="eventShortDef"
               id="eventShortDef"
-              placeholder="Veuillez entrer une définition de l'événement courte et concise de max. 60 mots."
+              placeholder="Veuillez entrer une définition de l'événement courte et concise de max. 120 caractères."
               onChange={handleInputChange}
               required
             />
@@ -281,14 +253,14 @@ const AddEvent = () => {
                   id="eventRegion"
                   type="text"
                   placeholder="Région"
-                  // value={eventRegion}
-                  // onChange={handleInputRegionChange}
                   onChange={handleInputChange}
+                  // value={eventRegion}
+                  // onClick={handleRegionInputChange}
                   // onKeyDown={handleKeyDown}
-                  // required
+                  required
                 />
               </div>
-              {/* {showSuggestions && (
+              {showSuggestions && (
                 <ul className="suggestions form-dropdown-suggestions">
                   {suggestions.map((suggestion, index) => (
                     <li
@@ -304,7 +276,7 @@ const AddEvent = () => {
                     </li>
                   ))}
                 </ul>
-              )} */}
+              )}
             </>
           )}
           {eventType === "online" && (
@@ -339,7 +311,6 @@ const AddEvent = () => {
               name="eventTel"
               id="eventTel"
               type="tel"
-              // pattern="\+\d{2}\(\d\)\d{2}\s\d{3}\s\d{2}\s\d{2}"
               placeholder="+41(0)..."
               onChange={handleInputChange}
             />
@@ -416,12 +387,50 @@ const AddEvent = () => {
           )}
         </div>
 
+        <ul className="error-list">
+          {newEvent.eventTitle && newEvent.eventTitle.length > 30 && (
+            <li>Le titre doit contenir au maximum 30 caractères.</li>
+          )}
+          {newEvent.eventDateTime && newEvent.eventDateTime < todayISO && (
+            <li>La date de l'événement est déjà passée.</li>
+          )}
+          {newEvent.eventShortDef && newEvent.eventShortDef.length > 120 && (
+            <li>
+              La description brève doit contenir au maximum 120 caractères.
+            </li>
+          )}
+          {/* TODO ZOOM LINK IS MISSING */}
+          {newEvent.eventAddress &&
+            !addressRegex.test(newEvent.eventAddress) && (
+              <li>Le format de l'adresse est invalide.</li>
+            )}
+          {newEvent.eventCity && !cityRegex.test(newEvent.eventCity) && (
+            <li>Le format de la ville est invalide.</li>
+          )}
+          {/* TODO REGION IS MISSING */}
+          {newEvent.eventTel && !swissTelRegex.test(newEvent.eventTel) && (
+            <li>
+              Le numéro de téléphone doit être au format suisse international :
+              +41 (0) ...
+            </li>
+          )}
+          {newEvent.eventEmail && !emailRegex.test(newEvent.eventEmail) && (
+            <li>L'adresse e-mail est invalide.</li>
+          )}
+          {newEvent.freeEntry === false && !newEvent.admissionFee && (
+            <li>
+              Veuillez renseigner un prix ou sélectionner l'option "Gratuit".
+            </li>
+          )}
+        </ul>
+
         {userProfile && userProfile.userIsAdmin === false && (
           <div className="conditions-generales">
             <input
               className="form-check-input"
               id="conditionsCheckbox"
               type="checkbox"
+              onChange={(e) => setConditionsAccepted(e.target.checked)}
               required
             />
             <label htmlFor="conditionsCheckbox">
@@ -432,17 +441,32 @@ const AddEvent = () => {
         )}
       </form>
 
-      {userProfile && userProfile.userIsAdmin === true ? (
-        <>
-          <button onClick={submitForm}>Ajouter au calendrier</button>
-
-          {/* <p className="success msg">L’évènement a été ajouté au calendrier.</p> */}
-        </>
-      ) : (
-        <>
-          <button onClick={submitForm}>Proposer l’évènement</button>
-        </>
-      )}
+      <button
+        onClick={submitForm}
+        type="submit"
+        disabled={
+          !(
+            (newEvent.eventTitle && newEvent.eventTitle.length <= 30) ||
+            !newEvent.eventDateTime ||
+            newEvent.eventDateTime >= todayISO ||
+            (newEvent.eventShortDef && newEvent.eventShortDef.length <= 120) ||
+            (newEvent.eventAddress &&
+              addressRegex.test(newEvent.eventAddress)) ||
+            (newEvent.eventCity && cityRegex.test(newEvent.eventCity)) ||
+            (newEvent.eventTel && swissTelRegex.test(newEvent.eventTel)) ||
+            (newEvent.eventEmail && emailRegex.test(newEvent.eventEmail)) ||
+            newEvent.freeEntry === true ||
+            newEvent.admissionFee
+          ) ||
+          (userProfile &&
+            userProfile.userIsAdmin === false &&
+            !conditionsAccepted)
+        }
+      >
+        {userProfile && userProfile.userIsAdmin === true
+          ? "Ajouter l’évènement"
+          : "Proposer l’évènement"}
+      </button>
     </>
   );
 };
