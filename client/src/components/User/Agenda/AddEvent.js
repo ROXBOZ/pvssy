@@ -23,6 +23,7 @@ const AddEvent = () => {
   };
 
   console.log("newEvent !! :", newEvent);
+  console.log("userProfile. :", userProfile);
 
   // ADD EVENTS
   const addApprovedEvent = async () => {
@@ -61,7 +62,6 @@ const AddEvent = () => {
       );
       const result = await response.json();
       console.log("result", result);
-      setSuccessfulPost(true);
     } catch (error) {
       console.log("error", error);
     }
@@ -101,7 +101,7 @@ const AddEvent = () => {
         requestOptions
       );
       const result = response.json();
-      setSuccessfulPost(true);
+      console.log("result", result);
     } catch (error) {
       console.log("error", error);
     }

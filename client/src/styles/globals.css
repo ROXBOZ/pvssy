@@ -975,6 +975,12 @@ form .form-section .form-dropdown-suggestions li {
 .msg.warning:before {
   content: "⚠️  ";
 }
+.msg.error {
+  color: #e900b4;
+}
+.msg.error:before {
+  content: "❌  ";
+}
 
 * {
   outline: none;

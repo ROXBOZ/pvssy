@@ -86,7 +86,8 @@ const DeleteEvent = () => {
           requestOptions
         );
         const result = await response.json();
-        fetchData(upComingEvent);
+        console.log("result :", result);
+        fetchData();
       } catch (error) {
         console.log("error :", error);
       }

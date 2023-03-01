@@ -10,6 +10,7 @@ $color3: #9637f0;
 $success-color: darken(#c8ffa5, 60%);
 $pending-color: darken($color3, 10%);
 $warning-color: darken($color1, 10%);
+$error-color: darken($color2, 20%);
 
 $gradient: linear-gradient(
   180deg,
