@@ -1,7 +1,8 @@
 .heading-area {
   max-height: fit-content;
   margin-top: 20vh;
-  padding-bottom: $padding-sm;
+  // REVIEW should not be on pain maybe else where
+  // padding-bottom: $padding-sm;
 
   .pretitle {
     font-family: $font-bold;

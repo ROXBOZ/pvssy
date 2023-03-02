@@ -284,7 +284,6 @@ footer a {
   max-height: -moz-fit-content;
   max-height: fit-content;
   margin-top: 20vh;
-  padding-bottom: 2em;
 }
 .heading-area .pretitle {
   font-family: "ESKlarheit-Bold";
@@ -597,10 +596,12 @@ button:disabled {
 }
 
 input::-moz-placeholder {
+  color: #b0b0b0;
   font-family: "ESKlarheit-Book";
 }
 
 input::placeholder {
+  color: #b0b0b0;
   font-family: "ESKlarheit-Book";
 }
 
@@ -698,6 +699,7 @@ form.grid-form .check-list,
 form .form-section .check-list {
   margin-top: 0;
 }
+form.grid-form div select,
 form.grid-form div input[type=text],
 form.grid-form div input[type=password],
 form.grid-form div input[type=file],
@@ -706,6 +708,7 @@ form.grid-form div input[type=datetime-local],
 form.grid-form div input[type=number],
 form.grid-form div input[type=tel],
 form.grid-form div textarea,
+form .form-section div select,
 form .form-section div input[type=text],
 form .form-section div input[type=password],
 form .form-section div input[type=file],
@@ -723,6 +726,7 @@ form .form-section div textarea {
   padding: 0.5em;
   width: 300px;
 }
+form.grid-form div select:focus,
 form.grid-form div input[type=text]:focus,
 form.grid-form div input[type=password]:focus,
 form.grid-form div input[type=file]:focus,
@@ -731,6 +735,7 @@ form.grid-form div input[type=datetime-local]:focus,
 form.grid-form div input[type=number]:focus,
 form.grid-form div input[type=tel]:focus,
 form.grid-form div textarea:focus,
+form .form-section div select:focus,
 form .form-section div input[type=text]:focus,
 form .form-section div input[type=password]:focus,
 form .form-section div input[type=file]:focus,
@@ -742,9 +747,11 @@ form .form-section div textarea:focus {
   outline: none;
   border: 1.5px solid #c896f7;
 }
-form.grid-form div input[type=text]::-moz-placeholder, form.grid-form div input[type=password]::-moz-placeholder, form.grid-form div input[type=file]::-moz-placeholder, form.grid-form div input[type=date]::-moz-placeholder, form.grid-form div input[type=datetime-local]::-moz-placeholder, form.grid-form div input[type=number]::-moz-placeholder, form.grid-form div input[type=tel]::-moz-placeholder, form.grid-form div textarea::-moz-placeholder, form .form-section div input[type=text]::-moz-placeholder, form .form-section div input[type=password]::-moz-placeholder, form .form-section div input[type=file]::-moz-placeholder, form .form-section div input[type=date]::-moz-placeholder, form .form-section div input[type=datetime-local]::-moz-placeholder, form .form-section div input[type=number]::-moz-placeholder, form .form-section div input[type=tel]::-moz-placeholder, form .form-section div textarea::-moz-placeholder {
+form.grid-form div select::-moz-placeholder, form.grid-form div input[type=text]::-moz-placeholder, form.grid-form div input[type=password]::-moz-placeholder, form.grid-form div input[type=file]::-moz-placeholder, form.grid-form div input[type=date]::-moz-placeholder, form.grid-form div input[type=datetime-local]::-moz-placeholder, form.grid-form div input[type=number]::-moz-placeholder, form.grid-form div input[type=tel]::-moz-placeholder, form.grid-form div textarea::-moz-placeholder, form .form-section div select::-moz-placeholder, form .form-section div input[type=text]::-moz-placeholder, form .form-section div input[type=password]::-moz-placeholder, form .form-section div input[type=file]::-moz-placeholder, form .form-section div input[type=date]::-moz-placeholder, form .form-section div input[type=datetime-local]::-moz-placeholder, form .form-section div input[type=number]::-moz-placeholder, form .form-section div input[type=tel]::-moz-placeholder, form .form-section div textarea::-moz-placeholder {
+  color: #b0b0b0;
   font-family: "ESKlarheit-Book";
 }
+form.grid-form div select::placeholder,
 form.grid-form div input[type=text]::placeholder,
 form.grid-form div input[type=password]::placeholder,
 form.grid-form div input[type=file]::placeholder,
@@ -753,6 +760,7 @@ form.grid-form div input[type=datetime-local]::placeholder,
 form.grid-form div input[type=number]::placeholder,
 form.grid-form div input[type=tel]::placeholder,
 form.grid-form div textarea::placeholder,
+form .form-section div select::placeholder,
 form .form-section div input[type=text]::placeholder,
 form .form-section div input[type=password]::placeholder,
 form .form-section div input[type=file]::placeholder,
@@ -761,7 +769,13 @@ form .form-section div input[type=datetime-local]::placeholder,
 form .form-section div input[type=number]::placeholder,
 form .form-section div input[type=tel]::placeholder,
 form .form-section div textarea::placeholder {
+  color: #b0b0b0;
   font-family: "ESKlarheit-Book";
+}
+form.grid-form select,
+form .form-section select {
+  min-width: 100%;
+  grid-column: 1/2;
 }
 form.grid-form .user-type,
 form .form-section .user-type {
@@ -990,6 +1004,12 @@ form .form-section .form-dropdown-suggestions li {
 .msg.success:before {
   content: "👏  ";
 }
+.msg.reminder {
+  color: DodgerBlue;
+}
+.msg.reminder:before {
+  content: "🔔  ";
+}
 .msg.pending {
   color: mediumslateblue;
 }
@@ -1025,6 +1045,7 @@ form .form-section .form-dropdown-suggestions li {
   grid-column: 1/2;
 }
 .error-list:not(:empty) li {
+  font-family: "ESKlarheit-Medium";
   list-style: none;
 }
 .error-list:not(:empty) li:before {

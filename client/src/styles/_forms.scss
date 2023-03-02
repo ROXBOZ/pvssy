@@ -95,6 +95,7 @@ form {
     }
 
     div {
+      select,
       input[type="text"],
       input[type="password"],
       input[type="file"],
@@ -108,6 +109,11 @@ form {
           @include placeholder;
         }
       }
+    }
+
+    select {
+      min-width: 100%;
+      grid-column: 1/2;
     }
 
     .user-type {

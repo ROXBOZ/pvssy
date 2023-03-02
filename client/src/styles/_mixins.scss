@@ -98,5 +98,6 @@
 /*-----Placeholder-----*/
 
 @mixin placeholder {
+  color: lighten($txt-color, 50%);
   font-family: $font-regular;
 }

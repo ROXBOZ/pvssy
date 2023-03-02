@@ -3,32 +3,28 @@ import { Link } from "react-router-dom";
 import { EventsContext } from "../../../contexts/eventsContext";
 import { AuthContext } from "../../../contexts/authContext";
 import { useState, useContext } from "react";
+import {
+  addressRegex,
+  cityRegex,
+  dateRegex,
+  emailRegex,
+  isDateMoreThanThreeDaysAway,
+  swissTelRegex,
+  todayISO,
+  urlRegex,
+} from "../../../utils/regexExpressions";
 
 const AddEvent = () => {
   const { userProfile } = useContext(AuthContext);
   const [eventType, setEventType] = useState("offline");
   const [eventEntry, setEventEntry] = useState("gratuite");
   const [conditionsAccepted, setConditionsAccepted] = useState(null);
-  const today = new Date();
-  const todayISO = today.toISOString();
-  const addressRegex = /^(?=.*[a-zA-Z])(?=.*\d).+$/;
-  const cityRegex = /^(?=.*[a-zA-Z])(?=.*\d{4}).+$/;
-  const swissTelRegex =
-    /(\b(0041|0)|\B\+41)(\s?\(0\))?(\s)?[1-9]{2}(\s)?[0-9]{3}(\s)?[0-9]{2}(\s)?[0-9]{2}\b/;
-  const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-  const {
-    suggestions,
-    showSuggestions,
-    selectedSuggestionIndex,
-    handleRegionInputChange,
-    handleSuggestionClick,
-    handleKeyDown,
-    eventRegion,
-  } = useContext(EventsContext);
+  const { regions } = useContext(EventsContext);
 
   const [newEvent, setNewEvent] = useState({
     isOnline: false,
+    region: "Genève",
     freeEntry: true,
   });
 
@@ -99,7 +95,7 @@ const AddEvent = () => {
   const handleInputChange = (e) => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
   };
-  console.log("newEvent :", newEvent);
+
   return (
     <>
       {userProfile && userProfile.userIsAdmin === true ? (
@@ -107,8 +103,9 @@ const AddEvent = () => {
           <h1>
             Ajouter un évènement<sup>prototype</sup>
           </h1>
-          <p className="warning msg">
-            L’évènement sera ajouté immédiatement au calendrier.
+          <p className="reminder msg">
+            L’évènement sera ajouté immédiatement au calendrier. Les évènements
+            marqués d’une astérisque (*) sont obligatoires.
           </p>
         </>
       ) : (
@@ -116,9 +113,8 @@ const AddEvent = () => {
           <h1>
             Proposer un évènement<sup>prototype</sup>
           </h1>
-          <p className="warning msg">
-            Nous ne pouvons pas garantir la publication d'un événement qui
-            aurait lieu moins de trois jours après sa soumission.
+          <p className="reminder msg">
+            Les évènements marqués d’une astérisque (*) sont obligatoires.
           </p>
         </>
       )}
@@ -248,35 +244,21 @@ const AddEvent = () => {
                 <label htmlFor="eventRegion">Région *</label>
               </div>
               <div className="event-region-input">
-                <input
-                  name="eventRegion"
-                  id="eventRegion"
-                  type="text"
-                  placeholder="Région"
-                  onChange={handleInputChange}
-                  // value={eventRegion}
-                  // onClick={handleRegionInputChange}
-                  // onKeyDown={handleKeyDown}
-                  required
-                />
+                <select name="region" id="region" onChange={handleInputChange}>
+                  {regions &&
+                    regions.map((region) => {
+                      return (
+                        <option
+                          key={region}
+                          value={region}
+                          selected={region === "Genève"}
+                        >
+                          {region}
+                        </option>
+                      );
+                    })}
+                </select>
               </div>
-              {showSuggestions && (
-                <ul className="suggestions form-dropdown-suggestions">
-                  {suggestions.map((suggestion, index) => (
-                    <li
-                      key={index}
-                      className={
-                        index === selectedSuggestionIndex
-                          ? "suggestion-active"
-                          : ""
-                      }
-                      onClick={() => handleSuggestionClick(suggestion)}
-                    >
-                      {suggestion}
-                    </li>
-                  ))}
-                </ul>
-              )}
             </>
           )}
           {eventType === "online" && (
@@ -299,10 +281,6 @@ const AddEvent = () => {
         </div>
         <div className="form-section">
           <h3>Réservations</h3>
-          <p>
-            S’il n’est pas possible de faire de réservations, laisser les champs
-            libre.
-          </p>
           <div className="event-tel-label flex-center">
             <label htmlFor="eventTel">Téléphone</label>
           </div>
@@ -388,29 +366,51 @@ const AddEvent = () => {
         </div>
 
         <ul className="error-list">
-          {newEvent.eventTitle && newEvent.eventTitle.length > 30 && (
-            <li>Le titre doit contenir au maximum 30 caractères.</li>
-          )}
-          {newEvent.eventDateTime && newEvent.eventDateTime < todayISO && (
-            <li>La date de l'événement est déjà passée.</li>
-          )}
-          {newEvent.eventShortDef && newEvent.eventShortDef.length > 120 && (
-            <li>
-              La description brève doit contenir au maximum 120 caractères.
-            </li>
-          )}
-          {/* TODO ZOOM LINK IS MISSING */}
-          {newEvent.eventAddress &&
-            !addressRegex.test(newEvent.eventAddress) && (
-              <li>Le format de l'adresse est invalide.</li>
+          {newEvent.eventDateTime &&
+            newEvent.eventDateTime > todayISO &&
+            !isDateMoreThanThreeDaysAway(newEvent.eventDateTime) && (
+              <p className="msg warning">
+                L’évènement a lieu dans moins de 3 jours. Nous ne garantissons
+                pas sa publication.
+              </p>
             )}
-          {newEvent.eventCity && !cityRegex.test(newEvent.eventCity) && (
-            <li>Le format de la ville est invalide.</li>
+          {newEvent.eventTitle &&
+            (newEvent.eventTitle.length < 3 ||
+              newEvent.eventTitle.length > 40) && (
+              <li>Le titre doit contenir entre 3 et 40 caractères.</li>
+            )}
+          {newEvent.eventDateTime && newEvent.eventDateTime < todayISO && (
+            <li>La date est déjà passée.</li>
           )}
-          {/* TODO REGION IS MISSING */}
+          {newEvent.eventDateTime &&
+            !dateRegex.test(newEvent.eventDateTime) && (
+              <li>La date est invalide.</li>
+            )}
+          {newEvent.eventShortDef &&
+            (newEvent.eventShortDef.length < 60 ||
+              newEvent.eventShortDef.length > 200) && (
+              <li>
+                La description brève doit contenir entre 60 et 200 caractères.
+              </li>
+            )}
+          {newEvent.isOnline &&
+            newEvent.onlineMeeting &&
+            !urlRegex.test(newEvent.onlineMeeting) && (
+              <li>L’URL de la réunion n’est pas valide.</li>
+            )}
+          {!newEvent.isOnline &&
+            ((newEvent.eventAddress &&
+              !addressRegex.test(newEvent.eventAddress)) ||
+              (newEvent.eventCity && !cityRegex.test(newEvent.eventCity))) && (
+              <li>
+                Le format de l'adresse ou du lieu est invalide. L’adresse doit
+                inclure la rue et le numéro, le lieu doit inclure le code postal
+                et la commune.{" "}
+              </li>
+            )}
           {newEvent.eventTel && !swissTelRegex.test(newEvent.eventTel) && (
             <li>
-              Le numéro de téléphone doit être au format suisse international :
+              Le numéro de téléphone doit être suisse au format international :
               +41 (0) ...
             </li>
           )}
@@ -445,22 +445,28 @@ const AddEvent = () => {
         onClick={submitForm}
         type="submit"
         disabled={
-          !(
-            (newEvent.eventTitle && newEvent.eventTitle.length <= 30) ||
-            !newEvent.eventDateTime ||
-            newEvent.eventDateTime >= todayISO ||
-            (newEvent.eventShortDef && newEvent.eventShortDef.length <= 120) ||
-            (newEvent.eventAddress &&
-              addressRegex.test(newEvent.eventAddress)) ||
-            (newEvent.eventCity && cityRegex.test(newEvent.eventCity)) ||
-            (newEvent.eventTel && swissTelRegex.test(newEvent.eventTel)) ||
-            (newEvent.eventEmail && emailRegex.test(newEvent.eventEmail)) ||
-            newEvent.freeEntry === true ||
-            newEvent.admissionFee
-          ) ||
-          (userProfile &&
-            userProfile.userIsAdmin === false &&
-            !conditionsAccepted)
+          !(newEvent.eventTitle &&
+          newEvent.eventTitle.length > 3 &&
+          newEvent.eventTitle.length < 40 &&
+          newEvent.eventDateTime &&
+          newEvent.eventDateTime > todayISO &&
+          dateRegex.test(newEvent.eventDateTime) &&
+          newEvent.eventShortDef &&
+          newEvent.eventShortDef.length > 60 &&
+          newEvent.eventShortDef.length < 200 &&
+          (newEvent.isOnline
+            ? newEvent.onlineMeeting && urlRegex.test(newEvent.onlineMeeting)
+            : newEvent.eventAddress &&
+              addressRegex.test(newEvent.eventAddress) &&
+              newEvent.eventCity &&
+              cityRegex.test(newEvent.eventCity)) &&
+          (newEvent.eventTel ? swissTelRegex.test(newEvent.eventTel) : true) &&
+          (newEvent.eventEmail ? emailRegex.test(newEvent.eventEmail) : true) &&
+          (newEvent.freeEntry ? true : newEvent.admissionFee) &&
+          userProfile &&
+          userProfile.userIsAdmin
+            ? true
+            : conditionsAccepted)
         }
       >
         {userProfile && userProfile.userIsAdmin === true
