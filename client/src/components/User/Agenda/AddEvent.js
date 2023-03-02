@@ -95,10 +95,8 @@ const AddEvent = () => {
     } else if (newEvent.isOnline === false && !newEvent.eventAddress) {
       alert("Rue et numéro manquants");
     } else if (newEvent.isOnline === false && !newEvent.eventCity) {
-      alert("Ville manquante");
-    } else if (newEvent.isOnline === false && !newEvent.eventRegion) {
-      alert("Région manquante");
-    } else if (newEvent.freeEntry === false && !newEvent.entryFee) {
+      alert("Lieu manquante");
+    } else if (newEvent.freeEntry === false && !newEvent.admissionFee) {
       alert("Prix manquant");
     } else {
       userProfile && userProfile.userIsAdmin === true
@@ -185,6 +183,7 @@ const AddEvent = () => {
               id="eventShortDef"
               placeholder="Veuillez entrer une définition de l'événement courte et concise de max. 120 caractères."
               onChange={handleInputChange}
+              maxlength="120"
               required
             />
           </div>
@@ -276,7 +275,7 @@ const AddEvent = () => {
                   name="eventRegion"
                   id="eventRegion"
                   onChange={handleInputChange}
-                  value="Genève"
+                  selected="Genève"
                 >
                   {regions &&
                     regions.map((region) => {
@@ -337,9 +336,9 @@ const AddEvent = () => {
           </div>
         </div>
         <div className="form-section">
-          <h3>Entrées</h3>
+          <h3>Prix</h3>
           <div className="event-entry-label flex-center">
-            <label htmlFor="eventEntry">Participation *</label>
+            <label htmlFor="eventEntry">Entrée / participation *</label>
           </div>
           <div className="event-entry-input flex-center">
             <span>

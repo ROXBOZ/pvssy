@@ -36,6 +36,7 @@ button {
 }
 
 .tabbed-navigation {
+  padding-left: 4px;
   background-color: #f5f5f5;
   display: flex;
   justify-content: flex-start;
@@ -48,9 +49,10 @@ button {
   margin-top: $demi-gap;
   a {
     color: $txt-color;
-    padding: $demi-gap;
+    padding: 0.5em 1.5em;
     border-bottom: none;
-    border-radius: $border-radius;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
     transition: $animation-transition;
 
     &:focus {
@@ -62,7 +64,9 @@ button {
     }
     &.active {
       background-color: $bg-color;
-      border: $border-solid;
+      border-top: $border-solid;
+      border-left: $border-solid;
+      border-right: $border-solid;
     }
   }
 }

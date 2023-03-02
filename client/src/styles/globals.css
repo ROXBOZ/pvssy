@@ -564,6 +564,7 @@ button:disabled {
 }
 
 .tabbed-navigation {
+  padding-left: 4px;
   background-color: #f5f5f5;
   display: flex;
   justify-content: flex-start;
@@ -578,9 +579,10 @@ button:disabled {
 }
 .tabbed-navigation a {
   color: #303030;
-  padding: 1em;
+  padding: 0.5em 1.5em;
   border-bottom: none;
-  border-radius: 0.25em;
+  border-top-left-radius: 0.25em;
+  border-top-right-radius: 0.25em;
   transition: 0.4s;
 }
 .tabbed-navigation a:focus {
@@ -592,7 +594,9 @@ button:disabled {
 }
 .tabbed-navigation a.active {
   background-color: #fffdf8;
-  border: 1.5px solid;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+  border-right: 1.5px solid;
 }
 
 input::-moz-placeholder {
