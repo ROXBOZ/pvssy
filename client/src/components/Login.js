@@ -7,8 +7,6 @@ function LoginForm() {
   const { login, handleInputChange, wrongPWMessage } = useContext(AuthContext);
   const { inputValue } = useContext(AuthContext);
 
-  console.log("wrongPWmessage :", wrongPWMessage);
-
   return (
     <div>
       <h1>Se connecter</h1>
@@ -42,11 +40,17 @@ function LoginForm() {
             onChange={handleInputChange}
           />
         </div>
-
-        {wrongPWMessage && <p className="msg error">{wrongPWMessage}</p>}
+        <div className="user-password-error">
+          {wrongPWMessage && <p className="msg error">{wrongPWMessage}</p>}
+        </div>
 
         <div className="submit-button">
-          <button onClick={login}>Se connecter</button>
+          <button
+            onClick={login}
+            disabled={!emailRegex.test(inputValue.userEmail)}
+          >
+            Se connecter
+          </button>
         </div>
       </form>
 

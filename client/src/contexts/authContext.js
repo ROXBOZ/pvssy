@@ -13,7 +13,7 @@ export const AuthContextProvider = (props) => {
   const [token, setToken] = useState(getToken());
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [wrongPWmessage, setwrongPWMessage] = useState("");
+  const [wrongPWMessage, setWrongPWMessage] = useState("");
 
   const handleInputChange = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
@@ -48,11 +48,11 @@ export const AuthContextProvider = (props) => {
         setToken(result.token);
         await getProfile(result.token);
         redirectTo("/profile/ajouter");
+      } else {
+        setWrongPWMessage("Mauvais mot de passe");
       }
     } catch (error) {
       console.log("error", error);
-      setwrongPWMessage("Mauvais mot de passe");
-      console.log("coucou :");
     }
   };
 
@@ -118,7 +118,7 @@ export const AuthContextProvider = (props) => {
         isLoggedIn,
         user,
         token,
-        wrongPWmessage,
+        wrongPWMessage,
         setUser,
         setIsLoggedIn,
         logout,

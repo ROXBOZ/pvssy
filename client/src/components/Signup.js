@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { AuthContext } from "../contexts/authContext";
 
 const SignupForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -123,33 +124,20 @@ const SignupForm = () => {
           </span>
         </div>
         <div className="user-name-label flex-center">
-          {userType === "association" ? (
-            <label htmlFor="assoName">Nom de l’association</label>
-          ) : (
-            <label htmlFor="userName">Prénom</label>
-          )}
+          <label htmlFor="userName">Nom *</label>
         </div>
         <div className="user-name-input">
-          {userType === "association" ? (
-            <input
-              name="userName"
-              id="assoNameName"
-              type="text"
-              placeholder="Nom Association"
-              onChange={handleInputChange}
-            />
-          ) : (
-            <input
-              id="userName"
-              type="text"
-              placeholder="Prénom"
-              name="userName"
-              onChange={handleInputChange}
-            />
-          )}
+          <input
+            name="userName"
+            id="userName"
+            type="text"
+            placeholder="Nom"
+            onChange={handleInputChange}
+            required
+          />
         </div>
         <div className="user-email-label flex-center">
-          <label htmlFor="userEmail">Adresse Email</label>
+          <label htmlFor="userEmail">Adresse Email *</label>
         </div>
         <div className="user-email-input">
           <input
@@ -158,6 +146,7 @@ const SignupForm = () => {
             type="text"
             name="userEmail"
             onChange={handleInputChange}
+            required
           />
         </div>
         <div className="user-website-label flex-center">
@@ -168,14 +157,10 @@ const SignupForm = () => {
             name="userWebsite"
             id="userWebsite"
             type="text"
-            placeholder="Site internet"
+            placeholder="https://..."
             onChange={handleInputChange}
           />
         </div>
-
-        {/* <div className="user-email-requirements"> */}
-        {/* TODO */}
-        {/* </div> */}
         <div className="user-avatar-label flex-center">
           <label htmlFor="avatar">
             {userType === "association"
@@ -195,7 +180,7 @@ const SignupForm = () => {
           <button onClick={submitImg}>choisir</button>
         </div>
         <div className="user-password-label flex-center">
-          <label htmlFor="userPassword">Mot de passe</label>
+          <label htmlFor="userPassword">Mot de passe *</label>
         </div>
         <div className="user-password-input">
           <input
@@ -204,11 +189,17 @@ const SignupForm = () => {
             id="userPassword"
             name="userPassword"
             onChange={handleInputChange}
+            required
           />
         </div>
-        {/* <div className="user-password-requirements flex-center"> */}
-        {/* TODO */}
-        {/* </div> */}
+        <div className="user-password-error">
+          <p className="error msg">min. 6 caractères</p>
+        </div>
+        <ul className="error-list">
+          <li className="error msg">Le nom doit être entre 2 et 20 lettres.</li>
+          <li className="error msg">L’adresse email est invalide.</li>
+          <li className="error msg">L’URL du site internet est invalide.</li>
+        </ul>
         <div className="conditions-generales">
           <input
             className="form-check-input"

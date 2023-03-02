@@ -791,9 +791,9 @@ form.grid-form .user-name-input,
 form .form-section .user-name-input {
   grid-column: 2/3;
 }
-form.grid-form .user-firstname-label,
-form .form-section .user-firstname-label {
-  grid-column: 3/4;
+form.grid-form .user-website-label,
+form .form-section .user-website-label {
+  grid-column: 1/2;
 }
 form.grid-form .user-avatar-label,
 form.grid-form .user-password-label,
@@ -938,12 +938,14 @@ form .form-section .form-dropdown-suggestions li {
   align-items: center;
 }
 
-.user-email-requirements {
+.user-email-requirements,
+.user-password-error {
   grid-column: 3/4;
   display: flex;
   align-items: center;
 }
-.user-email-requirements .msg {
+.user-email-requirements .msg,
+.user-password-error .msg {
   display: flex;
   margin: 0;
 }

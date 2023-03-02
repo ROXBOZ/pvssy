@@ -126,9 +126,10 @@ form {
     .user-name-input {
       grid-column: 2/3;
     }
-    .user-firstname-label {
-      grid-column: 3/4;
+    .user-website-label {
+      grid-column: 1/2;
     }
+
     .user-avatar-label,
     .user-password-label,
     .submit-button {
@@ -249,7 +250,8 @@ form {
   }
 }
 
-.user-email-requirements {
+.user-email-requirements,
+.user-password-error {
   grid-column: 3/4;
   display: flex;
   align-items: center;
