@@ -3,13 +3,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../../contexts/authContext";
 import { EventsContext } from "../../../contexts/eventsContext";
 import { dateTimeConverter } from "../../../utils/dateConverter";
+import { todayISO } from "../../../utils/regexExpressions";
 
 const DeleteEvent = () => {
   const { userProfile } = useContext(AuthContext);
   const { data, fetchData, agendaURL } = useContext(EventsContext);
   const [selectedEvents, setSelectedEvents] = useState([]);
   const [myEvents, setMyEvents] = useState(null);
-  //
 
   useEffect(() => {
     fetchData(agendaURL);
@@ -34,24 +34,9 @@ const DeleteEvent = () => {
     }
   };
 
-  console.log("myEvents :", myEvents);
-
   useEffect(() => {
     eventsByOrganizer();
   }, []);
-
-  // if (!data.upcomingEvents || data.upcomingEvents.length === 0) {
-  //   return (
-  //     <>
-  //       <h1>
-  //         Supprimer un évènement<sup>prototype</sup>
-  //       </h1>
-  //       <p className="warning msg">
-  //         <strong>Aucun évènement dans le calendrier!</strong>
-  //       </p>
-  //     </>
-  //   );
-  // }
 
   // REVIEW this should be in context
   const handleChange = (e) => {
@@ -64,44 +49,69 @@ const DeleteEvent = () => {
     }
   };
 
+  /* eslint-disable no-restricted-globals */
   const handleDelete = async (event) => {
     event.preventDefault();
-    selectedEvents.map(async (e) => {
-      const myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    const confirmed = confirm(
+      "Voulez-vous vraiment effacer les évènements sélectionnés ? L’action est irréversible."
+    );
 
-      const urlencoded = new URLSearchParams();
-      urlencoded.append("_id", e);
+    if (confirmed) {
+      selectedEvents.map(async (e) => {
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-      const requestOptions = {
-        method: "DELETE",
-        headers: myHeaders,
-        body: urlencoded,
-        redirect: "follow",
-      };
+        const urlencoded = new URLSearchParams();
+        urlencoded.append("_id", e);
 
-      try {
-        const response = await fetch(
-          "http://localhost:5000/api/events/all",
-          requestOptions
-        );
-        const result = await response.json();
-        console.log("result :", result);
-        fetchData();
-      } catch (error) {
-        console.log("error :", error);
-      }
-    });
+        const requestOptions = {
+          method: "DELETE",
+          headers: myHeaders,
+          body: urlencoded,
+          redirect: "follow",
+        };
+
+        try {
+          const response = await fetch(
+            "http://localhost:5000/api/events/all",
+            requestOptions
+          );
+          const result = await response.json();
+          console.log("result :", result);
+          fetchData(agendaURL);
+          eventsByOrganizer();
+        } catch (error) {
+          console.log("error :", error);
+        }
+      });
+    }
   };
+  /* eslint-enable no-restricted-globals */
+
+  if (
+    !data.upcomingEvents ||
+    data.upcomingEvents.length === 0 ||
+    !myEvents ||
+    myEvents.length === 0
+  ) {
+    return (
+      <>
+        <h1>
+          Supprimer un évènement<sup>prototype</sup>
+        </h1>
+        <p className="warning msg">
+          <strong>Aucun évènement dans le calendrier!</strong>
+        </p>
+      </>
+    );
+  }
 
   return (
     <>
       <h1>
         Supprimer un évènement<sup>prototype</sup>
       </h1>
-      <p className="warning msg">
-        Une fois supprimé, l’évènement ne peut pas être récupéré.
-      </p>
+      <p className="warning msg">La suppression est irréversible.</p>
 
       <form className="grid-form">
         <div className="form-section">
@@ -139,10 +149,13 @@ const DeleteEvent = () => {
                           className="form-check-input"
                           value={e._id}
                           onChange={(e) => handleChange(e)}
+                          disabled={e.date < todayISO ? true : false}
                         />
                         <span>
                           <strong>{e.title}</strong> <span>({dateTime})</span>{" "}
-                          {e.isPending ? (
+                          {e.date < todayISO ? (
+                            <span className="msg archived">archivé</span>
+                          ) : e.isPending ? (
                             <span className="msg pending">en attente</span>
                           ) : (
                             <span className="msg success">approuvé</span>

@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { EventsContext } from "../../../contexts/eventsContext";
 import { AuthContext } from "../../../contexts/authContext";
-import { useState, useContext } from "react";
+
 import {
   addressRegex,
   cityRegex,
   dateRegex,
   emailRegex,
-  isDateMoreThanThreeDaysAway,
+  isMoreThan3Days,
   swissTelRegex,
   todayISO,
   urlRegex,
@@ -19,12 +19,12 @@ const AddEvent = () => {
   const [eventType, setEventType] = useState("offline");
   const [eventEntry, setEventEntry] = useState("gratuite");
   const [conditionsAccepted, setConditionsAccepted] = useState(null);
-
+  const [message, setMessage] = useState("");
   const { regions } = useContext(EventsContext);
-
+  const formRef = useRef();
   const [newEvent, setNewEvent] = useState({
     isOnline: false,
-    region: "Genève",
+    eventRegion: "Genève",
     freeEntry: true,
   });
 
@@ -64,8 +64,22 @@ const AddEvent = () => {
       );
       const result = await response.json();
       console.log("result", result);
+      setMessage({
+        type: "success",
+        content: (
+          <p className="msg success">L’évènement a été livré avec succès!</p>
+        ),
+      });
     } catch (error) {
       console.log("error", error);
+      setMessage({
+        type: "error",
+        content: (
+          <p className="msg error">
+            Une erreur est survenue. Veuillez réessayer.
+          </p>
+        ),
+      });
     }
   };
   const submitForm = (e) => {
@@ -96,6 +110,20 @@ const AddEvent = () => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    if (message && message.type === "success") {
+      setNewEvent({
+        isOnline: false,
+        eventRegion: "Genève",
+        freeEntry: true,
+      });
+      formRef.current.reset();
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 3000);
+    }
+  }, [message]);
+
   return (
     <>
       {userProfile && userProfile.userIsAdmin === true ? (
@@ -119,7 +147,7 @@ const AddEvent = () => {
         </>
       )}
 
-      <form className="grid-form">
+      <form className="grid-form" ref={formRef}>
         <h2>Formulaire à compléter</h2>
         <div className="form-section">
           <h3>Informations essentielles</h3>
@@ -244,15 +272,16 @@ const AddEvent = () => {
                 <label htmlFor="eventRegion">Région *</label>
               </div>
               <div className="event-region-input">
-                <select name="region" id="region" onChange={handleInputChange}>
+                <select
+                  name="eventRegion"
+                  id="eventRegion"
+                  onChange={handleInputChange}
+                  value="Genève"
+                >
                   {regions &&
                     regions.map((region) => {
                       return (
-                        <option
-                          key={region}
-                          value={region}
-                          selected={region === "Genève"}
-                        >
+                        <option key={region} value={region}>
                           {region}
                         </option>
                       );
@@ -368,7 +397,7 @@ const AddEvent = () => {
         <ul className="error-list">
           {newEvent.eventDateTime &&
             newEvent.eventDateTime > todayISO &&
-            !isDateMoreThanThreeDaysAway(newEvent.eventDateTime) && (
+            !isMoreThan3Days(newEvent.eventDateTime) && (
               <p className="msg warning">
                 L’évènement a lieu dans moins de 3 jours. Nous ne garantissons
                 pas sa publication.
@@ -473,6 +502,10 @@ const AddEvent = () => {
           ? "Ajouter l’évènement"
           : "Proposer l’évènement"}
       </button>
+
+      {userProfile && userProfile.userIsAdmin === false && message && (
+        <div className={`message ${message.type}`}>{message.content}</div>
+      )}
     </>
   );
 };

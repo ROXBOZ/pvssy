@@ -963,6 +963,10 @@ form .form-section .form-dropdown-suggestions li {
   border-color: #9637f0;
 }
 
+.form-check-input[type=checkbox]:disabled {
+  opacity: 30%;
+}
+
 .form-check-input {
   background-color: white;
 }
@@ -1005,7 +1009,7 @@ form .form-section .form-dropdown-suggestions li {
   content: "👏  ";
 }
 .msg.reminder {
-  color: DodgerBlue;
+  color: DarkGoldenRod;
 }
 .msg.reminder:before {
   content: "🔔  ";
@@ -1021,6 +1025,12 @@ form .form-section .form-dropdown-suggestions li {
 }
 .msg.warning:before {
   content: "⚠️  ";
+}
+.msg.archived {
+  color: steelblue;
+}
+.msg.archived:before {
+  content: "📁  ";
 }
 .msg.error {
   color: crimson;

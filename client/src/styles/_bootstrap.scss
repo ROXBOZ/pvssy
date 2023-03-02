@@ -21,8 +21,11 @@
   }
 }
 
-// .form-check-input[type="checkbox"] {
-// }
+.form-check-input[type="checkbox"] {
+  &:disabled {
+    opacity: 30%;
+  }
+}
 
 .form-check-input {
   background-color: white;

@@ -9,9 +9,9 @@ const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const urlRegex =
   /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
 
-const isDateMoreThanThreeDaysAway = (isoDateString) => {
+const isMoreThan3Days = (isoDateString) => {
   const inputDate = new Date(isoDateString);
-  const threeDaysFromNow = new Date(today.setDate(today.getDate() + 3));
+  const threeDaysFromNow = new Date(today.getTime() + 3 * 24 * 60 * 60 * 1000);
   return dateRegex.test(isoDateString) && inputDate > threeDaysFromNow;
 };
 
@@ -24,5 +24,5 @@ export {
   swissTelRegex,
   emailRegex,
   urlRegex,
-  isDateMoreThanThreeDaysAway,
+  isMoreThan3Days,
 };

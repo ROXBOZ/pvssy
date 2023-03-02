@@ -1,8 +1,9 @@
 $success-color: mediumseagreen;
-$reminder-color: DodgerBlue;
+$reminder-color: DarkGoldenRod;
 $pending-color: mediumslateblue;
 $warning-color: tomato;
 $error-color: crimson;
+$archived-color: steelblue;
 
 .msg {
   margin: $gap 0;
@@ -32,6 +33,13 @@ $error-color: crimson;
     color: $warning-color;
     &:before {
       content: ("⚠️  ");
+    }
+  }
+
+  &.archived {
+    color: $archived-color;
+    &:before {
+      content: ("📁  ");
     }
   }
 
