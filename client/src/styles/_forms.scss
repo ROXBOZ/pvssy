@@ -248,3 +248,13 @@ form {
     align-items: center;
   }
 }
+
+.user-email-requirements {
+  grid-column: 3/4;
+  display: flex;
+  align-items: center;
+  .msg {
+    display: flex;
+    margin: 0;
+  }
+}

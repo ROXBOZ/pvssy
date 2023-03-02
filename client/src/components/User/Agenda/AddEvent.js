@@ -269,7 +269,7 @@ const AddEvent = () => {
                 />
               </div>
               <div className="event-region-label flex-center">
-                <label htmlFor="eventRegion">Région *</label>
+                <label htmlFor="eventRegion">Agglomération *</label>
               </div>
               <div className="event-region-input">
                 <select
@@ -310,6 +310,7 @@ const AddEvent = () => {
         </div>
         <div className="form-section">
           <h3>Réservations</h3>
+
           <div className="event-tel-label flex-center">
             <label htmlFor="eventTel">Téléphone</label>
           </div>

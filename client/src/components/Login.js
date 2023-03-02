@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/authContext";
+import { emailRegex } from "../utils/regexExpressions";
 
 function LoginForm() {
-  const { login, handleInputChange } = useContext(AuthContext);
+  const { login, handleInputChange, wrongPWMessage } = useContext(AuthContext);
+  const { inputValue } = useContext(AuthContext);
+
+  console.log("wrongPWmessage :", wrongPWMessage);
 
   return (
     <div>
@@ -22,7 +26,9 @@ function LoginForm() {
           />
         </div>
         <div className="user-email-requirements">
-          <div className="user-email-requirements">{/* TODO */}</div>
+          {inputValue.userEmail && !emailRegex.test(inputValue.userEmail) && (
+            <p className="msg error">L'adresse e-mail est invalide.</p>
+          )}
         </div>
         <div className="user-password-label flex-center">
           <label htmlFor="userPassword">Mot de passe</label>
@@ -37,9 +43,8 @@ function LoginForm() {
           />
         </div>
 
-        {/* <div className="user-password-requirements"> */}
-        {/* TODO */}
-        {/* </div> */}
+        {wrongPWMessage && <p className="msg error">{wrongPWMessage}</p>}
+
         <div className="submit-button">
           <button onClick={login}>Se connecter</button>
         </div>

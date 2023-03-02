@@ -13,6 +13,7 @@ export const AuthContextProvider = (props) => {
   const [token, setToken] = useState(getToken());
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [wrongPWmessage, setwrongPWMessage] = useState("");
 
   const handleInputChange = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
@@ -50,8 +51,11 @@ export const AuthContextProvider = (props) => {
       }
     } catch (error) {
       console.log("error", error);
+      setwrongPWMessage("Mauvais mot de passe");
+      console.log("coucou :");
     }
   };
+
   const getProfile = async () => {
     try {
       setLoading(true);
@@ -109,10 +113,12 @@ export const AuthContextProvider = (props) => {
   return (
     <AuthContext.Provider
       value={{
+        inputValue,
         userProfile,
         isLoggedIn,
         user,
         token,
+        wrongPWmessage,
         setUser,
         setIsLoggedIn,
         logout,
