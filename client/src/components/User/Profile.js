@@ -9,6 +9,15 @@ const Profile = () => {
     <div>
       <UserDashboard userProfile={userProfile} />
 
+      <div style={{ display: "flex", gap: "1em" }}>
+        <span className="msg success"> Succès</span>
+        <span className="msg reminder"> Rappel</span>
+        <span className="msg pending"> En attente</span>
+        <span className="msg warning"> Attention</span>
+        <span className="msg archived"> Archivé</span>
+        <span className="msg error"> Erreur</span>
+      </div>
+
       <div className="tabbed-navigation">
         <NavLink to="ajouter">
           {userProfile && userProfile.userIsAdmin === true
@@ -20,6 +29,7 @@ const Profile = () => {
         )}
         <NavLink to="supprimer">Supprimer</NavLink>
       </div>
+
       <Outlet />
     </div>
   );
