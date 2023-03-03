@@ -1,17 +1,42 @@
-.breadcrumbs {
-  grid-column: 1/6;
-  display: flex;
-  color: lighten($txt-color, 50%);
-  .crumb {
-    &:after {
-      color: $txt-color;
-      content: "→";
-      padding: 0 $padding-xs;
-    }
-
-    &:last-child {
+//FIXME REPETITION
+/*-----Mobile-----*/
+@media (max-width: 767px) {
+  .breadcrumbs {
+    display: flex;
+    color: lighten($txt-color, 50%);
+    .crumb {
       &:after {
-        display: none;
+        color: $txt-color;
+        content: "→";
+        padding: 0 $padding-xs;
+      }
+
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+/*-----Desktop-----*/
+@media (min-width: 768px) {
+  .breadcrumbs {
+    grid-column: 1/6;
+    display: flex;
+    color: lighten($txt-color, 50%);
+    .crumb {
+      &:after {
+        color: $txt-color;
+        content: "→";
+        padding: 0 $padding-xs;
+      }
+
+      &:last-child {
+        &:after {
+          display: none;
+        }
       }
     }
   }

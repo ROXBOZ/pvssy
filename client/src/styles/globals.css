@@ -156,9 +156,12 @@
     height: 100vh;
     background: linear-gradient(180deg, rgba(255, 82, 215, 0.8) 0%, rgba(245, 116, 60, 0.8) 100%);
     background-color: white;
+    display: flex;
+    align-items: center;
   }
   header nav.vertical ul {
-    padding-left: 1em;
+    width: 100%;
+    padding: 1em;
     margin-left: 0;
     flex-direction: column;
     margin-top: 6em;
@@ -171,6 +174,36 @@
     padding: 0;
     border-bottom: none;
     color: #303030;
+  }
+  header nav.vertical ul li .logout-header {
+    margin-top: 2em;
+    border-top: 1.5px solid #303030;
+    padding-top: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header nav.vertical ul li .logout-header .user-icon-link {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25em;
+  }
+  header nav.vertical ul li .logout-header .user-icon-link:hover {
+    background-color: transparent;
+  }
+  header nav.vertical ul li .logout-header .user-icon-link #userIcon {
+    border: 1.5px solid;
+    padding: 0.5em;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+  }
+  header nav.vertical ul li .logout-header .user-icon-link #userIcon:hover {
+    cursor: pointer;
+  }
+  header nav.vertical ul li .logout-header .user-icon-link p {
+    margin: 0;
   }
 }
 /*-----Desktop-----*/
@@ -195,13 +228,13 @@
     outline: 0;
     border: 0;
   }
-  header .menu-container {
-    grid-column: 2/5;
-  }
-  header .menu-container .burger-menu {
+  header .burger-menu {
     display: none !important;
   }
-  header .menu-container nav.horizontal ul {
+  header nav.horizontal {
+    grid-column: 2/5;
+  }
+  header nav.horizontal ul {
     padding-left: 0;
     margin-left: 0;
     display: flex;
@@ -209,12 +242,12 @@
     justify-content: space-between;
     align-items: center;
   }
-  header .menu-container nav.horizontal ul li {
+  header nav.horizontal ul li {
     align-items: center;
     list-style: none;
     display: flex;
   }
-  header .menu-container nav.horizontal ul li a {
+  header nav.horizontal ul li a {
     font-family: "ESKlarheit-Medium";
     color: #303030;
     text-decoration: none;
@@ -222,37 +255,37 @@
     border-radius: 0.25em;
     border: none;
   }
-  header .menu-container nav.horizontal ul li a:hover {
+  header nav.horizontal ul li a:hover {
     background-color: #ffe9fa;
   }
-  header .menu-container nav.horizontal ul li a.active {
+  header nav.horizontal ul li a.active {
     background-color: #fcdbce;
   }
-  header .menu-container nav.horizontal ul li .logout-header {
+  header nav.horizontal ul li .logout-header {
     display: flex;
     align-items: center;
     gap: 2em;
   }
-  header .menu-container nav.horizontal ul li .logout-header .user-icon-link {
+  header nav.horizontal ul li .logout-header .user-icon-link {
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.25em;
   }
-  header .menu-container nav.horizontal ul li .logout-header .user-icon-link:hover {
+  header nav.horizontal ul li .logout-header .user-icon-link:hover {
     background-color: transparent;
   }
-  header .menu-container nav.horizontal ul li .logout-header .user-icon-link #userIcon {
+  header nav.horizontal ul li .logout-header .user-icon-link #userIcon {
     border: 1.5px solid;
     padding: 0.5em;
     border-radius: 50%;
     aspect-ratio: 1/1;
   }
-  header .menu-container nav.horizontal ul li .logout-header .user-icon-link #userIcon:hover {
+  header nav.horizontal ul li .logout-header .user-icon-link #userIcon:hover {
     cursor: pointer;
   }
-  header .menu-container nav.horizontal ul li .logout-header .user-icon-link p {
+  header nav.horizontal ul li .logout-header .user-icon-link p {
     margin: 0;
   }
 }
@@ -504,7 +537,7 @@ button {
   padding: 0.5em 1.5em;
   border-radius: 0.25em;
   border: 1.5px solid;
-  background-color: #fffdf8;
+  background-color: transparent;
   font-size: 16px;
   font-family: "ESKlarheit-Medium";
   width: -moz-fit-content;
@@ -1076,20 +1109,37 @@ form .form-section .form-dropdown-suggestions li {
   content: "🚨  ";
 }
 
-.breadcrumbs {
-  grid-column: 1/6;
-  display: flex;
-  color: #b0b0b0;
+/*-----Mobile-----*/
+@media (max-width: 767px) {
+  .breadcrumbs {
+    display: flex;
+    color: #b0b0b0;
+  }
+  .breadcrumbs .crumb:after {
+    color: #303030;
+    content: "→";
+    padding: 0 0.5em;
+  }
+  .breadcrumbs .crumb:last-child:after {
+    display: none;
+  }
 }
-.breadcrumbs .crumb:after {
-  color: #303030;
-  content: "→";
-  padding: 0 0.5em;
+/*-----Desktop-----*/
+@media (min-width: 768px) {
+  .breadcrumbs {
+    grid-column: 1/6;
+    display: flex;
+    color: #b0b0b0;
+  }
+  .breadcrumbs .crumb:after {
+    color: #303030;
+    content: "→";
+    padding: 0 0.5em;
+  }
+  .breadcrumbs .crumb:last-child:after {
+    display: none;
+  }
 }
-.breadcrumbs .crumb:last-child:after {
-  display: none;
-}
-
 * {
   outline: none;
 }
@@ -1123,25 +1173,16 @@ html body {
   padding: 0;
 }
 html body .main {
+  padding: 10vh 2em 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   height: 100%;
-  padding-top: 20vh;
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
+/*-----Mobile-----*/
+@media (max-width: 767px) {
   .main {
-    padding: 0.5em;
+    padding: 1em;
   }
-}
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  .main {
-    padding: 2em;
-  }
-}
-.red {
-  color: red;
 }/*# sourceMappingURL=globals.css.map */

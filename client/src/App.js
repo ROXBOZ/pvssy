@@ -10,7 +10,7 @@ import TrouverDeLAide from "./pages/TrouverDeLAide";
 import Shop from "./pages/Shop";
 import Agenda from "./pages/Agenda";
 import GeneralConditions from "./pages/GeneralConditions";
-
+import Breadcrumbs from "./components/Breadcrumbs";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Pains from "./components/Pains/Pains";
@@ -47,6 +47,7 @@ function App() {
         <Header />
         <div className="main">
           <ScrollToTop />
+          <Breadcrumbs />
           <EventsContextProvider>
             <PainsContextProvider>
               <TermsContextProvider>

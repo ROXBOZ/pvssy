@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import Breadcrumbs from "./Breadcrumbs";
 
 import { AuthContext } from "../contexts/authContext";
 import { useContext, useState } from "react";
@@ -14,12 +13,15 @@ const Header = () => {
     setIsOpen((prevState) => !prevState);
   };
 
+  const handleNavLink = () => {
+    setIsOpen(false);
+  };
+
   return (
     <header>
       <Link to="/" className="logo">
         pvssy talk
       </Link>
-      {/* <div className="menu-container"> */}
       <button className="burger-menu" onClick={() => openMenu()}>
         <span id="nav-icon" className={!isOpen ? "close" : "open"}>
           <span></span>
@@ -33,19 +35,29 @@ const Header = () => {
       <nav className={isOpen ? "vertical" : "horizontal"}>
         <ul>
           <li>
-            <NavLink to="a-propos">À propos</NavLink>
+            <NavLink onClick={handleNavLink} to="a-propos">
+              À propos
+            </NavLink>
           </li>
           <li>
-            <NavLink to="gerer-soi-meme">Gérer soi-même</NavLink>
+            <NavLink onClick={handleNavLink} to="gerer-soi-meme">
+              Gérer soi-même
+            </NavLink>
           </li>
           <li>
-            <NavLink to="trouver-de-l-aide">Trouver de l’aide</NavLink>
+            <NavLink onClick={handleNavLink} to="trouver-de-l-aide">
+              Trouver de l’aide
+            </NavLink>
           </li>
           <li>
-            <NavLink to="shop">Shop</NavLink>
+            <NavLink onClick={handleNavLink} to="shop">
+              Shop
+            </NavLink>
           </li>
           <li>
-            <NavLink to="agenda">Agenda</NavLink>
+            <NavLink onClick={handleNavLink} to="agenda">
+              Agenda
+            </NavLink>
           </li>
           <li>
             {userProfile ? (
@@ -70,8 +82,6 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      {/* </div> */}
-      <Breadcrumbs />
     </header>
   );
 };

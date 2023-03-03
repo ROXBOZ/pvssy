@@ -1,3 +1,5 @@
+//FIXME to be refactored
+
 /*-----Mobile-----*/
 @media (max-width: 767px) {
   header {
@@ -113,9 +115,12 @@
         height: 100vh;
         background: $gradient;
         background-color: white;
+        display: flex;
+        align-items: center;
 
         ul {
-          padding-left: $demi-gap;
+          width: 100%;
+          padding: $demi-gap;
           margin-left: 0;
           flex-direction: column;
           margin-top: 6em;
@@ -129,14 +134,38 @@
               border-bottom: none;
               color: $txt-color;
             }
-            // .logout-header {
-            //   margin-top: $gap;
-            //   border-top: $border-solid;
-            //   padding-top: $padding-sm;
-            //   display: flex;
-            //   flex-direction: column-reverse;
-            //   background-color: yellow;
-            // }
+            .logout-header {
+              margin-top: $gap;
+              border-top: $border-solid $txt-color;
+              padding-top: $gap;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              .user-icon-link {
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.25em;
+
+                &:hover {
+                  background-color: transparent;
+                }
+
+                #userIcon {
+                  border: $border-solid;
+                  padding: $padding-xs;
+                  border-radius: 50%;
+                  aspect-ratio: 1/1;
+                  &:hover {
+                    cursor: pointer;
+                  }
+                }
+                p {
+                  margin: 0;
+                }
+              }
+            }
           }
         }
       }
@@ -163,59 +192,57 @@
         border: 0;
       }
     }
-    .menu-container {
-      grid-column: 2/5;
-      .burger-menu {
-        display: none !important;
-      }
 
-      nav {
-        &.horizontal {
-          ul {
-            padding-left: 0;
-            margin-left: 0;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+    .burger-menu {
+      display: none !important;
+    }
+
+    nav {
+      &.horizontal {
+        grid-column: 2/5;
+        ul {
+          padding-left: 0;
+          margin-left: 0;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          li {
             align-items: center;
-            li {
-              align-items: center;
-              list-style: none;
+            list-style: none;
+            display: flex;
+
+            a {
+              @include navlink;
+            }
+
+            .logout-header {
               display: flex;
+              align-items: center;
+              gap: $gap;
 
-              a {
-                @include navlink;
-              }
-
-              .logout-header {
+              .user-icon-link {
+                padding: 0;
                 display: flex;
                 align-items: center;
-                gap: $gap;
+                justify-content: space-between;
+                gap: 0.25em;
 
-                .user-icon-link {
-                  padding: 0;
-                  display: flex;
-                  align-items: center;
-                  justify-content: space-between;
-                  gap: 0.25em;
+                &:hover {
+                  background-color: transparent;
+                }
 
+                #userIcon {
+                  border: $border-solid;
+                  padding: $padding-xs;
+                  border-radius: 50%;
+                  aspect-ratio: 1/1;
                   &:hover {
-                    background-color: transparent;
+                    cursor: pointer;
                   }
-
-                  #userIcon {
-                    border: $border-solid;
-                    padding: $padding-xs;
-                    border-radius: 50%;
-                    aspect-ratio: 1/1;
-                    &:hover {
-                      cursor: pointer;
-                    }
-                  }
-
-                  p {
-                    margin: 0;
-                  }
+                }
+                p {
+                  margin: 0;
                 }
               }
             }
