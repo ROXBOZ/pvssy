@@ -51,13 +51,17 @@ sup {
 }
 
 .source {
-  font-family: $font-medium-italic;
-  text-transform: italic;
+  color: red;
 }
 
 .source-ref {
-  em {
-    font-family: $font-medium-italic;
+  margin-top: $gap;
+  border-top: $border-solid;
+  li {
+    font-size: 80%;
+    .source-title {
+      font-family: $font-medium-italic;
+    }
   }
 }
 

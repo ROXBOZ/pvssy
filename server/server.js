@@ -10,6 +10,7 @@ import painRoutes from "./routes/painRoutes.js";
 import eventRoutes from "./routes/eventRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import termRoutes from "./routes/termRoutes.js";
+import sourceRoutes from "./routes/sourceRoutes.js";
 import jwtStrategy from "./utils/passport.js";
 
 const port = process.env.PORT || 5000;
@@ -37,17 +38,8 @@ const addMiddlewares = () => {
     })
   );
 
-  //REVIEW
-  // let corsOptions = {
-  //   origin: "http://localhost:3000",
-  //   credentials: true,
-  // };
-  // app.use(cors(corsOptions));
-
   app.use(cors());
-
   cloudinaryConfig();
-
   app.use(passport.initialize());
   passport.use(jwtStrategy);
 };
@@ -57,6 +49,7 @@ const loadRoutes = () => {
   app.use("/api/events", eventRoutes);
   app.use("/api/users", userRoutes);
   app.use("/api/terms", termRoutes);
+  app.use("/api/sources", sourceRoutes);
 };
 
 const startServer = () => {

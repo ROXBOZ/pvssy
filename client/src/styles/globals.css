@@ -354,11 +354,17 @@ sup {
 }
 
 .source {
-  font-family: "ESKlarheit-Medium-Italic";
-  text-transform: italic;
+  color: red;
 }
 
-.source-ref em {
+.source-ref {
+  margin-top: 2em;
+  border-top: 1.5px solid;
+}
+.source-ref li {
+  font-size: 80%;
+}
+.source-ref li .source-title {
   font-family: "ESKlarheit-Medium-Italic";
 }
 
@@ -438,20 +444,22 @@ h1,
   content: "↗ ";
 }
 
-.col-left .img-holder {
-  min-height: 600px;
+.img-holder {
+  min-height: 200px;
   width: 100%;
   background: linear-gradient(180deg, rgba(255, 82, 215, 0.8) 0%, rgba(245, 116, 60, 0.8) 100%);
   border-radius: 0.25em;
 }
-.col-left .pain-img,
-.col-left .event-img {
+
+.pain-img,
+.event-img {
   width: 100%;
   border-radius: 0.25em;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.col-left .event-img-text {
+
+.event-img-text {
   font-size: 80%;
 }
 
@@ -1173,7 +1181,7 @@ html body {
   padding: 0;
 }
 html body .main {
-  padding: 10vh 2em 0;
+  padding: 10vh 2em;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
