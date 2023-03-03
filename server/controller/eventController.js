@@ -257,7 +257,6 @@ const approveEvent = async (req, res) => {
 //DELETE
 
 const deleteEvent = async (req, res) => {
-  // console.log("req.user :", req.user);
   const { _id } = req.body;
 
   try {

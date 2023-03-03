@@ -503,7 +503,7 @@ const AddEvent = () => {
           : "Proposer l’évènement"}
       </button>
 
-      {userProfile && userProfile.userIsAdmin === false && message && (
+      {message && (
         <div className={`message ${message.type}`}>{message.content}</div>
       )}
     </>

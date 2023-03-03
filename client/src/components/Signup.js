@@ -1,17 +1,18 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { AuthContext } from "../contexts/authContext";
+import { emailRegex, urlRegex } from "../utils/regexExpressions";
 
 const SignupForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [newUser, setNewUser] = useState({});
-  const [userType, setUserType] = useState("association");
+  const [conditionsAccepted, setConditionsAccepted] = useState(null);
+  const [message, setMessage] = useState("");
+
   const redirectTo = useNavigate();
+
   const handleAttachImg = (e) => {
     setSelectedFile(e.target.files[0]);
   };
-
   const submitImg = async (e) => {
     e.preventDefault();
     const formdata = new FormData();
@@ -31,11 +32,9 @@ const SignupForm = () => {
       console.log("error", error);
     }
   };
-
   const handleInputChange = (e) => {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
   };
-
   const signup = async (e) => {
     e.preventDefault();
     const myHeaders = new Headers();
@@ -66,12 +65,26 @@ const SignupForm = () => {
       );
       const result = await response.json();
       console.log("result", result);
+      setMessage({
+        type: "success",
+        content: (
+          <p className="msg success">
+            Votre compte a été créé. Veuillez maintenant vous connecter.
+          </p>
+        ),
+      });
     } catch (error) {
       console.log("error", error);
     }
-    alert("compte créé, veuillez vous connecter");
-    redirectTo("/login");
   };
+
+  useEffect(() => {
+    if (message && message.type === "success") {
+      setTimeout(() => {
+        redirectTo("/login");
+      }, 3000);
+    }
+  }, [message]);
 
   return (
     <div>
@@ -99,7 +112,7 @@ const SignupForm = () => {
       )}
 
       <form className="grid-form">
-        <div className="user-type flex-center">
+        {/* <div className="user-type flex-center">
           <span>
             <input
               className="form-check-input"
@@ -122,7 +135,7 @@ const SignupForm = () => {
             />
             <label htmlFor="person">Personne</label>
           </span>
-        </div>
+        </div> */}
         <div className="user-name-label flex-center">
           <label htmlFor="userName">Nom *</label>
         </div>
@@ -162,11 +175,7 @@ const SignupForm = () => {
           />
         </div>
         <div className="user-avatar-label flex-center">
-          <label htmlFor="avatar">
-            {userType === "association"
-              ? "Logo de l’association"
-              : "Photo de profil"}
-          </label>
+          <label htmlFor="avatar">Photo de profil</label>
         </div>
         <div className="user-avatar-input">
           <input
@@ -193,18 +202,29 @@ const SignupForm = () => {
           />
         </div>
         <div className="user-password-error">
-          <p className="error msg">min. 6 caractères</p>
+          {newUser.userPassword && newUser.userPassword.length < 6 && (
+            <li className="error msg">min 6 caractères.</li>
+          )}
         </div>
         <ul className="error-list">
-          <li className="error msg">Le nom doit être entre 2 et 20 lettres.</li>
-          <li className="error msg">L’adresse email est invalide.</li>
-          <li className="error msg">L’URL du site internet est invalide.</li>
+          {newUser.userName && newUser.userName.length < 2 && (
+            <li className="error msg">
+              Le nom doit être entre 2 et 20 lettres.
+            </li>
+          )}
+          {newUser.userEmail && !emailRegex.test(newUser.userEmail) && (
+            <li className="error msg">L’adresse email est invalide.</li>
+          )}
+          {newUser.userWebsite && !urlRegex.test(newUser.userWebsite) && (
+            <li className="error msg">L’URL du site internet est invalide.</li>
+          )}
         </ul>
         <div className="conditions-generales">
           <input
             className="form-check-input"
             id="conditionsCheckbox"
             type="checkbox"
+            onChange={(e) => setConditionsAccepted(e.target.checked)}
             required
           />
           <label htmlFor="conditionsCheckbox">
@@ -213,9 +233,25 @@ const SignupForm = () => {
           </label>
         </div>
         <div className="submit-button">
-          <button onClick={signup}>Créer un compte</button>
+          <button
+            onClick={signup}
+            disabled={
+              !(newUser.userPassword &&
+              newUser.userPassword > 6 &&
+              newUser.userName &&
+              newUser.userName > 2 &&
+              newUser.Website
+                ? urlRegex.test(newUser.userWebsite)
+                : true && conditionsAccepted)
+            }
+          >
+            Créer un compte
+          </button>
         </div>
       </form>
+      {message && (
+        <div className={`message ${message.type}`}>{message.content}</div>
+      )}
 
       <p>
         Déjà inscrit·e ? <Link to="/login">Se connecter</Link>
