@@ -27,3 +27,16 @@ export const dateConverter = (isoDate) => {
   const dateTimeoptions = { ...dateOptions };
   return newDate.toLocaleDateString("fr-CH", dateTimeoptions);
 };
+
+// export const dateNumbersConverter = (isoDate) => {
+//   const newDate = new Date(isoDate);
+//   const dateOptions = {
+//     year: "2-digit",
+//     month: "numeric",
+//     day: "numeric",
+//   };
+//   const dateTimeoptions = { ...dateOptions };
+//   const formattedDate = newDate.toLocaleDateString("fr-CH", dateTimeoptions);
+//   const dateNumbers = formattedDate.split(".");
+//   return `${dateNumbers[0]}\n${dateNumbers[1]}\n${dateNumbers[2]}`;
+// };

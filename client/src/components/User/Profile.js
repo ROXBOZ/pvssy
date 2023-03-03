@@ -27,8 +27,9 @@ const Profile = () => {
         {userProfile && userProfile.userIsAdmin === true && (
           <NavLink to="approuver">Approuver</NavLink>
         )}
-
+        <p>Modifier</p>
         <NavLink to="supprimer">Supprimer</NavLink>
+        <p to="/">Historique</p>
       </div>
 
       <Outlet />

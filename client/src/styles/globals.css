@@ -30,6 +30,7 @@
 /*-----Gap-----*/
 /*-----Borders-----*/
 /*-----Animations-----*/
+/*-----Elevations-----*/
 /*-----Links-----*/
 /*-----Buttons-----*/
 /*-----Grid-----*/
@@ -58,9 +59,14 @@
     align-items: center;
     padding: 1em;
     justify-content: space-between;
-    flex-direction: row-reverse;
     height: -moz-fit-content;
     height: fit-content;
+    background-color: #fffdf8;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.12), 0 3px 14px rgba(0, 0, 0, 0.08), 0 5px 5px rgba(0, 0, 0, 0.14);
+    flex-direction: row-reverse;
+    position: fixed;
+    left: 0;
+    right: 0;
   }
   header .logo {
     z-index: 99;
@@ -70,19 +76,16 @@
     font-size: 1.25rem;
   }
   header .burger-menu {
-    position: relative;
-    z-index: 99;
-    background-color: transparent;
+    justify-self: flex-start;
+    position: flex;
+    z-index: 2;
     border: 0;
     display: flex;
     gap: 0.5em;
     align-items: center;
+    justify-content: space-between;
     padding: 0;
-  }
-  header .burger-menu #nav-icon,
-  header .burger-menu .menu-label {
-    position: fixed;
-    background-color: red;
+    background-color: transparent;
   }
   header .burger-menu:hover {
     background-color: transparent;
@@ -91,14 +94,12 @@
     outline: 0;
     border: 0;
   }
-  header .burger-menu span {
+  header .burger-menu .menu-label {
     color: #303030;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 60%;
     font-family: "ESKlarheit-Bold";
-  }
-  header .burger-menu span.menu-label {
     padding-top: 2px;
   }
   header .burger-menu #nav-icon {
@@ -116,8 +117,6 @@
     width: 100%;
     background: #303030;
     border-radius: 0.25em;
-    opacity: 1;
-    left: 0;
     transform: rotate(0deg);
     transition: 0.25s ease-in-out;
   }
@@ -147,7 +146,7 @@
     display: none;
   }
   header nav.vertical {
-    position: fixed;
+    position: absolute;
     margin: 0;
     right: 0;
     left: 0;
@@ -172,14 +171,6 @@
     padding: 0;
     border-bottom: none;
     color: #303030;
-  }
-  header nav.vertical ul li .logout-header {
-    margin-top: 2em;
-    border-top: 1.5px solid;
-    padding-top: 2em;
-    display: flex;
-    flex-direction: column-reverse;
-    background-color: yellow;
   }
 }
 /*-----Desktop-----*/
@@ -576,6 +567,13 @@ button:disabled {
   white-space: nowrap;
   overflow: auto;
   margin-top: 1em;
+}
+.tabbed-navigation p {
+  display: flex;
+  align-items: center;
+  padding: 0.5em 1.5em;
+  margin-bottom: 0;
+  opacity: 30%;
 }
 .tabbed-navigation a {
   color: #303030;
