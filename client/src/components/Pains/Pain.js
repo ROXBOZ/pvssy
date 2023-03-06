@@ -82,10 +82,6 @@ const Pain = () => {
       ? requestedTerms.map((term) => term.term)
       : [];
 
-    const highlightedSources = requestedSources
-      ? requestedSources.map((source) => source.title)
-      : [];
-
     const regexTerms = new RegExp(
       `\\b(${highlightedTerms.join("|")})\\b`,
       "ig"
@@ -94,10 +90,8 @@ const Pain = () => {
     return arr.map((p, index) => {
       if (typeof p === "string") {
         const matchesTerms = p.match(regexTerms);
-        const matchesSources = highlightedSources.filter((source) =>
-          p.includes(source)
-        );
-        if (matchesTerms || matchesSources.length > 0) {
+
+        if (matchesTerms) {
           const parts = matchesTerms ? p.split(regexTerms) : [p];
           return (
             <p key={index}>
@@ -114,15 +108,6 @@ const Pain = () => {
                           .toLowerCase()}`,
                       }}
                     >
-                      {part}
-                    </Link>
-                  );
-                } else if (matchesSources.includes(part)) {
-                  const matchedSource = requestedSources.find(
-                    (source) => source.title === part
-                  );
-                  return (
-                    <Link className="source" key={i} to="/">
                       {part}
                     </Link>
                   );
@@ -144,64 +129,6 @@ const Pain = () => {
       }
     });
   };
-
-  // const createParagraphs = (arr) => {
-  //   const highlightedTerms = requestedTerms
-  //     ? requestedTerms.map((term) => term.term)
-  //     : [];
-
-  //   const highlightedSources = requestedSources
-  //     ? requestedSources.map((source) => source.title)
-  //     : [];
-
-  //   const regexTerms = new RegExp(
-  //     `\\b(${highlightedTerms.join("|")})\\b`,
-  //     "ig"
-  //   );
-
-  //   const regexSources = new RegExp(`${highlightedSources}`);
-
-  //   return arr.map((p, index) => {
-  //     if (typeof p === "string") {
-  //       const matches = p.match(regexTerms);
-  //       if (matches) {
-  //         const parts = p.split(regexTerms);
-  //         return (
-  //           <p key={index}>
-  //             {parts.map((part, i) => {
-  //               if (matches.includes(part)) {
-  //                 return (
-  //                   <Link
-  //                     key={i}
-  //                     to={{
-  //                       pathname: `lexique/#${part
-  //                         .normalize("NFD")
-  //                         .replace(/[\u0300-\u036f]/g, "")
-  //                         .replace(/\s+/g, "-")
-  //                         .toLowerCase()}`,
-  //                     }}
-  //                   >
-  //                     {part}
-  //                   </Link>
-  //                 );
-  //               } else {
-  //                 return <span key={i}>{part}</span>;
-  //               }
-  //             })}
-  //           </p>
-  //         );
-  //       } else {
-  //         return (
-  //           <p key={index}>
-  //             <span key={index}>{p}</span>
-  //           </p>
-  //         );
-  //       }
-  //     } else {
-  //       return <p key={index}>{p}</p>;
-  //     }
-  //   });
-  // };
 
   return (
     <>
