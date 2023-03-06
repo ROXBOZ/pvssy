@@ -62,7 +62,7 @@ function App() {
                     path="gerer-soi-meme/douleurs/:name"
                     element={<Pain />}
                   >
-                    <Route path="medicine" element={<PainMed />} />
+                    <Route path="medical" element={<PainMed />} />
                     <Route path="sexologie" element={<PainSexo />} />
                   </Route>
                   <Route

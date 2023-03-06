@@ -1,11 +1,30 @@
 import { createContext, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export const PainsContext = createContext();
 export const PainsContextProvider = (props) => {
+  let location = useLocation();
   const [data, setData] = useState([]);
   const url = "http://localhost:5000/api/pains/all";
   const [Loading, setLoading] = useState(true);
   const [Error, setError] = useState(null);
+  const [painData, setPainData] = useState(null);
+  const [requestedSources, setRequestedSources] = useState(null);
+  const [requestedTerms, setRequestedTerms] = useState(null);
+
+  //FIXME -
+  // const painName =
+  //   location.pathname.split("/").pop().slice(0, 1).toUpperCase() +
+  //   location.pathname.split("/").pop().slice(1);
+  const segments = location.pathname.split("/");
+  const index = segments.indexOf("douleurs");
+  const painName =
+    index !== -1 && index + 1 < segments.length
+      ? segments[index + 1].charAt(0).toUpperCase() +
+        segments[index + 1].slice(1)
+      : null;
+
+  console.log("painName (Context) :", painName);
 
   const fetchData = async (url) => {
     try {
@@ -20,9 +39,64 @@ export const PainsContextProvider = (props) => {
       setError(error);
     }
   };
+  const fetchSinglePain = async () => {
+    const requestOptions = {
+      method: "GET",
+    };
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/pains/spec/${painName}`,
+        requestOptions
+      );
+      const result = await response.json();
+      setPainData(result);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+  const fetchRelatedSources = async () => {
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/sources/byPain?relatedPain=${painName}`,
+        requestOptions
+      );
+      const result = await response.json();
+      setRequestedSources(result.requestedSources);
+    } catch (error) {
+      console.log("error :", error);
+    }
+  };
+  const fetchRelatedTerms = async () => {
+    const requestOptions = {
+      method: "GET",
+    };
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/terms/byPain?relatedPain=${painName}`,
+        requestOptions
+      );
+      const result = await response.json();
+      const sortedTerms = result.requestedTerms.sort((a, b) =>
+        a.term.localeCompare(b.term)
+      );
+      setRequestedTerms(sortedTerms);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 
   useEffect(() => {
     fetchData(url);
+    fetchSinglePain(painName);
+    fetchRelatedSources(painName);
+    fetchRelatedTerms(painName);
   }, [url]);
 
   return (
@@ -33,6 +107,14 @@ export const PainsContextProvider = (props) => {
         data,
         url,
         fetchData,
+        fetchSinglePain,
+        painData,
+        setPainData,
+        painName,
+        fetchRelatedSources,
+        requestedSources,
+        fetchRelatedTerms,
+        requestedTerms,
       }}
     >
       {props.children}
