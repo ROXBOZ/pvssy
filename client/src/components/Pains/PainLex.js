@@ -70,7 +70,11 @@ const PainLex = () => {
 
   return (
     <div>
-      <h1>Lexique {painName}</h1>
+      <div className="heading-area">
+        <p className="pretitle">Lexique</p>
+        <h1>{painName}</h1>
+      </div>
+
       {requestedTerms &&
         requestedTerms.map((t, index) => {
           const termAnchor = t.term
@@ -79,10 +83,12 @@ const PainLex = () => {
             .replace(/\s+/g, "-")
             .toLowerCase();
           return (
-            <div key={index}>
-              <h2 id={termAnchor}>{t.term}</h2>
-              {createParagraphs(t.def)}
-            </div>
+            <ul className="lexique-list" key={index}>
+              <li className="lexique-list-item">
+                <h2 id={termAnchor}>{t.term}</h2>
+                <p>{createParagraphs(t.def)}</p>
+              </li>
+            </ul>
           );
         })}
     </div>

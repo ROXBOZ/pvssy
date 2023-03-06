@@ -17,7 +17,8 @@ const PainSexo = () => {
   }, [articleId]);
 
   return (
-    <div id="article-sexologie">
+    <div id="article-sexologie" style={{ backgroundColor: "red" }}>
+      <h2>Définition</h2>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam
         labore modi iusto. Ullam at ex hic. Enim eligendi magni hic repellendus

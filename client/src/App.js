@@ -48,7 +48,7 @@ function App() {
       <AuthContextProvider>
         <Header />
         <div className="main">
-          <ScrollToTop />
+          {/* <ScrollToTop /> */}
           <Breadcrumbs />
           <EventsContextProvider>
             <PainsContextProvider>

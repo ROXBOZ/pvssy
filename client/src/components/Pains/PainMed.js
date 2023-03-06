@@ -97,7 +97,7 @@ const PainMed = () => {
   };
 
   return (
-    <div id="article-medical">
+    <div id="article-medical" style={{ backgroundColor: "yellow" }}>
       <h2>Définition</h2>
       {highlightParagraphs(painData.def)}
       <h2>Diagnostic</h2>

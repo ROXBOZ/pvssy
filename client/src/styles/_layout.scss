@@ -2,7 +2,7 @@
   @include grid;
 }
 
-/*-----Pain page, Event page-----*/
+/*-----Pain page----*/
 
 .category-submenu {
   padding-left: 0;
@@ -16,7 +16,6 @@
   }
 }
 
-// .col-left {
 .img-holder {
   min-height: 200px;
   width: 100%;
@@ -31,16 +30,17 @@
   object-fit: cover;
 }
 
+/*-----Event page----*/
+
 .event-img-text {
   font-size: 80%;
 }
-// }
 
-.col-right {
-  h2 {
-    &:first-child {
-      margin-top: 0;
-    }
+/*-----Lexique page----*/
+.lexique-list {
+  padding-left: 0;
+  .lexique-list-item {
+    list-style: none;
   }
 }
 

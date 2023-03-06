@@ -469,7 +469,7 @@ h1,
   gap: 2em;
 }
 
-/*-----Pain page, Event page-----*/
+/*-----Pain page----*/
 .category-submenu {
   padding-left: 0;
   display: flex;
@@ -497,12 +497,17 @@ h1,
      object-fit: cover;
 }
 
+/*-----Event page----*/
 .event-img-text {
   font-size: 80%;
 }
 
-.col-right h2:first-child {
-  margin-top: 0;
+/*-----Lexique page----*/
+.lexique-list {
+  padding-left: 0;
+}
+.lexique-list .lexique-list-item {
+  list-style: none;
 }
 
 /* Extra small devices (phones, 600px and down) */
