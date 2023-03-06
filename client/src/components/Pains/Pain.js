@@ -77,42 +77,78 @@ const Pain = () => {
   //this has to be defined  after the fetch
   const { name, def, diag, sympt, pro, auto, why } = painData;
 
+  let sourceCounter = 0;
+
+  const scrollToAnchor = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const createParagraphs = (arr) => {
     const highlightedTerms = requestedTerms
       ? requestedTerms.map((term) => term.term)
       : [];
 
-    const regexTerms = new RegExp(
-      `\\b(${highlightedTerms.join("|")})\\b`,
+    const highlightedSources = requestedSources
+      ? requestedSources.map((source) => source.title)
+      : [];
+
+    const regex = new RegExp(
+      `\\b(${highlightedTerms.join("|")}|${highlightedSources.join("|")})\\b`,
       "ig"
     );
 
+    const currentURL = window.location.pathname;
+
     return arr.map((p, index) => {
       if (typeof p === "string") {
-        const matchesTerms = p.match(regexTerms);
-
-        if (matchesTerms) {
-          const parts = matchesTerms ? p.split(regexTerms) : [p];
+        const matches = p.match(regex);
+        if (matches) {
+          const parts = p.split(regex);
           return (
             <p key={index}>
-              {parts.map((part, i) => {
-                if (matchesTerms && matchesTerms.includes(part)) {
-                  return (
-                    <Link
-                      key={i}
-                      to={{
-                        pathname: `lexique/#${part
-                          .normalize("NFD")
-                          .replace(/[\u0300-\u036f]/g, "")
-                          .replace(/\s+/g, "-")
-                          .toLowerCase()}`,
-                      }}
-                    >
-                      {part}
-                    </Link>
-                  );
+              {parts.map((part, index) => {
+                if (matches.includes(part)) {
+                  const isTerm = highlightedTerms.includes(part);
+                  const linkTo = isTerm
+                    ? `lexique/#${part
+                        .normalize("NFD")
+                        .replace(/[\u0300-\u036f]/g, "")
+                        .replace(/\s+/g, "-")
+                        .toLowerCase()}`
+                    : `${currentURL}/#references`;
+
+                  if (isTerm) {
+                    return (
+                      <Link
+                        className="term"
+                        key={`${part}${index}`}
+                        to={linkTo}
+                      >
+                        {part}
+                      </Link>
+                    );
+                  } else {
+                    sourceCounter++;
+                    return (
+                      <Link
+                        className="source"
+                        key={`${part}${index}`}
+                        to={linkTo}
+                        onClick={(event) => {
+                          event.preventDefault();
+                          scrollToAnchor("references");
+                        }}
+                      >
+                        {part}
+                        <sup>{sourceCounter}</sup>
+                      </Link>
+                    );
+                  }
                 } else {
-                  return <span key={i}>{part}</span>;
+                  return <span key={`${part}${index}`}>{part}</span>;
                 }
               })}
             </p>
@@ -120,7 +156,7 @@ const Pain = () => {
         } else {
           return (
             <p key={index}>
-              <span key={index}>{p}</span>
+              <span>{p}</span>
             </p>
           );
         }
@@ -200,23 +236,21 @@ const Pain = () => {
           </>
         )}
 
-        <div className="source-ref">
+        <div id="references" className="source-ref">
           <h4>Références</h4>
           <ol>
             {requestedSources &&
               requestedSources.map((s) => (
-                <>
-                  <li key={s._id} id={s.title}>
-                    <span className="source-author">{s.author}</span>
-                    <span className="source-year"> ({s.year}). </span>
-                    <span className="source-title">{s.title}</span>
-                    <span className="source-edition">
-                      &nbsp;({s.edition}
-                      {s.edition === "1" ? "ère" : "ème"} éd.) 
-                    </span>
-                    <span className="editor">{s.editor}</span>.
-                  </li>
-                </>
+                <li key={s._id} id={s.title}>
+                  <span className="source-author">{s.author}</span>
+                  <span className="source-year"> ({s.year}). </span>
+                  <span className="source-title">{s.title}</span>
+                  <span className="source-edition">
+                    &nbsp;({s.edition}
+                    {s.edition === "1" ? "ère" : "ème"} éd.) 
+                  </span>
+                  <span className="editor">{s.editor}</span>.
+                </li>
               ))}
           </ol>
         </div>

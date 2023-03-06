@@ -354,7 +354,9 @@ sup {
 }
 
 .source {
-  color: red;
+  font-family: "ESKlarheit-Medium-Italic";
+  border-bottom: none;
+  color: #303030;
 }
 
 .source-ref {

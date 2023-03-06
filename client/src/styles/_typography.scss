@@ -51,7 +51,9 @@ sup {
 }
 
 .source {
-  color: red;
+  font-family: $font-medium-italic;
+  border-bottom: none;
+  color: $txt-color;
 }
 
 .source-ref {
