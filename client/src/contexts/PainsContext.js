@@ -12,10 +12,6 @@ export const PainsContextProvider = (props) => {
   const [requestedSources, setRequestedSources] = useState(null);
   const [requestedTerms, setRequestedTerms] = useState(null);
 
-  //FIXME -
-  // const painName =
-  //   location.pathname.split("/").pop().slice(0, 1).toUpperCase() +
-  //   location.pathname.split("/").pop().slice(1);
   const segments = location.pathname.split("/");
   const index = segments.indexOf("douleurs");
   const painName =
@@ -23,8 +19,6 @@ export const PainsContextProvider = (props) => {
       ? segments[index + 1].charAt(0).toUpperCase() +
         segments[index + 1].slice(1)
       : null;
-
-  console.log("painName (Context) :", painName);
 
   const fetchData = async (url) => {
     try {

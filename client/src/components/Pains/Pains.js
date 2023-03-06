@@ -17,7 +17,7 @@ const Pains = () => {
               <Link
                 className="link-card"
                 to={{
-                  pathname: `/gerer-soi-meme/douleurs/${p.name.toLowerCase()}`,
+                  pathname: `/gerer-soi-meme/douleurs/${p.name.toLowerCase()}/medical`,
                 }}
                 key={p._id}
               >

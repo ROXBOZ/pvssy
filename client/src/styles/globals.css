@@ -1127,7 +1127,7 @@ form .form-section .form-dropdown-suggestions li {
   content: "⚠️  ";
 }
 .msg.archived {
-  color: steelblue;
+  color: dimgrey;
 }
 .msg.archived:before {
   content: "📁  ";
@@ -1137,6 +1137,12 @@ form .form-section .form-dropdown-suggestions li {
 }
 .msg.error:before {
   content: "🚨  ";
+}
+.msg.info {
+  color: steelblue;
+}
+.msg.info:before {
+  content: "ℹ️  ";
 }
 
 .error-list {
@@ -1196,6 +1202,9 @@ form .form-section .form-dropdown-suggestions li {
 .pain-illu-cover {
   width: 100%;
   border-radius: 0.25em;
+  aspect-ratio: 16/4.5;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 * {

@@ -1,13 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 
 const PainMed = () => {
-  const { painData, painName, requestedTerms, requestedSources } =
+  const location = useLocation();
+  const articleId = location.state?.articleId;
+  const { painData, requestedTerms, requestedSources } =
     useContext(PainsContext);
 
-  console.log("painName (Med) :", painName);
-  console.log("painData (Med) :", painData);
+  console.log("articleId :", articleId);
+
+  //FIXME successfully set anchor >>> http://localhost:3000/gerer-soi-meme/douleurs/vaginisme/sexologie/#article-sexologie
+  // then, fix nav
+
+  // useEffect(() => {
+  //   if (articleId) {
+  //     const articleEl = document.getElementById(articleId);
+  //     if (articleEl) {
+  //       articleEl.scrollIntoView({ behavior: "smooth" });
+  //     }
+  //   }
+  // }, [articleId]);
 
   let sourceCounter = 0;
 
@@ -84,7 +97,7 @@ const PainMed = () => {
   };
 
   return (
-    <>
+    <div id="article-medical">
       <h2>Définition</h2>
       {highlightParagraphs(painData.def)}
       <h2>Diagnostic</h2>
@@ -121,7 +134,25 @@ const PainMed = () => {
           <p>{painData.pro.sexo}</p>
         </>
       )}
-    </>
+      <div id="references" className="source-ref">
+        <h4>Bibliographie</h4>
+        <ol>
+          {requestedSources &&
+            requestedSources.map((s) => (
+              <li key={s._id} id={s.title}>
+                <span className="source-author">{s.author}</span>
+                <span className="source-year"> ({s.year}). </span>
+                <span className="source-title">{s.title}</span>
+                <span className="source-edition">
+                  &nbsp;({s.edition}
+                  {s.edition === "1" ? "ère" : "ème"} éd.) 
+                </span>
+                <span className="editor">{s.editor}</span>.
+              </li>
+            ))}
+        </ol>
+      </div>
+    </div>
   );
 };
 

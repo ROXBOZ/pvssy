@@ -11,9 +11,14 @@ const ScrollToTop = () => {
       "/profile/approuver",
       "/profile/supprimer",
     ];
-    if (!excludedPaths.includes(pathname)) {
-      window.scrollTo(0, 0);
+    for (const path of excludedPaths) {
+      if (typeof path === "string" && pathname === path) {
+        return;
+      } else if (path instanceof RegExp && path.test(pathname)) {
+        return;
+      }
     }
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   return null;

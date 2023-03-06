@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
-import { NavLink, useLocation, Outlet } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { NavLink, Outlet, useOutlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 
 const Pain = () => {
-  const { painData, fetchRelatedSources, requestedSources } =
-    useContext(PainsContext);
+  const { painData, fetchRelatedSources } = useContext(PainsContext);
+  const outlet = useOutlet();
 
   useEffect(() => {
     fetchRelatedSources();
@@ -48,6 +48,7 @@ const Pain = () => {
             <NavLink
               to={{
                 pathname: `medical`,
+                state: { articleId: "article-medical" },
               }}
             >
               Médical
@@ -55,31 +56,24 @@ const Pain = () => {
             <NavLink
               to={{
                 pathname: `sexologie`,
+                state: { articleId: "article-sexologie" },
               }}
             >
               Sexologie
             </NavLink>
           </div>
         </div>
-        <Outlet />
-        <div id="references" className="source-ref">
-          <h4>Bibliographie</h4>
-          <ol>
-            {requestedSources &&
-              requestedSources.map((s) => (
-                <li key={s._id} id={s.title}>
-                  <span className="source-author">{s.author}</span>
-                  <span className="source-year"> ({s.year}). </span>
-                  <span className="source-title">{s.title}</span>
-                  <span className="source-edition">
-                    &nbsp;({s.edition}
-                    {s.edition === "1" ? "ère" : "ème"} éd.) 
-                  </span>
-                  <span className="editor">{s.editor}</span>.
-                </li>
-              ))}
-          </ol>
-        </div>
+        {outlet ? (
+          <Outlet />
+        ) : (
+          <p className="msg info">
+            Pvssy Talk propose deux approches bien distinctes mais
+            complémentaires, l’une issue de la médecine et l’autre de la
+            sexologie. Tu peux consulter les deux approches et combiner selon ce
+            qui te parle le plus. Pvssy Talk s’engage à ne pas soutenir une
+            approche plus que l’autre.
+          </p>
+        )}
       </div>
     </>
   );
