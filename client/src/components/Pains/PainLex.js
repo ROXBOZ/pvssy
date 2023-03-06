@@ -44,7 +44,6 @@ const PainLex = () => {
     fetchRelatedTerms();
   }, []);
 
-  // When clicking on a term on Pain page, we first wait for the anchors to be fetched and then we scroll down.
   useEffect(() => {
     const anchor = window.location.hash;
     if (anchor) {
@@ -55,7 +54,6 @@ const PainLex = () => {
     }
   });
 
-  // TODO this is also used on Pain.js, avoid duplicate
   const createParagraphs = (arr) => {
     return arr.map((p, index) => {
       if (typeof p === "string") {
@@ -74,16 +72,16 @@ const PainLex = () => {
     <div>
       <h1>Lexique {painName}</h1>
       {requestedTerms &&
-        requestedTerms.map((t) => {
+        requestedTerms.map((t, index) => {
           const termAnchor = t.term
             .normalize("NFD")
             .replace(/[\u0300-\u036f]/g, "")
             .replace(/\s+/g, "-")
             .toLowerCase();
           return (
-            <div>
+            <div key={index}>
               <h2 id={termAnchor}>{t.term}</h2>
-              <p>{createParagraphs(t.def)}</p>
+              {createParagraphs(t.def)}
             </div>
           );
         })}

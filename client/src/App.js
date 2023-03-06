@@ -15,6 +15,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Pains from "./components/Pains/Pains";
 import Pain from "./components/Pains/Pain";
+import PainMed from "./components/Pains/PainMed";
+import PainSexo from "./components/Pains/PainSexo";
 import EventsArchives from "./components/EventsArchives";
 import Event from "./components/Agenda/Event";
 import ScrollToTop from "./utils/ScrollToTop";
@@ -59,7 +61,10 @@ function App() {
                   <Route
                     path="gerer-soi-meme/douleurs/:name"
                     element={<Pain />}
-                  />
+                  >
+                    <Route path="medicine" element={<PainMed />} />
+                    <Route path="sexologie" element={<PainSexo />} />
+                  </Route>
                   <Route
                     path="gerer-soi-meme/ressources/tutos"
                     element={<Tutos />}
