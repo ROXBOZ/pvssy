@@ -1,0 +1,88 @@
+.category-submenu {
+  padding-left: 0;
+  display: flex;
+  gap: $demi-gap;
+  li {
+    &:before {
+      content: "↗ ";
+    }
+    list-style: none;
+  }
+}
+
+.tabbed-navigation-container {
+  z-index: 99;
+  top: 0;
+  position: sticky;
+  border-top: 2px solid $bg-color;
+  background-color: $bg-color;
+  padding-bottom: 0.25em;
+
+  .tabbed-navigation {
+    background-color: lighten($color3, 30%);
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+    border-radius: 40px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: auto;
+
+    p {
+      display: flex;
+      align-items: center;
+      padding: 0.5em 1.5em;
+      margin-bottom: 0;
+      opacity: 30%;
+    }
+    a {
+      color: $txt-color;
+      padding: 0.5em 1.5em;
+      transition: $animation-transition;
+      display: inline-flex;
+      position: relative;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 40px;
+      background-color: rgba(255, 255, 255, 0.4);
+      line-height: 44px;
+      text-decoration: initial;
+      cursor: pointer;
+      vertical-align: middle;
+
+      &:focus {
+        outline: 0;
+        border: 0;
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.6); // +0.2%
+      }
+      &.active {
+        background-color: lighten($color3, 20%);
+        &:hover {
+          background-color: lighten($color3, 25%);
+        }
+      }
+    }
+  }
+}
+
+.article {
+  animation: opacityAnimation 500ms ease-in;
+  display: flex;
+  flex-direction: column;
+  margin: 5rem auto 0 20rem;
+}
+
+@keyframes opacityAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}

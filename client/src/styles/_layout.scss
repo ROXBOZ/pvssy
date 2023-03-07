@@ -4,18 +4,6 @@
 
 /*-----Pain page----*/
 
-.category-submenu {
-  padding-left: 0;
-  display: flex;
-  gap: $gap;
-  li {
-    &:before {
-      content: "↗ ";
-    }
-    list-style: none;
-  }
-}
-
 .img-holder {
   min-height: 200px;
   width: 100%;

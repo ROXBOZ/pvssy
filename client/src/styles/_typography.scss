@@ -3,18 +3,17 @@
   margin-top: 20vh;
   // REVIEW should not be on pain maybe else where
   // padding-bottom: $padding-sm;
-
-  .pretitle {
-    font-family: $font-bold;
-    text-transform: uppercase;
-    color: $color1;
-    letter-spacing: 0.5px;
-    padding-bottom: 0;
-    margin-bottom: 0;
-    & + h1 {
-      margin-top: 0;
-      padding-top: 0.25em;
-    }
+}
+.pretitle {
+  font-family: $font-bold;
+  text-transform: uppercase;
+  color: $color1;
+  letter-spacing: 0.5px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  & + h1 {
+    margin-top: 0;
+    padding-top: 0.25em;
   }
 }
 

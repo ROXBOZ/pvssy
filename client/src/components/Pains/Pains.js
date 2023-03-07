@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 
 const Pains = () => {
-  const { data, Error, painData } = useContext(PainsContext);
-
-  console.log("data :", data);
+  const { data, Error } = useContext(PainsContext);
 
   return (
     <div>
-      <h2>Douleurs</h2>
+      <div className="heading-area">
+        <h2>Douleurs</h2>
+      </div>
       <div className="card-grid">
         {data &&
           data.map((p) => {
@@ -17,12 +17,16 @@ const Pains = () => {
               <Link
                 className="link-card"
                 to={{
-                  pathname: `/gerer-soi-meme/douleurs/${p.name.toLowerCase()}/medical`,
+                  pathname: `/se-soigner/douleurs/${p.name.toLowerCase()}/medical`,
                 }}
                 key={p._id}
               >
                 <div className="card">
-                  <p>{p.name}</p>
+                  <img src={p.img} alt={p.name} />
+                  <h3>{p.name}</h3>
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  </p>
                 </div>
               </Link>
             );

@@ -10,8 +10,8 @@ const ScrollToTop = () => {
       "/profile/modifier",
       "/profile/approuver",
       "/profile/supprimer",
-      "/gerer-soi-meme/douleurs/*/medical",
-      "/gerer-soi-meme/douleurs/*/sexologie",
+      "/se-soigner/douleurs/*/medical",
+      "/se-soigner/douleurs/*/sexologie",
     ];
     for (const path of excludedPaths) {
       if (typeof path === "string" && pathname === path) {

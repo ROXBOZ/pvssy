@@ -40,13 +40,13 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink onClick={handleNavLink} to="gerer-soi-meme">
-              Gérer soi-même
+            <NavLink onClick={handleNavLink} to="se-soigner">
+              Se soigner
             </NavLink>
           </li>
           <li>
-            <NavLink onClick={handleNavLink} to="trouver-de-l-aide">
-              Trouver de l’aide
+            <NavLink onClick={handleNavLink} to="s-informer">
+              S’informer
             </NavLink>
           </li>
           <li>

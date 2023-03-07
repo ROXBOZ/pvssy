@@ -10,7 +10,7 @@ const PainMed = () => {
 
   console.log("articleId :", articleId);
 
-  //FIXME successfully set anchor >>> http://localhost:3000/gerer-soi-meme/douleurs/vaginisme/sexologie/#article-sexologie
+  //FIXME successfully set anchor >>> douleurs/vaginisme/sexologie/#article-sexologie
   // then, fix nav
 
   // useEffect(() => {
@@ -97,7 +97,7 @@ const PainMed = () => {
   };
 
   return (
-    <div id="article-medical" style={{ backgroundColor: "yellow" }}>
+    <div className="article" id="medical">
       <h2>Définition</h2>
       {highlightParagraphs(painData.def)}
       <h2>Diagnostic</h2>

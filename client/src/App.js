@@ -5,8 +5,8 @@ import { Navigate } from "react-router-dom";
 // pages and components
 import Home from "./pages/Home";
 import About from "./pages/About";
-import GererSoiMeme from "./pages/GererSoiMeme";
-import TrouverDeLAide from "./pages/TrouverDeLAide";
+import SeSoigner from "./pages/SeSoigner";
+import SInformer from "./pages/SInformer";
 import Shop from "./pages/Shop";
 import Agenda from "./pages/Agenda";
 import GeneralConditions from "./pages/GeneralConditions";
@@ -56,59 +56,47 @@ function App() {
                 <Routes>
                   <Route index element={<Home />} />
                   <Route path="a-propos" element={<About />} />
-                  <Route path="gerer-soi-meme" element={<GererSoiMeme />} />
-                  <Route path="gerer-soi-meme/douleurs" element={<Pains />} />
-                  <Route
-                    path="gerer-soi-meme/douleurs/:name"
-                    element={<Pain />}
-                  >
+                  <Route path="se-soigner" element={<SeSoigner />} />
+                  <Route path="se-soigner/douleurs" element={<Pains />} />
+                  <Route path="se-soigner/douleurs/:name" element={<Pain />}>
                     <Route path="medical" element={<PainMed />} />
                     <Route path="sexologie" element={<PainSexo />} />
                   </Route>
                   <Route
-                    path="gerer-soi-meme/ressources/tutos"
+                    path="se-soigner/ressources/tutos"
                     element={<Tutos />}
                   />
                   <Route
-                    path="gerer-soi-meme/douleurs/:name/tutos"
+                    path="se-soigner/douleurs/:name/tutos"
                     element={<Tutos />}
                   />
                   <Route
-                    path="gerer-soi-meme/ressources/lexique"
+                    path="se-soigner/ressources/lexique"
                     element={<AllLexique />}
                   />
                   <Route
-                    path="gerer-soi-meme/douleurs/:name/lexique"
+                    path="se-soigner/douleurs/:name/lexique"
                     element={<PainLex />}
                   />
                   <Route
-                    path="gerer-soi-meme/douleurs/:name/lexique/#:term"
+                    path="se-soigner/douleurs/:name/lexique/#:term"
                     element={<PainLex />}
                   />
                   <Route
-                    path="gerer-soi-meme/ressources/articles"
+                    path="se-soigner/ressources/articles"
                     element={<Articles />}
                   />
                   <Route
-                    path="gerer-soi-meme/douleurs/:name/articles"
+                    path="se-soigner/douleurs/:name/articles"
                     element={<Articles />}
                   />
                   <Route
-                    path="gerer-soi-meme/ressources"
+                    path="se-soigner/ressources"
                     element={<Ressources />}
                   />
-                  <Route
-                    path="trouver-de-l-aide"
-                    element={<TrouverDeLAide />}
-                  />
-                  <Route
-                    path="trouver-de-l-aide/annuaire"
-                    element={<Annuaire />}
-                  />
-                  <Route
-                    path="trouver-de-l-aide/annuaire/:name"
-                    element={<Pain />}
-                  />
+                  <Route path="s-informer" element={<SInformer />} />
+                  <Route path="s-informer/annuaire" element={<Annuaire />} />
+                  <Route path="s-informer/annuaire/:name" element={<Pain />} />
                   <Route path="shop" element={<Shop />} />
                   <Route path="agenda" element={<Agenda />} />
                   <Route path="agenda/:title" element={<Event />} />
