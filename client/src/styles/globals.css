@@ -318,7 +318,7 @@ footer a {
   padding-bottom: 0;
   margin-bottom: 0;
 }
-.pretitle + h1 {
+.pretitle + h1, .pretitle + h2 {
   margin-top: 0;
   padding-top: 0.25em;
 }
@@ -411,56 +411,56 @@ sup {
 h4,
 .h4 {
   font-family: "ESKlarheit-Medium";
-  font-size: 1.25rem;
+  font-size: 1.414rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
   font-weight: 500;
   font-size: clamp(
         1rem,
-        4.25vw + 1rem,
-        1.25rem
+        4.414vw + 1rem,
+        1.414rem
       );
 }
 
 h3,
 .h3 {
   font-family: "ESKlarheit-Medium";
-  font-size: 1.5625rem;
+  font-size: 1.999396rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
   font-weight: 500;
   font-size: clamp(
-        1.046875rem,
-        4.515625vw + 1rem,
-        1.5625rem
+        1.33959532rem,
+        4.65980068vw + 1rem,
+        1.999396rem
       );
 }
 
 h2,
 .h2 {
   font-family: "ESKlarheit-Medium";
-  font-size: 1.953125rem;
+  font-size: 2.827145944rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
   font-weight: 500;
   font-size: clamp(
-        1.30859375rem,
-        4.64453125vw + 1rem,
-        1.953125rem
+        1.8941877825rem,
+        4.9329581615vw + 1rem,
+        2.827145944rem
       );
 }
 
 h1,
 .h1 {
   font-family: "ESKlarheit-Medium";
-  font-size: 2.44140625rem;
+  font-size: 3.9975843648rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
   font-weight: 500;
   font-size: clamp(
-        1.6357421875rem,
-        4.8056640625vw + 1rem,
-        2.44140625rem
+        2.6783815244rem,
+        5.3192028404vw + 1rem,
+        3.9975843648rem
       );
 }
 
@@ -520,6 +520,9 @@ h1,
   color: #303030;
   display: flex;
   width: 100%;
+}
+.card-grid .link-card:hover {
+  opacity: 80%;
 }
 .card-grid .link-card .card {
   border: none;
@@ -1136,6 +1139,7 @@ form .form-section .form-dropdown-suggestions li {
 /*-----Desktop-----*/
 @media (min-width: 768px) {
   .breadcrumbs {
+    font-size: 80%;
     grid-column: 1/6;
     display: flex;
     color: #b0b0b0;
@@ -1169,20 +1173,33 @@ form .form-section .form-dropdown-suggestions li {
   content: "↗ ";
 }
 
+.tabbed-navigation-banner {
+  display: flex;
+  flex-direction: column;
+}
+
 .tabbed-navigation-container {
+  margin: 1em 0;
   z-index: 99;
   top: 0;
-  position: sticky;
-  border-top: 2px solid #fffdf8;
-  background-color: #fffdf8;
-  padding-bottom: 0.25em;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  transition: none;
+}
+.tabbed-navigation-container.sticky {
+  margin-top: 0;
+  position: fixed;
+  top: 0;
+  width: 100ch;
+  align-self: center;
+  justify-self: center;
+  transition: width 200ms ease-out;
 }
 .tabbed-navigation-container .tabbed-navigation {
-  background-color: #e1c5fb;
+  background-color: rgb(240, 240, 240);
   display: flex;
   justify-content: flex-start;
-  height: 100%;
-  width: 100%;
   border-radius: 40px;
   text-align: center;
   white-space: nowrap;
@@ -1206,7 +1223,6 @@ form .form-section .form-dropdown-suggestions li {
   justify-content: center;
   border: none;
   border-radius: 40px;
-  background-color: rgba(255, 255, 255, 0.4);
   line-height: 44px;
   text-decoration: initial;
   cursor: pointer;
@@ -1217,20 +1233,31 @@ form .form-section .form-dropdown-suggestions li {
   border: 0;
 }
 .tabbed-navigation-container .tabbed-navigation a:hover {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: #e1c5fb;
 }
 .tabbed-navigation-container .tabbed-navigation a.active {
-  background-color: #c896f7;
+  background-color: #9637f0;
+  color: white;
 }
 .tabbed-navigation-container .tabbed-navigation a.active:hover {
-  background-color: #d4aef9;
+  background-color: #8a1fee;
+}
+
+.sticky + .article {
+  padding-top: 10vh;
 }
 
 .article {
   animation: opacityAnimation 500ms ease-in;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+  gap: 0;
   flex-direction: column;
-  margin: 5rem auto 0 20rem;
+  margin-top: 10vh;
+}
+.article * {
+  grid-column: 2/5;
 }
 
 @keyframes opacityAnimation {
@@ -1264,6 +1291,7 @@ html {
   font-family: "ESKlarheit-Book";
   line-height: 1.5;
   font-size: 16px;
+  height: auto;
 }
 html strong {
   font-family: "ESKlarheit-Medium";
@@ -1272,13 +1300,13 @@ html strong {
 html body {
   margin: 0;
   padding: 0;
+  height: auto;
 }
 html body .main {
   padding: 10vh 2em;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  height: 100%;
 }
 
 /*-----Mobile-----*/

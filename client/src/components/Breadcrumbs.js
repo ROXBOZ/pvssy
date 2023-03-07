@@ -24,14 +24,23 @@ export default function Breadcrumbs() {
           {isLastCrumb ? (
             <span>
               {crumb
-                // batch this
+                // TOD0 batch this
                 .replaceAll("%C3%A9", "é")
                 .replaceAll("%20", " ")
                 .replaceAll("%C3%A8", "è")
-                .replaceAll("%C3%A0", "à")}
+                .replaceAll("%C3%A0", "à")
+                .replaceAll("-", " ")}
             </span>
           ) : (
-            <Link to={currentLink}>{crumb}</Link>
+            <Link to={currentLink}>
+              {crumb
+                // T0D0 batch this
+                .replaceAll("%C3%A9", "é")
+                .replaceAll("%20", " ")
+                .replaceAll("%C3%A8", "è")
+                .replaceAll("%C3%A0", "à")
+                .replaceAll("-", " ")}
+            </Link>
           )}
         </div>
       );

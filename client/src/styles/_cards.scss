@@ -5,6 +5,10 @@
     color: $txt-color;
     display: flex;
     width: 100%;
+
+    &:hover {
+      opacity: 80%;
+    }
     .card {
       border: none;
       border-radius: $border-radius;

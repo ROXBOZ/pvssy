@@ -8,6 +8,7 @@ const Pains = () => {
   return (
     <div>
       <div className="heading-area">
+        <p className="pretitle">Comprendre</p>
         <h2>Douleurs</h2>
       </div>
       <div className="card-grid">
@@ -17,16 +18,13 @@ const Pains = () => {
               <Link
                 className="link-card"
                 to={{
-                  pathname: `/se-soigner/douleurs/${p.name.toLowerCase()}/medical`,
+                  pathname: `/se-soigner/douleurs/${p.name.toLowerCase()}`,
                 }}
                 key={p._id}
               >
                 <div className="card">
                   <img src={p.img} alt={p.name} />
                   <h3>{p.name}</h3>
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  </p>
                 </div>
               </Link>
             );

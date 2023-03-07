@@ -11,7 +11,8 @@
   letter-spacing: 0.5px;
   padding-bottom: 0;
   margin-bottom: 0;
-  & + h1 {
+  & + h1,
+  & + h2 {
     margin-top: 0;
     padding-top: 0.25em;
   }
@@ -95,7 +96,7 @@ $type-ratios: (
 }
 
 $type-base-size: 1rem;
-$type-size-ratio: type-ratio("majorThird");
+$type-size-ratio: type-ratio("augmentedFourth");
 $type-levels: 4, 3, 2, 1;
 $type-styles: ();
 $level-size: $type-base-size;

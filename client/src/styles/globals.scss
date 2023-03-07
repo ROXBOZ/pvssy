@@ -36,7 +36,7 @@ html {
   font-family: $font-regular;
   line-height: 1.5;
   font-size: $font-size-basis;
-
+  height: auto;
   strong {
     font-family: $font-medium;
     //FIXME this is hacky
@@ -46,16 +46,13 @@ html {
   body {
     margin: 0;
     padding: 0;
-
+    height: auto;
     .main {
       padding: 10vh $padding-sm;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      height: 100%;
-      // h1 {
-      //   padding-top: 20vh;
-      // }
+      // height: 100%;
     }
   }
 }
