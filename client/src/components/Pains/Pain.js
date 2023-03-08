@@ -65,8 +65,8 @@ const Pain = () => {
           </span>
         </figure>
 
-        <div className="tabbed-navigation-banner">
-          <div
+        {/* <div className="tabbed-navigation-banner"> */}
+        {/* <div
             className={`tabbed-navigation-container  ${
               isSticky ? "sticky" : ""
             }`}
@@ -88,54 +88,84 @@ const Pain = () => {
                 Sexologie
               </NavLink>
             </div>
-          </div>
+          </div> */}
 
-          {outlet ? (
-            <Outlet />
-          ) : (
-            <>
-              {/**  //TODO clean up */}
-              <div className="card-grid">
-                <Link to="lexique" className="link-card">
-                  <div className="card ressource">
-                    <h3>Tutos</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                  </div>
-                </Link>
-                <Link to="lexique" className="link-card">
-                  <div className="card ressource">
-                    <h3>Shémas</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                  </div>
-                </Link>
-                <Link to="lexique" className="link-card">
-                  <div className="card ressource">
-                    <h3>Articles</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                  </div>
-                </Link>
-                <Link to="lexique" className="link-card">
-                  <div className="card ressource">
-                    <h3>Lexique</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                  </div>
-                </Link>
-              </div>
-            </>
-          )}
-        </div>
+        {outlet ? (
+          <Outlet />
+        ) : (
+          <>
+            <div
+              style={{
+                backgroundColor: "yellow",
+                margin: "5rem 0",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <p className="pretitle">Approches</p>
+              <Link to="medical">
+                <h2>Médical</h2>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Possimus quo amet quaerat repellat, voluptatum reprehenderit
+                  quod dolore ea dignissimos facilis cum cumque asperiores.
+                  Praesentium delectus perspiciatis magnam repudiandae dolor
+                  alias.
+                </p>
+              </Link>
+
+              <Link to="sexologie">
+                <h2>Sexologie</h2>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Possimus quo amet quaerat repellat, voluptatum reprehenderit
+                  quod dolore ea dignissimos facilis cum cumque asperiores.
+                  Praesentium delectus perspiciatis magnam repudiandae dolor
+                  alias.
+                </p>
+              </Link>
+            </div>
+            <div className="card-grid">
+              <Link to="lexique" className="link-card">
+                <div className="card ressource">
+                  <h3>Tutos</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </p>
+                </div>
+              </Link>
+              <Link to="lexique" className="link-card">
+                <div className="card ressource">
+                  <h3>Shémas</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </p>
+                </div>
+              </Link>
+              <Link to="lexique" className="link-card">
+                <div className="card ressource">
+                  <h3>Articles</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </p>
+                </div>
+              </Link>
+              <Link to="lexique" className="link-card">
+                <div className="card ressource">
+                  <h3>Lexique</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </p>
+                </div>
+              </Link>
+            </div>
+          </>
+        )}
+        {/* </div> */}
       </>
     );
   }
