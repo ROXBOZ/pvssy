@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { Link, NavLink } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 
@@ -7,6 +13,7 @@ const PainArticle = () => {
   let sourceCounter = 0;
   const submenuRef = useRef(null);
   const menuRef = useRef();
+  const [menuTop, setMenuTop] = useState(0);
   const {
     isSticky,
     setIsSticky,
@@ -83,7 +90,7 @@ const PainArticle = () => {
                       }}
                     >
                       {part}
-                      <sup>{sourceCounter}</sup>
+                      {/* <sup>{sourceCounter}</sup> */}
                     </Link>
                   );
                 }
@@ -99,10 +106,35 @@ const PainArticle = () => {
     });
   };
 
+  useLayoutEffect(() => {
+    if (menuRef.current) {
+      setMenuTop(menuRef.current.offsetTop);
+    }
+  }, [menuRef.current]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const isScrolledPast = scrollY > menuTop;
+      setIsSticky(isScrolledPast);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [menuTop]);
+
+  let articleRef = document.getElementById("articleRef");
+  const scrollToArticle = () => {
+    articleRef.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   const mokeParagraphSexo = [
     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam labore modi iusto. Ullam at ex hic. Enim eligendi magni hic repellendus facilis assumenda explicabo, eius, deserunt illo eos architecto nihil? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam labore modi iusto.",
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam labore modi iusto. Ullam at ex hic. Enim eligendi magni hic repellendus facilis assumenda explicabo, eius, deserunt illo eos architecto nihil? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam labore modi iusto.",
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam labore modi iusto. Ullam at ex hic. Enim eligendi magni hic repellendus facilis assumenda explicabo, eius, deserunt illo eos architecto nihil? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam labore modi iusto.",
+    "Lorem ipsum, dolir sit amet consectetur adipisicing elit. Quisquam labore modi iusto. Ullam at ex hic. Enim eligendi magni hic repellendus facilis assumenda explicabo, eius, deserunt illo eos architecto nihil? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam labore modi iusto.",
+    "Lorem ipsum, dolur sit amet consectetur adipisicing elit. Quisquam labore modi iusto. Ullam at ex hic. Enim eligendi magni hic repellendus facilis assumenda explicabo, eius, deserunt illo eos architecto nihil? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam labore modi iusto.",
   ];
   const mokeParagraphSexo2 = [
     "Lorem ipsum, Test ref sit amet consectetur adipisicing elit. Quisquam labore modi iusto. Ullam at ex hic. Enim eligendi magni hic repellendus facilis assumenda explicabo, eius, deserunt illo eos architecto nihil? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam labore modi iusto.",
@@ -110,30 +142,32 @@ const PainArticle = () => {
 
   return (
     <>
+      <figure>
+        <img
+          className="pain-illu-cover"
+          src={painData.img}
+          alt={painData.name}
+        />
+        <span>
+          Illustré par <Link to="*">Illustrateurice</Link>
+        </span>
+      </figure>
       <div className="tabbed-navigation-banner">
         <div
           className={`tabbed-navigation-container  ${isSticky ? "sticky" : ""}`}
           ref={menuRef}
         >
           <div className="tabbed-navigation">
-            <NavLink
-              to={{
-                pathname: `../medical`,
-              }}
-            >
+            <NavLink to={`../medical`} onClick={scrollToArticle}>
               Médical
             </NavLink>
-            <NavLink
-              to={{
-                pathname: `../sexologie`,
-              }}
-            >
+            <NavLink to={`../sexologie`} onClick={scrollToArticle}>
               Sexologie
             </NavLink>
           </div>
         </div>
       </div>
-      <div className="article" id="medical">
+      <div className="article" id="articleRef">
         <div className="auteurice">
           <div className="img-holder" />
           <em>
@@ -145,27 +179,40 @@ const PainArticle = () => {
             )}
           </em>
         </div>
+
         <ul
-          ref={submenuRef}
           className={`category-submenu ${isSticky ? "fixed" : ""}`}
+          ref={submenuRef}
         >
           <p className="h4">
             Ressources
             <br />
             {painData.name}
-          </p>{" "}
-          <li>
-            <Link to="*">Tutos</Link>
-          </li>
-          <li>
-            <Link to="*">Shémas</Link>
-          </li>
+          </p>
           <li>
             <Link to="*">Articles</Link>
           </li>
           <li>
             <Link to="../lexique">Lexique</Link>
           </li>
+          <li>
+            <Link to="*">Shémas</Link>
+          </li>
+          <li>
+            <Link to="*">Tutos</Link>
+          </li>
+
+          {!isMed && (
+            <>
+              <br />
+              <li>
+                <Link to="*">Exercices</Link>
+              </li>
+              <li>
+                <Link to="*">Extras</Link>
+              </li>
+            </>
+          )}
         </ul>
 
         {isMed ? (
@@ -238,24 +285,24 @@ const PainArticle = () => {
         )}
 
         <div id="references" className="source-ref">
-          <h4>
-            Bibliographie <span style={{ color: "red" }}>MED/SEX/BOTH?</span>
-          </h4>
-          <ol>
+          <h4>Sources</h4>
+          <ul role="list">
             {requestedSources &&
               requestedSources.map((s) => (
-                <li key={s._id} id={s.title}>
-                  <span className="source-author">{s.author}</span>
-                  <span className="source-year"> ({s.year}). </span>
-                  <span className="source-title">{s.title}</span>
-                  <span className="source-edition">
-                    &nbsp;({s.edition}
-                    {s.edition === "1" ? "ère" : "ème"} éd.) 
+                <li data-icon="→" key={s._id} id={s.title}>
+                  <span className="source-list-item">
+                    <span className="source-author">{s.author}</span>
+                    <span className="source-year"> ({s.year}). </span>
+                    <span className="source-title">{s.title}</span>
+                    <span className="source-edition">
+                      &nbsp;({s.edition}
+                      {s.edition === "1" ? "ère" : "ème"} éd.) 
+                    </span>
+                    <span className="editor">{s.editor}</span>.
                   </span>
-                  <span className="editor">{s.editor}</span>.
                 </li>
               ))}
-          </ol>
+          </ul>
         </div>
       </div>
     </>

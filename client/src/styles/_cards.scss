@@ -1,11 +1,28 @@
 .card-grid {
   @include card-grid;
-
   .link-card {
     border-bottom: none;
     color: $txt-color;
     display: flex;
     width: 100%;
+
+    &.article {
+      grid-column: span 2;
+    }
+
+    &.ressource {
+      .card {
+        background-color: darken($color3, 10%);
+        color: white;
+      }
+    }
+
+    &.article,
+    &.ressource {
+      .card {
+        padding: $padding-sm;
+      }
+    }
 
     &:hover {
       opacity: 80%;
@@ -19,16 +36,9 @@
       box-shadow: $elevation-8;
       overflow: hidden;
 
-      &.ressource {
-        background-color: darken($color3, 10%);
-        color: white;
-        padding: $padding-sm;
-      }
-
       h3,
       p {
-        margin: 1rem;
-        padding: 0;
+        padding: 0 1rem;
       }
 
       h3 {

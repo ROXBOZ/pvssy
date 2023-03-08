@@ -18,10 +18,23 @@
   margin-top: $gap;
   border-top: $border-solid;
   max-width: 70ch;
-  li {
-    font-size: 80%;
-    .source-title {
-      font-family: $font-medium-italic;
+  ul {
+    padding-left: 0;
+    display: grid;
+    gap: 0.25rem;
+    li {
+      display: grid;
+      grid-template-columns: 0 1fr;
+      gap: 1.75em;
+      align-items: start;
+      font-size: 80%;
+      line-height: $lineheight;
+      &:before {
+        content: attr(data-icon);
+      }
+      .source-title {
+        font-family: $font-medium-italic;
+      }
     }
   }
 }

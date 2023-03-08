@@ -6,20 +6,13 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     const excludedPaths = [
-      "/profile/ajouter",
-      "/profile/modifier",
-      "/profile/approuver",
-      "/profile/supprimer",
-      "/se-soigner/douleurs/*/medical",
-      "/se-soigner/douleurs/*/sexologie",
+      /^\/profile\/(ajouter|modifier|approuver|supprimer)/,
     ];
-    for (const path of excludedPaths) {
-      if (typeof path === "string" && pathname === path) {
-        return;
-      } else if (path instanceof RegExp && path.test(pathname)) {
-        return;
-      }
+
+    if (excludedPaths.some((pattern) => pattern.test(pathname))) {
+      return;
     }
+
     window.scrollTo(0, 0);
   }, [pathname]);
 
