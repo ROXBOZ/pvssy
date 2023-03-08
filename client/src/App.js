@@ -15,8 +15,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Pains from "./components/Pains/Pains";
 import Pain from "./components/Pains/Pain";
-import PainMed from "./components/Pains/PainMed";
-import PainSexo from "./components/Pains/PainSexo";
+import PainArticle from "./components/Pains/PainArticle";
 import EventsArchives from "./components/EventsArchives";
 import Event from "./components/Agenda/Event";
 import ScrollToTop from "./utils/ScrollToTop";
@@ -59,8 +58,8 @@ function App() {
                   <Route path="se-soigner" element={<SeSoigner />} />
                   <Route path="se-soigner/douleurs" element={<Pains />} />
                   <Route path="se-soigner/douleurs/:name" element={<Pain />}>
-                    <Route path="medical" element={<PainMed />} />
-                    <Route path="sexologie" element={<PainSexo />} />
+                    <Route path="medical" element={<PainArticle />} />
+                    <Route path="sexologie" element={<PainArticle />} />
                   </Route>
                   <Route
                     path="se-soigner/ressources/tutos"

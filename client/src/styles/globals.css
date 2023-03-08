@@ -1211,6 +1211,9 @@ figure span a {
 .category-submenu li:after {
   content: " ↗";
 }
+.category-submenu .sticky {
+  background-color: yellow;
+}
 
 .tabbed-navigation-banner {
   display: flex;
