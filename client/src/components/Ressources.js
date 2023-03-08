@@ -5,11 +5,10 @@ import Articles from "./Articles";
 const Ressources = () => {
   return (
     <div>
-      <h2>Ressources</h2>
       <Tutos />
       <Articles />
-      <h3>Shémas</h3>
-      <h3>Lexique</h3>
+      <h2>Shémas</h2>
+      <h2>Lexique</h2>
     </div>
   );
 };

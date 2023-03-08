@@ -25,6 +25,9 @@ const Pains = () => {
                 <div className="card">
                   <img src={p.img} alt={p.name} />
                   <h3>{p.name}</h3>
+                  <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  </p>
                 </div>
               </Link>
             );

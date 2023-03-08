@@ -318,7 +318,7 @@ footer a {
   padding-bottom: 0;
   margin-bottom: 0;
 }
-.pretitle + h1, .pretitle + h2 {
+.pretitle + h1, .pretitle + h2, .pretitle + h3 {
   margin-top: 0;
   padding-top: 0.25em;
 }
@@ -471,11 +471,25 @@ h1,
 }
 
 /*-----Pain page----*/
-.img-holder {
-  min-height: 200px;
-  width: 100%;
+.auteurice {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  margin-left: -3em;
+}
+.auteurice .img-holder {
+  border-radius: 50%;
+  height: 2.5em;
+  width: 2.5em;
   background: linear-gradient(180deg, rgba(255, 82, 215, 0.8) 0%, rgba(245, 116, 60, 0.8) 100%);
-  border-radius: 0.25em;
+}
+.auteurice em {
+  font-style: normal;
+  font-family: "ESKlarheit-Medium-Italic";
+}
+.auteurice em a {
+  font-style: normal;
+  font-family: "ESKlarheit-Medium-Italic";
 }
 
 .pain-img,
@@ -1161,16 +1175,41 @@ form .form-section .form-dropdown-suggestions li {
      object-fit: cover;
 }
 
+figure {
+  margin: 0;
+  padding: 0;
+}
+figure span {
+  margin: 0;
+  font-family: "ESKlarheit-Medium-Italic";
+  font-style: normal;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+figure span a {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "ESKlarheit-Medium-Italic";
+  width: fit-content;
+  font-style: normal;
+}
+
 .category-submenu {
-  padding-left: 0;
-  display: flex;
-  gap: 1em;
+  width: -moz-fit-content;
+  width: fit-content;
+  grid-column: 1/2 !important;
+  grid-row: 3/4;
+  margin-top: 0;
+  text-align: right;
+}
+.category-submenu h4 {
+  margin: 0;
 }
 .category-submenu li {
   list-style: none;
 }
-.category-submenu li:before {
-  content: "↗ ";
+.category-submenu li:after {
+  content: " ↗";
 }
 
 .tabbed-navigation-banner {
@@ -1191,10 +1230,10 @@ form .form-section .form-dropdown-suggestions li {
   margin-top: 0;
   position: fixed;
   top: 0;
-  width: 100ch;
+  width: 120ch;
   align-self: center;
   justify-self: center;
-  transition: width 200ms ease-out;
+  transition: width 400ms ease-out;
 }
 .tabbed-navigation-container .tabbed-navigation {
   background-color: rgb(240, 240, 240);

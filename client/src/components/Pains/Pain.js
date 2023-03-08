@@ -1,14 +1,20 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { NavLink, Outlet, useOutlet } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, NavLink, Outlet, useOutlet } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 
 const Pain = () => {
+  const { painData, painName, fetchSinglePain, fetchRelatedSources } =
+    useContext(PainsContext);
+
+  useEffect(() => {
+    fetchSinglePain(painName);
+  }, []);
+
   const menuRef = useRef();
   const [isSticky, setIsSticky] = useState(false);
-  const [menuTop, setMenuTop] = useState(0);
-  const { painData, fetchRelatedSources } = useContext(PainsContext);
 
+  const [menuTop, setMenuTop] = useState(0);
   useEffect(() => {
     setMenuTop(menuRef.current.offsetTop);
   }, []);
@@ -39,30 +45,20 @@ const Pain = () => {
         <div className="heading-area">
           <p className="pretitle">Comprendre</p>
           <h1>{painData.name}</h1>
-          {/* <ul className="category-submenu">
-            <strong>Ressources {painData.name} :</strong>{" "}
-            <li>
-              <Link to="*">Tutos</Link>
-            </li>
-            <li>
-              <Link to="*">Articles</Link>
-            </li>
-            <li>
-              <Link to="*">Shémas</Link>
-            </li>
-            <li>
-              <Link to="lexique">Lexique</Link>
-            </li>
-          </ul> */}
         </div>
 
-        <div className="tabbed-navigation-banner">
+        <figure>
           <img
             className="pain-illu-cover"
             src={painData.img}
             alt={painData.name}
           />
+          <span>
+            par <Link to="/">Illustration</Link>, 2023
+          </span>
+        </figure>
 
+        <div className="tabbed-navigation-banner">
           <div
             className={`tabbed-navigation-container  ${
               isSticky ? "sticky" : ""

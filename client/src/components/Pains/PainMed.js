@@ -1,26 +1,10 @@
-import React, { useContext, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 
 const PainMed = () => {
-  const location = useLocation();
-  const articleId = location.state?.articleId;
   const { painData, requestedTerms, requestedSources } =
     useContext(PainsContext);
-
-  console.log("articleId :", articleId);
-
-  //FIXME successfully set anchor >>> douleurs/vaginisme/sexologie/#article-sexologie
-  // then, fix nav
-
-  // useEffect(() => {
-  //   if (articleId) {
-  //     const articleEl = document.getElementById(articleId);
-  //     if (articleEl) {
-  //       articleEl.scrollIntoView({ behavior: "smooth" });
-  //     }
-  //   }
-  // }, [articleId]);
 
   let sourceCounter = 0;
 
@@ -96,8 +80,30 @@ const PainMed = () => {
     });
   };
 
+  //FIXME MERGE WITH SEXO IN ONE ARTICLE COMPONENT USING CONDITIONALS
+
   return (
     <div className="article" id="medical">
+      <div className="auteurice">
+        <div className="img-holder" />
+        <em>
+          par <Link to="https://aemg-ge.com/">Medsexplain</Link>
+        </em>
+      </div>
+
+      <ul className="category-submenu">
+        <p className="h4">Ressources</p>{" "}
+        <li>
+          <Link to="*">Tutos</Link>
+        </li>
+        <li>
+          <Link to="*">Shémas</Link>
+        </li>
+        <li>
+          <Link to="../lexique">Lexique</Link>
+        </li>
+      </ul>
+
       <h2>Définition</h2>
       {highlightParagraphs(painData.def)}
       <h2>Diagnostic</h2>

@@ -5,7 +5,7 @@ const PainSexo = () => {
   const location = useLocation();
   const articleId = location.state?.articleId;
 
-  console.log("articleId :", articleId);
+  //FIXME MERGE WITH SEXO IN ONE ARTICLE COMPONENT USING CONDITIONALS
 
   useEffect(() => {
     if (articleId) {

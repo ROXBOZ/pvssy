@@ -3,7 +3,8 @@ import React from "react";
 const Tutos = () => {
   return (
     <div>
-      <h3>Tutos </h3>
+      <p className="pretitle">Ressources</p>
+      <h2>Tutos </h2>
       <p>
         filtre : toggle entre santé et plaisir. Si santé : option choix douleurs
       </p>

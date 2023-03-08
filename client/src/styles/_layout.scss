@@ -4,11 +4,26 @@
 
 /*-----Pain page----*/
 
-.img-holder {
-  min-height: 200px;
-  width: 100%;
-  background: $gradient;
-  border-radius: $border-radius;
+.auteurice {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  margin-left: -3em;
+  .img-holder {
+    border-radius: 50%;
+    height: 2.5em;
+    width: 2.5em;
+    background: $gradient;
+  }
+
+  em {
+    font-style: normal;
+    font-family: $font-medium-italic;
+    a {
+      font-style: normal;
+      font-family: $font-medium-italic;
+    }
+  }
 }
 
 .pain-img,

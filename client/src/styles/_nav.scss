@@ -1,10 +1,17 @@
 .category-submenu {
-  padding-left: 0;
-  display: flex;
-  gap: $demi-gap;
+  width: fit-content;
+  grid-column: 1/2 !important;
+  grid-row: 3/4;
+  margin-top: 0;
+  text-align: right;
+
+  h4 {
+    margin: 0;
+  }
+
   li {
-    &:before {
-      content: "↗ ";
+    &:after {
+      content: " ↗";
     }
     list-style: none;
   }
@@ -29,10 +36,10 @@ $tabbed-navigation-color: $color3;
     margin-top: 0;
     position: fixed;
     top: 0;
-    width: 100ch;
+    width: 120ch;
     align-self: center;
     justify-self: center;
-    transition: width 200ms ease-out;
+    transition: width 400ms ease-out;
   }
 
   .tabbed-navigation {

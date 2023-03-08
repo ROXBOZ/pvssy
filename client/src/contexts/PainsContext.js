@@ -9,12 +9,13 @@ export const PainsContextProvider = (props) => {
   const [Loading, setLoading] = useState(true);
   const [Error, setError] = useState(null);
   const [painData, setPainData] = useState(null);
-  const [requestedSources, setRequestedSources] = useState(null);
-  const [requestedTerms, setRequestedTerms] = useState(null);
+  const [requestedSources, setRequestedSources] = useState([]);
+  const [requestedTerms, setRequestedTerms] = useState([]);
 
   const segments = location.pathname.split("/");
   const index = segments.indexOf("douleurs");
-  const painName =
+
+  let painName =
     index !== -1 && index + 1 < segments.length
       ? segments[index + 1].charAt(0).toUpperCase() +
         segments[index + 1].slice(1)
@@ -66,9 +67,11 @@ export const PainsContextProvider = (props) => {
       console.log("error :", error);
     }
   };
+
   const fetchRelatedTerms = async () => {
     const requestOptions = {
       method: "GET",
+      redirect: "follow",
     };
 
     try {
@@ -88,10 +91,9 @@ export const PainsContextProvider = (props) => {
 
   useEffect(() => {
     fetchData(url);
-    fetchSinglePain(painName);
     fetchRelatedSources(painName);
     fetchRelatedTerms(painName);
-  }, [url]);
+  }, [url, painName]);
 
   return (
     <PainsContext.Provider
