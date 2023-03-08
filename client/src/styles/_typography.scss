@@ -51,32 +51,8 @@ sup {
   font-size: 60%;
 }
 
-.source {
-  font-family: $font-regular-italic;
-  color: $txt-color;
-  display: block;
-  word-wrap: break-word;
-  @include dotted-border;
-
-  &:hover {
-    @include dotted-border;
-  }
-  &:focus {
-    border: 0;
-    outline: 0;
-  }
-}
-
-.source-ref {
-  margin-top: $gap;
-  border-top: $border-solid;
-  max-width: 70ch;
-  li {
-    font-size: 80%;
-    .source-title {
-      font-family: $font-medium-italic;
-    }
-  }
+h2 + h3 {
+  margin-top: 0;
 }
 
 /*-----Ratio Scale-----*/

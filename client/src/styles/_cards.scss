@@ -1,5 +1,6 @@
 .card-grid {
   @include card-grid;
+
   .link-card {
     border-bottom: none;
     color: $txt-color;
@@ -17,6 +18,12 @@
       flex: max-content;
       box-shadow: $elevation-8;
       overflow: hidden;
+
+      &.ressource {
+        background-color: darken($color3, 10%);
+        color: white;
+        padding: $padding-sm;
+      }
 
       h3,
       p {

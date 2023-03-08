@@ -1,23 +1,36 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { Link, NavLink, Outlet, useOutlet } from "react-router-dom";
-// import { Link } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 
 const Pain = () => {
-  const { painData, painName, fetchSinglePain, fetchRelatedSources } =
-    useContext(PainsContext);
+  const menuRef = useRef();
+  const outlet = useOutlet();
+  const [menuTop, setMenuTop] = useState(0);
+  const {
+    isSticky,
+    setIsSticky,
+    painData,
+    painName,
+    fetchSinglePain,
+    fetchRelatedSources,
+  } = useContext(PainsContext);
 
   useEffect(() => {
     fetchSinglePain(painName);
+    fetchRelatedSources();
   }, []);
 
-  const menuRef = useRef();
-  const [isSticky, setIsSticky] = useState(false);
-
-  const [menuTop, setMenuTop] = useState(0);
-  useEffect(() => {
-    setMenuTop(menuRef.current.offsetTop);
-  }, []);
+  useLayoutEffect(() => {
+    if (menuRef.current) {
+      setMenuTop(menuRef.current.offsetTop);
+    }
+  }, [menuRef.current]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,12 +43,6 @@ const Pain = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [menuTop]);
-
-  const outlet = useOutlet();
-
-  useEffect(() => {
-    fetchRelatedSources();
-  }, []);
 
   if (!painData) {
     return <div className="msg pending">Chargement...</div>;
@@ -54,7 +61,7 @@ const Pain = () => {
             alt={painData.name}
           />
           <span>
-            par <Link to="/">Illustration</Link>, 2023
+            Illustré par <Link to="/">Illustrateurice</Link>
           </span>
         </figure>
 
@@ -69,7 +76,6 @@ const Pain = () => {
               <NavLink
                 to={{
                   pathname: `medical`,
-                  state: { articleId: "article-medical" },
                 }}
               >
                 Médical
@@ -77,7 +83,6 @@ const Pain = () => {
               <NavLink
                 to={{
                   pathname: `sexologie`,
-                  state: { articleId: "article-sexologie" },
                 }}
               >
                 Sexologie
@@ -88,13 +93,47 @@ const Pain = () => {
           {outlet ? (
             <Outlet />
           ) : (
-            <p className="msg info">
-              Pvssy Talk propose deux approches bien distinctes mais
-              complémentaires, l’une issue de la médecine et l’autre de la
-              sexologie. Tu peux consulter les deux approches et combiner selon
-              ce qui te parle le plus. Pvssy Talk s’engage à ne pas soutenir une
-              approche plus que l’autre.
-            </p>
+            <>
+              {/**  //TODO clean up */}
+              <div className="card-grid">
+                <Link to="lexique" className="link-card">
+                  <div className="card ressource">
+                    <h3>Tutos</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </Link>
+                <Link to="lexique" className="link-card">
+                  <div className="card ressource">
+                    <h3>Shémas</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </Link>
+                <Link to="lexique" className="link-card">
+                  <div className="card ressource">
+                    <h3>Articles</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </Link>
+                <Link to="lexique" className="link-card">
+                  <div className="card ressource">
+                    <h3>Lexique</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            </>
           )}
         </div>
       </>

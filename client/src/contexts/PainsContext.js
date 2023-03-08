@@ -11,7 +11,8 @@ export const PainsContextProvider = (props) => {
   const [painData, setPainData] = useState(null);
   const [requestedSources, setRequestedSources] = useState([]);
   const [requestedTerms, setRequestedTerms] = useState([]);
-
+  const [isSticky, setIsSticky] = useState(false);
+  const [isMed, setIsMed] = useState(true);
   const segments = location.pathname.split("/");
   const index = segments.indexOf("douleurs");
 
@@ -67,7 +68,6 @@ export const PainsContextProvider = (props) => {
       console.log("error :", error);
     }
   };
-
   const fetchRelatedTerms = async () => {
     const requestOptions = {
       method: "GET",
@@ -111,6 +111,10 @@ export const PainsContextProvider = (props) => {
         requestedSources,
         fetchRelatedTerms,
         requestedTerms,
+        isMed,
+        setIsMed,
+        isSticky,
+        setIsSticky,
       }}
     >
       {props.children}

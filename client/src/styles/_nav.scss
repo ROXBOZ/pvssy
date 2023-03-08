@@ -1,9 +1,19 @@
 .category-submenu {
   width: fit-content;
   grid-column: 1/2 !important;
-  grid-row: 3/4;
+  grid-row: 3/6;
   margin-top: 0;
   text-align: right;
+  position: relative;
+  z-index: 999;
+
+  &.fixed {
+    transition: top 500s;
+    position: fixed;
+    top: 48vh;
+    transform: translateY(-48%);
+    transition: transform 0.5s ease-in;
+  }
 
   h4 {
     margin: 0;
@@ -14,10 +24,6 @@
       content: " ↗";
     }
     list-style: none;
-  }
-
-  .sticky {
-    background-color: yellow;
   }
 }
 

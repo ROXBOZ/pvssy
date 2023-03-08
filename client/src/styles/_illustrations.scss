@@ -8,6 +8,9 @@
 figure {
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
 
   span {
     margin: 0;

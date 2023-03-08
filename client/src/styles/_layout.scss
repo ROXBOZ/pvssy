@@ -4,6 +4,16 @@
 
 /*-----Pain page----*/
 
+.two-cols-flex-center {
+  display: flex;
+  gap: $gap;
+  align-items: center;
+  margin: $gap 0;
+  img {
+    aspect-ratio: 3/2;
+  }
+}
+
 .auteurice {
   display: flex;
   gap: 0.5em;

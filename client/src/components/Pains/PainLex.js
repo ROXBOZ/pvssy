@@ -84,16 +84,14 @@ const PainLex = () => {
             .replace(/\s+/g, "-")
             .toLowerCase();
           return (
-            // <ul className=" lexique-list" key={index}>
-            // <li className="lexique-list-item">
-            <>
-              <h2 className="h3" id={termAnchor}>
-                {t.term}
-              </h2>
-              <p>{createParagraphs(t.def)}</p>
-            </>
-            // </li>
-            // </ul>
+            <ul className=" lexique-list" key={index}>
+              <li className="lexique-list-item">
+                <h2 className="h3" id={termAnchor}>
+                  {t.term}
+                </h2>
+                {createParagraphs(t.def)}
+              </li>
+            </ul>
           );
         })}
     </>
