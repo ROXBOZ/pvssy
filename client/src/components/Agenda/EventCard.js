@@ -63,7 +63,7 @@ const EventCard = ({ e }) => {
   return (
     <Link
       state={{ content: eventDetail }}
-      className="link-card"
+      className="link-card agenda"
       to={{
         pathname: `/agenda/${title.toLowerCase().replace(/\s/g, "-")}`,
       }}
@@ -74,15 +74,16 @@ const EventCard = ({ e }) => {
         className="card"
         style={{ background: generateColor(color1, color2) }}
       >
-        <div className="card-text">
-          <h3>{shortTitle}</h3>
-          <p className="card-date">{dateTime}</p>
+        <h3>{shortTitle}</h3>
+        <p className="card-date">
+          {dateTime}
+          <br />
           {isOnline ? (
-            <p className="card-location">ONLINE</p>
+            <span className="card-date"> ONLINE</span>
           ) : (
-            <p className="card-location">{city}</p>
+            <span className="card-location">{city}</span>
           )}
-        </div>
+        </p>
       </div>
     </Link>
   );

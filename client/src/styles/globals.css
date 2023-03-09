@@ -503,6 +503,9 @@ h1,
   background-color: #7d11e3;
   color: white;
 }
+.card-grid .link-card.agenda .card h3 {
+  text-align: center;
+}
 .card-grid .link-card.article .card, .card-grid .link-card.ressource .card {
   padding: 2em;
 }
@@ -1267,16 +1270,22 @@ figure span a {
 }
 
 .article {
-  animation: opacityAnimation 500ms ease-in;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2em;
+  animation: opacityAnimation 500ms ease-in;
   gap: 0;
   flex-direction: column;
   margin-top: 10vh;
 }
 .article * {
   grid-column: 2/5;
+}
+.article.event {
+  max-width: 50vw;
+}
+.article.event .heading-area {
+  margin-top: 0;
 }
 
 @keyframes opacityAnimation {

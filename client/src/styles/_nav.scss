@@ -3,7 +3,6 @@
   grid-column: 1/2 !important;
   grid-row: 3/6;
   margin-top: 0;
-  //text-align: right;
   position: relative;
   z-index: 999;
   &.fixed {
@@ -106,14 +105,22 @@ $tabbed-navigation-color: $color3;
 
 // TODO REOGANIZE
 .article {
-  animation: opacityAnimation 500ms ease-in;
   @include grid;
+
+  animation: opacityAnimation 500ms ease-in;
   gap: 0;
   flex-direction: column;
   margin-top: 10vh;
 
   * {
     grid-column: 2/5;
+  }
+
+  &.event {
+    max-width: 50vw;
+    .heading-area {
+      margin-top: 0;
+    }
   }
 }
 

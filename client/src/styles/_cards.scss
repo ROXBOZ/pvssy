@@ -17,6 +17,14 @@
       }
     }
 
+    &.agenda {
+      .card {
+        h3 {
+          text-align: center;
+        }
+      }
+    }
+
     &.article,
     &.ressource {
       .card {
