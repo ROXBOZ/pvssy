@@ -206,19 +206,7 @@ const SignupForm = () => {
             <li className="error msg">min 6 caractères.</li>
           )}
         </div>
-        <ul className="error-list">
-          {newUser.userName && newUser.userName.length < 2 && (
-            <li className="error msg">
-              Le nom doit être entre 2 et 20 lettres.
-            </li>
-          )}
-          {newUser.userEmail && !emailRegex.test(newUser.userEmail) && (
-            <li className="error msg">L’adresse email est invalide.</li>
-          )}
-          {newUser.userWebsite && !urlRegex.test(newUser.userWebsite) && (
-            <li className="error msg">L’URL du site internet est invalide.</li>
-          )}
-        </ul>
+
         <div className="conditions-generales">
           <input
             className="form-check-input"
@@ -249,6 +237,17 @@ const SignupForm = () => {
           </button>
         </div>
       </form>
+      <ul className="error-list">
+        {newUser.userName && newUser.userName.length < 2 && (
+          <li className="error msg">Le nom doit être entre 2 et 20 lettres.</li>
+        )}
+        {newUser.userEmail && !emailRegex.test(newUser.userEmail) && (
+          <li className="error msg">L’adresse email est invalide.</li>
+        )}
+        {newUser.userWebsite && !urlRegex.test(newUser.userWebsite) && (
+          <li className="error msg">L’URL du site internet est invalide.</li>
+        )}
+      </ul>
       {message && (
         <div className={`message ${message.type}`}>{message.content}</div>
       )}

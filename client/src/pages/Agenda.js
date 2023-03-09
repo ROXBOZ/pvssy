@@ -28,64 +28,60 @@ const Agenda = () => {
 
   return (
     <div>
-      <div className="heading-area">
-        <div className="heading">
-          <p className="pretitle">Let’s connect</p>
-          <h1>
-            Agenda collaboratif<sup>prototype</sup>
-          </h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-            accusantium optio dolore dolorum suscipit ducimus neque quaerat!
-            Quas rellendus laudantium, excturi iusto architecto neque natus
-            adipisci, eligendi nesciunt eos odit!
-          </p>
-          <p>
-            Vous avez un évènement à proposer ?{" "}
-            <Link to="/login">Connectez-vous</Link> et soumettez-le!
-          </p>
-        </div>
+      <p className="pretitle">Let’s connect</p>
+      <h1>
+        Agenda collaboratif<sup>prototype</sup>
+      </h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
+        accusantium optio dolore dolorum suscipit ducimus neque quaerat! Quas
+        rellendus laudantium, excturi iusto architecto neque natus adipisci,
+        eligendi nesciunt eos odit!
+      </p>
+      <p>
+        Vous avez un évènement à proposer ?{" "}
+        <Link to="/login">Connectez-vous</Link> et soumettez-le!
+      </p>
 
-        <div className="filter-dashboard">
-          <div className="filter">
-            <div className="filter-dropdown">
-              <div className="input-icon">
-                <label htmlFor="region">Région</label>
-                <input
-                  placeholder="Lausanne"
-                  id="region"
-                  type="text"
-                  value={value}
-                  onClick={handleIconClick}
-                  onChange={handleRegionInputChange}
-                  onKeyDown={handleKeyDown}
-                />
-                <FontAwesomeIcon
-                  className={iconClicked ? "open" : "close"}
-                  id="chevron-icon"
-                  onClick={handleIconClick}
-                  icon={faChevronDown}
-                />
-              </div>
-
-              {showSuggestions && (
-                <ul className="suggestions">
-                  {suggestions.map((suggestion, index) => (
-                    <li
-                      key={index}
-                      className={
-                        index === selectedSuggestionIndex
-                          ? "suggestion-active"
-                          : ""
-                      }
-                      onClick={() => handleSuggestionClick(suggestion)}
-                    >
-                      {suggestion}
-                    </li>
-                  ))}
-                </ul>
-              )}
+      <div className="filter-dashboard">
+        <div className="filter">
+          <div className="filter-dropdown">
+            <div className="input-icon">
+              <label htmlFor="region">Région</label>
+              <input
+                placeholder="Lausanne"
+                id="region"
+                type="text"
+                value={value}
+                onClick={handleIconClick}
+                onChange={handleRegionInputChange}
+                onKeyDown={handleKeyDown}
+              />
+              <FontAwesomeIcon
+                className={iconClicked ? "open" : "close"}
+                id="chevron-icon"
+                onClick={handleIconClick}
+                icon={faChevronDown}
+              />
             </div>
+
+            {showSuggestions && (
+              <ul className="suggestions">
+                {suggestions.map((suggestion, index) => (
+                  <li
+                    key={index}
+                    className={
+                      index === selectedSuggestionIndex
+                        ? "suggestion-active"
+                        : ""
+                    }
+                    onClick={() => handleSuggestionClick(suggestion)}
+                  >
+                    {suggestion}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>

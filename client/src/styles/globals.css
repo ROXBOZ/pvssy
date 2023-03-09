@@ -290,12 +290,48 @@
   }
 }
 footer {
-  background-color: #303030;
+  background-color: #171717;
   color: #fffdf8;
   padding: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+footer h2 .logo {
+  font-family: "ESRebond";
+  color: #fab99d;
 }
 footer a {
   color: #fffdf8;
+}
+footer .social-medias {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+footer .social-medias a {
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid white;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+footer .social-medias a svg {
+  fill: white;
+  width: 2em;
+  overflow: hidden;
+  margin: 2px;
+}
+footer .social-medias a:hover {
+  border: 1.5px solid #9637f0;
+  background-color: #9637f0;
+}
+footer .copyrights {
+  max-width: 100% !important;
+  margin-bottom: 0;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -333,6 +369,7 @@ p {
 }
 p.subtitle {
   font-size: x-large;
+  margin-bottom: 10vh;
 }
 
 a {

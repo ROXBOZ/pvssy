@@ -3,14 +3,14 @@ import React from "react";
 const Annuaire = () => {
   return (
     <div>
-      <h2>Annuaire</h2>
-      <h3>Soignant·es</h3>
-      <p>filtre : type, pratiques, approche, selon type de douleurs</p>
-      <h3>Associations</h3>
-      <h3>Groupes de paroles</h3>
-      <h3>Sites spécialisés</h3>
-      <h3>Comptes Insta</h3>
-      <h3>Magasins</h3>
+      <p className="pretitle">Annuaire</p>
+      <h2>Soignant·es</h2>
+      {/* <p>filtre : type, pratiques, approche, selon type de douleurs</p> */}
+      <h2>Associations</h2>
+      <h2>Groupes de paroles</h2>
+      <h2>Sites spécialisés</h2>
+      <h2>Comptes Insta</h2>
+      <h2>Magasins</h2>
     </div>
   );
 };
