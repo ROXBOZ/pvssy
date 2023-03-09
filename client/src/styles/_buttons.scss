@@ -1,5 +1,16 @@
 button {
   @include button;
+
+  &.showPassword {
+    color: $txt-color;
+    padding: 0.5em;
+    align-items: center;
+    border: none !important;
+    &:hover {
+      background-color: transparent;
+      color: $color3;
+    }
+  }
 }
 
 .button-countdown {

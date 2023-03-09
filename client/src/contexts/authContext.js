@@ -11,9 +11,10 @@ export const AuthContextProvider = (props) => {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState(getToken());
-  const [error, setError] = useState(null);
+  const [, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [wrongPWMessage, setWrongPWMessage] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleInputChange = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
@@ -110,6 +111,11 @@ export const AuthContextProvider = (props) => {
     return <div>Loading...</div>;
   }
 
+  const seePassword = (e) => {
+    e.preventDefault();
+    setIsVisible((prevState) => !prevState);
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -125,6 +131,9 @@ export const AuthContextProvider = (props) => {
         login,
         handleInputChange,
         getProfile,
+        isVisible,
+        setIsVisible,
+        seePassword,
       }}
     >
       {props.children}

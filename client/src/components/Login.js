@@ -2,9 +2,12 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/authContext";
 import { emailRegex } from "../utils/regexExpressions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 function LoginForm() {
-  const { login, handleInputChange, wrongPWMessage } = useContext(AuthContext);
+  const { login, handleInputChange, wrongPWMessage, isVisible, seePassword } =
+    useContext(AuthContext);
   const { inputValue } = useContext(AuthContext);
 
   return (
@@ -34,14 +37,24 @@ function LoginForm() {
         <div className="user-password-input">
           <input
             placeholder="Mot de passe"
-            type="password"
+            type={isVisible ? "text" : "password"}
             id="userPassword"
             name="userPassword"
             onChange={handleInputChange}
           />
         </div>
+
         <div className="user-password-error">
+          <button className="showPassword" onClick={seePassword}>
+            <FontAwesomeIcon
+              id="eye-icon"
+              icon={isVisible ? faEye : faEyeSlash}
+            />
+          </button>
           {wrongPWMessage && <p className="msg error">{wrongPWMessage}</p>}
+          {inputValue.userPassword && inputValue.userPassword.length < 6 && (
+            <p className="msg error">min 6 caractères.</p>
+          )}
         </div>
 
         <div className="submit-button">

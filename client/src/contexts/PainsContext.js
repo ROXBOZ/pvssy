@@ -80,9 +80,9 @@ export const PainsContextProvider = (props) => {
         requestOptions
       );
       const result = await response.json();
-      const sortedTerms = result.requestedTerms.sort((a, b) =>
-        a.term.localeCompare(b.term)
-      );
+      const sortedTerms = result.requestedTerms
+        ? result.requestedTerms.sort((a, b) => a.term.localeCompare(b.term))
+        : [];
       setRequestedTerms(sortedTerms);
     } catch (error) {
       console.log("error", error);

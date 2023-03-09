@@ -369,7 +369,7 @@ p {
 }
 p.subtitle {
   font-size: x-large;
-  margin-bottom: 10vh;
+  margin-bottom: 5vh;
 }
 
 a {
@@ -533,19 +533,6 @@ h1,
   display: flex;
   width: 100%;
 }
-.card-grid .link-card.article {
-  grid-column: span 2;
-}
-.card-grid .link-card.ressource .card {
-  background-color: #7d11e3;
-  color: white;
-}
-.card-grid .link-card.agenda .card h3 {
-  text-align: center;
-}
-.card-grid .link-card.article .card, .card-grid .link-card.ressource .card {
-  padding: 2em;
-}
 .card-grid .link-card:hover {
   opacity: 80%;
 }
@@ -574,6 +561,27 @@ h1,
 }
 .card-grid .link-card .card .card-date,
 .card-grid .link-card .card .card-location {
+  text-align: center;
+}
+.card-grid .link-card.article .card, .card-grid .link-card.ressource .card {
+  padding: 2em;
+}
+.card-grid .link-card.article {
+  grid-column: span 2;
+}
+.card-grid .link-card.article .card {
+  background: linear-gradient(180deg, rgba(255, 82, 215, 0.8) 0%, rgba(245, 116, 60, 0.8) 100%);
+  overflow: hidden;
+}
+.card-grid .link-card.ressource .card {
+  background-color: #7d11e3;
+  color: white;
+}
+.card-grid .link-card.agenda .card {
+  display: flex;
+  justify-content: space-between;
+}
+.card-grid .link-card.agenda .card h3 {
   text-align: center;
 }
 
@@ -628,6 +636,16 @@ button:disabled {
   opacity: 60%;
   cursor: auto;
   border: 1.5px solid;
+}
+button.showPassword {
+  color: #303030;
+  padding: 0.5em;
+  align-items: center;
+  border: none !important;
+}
+button.showPassword:hover {
+  background-color: transparent;
+  color: #9637f0;
 }
 
 .button-countdown {

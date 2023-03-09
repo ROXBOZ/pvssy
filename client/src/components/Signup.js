@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { emailRegex, urlRegex } from "../utils/regexExpressions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { AuthContext } from "../contexts/authContext";
 
 const SignupForm = () => {
+  const { seePassword, isVisible } = useContext(AuthContext);
   const [selectedFile, setSelectedFile] = useState(null);
   const [newUser, setNewUser] = useState({});
   const [conditionsAccepted, setConditionsAccepted] = useState(null);
@@ -194,14 +198,21 @@ const SignupForm = () => {
         <div className="user-password-input">
           <input
             placeholder="Mot de passe"
-            type="password"
+            type={isVisible ? "text" : "password"}
             id="userPassword"
             name="userPassword"
             onChange={handleInputChange}
             required
           />
         </div>
+
         <div className="user-password-error">
+          <button className="showPassword" onClick={seePassword}>
+            <FontAwesomeIcon
+              id="eye-icon"
+              icon={isVisible ? faEye : faEyeSlash}
+            />
+          </button>
           {newUser.userPassword && newUser.userPassword.length < 6 && (
             <li className="error msg">min 6 caractères.</li>
           )}

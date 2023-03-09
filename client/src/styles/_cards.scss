@@ -6,32 +6,6 @@
     display: flex;
     width: 100%;
 
-    &.article {
-      grid-column: span 2;
-    }
-
-    &.ressource {
-      .card {
-        background-color: darken($color3, 10%);
-        color: white;
-      }
-    }
-
-    &.agenda {
-      .card {
-        h3 {
-          text-align: center;
-        }
-      }
-    }
-
-    &.article,
-    &.ressource {
-      .card {
-        padding: $padding-sm;
-      }
-    }
-
     &:hover {
       opacity: 80%;
     }
@@ -65,6 +39,35 @@
       .card-date,
       .card-location {
         text-align: center;
+      }
+    }
+    &.article,
+    &.ressource {
+      .card {
+        padding: $padding-sm;
+      }
+    }
+    &.article {
+      grid-column: span 2;
+      .card {
+        background: $gradient;
+        overflow: hidden;
+      }
+    }
+    &.ressource {
+      .card {
+        background-color: darken($color3, 10%);
+        color: white;
+      }
+    }
+    &.agenda {
+      .card {
+        display: flex;
+        justify-content: space-between;
+
+        h3 {
+          text-align: center;
+        }
       }
     }
   }

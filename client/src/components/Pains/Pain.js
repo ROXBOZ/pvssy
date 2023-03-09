@@ -12,14 +12,21 @@ const Pain = () => {
     fetchRelatedSources();
   }, []);
 
-  const ArticleLink = ({ to, title, description }) => (
-    <Link className="link-card article" to={to}>
-      <div className="card">
-        <h2>{title}</h2>
-        <p>{description}</p>
-      </div>
-    </Link>
-  );
+  const ArticleLink = ({ to, title, description }) => {
+    const scrollToTop = () => {
+      window.scrollTo(0, 0);
+    };
+
+    return (
+      <Link className="link-card article" to={to} onClick={scrollToTop}>
+        <div className="card">
+          <h2>{title}</h2>
+          <p>{description}</p>
+        </div>
+      </Link>
+    );
+  };
+
   const ResourceCard = ({ to, title, description }) => (
     <Link to={to} className="link-card ressource">
       <div className="card ">
