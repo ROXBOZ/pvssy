@@ -36,6 +36,12 @@
   }
 }
 
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .auteurice {
+    margin-left: 0;
+  }
+}
+
 .pain-img,
 .event-img {
   width: 100%;

@@ -5,6 +5,12 @@
   object-fit: cover;
 }
 
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .pain-illu-cover {
+    aspect-ratio: 3/2;
+  }
+}
+
 figure {
   margin: 0;
   padding: 0;

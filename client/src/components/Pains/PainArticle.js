@@ -223,11 +223,11 @@ const PainArticle = () => {
             {highlightParagraphs(painData.diag)}
             <h2>Symptômes</h2>
             {highlightParagraphs(painData.sympt)}
-            <h2>Pourquoi ça m’arrive ?</h2>
+            <h2>Pourquoi ça m’arrive ?</h2>
             {highlightParagraphs(painData.why)}
-            <h2>Que puis-je faire seule ?</h2>
+            <h2>Que puis-je faire seule ?</h2>
             {highlightParagraphs(painData.auto)}
-            <h2>Quelles aides existent ?</h2>
+            <h2>Quelles aides existent ?</h2>
             <p>{painData.pro.intro}</p>
             {painData.pro.gyne && (
               <>

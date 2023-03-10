@@ -6,6 +6,7 @@ footer {
   justify-content: center;
   align-items: center;
   gap: $demi-gap;
+  width: 100%;
 
   h2 {
     .logo {
@@ -19,7 +20,7 @@ footer {
 
   .footer-content {
     display: flex;
-
+    gap: $demi-gap;
     .social-medias {
       display: flex;
       gap: $demi-gap;
@@ -54,14 +55,22 @@ footer {
   }
 }
 
-footer {
-  @media screen and (max-width: map-get($breakpoints, "sm")) {
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  footer {
     padding: $demi-gap $gap;
     flex-direction: column;
+    align-items: flex-start;
     .footer-content {
       flex-direction: column;
       h2 {
         text-align: center;
+        margin-bottom: 0;
+      }
+      .social-medias {
+        a {
+          height: 2.5em;
+          width: 2.5em;
+        }
       }
     }
   }

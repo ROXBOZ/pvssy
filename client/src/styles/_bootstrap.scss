@@ -7,6 +7,8 @@
   border: 2px solid lighten($color3, 20%);
   appearance: none;
   border-radius: 0.25em;
+  background-color: white;
+
   &:active {
     filter: brightness(90%);
   }
@@ -26,11 +28,6 @@
     opacity: 30%;
   }
 }
-
-.form-check-input {
-  background-color: white;
-}
-
 .form-check-input[type="radio"] {
   border-radius: 50%;
   background-color: $color3;

@@ -38,3 +38,13 @@
     }
   }
 }
+
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .source-ref {
+    ul {
+      li {
+        background-color: yellow;
+      }
+    }
+  }
+}

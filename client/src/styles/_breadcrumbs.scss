@@ -1,44 +1,31 @@
-//FIXME REPETITION and media queries
-/*-----Mobile-----*/
-@media (max-width: 767px) {
-  .breadcrumbs {
-    display: flex;
-    color: lighten($txt-color, 50%);
-    .crumb {
-      &:after {
-        color: $txt-color;
-        content: "→";
-        padding: 0 $padding-xs;
-      }
+.breadcrumbs {
+  display: flex;
+  color: lighten($txt-color, 50%);
 
-      &:last-child {
-        &:after {
-          display: none;
-        }
+  .crumb {
+    &:after {
+      color: $txt-color;
+      content: "→";
+      padding: 0 $padding-xs;
+    }
+
+    &:last-child {
+      &:after {
+        display: none;
       }
     }
   }
-}
 
-/*-----Desktop-----*/
-@media (min-width: 768px) {
-  .breadcrumbs {
-    font-size: 80%;
-    grid-column: 1/6;
-    display: flex;
-    color: lighten($txt-color, 50%);
+  @media screen and (max-width: map-get($breakpoints, "md")) {
     .crumb {
-      &:after {
-        color: $txt-color;
-        content: "→";
-        padding: 0 $padding-xs;
-      }
-
-      &:last-child {
-        &:after {
-          display: none;
-        }
+      a {
+        white-space: nowrap;
       }
     }
+  }
+
+  @media screen and (min-width: map-get($breakpoints, "md")) {
+    font-size: 80%;
+    grid-column: 1/6;
   }
 }

@@ -18,6 +18,7 @@
       box-shadow: $elevation-8;
       overflow: hidden;
 
+      h2,
       h3,
       p {
         padding: 0 1rem;
@@ -45,6 +46,11 @@
     &.ressource {
       .card {
         padding: $padding-sm;
+        h2,
+        h3,
+        p {
+          padding: 0;
+        }
       }
     }
     &.article {
