@@ -1244,10 +1244,19 @@ figure span a {
   margin: 0;
 }
 .category-submenu li {
+  position: relative;
+  line-height: 1.75;
   list-style: none;
 }
 .category-submenu li:before {
-  content: "↗ ";
+  position: absolute;
+  left: -20px;
+  content: "↗";
+  transition: 0.4s;
+}
+.category-submenu li:hover:before {
+  color: #9637f0;
+  transform: rotate(45deg);
 }
 
 .tabbed-navigation-banner {

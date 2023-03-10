@@ -18,8 +18,20 @@
   }
 
   li {
+    position: relative;
+    line-height: 1.75;
     &:before {
-      content: "↗ ";
+      position: absolute;
+      left: -20px;
+      content: "↗";
+      transition: $animation-transition;
+    }
+
+    &:hover {
+      &:before {
+        color: $color3;
+        transform: rotate(45deg);
+      }
     }
     list-style: none;
   }
