@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import getToken from "../utils/getToken";
+import { serverURL } from "../utils/serverURL";
 
 export const AuthContext = createContext();
 export const AuthContextProvider = (props) => {
@@ -38,7 +39,7 @@ export const AuthContextProvider = (props) => {
 
     try {
       const response = await fetch(
-        "https://pvssy-backend.vercel.app/api/users/login",
+        `${serverURL}/api/users/login`,
         requestOptions
       );
       const result = await response.json();
@@ -69,7 +70,7 @@ export const AuthContextProvider = (props) => {
       };
 
       const response = await fetch(
-        "https://pvssy-backend.vercel.app/api/users/profile",
+        `${serverURL}/api/users/profile`,
         requestOptions
       );
       const result = await response.json();

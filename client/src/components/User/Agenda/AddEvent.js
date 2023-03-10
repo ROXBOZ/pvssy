@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { EventsContext } from "../../../contexts/eventsContext";
 import { AuthContext } from "../../../contexts/authContext";
+import { serverURL } from "../../../utils/serverURL";
 
 import {
   addressRegex,
@@ -59,7 +60,7 @@ const AddEvent = () => {
 
     try {
       const response = await fetch(
-        "https://pvssy-backend.vercel.app/api/events/all",
+        `${serverURL}/api/events/all`,
         requestOptions
       );
       const result = await response.json();

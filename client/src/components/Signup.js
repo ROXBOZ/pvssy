@@ -4,6 +4,7 @@ import { emailRegex, urlRegex } from "../utils/regexExpressions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../contexts/authContext";
+import { serverURL } from "../utils/serverURL";
 
 const SignupForm = () => {
   const { seePassword, isVisible } = useContext(AuthContext);
@@ -27,7 +28,7 @@ const SignupForm = () => {
     };
     try {
       const response = await fetch(
-        "https://pvssy-backend.vercel.app/api/users/imageUpload",
+        `${serverURL}/api/users/imageUpload`,
         requestOptions
       );
       const result = await response.json();
@@ -64,7 +65,7 @@ const SignupForm = () => {
 
     try {
       const response = await fetch(
-        "https://pvssy-backend.vercel.app/api/users/signup",
+        `${serverURL}/api/users/signup`,
         requestOptions
       );
       const result = await response.json();

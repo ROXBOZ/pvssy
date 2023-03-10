@@ -1,11 +1,12 @@
 import { createContext, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { serverURL } from "../utils/serverURL";
 
 export const PainsContext = createContext();
 export const PainsContextProvider = (props) => {
   let location = useLocation();
   const [data, setData] = useState([]);
-  const url = "https://pvssy-backend.vercel.app/api/pains/all";
+  const url = `${serverURL}/api/pains/all`;
   const [Loading, setLoading] = useState(true);
   const [Error, setError] = useState(null);
   const [painData, setPainData] = useState(null);
@@ -42,7 +43,7 @@ export const PainsContextProvider = (props) => {
 
     try {
       const response = await fetch(
-        `https://pvssy-backend.vercel.app/api/pains/spec/${painName}`,
+        `${serverURL}/api/pains/spec/${painName}`,
         requestOptions
       );
       const result = await response.json();
@@ -59,7 +60,7 @@ export const PainsContextProvider = (props) => {
 
     try {
       const response = await fetch(
-        `https://pvssy-backend.vercel.app/api/sources/byPain?relatedPain=${painName}`,
+        `${serverURL}/api/sources/byPain?relatedPain=${painName}`,
         requestOptions
       );
       const result = await response.json();
@@ -76,7 +77,7 @@ export const PainsContextProvider = (props) => {
 
     try {
       const response = await fetch(
-        `https://pvssy-backend.vercel.app/api/terms/byPain?relatedPain=${painName}`,
+        `${userServer}/api/terms/byPain?relatedPain=${painName}`,
         requestOptions
       );
       const result = await response.json();

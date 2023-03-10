@@ -1,9 +1,11 @@
 import { createContext, useState } from "react";
+import { serverURL } from "../utils/serverURL";
+
 export const EventsContext = createContext();
 
 export const EventsContextProvider = (props) => {
   const [data, setData] = useState([]);
-  const baseURL = "https://pvssy-backend.vercel.app/api/events";
+  const baseURL = `${serverURL}/api/events`;
   const allEventURL = `${baseURL}/all`;
   const agendaURL = `${baseURL}/upcoming`;
   const archivesURL = `${baseURL}/archived`;

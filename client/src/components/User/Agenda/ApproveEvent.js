@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PendingEventCard from "./PendingEventCard";
 import { dateTimeConverter } from "../../../utils/dateConverter";
+import { serverURL } from "../../../utils/serverURL";
 
 const ApproveEvent = () => {
   const [pendingEvents, setPendingEvents] = useState(null);
@@ -13,7 +14,7 @@ const ApproveEvent = () => {
 
     try {
       const response = await fetch(
-        "https://pvssy-backend.vercel.app/api/events/pending",
+        `${serverURL}/api/events/pending`,
         requestOptions
       );
       const result = await response.json();

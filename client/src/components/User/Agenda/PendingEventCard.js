@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { serverURL } from "../../../utils/serverURL";
 
 const PendingEventCard = ({ event, dateTime, getPendingEvent }) => {
   const [showDetail, setShowDetail] = useState(false);
@@ -34,7 +35,7 @@ const PendingEventCard = ({ event, dateTime, getPendingEvent }) => {
     };
     try {
       const response = await fetch(
-        `https://pvssy-backend.vercel.app/api/events/byId/${eventId}`,
+        `${serverURL}/api/events/byId/${eventId}`,
         requestOptions
       );
       const result = await response.json();
@@ -58,7 +59,7 @@ const PendingEventCard = ({ event, dateTime, getPendingEvent }) => {
 
     try {
       const response = await fetch(
-        "https://pvssy-backend.vercel.app/api/events/all",
+        `${serverURL}/api/events/all`,
         requestOptions
       );
       const result = await response.json();

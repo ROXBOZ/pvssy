@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
+import { serverURL } from "../../utils/serverURL";
 
 const PainLex = () => {
   let location = useLocation();
@@ -27,7 +28,7 @@ const PainLex = () => {
 
     try {
       const response = await fetch(
-        `https://pvssy-backend.vercel.app/api/terms/byPain?relatedPain=${painName}`,
+        `${serverURL}/api/terms/byPain?relatedPain=${painName}`,
         requestOptions
       );
       const result = await response.json();

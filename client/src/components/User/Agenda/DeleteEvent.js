@@ -4,6 +4,7 @@ import { AuthContext } from "../../../contexts/authContext";
 import { EventsContext } from "../../../contexts/eventsContext";
 import { dateTimeConverter } from "../../../utils/dateConverter";
 import { todayISO } from "../../../utils/regexExpressions";
+import { serverURL } from "../../../utils/serverURL";
 
 const DeleteEvent = () => {
   const { userProfile } = useContext(AuthContext);
@@ -23,7 +24,7 @@ const DeleteEvent = () => {
 
     try {
       const response = await fetch(
-        `https://pvssy-backend.vercel.app/api/events/byOrganizer/${userProfile.userName}`,
+        `${serverURL}/api/events/byOrganizer/${userProfile.userName}`,
         requestOptions
       );
       const result = await response.json();
@@ -73,7 +74,7 @@ const DeleteEvent = () => {
 
         try {
           const response = await fetch(
-            "https://pvssy-backend.vercel.app/api/events/all",
+            `${serverURL}/api/events/all`,
             requestOptions
           );
           const result = await response.json();
