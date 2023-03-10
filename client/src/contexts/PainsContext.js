@@ -77,7 +77,7 @@ export const PainsContextProvider = (props) => {
 
     try {
       const response = await fetch(
-        `${userServer}/api/terms/byPain?relatedPain=${painName}`,
+        `${serverURL}/api/terms/byPain?relatedPain=${painName}`,
         requestOptions
       );
       const result = await response.json();
