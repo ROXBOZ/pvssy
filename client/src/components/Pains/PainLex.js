@@ -27,7 +27,7 @@ const PainLex = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/terms/byPain?relatedPain=${painName}`,
+        `https://pvssy-backend.vercel.app/api/terms/byPain?relatedPain=${painName}`,
         requestOptions
       );
       const result = await response.json();

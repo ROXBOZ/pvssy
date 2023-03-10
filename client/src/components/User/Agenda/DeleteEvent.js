@@ -23,7 +23,7 @@ const DeleteEvent = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/events/byOrganizer/${userProfile.userName}`,
+        `https://pvssy-backend.vercel.app/api/events/byOrganizer/${userProfile.userName}`,
         requestOptions
       );
       const result = await response.json();
@@ -73,7 +73,7 @@ const DeleteEvent = () => {
 
         try {
           const response = await fetch(
-            "http://localhost:5000/api/events/all",
+            "https://pvssy-backend.vercel.app/api/events/all",
             requestOptions
           );
           const result = await response.json();

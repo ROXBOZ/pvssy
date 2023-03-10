@@ -27,7 +27,7 @@ const SignupForm = () => {
     };
     try {
       const response = await fetch(
-        "http://localhost:5000/api/users/imageUpload",
+        "https://pvssy-backend.vercel.app/api/users/imageUpload",
         requestOptions
       );
       const result = await response.json();
@@ -64,7 +64,7 @@ const SignupForm = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/users/signup",
+        "https://pvssy-backend.vercel.app/api/users/signup",
         requestOptions
       );
       const result = await response.json();

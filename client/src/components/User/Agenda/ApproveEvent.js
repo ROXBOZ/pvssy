@@ -13,7 +13,7 @@ const ApproveEvent = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/events/pending",
+        "https://pvssy-backend.vercel.app/api/events/pending",
         requestOptions
       );
       const result = await response.json();

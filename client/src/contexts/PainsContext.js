@@ -5,7 +5,7 @@ export const PainsContext = createContext();
 export const PainsContextProvider = (props) => {
   let location = useLocation();
   const [data, setData] = useState([]);
-  const url = "http://localhost:5000/api/pains/all";
+  const url = "https://pvssy-backend.vercel.app/api/pains/all";
   const [Loading, setLoading] = useState(true);
   const [Error, setError] = useState(null);
   const [painData, setPainData] = useState(null);
@@ -42,7 +42,7 @@ export const PainsContextProvider = (props) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/pains/spec/${painName}`,
+        `https://pvssy-backend.vercel.app/api/pains/spec/${painName}`,
         requestOptions
       );
       const result = await response.json();
@@ -59,7 +59,7 @@ export const PainsContextProvider = (props) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/sources/byPain?relatedPain=${painName}`,
+        `https://pvssy-backend.vercel.app/api/sources/byPain?relatedPain=${painName}`,
         requestOptions
       );
       const result = await response.json();
@@ -76,7 +76,7 @@ export const PainsContextProvider = (props) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/terms/byPain?relatedPain=${painName}`,
+        `https://pvssy-backend.vercel.app/api/terms/byPain?relatedPain=${painName}`,
         requestOptions
       );
       const result = await response.json();

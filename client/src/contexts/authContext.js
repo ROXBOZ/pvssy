@@ -38,7 +38,7 @@ export const AuthContextProvider = (props) => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/users/login",
+        "https://pvssy-backend.vercel.app/api/users/login",
         requestOptions
       );
       const result = await response.json();
@@ -69,7 +69,7 @@ export const AuthContextProvider = (props) => {
       };
 
       const response = await fetch(
-        "http://localhost:5000/api/users/profile",
+        "https://pvssy-backend.vercel.app/api/users/profile",
         requestOptions
       );
       const result = await response.json();

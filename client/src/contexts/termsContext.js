@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const TermsContext = createContext();
 export const TermsContextProvider = (props) => {
   const [data, setData] = useState([]);
-  const url = "http://localhost:5000/api/terms/all";
+  const url = "https://pvssy-backend.vercel.app/api/terms/all";
   const [Loading, setLoading] = useState(true);
   const [Error, setError] = useState(null);
 
