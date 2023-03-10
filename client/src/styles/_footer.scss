@@ -17,28 +17,33 @@ footer {
     color: $bg-color;
   }
 
-  .social-medias {
+  .footer-content {
     display: flex;
-    gap: $demi-gap;
-    align-items: center;
-    a {
-      width: 30px;
-      height: 30px;
-      border: $border-solid white;
-      display: flex;
-      border-radius: 50%;
-      align-items: center;
-      justify-content: center;
-      svg {
-        fill: white;
-        width: 2em;
-        overflow: hidden;
-        margin: 2px;
-      }
 
-      &:hover {
-        border: $border-solid $color3;
-        background-color: $color3;
+    .social-medias {
+      display: flex;
+      gap: $demi-gap;
+      align-items: center;
+      justify-content: space-around;
+      a {
+        width: 2em;
+        height: 2em;
+        border: $border-solid white;
+        display: flex;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        svg {
+          fill: white;
+          width: 2em;
+          overflow: hidden;
+          margin: 2px;
+        }
+
+        &:hover {
+          border: $border-solid $color3;
+          background-color: $color3;
+        }
       }
     }
   }
@@ -49,9 +54,15 @@ footer {
   }
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  footer {
-    padding: $padding-xs;
+footer {
+  @media screen and (max-width: map-get($breakpoints, "sm")) {
+    padding: $demi-gap $gap;
+    flex-direction: column;
+    .footer-content {
+      flex-direction: column;
+      h2 {
+        text-align: center;
+      }
+    }
   }
 }

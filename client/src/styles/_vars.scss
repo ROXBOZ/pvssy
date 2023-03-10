@@ -90,3 +90,16 @@ $animation-transition: 0.4s;
 /*-----Elevations-----*/
 $elevation-8: 0 8px 10px rgba(0, 0, 0, 0.12), 0 3px 14px rgba(0, 0, 0, 0.08),
   0 5px 5px rgba(0, 0, 0, 0.14);
+
+/*-----Media Queries-----*/
+
+$breakpoints: (
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+);
+//NOTE - do not delete, copy/paste to create media queries
+// @media screen and (max-width: map-get($breakpoints, "md")) {
+//     ...
+//   }

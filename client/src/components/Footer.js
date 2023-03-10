@@ -20,26 +20,29 @@ const Footer = () => {
 
   return (
     <footer>
-      <div className="social-medias">
+      <div className="footer-content">
         <h2 className="h4">
           Let’s <span className="logo">pvssy talk</span> !
         </h2>
-        <SocialMediaLink
-          icon={InstagramIcon}
-          name="Instagram"
-          to="https://www.instagram.com/pvssy_talk/"
-        />
-        <SocialMediaLink
-          icon={FacebookIcon}
-          name="Facebook"
-          to="https://www.facebook.com/pvssytalk/"
-        />
-        <SocialMediaLink
-          icon={LinkedInIcon}
-          name="LinkedIn"
-          to="https://www.linkedin.com/company/pvssy-talk/"
-        />
+        <div className="social-medias">
+          <SocialMediaLink
+            icon={InstagramIcon}
+            name="Instagram"
+            to="https://www.instagram.com/pvssy_talk/"
+          />
+          <SocialMediaLink
+            icon={FacebookIcon}
+            name="Facebook"
+            to="https://www.facebook.com/pvssytalk/"
+          />
+          <SocialMediaLink
+            icon={LinkedInIcon}
+            name="LinkedIn"
+            to="https://www.linkedin.com/company/pvssy-talk/"
+          />
+        </div>
       </div>
+
       <p className="copyrights">© Pvssy Talk, {currentYear}</p>
     </footer>
   );

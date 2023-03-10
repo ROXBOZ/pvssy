@@ -45,6 +45,10 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: $gap;
+
+  @media screen and (max-width: map-get($breakpoints, "sm")) {
+    grid-template-columns: 1fr;
+  }
 }
 
 /*-----Forms-----*/
