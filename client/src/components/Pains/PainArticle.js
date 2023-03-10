@@ -149,7 +149,7 @@ const PainArticle = () => {
           alt={painData.name}
         />
         <span>
-          Illustré par <Link to="*">Illustrateurice</Link>
+          Illustré par <Link to="*">Noémie Creux</Link>
         </span>
       </figure>
       <div className="tabbed-navigation-banner">
@@ -175,7 +175,7 @@ const PainArticle = () => {
             {isMed ? (
               <Link to="https://aemg-ge.com/">Medsexplain</Link>
             ) : (
-              <Link to="https://aemg-ge.com/">Auteurice</Link>
+              <Link to="https://aemg-ge.com/">Fiona Bourdon</Link>
             )}
           </em>
         </div>
@@ -190,7 +190,10 @@ const PainArticle = () => {
             {painData.name}
           </p>
           <li>
-            <Link to="*">Articles</Link>
+            <Link to="*">Exercices</Link>
+          </li>
+          <li>
+            <Link to="*">Extras</Link>
           </li>
           <li>
             <Link to="../lexique">Lexique</Link>
@@ -201,18 +204,6 @@ const PainArticle = () => {
           <li>
             <Link to="*">Tutos</Link>
           </li>
-
-          {!isMed && (
-            <>
-              <br />
-              <li>
-                <Link to="*">Exercices</Link>
-              </li>
-              <li>
-                <Link to="*">Extras</Link>
-              </li>
-            </>
-          )}
         </ul>
 
         {isMed ? (

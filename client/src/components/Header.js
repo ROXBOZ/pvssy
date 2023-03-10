@@ -50,15 +50,16 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink onClick={handleNavLink} to="*">
+              Ressources
+            </NavLink>
+          </li>
+          <li>
             <NavLink onClick={handleNavLink} to="shop">
               Shop
             </NavLink>
           </li>
-          <li>
-            <NavLink onClick={handleNavLink} to="agenda">
-              Agenda
-            </NavLink>
-          </li>
+
           <li>
             {userProfile ? (
               <div className="logout-header">

@@ -19,14 +19,14 @@ figure {
   flex-direction: column;
 
   span {
+    font-family: $font-regular-italic;
     margin: 0;
-    font-family: $font-medium-italic;
     font-style: normal;
     height: fit-content;
 
     a {
       width: fit-content;
-      font-family: $font-medium-italic;
+      font-family: $font-regular-italic;
       width: fit-content;
       font-style: normal;
     }

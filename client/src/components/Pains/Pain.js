@@ -71,11 +71,6 @@ const Pain = () => {
 
             <div className="card-grid">
               <ResourceCard
-                to="*"
-                title="Articles"
-                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-              />
-              <ResourceCard
                 to="lexique"
                 title="Lexique"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."

@@ -1,6 +1,5 @@
 import React from "react";
 import Pains from "../components/Pains/Pains";
-import Ressources from "../components/Ressources";
 
 const SeSoigner = () => {
   return (
@@ -15,7 +14,6 @@ const SeSoigner = () => {
       <Pains />
       <br />
       <br />
-      <Ressources />
     </div>
   );
 };
