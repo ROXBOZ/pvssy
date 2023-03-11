@@ -7,6 +7,8 @@ import React, {
 } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
 
 const PainArticle = () => {
   let currentURL = window.location.pathname;
@@ -179,7 +181,6 @@ const PainArticle = () => {
             )}
           </em>
         </div>
-
         <ul
           className={`category-submenu ${isSticky ? "fixed" : ""}`}
           ref={submenuRef}
@@ -204,8 +205,10 @@ const PainArticle = () => {
           <li>
             <Link to="*">Tutos</Link>
           </li>
+          <li className="copy-link">
+            <FontAwesomeIcon id="link-icon" icon={faLink} /> copier le lien
+          </li>
         </ul>
-
         {isMed ? (
           <>
             <h2>Définition</h2>
@@ -274,7 +277,6 @@ const PainArticle = () => {
             <p>{highlightParagraphs(mokeParagraphSexo)}</p>
           </>
         )}
-
         <div id="references" className="source-ref">
           <h4>Sources</h4>
           <ul role="list">

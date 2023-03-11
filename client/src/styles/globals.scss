@@ -32,6 +32,9 @@
 html {
   margin: 0;
   padding: 0;
+  //background-image: url(../assets/images/noise.gif);
+  background-repeat: repeat;
+  background-size: 50px 50px;
   background-color: $bg-color;
   color: $txt-color;
   font-family: $font-regular;
@@ -48,6 +51,9 @@ html {
     margin: 0;
     padding: 0;
     height: auto;
+    h1 {
+      font-family: $font-logo;
+    }
     .main {
       padding: 10vh $padding-sm;
       display: flex;

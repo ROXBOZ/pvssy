@@ -1,17 +1,22 @@
 /*-----Colors-----*/
 
-$bg-color: #fffdf8;
-$txt-color: #303030;
+$bg-color: #f1eee7;
+$txt-color: #1f042f;
 
 $color1: #f5733c;
 $color2: #ff50d7;
-$color3: #9637f0;
+// $$color3: #9637F0;
+$color3: #326e0c;
+$color4: #c8ffa5;
+$color5: #dcb4ff;
 
-$gradient: linear-gradient(
-  180deg,
-  rgba(255, 82, 215, 0.8) 0%,
-  rgba(245, 116, 60, 0.8) 100%
-);
+// $gradient: linear-gradient(
+//   180deg,
+//   rgba(255, 82, 215, 0.8) 0%,
+//   rgba(245, 116, 60, 0.8) 100%
+// );
+
+$gradient: radial-gradient(circle, $color1 0%, $color5 50%, $color5 100%);
 
 /*-----Fonts-----*/
 

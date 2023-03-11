@@ -62,14 +62,7 @@ const Pain = () => {
                 title="Médical"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quo amet quaerat repellat, voluptatum reprehenderit quod dolore ea dignissimos facilis cum cumque asperiores. Praesentium delectus perspiciatis magnam repudiandae dolor alias."
               />
-              <ArticleLink
-                to="sexologie"
-                title="Sexologie"
-                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quo amet quaerat repellat, voluptatum reprehenderit quod dolore ea dignissimos facilis cum cumque asperiores. Praesentium delectus perspiciatis magnam repudiandae dolor alias."
-              />
-            </div>
 
-            <div className="card-grid">
               <ResourceCard
                 to="lexique"
                 title="Lexique"
@@ -80,6 +73,7 @@ const Pain = () => {
                 title="Shémas"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
               />
+
               <ResourceCard
                 to="*"
                 title="Tutos"
@@ -90,10 +84,10 @@ const Pain = () => {
                 title="Exercices"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
               />
-              <ResourceCard
-                to="*"
-                title="Extras"
-                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
+              <ArticleLink
+                to="sexologie"
+                title="Sexologie"
+                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quo amet quaerat repellat, voluptatum reprehenderit quod dolore ea dignissimos facilis cum cumque asperiores. Praesentium delectus perspiciatis magnam repudiandae dolor alias."
               />
             </div>
           </>

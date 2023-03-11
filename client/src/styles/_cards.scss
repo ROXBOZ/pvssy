@@ -57,13 +57,14 @@
       grid-column: span 2;
       .card {
         background: $gradient;
+        animation: gradient 5s infinite alternate;
+        background-color: lighten($color1, 10%);
         overflow: hidden;
       }
     }
     &.ressource {
       .card {
-        background-color: darken($color3, 10%);
-        color: white;
+        background-color: $color1;
       }
     }
     &.agenda {
@@ -76,6 +77,18 @@
         }
       }
     }
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-size: 100%;
+    background-position: center;
+  }
+
+  100% {
+    background-size: 200%;
+    background-position: center;
   }
 }
 

@@ -23,7 +23,15 @@
     border-radius: 50%;
     height: 2.5em;
     width: 2.5em;
-    background: $gradient;
+    border: $border-solid $color2;
+    background: linear-gradient(90deg, #ff0000 0%, #7d9c00 100%),
+      linear-gradient(238.72deg, #ebff00 0%, #7700d5 100%),
+      linear-gradient(64.82deg, #ad00ff 0%, #ff0000 100%),
+      linear-gradient(65.03deg, #00b2ff 0%, #ff0000 99.79%),
+      radial-gradient(100% 144.76% at 0% 0%, #ff0000 0%, #1400ff 100%),
+      radial-gradient(100% 140% at 100% 0%, #a6ff60 0%, #2700c1 100%);
+    background-blend-mode: overlay, color-dodge, difference, lighten,
+      color-dodge, normal;
   }
 
   em {
