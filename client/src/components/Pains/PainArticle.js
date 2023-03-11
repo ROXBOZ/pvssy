@@ -205,7 +205,7 @@ const PainArticle = () => {
           <li>
             <Link to="*">Tutos</Link>
           </li>
-          <li className="copy-link">
+          <li style={{ backgroundColor: "yellow" }} className="copy-link">
             <FontAwesomeIcon id="link-icon" icon={faLink} /> copier le lien
           </li>
         </ul>

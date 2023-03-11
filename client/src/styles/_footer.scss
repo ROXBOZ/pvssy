@@ -6,7 +6,6 @@ footer {
   justify-content: center;
   align-items: center;
   gap: $demi-gap;
-  width: 100%;
 
   h2 {
     .logo {
@@ -66,6 +65,7 @@ footer {
     padding: $demi-gap $gap;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
     .footer-content {
       flex-direction: column;
       h2 {
