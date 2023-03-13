@@ -57,7 +57,7 @@
 /*-----Mobile-----*/
 @media (max-width: 767px) {
   header {
-    display: flex;
+    display: none;
     align-items: center;
     padding: 1em 2em;
     justify-content: space-between;

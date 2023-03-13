@@ -3,7 +3,7 @@
 /*-----Mobile-----*/
 @media (max-width: 767px) {
   header {
-    display: flex;
+    display: none;
     align-items: center;
     padding: $demi-gap $gap;
     justify-content: space-between;
