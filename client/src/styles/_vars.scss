@@ -1,14 +1,12 @@
 /*-----Colors-----*/
-
-$bg-color: #f1eee7;
 $txt-color: #1f042f;
+$bg-color: #f1eee7;
 
 $color1: #f5733c;
 $color2: #ff50d7;
-// $$color3: #9637F0;
-$color3: #326e0c;
+$color3: #193718;
 $color4: #c8ffa5;
-$color5: #dcb4ff;
+$color5: #cf98ff;
 
 // $gradient: linear-gradient(
 //   180deg,
@@ -16,7 +14,7 @@ $color5: #dcb4ff;
 //   rgba(245, 116, 60, 0.8) 100%
 // );
 
-$gradient: radial-gradient(circle, $color1 0%, $color5 50%, $color5 100%);
+$gradient: radial-gradient(circle, $color1 0%, $color5 80%);
 
 /*-----Fonts-----*/
 
@@ -61,8 +59,9 @@ $font-regular: "ESKlarheit-Book";
 $font-regular-italic: "ESKlarheit-Book-Italic";
 $font-medium: "ESKlarheit-Medium";
 $font-medium-italic: "ESKlarheit-Medium-Italic";
-
 $font-bold: "ESKlarheit-Bold";
+
+/*-----Typography-----*/
 
 $font-size-basis: 16px;
 $lineheight: 1.5;
@@ -85,7 +84,6 @@ $gap: 2em;
 /*-----Borders-----*/
 
 $border-solid: 1.5px solid;
-
 $border-radius: 0.25em;
 
 /*-----Animations-----*/
@@ -93,6 +91,7 @@ $border-radius: 0.25em;
 $animation-transition: 0.4s;
 
 /*-----Elevations-----*/
+
 $elevation-8: 0 8px 10px rgba(0, 0, 0, 0.12), 0 3px 14px rgba(0, 0, 0, 0.08),
   0 5px 5px rgba(0, 0, 0, 0.14);
 
@@ -104,7 +103,3 @@ $breakpoints: (
   "lg": 992px,
   "xl": 1200px,
 );
-// NOTE - do not delete, copy/paste to create media queries
-// @media screen and (max-width: map-get($breakpoints, "md")) {
-//     ...
-//   }

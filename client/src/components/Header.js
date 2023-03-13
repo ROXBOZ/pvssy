@@ -29,7 +29,7 @@ const Header = () => {
           <span></span>
           <span></span>
         </span>
-        <span className="menu-label">menu</span>
+        <span className="menu-label screen-reader-text">menu</span>
       </button>
 
       <nav className={isOpen ? "vertical" : "horizontal"}>
@@ -78,7 +78,9 @@ const Header = () => {
                 <button onClick={logout}>se déconnecter</button>
               </div>
             ) : (
-              <Link to="/login">se connecter</Link>
+              <NavLink onClick={handleNavLink} to="login">
+                Se connecter
+              </NavLink>
             )}
           </li>
         </ul>

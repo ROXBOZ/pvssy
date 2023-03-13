@@ -5,6 +5,11 @@
   object-fit: cover;
 }
 
+.img-holder {
+  border-radius: 50%;
+  border: $border-solid $color2;
+}
+
 @media screen and (max-width: map-get($breakpoints, "sm")) {
   .pain-illu-cover {
     aspect-ratio: 3/2;

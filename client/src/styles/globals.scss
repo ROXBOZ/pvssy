@@ -15,11 +15,11 @@
 @import "illustrations";
 @import "nav";
 @import "sources";
+@import "agenda";
 
 * {
   outline: none;
   &:focus {
-    // create vars for the lightens
     border: $border-solid lighten($color1, 30%);
   }
 
@@ -32,7 +32,6 @@
 html {
   margin: 0;
   padding: 0;
-  //background-image: url(../assets/images/noise.gif);
   background-repeat: repeat;
   background-size: 50px 50px;
   background-color: $bg-color;
@@ -41,9 +40,10 @@ html {
   line-height: 1.5;
   font-size: $font-size-basis;
   height: auto;
+
+  //FIXME
   strong {
     font-family: $font-medium;
-    //FIXME this is hacky
     font-weight: 500;
   }
 
@@ -65,7 +65,7 @@ html {
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
   .main {
-    width: 100%;
+    width: 100vw;
     padding-bottom: 0;
   }
 }

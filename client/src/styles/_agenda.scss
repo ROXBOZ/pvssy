@@ -1,0 +1,39 @@
+.agenda-entry {
+  margin-top: $gap;
+  width: 100vw;
+  width: fit-content;
+  padding: $gap $demi-gap;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  &:hover {
+    background: $gradient;
+  }
+  .agenda-entry-pretitle {
+    font-family: $font-bold;
+    //white-space: nowrap;
+  }
+  .img-holder {
+    border: $bg-color 2px solid;
+    height: 1.5em;
+    width: 1.5em;
+  }
+  p + h3 {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .entry-title {
+    display: flex;
+    align-items: center;
+    gap: $demi-gap;
+    margin: $demi-gap 0;
+    h3 {
+      margin: 0;
+    }
+  }
+}

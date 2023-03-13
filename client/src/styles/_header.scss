@@ -14,6 +14,7 @@
     position: fixed;
     left: 0;
     right: 0;
+    max-width: 100vw;
     .logo {
       z-index: 99;
       border-bottom: 0;
@@ -111,21 +112,21 @@
         left: 0;
         top: 0;
         bottom: 0;
-        width: 100vw;
-        height: 100vh;
+        //FIXME
+        height: 1000px;
         background: $gradient;
         background-color: white;
         display: flex;
         align-items: center;
 
         ul {
-          width: 100%;
-          padding: $demi-gap;
+          padding: $gap;
           margin-left: 0;
           flex-direction: column;
           margin-top: 6em;
 
           li {
+            font-size: 120%;
             list-style: none;
             line-height: 4;
 

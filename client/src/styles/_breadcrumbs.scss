@@ -15,16 +15,21 @@
       }
     }
   }
+}
 
-  @media screen and (max-width: map-get($breakpoints, "md")) {
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .breadcrumbs {
+    margin-top: $demi-gap;
     .crumb {
       a {
         white-space: nowrap;
       }
     }
   }
+}
 
-  @media screen and (min-width: map-get($breakpoints, "md")) {
+@media screen and (min-width: map-get($breakpoints, "sm")) {
+  .breadcrumbs {
     font-size: 80%;
     grid-column: 1/6;
   }

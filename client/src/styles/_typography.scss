@@ -5,9 +5,14 @@
 .heading-area {
   max-height: fit-content;
   margin-top: 20vh;
-  // REVIEW should not be on pain maybe else where
-  // padding-bottom: $padding-sm;
 }
+
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .heading-area {
+    margin-top: auto;
+  }
+}
+
 .pretitle {
   font-family: $font-bold;
   text-transform: uppercase;
@@ -61,6 +66,16 @@ h2 + h3 {
   margin-top: 0;
 }
 
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  span {
+    max-width: 100vw;
+  }
+}
 /*-----Ratio Scale-----*/
 
 $type-ratios: (

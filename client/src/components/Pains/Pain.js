@@ -70,13 +70,13 @@ const Pain = () => {
               />
               <ResourceCard
                 to="*"
-                title="Shémas"
+                title="Tutos"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
               />
 
               <ResourceCard
                 to="*"
-                title="Tutos"
+                title="Shémas"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
               />
               <ResourceCard

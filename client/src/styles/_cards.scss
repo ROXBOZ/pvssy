@@ -58,7 +58,6 @@
       .card {
         background: $gradient;
         animation: gradient 5s infinite alternate;
-        background-color: lighten($color1, 10%);
         overflow: hidden;
       }
     }
@@ -116,5 +115,15 @@
     display: flex;
     gap: $demi-gap;
     align-items: center;
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .card-grid {
+    .link-card {
+      &.article {
+        grid-column: span 1 !important;
+      }
+    }
   }
 }

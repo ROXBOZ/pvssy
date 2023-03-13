@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import { EventsContext } from "../contexts/eventsContext";
-import EventCard from "../components/Agenda/EventCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Pains from "../components/Pains/Pains";
+import { dateTimeConverter } from "../utils/dateConverter";
+import { generateColor } from "../utils/colorGenerator";
 
 const Home = () => {
   const {
@@ -22,16 +22,20 @@ const Home = () => {
     handleIconClick,
     handleKeyDown,
   } = useContext(EventsContext);
+
+  const color1 = "#f5733c";
+  const color2 = "#ff50d7";
+
   useEffect(() => {
     fetchData(agendaURL);
   }, [agendaURL]);
+
   return (
-    <div>
+    <>
       <h1>
         <span className="logo">Pvssy Talk</span> pour une sexualité sans
         douleurs et sans tabous
       </h1>
-
       <p className="subtitle">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
         accusantium optio dolore dolorum suscipit ducimus neque quaerat! Quas
@@ -39,9 +43,8 @@ const Home = () => {
         eligendi nesciunt eos odit!
       </p>
       <Pains />
-
       <h2>Agenda</h2>
-      <div className="filter-dashboard">
+      {/* <div className="filter-dashboard">
         <div className="filter">
           <div className="filter-dropdown">
             <div className="input-icon">
@@ -82,9 +85,9 @@ const Home = () => {
             )}
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="card-grid">
+      <>
         {data.upcomingEvents &&
         data.upcomingEvents
           .filter((e) => {
@@ -110,7 +113,28 @@ const Home = () => {
               return new Date(a.date) - new Date(b.date);
             })
             .map((e) => {
-              return <EventCard key={e._id} e={e} />;
+              return (
+                <div className="agenda-entry">
+                  <p className="agenda-entry-pretitle">
+                    <nobr>{dateTimeConverter(e.date)}</nobr> -
+                    {e.isOnline ? (
+                      <span>ONLINE</span>
+                    ) : (
+                      <span>
+                        <nobr>{e.address}</nobr>, <nobr>{e.city}</nobr>
+                      </span>
+                    )}
+                  </p>
+                  <span className="entry-title">
+                    <div
+                      style={{ backgroundColor: generateColor(color1, color2) }}
+                      className="img-holder"
+                    />
+                    <h3>{e.title}</h3>
+                  </span>
+                  <p>{e.shortDef}</p>
+                </div>
+              );
             })
         ) : (
           <p className="no-suggestions">
@@ -118,10 +142,8 @@ const Home = () => {
           </p>
         )}
         {Error && <p>Erreur</p>}
-      </div>
-
-      <Link to="archives">Consulter les évènements passés</Link>
-    </div>
+      </>
+    </>
   );
 };
 

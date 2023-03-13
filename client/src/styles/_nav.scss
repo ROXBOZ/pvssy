@@ -5,6 +5,7 @@
   margin-top: 0;
   position: relative;
   z-index: 999;
+
   &.fixed {
     transition: top 500s;
     position: fixed;
@@ -25,6 +26,12 @@
       left: -20px;
       content: "↗";
       transition: $animation-transition;
+    }
+
+    &.copy-link {
+      &:before {
+        content: ">";
+      }
     }
 
     &:hover {

@@ -8,11 +8,10 @@ import React, {
 import { Link, NavLink } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 
 const PainArticle = () => {
   let currentURL = window.location.pathname;
-  let sourceCounter = 0;
   const submenuRef = useRef(null);
   const menuRef = useRef();
   const [menuTop, setMenuTop] = useState(0);
@@ -80,7 +79,6 @@ const PainArticle = () => {
                     </Link>
                   );
                 } else {
-                  sourceCounter++;
                   return (
                     <Link
                       className="source"
@@ -92,7 +90,6 @@ const PainArticle = () => {
                       }}
                     >
                       {part}
-                      {/* <sup>{sourceCounter}</sup> */}
                     </Link>
                   );
                 }
@@ -144,6 +141,11 @@ const PainArticle = () => {
 
   return (
     <>
+      <button>
+        <FontAwesomeIcon id="link-icon" icon={faShareNodes} /> partager cet
+        article
+      </button>
+      <br />
       <figure>
         <img
           className="pain-illu-cover"
@@ -181,6 +183,7 @@ const PainArticle = () => {
             )}
           </em>
         </div>
+
         <ul
           className={`category-submenu ${isSticky ? "fixed" : ""}`}
           ref={submenuRef}
@@ -204,9 +207,6 @@ const PainArticle = () => {
           </li>
           <li>
             <Link to="*">Tutos</Link>
-          </li>
-          <li style={{ backgroundColor: "yellow" }} className="copy-link">
-            <FontAwesomeIcon id="link-icon" icon={faLink} /> copier le lien
           </li>
         </ul>
         {isMed ? (
