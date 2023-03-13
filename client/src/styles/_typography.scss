@@ -9,7 +9,7 @@
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
   .heading-area {
-    margin-top: auto;
+    margin-top: 10vh;
   }
 }
 
@@ -35,7 +35,7 @@ h1 {
 
 p {
   margin-top: 0;
-  max-width: 70ch;
+  max-width: 70ch !important;
 
   &.subtitle {
     font-size: x-large;

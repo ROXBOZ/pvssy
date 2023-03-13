@@ -64,7 +64,36 @@
 /*-----Lexique page----*/
 .lexique-list {
   padding-left: 0;
+
   .lexique-list-item {
+    display: flex;
+    align-items: center;
+    gap: $gap;
     list-style: none;
+    width: 90vw;
+    img {
+      width: 40%;
+      aspect-ratio: 3/2;
+      object-fit: cover;
+      border-radius: $border-radius;
+      margin-bottom: $demi-gap;
+    }
+
+    div {
+      h2 {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .lexique-list-item {
+    flex-direction: column;
+    gap: 0 !important;
+
+    img {
+      width: 100% !important;
+    }
   }
 }

@@ -16,6 +16,8 @@
 @import "nav";
 @import "sources";
 @import "agenda";
+@import "exercises";
+@import "tooltips";
 
 * {
   outline: none;
@@ -58,14 +60,18 @@ html {
       padding: 10vh $padding-sm;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      overflow: hidden;
+
+      * {
+        max-width: 100%;
+      }
     }
   }
 }
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
   .main {
-    width: 100vw;
+    // width: 100vw;
     padding-bottom: 0;
   }
 }

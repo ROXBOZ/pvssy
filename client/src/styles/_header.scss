@@ -3,7 +3,7 @@
 /*-----Mobile-----*/
 @media (max-width: 767px) {
   header {
-    display: none;
+    display: flex;
     align-items: center;
     padding: $demi-gap $gap;
     justify-content: space-between;
@@ -14,7 +14,7 @@
     position: fixed;
     left: 0;
     right: 0;
-    max-width: 100vw;
+
     .logo {
       z-index: 99;
       border-bottom: 0;
@@ -201,6 +201,9 @@
     nav {
       &.horizontal {
         grid-column: 2/5;
+        .hidden {
+          display: none;
+        }
         ul {
           padding-left: 0;
           margin-left: 0;

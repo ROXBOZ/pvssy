@@ -26,7 +26,6 @@ const Pain = () => {
       </Link>
     );
   };
-
   const ResourceCard = ({ to, title, description }) => (
     <Link to={to} className="link-card ressource">
       <div className="card ">
@@ -63,6 +62,12 @@ const Pain = () => {
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quo amet quaerat repellat, voluptatum reprehenderit quod dolore ea dignissimos facilis cum cumque asperiores. Praesentium delectus perspiciatis magnam repudiandae dolor alias."
               />
 
+              <ArticleLink
+                to="sexologie"
+                title="Sexologie"
+                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quo amet quaerat repellat, voluptatum reprehenderit quod dolore ea dignissimos facilis cum cumque asperiores. Praesentium delectus perspiciatis magnam repudiandae dolor alias."
+              />
+
               <ResourceCard
                 to="lexique"
                 title="Lexique"
@@ -83,11 +88,6 @@ const Pain = () => {
                 to="*"
                 title="Exercices"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-              />
-              <ArticleLink
-                to="sexologie"
-                title="Sexologie"
-                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quo amet quaerat repellat, voluptatum reprehenderit quod dolore ea dignissimos facilis cum cumque asperiores. Praesentium delectus perspiciatis magnam repudiandae dolor alias."
               />
             </div>
           </>

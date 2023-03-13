@@ -35,6 +35,11 @@ const Header = () => {
       <nav className={isOpen ? "vertical" : "horizontal"}>
         <ul>
           <li>
+            <NavLink className="hidden" onClick={handleNavLink} to="/">
+              Home
+            </NavLink>
+          </li>
+          <li>
             <NavLink onClick={handleNavLink} to="a-propos">
               À propos
             </NavLink>

@@ -1,0 +1,14 @@
+.exercise {
+  border: $border-solid yellow;
+  background-color: lighten(yellow, 30%);
+  border-radius: $border-radius;
+  padding: $gap;
+  margin: $demi-gap 0;
+  width: 70ch;
+  h3 {
+    margin-top: 0;
+  }
+  li {
+    margin-bottom: 0.25em;
+  }
+}

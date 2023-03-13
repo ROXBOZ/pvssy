@@ -45,3 +45,12 @@ button {
     }
   }
 }
+
+.share-button {
+  display: flex;
+  margin: 0.25em 0 1em;
+  gap: 0.5em;
+  a {
+    border-bottom: 0;
+  }
+}

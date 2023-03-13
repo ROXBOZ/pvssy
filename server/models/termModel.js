@@ -16,6 +16,10 @@ const termSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
+
+  imgUrl: {
+    type: String,
+  },
 });
 
 const termModel = mongoose.model("term", termSchema);

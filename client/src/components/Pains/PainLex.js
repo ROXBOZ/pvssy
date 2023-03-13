@@ -70,31 +70,65 @@ const PainLex = () => {
   };
 
   return (
-    //  <div className="article">
     <>
       <div className="heading-area">
         <p className="pretitle">Lexique</p>
         <h1>{painName}</h1>
+        <p className="subtitle">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non autem
+          perspiciatis eos quisquam maiores ratione quasi in, deleniti officiis
+          omnis suscipit libero accusamus, rem quod expedita beatae sit vel
+          itaque.
+        </p>
       </div>
+      <p className="lexique-list">
+        {requestedTerms &&
+          requestedTerms
+            .filter((t) => t.imgUrl) // Filter items with imgUrl
+            .map((t, index) => {
+              const termAnchor = t.term
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/\s+/g, "-")
+                .toLowerCase();
+              return (
+                <ul className=" lexique-list" key={index}>
+                  <li className="lexique-list-item">
+                    <img src={t.imgUrl} alt={t.term} />
+                    <div>
+                      <h2 className="h3" id={termAnchor}>
+                        {t.term}
+                      </h2>
+                      {createParagraphs(t.def)}
+                    </div>
+                  </li>
+                </ul>
+              );
+            })}
 
-      {requestedTerms &&
-        requestedTerms.map((t, index) => {
-          const termAnchor = t.term
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .replace(/\s+/g, "-")
-            .toLowerCase();
-          return (
-            <ul className=" lexique-list" key={index}>
-              <li className="lexique-list-item">
-                <h2 className="h3" id={termAnchor}>
-                  {t.term}
-                </h2>
-                {createParagraphs(t.def)}
-              </li>
-            </ul>
-          );
-        })}
+        {requestedTerms &&
+          requestedTerms
+            .filter((t) => !t.imgUrl)
+            .map((t, index) => {
+              const termAnchor = t.term
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/\s+/g, "-")
+                .toLowerCase();
+              return (
+                <ul className=" lexique-list" key={index}>
+                  <li className="lexique-list-item">
+                    <div>
+                      <h2 className="h3" id={termAnchor}>
+                        {t.term}
+                      </h2>
+                      {createParagraphs(t.def)}
+                    </div>
+                  </li>
+                </ul>
+              );
+            })}
+      </p>
     </>
   );
 };

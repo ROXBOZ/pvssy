@@ -50,7 +50,7 @@
   }
 }
 
-$tabbed-navigation-color: $color3;
+$tabbed-navigation-color: lighten($color3, 10%);
 
 .tabbed-navigation-banner {
   display: flex;
@@ -135,7 +135,7 @@ $tabbed-navigation-color: $color3;
 }
 
 // TODO REOGANIZE
-#articleRef.article {
+.article {
   @include grid;
   animation: opacityAnimation 500ms ease-in;
   gap: 0;
@@ -155,7 +155,7 @@ $tabbed-navigation-color: $color3;
 }
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
-  #articleRef.article {
+  .article {
     * {
       grid-column: 1/5;
     }

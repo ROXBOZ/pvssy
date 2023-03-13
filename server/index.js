@@ -11,6 +11,7 @@ import eventRoutes from "./routes/eventRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import termRoutes from "./routes/termRoutes.js";
 import sourceRoutes from "./routes/sourceRoutes.js";
+import exerciseRoutes from "./routes/exerciseRoutes.js";
 import jwtStrategy from "./utils/passport.js";
 
 const port = process.env.PORT || 5000;
@@ -50,6 +51,7 @@ const loadRoutes = () => {
   app.use("/api/users", userRoutes);
   app.use("/api/terms", termRoutes);
   app.use("/api/sources", sourceRoutes);
+  app.use("/api/exercises", exerciseRoutes);
 };
 
 const startServer = () => {

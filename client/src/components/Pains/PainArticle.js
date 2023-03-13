@@ -7,8 +7,7 @@ import React, {
 } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
+import ShareThis from "../ShareThis";
 
 const PainArticle = () => {
   let currentURL = window.location.pathname;
@@ -23,7 +22,10 @@ const PainArticle = () => {
     painData,
     requestedTerms,
     requestedSources,
+    requestedExercises,
   } = useContext(PainsContext);
+
+  console.log("requestedExercises!! :", requestedExercises);
 
   const articleType = () => {
     if (currentURL.endsWith("/medical")) {
@@ -41,6 +43,16 @@ const PainArticle = () => {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const createList = (arr) => {
+    return (
+      <ul>
+        {arr.map((paragraph, index) => (
+          <li key={index}>{paragraph}</li>
+        ))}
+      </ul>
+    );
   };
 
   const highlightedTerms = requestedTerms
@@ -141,11 +153,6 @@ const PainArticle = () => {
 
   return (
     <>
-      <button>
-        <FontAwesomeIcon id="link-icon" icon={faShareNodes} /> partager cet
-        article
-      </button>
-      <br />
       <figure>
         <img
           className="pain-illu-cover"
@@ -188,11 +195,14 @@ const PainArticle = () => {
           className={`category-submenu ${isSticky ? "fixed" : ""}`}
           ref={submenuRef}
         >
+          <ShareThis />
           <p className="h4">
             Ressources
             <br />
             {painData.name}
+            <br />
           </p>
+
           <li>
             <Link to="*">Exercices</Link>
           </li>
@@ -277,6 +287,23 @@ const PainArticle = () => {
             <p>{highlightParagraphs(mokeParagraphSexo)}</p>
           </>
         )}
+
+        {!isMed && (
+          <>
+            <h2>Exercices</h2>
+            {requestedExercises &&
+              requestedExercises.map((ex) => (
+                <div className="exercise">
+                  <h3>{ex.title}</h3>
+                  <p>
+                    <strong>{ex.goal}</strong>
+                  </p>
+                  {createList(ex.howto)}
+                </div>
+              ))}
+          </>
+        )}
+
         <div id="references" className="source-ref">
           <h4>Sources</h4>
           <ul role="list">

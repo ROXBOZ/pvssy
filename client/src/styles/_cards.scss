@@ -57,7 +57,6 @@
       grid-column: span 2;
       .card {
         background: $gradient;
-        animation: gradient 5s infinite alternate;
         overflow: hidden;
       }
     }
@@ -122,6 +121,7 @@
   .card-grid {
     .link-card {
       &.article {
+        margin-top: 0;
         grid-column: span 1 !important;
       }
     }

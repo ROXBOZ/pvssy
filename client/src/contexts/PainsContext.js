@@ -12,6 +12,8 @@ export const PainsContextProvider = (props) => {
   const [painData, setPainData] = useState(null);
   const [requestedSources, setRequestedSources] = useState([]);
   const [requestedTerms, setRequestedTerms] = useState([]);
+  const [requestedExercises, setRequestedExercises] = useState([]);
+
   const [isSticky, setIsSticky] = useState(false);
   const [isMed, setIsMed] = useState(true);
   const segments = location.pathname.split("/");
@@ -89,11 +91,29 @@ export const PainsContextProvider = (props) => {
       console.log("error", error);
     }
   };
+  const fetchRelatedExercises = async () => {
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/exercises/byPain?relatedPain=${painName}`,
+        requestOptions
+      );
+      const result = await response.json();
+      setRequestedExercises(result.requestedExercises);
+    } catch (error) {
+      console.log("error :", error);
+    }
+  };
 
   useEffect(() => {
     fetchData(url);
     fetchRelatedSources(painName);
     fetchRelatedTerms(painName);
+    fetchRelatedExercises(painName);
   }, [url, painName]);
 
   return (
@@ -116,6 +136,7 @@ export const PainsContextProvider = (props) => {
         setIsMed,
         isSticky,
         setIsSticky,
+        requestedExercises,
       }}
     >
       {props.children}
