@@ -123,12 +123,12 @@
           padding: $gap;
           margin-left: 0;
           flex-direction: column;
-          margin-top: 6em;
 
           li {
-            font-size: 120%;
+            font-family: $font-bold;
+            font-size: 140%;
             list-style: none;
-            line-height: 4;
+            line-height: 3;
 
             a {
               padding: 0;

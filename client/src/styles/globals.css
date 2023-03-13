@@ -165,12 +165,12 @@
     padding: 2em;
     margin-left: 0;
     flex-direction: column;
-    margin-top: 6em;
   }
   header nav.vertical ul li {
-    font-size: 120%;
+    font-family: "ESKlarheit-Bold";
+    font-size: 140%;
     list-style: none;
-    line-height: 4;
+    line-height: 3;
   }
   header nav.vertical ul li a {
     padding: 0;
