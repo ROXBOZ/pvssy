@@ -5,38 +5,38 @@
 .heading-area {
   max-height: fit-content;
   margin-top: 20vh;
-}
-
-@media screen and (max-width: map-get($breakpoints, "sm")) {
-  .heading-area {
+  @media screen and (max-width: map-get($breakpoints, "sm")) {
     margin-top: 10vh;
   }
 }
 
-.pretitle {
-  font-family: $font-bold;
-  text-transform: uppercase;
-  color: $color1;
-  letter-spacing: 0.5px;
-  padding-bottom: 0;
-  margin-bottom: 0;
-  & + h1,
-  & + h2,
-  & + h3 {
-    margin-top: 0;
-    padding-top: 0.25em;
-  }
+strong {
+  font-family: $font-medium;
+  font-weight: 500;
 }
 
 h1 {
-  font: $font-logo;
-  max-width: 30ch;
+  font-family: $font-logo;
 }
 
 p {
   margin-top: 0;
-  max-width: 70ch !important;
+  max-width: $chperline;
 
+  &.pretitle {
+    font-family: $font-bold;
+    text-transform: uppercase;
+    color: $color1;
+    letter-spacing: 0.5px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    & + h1,
+    & + h2,
+    & + h3 {
+      margin-top: 0;
+      padding-top: 0.25em;
+    }
+  }
   &.subtitle {
     font-size: x-large;
     margin-bottom: 5vh;
@@ -45,7 +45,8 @@ p {
 
 a {
   text-decoration: none;
-  color: $color3;
+
+  color: darken($color1, 10%);
   border-bottom: $border-solid;
   font-family: $font-medium;
   width: fit-content;
@@ -64,6 +65,30 @@ sup {
 
 h2 + h3 {
   margin-top: 0;
+}
+
+.auteurice {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  margin-left: -3em;
+  .img-holder {
+    height: 2.5em;
+    width: 2.5em;
+    background: $gradient;
+  }
+  em {
+    font-style: normal;
+    font-family: $font-medium-italic;
+    a {
+      font-style: normal;
+      font-family: $font-medium-italic;
+    }
+  }
+
+  @media screen and (max-width: map-get($breakpoints, "sm")) {
+    margin-left: 0;
+  }
 }
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
@@ -104,11 +129,9 @@ $level-size: $type-base-size;
 
   h#{$level},
   .h#{$level} {
-    font-family: $font-medium;
     font-size: $level-size;
     line-height: calc(2px + 2ex + 2px);
     margin-bottom: 0.65em;
-    //FIXME this is hacky
     font-weight: 500;
 
     @if ($type-size-ratio > 1.2) {

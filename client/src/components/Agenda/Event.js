@@ -63,7 +63,7 @@ const Event = () => {
 
         {isOnline && (
           <p>
-            <span className="button-countdown">
+            <span className="countdown">
               <button
                 disabled={
                   eventDateInMilli < todayStartinMilli ||

@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { serverURL } from "../../utils/serverURL";
@@ -84,7 +84,7 @@ const PainLex = () => {
       <p className="lexique-list">
         {requestedTerms &&
           requestedTerms
-            .filter((t) => t.imgUrl) // Filter items with imgUrl
+            .filter((t) => t.imgUrl)
             .map((t, index) => {
               const termAnchor = t.term
                 .normalize("NFD")
@@ -94,11 +94,18 @@ const PainLex = () => {
               return (
                 <ul className=" lexique-list" key={index}>
                   <li className="lexique-list-item">
-                    <img src={t.imgUrl} alt={t.term} />
+                    <img src={t.imgUrl} alt={`shéma descriptif, ${t.term}`} />
                     <div>
                       <h2 className="h3" id={termAnchor}>
                         {t.term}
                       </h2>
+
+                      <p style={{ backgroundColor: "yellow" }}>
+                        Voir aussi : <Link to="/">Vulvonite</Link>,{" "}
+                        <Link to="/">Endométriose</Link> (autres douleurs avec
+                        le même terme){" "}
+                      </p>
+
                       {createParagraphs(t.def)}
                     </div>
                   </li>

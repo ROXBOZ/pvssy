@@ -21,9 +21,9 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer-content">
-        <h2 className="h4">
+        <p className="h4">
           Let’s <span className="logo">pvssy talk</span> !
-        </h2>
+        </p>
         <div className="social-medias">
           <SocialMediaLink
             icon={InstagramIcon}

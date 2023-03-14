@@ -1,3 +1,5 @@
+//TODO TO REFACTORE
+
 .category-submenu {
   width: 30vh;
   grid-column: 1/2 !important;
@@ -19,24 +21,21 @@
   }
 
   li {
+    font-family: $font-medium;
+    font-weight: 400;
     position: relative;
     line-height: 1.75;
+
     &:before {
       position: absolute;
+
       left: -20px;
       content: "↗";
       transition: $animation-transition;
     }
 
-    &.copy-link {
-      &:before {
-        content: ">";
-      }
-    }
-
     &:hover {
       &:before {
-        color: $color3;
         transform: rotate(45deg);
       }
     }
@@ -50,7 +49,7 @@
   }
 }
 
-$tabbed-navigation-color: lighten($color3, 10%);
+$tabbed-navigation-color: $color1;
 
 .tabbed-navigation-banner {
   display: flex;
@@ -111,7 +110,7 @@ $tabbed-navigation-color: lighten($color3, 10%);
         border: 0;
       }
       &:hover {
-        background-color: $color4;
+        background-color: lighten($tabbed-navigation-color, 20%);
       }
       &.active {
         background-color: $tabbed-navigation-color;

@@ -1,11 +1,6 @@
 import React from "react";
 import ShareButton from "react-share/lib/ShareButton";
-import {
-  EmailIcon,
-  FacebookMessengerIcon,
-  TelegramIcon,
-  WhatsappIcon,
-} from "react-share";
+import { EmailIcon, TelegramIcon, WhatsappIcon } from "react-share";
 
 const ShareThis = () => {
   const shareUrl = window.location.href;
@@ -40,7 +35,7 @@ const ShareThis = () => {
           href={`mailto:?body=${shareUrl}`}
           onClick={handleShareButtonClick}
         >
-          <EmailIcon size={25} round={true} />
+          <EmailIcon size={25} round={true} bgStyle={{ fill: "#f5733c" }} />
           <span className="tooltiptext">Email</span>
         </a>
         <a
@@ -48,7 +43,7 @@ const ShareThis = () => {
           href={`whatsapp://send?text=${shareUrl}`}
           onClick={handleShareButtonClick}
         >
-          <WhatsappIcon size={25} round={true} />
+          <WhatsappIcon size={25} round={true} bgStyle={{ fill: "#f5733c" }} />
           <span className="tooltiptext">WhatsApp</span>
         </a>
         <a
@@ -56,7 +51,7 @@ const ShareThis = () => {
           href={`https://telegram.me/share/url?url=${shareUrl}`}
           onClick={handleShareButtonClick}
         >
-          <TelegramIcon size={25} round={true} />
+          <TelegramIcon size={25} round={true} bgStyle={{ fill: "#f5733c" }} />
           <span className="tooltiptext">Telegram</span>
         </a>
       </ShareButton>

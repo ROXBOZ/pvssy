@@ -15,30 +15,6 @@
   }
 }
 
-/*-----Buttons-----*/
-
-@mixin button {
-  padding: $padding-btn;
-  border-radius: $border-radius;
-  border: $border-solid;
-  background-color: transparent;
-  font-size: $font-size-basis;
-  font-family: $font-medium;
-  width: fit-content;
-  height: fit-content;
-  cursor: pointer;
-  &:hover {
-    background-color: lighten($color2, 30%);
-    border: transparent $border-solid;
-  }
-  &:disabled {
-    background-color: $bg-color;
-    opacity: 60%;
-    cursor: auto;
-    border: $border-solid;
-  }
-}
-
 /*-----Grid-----*/
 
 @mixin grid {
@@ -60,13 +36,6 @@
   border: $border-solid lighten($color3, 20%);
 }
 
-/*-----Cards-----*/
-
-@mixin card-grid {
-  @include grid;
-  padding-bottom: $gap;
-}
-
 /*-----Inputs-----*/
 
 @mixin input {
@@ -84,26 +53,4 @@
   }
 }
 
-/*-----Placeholder-----*/
-
-@mixin placeholder {
-  color: lighten($txt-color, 50%);
-  font-family: $font-regular;
-}
-
-@mixin dotted-border {
-  position: relative;
-  display: inline-block;
-  border-bottom: 3px solid transparent;
-  &:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 100%;
-    height: 3px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 2' width='2' height='2'%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23303030' /%3E%3C/svg%3E");
-    background-repeat: repeat-x;
-    background-size: 4px 3px;
-  }
-}
+/*-----real dots dotted border-----*/

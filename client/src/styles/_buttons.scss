@@ -1,47 +1,36 @@
+@mixin button {
+  padding: $padding-btn;
+  border-radius: $border-radius;
+  border: $border-solid;
+  background-color: transparent;
+  font-size: $font-size-basis;
+  font-family: $font-medium;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+  &:hover {
+    background-color: lighten($color2, 30%);
+    border: transparent $border-solid;
+  }
+  &:disabled {
+    background-color: $bg-color;
+    opacity: 60%;
+    cursor: auto;
+    border: $border-solid;
+  }
+}
+
 button {
   @include button;
 
   &.showPassword {
     color: $txt-color;
-    padding: 0.5em;
+    padding: $quarter-gap;
     align-items: center;
     border: none !important;
     &:hover {
       background-color: transparent;
       color: $color3;
-    }
-  }
-}
-
-.button-countdown {
-  margin: 1em 0 0;
-  display: flex;
-  gap: $gap;
-  align-items: center;
-  justify-content: left;
-  p {
-    padding: 0;
-    margin: 0;
-  }
-}
-
-.show-counter {
-  color: $color3;
-  display: flex;
-  gap: $gap;
-  div {
-    display: flex;
-  }
-}
-
-.action-container {
-  display: flex;
-  gap: $gap;
-
-  .action-button {
-    &.active {
-      border: transparent;
-      background-color: lighten($color3, 40%);
     }
   }
 }

@@ -16,27 +16,78 @@ const getAllPains = async (req, res) => {
 };
 
 const addPain = async (req, res) => {
-  const { name, def, diag, sympt, auto, pro, why } = req.body;
+  const {
+    name,
+    def,
+    img,
+    diag,
+    sympt,
+    auto,
+    pro,
+    why,
+    body,
+    norms,
+    routine,
+    libido,
+    consent,
+    mental,
+    parenthood,
+    checkup,
+    pleasure,
+  } = req.body;
 
   try {
-    const newPain = new painModel({ name, def, diag, sympt, auto, pro, why });
+    const newPain = new painModel({
+      name,
+      img,
+      def,
+      diag,
+      sympt,
+      auto,
+      pro,
+      why,
+      body,
+      norms,
+      routine,
+      libido,
+      consent,
+      mental,
+      parenthood,
+      checkup,
+      pleasure,
+    });
     const savedPain = await newPain.save();
 
     res.status(201).json({
       msg: "new pain added successfully",
       pain: {
         name: savedPain.name,
-        def: savedPain.def,
-        diag: savedPain.diag,
-        sympt: savedPain.sympt,
-        sympt: savedPain.why,
-        auto: savedPain.auto,
-        pro: {
-          intro: savedPain.pro.intro,
-          gyne: savedPain.pro.gyne,
-          kine: savedPain.pro.kine,
-          psyc: savedPain.pro.psyc,
-          sexo: savedPain.pro.sexo,
+        img: savedPain.img,
+        medical: {
+          def: savedPain.def,
+          diag: savedPain.diag,
+          sympt: savedPain.sympt,
+          sympt: savedPain.why,
+          auto: savedPain.auto,
+          pro: {
+            intro: savedPain.pro.intro,
+            gyne: savedPain.pro.gyne,
+            kine: savedPain.pro.kine,
+            psyc: savedPain.pro.psyc,
+            sexo: savedPain.pro.sexo,
+          },
+        },
+
+        sexo: {
+          body: savedPain.body,
+          norms: savedPain.norms,
+          routine: savedPain.routine,
+          libido: savedPain.libido,
+          consent: savedPain.consent,
+          mental: savedPain.mental,
+          parenthood: savedPain.parenthood,
+          checkup: savedPain.checkup,
+          pleasure: savedPain.pleasure,
         },
       },
     });

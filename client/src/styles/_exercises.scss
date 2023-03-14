@@ -1,14 +1,44 @@
-.exercise {
-  border: $border-solid yellow;
-  background-color: lighten(yellow, 30%);
-  border-radius: $border-radius;
-  padding: $gap;
-  margin: $demi-gap 0;
-  width: 70ch;
-  h3 {
-    margin-top: 0;
-  }
-  li {
-    margin-bottom: 0.25em;
+.exercises-container {
+  @include grid;
+  margin: 0;
+
+  .exercise {
+    border: $border-solid $color1;
+    background-color: lighten($color1, 30%);
+    border-radius: $border-radius;
+    padding: $padding-sm;
+    width: 100%;
+    height: fit-content;
+
+    h3 {
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 0;
+      margin-left: 0;
+
+      li {
+        list-style: none;
+
+        &.goals {
+          display: flex;
+          align-items: center;
+          gap: $demi-gap;
+          margin-bottom: 1em;
+        }
+
+        &.howto {
+          background-color: lighten($color1, 25%);
+          margin: $demi-gap 0;
+          padding: $demi-gap;
+          border-radius: $border-radius;
+        }
+      }
+
+      &.animate {
+        animation: animationOpacity $animation-transition forwards;
+      }
+    }
   }
 }

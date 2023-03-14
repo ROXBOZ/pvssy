@@ -31,10 +31,9 @@ const Home = () => {
   }, [agendaURL]);
 
   return (
-    <>
+    <div className="landing-view">
       <h1>
-        <span className="logo">Pvssy Talk</span> pour une sexualité sans
-        douleurs et sans tabous
+        Une sexualité <nobr>sans douleurs et sans tabous</nobr>
       </h1>
       <p className="subtitle">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
@@ -42,52 +41,54 @@ const Home = () => {
         rellendus laudantium, excturi iusto architecto neque natus adipisci,
         eligendi nesciunt eos odit!
       </p>
-      <Pains />
-      <h2>Agenda</h2>
-      {/* <div className="filter-dashboard">
-        <div className="filter">
-          <div className="filter-dropdown">
-            <div className="input-icon">
-              <label htmlFor="region">Région</label>
-              <input
-                placeholder="Lausanne"
-                id="region"
-                type="text"
-                value={value}
-                onClick={handleIconClick}
-                onChange={handleRegionInputChange}
-                onKeyDown={handleKeyDown}
-              />
-              <FontAwesomeIcon
-                className={iconClicked ? "open" : "close"}
-                id="chevron-icon"
-                onClick={handleIconClick}
-                icon={faChevronDown}
-              />
-            </div>
 
-            {showSuggestions && (
-              <ul className="suggestions">
-                {suggestions.map((suggestion, index) => (
-                  <li
-                    key={index}
-                    className={
-                      index === selectedSuggestionIndex
-                        ? "suggestion-active"
-                        : ""
-                    }
-                    onClick={() => handleSuggestionClick(suggestion)}
-                  >
-                    {suggestion}
-                  </li>
-                ))}
-              </ul>
-            )}
+      <Pains />
+
+      <div style={{ marginTop: "6rem" }}>
+        <p className="pretitle">Participer</p>
+        <h2>Agenda</h2>
+        <div className="filter-dashboard">
+          <div className="filter">
+            <div className="filter-dropdown">
+              <div className="input-icon">
+                <label htmlFor="region">Région</label>
+                <input
+                  placeholder="Lausanne"
+                  id="region"
+                  type="text"
+                  value={value}
+                  onClick={handleIconClick}
+                  onChange={handleRegionInputChange}
+                  onKeyDown={handleKeyDown}
+                />
+                <FontAwesomeIcon
+                  className={iconClicked ? "open" : "close"}
+                  id="chevron-icon"
+                  onClick={handleIconClick}
+                  icon={faChevronDown}
+                />
+              </div>
+
+              {showSuggestions && (
+                <ul className="suggestions">
+                  {suggestions.map((suggestion, index) => (
+                    <li
+                      key={index}
+                      className={
+                        index === selectedSuggestionIndex
+                          ? "suggestion-active"
+                          : ""
+                      }
+                      onClick={() => handleSuggestionClick(suggestion)}
+                    >
+                      {suggestion}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         </div>
-      </div> */}
-
-      <>
         {data.upcomingEvents &&
         data.upcomingEvents
           .filter((e) => {
@@ -115,8 +116,8 @@ const Home = () => {
             .map((e) => {
               return (
                 <div className="agenda-entry">
-                  <p className="agenda-entry-pretitle">
-                    <nobr>{dateTimeConverter(e.date)}</nobr> -
+                  <p className="agenda-entry-pretitle ">
+                    <nobr>{dateTimeConverter(e.date)}</nobr> -{" "}
                     {e.isOnline ? (
                       <span>ONLINE</span>
                     ) : (
@@ -133,6 +134,8 @@ const Home = () => {
                     <h3>{e.title}</h3>
                   </span>
                   <p>{e.shortDef}</p>
+                  <br />
+                  <button>en savoir plus</button>
                 </div>
               );
             })
@@ -142,8 +145,8 @@ const Home = () => {
           </p>
         )}
         {Error && <p>Erreur</p>}
-      </>
-    </>
+      </div>
+    </div>
   );
 };
 

@@ -3,6 +3,9 @@
   color: lighten($txt-color, 50%);
 
   .crumb {
+    a {
+      color: darken($color6, 5%);
+    }
     &:after {
       color: $txt-color;
       content: "→";

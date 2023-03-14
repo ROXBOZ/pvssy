@@ -1,4 +1,4 @@
-import mongoose, { isValidObjectId } from "mongoose";
+import mongoose from "mongoose";
 
 const painSchema = new mongoose.Schema({
   name: {
@@ -33,20 +33,64 @@ const painSchema = new mongoose.Schema({
   },
   pro: {
     intro: {
-      type: String,
+      type: Array,
     },
     gyne: {
-      type: String,
+      type: Array,
     },
     kine: {
-      type: String,
+      type: Array,
     },
     psyc: {
-      type: String,
+      type: Array,
     },
     sexo: {
-      type: String,
+      type: Array,
     },
+  },
+  body: {
+    type: Array,
+    required: true,
+  },
+
+  norms: {
+    type: Array,
+    required: true,
+  },
+
+  routine: {
+    type: Array,
+    required: true,
+  },
+
+  libido: {
+    type: Array,
+    required: true,
+  },
+
+  consent: {
+    type: Array,
+    required: true,
+  },
+
+  mental: {
+    type: Array,
+    required: true,
+  },
+
+  parenthood: {
+    type: Array,
+    required: true,
+  },
+
+  checkup: {
+    type: Array,
+    required: true,
+  },
+
+  pleasure: {
+    type: Array,
+    required: true,
   },
 });
 

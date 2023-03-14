@@ -1,3 +1,10 @@
+//TODO TO REFACTORE
+
+@mixin placeholder {
+  color: lighten($txt-color, 50%);
+  font-family: $font-regular;
+}
+
 input {
   &::placeholder {
     @include placeholder;

@@ -12,10 +12,19 @@ const exerciseSchema = new mongoose.Schema({
     required: true,
   },
 
+  intro: {
+    type: String,
+  },
+
   howto: {
     type: Array,
     required: true,
   },
+
+  conclusion: {
+    type: String,
+  },
+
   relatedPain: {
     type: Array,
     required: true,

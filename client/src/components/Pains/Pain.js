@@ -70,23 +70,25 @@ const Pain = () => {
 
               <ResourceCard
                 to="lexique"
-                title="Lexique"
+                title="Lexique + Shémas"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
               />
+
+              {/* <ResourceCard
+                to="extras"
+                title="Extras"
+                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
+              /> */}
+
               <ResourceCard
-                to="*"
-                title="Tutos"
+                to="exercices"
+                title="Exercices sexo"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
               />
 
               <ResourceCard
                 to="*"
-                title="Shémas"
-                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-              />
-              <ResourceCard
-                to="*"
-                title="Exercices"
+                title="Tutos"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
               />
             </div>

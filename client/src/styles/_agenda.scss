@@ -2,22 +2,37 @@
   margin-top: $gap;
   width: 100vw;
   width: fit-content;
-  padding: $gap $demi-gap;
-  border-radius: $border-radius;
   cursor: pointer;
 
-  &:hover {
-    background: $gradient;
-  }
   .agenda-entry-pretitle {
+    position: relative;
     font-family: $font-bold;
-    //white-space: nowrap;
+    padding-top: $padding-xs;
+
+    &:before {
+      top: -$padding-xs;
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 0;
+      border-top: $border-solid;
+    }
   }
+
+  &:hover {
+    .agenda-entry-pretitle {
+      &:before {
+        animation: border_anim 200ms linear forwards;
+      }
+    }
+  }
+
   .img-holder {
     border: $bg-color 2px solid;
     height: 1.5em;
     width: 1.5em;
   }
+
   p + h3 {
     margin-top: 0;
     padding-top: 0;
@@ -31,9 +46,18 @@
     display: flex;
     align-items: center;
     gap: $demi-gap;
-    margin: $demi-gap 0;
+    margin: $gap 0 $demi-gap;
     h3 {
       margin: 0;
     }
+  }
+}
+
+@keyframes border_anim {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
   }
 }

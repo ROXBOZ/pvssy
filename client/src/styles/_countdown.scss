@@ -1,0 +1,14 @@
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+
+  .show-counter {
+    color: $color3;
+    display: flex;
+    gap: $gap;
+    div {
+      display: flex;
+    }
+  }
+}

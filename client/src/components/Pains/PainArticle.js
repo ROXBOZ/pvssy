@@ -22,10 +22,7 @@ const PainArticle = () => {
     painData,
     requestedTerms,
     requestedSources,
-    requestedExercises,
   } = useContext(PainsContext);
-
-  console.log("requestedExercises!! :", requestedExercises);
 
   const articleType = () => {
     if (currentURL.endsWith("/medical")) {
@@ -43,16 +40,6 @@ const PainArticle = () => {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-  };
-
-  const createList = (arr) => {
-    return (
-      <ul>
-        {arr.map((paragraph, index) => (
-          <li key={index}>{paragraph}</li>
-        ))}
-      </ul>
-    );
   };
 
   const highlightedTerms = requestedTerms
@@ -142,15 +129,6 @@ const PainArticle = () => {
     });
   };
 
-  const mokeParagraphSexo = [
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam labore modi iusto. Ullam at ex hic. Enim eligendi magni hic repellendus facilis assumenda explicabo, eius, deserunt illo eos architecto nihil? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam labore modi iusto.",
-    "Lorem ipsum, dolir sit amet consectetur adipisicing elit. Quisquam labore modi iusto. Ullam at ex hic. Enim eligendi magni hic repellendus facilis assumenda explicabo, eius, deserunt illo eos architecto nihil? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam labore modi iusto.",
-    "Lorem ipsum, dolur sit amet consectetur adipisicing elit. Quisquam labore modi iusto. Ullam at ex hic. Enim eligendi magni hic repellendus facilis assumenda explicabo, eius, deserunt illo eos architecto nihil? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam labore modi iusto.",
-  ];
-  const mokeParagraphSexo2 = [
-    "Lorem ipsum, Test ref sit amet consectetur adipisicing elit. Quisquam labore modi iusto. Ullam at ex hic. Enim eligendi magni hic repellendus facilis assumenda explicabo, eius, deserunt illo eos architecto nihil? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam labore modi iusto.",
-  ];
-
   return (
     <>
       <figure>
@@ -204,21 +182,16 @@ const PainArticle = () => {
           </p>
 
           <li>
-            <Link to="*">Exercices</Link>
+            <Link to="../lexique">Lexique + Shémas</Link>
           </li>
           <li>
-            <Link to="*">Extras</Link>
-          </li>
-          <li>
-            <Link to="../lexique">Lexique</Link>
-          </li>
-          <li>
-            <Link to="*">Shémas</Link>
+            <Link to="../exercices">Exercices Sexo</Link>
           </li>
           <li>
             <Link to="*">Tutos</Link>
           </li>
         </ul>
+
         {isMed ? (
           <>
             <h2>Définition</h2>
@@ -236,25 +209,25 @@ const PainArticle = () => {
             {painData.pro.gyne && (
               <>
                 <h3>Gynécologue</h3>
-                <p>{painData.pro.gyne}</p>
+                {highlightParagraphs(painData.pro.gyne)}
               </>
             )}
             {painData.pro.kine && (
               <>
                 <h3>Kinésithérapeute</h3>
-                <p>{painData.pro.kine}</p>
+                {highlightParagraphs(painData.pro.kine)}
               </>
             )}
             {painData.pro.psyc && (
               <>
                 <h3>Psychologue</h3>
-                <p>{painData.pro.psyc}</p>
+                {highlightParagraphs(painData.pro.psyc)}
               </>
             )}
             {painData.pro.sexo && (
               <>
                 <h3>Sexologue</h3>
-                <p>{painData.pro.sexo}</p>
+                {highlightParagraphs(painData.pro.sexo)}
               </>
             )}
           </>
@@ -262,51 +235,33 @@ const PainArticle = () => {
           <>
             <h2>Lien à soi</h2>
             <h3>Image /schéma corporel</h3>
-            <p>{highlightParagraphs(mokeParagraphSexo)}</p>
-
+            <p>{highlightParagraphs(painData.body)}</p>
             <h3>Normes genrées</h3>
-            <p>{highlightParagraphs(mokeParagraphSexo)}</p>
+            <p>{highlightParagraphs(painData.norms)}</p>
             <h3>Vie quotidienne</h3>
-            <p>{highlightParagraphs(mokeParagraphSexo)}</p>
+            <p>{highlightParagraphs(painData.routine)}</p>
             <h2>Libido</h2>
-            <p>{highlightParagraphs(mokeParagraphSexo)}</p>
+            <p>{highlightParagraphs(painData.libido)}</p>
             <h3>
               Charge mentale / communication /
               <br />
               consentement
             </h3>
-            <p>{highlightParagraphs(mokeParagraphSexo)}</p>
+            <p>{highlightParagraphs(painData.consent)}</p>
             <h2>Santé mentale</h2>
-            <p>{highlightParagraphs(mokeParagraphSexo)}</p>
+            <p>{highlightParagraphs(painData.mental)}</p>
             <h2>Parentalité</h2>
-            <p>{highlightParagraphs(mokeParagraphSexo)}</p>
+            <p>{highlightParagraphs(painData.parenthood)}</p>
             <h2>Avec les pros</h2>
-            <p>{highlightParagraphs(mokeParagraphSexo)}</p>
+            <p>{highlightParagraphs(painData.checkup)}</p>
             <h2>Plaisir / anti-douleur</h2>
-            <p>{highlightParagraphs(mokeParagraphSexo2)}</p>
-            <p>{highlightParagraphs(mokeParagraphSexo)}</p>
-          </>
-        )}
-
-        {!isMed && (
-          <>
-            <h2>Exercices</h2>
-            {requestedExercises &&
-              requestedExercises.map((ex) => (
-                <div className="exercise">
-                  <h3>{ex.title}</h3>
-                  <p>
-                    <strong>{ex.goal}</strong>
-                  </p>
-                  {createList(ex.howto)}
-                </div>
-              ))}
+            <p>{highlightParagraphs(painData.pleasure)}</p>
           </>
         )}
 
         <div id="references" className="source-ref">
-          <h4>Sources</h4>
-          <ul role="list">
+          <h4>Bibliographie</h4>
+          <ul>
             {requestedSources &&
               requestedSources.map((s) => (
                 <li data-icon="→" key={s._id} id={s.title}>

@@ -1,26 +1,30 @@
 @import "vars";
 @import "mixins";
+//
 @import "accessibility";
-@import "header";
-@import "footer";
-@import "typography";
-@import "layout";
-@import "cards";
-@import "buttons";
-@import "forms";
-@import "bootstrap";
-@import "profile";
-@import "messages";
-@import "breadcrumbs";
-@import "illustrations";
-@import "nav";
-@import "sources";
 @import "agenda";
+@import "animations";
+@import "bootstrap";
+@import "breadcrumbs";
+@import "buttons";
+@import "cards";
+@import "countdown";
 @import "exercises";
+@import "footer";
+@import "forms";
+@import "header";
+@import "illustrations";
+@import "lexique";
+@import "messages";
+@import "nav";
+@import "profile";
+@import "sources";
 @import "tooltips";
+@import "typography";
 
 * {
   outline: none;
+
   &:focus {
     border: $border-solid lighten($color1, 30%);
   }
@@ -34,8 +38,6 @@
 html {
   margin: 0;
   padding: 0;
-  background-repeat: repeat;
-  background-size: 50px 50px;
   background-color: $bg-color;
   color: $txt-color;
   font-family: $font-regular;
@@ -43,35 +45,22 @@ html {
   font-size: $font-size-basis;
   height: auto;
 
-  //FIXME
-  strong {
-    font-family: $font-medium;
-    font-weight: 500;
-  }
-
   body {
     margin: 0;
     padding: 0;
     height: auto;
-    h1 {
-      font-family: $font-logo;
-    }
     .main {
       padding: 10vh $padding-sm;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-
-      * {
-        max-width: 100%;
+      @media screen and (max-width: map-get($breakpoints, "sm")) {
+        padding-bottom: 0;
       }
     }
   }
 }
 
-@media screen and (max-width: map-get($breakpoints, "sm")) {
-  .main {
-    // width: 100vw;
-    padding-bottom: 0;
-  }
+.grid-area {
+  @include grid;
 }

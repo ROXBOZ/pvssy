@@ -7,24 +7,25 @@ footer {
   align-items: center;
   gap: $demi-gap;
 
-  h2 {
-    .logo {
-      font-family: $font-logo;
-      color: lighten($color2, 10%);
-    }
-  }
-  a {
-    color: $bg-color;
-  }
-
   .footer-content {
     display: flex;
+    align-items: center !important;
     gap: $demi-gap;
+
+    .h4 {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      .logo {
+        font-family: $font-logo;
+        color: lighten($color2, 10%);
+      }
+    }
+
     .social-medias {
       display: flex;
       gap: $demi-gap;
-      align-items: center;
       justify-content: space-around;
+
       a {
         width: 2em;
         height: 2em;
@@ -33,6 +34,7 @@ footer {
         border-radius: 50%;
         align-items: center;
         justify-content: center;
+
         svg {
           fill: white;
           width: 2em;
@@ -43,6 +45,7 @@ footer {
         &:hover {
           border: $border-solid $color2;
           background-color: $color1;
+
           svg {
             fill: $txt-color;
             path {

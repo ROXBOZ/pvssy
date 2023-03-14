@@ -26,7 +26,9 @@ import Ressources from "./components/Ressources";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NotFound from "./pages/NotFound";
-import PainLex from "./components/Pains/PainLex";
+import PainLexique from "./components/Pains/PainLexique";
+import PainExercices from "./components/Pains/PainExercices";
+import PainExtras from "./components/Pains/PainExtras";
 import AllLexique from "./components/AllLexique";
 import AddEvent from "./components/User/Agenda/AddEvent";
 import DeleteEvent from "./components/User/Agenda/DeleteEvent";
@@ -75,11 +77,19 @@ function App() {
                   />
                   <Route
                     path="se-soigner/douleurs/:name/lexique"
-                    element={<PainLex />}
+                    element={<PainLexique />}
                   />
                   <Route
                     path="se-soigner/douleurs/:name/lexique/#:term"
-                    element={<PainLex />}
+                    element={<PainLexique />}
+                  />
+                  <Route
+                    path="se-soigner/douleurs/:name/exercices"
+                    element={<PainExercices />}
+                  />
+                  <Route
+                    path="se-soigner/douleurs/:name/extras"
+                    element={<PainExtras />}
                   />
                   <Route
                     path="se-soigner/ressources/articles"

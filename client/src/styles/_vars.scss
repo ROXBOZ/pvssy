@@ -8,6 +8,7 @@ $color2: #ff50d7;
 $color3: #20451e;
 $color4: #c8ffa5;
 $color5: #cf98ff;
+$color6: #9637f0;
 
 $gradient: radial-gradient(circle, $color1 0%, $color5 80%);
 
@@ -60,6 +61,7 @@ $font-bold: "ESKlarheit-Bold";
 
 $font-size-basis: 16px;
 $lineheight: 1.5;
+$chperline: 70ch;
 
 /*-----Margins-----*/
 
@@ -73,12 +75,13 @@ $padding-btn: 0.5em 1.5em;
 
 /*-----Gap-----*/
 
+$quarter-gap: 0.5em;
 $demi-gap: 1em;
 $gap: 2em;
 
 /*-----Borders-----*/
 
-$border-solid: 1.5px solid;
+$border-solid: 1px solid;
 $border-radius: 0.25em;
 
 /*-----Animations-----*/

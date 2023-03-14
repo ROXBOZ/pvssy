@@ -1,12 +1,30 @@
+@mixin dotted-border {
+  position: relative;
+  border-bottom: 3px solid transparent;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 3px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 2' width='2' height='2'%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23303030' /%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 4px 3px;
+  }
+}
+
 .source {
+  @include dotted-border;
+  display: inline;
   font-family: $font-regular-italic;
   color: $txt-color;
-  display: block;
   word-wrap: break-word;
-  @include dotted-border;
 
   &:hover {
-    @include dotted-border;
+    &:after {
+      width: 0;
+    }
   }
   &:focus {
     border: 0;
@@ -17,10 +35,10 @@
 .source-ref {
   margin-top: $gap;
   border-top: $border-solid;
-  max-width: 70ch;
+  max-width: $chperline;
+
   ul {
     padding-left: 0;
-    display: grid;
     gap: 0.25rem;
     li {
       display: grid;
@@ -34,16 +52,6 @@
       }
       .source-title {
         font-family: $font-medium-italic;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: map-get($breakpoints, "sm")) {
-  .source-ref {
-    ul {
-      li {
-        background-color: yellow;
       }
     }
   }

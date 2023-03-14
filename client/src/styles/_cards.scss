@@ -1,5 +1,9 @@
+//TODO TO REFACTORE
+
 .card-grid {
-  @include card-grid;
+  @include grid;
+  padding-bottom: $gap;
+
   .link-card {
     border-bottom: none;
     color: $txt-color;
@@ -9,7 +13,9 @@
     &:hover {
       opacity: 80%;
     }
+
     .card {
+      background-color: $bg-color;
       border: none;
       border-radius: $border-radius;
       display: flex;
@@ -42,6 +48,7 @@
         text-align: center;
       }
     }
+
     &.article,
     &.ressource {
       .card {
@@ -53,6 +60,7 @@
         }
       }
     }
+
     &.article {
       grid-column: span 2;
       .card {
@@ -60,11 +68,13 @@
         overflow: hidden;
       }
     }
+
     &.ressource {
       .card {
         background-color: $color1;
       }
     }
+
     &.agenda {
       .card {
         display: flex;
