@@ -303,16 +303,13 @@ const PainArticle = () => {
                             <span className="source-title">{s.title}</span>
                           </Link>
                         ) : (
-                          <span className="source-title">
-                            <strong>{s.title}</strong>
-                          </span>
+                          <span className="source-title">{s.title}</span>
                         )}{" "}
                         <span className="source-category">[{s.category}]</span>{" "}
                         {s.editor && (
-                          <span className="source-editor">{s.editor}</span>
+                          <span className="source-editor">{s.editor}.</span>
                         )}
                       </span>
-                      .
                     </li>
                   );
                 }

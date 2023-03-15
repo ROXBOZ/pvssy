@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 // pages and components
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Donation from "./pages/Donate";
 import SeSoigner from "./pages/SeSoigner";
 import SInformer from "./pages/SInformer";
 import Shop from "./pages/Shop";
@@ -113,6 +114,7 @@ function App() {
                   <Route path="agenda/archives" element={<EventsArchives />} />
                   <Route path="login" element={<Login />} />
                   <Route path="creer-un-compte" element={<Signup />} />
+                  <Route path="faire-un-don" element={<Donation />} />
                   <Route
                     path="profile"
                     element={<ProtectedRoute />}

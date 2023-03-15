@@ -364,7 +364,7 @@ button.showPassword:hover {
 }
 
 .donation-banner {
-  background-color: #cf98ff;
+  background-color: white;
   padding: 2em;
   display: grid;
   display: grid;
@@ -385,8 +385,15 @@ button.showPassword:hover {
 .donation-banner .donation-banner-content h4 {
   margin-top: 0;
 }
-.donation-banner p {
-  margin-bottom: 0;
+.donation-banner .donation-banner-content .button-link-container {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+.donation-banner .donation-banner-content .button-link-container a {
+  color: #1f042f;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .exercises-container {
@@ -1301,8 +1308,8 @@ figure span a {
   transform: rotate(45deg);
 }
 
-.share-button a svg:hover {
-  opacity: 80%;
+.share-button a:hover svg circle {
+  fill: #f5733c !important;
 }
 .share-button .copy-url-button-container {
   display: flex;
@@ -1310,19 +1317,19 @@ figure span a {
   gap: 0.5em;
 }
 .share-button .copy-url-button-container .copy-url-button:hover {
-  opacity: 80%;
+  background-color: #f5733c;
 }
 .share-button .copy-url-button-container p {
-  padding-top: 5%;
-  font-size: 70%;
   margin-bottom: 0;
-  color: #c1400a;
+  white-space: nowrap;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .copy-url-button {
   width: 25px;
   height: 25px;
-  background-color: #f5733c;
+  background-color: #d95720;
   border-radius: 50%;
   border: none !important;
   display: flex !important;
@@ -1549,7 +1556,6 @@ figure span a {
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black;
 }
 .tooltip .tooltiptext {
   visibility: hidden;
@@ -1564,9 +1570,6 @@ figure span a {
   position: absolute;
   z-index: 1;
   margin-left: 0.5em;
-}
-.tooltip .tooltiptext.tooltiptext-copy {
-  margin-left: 7em;
 }
 .tooltip:hover .tooltiptext {
   visibility: visible;

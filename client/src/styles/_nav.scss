@@ -45,9 +45,11 @@
 
 .share-button {
   a {
-    svg {
-      &:hover {
-        opacity: 80%;
+    &:hover {
+      svg {
+        circle {
+          fill: $color1 !important;
+        }
       }
     }
   }
@@ -59,22 +61,21 @@
 
     .copy-url-button {
       &:hover {
-        opacity: 80%;
+        background-color: $color1;
       }
     }
 
     p {
-      padding-top: 5%;
-      font-size: 70%;
       margin-bottom: 0;
-      color: darken($color1, 20%);
+      white-space: nowrap;
+      height: fit-content;
     }
   }
 }
 .copy-url-button {
   width: 25px;
   height: 25px;
-  background-color: $color1;
+  background-color: #d95720;
   border-radius: 50%;
   border: none !important;
   display: flex !important;

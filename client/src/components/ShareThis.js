@@ -31,7 +31,7 @@ const ShareThis = () => {
     setIsCopied(true);
     setTimeout(() => {
       setIsCopied(false);
-    }, 2000);
+    }, 1500);
   };
 
   return (
@@ -46,7 +46,7 @@ const ShareThis = () => {
           to={`mailto:?body=${shareUrl}`}
           onClick={handleShareButtonClick}
         >
-          <EmailIcon size={25} round={true} bgStyle={{ fill: "#f5733c" }} />
+          <EmailIcon size={25} round={true} bgStyle={{ fill: "#d95720" }} />
           <span className="tooltiptext">Email</span>
         </Link>
         <Link
@@ -54,7 +54,7 @@ const ShareThis = () => {
           to={`whatsapp://send?text=${shareUrl}`}
           onClick={handleShareButtonClick}
         >
-          <WhatsappIcon size={25} round={true} bgStyle={{ fill: "#f5733c" }} />
+          <WhatsappIcon size={25} round={true} bgStyle={{ fill: "#d95720" }} />
           <span className="tooltiptext">WhatsApp</span>
         </Link>
         <Link
@@ -62,7 +62,7 @@ const ShareThis = () => {
           to={`https://telegram.me/share/url?url=${shareUrl}`}
           onClick={handleShareButtonClick}
         >
-          <TelegramIcon size={25} round={true} bgStyle={{ fill: "#f5733c" }} />
+          <TelegramIcon size={25} round={true} bgStyle={{ fill: "#d95720" }} />
           <span className="tooltiptext">Telegram</span>
         </Link>
         <div className="copy-url-button-container">
@@ -72,10 +72,12 @@ const ShareThis = () => {
             className=" tooltip copy-url-button"
           >
             <FontAwesomeIcon className="link-icon" icon={faLink} />
-            <span className="tooltiptext tooltiptext-copy">Copier</span>{" "}
+            <span className="tooltiptext">
+              <p>{isCopied === true ? "URL copiée" : "copier"}</p>
+            </span>{" "}
           </div>
 
-          {isCopied === true && <p>URL copiée</p>}
+          {/* {isCopied === true && <p>URL copiée</p>} */}
         </div>
       </ShareButton>
     </div>

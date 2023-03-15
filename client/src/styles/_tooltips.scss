@@ -1,7 +1,6 @@
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black;
 
   .tooltiptext {
     visibility: hidden;
@@ -15,10 +14,6 @@
     position: absolute;
     z-index: 1;
     margin-left: 0.5em;
-    &.tooltiptext-copy {
-      //FIXME
-      margin-left: 7em;
-    }
   }
 
   &:hover {

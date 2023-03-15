@@ -11,12 +11,18 @@ const Footer = () => {
 
   const SocialMediaLink = ({ icon: Icon, name, to }) => {
     return (
-      <Link target="_blank" to={to}>
+      <a
+        className="tooltip"
+        href={to}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <Icon />
         <span className="screen-reader-text">
           (ouvre un nouvel onglet, redirection vers {name})
         </span>
-      </Link>
+        <p className="tooltiptext">{name}</p>
+      </a>
     );
   };
 
@@ -42,8 +48,12 @@ const Footer = () => {
             name="LinkedIn"
             to="https://www.linkedin.com/company/pvssy-talk/"
           />
-          <SocialMediaLink icon={MailChimpIcon} name="MailChimpIcon" to="/" />
-          <SocialMediaLink icon={EmailIcon} name="Email" to="/" />
+          <SocialMediaLink icon={MailChimpIcon} name="Newsletter" to="/" />
+          <SocialMediaLink
+            icon={EmailIcon}
+            name="Email"
+            to="mailto:info@pvssy-talk.org"
+          />
         </div>
         <p className="copyrights">
           © <span className="logo">pvssy talk</span>, {currentYear}

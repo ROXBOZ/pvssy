@@ -1,5 +1,6 @@
 .donation-banner {
-  background-color: $color5;
+  background-color: white;
+
   padding: $padding-sm;
   display: grid;
   @include grid;
@@ -11,8 +12,15 @@
       margin-top: 0;
     }
     grid-column: 2/5;
-  }
-  p {
-    margin-bottom: 0;
+
+    .button-link-container {
+      display: flex;
+      gap: $demi-gap;
+      align-items: center;
+      a {
+        color: $txt-color;
+        height: fit-content;
+      }
+    }
   }
 }
