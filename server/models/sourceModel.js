@@ -21,6 +21,19 @@ const sourceSchema = new mongoose.Schema({
     type: String,
   },
 
+  url: {
+    type: String,
+  },
+
+  isFootnote: {
+    type: Boolean,
+    required: true,
+  },
+
+  category: {
+    type: String,
+  },
+
   relatedPain: {
     type: Array,
   },

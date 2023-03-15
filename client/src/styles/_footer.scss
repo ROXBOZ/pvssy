@@ -2,12 +2,14 @@ footer {
   background-color: darken($txt-color, 10%);
   color: $bg-color;
   padding: $padding-sm;
-  display: flex;
+  display: grid;
+  @include grid;
   justify-content: center;
   align-items: center;
   gap: $demi-gap;
 
   .footer-content {
+    grid-column: 2/5;
     display: flex;
     align-items: center !important;
     gap: $demi-gap;

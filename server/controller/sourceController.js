@@ -37,7 +37,17 @@ const getSourcesByPain = async (req, res) => {
   }
 };
 const addSource = async (req, res) => {
-  const { author, editor, year, edition, relatedPain, title } = req.body;
+  const {
+    author,
+    editor,
+    year,
+    edition,
+    relatedPain,
+    title,
+    url,
+    isFootnote,
+    category,
+  } = req.body;
 
   try {
     const newSource = new sourceModel({
@@ -47,6 +57,9 @@ const addSource = async (req, res) => {
       edition,
       relatedPain,
       title,
+      url,
+      isFootnote,
+      category,
     });
     const savedSource = await newSource.save();
 
@@ -59,6 +72,9 @@ const addSource = async (req, res) => {
         edition: savedSource.edition,
         relatedPain: savedSource.relatedPain,
         title: savedSource.title,
+        url: savedSource.url,
+        isFootnote: savedSource.isFootnote,
+        category: savedSource.category,
       },
     });
   } catch (error) {

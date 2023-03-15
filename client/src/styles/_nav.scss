@@ -43,6 +43,50 @@
   }
 }
 
+.share-button {
+  a {
+    svg {
+      &:hover {
+        opacity: 80%;
+      }
+    }
+  }
+
+  .copy-url-button-container {
+    display: flex;
+    align-items: top;
+    gap: 0.5em;
+
+    .copy-url-button {
+      &:hover {
+        opacity: 80%;
+      }
+    }
+
+    p {
+      padding-top: 5%;
+      font-size: 70%;
+      margin-bottom: 0;
+      color: darken($color1, 20%);
+    }
+  }
+}
+.copy-url-button {
+  width: 25px;
+  height: 25px;
+  background-color: $color1;
+  border-radius: 50%;
+  border: none !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  .link-icon {
+    max-width: 60%;
+    color: white;
+  }
+}
+
 @media screen and (max-width: map-get($breakpoints, "sm")) {
   .category-submenu {
     background-color: yellow;

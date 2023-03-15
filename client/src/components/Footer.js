@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { ReactComponent as InstagramIcon } from "../assets/images/instagram.svg";
 import { ReactComponent as FacebookIcon } from "../assets/images/facebook.svg";
 import { ReactComponent as LinkedInIcon } from "../assets/images/linkedin.svg";
+import { ReactComponent as EmailIcon } from "../assets/images/email.svg";
+import { ReactComponent as MailChimpIcon } from "../assets/images/mailchimp.svg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -40,10 +42,13 @@ const Footer = () => {
             name="LinkedIn"
             to="https://www.linkedin.com/company/pvssy-talk/"
           />
+          <SocialMediaLink icon={MailChimpIcon} name="MailChimpIcon" to="/" />
+          <SocialMediaLink icon={EmailIcon} name="Email" to="/" />
         </div>
+        <p className="copyrights">
+          © <span className="logo">pvssy talk</span>, {currentYear}
+        </p>
       </div>
-
-      <p className="copyrights">© Pvssy Talk, {currentYear}</p>
     </footer>
   );
 };

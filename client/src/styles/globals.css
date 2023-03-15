@@ -363,6 +363,32 @@ button.showPassword:hover {
   display: flex;
 }
 
+.donation-banner {
+  background-color: #cf98ff;
+  padding: 2em;
+  display: grid;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+  align-items: center;
+  justify-content: left;
+  flex-direction: column;
+}
+@media screen and (max-width: 576px) {
+  .donation-banner {
+    grid-template-columns: 1fr;
+  }
+}
+.donation-banner .donation-banner-content {
+  grid-column: 2/5;
+}
+.donation-banner .donation-banner-content h4 {
+  margin-top: 0;
+}
+.donation-banner p {
+  margin-bottom: 0;
+}
+
 .exercises-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -413,12 +439,21 @@ footer {
   background-color: black;
   color: #faf8f4;
   padding: 2em;
-  display: flex;
+  display: grid;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
   justify-content: center;
   align-items: center;
   gap: 1em;
 }
+@media screen and (max-width: 576px) {
+  footer {
+    grid-template-columns: 1fr;
+  }
+}
 footer .footer-content {
+  grid-column: 2/5;
   display: flex;
   align-items: center !important;
   gap: 1em;
@@ -1148,6 +1183,9 @@ figure span a {
 .lexique-list .lexique-list-item div h2 {
   margin-top: 0;
 }
+.lexique-list .lexique-list-item div .relatedPains {
+  margin: 1em 0;
+}
 
 @media screen and (max-width: 576px) {
   .lexique-list-item {
@@ -1261,6 +1299,39 @@ figure span a {
 }
 .category-submenu li:hover:before {
   transform: rotate(45deg);
+}
+
+.share-button a svg:hover {
+  opacity: 80%;
+}
+.share-button .copy-url-button-container {
+  display: flex;
+  align-items: top;
+  gap: 0.5em;
+}
+.share-button .copy-url-button-container .copy-url-button:hover {
+  opacity: 80%;
+}
+.share-button .copy-url-button-container p {
+  padding-top: 5%;
+  font-size: 70%;
+  margin-bottom: 0;
+  color: #c1400a;
+}
+
+.copy-url-button {
+  width: 25px;
+  height: 25px;
+  background-color: #f5733c;
+  border-radius: 50%;
+  border: none !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.copy-url-button .link-icon {
+  max-width: 60%;
+  color: white;
 }
 
 @media screen and (max-width: 576px) {
@@ -1425,16 +1496,24 @@ figure span a {
   outline: 0;
 }
 
-.source-ref {
+.footnotes,
+.additional-ressources {
   margin-top: 2em;
-  border-top: 1px solid;
   max-width: 70ch;
 }
-.source-ref ul {
+.footnotes .source-editor,
+.additional-ressources .source-editor {
+  white-space: nowrap;
+}
+
+.footnotes {
+  border-top: 1px solid;
+}
+.footnotes ul {
   padding-left: 0;
   gap: 0.25rem;
 }
-.source-ref ul li {
+.footnotes ul li {
   display: grid;
   grid-template-columns: 0 1fr;
   gap: 1.75em;
@@ -1442,11 +1521,29 @@ figure span a {
   font-size: 80%;
   line-height: 1.5;
 }
-.source-ref ul li:before {
+.footnotes ul li:before {
   content: attr(data-icon);
 }
-.source-ref ul li .source-title {
+.footnotes ul li .source-title {
   font-family: "ESKlarheit-Medium-Italic";
+}
+
+.additional-ressources {
+  margin-top: 10vh;
+}
+.additional-ressources ul {
+  padding-left: 0;
+}
+.additional-ressources ul li {
+  gap: 1.75em;
+  list-style: none;
+  padding: 1em 0;
+}
+.additional-ressources ul li .source-title {
+  font-family: "ESKlarheit-Book-Italic";
+}
+.additional-ressources ul li:not(:first-child) {
+  border-top: 1px solid #eae2d1;
 }
 
 .tooltip {
@@ -1466,7 +1563,10 @@ figure span a {
   border-radius: 0.25em;
   position: absolute;
   z-index: 1;
-  margin-left: 0.25em;
+  margin-left: 0.5em;
+}
+.tooltip .tooltiptext.tooltiptext-copy {
+  margin-left: 7em;
 }
 .tooltip:hover .tooltiptext {
   visibility: visible;

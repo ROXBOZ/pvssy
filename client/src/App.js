@@ -41,6 +41,7 @@ import { AuthContextProvider } from "./contexts/authContext";
 // utils
 import getToken from "./utils/getToken";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import DonationBanner from "./components/DonationBanner";
 
 function App() {
   const token = getToken();
@@ -136,6 +137,7 @@ function App() {
             </PainsContextProvider>
           </EventsContextProvider>
         </div>
+        <DonationBanner />
         <Footer />
       </AuthContextProvider>
     </>

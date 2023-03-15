@@ -32,11 +32,19 @@
   }
 }
 
-.source-ref {
+.footnotes,
+.additional-ressources {
   margin-top: $gap;
-  border-top: $border-solid;
+
   max-width: $chperline;
 
+  .source-editor {
+    white-space: nowrap;
+  }
+}
+
+.footnotes {
+  border-top: $border-solid;
   ul {
     padding-left: 0;
     gap: 0.25rem;
@@ -47,11 +55,30 @@
       align-items: start;
       font-size: 80%;
       line-height: $lineheight;
+
       &:before {
         content: attr(data-icon);
       }
       .source-title {
         font-family: $font-medium-italic;
+      }
+    }
+  }
+}
+
+.additional-ressources {
+  margin-top: 10vh;
+  ul {
+    padding-left: 0;
+    li {
+      gap: 1.75em;
+      list-style: none;
+      padding: $demi-gap 0;
+      .source-title {
+        font-family: $font-regular-italic;
+      }
+      &:not(:first-child) {
+        border-top: $border-solid darken($bg-color, 10%);
       }
     }
   }

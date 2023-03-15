@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import ShareButton from "react-share/lib/ShareButton";
 import { EmailIcon, TelegramIcon, WhatsappIcon } from "react-share";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
 
 const ShareThis = () => {
   const shareUrl = window.location.href;
-
+  const [isCopied, setIsCopied] = useState(false);
   const onShareWindowClose = (data) => {
     if (data.action === "shared") {
       console.log("Contenu partagé avec succès!");
@@ -23,6 +26,14 @@ const ShareThis = () => {
     shareWindow.opener = null; // For security reasons
   };
 
+  const copyUrlToClipboard = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+  };
+
   return (
     <div>
       <ShareButton
@@ -30,30 +41,42 @@ const ShareThis = () => {
         url={shareUrl}
         onShareWindowClose={onShareWindowClose}
       >
-        <a
+        <Link
           className="tooltip"
-          href={`mailto:?body=${shareUrl}`}
+          to={`mailto:?body=${shareUrl}`}
           onClick={handleShareButtonClick}
         >
           <EmailIcon size={25} round={true} bgStyle={{ fill: "#f5733c" }} />
           <span className="tooltiptext">Email</span>
-        </a>
-        <a
+        </Link>
+        <Link
           className="tooltip"
-          href={`whatsapp://send?text=${shareUrl}`}
+          to={`whatsapp://send?text=${shareUrl}`}
           onClick={handleShareButtonClick}
         >
           <WhatsappIcon size={25} round={true} bgStyle={{ fill: "#f5733c" }} />
           <span className="tooltiptext">WhatsApp</span>
-        </a>
-        <a
+        </Link>
+        <Link
           className="tooltip"
-          href={`https://telegram.me/share/url?url=${shareUrl}`}
+          to={`https://telegram.me/share/url?url=${shareUrl}`}
           onClick={handleShareButtonClick}
         >
           <TelegramIcon size={25} round={true} bgStyle={{ fill: "#f5733c" }} />
           <span className="tooltiptext">Telegram</span>
-        </a>
+        </Link>
+        <div className="copy-url-button-container">
+          <div
+            role="button"
+            onClick={copyUrlToClipboard}
+            className=" tooltip copy-url-button"
+          >
+            <FontAwesomeIcon className="link-icon" icon={faLink} />
+            <span className="tooltiptext tooltiptext-copy">Copier</span>{" "}
+          </div>
+
+          {isCopied === true && <p>URL copiée</p>}
+        </div>
       </ShareButton>
     </div>
   );

@@ -1,9 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, Outlet, useOutlet } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 
 const Pain = () => {
   const outlet = useOutlet();
+  const [anchorPosition, setAnchorPosition] = useState(0);
+
   const { painData, painName, fetchSinglePain, fetchRelatedSources } =
     useContext(PainsContext);
 
@@ -34,6 +36,15 @@ const Pain = () => {
       </div>
     </Link>
   );
+
+  const scrollToAnchor = (anchor) => {
+    const element = document.getElementById(anchor);
+    if (element) {
+      const top = element.offsetTop;
+      window.scrollTo({ top, behavior: "smooth" });
+      setAnchorPosition(top);
+    }
+  };
 
   if (!painData) {
     return <div className="msg pending">Chargement...</div>;
@@ -74,15 +85,19 @@ const Pain = () => {
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
               />
 
-              {/* <ResourceCard
-                to="extras"
-                title="Extras"
-                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-              /> */}
-
               <ResourceCard
                 to="exercices"
-                title="Exercices sexo"
+                title="Exercices"
+                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
+              />
+
+              <ResourceCard
+                to="medical/#ressources"
+                onClick={(event) => {
+                  event.preventDefault();
+                  scrollToAnchor("ressources");
+                }}
+                title="Ressources"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
               />
 

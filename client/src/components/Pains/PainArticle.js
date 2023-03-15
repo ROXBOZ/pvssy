@@ -1,3 +1,6 @@
+import { Link, NavLink } from "react-router-dom";
+import { PainsContext } from "../../contexts/PainsContext";
+import ShareThis from "../ShareThis";
 import React, {
   useContext,
   useEffect,
@@ -5,14 +8,13 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { PainsContext } from "../../contexts/PainsContext";
-import ShareThis from "../ShareThis";
 
 const PainArticle = () => {
   let currentURL = window.location.pathname;
   const submenuRef = useRef(null);
   const menuRef = useRef();
+  const [anchorPosition, setAnchorPosition] = useState(0);
+
   const [menuTop, setMenuTop] = useState(0);
   const {
     isSticky,
@@ -23,7 +25,14 @@ const PainArticle = () => {
     requestedTerms,
     requestedSources,
   } = useContext(PainsContext);
+  const highlightedTerms = requestedTerms
+    ? requestedTerms.map((term) => term.term)
+    : [];
+  const highlightedSources = requestedSources
+    ? requestedSources.map((source) => source.title)
+    : [];
 
+  // URL depending on article type
   const articleType = () => {
     if (currentURL.endsWith("/medical")) {
       setIsMed(true);
@@ -35,20 +44,33 @@ const PainArticle = () => {
     articleType();
   }, [currentURL]);
 
-  const scrollToAnchor = (id) => {
-    const element = document.getElementById(id);
+  // article switcher
+  useLayoutEffect(() => {
+    if (menuRef.current) {
+      setMenuTop(menuRef.current.offsetTop);
+    }
+  }, [menuRef.current]);
+
+  // article switcher scroll into view
+  let articleRef = document.getElementById("articleRef");
+  const scrollToArticle = () => {
+    articleRef.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
+  // Scroll down to ressources and sources
+  const scrollToAnchor = (anchor) => {
+    const element = document.getElementById(anchor);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const top = element.offsetTop;
+      window.scrollTo({ top, behavior: "smooth" });
+      setAnchorPosition(top);
+      setMenuTop(top);
     }
   };
 
-  const highlightedTerms = requestedTerms
-    ? requestedTerms.map((term) => term.term)
-    : [];
-  const highlightedSources = requestedSources
-    ? requestedSources.map((source) => source.title)
-    : [];
-
+  // highlight paragraphs with lexico and sources
   const highlightParagraphs = (arr) => {
     const regex = new RegExp(
       `\\b(${highlightedTerms.join("|")}|${highlightedSources.join("|")})\\b`,
@@ -104,30 +126,21 @@ const PainArticle = () => {
     });
   };
 
-  useLayoutEffect(() => {
-    if (menuRef.current) {
-      setMenuTop(menuRef.current.offsetTop);
-    }
-  }, [menuRef.current]);
-
+  // menus stick
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY || window.pageYOffset;
+      console.log("menuTop :", menuTop);
+      const scrollY = window.scrollY;
       const isScrolledPast = scrollY > menuTop;
       setIsSticky(isScrolledPast);
     };
+
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [menuTop]);
-
-  let articleRef = document.getElementById("articleRef");
-  const scrollToArticle = () => {
-    articleRef.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
 
   return (
     <>
@@ -141,6 +154,7 @@ const PainArticle = () => {
           Illustré par <Link to="*">Noémie Creux</Link>
         </span>
       </figure>
+
       <div className="tabbed-navigation-banner">
         <div
           className={`tabbed-navigation-container  ${isSticky ? "sticky" : ""}`}
@@ -156,6 +170,7 @@ const PainArticle = () => {
           </div>
         </div>
       </div>
+
       <div className="article" id="articleRef">
         <div className="auteurice">
           <div className="img-holder" />
@@ -164,7 +179,7 @@ const PainArticle = () => {
             {isMed ? (
               <Link to="https://aemg-ge.com/">Medsexplain</Link>
             ) : (
-              <Link to="https://aemg-ge.com/">Fiona Bourdon</Link>
+              <Link to="https://aemg-ge.com/">Fiona Bourdon + ...</Link>
             )}
           </em>
         </div>
@@ -185,7 +200,18 @@ const PainArticle = () => {
             <Link to="../lexique">Lexique + Shémas</Link>
           </li>
           <li>
-            <Link to="../exercices">Exercices Sexo</Link>
+            <Link to="../exercices">Exercices</Link>
+          </li>
+          <li>
+            <Link
+              to={`${currentURL}/#ressources`}
+              onClick={(event) => {
+                event.preventDefault();
+                scrollToAnchor("ressources");
+              }}
+            >
+              Ressources
+            </Link>
           </li>
           <li>
             <Link to="*">Tutos</Link>
@@ -258,37 +284,65 @@ const PainArticle = () => {
             <p>{highlightParagraphs(painData.pleasure)}</p>
           </>
         )}
-        <div id="references" className="source-ref">
-          <h4>Ressources</h4>
-          <p style={{ backgroundColor: "yellow" }}>
-            - podcast "Vaginisme & Co." - podcast "Exploratrice de l'intime :
-            Vaginisme, pourquoi la pénétration est impossible" - Livre "Vagin
-            Tonic" - podcast "Quoi de Meuf "Vaginisme & Dyspareunies : la fin du
-            déni ?" - Livre "Slow love & Sex Méditation" Emmanuelle Duchesne -
-            livre "Notre corps, nous mêmes" - site : www.lesclesdevenus.org -
-            video 3d plancher pelvien
-            https://www.youtube.com/watch?v=q0_JAoaM6pU
-          </p>
+        <div id="ressources" className="additional-ressources">
+          <p className="pretitle">Ressources</p>
+          <h2>À découvrir</h2>
+          <ul>
+            {requestedSources &&
+              requestedSources.map((s, index) => {
+                if (s.isFootnote === false) {
+                  return (
+                    <li key={s._id} id={index}>
+                      <span className="source-list-item">
+                        <span className="source-author">{s.author}</span>
+                        {s.year && (
+                          <span className="source-year"> ({s.year}).</span>
+                        )}{" "}
+                        {s.url ? (
+                          <Link to={s.url}>
+                            <span className="source-title">{s.title}</span>
+                          </Link>
+                        ) : (
+                          <span className="source-title">
+                            <strong>{s.title}</strong>
+                          </span>
+                        )}{" "}
+                        <span className="source-category">[{s.category}]</span>{" "}
+                        {s.editor && (
+                          <span className="source-editor">{s.editor}</span>
+                        )}
+                      </span>
+                      .
+                    </li>
+                  );
+                }
+              })}
+          </ul>
         </div>
 
-        <div id="references" className="source-ref">
+        <div id="references" className="footnotes">
           <h4>Bibliographie</h4>
           <ul>
             {requestedSources &&
-              requestedSources.map((s) => (
-                <li data-icon="→" key={s._id} id={s.title}>
-                  <span className="source-list-item">
-                    <span className="source-author">{s.author}</span>
-                    <span className="source-year"> ({s.year}). </span>
-                    <span className="source-title">{s.title}</span>
-                    <span className="source-edition">
-                      &nbsp;({s.edition}
-                      {s.edition === "1" ? "ère" : "ème"} éd.) 
-                    </span>
-                    <span className="editor">{s.editor}</span>.
-                  </span>
-                </li>
-              ))}
+              requestedSources.map((s, index) => {
+                if (s.isFootnote === true) {
+                  return (
+                    <li data-icon="→" key={s._id} id={index}>
+                      <span className="source-list-item">
+                        <span className="source-author">{s.author}</span>
+                        <span className="source-year"> ({s.year}). </span>
+                        <span className="source-title">{s.title}</span>{" "}
+                        <span className="source-category">[{s.category}]</span>
+                        <span className="source-edition">
+                          &nbsp;({s.edition}
+                          {s.edition === "1" ? "ère" : "ème"} éd.) 
+                        </span>
+                        <span className="source-editor">{s.editor}</span>.
+                      </span>
+                    </li>
+                  );
+                }
+              })}
           </ul>
         </div>
       </div>

@@ -1,0 +1,18 @@
+.donation-banner {
+  background-color: $color5;
+  padding: $padding-sm;
+  display: grid;
+  @include grid;
+  align-items: center;
+  justify-content: left;
+  flex-direction: column;
+  .donation-banner-content {
+    h4 {
+      margin-top: 0;
+    }
+    grid-column: 2/5;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { serverURL } from "../../utils/serverURL";
 
-const PainLex = () => {
+const PainLexique = () => {
   let location = useLocation();
   const painName =
     location.pathname
@@ -81,7 +81,7 @@ const PainLex = () => {
           itaque.
         </p>
       </div>
-      <p className="lexique-list">
+      <div className="lexique-list">
         {requestedTerms &&
           requestedTerms
             .filter((t) => t.imgUrl)
@@ -99,12 +99,20 @@ const PainLex = () => {
                       <h2 className="h3" id={termAnchor}>
                         {t.term}
                       </h2>
+                      <div className="relatedPains">
+                        {t.relatedPain.length > 1 && <span>Voir aussi : </span>}
 
-                      <p style={{ backgroundColor: "yellow" }}>
-                        Voir aussi : <Link to="/">Vulvonite</Link>,{" "}
-                        <Link to="/">Endométriose</Link> (autres douleurs avec
-                        le même terme){" "}
-                      </p>
+                        {t.relatedPain
+                          .filter((p) => p !== painName)
+                          .map((p, index) => (
+                            <span key={index}>
+                              <Link key={index} to={`/douleurs/${p}`}>
+                                {p}
+                              </Link>
+                              {index < t.relatedPain.length - 2 ? ", " : ""}
+                            </span>
+                          ))}
+                      </div>
 
                       {createParagraphs(t.def)}
                     </div>
@@ -135,9 +143,9 @@ const PainLex = () => {
                 </ul>
               );
             })}
-      </p>
+      </div>
     </>
   );
 };
 
-export default PainLex;
+export default PainLexique;
