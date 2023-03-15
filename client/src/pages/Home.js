@@ -113,9 +113,9 @@ const Home = () => {
             .sort((a, b) => {
               return new Date(a.date) - new Date(b.date);
             })
-            .map((e) => {
+            .map((e, index) => {
               return (
-                <div className="agenda-entry">
+                <div className="agenda-entry" key={index}>
                   <p className="agenda-entry-pretitle ">
                     <nobr>{dateTimeConverter(e.date)}</nobr> -{" "}
                     {e.isOnline ? (

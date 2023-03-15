@@ -258,6 +258,18 @@ const PainArticle = () => {
             <p>{highlightParagraphs(painData.pleasure)}</p>
           </>
         )}
+        <div id="references" className="source-ref">
+          <h4>Ressources</h4>
+          <p style={{ backgroundColor: "yellow" }}>
+            - podcast "Vaginisme & Co." - podcast "Exploratrice de l'intime :
+            Vaginisme, pourquoi la pénétration est impossible" - Livre "Vagin
+            Tonic" - podcast "Quoi de Meuf "Vaginisme & Dyspareunies : la fin du
+            déni ?" - Livre "Slow love & Sex Méditation" Emmanuelle Duchesne -
+            livre "Notre corps, nous mêmes" - site : www.lesclesdevenus.org -
+            video 3d plancher pelvien
+            https://www.youtube.com/watch?v=q0_JAoaM6pU
+          </p>
+        </div>
 
         <div id="references" className="source-ref">
           <h4>Bibliographie</h4>
