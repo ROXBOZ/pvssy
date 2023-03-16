@@ -18,7 +18,7 @@ const DonationBanner = () => {
         </p>
         <div className="button-link-container">
           <button>par TWINT</button>
-          <Link to="/faire-un-don">Alternatives</Link>
+          <Link to="/faire-un-don">Détails + alternatives</Link>
         </div>
       </div>
     </div>

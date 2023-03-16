@@ -1,3 +1,5 @@
+// painLexique
+
 .lexique-list {
   padding-left: 0;
 
@@ -35,6 +37,66 @@
 
     img {
       width: 100% !important;
+    }
+  }
+}
+
+//allLexique
+.allLexique-term-container {
+  @include grid;
+
+  .glossary-dashboard-column {
+    .letter-link-container {
+      display: grid;
+      gap: $gap;
+      grid-template-columns: repeat(6, 1fr);
+      height: fit-content;
+      padding-right: $gap;
+
+      .letter-link {
+        font-size: 120%;
+        border-bottom: 0;
+        &:hover {
+          background-color: yellow;
+        }
+      }
+    }
+
+    form {
+      background-color: yellow;
+      margin-top: 0;
+    }
+  }
+
+  .glossary-column {
+    grid-column: 2/4;
+
+    .letter-title:first-of-type {
+      .h1 {
+        margin-top: 0;
+      }
+    }
+    .h1 {
+      border-top: $border-solid darken($bg-color, 10%);
+      margin-top: 4rem;
+      padding-top: 1rem;
+
+      a {
+        color: $txt-color;
+        border-bottom: 0;
+      }
+    }
+    .allLexique-term {
+      h4 {
+        margin-top: 0;
+        padding-top: 0;
+      }
+      grid-column: 2/4;
+
+      img {
+        margin: $demi-gap 0;
+        border-radius: $border-radius;
+      }
     }
   }
 }

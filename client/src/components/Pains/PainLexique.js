@@ -6,6 +6,8 @@ import { serverURL } from "../../utils/serverURL";
 
 const PainLexique = () => {
   let location = useLocation();
+  const [requestedTerms, setRequestedTerms] = useState(null);
+
   const painName =
     location.pathname
       .split(/\/|#/)
@@ -18,8 +20,6 @@ const PainLexique = () => {
       .filter((item) => item !== "")
       .slice(-2, -1)[0]
       .slice(1);
-
-  const [requestedTerms, setRequestedTerms] = useState(null);
 
   const fetchRelatedTerms = async () => {
     const requestOptions = {
@@ -72,7 +72,7 @@ const PainLexique = () => {
   return (
     <>
       <div className="heading-area">
-        <p className="pretitle">Lexique</p>
+        <p className="pretitle">Glossaire</p>
         <h1>{painName}</h1>
         <p className="subtitle">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non autem
@@ -100,7 +100,7 @@ const PainLexique = () => {
                         {t.term}
                       </h2>
                       <div className="relatedPains">
-                        {t.relatedPain.length > 1 && <span>Voir aussi : </span>}
+                        {t.relatedPain.length > 1 && <span>↗ </span>}
 
                         {t.relatedPain
                           .filter((p) => p !== painName)

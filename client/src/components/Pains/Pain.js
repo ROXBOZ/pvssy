@@ -81,7 +81,7 @@ const Pain = () => {
 
               <ResourceCard
                 to="lexique"
-                title="Lexique + Shémas"
+                title="Glossaire"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
               />
 

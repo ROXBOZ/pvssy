@@ -284,7 +284,11 @@ button.showPassword:hover {
 .card-grid .link-card.article .card p, .card-grid .link-card.ressource .card h2,
 .card-grid .link-card.ressource .card h3,
 .card-grid .link-card.ressource .card p {
+  margin-top: 0;
   padding: 0;
+}
+.card-grid .link-card.article .card p, .card-grid .link-card.ressource .card p {
+  margin-bottom: 0;
 }
 .card-grid .link-card.article {
   grid-column: span 2;
@@ -364,7 +368,7 @@ button.showPassword:hover {
 }
 
 .donation-banner {
-  background-color: white;
+  border-top: 1px solid #eae2d1;
   padding: 2em;
   display: grid;
   display: grid;
@@ -380,7 +384,7 @@ button.showPassword:hover {
   }
 }
 .donation-banner .donation-banner-content {
-  grid-column: 2/5;
+  grid-column: 2/4;
 }
 .donation-banner .donation-banner-content h4 {
   margin-top: 0;
@@ -1203,6 +1207,62 @@ figure span a {
     width: 100% !important;
   }
 }
+.allLexique-term-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+}
+@media screen and (max-width: 576px) {
+  .allLexique-term-container {
+    grid-template-columns: 1fr;
+  }
+}
+.allLexique-term-container .glossary-dashboard-column .letter-link-container {
+  display: grid;
+  gap: 2em;
+  grid-template-columns: repeat(6, 1fr);
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-right: 2em;
+}
+.allLexique-term-container .glossary-dashboard-column .letter-link-container .letter-link {
+  font-size: 120%;
+  border-bottom: 0;
+}
+.allLexique-term-container .glossary-dashboard-column .letter-link-container .letter-link:hover {
+  background-color: yellow;
+}
+.allLexique-term-container .glossary-dashboard-column form {
+  background-color: yellow;
+  margin-top: 0;
+}
+.allLexique-term-container .glossary-column {
+  grid-column: 2/4;
+}
+.allLexique-term-container .glossary-column .letter-title:first-of-type .h1 {
+  margin-top: 0;
+}
+.allLexique-term-container .glossary-column .h1 {
+  border-top: 1px solid #eae2d1;
+  margin-top: 4rem;
+  padding-top: 1rem;
+}
+.allLexique-term-container .glossary-column .h1 a {
+  color: #1f042f;
+  border-bottom: 0;
+}
+.allLexique-term-container .glossary-column .allLexique-term {
+  grid-column: 2/4;
+}
+.allLexique-term-container .glossary-column .allLexique-term h4 {
+  margin-top: 0;
+  padding-top: 0;
+}
+.allLexique-term-container .glossary-column .allLexique-term img {
+  margin: 1em 0;
+  border-radius: 0.25em;
+}
+
 .msg {
   margin: 2em 0;
   font-family: "ESKlarheit-Medium";
@@ -1564,12 +1624,13 @@ figure span a {
   background-color: #1f042f;
   font-size: 80%;
   color: #faf8f4;
-  text-align: center;
   padding: 0.25em 0.5em;
   border-radius: 0.25em;
   position: absolute;
   z-index: 1;
   margin-left: 0.5em;
+  top: -80%;
+  left: 50%;
 }
 .tooltip:hover .tooltiptext {
   visibility: visible;

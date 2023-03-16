@@ -34,6 +34,8 @@ import AllLexique from "./components/AllLexique";
 import AddEvent from "./components/User/Agenda/AddEvent";
 import DeleteEvent from "./components/User/Agenda/DeleteEvent";
 import ApproveEvent from "./components/User/Agenda/ApproveEvent";
+import Lexique from "./pages/Lexique";
+
 //contexts
 import { PainsContextProvider } from "./contexts/PainsContext";
 import { EventsContextProvider } from "./contexts/eventsContext";
@@ -61,6 +63,7 @@ function App() {
                   <Route path="a-propos" element={<About />} />
                   <Route path="se-soigner" element={<SeSoigner />} />
                   <Route path="se-soigner/douleurs" element={<Pains />} />
+
                   <Route path="se-soigner/douleurs/:name" element={<Pain />}>
                     <Route path="medical" element={<PainArticle />} />
                     <Route path="sexologie" element={<PainArticle />} />
@@ -106,6 +109,7 @@ function App() {
                     element={<Ressources />}
                   />
                   <Route path="s-informer" element={<SInformer />} />
+                  <Route path="se-soigner/lexique" element={<Lexique />} />
                   <Route path="s-informer/annuaire" element={<Annuaire />} />
                   <Route path="s-informer/annuaire/:name" element={<Pain />} />
                   <Route path="shop" element={<Shop />} />

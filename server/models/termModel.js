@@ -14,7 +14,7 @@ const termSchema = new mongoose.Schema({
 
   relatedPain: {
     type: Array,
-    required: true,
+    // required: true,
   },
 
   imgUrl: {

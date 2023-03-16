@@ -14,7 +14,6 @@ const PainArticle = () => {
   const submenuRef = useRef(null);
   const menuRef = useRef();
   const [anchorPosition, setAnchorPosition] = useState(0);
-
   const [menuTop, setMenuTop] = useState(0);
   const {
     isSticky,
@@ -60,6 +59,7 @@ const PainArticle = () => {
   };
 
   // Scroll down to ressources and sources
+  //FIXME it repeats also in glossary
   const scrollToAnchor = (anchor) => {
     const element = document.getElementById(anchor);
     if (element) {
@@ -197,7 +197,7 @@ const PainArticle = () => {
           </p>
 
           <li>
-            <Link to="../lexique">Lexique + Shémas</Link>
+            <Link to="../lexique">Glossaire</Link>
           </li>
           <li>
             <Link to="../exercices">Exercices</Link>

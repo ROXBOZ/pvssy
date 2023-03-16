@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Pains from "../components/Pains/Pains";
 
 const SeSoigner = () => {
@@ -15,8 +16,9 @@ const SeSoigner = () => {
       </div>
 
       <Pains />
-      <br />
-      <br />
+      <Link to="lexique">
+        Lien temporaire vers Glossaire global (en construction)
+      </Link>
     </div>
   );
 };

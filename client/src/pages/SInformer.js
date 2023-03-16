@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Annuaire from "../components/Annuaire";
 
 const SInformer = () => {
@@ -11,6 +12,9 @@ const SInformer = () => {
         ratione labore similique voluptatum sapiente, expedita ab praesentium
         saepe deserunt quos consectetur.
       </p>
+      {/* <Link to="lexique">
+        Lien temporaire vers Glossaire global (en construction)
+      </Link> */}
       <Annuaire />
     </div>
   );
