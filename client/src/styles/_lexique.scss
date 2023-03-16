@@ -56,12 +56,22 @@
       .letter-link {
         font-size: 120%;
         border-bottom: 0;
+
+        border-radius: $border-radius;
+        padding: 0.1em 0.4em;
         &.disabled {
-          cursor: pointer;
+          cursor: default;
           opacity: 40%;
+          &:focus {
+            border: none;
+          }
+          &:hover {
+            background-color: transparent;
+          }
         }
         &:hover {
-          background-color: greenyellow;
+          background-color: lighten($color1, 35%);
+          border-radius: $border-radius;
         }
       }
     }

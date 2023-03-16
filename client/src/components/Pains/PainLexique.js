@@ -80,6 +80,10 @@ const PainLexique = () => {
           omnis suscipit libero accusamus, rem quod expedita beatae sit vel
           itaque.
         </p>
+        <p className="msg info">
+          Tu retrouveras les termes ci-dessous et beaucoup d’autres dans le{" "}
+          <Link to="/se-soigner/lexique">glossaire général</Link>.
+        </p>
       </div>
       <div className="lexique-list">
         {requestedTerms &&

@@ -83,7 +83,7 @@ const Lexique = () => {
   return (
     <div>
       <div className="heading-area">
-        <p className="pretitle">Ressources</p>
+        <p className="pretitle">Guide</p>
         <h2>Glossaire</h2>
         <p className="subtitle">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam cum

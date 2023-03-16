@@ -19,7 +19,7 @@ const SeSoigner = () => {
       <br />
       <br />
       <p className="pretitle">Comprendre</p>
-      <h2>Ressources</h2>
+      <h2>Guides</h2>
       <p style={{ color: "red" }}>créer une url pour les ressources globales</p>
       <p className="subtitle">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea enim harum

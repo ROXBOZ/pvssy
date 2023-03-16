@@ -1228,13 +1228,22 @@ figure span a {
 .allLexique-term-container .glossary-dashboard-column .letter-link-container .letter-link {
   font-size: 120%;
   border-bottom: 0;
+  border-radius: 0.25em;
+  padding: 0.1em 0.4em;
 }
 .allLexique-term-container .glossary-dashboard-column .letter-link-container .letter-link.disabled {
-  cursor: pointer;
+  cursor: default;
   opacity: 40%;
 }
+.allLexique-term-container .glossary-dashboard-column .letter-link-container .letter-link.disabled:focus {
+  border: none;
+}
+.allLexique-term-container .glossary-dashboard-column .letter-link-container .letter-link.disabled:hover {
+  background-color: transparent;
+}
 .allLexique-term-container .glossary-dashboard-column .letter-link-container .letter-link:hover {
-  background-color: greenyellow;
+  background-color: #feede6;
+  border-radius: 0.25em;
 }
 .allLexique-term-container .glossary-dashboard-column form {
   background-color: yellow;
