@@ -1229,12 +1229,21 @@ figure span a {
   font-size: 120%;
   border-bottom: 0;
 }
+.allLexique-term-container .glossary-dashboard-column .letter-link-container .letter-link.disabled {
+  cursor: pointer;
+  opacity: 40%;
+}
 .allLexique-term-container .glossary-dashboard-column .letter-link-container .letter-link:hover {
   background-color: yellow;
 }
 .allLexique-term-container .glossary-dashboard-column form {
   background-color: yellow;
+  display: flex;
+  gap: 1em;
   margin-top: 0;
+}
+.allLexique-term-container .glossary-dashboard-column form input {
+  width: 100%;
 }
 .allLexique-term-container .glossary-column {
   grid-column: 2/4;
@@ -1246,6 +1255,7 @@ figure span a {
   border-top: 1px solid #eae2d1;
   margin-top: 4rem;
   padding-top: 1rem;
+  font-family: "ESRebond";
 }
 .allLexique-term-container .glossary-column .h1 a {
   color: #1f042f;

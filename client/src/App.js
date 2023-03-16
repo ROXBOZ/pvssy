@@ -110,6 +110,7 @@ function App() {
                   />
                   <Route path="s-informer" element={<SInformer />} />
                   <Route path="se-soigner/lexique" element={<Lexique />} />
+                  {/* <Route path="s-informer/lexique" element={<Lexique />} /> */}
                   <Route path="s-informer/annuaire" element={<Annuaire />} />
                   <Route path="s-informer/annuaire/:name" element={<Pain />} />
                   <Route path="shop" element={<Shop />} />

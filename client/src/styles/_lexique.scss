@@ -56,6 +56,10 @@
       .letter-link {
         font-size: 120%;
         border-bottom: 0;
+        &.disabled {
+          cursor: pointer;
+          opacity: 40%;
+        }
         &:hover {
           background-color: yellow;
         }
@@ -64,7 +68,13 @@
 
     form {
       background-color: yellow;
+      display: flex;
+      gap: $demi-gap;
+
       margin-top: 0;
+      input {
+        width: 100%;
+      }
     }
   }
 
@@ -80,6 +90,7 @@
       border-top: $border-solid darken($bg-color, 10%);
       margin-top: 4rem;
       padding-top: 1rem;
+      font-family: $font-logo;
 
       a {
         color: $txt-color;

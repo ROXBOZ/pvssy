@@ -7,6 +7,7 @@ const Lexique = () => {
   const location = useLocation();
   const [anchorPosition, setAnchorPosition] = useState(0);
   const [menuTop, setMenuTop] = useState(0);
+  const [entries, setEntries] = useState([]);
 
   const fetchAllTerms = async () => {
     const requestOptions = {
@@ -22,7 +23,12 @@ const Lexique = () => {
       const sortedTerms = result.allTerms.sort((a, b) =>
         a.term.localeCompare(b.term)
       );
+      const firstLetters = sortedTerms.map((term) =>
+        term.term[0].toLowerCase()
+      );
+      const uniqueLetters = [...new Set(firstLetters)];
 
+      setEntries(uniqueLetters);
       setAllTerms(sortedTerms);
     } catch (error) {
       console.log("error", error);
@@ -42,35 +48,19 @@ const Lexique = () => {
     return groups;
   }, {});
 
-  console.log("allTerms :", allTerms);
-  console.log("termGroups :", termGroups);
+  useEffect(() => {
+    const letterLinks = document.querySelectorAll(".letter-link");
 
-  //   const lettersWithTerms = Object.keys(termGroups);
-  //   const allLetters = Array.from({ length: 26 }, (_, i) =>
-  //     String.fromCharCode("A".charCodeAt(0) + i)
-  //   );
+    letterLinks.forEach((link) => {
+      const letter = link.innerText.toLowerCase();
 
-  //   const letterLinks = allLetters.map((letter) => {
-  //     const disabled = !lettersWithTerms.includes(letter);
-  //     const href = disabled ? "#" : `${location.pathname}/#${letter}`;
-
-  //     return (
-  //       <Link
-  //         className={`letter-link ${disabled ? "disabled" : ""}`}
-  //         key={letter}
-  //         to={href}
-  //         onClick={(event) => {
-  //           if (disabled) {
-  //             event.preventDefault();
-  //           } else {
-  //             scrollToAnchor(letter);
-  //           }
-  //         }}
-  //       >
-  //         {letter}
-  //       </Link>
-  //     );
-  //   });
+      if (!entries.includes(letter)) {
+        link.classList.add("disabled");
+      } else {
+        link.classList.remove("disabled");
+      }
+    });
+  }, [entries]);
 
   const termId = (term) => {
     return term
@@ -127,7 +117,7 @@ const Lexique = () => {
             ))}
           </div>
           <p className="msg info">
-            tu peux également consulter le glossaire relatif à 
+            Tu peux également consulter le glossaire relatif à 
             <Link to="../se-soigner/douleurs">chaque douleur</Link>.
           </p>
         </div>
@@ -140,7 +130,7 @@ const Lexique = () => {
                   {letter}
                 </p>
                 {terms.map((term, index) => (
-                  <div className="allLexique-term" key={index}>
+                  <div className="entry allLexique-term" key={index}>
                     <h3 id={termId(term.term)}>
                       {term.term.charAt(0).toUpperCase() + term.term.slice(1)}
                     </h3>
@@ -151,7 +141,11 @@ const Lexique = () => {
                         <Link key={index} to={`/se-soigner/douleurs/${pain}`}>
                           {pain}
                         </Link>
-                        {index < term.relatedPain.length - 1 ? ", " : ""}
+                        {index < term.relatedPain.length - 1 ? (
+                          <span>  ↗ </span>
+                        ) : (
+                          ""
+                        )}
                       </span>
                     ))}
                     {term.imgUrl && (

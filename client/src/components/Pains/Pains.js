@@ -10,6 +10,12 @@ const Pains = () => {
       <div className="heading-area">
         <p className="pretitle">Comprendre</p>
         <h2>Douleurs</h2>
+        <p className="subtitle">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+          sequi reiciendis, vel facere, esse eaque rerum velit labore
+          reprehenderit quam, est veniam minus debitis quas quia in expedita
+          ullam laborum!
+        </p>
       </div>
       <div className="card-grid">
         {data &&

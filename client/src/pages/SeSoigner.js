@@ -16,9 +16,19 @@ const SeSoigner = () => {
       </div>
 
       <Pains />
-      <Link to="lexique">
-        Lien temporaire vers Glossaire global (en construction)
-      </Link>
+      <br />
+      <br />
+      <p className="pretitle">Comprendre</p>
+      <h2>Ressources</h2>
+      <p style={{ color: "red" }}>créer une url pour les ressources globales</p>
+      <p className="subtitle">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea enim harum
+        voluptas ullam quos corporis esse ratione pariatur error, obcaecati cum,
+        rem ab. Impedit, aut. Odio, molestias. Animi, totam voluptatem.
+      </p>
+      <p>
+        <Link to="lexique">Glossaire entier (en construction) </Link>
+      </p>
     </div>
   );
 };
