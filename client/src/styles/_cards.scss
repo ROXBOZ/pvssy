@@ -11,7 +11,9 @@
     width: 100%;
 
     &:hover {
-      opacity: 80%;
+      .card {
+        box-shadow: $elevation-4;
+      }
     }
 
     .card {

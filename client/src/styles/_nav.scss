@@ -9,11 +9,7 @@
   z-index: 999;
 
   &.fixed {
-    transition: top 500s;
-    position: fixed;
-    top: 48vh;
-    transform: translateY(-48%);
-    transition: transform 0.5s ease-in;
+    @include stick;
   }
 
   h4 {

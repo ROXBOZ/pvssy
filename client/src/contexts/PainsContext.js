@@ -13,7 +13,6 @@ export const PainsContextProvider = (props) => {
   const [requestedSources, setRequestedSources] = useState([]);
   const [requestedTerms, setRequestedTerms] = useState([]);
   const [requestedExercises, setRequestedExercises] = useState([]);
-
   const [isSticky, setIsSticky] = useState(false);
   const [isMed, setIsMed] = useState(true);
   const segments = location.pathname.split("/");

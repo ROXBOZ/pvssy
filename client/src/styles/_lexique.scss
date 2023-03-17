@@ -46,12 +46,17 @@
   @include grid;
 
   .glossary-dashboard-column {
+    position: relative;
+    .fixed {
+      @include stick;
+    }
+
     .letter-link-container {
       display: grid;
-      gap: $gap;
+      gap: $demi-gap;
       grid-template-columns: repeat(6, 1fr);
       height: fit-content;
-      padding-right: $gap;
+      width: fit-content;
 
       .letter-link {
         font-size: 120%;
@@ -77,14 +82,9 @@
     }
 
     form {
-      background-color: yellow;
       display: flex;
-      gap: $demi-gap;
-
       margin-top: 0;
-      input {
-        width: 100%;
-      }
+      background-color: yellow;
     }
   }
 

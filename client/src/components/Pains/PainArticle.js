@@ -126,10 +126,9 @@ const PainArticle = () => {
     });
   };
 
-  // menus stick
+  // menus stick // repeats on lexique page
   useEffect(() => {
     const handleScroll = () => {
-      console.log("menuTop :", menuTop);
       const scrollY = window.scrollY;
       const isScrolledPast = scrollY > menuTop;
       setIsSticky(isScrolledPast);
@@ -151,7 +150,7 @@ const PainArticle = () => {
           alt={painData.name}
         />
         <span>
-          Illustré par <Link to="*">Noémie Creux</Link>
+          Illustré par <Link to="https://noemiecreux.com/">Noémie Creux</Link>
         </span>
       </figure>
 

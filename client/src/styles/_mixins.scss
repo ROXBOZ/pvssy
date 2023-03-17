@@ -53,4 +53,10 @@
   }
 }
 
-/*-----real dots dotted border-----*/
+/*-----Stick-----*/
+@mixin stick {
+  position: fixed;
+  top: 48vh;
+  transform: translateY(-48%);
+  transition: transform 0.5s ease-in;
+}
