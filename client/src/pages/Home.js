@@ -36,6 +36,7 @@ const Home = () => {
       <h1>
         Une sexualité <nobr>sans douleurs et sans tabous</nobr>
       </h1>
+      <p style={{ color: "green" }}>test vercel</p>
       <p className="subtitle">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
         accusantium optio dolore dolorum suscipit ducimus neque quaerat! Quas
