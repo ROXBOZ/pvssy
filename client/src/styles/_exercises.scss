@@ -1,5 +1,5 @@
 .exercises-container {
-  border-top: $border-solid $color1;
+  // border-top: $border-solid $color1;
   .exercise {
     padding: $padding-sm 0;
     border-bottom: $border-solid $color1;
@@ -56,8 +56,10 @@
             }
 
             .instructions-step-open {
+              &:first-of-type {
+                margin-top: $demi-gap;
+              }
               animation: animationOpacity $animation-transition ease-in;
-              margin: $gap 0;
             }
 
             h3 {

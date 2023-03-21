@@ -82,10 +82,10 @@ const PainExercices = () => {
       <div className="heading-area">
         <p className="pretitle">Guide</p>
         <h1>Exercices {painName}</h1>
-        <p className="subtitle">
+        {/* <p className="subtitle">
           Prends un rendez-vous intime pour (re)faire connaissance avec ton
           corps.
-        </p>
+        </p> */}
         <div className="exercises-container">
           {requestedExercises &&
             requestedExercises.map((ex, index) => (
@@ -109,13 +109,12 @@ const PainExercices = () => {
                             {createParagraph(ex.prealable)}
                           </div>
                           <div className="instructions">
-                            <figure>
-                              <img
-                                className="exercise-img"
-                                src={ex.img}
-                                alt={ex.title}
-                              />
-                            </figure>
+                            <img
+                              className="exercise-img"
+                              src={ex.img}
+                              alt={ex.title}
+                            />
+
                             {displayInstructions(ex.howto)}
                           </div>
                         </div>

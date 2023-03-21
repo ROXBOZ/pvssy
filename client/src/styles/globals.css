@@ -405,9 +405,6 @@ button.showPassword:hover {
   height: fit-content;
 }
 
-.exercises-container {
-  border-top: 1px solid #f5733c;
-}
 .exercises-container .exercise {
   padding: 2em 0;
   border-bottom: 1px solid #f5733c;
@@ -468,7 +465,9 @@ button.showPassword:hover {
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step .instructions-step-open {
   animation: animationOpacity 0.4s ease-in;
-  margin: 2em 0;
+}
+.exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step .instructions-step-open:first-of-type {
+  margin-top: 1em;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step h3 .counter {
   color: #9637f0;
