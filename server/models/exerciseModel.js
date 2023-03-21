@@ -7,9 +7,8 @@ const exerciseSchema = new mongoose.Schema({
     unique: true,
   },
 
-  goal: {
+  img: {
     type: String,
-    required: true,
   },
 
   intro: {
@@ -17,12 +16,21 @@ const exerciseSchema = new mongoose.Schema({
   },
 
   howto: {
-    type: Array,
+    type: [
+      {
+        stepTitle: {
+          type: String,
+        },
+        stepInstructions: {
+          type: Array,
+        },
+      },
+    ],
     required: true,
   },
 
-  conclusion: {
-    type: String,
+  prealable: {
+    type: Array,
   },
 
   relatedPain: {

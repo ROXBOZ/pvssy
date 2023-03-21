@@ -7,6 +7,7 @@ export const PainsContextProvider = (props) => {
   let location = useLocation();
   const [data, setData] = useState([]);
   const url = `${serverURL}/api/pains/all`;
+  //NOTE same comment as in eventsProvider
   const [Loading, setLoading] = useState(true);
   const [Error, setError] = useState(null);
   const [painData, setPainData] = useState(null);
@@ -109,6 +110,7 @@ export const PainsContextProvider = (props) => {
   };
 
   useEffect(() => {
+    //NOTE think about a way to call just the fetchfunction you want in each case.
     fetchData(url);
     fetchRelatedSources(painName);
     fetchRelatedTerms(painName);

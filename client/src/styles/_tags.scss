@@ -1,0 +1,16 @@
+.tag-container {
+  display: flex;
+  gap: $demi-gap;
+  margin: $gap 0;
+  max-width: 70ch;
+  flex-wrap: wrap;
+
+  tag {
+    white-space: nowrap;
+    border: $border-solid $color1;
+    color: darken($color1, 10%);
+    padding: $padding-btn;
+    font-size: 80%;
+    border-radius: 40px;
+  }
+}

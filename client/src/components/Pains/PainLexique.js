@@ -72,18 +72,20 @@ const PainLexique = () => {
   return (
     <>
       <div className="heading-area">
-        <p className="pretitle">Glossaire</p>
-        <h1>{painName}</h1>
+        <p className="pretitle">Guide</p>
+        <h1>Glossaire {painName}</h1>
         <p className="subtitle">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non autem
           perspiciatis eos quisquam maiores ratione quasi in, deleniti officiis
           omnis suscipit libero accusamus, rem quod expedita beatae sit vel
           itaque.
         </p>
-        <p className="msg info">
-          Tu retrouveras les termes ci-dessous et beaucoup d’autres dans le{" "}
-          <Link to="/se-soigner/lexique">glossaire général</Link>.
-        </p>
+        <div className="msg info">
+          <p>
+            Tu retrouveras les termes ci-dessous et beaucoup d’autres dans le 
+            <Link to="/se-soigner/glossaire">glossaire général</Link>.
+          </p>
+        </div>
       </div>
       <div className="lexique-list">
         {requestedTerms &&
@@ -104,16 +106,14 @@ const PainLexique = () => {
                         {t.term}
                       </h2>
                       <div className="relatedPains">
-                        {t.relatedPain.length > 1 && <span>↗ </span>}
-
                         {t.relatedPain
                           .filter((p) => p !== painName)
                           .map((p, index) => (
                             <span key={index}>
+                              <span> ↗ </span>
                               <Link key={index} to={`/douleurs/${p}`}>
                                 {p}
                               </Link>
-                              {index < t.relatedPain.length - 2 ? ", " : ""}
                             </span>
                           ))}
                       </div>

@@ -37,4 +37,33 @@ const getExercisesByPain = async (req, res) => {
   }
 };
 
-export { getAllExercises, getExercisesByPain };
+const addExercise = async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+
+  const { title, img, intro, howto, prealable, relatedPain } = req.body;
+
+  try {
+    const newExercise = new exerciseModel({
+      title,
+      img,
+      intro,
+      howto,
+      prealable,
+      relatedPain,
+    });
+
+    const savedExercise = await newExercise.save();
+
+    res.status(201).json({
+      msg: "New exercise added successfully",
+      event: savedExercise,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error,
+      msg: "You cannot add a new exercise",
+    });
+  }
+};
+
+export { getAllExercises, getExercisesByPain, addExercise };

@@ -11,10 +11,13 @@ export default function Breadcrumbs() {
   ) {
     return null;
   }
-
+  //NOTE try to find a way to map only over all the elements except index 0
   const crumbs = location.pathname
     .split("/")
-    .filter((crumb) => crumb !== "")
+    .filter((crumb) => {
+      console.log("crumb :", crumb);
+      return crumb !== "";
+    })
     .map((crumb, index, arr) => {
       currentLink += `/${crumb}`;
       const isLastCrumb = index === arr.length - 1;

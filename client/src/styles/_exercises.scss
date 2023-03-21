@@ -1,43 +1,75 @@
 .exercises-container {
-  @include grid;
-  margin: 0;
-
+  border-top: $border-solid $color1;
   .exercise {
-    border: $border-solid $color1;
-    background-color: lighten($color1, 30%);
-    border-radius: $border-radius;
-    padding: $padding-sm;
-    width: 100%;
-    height: fit-content;
+    padding: $padding-sm 0;
+    border-bottom: $border-solid $color1;
 
     h3 {
       margin-top: 0;
     }
 
-    ul {
-      padding-left: 0;
-      margin-left: 0;
+    p {
+      margin-bottom: 0;
+    }
 
-      li {
-        list-style: none;
+    .exercise-closed {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        &.goals {
-          display: flex;
-          align-items: center;
-          gap: $demi-gap;
-          margin-bottom: 1em;
-        }
+    .exercise-open {
+      animation: animationOpacity $animation-transition ease-in;
 
-        &.howto {
-          background-color: lighten($color1, 25%);
-          margin: $demi-gap 0;
-          padding: $demi-gap;
-          border-radius: $border-radius;
-        }
+      .exercise-img {
+        border-radius: $border-radius;
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        margin-bottom: $gap;
       }
+      .exercise-article {
+        @include grid;
+        margin: $gap 0;
 
-      &.animate {
-        animation: animationOpacity $animation-transition forwards;
+        .prealable {
+          font-family: $font-medium;
+          color: darken($color6, 10%);
+
+          hr {
+            background-color: darken($color6, 10%);
+          }
+        }
+        .instructions {
+          grid-column: 2/4;
+          padding: 0;
+
+          .instructions-step {
+            margin-bottom: $gap;
+
+            .instructions-step-closed {
+              display: flex;
+              justify-content: space-between;
+              h3 {
+                margin-bottom: 0;
+              }
+            }
+
+            .instructions-step-open {
+              animation: animationOpacity $animation-transition ease-in;
+              margin: $gap 0;
+            }
+
+            h3 {
+              .counter {
+                color: $color6;
+              }
+            }
+            p {
+              margin-bottom: $demi-gap;
+            }
+          }
+        }
       }
     }
   }

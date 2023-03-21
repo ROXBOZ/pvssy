@@ -12,7 +12,7 @@ const SInformer = () => {
         ratione labore similique voluptatum sapiente, expedita ab praesentium
         saepe deserunt quos consectetur.
       </p>
-      {/* <Link to="lexique">
+      {/* <Link to="glossaire">
         Lien temporaire vers Glossaire global (en construction)
       </Link> */}
       <Annuaire />

@@ -218,6 +218,11 @@ button.showPassword:hover {
   color: #20451e;
 }
 
+.icon-button {
+  padding: 0;
+  border: none;
+}
+
 .share-button {
   display: flex;
   margin: 0.25em 0 1em;
@@ -401,49 +406,75 @@ button.showPassword:hover {
 }
 
 .exercises-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2em;
-  margin: 0;
-}
-@media screen and (max-width: 576px) {
-  .exercises-container {
-    grid-template-columns: 1fr;
-  }
+  border-top: 1px solid #f5733c;
 }
 .exercises-container .exercise {
-  border: 1px solid #f5733c;
-  background-color: #fcdbce;
-  border-radius: 0.25em;
-  padding: 2em;
-  width: 100%;
-  height: -moz-fit-content;
-  height: fit-content;
+  padding: 2em 0;
+  border-bottom: 1px solid #f5733c;
 }
 .exercises-container .exercise h3 {
   margin-top: 0;
 }
-.exercises-container .exercise ul {
-  padding-left: 0;
-  margin-left: 0;
+.exercises-container .exercise p {
+  margin-bottom: 0;
 }
-.exercises-container .exercise ul li {
-  list-style: none;
-}
-.exercises-container .exercise ul li.goals {
+.exercises-container .exercise .exercise-closed {
   display: flex;
   align-items: center;
-  gap: 1em;
-  margin-bottom: 1em;
+  justify-content: space-between;
 }
-.exercises-container .exercise ul li.howto {
-  background-color: #fbcab5;
-  margin: 1em 0;
-  padding: 1em;
+.exercises-container .exercise .exercise-open {
+  animation: animationOpacity 0.4s ease-in;
+}
+.exercises-container .exercise .exercise-open .exercise-img {
   border-radius: 0.25em;
+  width: 100%;
+  aspect-ratio: 16/9;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 2em;
 }
-.exercises-container .exercise ul.animate {
-  animation: animationOpacity 0.4s forwards;
+.exercises-container .exercise .exercise-open .exercise-article {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+  margin: 2em 0;
+}
+@media screen and (max-width: 576px) {
+  .exercises-container .exercise .exercise-open .exercise-article {
+    grid-template-columns: 1fr;
+  }
+}
+.exercises-container .exercise .exercise-open .exercise-article .prealable {
+  font-family: "ESKlarheit-Medium";
+  color: #7d11e3;
+}
+.exercises-container .exercise .exercise-open .exercise-article .prealable hr {
+  background-color: #7d11e3;
+}
+.exercises-container .exercise .exercise-open .exercise-article .instructions {
+  grid-column: 2/4;
+  padding: 0;
+}
+.exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step {
+  margin-bottom: 2em;
+}
+.exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step .instructions-step-closed {
+  display: flex;
+  justify-content: space-between;
+}
+.exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step .instructions-step-closed h3 {
+  margin-bottom: 0;
+}
+.exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step .instructions-step-open {
+  animation: animationOpacity 0.4s ease-in;
+  margin: 2em 0;
+}
+.exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step h3 .counter {
+  color: #9637f0;
+}
+.exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step p {
+  margin-bottom: 1em;
 }
 
 footer {
@@ -1173,6 +1204,16 @@ figure span a {
   font-style: normal;
 }
 
+.article-illustration-container {
+  width: 70ch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.article-illustration-container .article-illustration {
+  height: 30vh;
+}
+
 .lexique-list {
   padding-left: 0;
 }
@@ -1196,6 +1237,10 @@ figure span a {
 }
 .lexique-list .lexique-list-item div .relatedPains {
   margin: 1em 0;
+}
+
+a.term span {
+  color: #1f042f;
 }
 
 @media screen and (max-width: 576px) {
@@ -1329,10 +1374,16 @@ figure span a {
   content: "🚨  ";
 }
 .msg.info {
-  color: steelblue;
+  color: #1f042f;
+  display: flex;
+  gap: 0.5em;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .msg.info:before {
-  content: "ℹ️  ";
+  content: url("../assets/images/info-icon.svg");
+  width: 20px;
+  height: 20px;
 }
 
 .error-list {
@@ -1637,6 +1688,22 @@ figure span a {
   border-top: 1px solid #eae2d1;
 }
 
+.tag-container {
+  display: flex;
+  gap: 1em;
+  margin: 2em 0;
+  max-width: 70ch;
+  flex-wrap: wrap;
+}
+.tag-container tag {
+  white-space: nowrap;
+  border: 1px solid #f5733c;
+  color: #f2510c;
+  padding: 0.5em 1.5em;
+  font-size: 80%;
+  border-radius: 40px;
+}
+
 .tooltip {
   position: relative;
   display: inline-block;
@@ -1726,6 +1793,13 @@ sup {
 
 h2 + h3 {
   margin-top: 0;
+}
+
+hr {
+  margin: 2em 0;
+  height: 1px;
+  background-color: #1f042f;
+  border: none;
 }
 
 .auteurice {

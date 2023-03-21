@@ -9,6 +9,7 @@ export const EventsContextProvider = (props) => {
   const allEventURL = `${baseURL}/all`;
   const agendaURL = `${baseURL}/upcoming`;
   const archivesURL = `${baseURL}/archived`;
+  //NOTE either get rid of the loading state from the AUTH , or of the one from here, and import the Loading from AuthContext
   const [Loading, setLoading] = useState(true);
   const [Error, setError] = useState(null);
   const [value, setValue] = useState("");

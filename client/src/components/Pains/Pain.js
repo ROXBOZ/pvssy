@@ -80,7 +80,7 @@ const Pain = () => {
               />
 
               <ResourceCard
-                to="lexique"
+                to="glossaire"
                 title="Glossaire"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
               />
@@ -98,12 +98,6 @@ const Pain = () => {
                   scrollToAnchor("ressources");
                 }}
                 title="Ressources"
-                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-              />
-
-              <ResourceCard
-                to="*"
-                title="Tutos"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
               />
             </div>

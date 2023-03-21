@@ -77,15 +77,15 @@ function App() {
                     element={<Tutos />}
                   />
                   <Route
-                    path="se-soigner/ressources/lexique"
+                    path="se-soigner/ressources/glossaire"
                     element={<AllLexique />}
                   />
                   <Route
-                    path="se-soigner/douleurs/:name/lexique"
+                    path="se-soigner/douleurs/:name/glossaire"
                     element={<PainLexique />}
                   />
                   <Route
-                    path="se-soigner/douleurs/:name/lexique/#:term"
+                    path="se-soigner/douleurs/:name/glossaire/#:term"
                     element={<PainLexique />}
                   />
                   <Route
@@ -109,8 +109,8 @@ function App() {
                     element={<Ressources />}
                   />
                   <Route path="s-informer" element={<SInformer />} />
-                  <Route path="se-soigner/lexique" element={<Lexique />} />
-                  {/* <Route path="s-informer/lexique" element={<Lexique />} /> */}
+                  <Route path="se-soigner/glossaire" element={<Lexique />} />
+                  {/* <Route path="s-informer/glossaire" element={<Lexique />} /> */}
                   <Route path="s-informer/annuaire" element={<Annuaire />} />
                   <Route path="s-informer/annuaire/:name" element={<Pain />} />
                   <Route path="shop" element={<Shop />} />

@@ -72,12 +72,14 @@ const PainArticle = () => {
 
   // highlight paragraphs with lexico and sources
   const highlightParagraphs = (arr) => {
+    console.log("arr::: :", arr);
     const regex = new RegExp(
       `\\b(${highlightedTerms.join("|")}|${highlightedSources.join("|")})\\b`,
       "ig"
     );
 
     return arr.map((p, index) => {
+      console.log("p :", p);
       if (typeof p === "string") {
         const parts = p.split(regex);
 
@@ -87,7 +89,7 @@ const PainArticle = () => {
               if (regex.test(part)) {
                 const isTerm = highlightedTerms.includes(part);
                 const linkTo = isTerm
-                  ? `../lexique/#${part
+                  ? `../glossaire/#${part
                       .normalize("NFD")
                       .replace(/[\u0300-\u036f]/g, "")
                       .replace(/\s+/g, "-")
@@ -95,9 +97,15 @@ const PainArticle = () => {
                   : `${currentURL}/#references`;
                 if (isTerm) {
                   return (
-                    <Link className="term" key={`${part}-${index}`} to={linkTo}>
-                      {part}
-                    </Link>
+                    <>
+                      <Link
+                        className="term"
+                        key={`${part}-${index}`}
+                        to={linkTo}
+                      >
+                        {part} <span>↗</span>
+                      </Link>
+                    </>
                   );
                 } else {
                   return (
@@ -126,7 +134,7 @@ const PainArticle = () => {
     });
   };
 
-  // menus stick // repeats on lexique page
+  // menus stick // repeats on glossaire page
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -197,7 +205,7 @@ const PainArticle = () => {
           </p>
 
           <li>
-            <Link to="../lexique">Glossaire</Link>
+            <Link to="../glossaire">Glossaire</Link>
           </li>
           <li>
             <Link to="../exercices">Exercices</Link>
@@ -213,9 +221,6 @@ const PainArticle = () => {
               Ressources
             </Link>
           </li>
-          <li>
-            <Link to="*">Tutos</Link>
-          </li>
         </ul>
 
         {isMed ? (
@@ -226,6 +231,13 @@ const PainArticle = () => {
             {highlightParagraphs(painData.diag)}
             <h2>Symptômes</h2>
             {highlightParagraphs(painData.sympt)}
+            <div className="article-illustration-container">
+              <img
+                className="article-illustration"
+                src="https://res.cloudinary.com/dkyialww7/image/upload/v1679401608/pain-img/Screenshot_2023-03-21_at_13.21.51_pqlhce.png"
+                alt={painData.name}
+              />
+            </div>
             <h2>Pourquoi ça m’arrive ?</h2>
             {highlightParagraphs(painData.why)}
             <h2>Que puis-je faire seule ?</h2>

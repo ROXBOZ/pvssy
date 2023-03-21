@@ -5,6 +5,10 @@ import { PainsContext } from "../../contexts/PainsContext";
 const Pains = () => {
   const { data, Error } = useContext(PainsContext);
 
+  const createTag = (appelation, index) => {
+    return <tag key={index}>{appelation}</tag>;
+  };
+
   return (
     <div>
       <div className="heading-area">
@@ -16,6 +20,15 @@ const Pains = () => {
           reprehenderit quam, est veniam minus debitis quas quia in expedita
           ullam laborum!
         </p>
+        <div className="tag-container">
+          {createTag("mensturations douloureuses")}
+          {createTag("pénétration impossible")}
+          {createTag("pénétration douloureuse")}
+          {createTag("entrée du vagin douloureuse")}
+          {createTag("clitoris douloureux")}
+          {createTag("vulve douloureuse")}
+          {createTag("anus douloureux")}
+        </div>
       </div>
       <div className="card-grid">
         {data &&

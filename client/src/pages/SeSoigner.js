@@ -27,7 +27,7 @@ const SeSoigner = () => {
         rem ab. Impedit, aut. Odio, molestias. Animi, totam voluptatem.
       </p>
       <p>
-        <Link to="lexique">Glossaire entier (en construction) </Link>
+        <Link to="glossaire">Glossaire entier (en construction) </Link>
       </p>
     </div>
   );

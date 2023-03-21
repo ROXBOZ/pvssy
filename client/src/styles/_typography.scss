@@ -67,6 +67,13 @@ h2 + h3 {
   margin-top: 0;
 }
 
+hr {
+  margin: $gap 0;
+  height: 1px;
+  background-color: $txt-color;
+  border: none;
+}
+
 .auteurice {
   display: flex;
   gap: 0.5em;

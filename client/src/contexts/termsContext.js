@@ -5,6 +5,7 @@ export const TermsContext = createContext();
 export const TermsContextProvider = (props) => {
   const [data, setData] = useState([]);
   const url = `${serverURL}/api/terms/all`;
+  //NOTE same comment as with the eventsContext
   const [Loading, setLoading] = useState(true);
   const [Error, setError] = useState(null);
 

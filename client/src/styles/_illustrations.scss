@@ -34,3 +34,13 @@ figure {
     }
   }
 }
+
+.article-illustration-container {
+  width: 70ch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .article-illustration {
+    height: 30vh;
+  }
+}

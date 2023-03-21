@@ -30,6 +30,20 @@
   }
 }
 
+a.term {
+  //  position: relative;
+  span {
+    //  position: absolute;
+    color: $txt-color;
+    // transition: $animation-transition;
+  }
+  // &:hover {
+  //   span {
+  //     transform: rotate(45deg);
+  //   }
+  // }
+}
+
 @media screen and (max-width: map-get($breakpoints, "sm")) {
   .lexique-list-item {
     flex-direction: column;

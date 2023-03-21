@@ -7,6 +7,7 @@ import { dateTimeConverter } from "../utils/dateConverter";
 import { generateColor } from "../utils/colorGenerator";
 
 const Home = () => {
+  console.log("%chome component run again", "color:orange");
   const {
     fetchData,
     Error,
@@ -25,7 +26,7 @@ const Home = () => {
 
   const color1 = "#f5733c";
   const color2 = "#ff50d7";
-
+  //NOTE try to use useMemo() to store the lenght of data.upcomingEvents
   useEffect(() => {
     fetchData(agendaURL);
   }, [agendaURL]);

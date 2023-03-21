@@ -4,7 +4,7 @@ $pending-color: mediumslateblue;
 $warning-color: tomato;
 $error-color: crimson;
 $archived-color: dimgrey;
-$info-color: steelblue;
+$info-color: $txt-color;
 
 .msg {
   margin: $gap 0;
@@ -53,8 +53,14 @@ $info-color: steelblue;
 
   &.info {
     color: $info-color;
+    display: flex;
+    gap: 0.5em;
+    height: fit-content;
+
     &:before {
-      content: ("ℹ️  ");
+      content: url("../assets/images/info-icon.svg");
+      width: 20px;
+      height: 20px;
     }
   }
 }
