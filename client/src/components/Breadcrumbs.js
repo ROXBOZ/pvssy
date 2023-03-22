@@ -15,7 +15,6 @@ export default function Breadcrumbs() {
   const crumbs = location.pathname
     .split("/")
     .filter((crumb) => {
-      console.log("crumb :", crumb);
       return crumb !== "";
     })
     .map((crumb, index, arr) => {

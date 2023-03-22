@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 import ShareThis from "../ShareThis";
-import PainSuggestions from "./PainSuggestions";
+import { v4 as uuidv4 } from "uuid";
 
 import React, {
   useContext,
@@ -74,19 +74,17 @@ const PainArticle = () => {
 
   // highlight paragraphs with lexico and sources
   const highlightParagraphs = (arr) => {
-    console.log("arr::: :", arr);
     const regex = new RegExp(
       `\\b(${highlightedTerms.join("|")}|${highlightedSources.join("|")})\\b`,
       "ig"
     );
-
+    //FIXME PROBLEM KEY PROP
     return arr.map((p, index) => {
-      console.log("p :", p);
       if (typeof p === "string") {
         const parts = p.split(regex);
 
         return (
-          <p key={index}>
+          <p key={`part-${index}-${uuidv4()}`}>
             {parts.map((part, index) => {
               if (regex.test(part)) {
                 const isTerm = highlightedTerms.includes(part);
@@ -105,33 +103,44 @@ const PainArticle = () => {
                         key={`${part}-${index}`}
                         to={linkTo}
                       >
-                        {part} <span>↗</span>
+                        {part}
+                        <span>↗</span>
                       </Link>
                     </>
                   );
                 } else {
                   return (
-                    <Link
-                      className="source"
-                      key={`${part}-${index}`}
-                      to={linkTo}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        scrollToAnchor("references");
-                      }}
-                    >
-                      {part}
-                    </Link>
+                    <>
+                      <Link
+                        className="source"
+                        key={`${part}-${index}`}
+                        to={linkTo}
+                        onClick={(event) => {
+                          event.preventDefault();
+                          scrollToAnchor("references");
+                        }}
+                      >
+                        {part}
+                      </Link>
+                    </>
                   );
                 }
               } else {
-                return <span key={`${part}-${index}`}>{part}</span>;
+                return (
+                  <>
+                    <span key={`${part}-${index}`}>{part}</span>
+                  </>
+                );
               }
             })}
           </p>
         );
       } else {
-        return <p key={`${index}`}>{p}</p>;
+        return (
+          <>
+            <p key={`${index}`}>{p}</p>
+          </>
+        );
       }
     });
   };
@@ -236,7 +245,8 @@ const PainArticle = () => {
             <h2>Que puis-je faire seule ?</h2>
             {highlightParagraphs(painData.auto)}
             <h2>Quelles aides existent ?</h2>
-            <p>{painData.pro.intro}</p>
+            {highlightParagraphs(painData.pro.intro)}
+
             {painData.pro.gyne && (
               <>
                 <h3>Gynécologue</h3>
@@ -266,57 +276,72 @@ const PainArticle = () => {
           <>
             <h2>Lien à soi</h2>
             <h3>Image /schéma corporel</h3>
-            <p>{highlightParagraphs(painData.body)}</p>
+            {highlightParagraphs(painData.body)}
             <h3>Normes genrées</h3>
-            <p>{highlightParagraphs(painData.norms)}</p>
+            {highlightParagraphs(painData.norms)}
             <h3>Vie quotidienne</h3>
-            <p>{highlightParagraphs(painData.routine)}</p>
+            {highlightParagraphs(painData.routine)}
             <h2>Libido</h2>
-            <p>{highlightParagraphs(painData.libido)}</p>
+            {highlightParagraphs(painData.libido)}
             <h3>
               Charge mentale / communication /
               <br />
               consentement
             </h3>
-            <p>{highlightParagraphs(painData.consent)}</p>
+            {highlightParagraphs(painData.consent)}
             <h2>Santé mentale</h2>
-            <p>{highlightParagraphs(painData.mental)}</p>
+            {highlightParagraphs(painData.mental)}
             <h2>Parentalité</h2>
-            <p>{highlightParagraphs(painData.parenthood)}</p>
+            {highlightParagraphs(painData.parenthood)}
             <h2>Avec les pros</h2>
-            <p>{highlightParagraphs(painData.checkup)}</p>
+            {highlightParagraphs(painData.checkup)}
             <h2>Plaisir / anti-douleur</h2>
-            <p>{highlightParagraphs(painData.pleasure)}</p>
+            {highlightParagraphs(painData.pleasure)}
           </>
         )}
 
-        {/* <PainSuggestions /> */}
-
-        <div id="references" className="footnotes">
-          <h4>Bibliographie</h4>
-          <ul>
-            {requestedSources &&
-              requestedSources.map((s, index) => {
-                if (s.isFootnote === true) {
-                  return (
-                    <li data-icon="→" key={s._id} id={index}>
-                      <span className="source-list-item">
-                        <span className="source-author">{s.author}</span>
-                        <span className="source-year"> ({s.year}). </span>
-                        <span className="source-title">{s.title}</span>{" "}
-                        <span className="source-category">[{s.category}]</span>
-                        <span className="source-edition">
-                          &nbsp;({s.edition}
-                          {s.edition === "1" ? "ère" : "ème"} éd.) 
-                        </span>
-                        <span className="source-editor">{s.editor}</span>.
-                      </span>
-                    </li>
-                  );
-                }
-              })}
-          </ul>
-        </div>
+        {requestedSources && (
+          <>
+            {requestedSources.some((s) => s.isFootnote) && (
+              <div id="references" className="footnotes">
+                <h4>Bibliographie</h4>
+                <ul>
+                  {requestedSources.map((s, index) => {
+                    if (s.isFootnote === true) {
+                      console.log("s.url :", s.url);
+                      return (
+                        <li data-icon="→" key={s._id} id={index}>
+                          <span className="source-list-item">
+                            <span className="source-author">{s.author}</span>
+                            <span className="source-year"> ({s.year}). </span>
+                            <span className="source-title">
+                              {s.url ? (
+                                <Link to={s.url}>{s.title}</Link>
+                              ) : (
+                                <span>{s.title}</span>
+                              )}
+                            </span>{" "}
+                            <span className="source-category">
+                              [{s.category}]
+                            </span>{" "}
+                            {s.edition && (
+                              <span className="source-edition">
+                                {" "}
+                                ({s.edition}
+                                {s.edition === "1" ? "ère" : "ème"} éd.){" "}
+                              </span>
+                            )}
+                            <span className="source-editor">{s.editor}</span>.
+                          </span>
+                        </li>
+                      );
+                    }
+                  })}
+                </ul>
+              </div>
+            )}
+          </>
+        )}
       </div>
     </>
   );

@@ -3,7 +3,6 @@
 
   .exercise {
     padding: $demi-gap 0;
-    border-bottom: $border-solid $color1;
 
     h3 {
       margin-top: 0;
@@ -14,9 +13,16 @@
     }
 
     .exercise-closed {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      @include grid;
+      width: 100%;
+
+      .exercise-text {
+        grid-column: 2/4;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: $border-solid $color1;
+      }
     }
 
     .exercise-open {

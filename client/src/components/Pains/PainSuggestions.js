@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 
 const PainSuggestions = () => {
-  const { requestedSources } = useContext(PainsContext);
+  const { painName, requestedSources } = useContext(PainsContext);
   return (
     <div>
       <div className="heading-area">
         <p className="pretitle">Suggestions</p>
-        <h1>Vaginisme</h1>
+        <h1>{painName}</h1>
         <p className="subtitle">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id ab unde
           nisi, amet veritatis eum nulla voluptatum quidem quod placeat iusto
@@ -44,6 +44,10 @@ const PainSuggestions = () => {
                 );
               }
             })}
+          <p className="msg info">
+            Retrouve toutes les suggestions de <strong>pvssy talk</strong> dans
+            le repertoire général.
+          </p>
         </ul>
       </div>
     </div>

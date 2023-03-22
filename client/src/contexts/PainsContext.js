@@ -21,8 +21,9 @@ export const PainsContextProvider = (props) => {
 
   let painName =
     index !== -1 && index + 1 < segments.length
-      ? segments[index + 1].charAt(0).toUpperCase() +
-        segments[index + 1].slice(1)
+      ? decodeURIComponent(segments[index + 1])
+          .charAt(0)
+          .toUpperCase() + decodeURIComponent(segments[index + 1]).slice(1)
       : null;
 
   const fetchData = async (url) => {

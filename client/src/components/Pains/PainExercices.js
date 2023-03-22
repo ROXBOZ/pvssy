@@ -116,11 +116,10 @@ const PainExercices = () => {
                 <div className="exercise-closed">
                   <div className="exercise-text">
                     <h2 className="h3">{ex.title}</h2>
-                    {/* <p className="subtitle">{ex.intro}</p> */}
+                    <button onClick={() => showMore(index)}>
+                      {showExercise[index] ? "fermer" : "consulter"}
+                    </button>
                   </div>
-                  <button onClick={() => showMore(index)}>
-                    {showExercise[index] ? "fermer" : "consulter"}
-                  </button>
                 </div>
 
                 <div>
@@ -129,7 +128,11 @@ const PainExercices = () => {
                       <div className="exercise-article">
                         <div className="prealable">
                           {createParagraph(ex.prealable)}
-                          <span>{ex.relatedPain}</span>
+                          <div>
+                            <span> Cet exercice est utile en cas de</span>
+                            <br />
+                            <span>{ex.relatedPain}</span>
+                          </div>
                         </div>
                         <div className="instructions">
                           <img

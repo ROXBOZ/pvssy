@@ -387,7 +387,6 @@ button.showPassword:hover {
   border-top: 1px solid #eae2d1;
   padding: 2em;
   display: grid;
-  display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2em;
   align-items: center;
@@ -399,18 +398,18 @@ button.showPassword:hover {
     grid-template-columns: 1fr;
   }
 }
-.donation-banner .donation-banner-content {
+.donation-banner-content {
   grid-column: 2/4;
 }
-.donation-banner .donation-banner-content h4 {
+.donation-banner-content h4 {
   margin-top: 0;
 }
-.donation-banner .donation-banner-content .button-link-container {
+.donation-banner-content .button-link-container {
   display: flex;
   gap: 1em;
   align-items: center;
 }
-.donation-banner .donation-banner-content .button-link-container a {
+.donation-banner-content .button-link-container a {
   color: #1f042f;
   height: -moz-fit-content;
   height: fit-content;
@@ -421,7 +420,6 @@ button.showPassword:hover {
 }
 .exercises-container .exercise {
   padding: 1em 0;
-  border-bottom: 1px solid #f5733c;
 }
 .exercises-container .exercise h3 {
   margin-top: 0;
@@ -430,9 +428,22 @@ button.showPassword:hover {
   margin-bottom: 0;
 }
 .exercises-container .exercise .exercise-closed {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+  width: 100%;
+}
+@media screen and (max-width: 576px) {
+  .exercises-container .exercise .exercise-closed {
+    grid-template-columns: 1fr;
+  }
+}
+.exercises-container .exercise .exercise-closed .exercise-text {
+  grid-column: 2/4;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid #f5733c;
 }
 .exercises-container .exercise .exercise-open {
   animation: animationOpacity 0.4s ease-in;

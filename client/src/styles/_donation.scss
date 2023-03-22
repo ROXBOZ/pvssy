@@ -1,21 +1,23 @@
 .donation-banner {
   border-top: $border-solid darken($bg-color, 10%);
   padding: $padding-sm;
-  display: grid;
   @include grid;
   align-items: center;
   justify-content: left;
   flex-direction: column;
-  .donation-banner-content {
+
+  &-content {
+    grid-column: 2/4;
+
     h4 {
       margin-top: 0;
     }
-    grid-column: 2/4;
 
     .button-link-container {
       display: flex;
       gap: $demi-gap;
       align-items: center;
+
       a {
         color: $txt-color;
         height: fit-content;

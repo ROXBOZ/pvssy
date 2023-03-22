@@ -9,7 +9,6 @@ const painSchema = new mongoose.Schema({
   img: {
     type: String,
     required: true,
-    unique: true,
   },
   def: {
     type: Array,
