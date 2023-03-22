@@ -1,15 +1,14 @@
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { EventsContext } from "../contexts/eventsContext";
-import EventCard from "../components/Agenda/EventCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const Agenda = () => {
   const {
     fetchData,
-    Error,
-    data,
+    // Error,
+    // data,
     agendaURL,
     value,
     suggestions,

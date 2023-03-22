@@ -4,7 +4,7 @@ import { PainsContext } from "../../contexts/PainsContext";
 
 const Pain = () => {
   const outlet = useOutlet();
-  const [anchorPosition, setAnchorPosition] = useState(0);
+  const [, setAnchorPosition] = useState(0);
 
   const { painData, painName, fetchSinglePain, fetchRelatedSources } =
     useContext(PainsContext);
@@ -86,12 +86,8 @@ const Pain = () => {
               />
 
               <ResourceCard
-                to="medical/#ressources"
-                onClick={(event) => {
-                  event.preventDefault();
-                  scrollToAnchor("ressources");
-                }}
-                title="Ressources"
+                to="suggestions"
+                title="Suggestions"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
               />
             </div>

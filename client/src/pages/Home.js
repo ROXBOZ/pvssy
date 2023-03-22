@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from "react";
 import { EventsContext } from "../contexts/eventsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import Pains from "../components/Pains/Pains";
 import { dateTimeConverter } from "../utils/dateConverter";
 import { generateColor } from "../utils/colorGenerator";
 

@@ -32,10 +32,8 @@
   }
 }
 
-.footnotes,
-.additional-ressources {
+.footnotes {
   margin-top: $gap;
-
   max-width: $chperline;
 
   .source-editor {
@@ -67,8 +65,9 @@
 }
 
 .additional-ressources {
-  margin-top: 10vh;
+  @include grid;
   ul {
+    grid-column: 2/4;
     padding-left: 0;
     li {
       gap: 1.75em;

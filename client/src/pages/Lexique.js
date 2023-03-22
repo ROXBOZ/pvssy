@@ -1,8 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { serverURL } from "../utils/serverURL";
 import { PainsContext } from "../contexts/PainsContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+
 import React, {
   useContext,
   useEffect,
@@ -14,7 +13,7 @@ import React, {
 const Lexique = () => {
   const [allTerms, setAllTerms] = useState(null);
   const location = useLocation();
-  const [anchorPosition, setAnchorPosition] = useState(0);
+  const [, setAnchorPosition] = useState(0);
   const [topList, setTopList] = useState(0);
   const [entries, setEntries] = useState([]);
   const { isSticky, setIsSticky } = useContext(PainsContext);

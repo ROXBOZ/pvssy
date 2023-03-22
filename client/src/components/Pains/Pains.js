@@ -66,8 +66,8 @@ const Pains = () => {
                 <div className="card">
                   <img src={p.img} alt={p.name} />
                   <h3>{p.name}</h3>
-                  <p style={{ backgroundColor: "red" }}>
-                    <tag>Vagin</tag> <tag>Pénétration</tag>
+                  <p className="card-tag-container">
+                    <tag>vagin</tag> <tag>pénétration</tag>
                   </p>
                 </div>
               </Link>

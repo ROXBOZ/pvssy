@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 import ShareThis from "../ShareThis";
+import PainSuggestions from "./PainSuggestions";
+
 import React, {
   useContext,
   useEffect,
@@ -13,7 +15,7 @@ const PainArticle = () => {
   let currentURL = window.location.pathname;
   const submenuRef = useRef(null);
   const menuRef = useRef();
-  const [anchorPosition, setAnchorPosition] = useState(0);
+  const [, setAnchorPosition] = useState(0);
   const [menuTop, setMenuTop] = useState(0);
   const {
     isSticky,
@@ -197,8 +199,7 @@ const PainArticle = () => {
         >
           <ShareThis />
           <p className="h4">
-            {/* Ressources */}
-            Guide
+            Ressources
             <br />
             {painData.name}
             <br />
@@ -211,15 +212,7 @@ const PainArticle = () => {
             <Link to="../exercices">Exercices</Link>
           </li>
           <li>
-            <Link
-              to={`${currentURL}/#ressources`}
-              onClick={(event) => {
-                event.preventDefault();
-                scrollToAnchor("ressources");
-              }}
-            >
-              Suggestions
-            </Link>
+            <Link to="../suggestions">Suggestions</Link>
           </li>
         </ul>
 
@@ -296,38 +289,8 @@ const PainArticle = () => {
             <p>{highlightParagraphs(painData.pleasure)}</p>
           </>
         )}
-        <div id="ressources" className="additional-ressources">
-          <p className="pretitle">À découvrir</p>
-          <h2>Suggestions</h2>
-          <ul>
-            {requestedSources &&
-              requestedSources.map((s, index) => {
-                if (s.isFootnote === false) {
-                  return (
-                    <li key={s._id} id={index}>
-                      <span className="source-list-item">
-                        <span className="source-author">{s.author}</span>
-                        {s.year && (
-                          <span className="source-year"> ({s.year}).</span>
-                        )}{" "}
-                        {s.url ? (
-                          <Link to={s.url}>
-                            <span className="source-title">{s.title}</span>
-                          </Link>
-                        ) : (
-                          <span className="source-title">{s.title}</span>
-                        )}{" "}
-                        <span className="source-category">[{s.category}]</span>{" "}
-                        {s.editor && (
-                          <span className="source-editor">{s.editor}.</span>
-                        )}
-                      </span>
-                    </li>
-                  );
-                }
-              })}
-          </ul>
-        </div>
+
+        {/* <PainSuggestions /> */}
 
         <div id="references" className="footnotes">
           <h4>Bibliographie</h4>
