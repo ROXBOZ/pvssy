@@ -14,21 +14,29 @@ const SeSoigner = () => {
           rerum corporis.
         </p>
       </div>
-
+      <p style={{ backgroundColor: "red" }}>exercice/article de base</p>
       <Pains />
-      <br />
-      <br />
-      <p className="pretitle">Comprendre</p>
-      <h2>Guides</h2>
+
+      <div className="heading-area">
+        <p className="pretitle">Comprendre</p>
+        <h2>Ressources</h2>
+        <p className="subtitle">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea enim harum
+          voluptas ullam quos corporis esse ratione pariatur error, obcaecati
+          cum, rem ab. Impedit, aut. Odio, molestias. Animi, totam voluptatem.
+        </p>
+        <p className="msg info">
+          Les ressources sont également disponibles{" "}
+          <Link to="/douleurs">par douleur</Link>.
+        </p>
+      </div>
       <p style={{ color: "red" }}>créer une url pour les ressources globales</p>
-      <p className="subtitle">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea enim harum
-        voluptas ullam quos corporis esse ratione pariatur error, obcaecati cum,
-        rem ab. Impedit, aut. Odio, molestias. Animi, totam voluptatem.
-      </p>
+
       <p>
         <Link to="glossaire">Glossaire entier (en construction) </Link>
       </p>
+      <p>Toutes les Ressources </p>
+      <p>Toutes les exercices </p>
     </div>
   );
 };

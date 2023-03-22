@@ -1,12 +1,12 @@
 .exercises-container {
-  // border-top: $border-solid $color1;
+  grid-column: 1/5;
+
   .exercise {
-    padding: $padding-sm 0;
+    padding: $demi-gap 0;
     border-bottom: $border-solid $color1;
 
     h3 {
       margin-top: 0;
-      //
     }
 
     p {
@@ -25,7 +25,7 @@
       .exercise-img {
         border-radius: $border-radius;
         width: 100%;
-        aspect-ratio: 16/9;
+        aspect-ratio: 16/4.5;
         object-fit: cover;
         margin-bottom: $gap;
       }
@@ -35,18 +35,29 @@
 
         .prealable {
           font-family: $font-medium;
-          color: darken($color6, 10%);
+          color: darken($color1, 10%);
+          display: flex;
+          flex-direction: column;
 
-          hr {
-            background-color: darken($color6, 10%);
+          justify-content: space-between;
+          div {
+            hr {
+              margin-top: $gap;
+              background-color: $color1;
+            }
           }
         }
         .instructions {
-          grid-column: 2/4;
+          grid-column: 2/5;
           padding: 0;
-
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
           .instructions-step {
             margin-bottom: $gap;
+            &:last-child {
+              margin-bottom: 0;
+            }
 
             .instructions-step-closed {
               display: flex;
@@ -65,7 +76,7 @@
 
             h3 {
               .counter {
-                color: $color6;
+                color: $color1;
               }
             }
             p {

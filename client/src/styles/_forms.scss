@@ -38,8 +38,9 @@ input {
   }
 }
 #chevron-icon {
+  transform: rotate(-90deg);
   &.open {
-    transform: rotate(90deg);
+    transform: rotate(0deg);
     transition: $animation-transition;
   }
   &.close {

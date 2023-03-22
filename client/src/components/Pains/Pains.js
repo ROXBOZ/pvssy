@@ -1,33 +1,55 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
+import { useLocation } from "react-router-dom";
+import { ScalableHeader } from "../../utils/scalableHeader";
 
 const Pains = () => {
   const { data, Error } = useContext(PainsContext);
-
+  const location = useLocation();
   const createTag = (appelation, index) => {
     return <tag key={index}>{appelation}</tag>;
   };
+
+  const currentUrl = location.pathname;
+  const endsWithDouleurs = /douleurs$/.test(currentUrl);
 
   return (
     <div>
       <div className="heading-area">
         <p className="pretitle">Comprendre</p>
-        <h2>Douleurs</h2>
+
+        {endsWithDouleurs ? (
+          <ScalableHeader title="Douleurs" headerLevel={1} />
+        ) : (
+          <ScalableHeader title="Douleurs" headerLevel={2} />
+        )}
+
         <p className="subtitle">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
           sequi reiciendis, vel facere, esse eaque rerum velit labore
           reprehenderit quam, est veniam minus debitis quas quia in expedita
           ullam laborum!
         </p>
+        {endsWithDouleurs ? (
+          <ScalableHeader
+            className="h3"
+            title="Peux-tu orienter ta douleur ?"
+            headerLevel={2}
+          />
+        ) : (
+          <ScalableHeader
+            title="Peux-tu orienter ta douleur ?"
+            headerLevel={3}
+          />
+        )}
+
         <div className="tag-container">
-          {createTag("mensturations douloureuses")}
-          {createTag("pénétration impossible")}
-          {createTag("pénétration douloureuse")}
-          {createTag("entrée du vagin douloureuse")}
-          {createTag("clitoris douloureux")}
-          {createTag("vulve douloureuse")}
-          {createTag("anus douloureux")}
+          {createTag("vagin")}
+          {createTag("clitoris ")}
+          {createTag("vulve")}
+          {createTag("anus")} | {createTag("règles")}
+          {createTag("pénétration")}
         </div>
       </div>
       <div className="card-grid">
@@ -37,15 +59,15 @@ const Pains = () => {
               <Link
                 className="link-card"
                 to={{
-                  pathname: `/se-soigner/douleurs/${p.name.toLowerCase()}`,
+                  pathname: `/se-soigner/douleurs/${p.name.toLowerCase()}/medical`,
                 }}
                 key={p._id}
               >
                 <div className="card">
                   <img src={p.img} alt={p.name} />
                   <h3>{p.name}</h3>
-                  <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  <p style={{ backgroundColor: "red" }}>
+                    <tag>Vagin</tag> <tag>Pénétration</tag>
                   </p>
                 </div>
               </Link>

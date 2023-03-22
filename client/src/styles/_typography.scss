@@ -4,7 +4,17 @@
 
 .heading-area {
   max-height: fit-content;
-  margin-top: 20vh;
+  margin-top: 5rem;
+  @include grid;
+  gap: 0 $gap;
+  h1 {
+    margin-top: 0;
+  }
+  * {
+    grid-column: 2/4;
+    height: fit-content;
+  }
+
   @media screen and (max-width: map-get($breakpoints, "sm")) {
     margin-top: 10vh;
   }
@@ -30,6 +40,7 @@ p {
     letter-spacing: 0.5px;
     padding-bottom: 0;
     margin-bottom: 0;
+    max-width: fit-content;
     & + h1,
     & + h2,
     & + h3 {
@@ -75,6 +86,7 @@ hr {
 }
 
 .auteurice {
+  margin-top: 10vh;
   display: flex;
   gap: 0.5em;
   align-items: center;
@@ -126,7 +138,7 @@ $type-ratios: (
 }
 
 $type-base-size: 1rem;
-$type-size-ratio: type-ratio("augmentedFourth");
+$type-size-ratio: type-ratio("perfectFifth");
 $type-levels: 4, 3, 2, 1;
 $type-styles: ();
 $level-size: $type-base-size;
@@ -136,6 +148,7 @@ $level-size: $type-base-size;
 
   h#{$level},
   .h#{$level} {
+    font-family: $font-logo;
     font-size: $level-size;
     line-height: calc(2px + 2ex + 2px);
     margin-bottom: 0.65em;

@@ -72,8 +72,8 @@ const PainLexique = () => {
   return (
     <>
       <div className="heading-area">
-        <p className="pretitle">Guide</p>
-        <h1>Glossaire {painName}</h1>
+        <p className="pretitle">Glossaire</p>
+        <h1>{painName}</h1>
         <p className="subtitle">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non autem
           perspiciatis eos quisquam maiores ratione quasi in, deleniti officiis

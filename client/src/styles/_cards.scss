@@ -2,7 +2,7 @@
 
 .card-grid {
   @include grid;
-  padding-bottom: $gap;
+  // padding-bottom: $gap;
 
   .link-card {
     border-bottom: none;

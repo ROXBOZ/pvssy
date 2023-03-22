@@ -55,11 +55,11 @@ const Header = () => {
             </NavLink>
           </li>
 
-          {/* <li>
-            <NavLink onClick={handleNavLink} to="shop">
-              Shop
+          <li>
+            <NavLink onClick={handleNavLink} to="agenda">
+              Agenda
             </NavLink>
-          </li> */}
+          </li>
 
           <li>
             {userProfile ? (

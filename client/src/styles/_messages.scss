@@ -9,6 +9,14 @@ $info-color: $txt-color;
 .msg {
   margin: $gap 0;
   font-family: $font-medium;
+  background-color: lighten($color5, 15%);
+  border: $border-solid $color5;
+  padding: $demi-gap;
+  border-radius: $border-radius;
+  * {
+    margin-bottom: 0;
+    color: $txt-color;
+  }
   &.success {
     color: $success-color;
     &:before {
@@ -61,6 +69,7 @@ $info-color: $txt-color;
       content: url("../assets/images/info-icon.svg");
       width: 20px;
       height: 20px;
+      padding-top: 2.5px;
     }
   }
 }

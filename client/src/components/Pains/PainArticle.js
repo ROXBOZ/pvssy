@@ -218,7 +218,7 @@ const PainArticle = () => {
                 scrollToAnchor("ressources");
               }}
             >
-              Ressources
+              Suggestions
             </Link>
           </li>
         </ul>
@@ -297,10 +297,8 @@ const PainArticle = () => {
           </>
         )}
         <div id="ressources" className="additional-ressources">
-          {/* <p className="pretitle">Ressources</p>
-          <h2>À découvrir</h2> */}
           <p className="pretitle">À découvrir</p>
-          <h2>Ressources</h2>
+          <h2>Suggestions</h2>
           <ul>
             {requestedSources &&
               requestedSources.map((s, index) => {

@@ -28,20 +28,19 @@ const Agenda = () => {
 
   return (
     <div>
-      <p className="pretitle">Let’s connect</p>
-      <h1>
-        Agenda collaboratif<sup>prototype</sup>
-      </h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-        accusantium optio dolore dolorum suscipit ducimus neque quaerat! Quas
-        rellendus laudantium, excturi iusto architecto neque natus adipisci,
-        eligendi nesciunt eos odit!
-      </p>
-      <p>
-        Vous avez un évènement à proposer ?{" "}
-        <Link to="/login">Connectez-vous</Link> et soumettez-le!
-      </p>
+      <div className="heading-area">
+        <h1>Agenda</h1>
+        <p className="subtitle">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
+          accusantium optio dolore dolorum suscipit ducimus neque quaerat! Quas
+          rellendus laudantium, excturi iusto architecto neque natus adipisci,
+          eligendi nesciunt eos odit!
+        </p>
+        <p>
+          Vous avez un évènement à proposer ?{" "}
+          <Link to="/login">Connectez-vous</Link>.
+        </p>
+      </div>
 
       <div className="filter-dashboard">
         <div className="filter">
@@ -86,7 +85,7 @@ const Agenda = () => {
         </div>
       </div>
 
-      <div className="card-grid">
+      {/* <div className="card-grid">
         {data.upcomingEvents &&
         data.upcomingEvents
           .filter((e) => {
@@ -120,9 +119,9 @@ const Agenda = () => {
           </p>
         )}
         {Error && <p>Erreur</p>}
-      </div>
+      </div> */}
 
-      <Link to="archives">Consulter les évènements passés</Link>
+      {/* <Link to="archives">Consulter les évènements passés</Link> */}
     </div>
   );
 };

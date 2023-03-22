@@ -52,7 +52,7 @@ const Pain = () => {
     return (
       <>
         <div className="heading-area">
-          <p className="pretitle">Comprendre</p>
+          <p className="pretitle">Douleur</p>
           <h1>{painData.name}</h1>
         </div>
 
@@ -60,12 +60,6 @@ const Pain = () => {
           <Outlet />
         ) : (
           <>
-            <p className="subtitle">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis
-              culpa maxime autem porro iusto hic itaque officiis doloremque
-              molestiae. Aliquam, temporibus cupiditate. Provident aut officia
-              fugit natus consequuntur libero eveniet.
-            </p>
             <div className="card-grid">
               <ArticleLink
                 to="medical"

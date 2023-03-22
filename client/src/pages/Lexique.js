@@ -119,8 +119,8 @@ const Lexique = () => {
   return (
     <div>
       <div className="heading-area">
-        <p className="pretitle">Guide</p>
-        <h2>Glossaire</h2>
+        <p className="pretitle">Ressources</p>
+        <h1>Glossaire</h1>
         <p className="subtitle">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam cum
           iste quas vitae sequi, consequuntur inventore officiis, expedita

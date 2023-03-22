@@ -1,9 +1,9 @@
 .tag-container {
   display: flex;
   gap: $demi-gap;
-  margin: $gap 0;
-  max-width: 70ch;
+  margin: 0 0 $gap;
   flex-wrap: wrap;
+  align-items: center;
 
   tag {
     white-space: nowrap;
@@ -12,5 +12,11 @@
     padding: $padding-btn;
     font-size: 80%;
     border-radius: 40px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: darken($color1, 10%);
+      color: $bg-color;
+    }
   }
 }

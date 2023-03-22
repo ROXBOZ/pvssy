@@ -113,6 +113,17 @@
     opacity: 1;
   }
 }
+@keyframes animationAccordeon {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
 .form-check-input {
   margin-right: 0.5em;
   width: 1.5em;
@@ -236,7 +247,6 @@ button.showPassword:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2em;
-  padding-bottom: 2em;
 }
 @media screen and (max-width: 576px) {
   .card-grid {
@@ -405,8 +415,11 @@ button.showPassword:hover {
   height: fit-content;
 }
 
+.exercises-container {
+  grid-column: 1/5;
+}
 .exercises-container .exercise {
-  padding: 2em 0;
+  padding: 1em 0;
   border-bottom: 1px solid #f5733c;
 }
 .exercises-container .exercise h3 {
@@ -426,7 +439,7 @@ button.showPassword:hover {
 .exercises-container .exercise .exercise-open .exercise-img {
   border-radius: 0.25em;
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/4.5;
   -o-object-fit: cover;
      object-fit: cover;
   margin-bottom: 2em;
@@ -444,17 +457,27 @@ button.showPassword:hover {
 }
 .exercises-container .exercise .exercise-open .exercise-article .prealable {
   font-family: "ESKlarheit-Medium";
-  color: #7d11e3;
+  color: #f2510c;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.exercises-container .exercise .exercise-open .exercise-article .prealable hr {
-  background-color: #7d11e3;
+.exercises-container .exercise .exercise-open .exercise-article .prealable div hr {
+  margin-top: 2em;
+  background-color: #f5733c;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions {
-  grid-column: 2/4;
+  grid-column: 2/5;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step {
   margin-bottom: 2em;
+}
+.exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step:last-child {
+  margin-bottom: 0;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step .instructions-step-closed {
   display: flex;
@@ -470,7 +493,7 @@ button.showPassword:hover {
   margin-top: 1em;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step h3 .counter {
-  color: #9637f0;
+  color: #f5733c;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step p {
   margin-bottom: 1em;
@@ -594,8 +617,11 @@ input::placeholder {
   align-items: center;
 }
 
+#chevron-icon {
+  transform: rotate(-90deg);
+}
 #chevron-icon.open {
-  transform: rotate(90deg);
+  transform: rotate(0deg);
   transition: 0.4s;
 }
 #chevron-icon.close {
@@ -1210,7 +1236,7 @@ figure span a {
   justify-content: center;
 }
 .article-illustration-container .article-illustration {
-  height: 30vh;
+  height: 40vh;
 }
 
 .lexique-list {
@@ -1335,6 +1361,14 @@ a.term span {
 .msg {
   margin: 2em 0;
   font-family: "ESKlarheit-Medium";
+  background-color: #f3e5ff;
+  border: 1px solid #cf98ff;
+  padding: 1em;
+  border-radius: 0.25em;
+}
+.msg * {
+  margin-bottom: 0;
+  color: #1f042f;
 }
 .msg.success {
   color: mediumseagreen;
@@ -1383,6 +1417,7 @@ a.term span {
   content: url("../assets/images/info-icon.svg");
   width: 20px;
   height: 20px;
+  padding-top: 2.5px;
 }
 
 .error-list {
@@ -1566,7 +1601,6 @@ a.term span {
   animation: opacityAnimation 500ms ease-in;
   gap: 0;
   flex-direction: column;
-  margin-top: 10vh;
 }
 @media screen and (max-width: 576px) {
   .article {
@@ -1690,9 +1724,9 @@ a.term span {
 .tag-container {
   display: flex;
   gap: 1em;
-  margin: 2em 0;
-  max-width: 70ch;
+  margin: 0 0 2em;
   flex-wrap: wrap;
+  align-items: center;
 }
 .tag-container tag {
   white-space: nowrap;
@@ -1701,6 +1735,11 @@ a.term span {
   padding: 0.5em 1.5em;
   font-size: 80%;
   border-radius: 40px;
+}
+.tag-container tag:hover {
+  cursor: pointer;
+  background-color: #f2510c;
+  color: #faf8f4;
 }
 
 .tooltip {
@@ -1733,7 +1772,24 @@ a.term span {
 .heading-area {
   max-height: -moz-fit-content;
   max-height: fit-content;
-  margin-top: 20vh;
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+  gap: 0 2em;
+}
+@media screen and (max-width: 576px) {
+  .heading-area {
+    grid-template-columns: 1fr;
+  }
+}
+.heading-area h1 {
+  margin-top: 0;
+}
+.heading-area * {
+  grid-column: 2/4;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 @media screen and (max-width: 576px) {
   .heading-area {
@@ -1761,6 +1817,8 @@ p.pretitle {
   letter-spacing: 0.5px;
   padding-bottom: 0;
   margin-bottom: 0;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
 }
 p.pretitle + h1, p.pretitle + h2, p.pretitle + h3 {
   margin-top: 0;
@@ -1802,6 +1860,7 @@ hr {
 }
 
 .auteurice {
+  margin-top: 10vh;
   display: flex;
   gap: 0.5em;
   align-items: center;
@@ -1839,53 +1898,57 @@ hr {
 /*-----Ratio Scale-----*/
 h4,
 .h4 {
-  font-size: 1.414rem;
+  font-family: "ESRebond";
+  font-size: 1.5rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
   font-weight: 500;
   font-size: clamp(
-        1rem,
-        4.414vw + 1rem,
-        1.414rem
+        1.005rem,
+        4.495vw + 1rem,
+        1.5rem
       );
 }
 
 h3,
 .h3 {
-  font-size: 1.999396rem;
+  font-family: "ESRebond";
+  font-size: 2.25rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
   font-weight: 500;
   font-size: clamp(
-        1.33959532rem,
-        4.65980068vw + 1rem,
-        1.999396rem
+        1.5075rem,
+        4.7425vw + 1rem,
+        2.25rem
       );
 }
 
 h2,
 .h2 {
-  font-size: 2.827145944rem;
+  font-family: "ESRebond";
+  font-size: 3.375rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
   font-weight: 500;
   font-size: clamp(
-        1.8941877825rem,
-        4.9329581615vw + 1rem,
-        2.827145944rem
+        2.26125rem,
+        5.11375vw + 1rem,
+        3.375rem
       );
 }
 
 h1,
 .h1 {
-  font-size: 3.9975843648rem;
+  font-family: "ESRebond";
+  font-size: 5.0625rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
   font-weight: 500;
   font-size: clamp(
-        2.6783815244rem,
-        5.3192028404vw + 1rem,
-        3.9975843648rem
+        2.53125rem,
+        6.53125vw + 1rem,
+        5.0625rem
       );
 }
 
