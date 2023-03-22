@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 import ShareThis from "../ShareThis";
-import { v4 as uuidv4 } from "uuid";
 
 import React, {
   useContext,
@@ -72,19 +71,18 @@ const PainArticle = () => {
     }
   };
 
-  // highlight paragraphs with lexico and sources
   const highlightParagraphs = (arr) => {
     const regex = new RegExp(
       `\\b(${highlightedTerms.join("|")}|${highlightedSources.join("|")})\\b`,
       "ig"
     );
-    //FIXME PROBLEM KEY PROP
+
     return arr.map((p, index) => {
       if (typeof p === "string") {
         const parts = p.split(regex);
 
         return (
-          <p key={`part-${index}-${uuidv4()}`}>
+          <p key={`part-${index}`}>
             {parts.map((part, index) => {
               if (regex.test(part)) {
                 const isTerm = highlightedTerms.includes(part);

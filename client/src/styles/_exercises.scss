@@ -60,6 +60,7 @@
           flex-direction: column;
           justify-content: space-between;
           .instructions-step {
+            grid-column: 2/4;
             margin-bottom: $gap;
             &:last-child {
               margin-bottom: 0;

@@ -9,20 +9,7 @@ const PainExercices = () => {
   const [showStep, setShowStep] = useState({});
 
   let location = useLocation();
-  const { requestedExercises } = useContext(PainsContext);
-
-  const painName =
-    location.pathname
-      .split(/\/|#/)
-      .filter((item) => item !== "")
-      .slice(-2, -1)[0]
-      .slice(0, 1)
-      .toUpperCase() +
-    location.pathname
-      .split(/\/|#/)
-      .filter((item) => item !== "")
-      .slice(-2, -1)[0]
-      .slice(1);
+  const { requestedExercises, painName } = useContext(PainsContext);
 
   const createParagraph = (arr) => {
     return (
@@ -135,11 +122,14 @@ const PainExercices = () => {
                           </div>
                         </div>
                         <div className="instructions">
-                          <img
-                            className="exercise-img"
-                            src={ex.img}
-                            alt={ex.title}
-                          />
+                          {ex.img && (
+                            <img
+                              className="exercise-img"
+                              src={ex.img}
+                              alt={ex.title}
+                            />
+                          )}
+
                           <div>{displayInstructions(ex.howto)}</div>
                         </div>
                       </div>

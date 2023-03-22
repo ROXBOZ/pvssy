@@ -3,6 +3,7 @@
   border-radius: $border-radius;
   aspect-ratio: 16/6;
   object-fit: cover;
+  object-position: top;
 
   @media screen and (max-width: map-get($breakpoints, "sm")) {
     aspect-ratio: 3/2;
@@ -40,6 +41,7 @@ figure {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: $gap 0;
   .article-illustration {
     height: 40vh;
   }

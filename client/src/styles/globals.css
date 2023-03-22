@@ -486,6 +486,7 @@ button.showPassword:hover {
   justify-content: space-between;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step {
+  grid-column: 2/4;
   margin-bottom: 2em;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step:last-child {
@@ -1208,6 +1209,8 @@ form .form-section .form-dropdown-suggestions li {
   aspect-ratio: 16/6;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
 }
 @media screen and (max-width: 576px) {
   .pain-illu-cover {
@@ -1246,6 +1249,7 @@ figure span a {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 2em 0;
 }
 .article-illustration-container .article-illustration {
   height: 40vh;
@@ -1373,14 +1377,13 @@ a.term span {
 .msg {
   margin: 2em 0;
   font-family: "ESKlarheit-Medium";
-  background-color: #f3e5ff;
-  border: 1px solid #cf98ff;
+  background-color: #f5f1e9;
+  border: 1px solid #e2d7bf;
   padding: 1em;
   border-radius: 0.25em;
 }
 .msg * {
   margin-bottom: 0;
-  color: #1f042f;
 }
 .msg.success {
   color: mediumseagreen;
@@ -1419,7 +1422,7 @@ a.term span {
   content: "🚨  ";
 }
 .msg.info {
-  color: #1f042f;
+  color: steelblue;
   display: flex;
   gap: 0.5em;
   height: -moz-fit-content;
@@ -1918,56 +1921,56 @@ hr {
 h4,
 .h4 {
   font-family: "ESRebond";
-  font-size: 1.5rem;
+  font-size: 1.414rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
   font-weight: 500;
   font-size: clamp(
-        1.005rem,
-        4.495vw + 1rem,
-        1.5rem
+        1rem,
+        4.414vw + 1rem,
+        1.414rem
       );
 }
 
 h3,
 .h3 {
   font-family: "ESRebond";
-  font-size: 2.25rem;
+  font-size: 1.999396rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
   font-weight: 500;
   font-size: clamp(
-        1.5075rem,
-        4.7425vw + 1rem,
-        2.25rem
+        1.33959532rem,
+        4.65980068vw + 1rem,
+        1.999396rem
       );
 }
 
 h2,
 .h2 {
   font-family: "ESRebond";
-  font-size: 3.375rem;
+  font-size: 2.827145944rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
   font-weight: 500;
   font-size: clamp(
-        2.26125rem,
-        5.11375vw + 1rem,
-        3.375rem
+        1.8941877825rem,
+        4.9329581615vw + 1rem,
+        2.827145944rem
       );
 }
 
 h1,
 .h1 {
   font-family: "ESRebond";
-  font-size: 5.0625rem;
+  font-size: 3.9975843648rem;
   line-height: calc(2px + 2ex + 2px);
   margin-bottom: 0.65em;
   font-weight: 500;
   font-size: clamp(
-        2.53125rem,
-        6.53125vw + 1rem,
-        5.0625rem
+        2.6783815244rem,
+        5.3192028404vw + 1rem,
+        3.9975843648rem
       );
 }
 

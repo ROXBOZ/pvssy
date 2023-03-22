@@ -20,17 +20,14 @@ import PainArticle from "./components/Pains/PainArticle";
 import EventsArchives from "./components/EventsArchives";
 import Event from "./components/Agenda/Event";
 import ScrollToTop from "./utils/ScrollToTop";
-import Tutos from "./components/Tutos";
-import Articles from "./components/Articles";
 import Annuaire from "./components/Annuaire";
-import Ressources from "./components/Ressources";
+import Ressources from "./pages/Ressources";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NotFound from "./pages/NotFound";
 import PainLexique from "./components/Pains/PainLexique";
 import PainExercices from "./components/Pains/PainExercices";
 import PainSuggestions from "./components/Pains/PainSuggestions";
-import AllLexique from "./components/AllLexique";
 import AddEvent from "./components/User/Agenda/AddEvent";
 import DeleteEvent from "./components/User/Agenda/DeleteEvent";
 import ApproveEvent from "./components/User/Agenda/ApproveEvent";
@@ -45,6 +42,8 @@ import { AuthContextProvider } from "./contexts/authContext";
 import getToken from "./utils/getToken";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import DonationBanner from "./components/DonationBanner";
+import Exercises from "./pages/Exercises";
+import Suggestions from "./pages/Suggestions";
 
 function App() {
   const token = getToken();
@@ -68,17 +67,18 @@ function App() {
                     <Route path="medical" element={<PainArticle />} />
                     <Route path="sexologie" element={<PainArticle />} />
                   </Route>
-                  <Route
-                    path="se-soigner/ressources/tutos"
-                    element={<Tutos />}
-                  />
-                  <Route
-                    path="se-soigner/douleurs/:name/tutos"
-                    element={<Tutos />}
-                  />
+
                   <Route
                     path="se-soigner/ressources/glossaire"
-                    element={<AllLexique />}
+                    element={<Lexique />}
+                  />
+                  <Route
+                    path="se-soigner/ressources/exercices"
+                    element={<Exercises />}
+                  />
+                  <Route
+                    path="se-soigner/ressources/suggestions"
+                    element={<Suggestions />}
                   />
                   <Route
                     path="se-soigner/douleurs/:name/glossaire"
@@ -97,19 +97,11 @@ function App() {
                     element={<PainSuggestions />}
                   />
                   <Route
-                    path="se-soigner/ressources/articles"
-                    element={<Articles />}
-                  />
-                  <Route
-                    path="se-soigner/douleurs/:name/articles"
-                    element={<Articles />}
-                  />
-                  <Route
                     path="se-soigner/ressources"
                     element={<Ressources />}
                   />
                   <Route path="s-informer" element={<SInformer />} />
-                  <Route path="se-soigner/glossaire" element={<Lexique />} />
+
                   <Route path="s-informer/annuaire" element={<Annuaire />} />
                   <Route path="s-informer/annuaire/:name" element={<Pain />} />
                   <Route path="shop" element={<Shop />} />
