@@ -21,14 +21,18 @@ const Exercises = () => {
         level="h1"
       />
 
-      <p className="reminder msg">ajouter tous les exercices. FILTRES?</p>
+      <div className="grid-area">
+        <p className="reminder msg centered">
+          ajouter tous les exercices. FILTRES?
+        </p>
 
-      <div>
-        <ol>
-          {allExercises.map((exercise) => (
-            <li key={exercise.id}>{exercise.title}</li>
-          ))}
-        </ol>
+        <div className="centered">
+          <ol>
+            {allExercises.map((exercise) => (
+              <li key={exercise.id}>{exercise.title}</li>
+            ))}
+          </ol>
+        </div>
       </div>
     </div>
   );

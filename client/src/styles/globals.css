@@ -1762,6 +1762,7 @@ a.term span {
   margin: 0 0 2em;
   flex-wrap: wrap;
   align-items: center;
+  grid-column: 2/4;
 }
 
 tag {
@@ -2039,4 +2040,7 @@ html body .main {
   .grid-area {
     grid-template-columns: 1fr;
   }
+}
+.grid-area .centered {
+  grid-column: 2/4;
 }/*# sourceMappingURL=globals.css.map */

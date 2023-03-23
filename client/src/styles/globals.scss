@@ -65,4 +65,7 @@ html {
 
 .grid-area {
   @include grid;
+  .centered {
+    grid-column: 2/4;
+  }
 }

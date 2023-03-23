@@ -153,12 +153,14 @@ const Lexique = () => {
           repudiandae commodi repellendus natus eveniet!"
         level="h1"
       />
-      <p className="msg info">
-        <span>
-          Tu peux également consulter le glossaire spécifique à{" "}
-          <Link to="../se-soigner/douleurs">chaque douleur</Link>.
-        </span>
-      </p>
+      <div className="grid-area">
+        <p className="msg info centered">
+          <span>
+            Tu peux également consulter le glossaire spécifique à{" "}
+            <Link to="../se-soigner/douleurs">chaque douleur</Link>.
+          </span>
+        </p>
+      </div>
 
       <div className="allLexique-term-container">
         <div className="glossary-dashboard-column">
@@ -166,7 +168,12 @@ const Lexique = () => {
             className={`${isSticky ? "fixed" : ""}`}
             ref={letterContainerRef}
           >
-            <form style={{ opacity: "40%", pointerEvents: "none" }}>
+            <form
+              style={{
+                opacity: "40%",
+                pointerEvents: "none",
+              }}
+            >
               <FontAwesomeIcon icon={faMagnifyingGlass} />
               <input
                 onChange={handleInput}

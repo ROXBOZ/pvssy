@@ -20,18 +20,20 @@ const Suggestions = () => {
           optio repudiandae aperiam."
         level="h1"
       />
-      <p className="msg warning">
-        ajouter la liste exhaustive des suggestions. FILTRES?
-      </p>
+      <div className="grid-area">
+        <p className="msg warning centered">
+          ajouter la liste exhaustive des suggestions. FILTRES?
+        </p>
 
-      <ol>
-        {allSources.map(
-          (source) =>
-            source.isFootnote === false && (
-              <li key={source.id}>{source.title}</li>
-            )
-        )}
-      </ol>
+        <ol className="centered">
+          {allSources.map(
+            (source) =>
+              source.isFootnote === false && (
+                <li key={source.id}>{source.title}</li>
+              )
+          )}
+        </ol>
+      </div>
     </div>
   );
 };

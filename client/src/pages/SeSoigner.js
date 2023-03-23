@@ -16,7 +16,9 @@ const SeSoigner = () => {
         level="h1"
       />
 
-      <p className="msg warning">ajouter exercice/article de base</p>
+      <div className="grid-area">
+        <p className="msg warning centered">ajouter exercice/article de base</p>
+      </div>
 
       <HeadingArea
         pretitle="Comprendre"

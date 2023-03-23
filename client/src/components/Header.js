@@ -49,11 +49,11 @@ const Header = () => {
               Se soigner
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink onClick={handleNavLink} to="s-informer">
               S’informer
             </NavLink>
-          </li>
+          </li> */}
 
           <li>
             <NavLink onClick={handleNavLink} to="agenda">

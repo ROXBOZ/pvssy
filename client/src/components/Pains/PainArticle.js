@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 import ShareThis from "../ShareThis";
-
 import React, {
   useContext,
   useEffect,
@@ -70,7 +69,7 @@ const PainArticle = () => {
       setMenuTop(top);
     }
   };
-
+  console.log("painData :", painData);
   const highlightParagraphs = (arr) => {
     if (!highlightedTerms || highlightedTerms.length === 0) {
       return arr.map((p, index) => <p key={`${index}`}>{p}</p>);

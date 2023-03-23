@@ -4,6 +4,7 @@
   margin: 0 0 $gap;
   flex-wrap: wrap;
   align-items: center;
+  grid-column: 2/4;
 }
 tag {
   white-space: nowrap;

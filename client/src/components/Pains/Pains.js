@@ -27,19 +27,25 @@ const Pains = () => {
         />
       )}
 
-      {endsWithDouleurs ? (
-        <h2>Peux-tu orienter ta douleur ?</h2>
-      ) : (
-        <h3>Peux-tu orienter ta douleur ?</h3>
-      )}
+      <div className="grid-area">
+        <span style={{ gridColumn: "2/4" }}>
+          {" "}
+          {endsWithDouleurs ? (
+            <h2>Peux-tu orienter ta douleur ?</h2>
+          ) : (
+            <h3>Peux-tu orienter ta douleur ?</h3>
+          )}
+        </span>
 
-      <div className="tag-container">
-        {createTag("vagin")}
-        {createTag("clitoris ")}
-        {createTag("vulve")}
-        {createTag("anus")} | {createTag("règles")}
-        {createTag("pénétration")}
+        <div className="tag-container">
+          {createTag("vagin")}
+          {createTag("clitoris ")}
+          {createTag("vulve")}
+          {createTag("anus")} | {createTag("règles")}
+          {createTag("pénétration")}
+        </div>
       </div>
+
       <div className="card-grid">
         {data &&
           data.map((p) => {
