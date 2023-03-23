@@ -4,12 +4,13 @@ import { EventsContext } from "../contexts/eventsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { HeadingArea } from "../utils/HeadingArea";
+import EventCard from "../components/Agenda/EventCard.js";
 
 const Agenda = () => {
   const {
     fetchData,
-    // Error,
-    // data,
+    Error,
+    data,
     agendaURL,
     value,
     suggestions,
@@ -84,7 +85,7 @@ const Agenda = () => {
         </div>
       </div>
 
-      {/* <div className="card-grid">
+      <div className="card-grid">
         {data.upcomingEvents &&
         data.upcomingEvents
           .filter((e) => {
@@ -118,7 +119,7 @@ const Agenda = () => {
           </p>
         )}
         {Error && <p>Erreur</p>}
-      </div> */}
+      </div>
 
       {/* <Link to="archives">Consulter les évènements passés</Link> */}
     </div>

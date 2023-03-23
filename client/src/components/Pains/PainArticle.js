@@ -69,7 +69,7 @@ const PainArticle = () => {
       setMenuTop(top);
     }
   };
-  console.log("painData :", painData);
+
   const highlightParagraphs = (arr) => {
     if (!highlightedTerms || highlightedTerms.length === 0) {
       return arr.map((p, index) => <p key={`${index}`}>{p}</p>);
@@ -246,7 +246,6 @@ const PainArticle = () => {
             {highlightParagraphs(painData.auto)}
             <h2>Quelles aides existent ?</h2>
             {highlightParagraphs(painData.pro.intro)}
-
             {painData.pro.gyne && (
               <>
                 <h3>Gynécologue</h3>

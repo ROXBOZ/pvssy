@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../contexts/authContext";
 import { serverURL } from "../utils/serverURL";
+import { HeadingArea } from "../utils/HeadingArea";
 
 const SignupForm = () => {
   const { seePassword, isVisible } = useContext(AuthContext);
@@ -93,31 +94,29 @@ const SignupForm = () => {
 
   return (
     <div>
-      <div className="title-area">
-        <h1>
-          Créer un compte<sup>prototype</sup>
-        </h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error quasi
+      <HeadingArea
+        title="Créer un compte"
+        subtitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error quasi
           eum debitis dicta minus, molestiae quidem necessitatibus fuga optio
           ratione alias voluptas, suscipit, laudantium adipisci quam? Illum
-          voluptates placeat voluptatum.
-        </p>
-      </div>
+          voluptates placeat voluptatum."
+        level="h1"
+      />
 
-      {newUser.userAvatar ? (
-        <img
-          name="userAvatar"
-          className="user-avatar"
-          src={newUser.userAvatar}
-          alt="user avatar"
-        />
-      ) : (
-        <p className="avatar-placeholder" />
-      )}
+      <div className="grid-area">
+        {newUser.userAvatar ? (
+          <img
+            name="userAvatar"
+            className="user-avatar centered"
+            src={newUser.userAvatar}
+            alt="user avatar"
+          />
+        ) : (
+          <p className="avatar-placeholder" />
+        )}
 
-      <form className="grid-form">
-        {/* <div className="user-type flex-center">
+        <form className="grid-form centered">
+          {/* <div className="user-type flex-center">
           <span>
             <input
               className="form-check-input"
@@ -141,132 +140,135 @@ const SignupForm = () => {
             <label htmlFor="person">Personne</label>
           </span>
         </div> */}
-        <div className="user-name-label flex-center">
-          <label htmlFor="userName">Nom *</label>
-        </div>
-        <div className="user-name-input">
-          <input
-            name="userName"
-            id="userName"
-            type="text"
-            placeholder="Nom"
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div className="user-email-label flex-center">
-          <label htmlFor="userEmail">Adresse Email *</label>
-        </div>
-        <div className="user-email-input">
-          <input
-            placeholder="Adresse Email"
-            id="userEmail"
-            type="text"
-            name="userEmail"
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div className="user-website-label flex-center">
-          <label htmlFor="userWebsite">Site internet</label>
-        </div>
-        <div className="user-website-input">
-          <input
-            name="userWebsite"
-            id="userWebsite"
-            type="text"
-            placeholder="https://..."
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="user-avatar-label flex-center">
-          <label htmlFor="avatar">Photo de profil</label>
-        </div>
-        <div className="user-avatar-input">
-          <input
-            type="file"
-            id="avatar"
-            name="userAvatar"
-            onChange={handleAttachImg}
-          ></input>
-        </div>
-        <div className="user-avatar-button flex-center">
-          <button onClick={submitImg}>choisir</button>
-        </div>
-        <div className="user-password-label flex-center">
-          <label htmlFor="userPassword">Mot de passe *</label>
-        </div>
-        <div className="user-password-input">
-          <input
-            placeholder="Mot de passe"
-            type={isVisible ? "text" : "password"}
-            id="userPassword"
-            name="userPassword"
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-
-        <div className="user-password-error">
-          <button className="showPassword" onClick={seePassword}>
-            <FontAwesomeIcon
-              id="eye-icon"
-              icon={isVisible ? faEye : faEyeSlash}
+          <div className="user-name-label flex-center">
+            <label htmlFor="userName">Nom *</label>
+          </div>
+          <div className="user-name-input">
+            <input
+              name="userName"
+              id="userName"
+              type="text"
+              placeholder="Nom"
+              onChange={handleInputChange}
+              required
             />
-          </button>
-          {newUser.userPassword && newUser.userPassword.length < 6 && (
-            <li className="error msg">min 6 caractères.</li>
+          </div>
+          <div className="user-email-label flex-center">
+            <label htmlFor="userEmail">Adresse Email *</label>
+          </div>
+          <div className="user-email-input">
+            <input
+              placeholder="Adresse Email"
+              id="userEmail"
+              type="text"
+              name="userEmail"
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="user-website-label flex-center">
+            <label htmlFor="userWebsite">Site internet</label>
+          </div>
+          <div className="user-website-input">
+            <input
+              name="userWebsite"
+              id="userWebsite"
+              type="text"
+              placeholder="https://..."
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="user-avatar-label flex-center">
+            <label htmlFor="avatar">Photo de profil</label>
+          </div>
+          <div className="user-avatar-input">
+            <input
+              type="file"
+              id="avatar"
+              name="userAvatar"
+              onChange={handleAttachImg}
+            ></input>
+          </div>
+          <div className="user-avatar-button flex-center">
+            <button onClick={submitImg}>choisir</button>
+          </div>
+          <div className="user-password-label flex-center">
+            <label htmlFor="userPassword">Mot de passe *</label>
+          </div>
+          <div className="user-password-input">
+            <input
+              placeholder="Mot de passe"
+              type={isVisible ? "text" : "password"}
+              id="userPassword"
+              name="userPassword"
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          <div className="user-password-error">
+            <button className="showPassword" onClick={seePassword}>
+              <FontAwesomeIcon
+                id="eye-icon"
+                icon={isVisible ? faEye : faEyeSlash}
+              />
+            </button>
+            {newUser.userPassword && newUser.userPassword.length < 6 && (
+              <li className="error msg">min 6 caractères.</li>
+            )}
+          </div>
+
+          <div className="conditions-generales">
+            <input
+              className="form-check-input"
+              id="conditionsCheckbox"
+              type="checkbox"
+              onChange={(e) => setConditionsAccepted(e.target.checked)}
+              required
+            />
+            <label htmlFor="conditionsCheckbox">
+              J’ai lu et j’accepte les{" "}
+              <Link to="/conditions-generales ">conditions générales</Link>.
+            </label>
+          </div>
+          <div className="submit-button">
+            <button
+              onClick={signup}
+              disabled={
+                !(newUser.userPassword &&
+                newUser.userPassword > 6 &&
+                newUser.userName &&
+                newUser.userName > 2 &&
+                newUser.Website
+                  ? urlRegex.test(newUser.userWebsite)
+                  : true && conditionsAccepted)
+              }
+            >
+              Créer un compte
+            </button>
+          </div>
+        </form>
+        <ul className="error-list">
+          {newUser.userName && newUser.userName.length < 2 && (
+            <li className="error msg">
+              Le nom doit être entre 2 et 20 lettres.
+            </li>
           )}
-        </div>
+          {newUser.userEmail && !emailRegex.test(newUser.userEmail) && (
+            <li className="error msg">L’adresse email est invalide.</li>
+          )}
+          {newUser.userWebsite && !urlRegex.test(newUser.userWebsite) && (
+            <li className="error msg">L’URL du site internet est invalide.</li>
+          )}
+        </ul>
+        {message && (
+          <div className={`message ${message.type}`}>{message.content}</div>
+        )}
 
-        <div className="conditions-generales">
-          <input
-            className="form-check-input"
-            id="conditionsCheckbox"
-            type="checkbox"
-            onChange={(e) => setConditionsAccepted(e.target.checked)}
-            required
-          />
-          <label htmlFor="conditionsCheckbox">
-            J’ai lu et j’accepte les{" "}
-            <Link to="/conditions-generales ">conditions générales</Link>.
-          </label>
-        </div>
-        <div className="submit-button">
-          <button
-            onClick={signup}
-            disabled={
-              !(newUser.userPassword &&
-              newUser.userPassword > 6 &&
-              newUser.userName &&
-              newUser.userName > 2 &&
-              newUser.Website
-                ? urlRegex.test(newUser.userWebsite)
-                : true && conditionsAccepted)
-            }
-          >
-            Créer un compte
-          </button>
-        </div>
-      </form>
-      <ul className="error-list">
-        {newUser.userName && newUser.userName.length < 2 && (
-          <li className="error msg">Le nom doit être entre 2 et 20 lettres.</li>
-        )}
-        {newUser.userEmail && !emailRegex.test(newUser.userEmail) && (
-          <li className="error msg">L’adresse email est invalide.</li>
-        )}
-        {newUser.userWebsite && !urlRegex.test(newUser.userWebsite) && (
-          <li className="error msg">L’URL du site internet est invalide.</li>
-        )}
-      </ul>
-      {message && (
-        <div className={`message ${message.type}`}>{message.content}</div>
-      )}
-
-      <p>
-        Déjà inscrit·e ? <Link to="/login">Se connecter</Link>
-      </p>
+        <p className="centered">
+          Déjà inscrit·e ? <Link to="/login">Se connecter</Link>
+        </p>
+      </div>
     </div>
   );
 };

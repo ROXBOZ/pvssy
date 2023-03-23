@@ -11,9 +11,9 @@ function LoginForm() {
   const { inputValue } = useContext(AuthContext);
 
   return (
-    <div>
-      <h1>Se connecter</h1>
-      <form className="grid-form">
+    <div className="grid-area">
+      <h1 className="centered">Se connecter</h1>
+      <form className="centered grid-form">
         <div className="user-email-label flex-center">
           <label htmlFor="userEmail">Adresse Email </label>
         </div>
@@ -67,7 +67,7 @@ function LoginForm() {
         </div>
       </form>
 
-      <p>
+      <p className="centered">
         Pas encore inscrit·e ?{" "}
         <Link to="/creer-un-compte">Créer un compte</Link>.
       </p>
