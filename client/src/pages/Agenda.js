@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { EventsContext } from "../contexts/eventsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { HeadingArea } from "../utils/HeadingArea";
 
 const Agenda = () => {
   const {
@@ -27,19 +28,18 @@ const Agenda = () => {
 
   return (
     <div>
-      <div className="heading-area">
-        <h1>Agenda</h1>
-        <p className="subtitle">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
+      <HeadingArea
+        title="Agenda"
+        subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
           accusantium optio dolore dolorum suscipit ducimus neque quaerat! Quas
           rellendus laudantium, excturi iusto architecto neque natus adipisci,
-          eligendi nesciunt eos odit!
-        </p>
-        <p>
-          Vous avez un évènement à proposer ?{" "}
-          <Link to="/login">Connectez-vous</Link>.
-        </p>
-      </div>
+          eligendi nesciunt eos odit!"
+        level="h1"
+      />
+      <p>
+        Vous avez un évènement à proposer ?{" "}
+        <Link to="/login">Connectez-vous</Link>.
+      </p>
 
       <div className="filter-dashboard">
         <div className="filter">

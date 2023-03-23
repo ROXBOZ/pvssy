@@ -1,25 +1,14 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { serverURL } from "../../utils/serverURL";
+import { PainsContext } from "../../contexts/PainsContext";
+import { HeadingArea } from "../../utils/HeadingArea";
 
 const PainLexique = () => {
-  let location = useLocation();
+  const { painName } = useContext(PainsContext);
   const [requestedTerms, setRequestedTerms] = useState(null);
-
-  const painName =
-    location.pathname
-      .split(/\/|#/)
-      .filter((item) => item !== "")
-      .slice(-2, -1)[0]
-      .slice(0, 1)
-      .toUpperCase() +
-    location.pathname
-      .split(/\/|#/)
-      .filter((item) => item !== "")
-      .slice(-2, -1)[0]
-      .slice(1);
 
   const fetchRelatedTerms = async () => {
     const requestOptions = {
@@ -71,83 +60,93 @@ const PainLexique = () => {
 
   return (
     <>
-      <div className="heading-area">
-        <p className="pretitle">Glossaire</p>
-        <h1>{painName}</h1>
-        <p className="subtitle">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non autem
+      <HeadingArea
+        pretitle={painName}
+        title="Glossaire"
+        subtitle="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non autem
           perspiciatis eos quisquam maiores ratione quasi in, deleniti officiis
           omnis suscipit libero accusamus, rem quod expedita beatae sit vel
-          itaque.
+          itaque."
+        level="h1"
+      />
+
+      <div className="msg info">
+        <p>
+          Retrouve tous{" "}
+          <Link to="/se-soigner/ressources/glossaire">
+            le glossaire de pvssy talk
+          </Link>{" "}
+          dans les ressources générales.
         </p>
-        <div className="msg info">
-          <p>
-            Tu retrouveras les termes ci-dessous et beaucoup d’autres dans le 
-            <Link to="/se-soigner/glossaire">glossaire général</Link>.
-          </p>
-        </div>
       </div>
-      <div className="lexique-list">
-        {requestedTerms &&
-          requestedTerms
-            .filter((t) => t.imgUrl)
-            .map((t, index) => {
-              const termAnchor = t.term
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .replace(/\s+/g, "-")
-                .toLowerCase();
-              return (
-                <ul className=" lexique-list" key={index}>
-                  <li className="lexique-list-item">
-                    <img src={t.imgUrl} alt={`shéma descriptif, ${t.term}`} />
-                    <div>
-                      <h2 className="h3" id={termAnchor}>
-                        {t.term}
-                      </h2>
-                      <div className="relatedPains">
-                        {t.relatedPain
-                          .filter((p) => p !== painName)
-                          .map((p, index) => (
-                            <span key={index}>
-                              <span> ↗ </span>
-                              <Link key={index} to={`/douleurs/${p}`}>
-                                {p}
-                              </Link>
-                            </span>
-                          ))}
+
+      {requestedTerms ? (
+        <div className="lexique-list">
+          {requestedTerms &&
+            requestedTerms
+              .filter((t) => t.imgUrl)
+              .map((t, index) => {
+                const termAnchor = t.term
+                  .normalize("NFD")
+                  .replace(/[\u0300-\u036f]/g, "")
+                  .replace(/\s+/g, "-")
+                  .toLowerCase();
+                return (
+                  <ul className=" lexique-list" key={index}>
+                    <li className="lexique-list-item">
+                      <img src={t.imgUrl} alt={`shéma descriptif, ${t.term}`} />
+                      <div>
+                        <h2 className="h3" id={termAnchor}>
+                          {t.term}
+                        </h2>
+                        <div className="relatedPains">
+                          {t.relatedPain
+                            .filter((p) => p !== painName)
+                            .map((p, index) => (
+                              <span key={index}>
+                                <span> ↗ </span>
+                                <Link key={index} to={`/douleurs/${p}`}>
+                                  {p}
+                                </Link>
+                              </span>
+                            ))}
+                        </div>
+
+                        {createParagraphs(t.def)}
                       </div>
+                    </li>
+                  </ul>
+                );
+              })}
 
-                      {createParagraphs(t.def)}
-                    </div>
-                  </li>
-                </ul>
-              );
-            })}
-
-        {requestedTerms &&
-          requestedTerms
-            .filter((t) => !t.imgUrl)
-            .map((t, index) => {
-              const termAnchor = t.term
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .replace(/\s+/g, "-")
-                .toLowerCase();
-              return (
-                <ul className=" lexique-list" key={index}>
-                  <li className="lexique-list-item">
-                    <div>
-                      <h2 className="h3" id={termAnchor}>
-                        {t.term}
-                      </h2>
-                      {createParagraphs(t.def)}
-                    </div>
-                  </li>
-                </ul>
-              );
-            })}
-      </div>
+          {requestedTerms &&
+            requestedTerms
+              .filter((t) => !t.imgUrl)
+              .map((t, index) => {
+                const termAnchor = t.term
+                  .normalize("NFD")
+                  .replace(/[\u0300-\u036f]/g, "")
+                  .replace(/\s+/g, "-")
+                  .toLowerCase();
+                return (
+                  <ul className=" lexique-list" key={index}>
+                    <li className="lexique-list-item">
+                      <div>
+                        <h2 className="h3" id={termAnchor}>
+                          {t.term}
+                        </h2>
+                        {createParagraphs(t.def)}
+                      </div>
+                    </li>
+                  </ul>
+                );
+              })}
+        </div>
+      ) : (
+        <p className="msg warning">
+          Il n’y a pas de glossaire relatif à cette douleur pour l’instant.
+        </p>
+      )}
     </>
   );
 };

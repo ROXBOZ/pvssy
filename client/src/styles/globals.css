@@ -36,7 +36,6 @@
 /*-----Links-----*/
 /*-----Grid-----*/
 /*-----Forms-----*/
-/*-----Inputs-----*/
 /*-----Stick-----*/
 .screen-reader-text {
   border: 0;
@@ -595,6 +594,20 @@ footer .copyrights {
     height: 2.5em;
     width: 2.5em;
   }
+}
+input {
+  color: #1f042f;
+  border: 1px solid #20451e;
+  border-radius: 0.25em;
+  font-family: "ESKlarheit-Book";
+  font-size: 100%;
+  background-color: #faf8f4;
+  padding: 0.5em;
+  width: 300px;
+}
+input:focus {
+  outline: none;
+  border: 1px solid #418c3d;
 }
 input::-moz-placeholder {
   color: #af43ef;
@@ -1344,7 +1357,11 @@ a.term span {
 .allLexique-term-container .glossary-dashboard-column form {
   display: flex;
   margin-top: 0;
-  background-color: yellow;
+  align-items: center;
+  gap: 1em;
+}
+.allLexique-term-container .glossary-dashboard-column form input {
+  width: 80%;
 }
 .allLexique-term-container .glossary-column {
   grid-column: 2/4;
@@ -1381,6 +1398,10 @@ a.term span {
   border: 1px solid #e2d7bf;
   padding: 1em;
   border-radius: 0.25em;
+  display: flex;
+  gap: 0.5em;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .msg * {
   margin-bottom: 0;
@@ -1403,11 +1424,11 @@ a.term span {
 .msg.pending:before {
   content: "⌛  ";
 }
-.msg.warning {
-  color: tomato;
-}
 .msg.warning:before {
-  content: "⚠️  ";
+  content: url("../assets/images/warning.svg");
+  width: 20px;
+  height: 20px;
+  padding-top: 2.5px;
 }
 .msg.archived {
   color: dimgrey;
@@ -1420,13 +1441,6 @@ a.term span {
 }
 .msg.error:before {
   content: "🚨  ";
-}
-.msg.info {
-  color: steelblue;
-  display: flex;
-  gap: 0.5em;
-  height: -moz-fit-content;
-  height: fit-content;
 }
 .msg.info:before {
   content: url("../assets/images/info-icon.svg");

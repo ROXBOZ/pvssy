@@ -1,19 +1,37 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { PainsContext } from "../contexts/PainsContext";
+import { HeadingArea } from "../utils/HeadingArea";
 
 const Suggestions = () => {
+  const { fetchAllSources, allSources } = useContext(PainsContext);
+
+  useEffect(() => {
+    fetchAllSources();
+  }, []);
+
   return (
     <div>
-      <div className="heading-area">
-        <p className="pretitle">Ressources</p>
-        <h1>Suggestions</h1>
-        <p className="subtitle">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
+      <HeadingArea
+        pretitle="Ressources"
+        title="Suggestions"
+        subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
           accusamus est ipsum minus voluptatem voluptas quos aperiam saepe
           molestias repudiandae! Distinctio architecto amet dolor, fuga at quod
-          optio repudiandae aperiam.
-        </p>
-        <p className="msg error">ajouter la liste exhaustive des suggestions</p>
-      </div>
+          optio repudiandae aperiam."
+        level="h1"
+      />
+      <p className="msg warning">
+        ajouter la liste exhaustive des suggestions. FILTRES?
+      </p>
+
+      <ol>
+        {allSources.map(
+          (source) =>
+            source.isFootnote === false && (
+              <li key={source.id}>{source.title}</li>
+            )
+        )}
+      </ol>
     </div>
   );
 };

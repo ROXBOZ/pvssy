@@ -13,11 +13,32 @@ const SeSoigner = () => {
           eum animi non. Eaque, nobis vitae corrupti error aliquid nihil
           temporibus inventore necessitatibus, est cum dolorem laborum dolor,
           rerum corporis."
+        level="h1"
       />
 
       <p className="msg warning">ajouter exercice/article de base</p>
 
+      <HeadingArea
+        pretitle="Comprendre"
+        title="Douleurs"
+        subtitle="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat unde
+          eum animi non. Eaque, nobis vitae corrupti error aliquid nihil
+          temporibus inventore necessitatibus, est cum dolorem laborum dolor,
+          rerum corporis."
+        level="h2"
+      />
+
       <Pains />
+
+      <HeadingArea
+        pretitle="Comprendre"
+        title="Ressources"
+        subtitle="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat unde
+          eum animi non. Eaque, nobis vitae corrupti error aliquid nihil
+          temporibus inventore necessitatibus, est cum dolorem laborum dolor,
+          rerum corporis."
+        level="h2"
+      />
       <Ressources />
     </div>
   );

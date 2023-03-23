@@ -1,10 +1,10 @@
 $success-color: mediumseagreen;
 $reminder-color: DarkGoldenRod;
 $pending-color: mediumslateblue;
-$warning-color: tomato;
+// $warning-color: indianred;
 $error-color: crimson;
 $archived-color: dimgrey;
-$info-color: steelblue;
+// $info-color: steelblue;
 
 .msg {
   margin: $gap 0;
@@ -13,6 +13,9 @@ $info-color: steelblue;
   border: $border-solid darken($bg-color, 15%);
   padding: $demi-gap;
   border-radius: $border-radius;
+  display: flex;
+  gap: 0.5em;
+  height: fit-content;
   * {
     margin-bottom: 0;
   }
@@ -38,9 +41,12 @@ $info-color: steelblue;
   }
 
   &.warning {
-    color: $warning-color;
+    // color: $warning-color;
     &:before {
-      content: ("⚠️  ");
+      content: url("../assets/images/warning.svg");
+      width: 20px;
+      height: 20px;
+      padding-top: 2.5px;
     }
   }
 
@@ -59,10 +65,7 @@ $info-color: steelblue;
   }
 
   &.info {
-    color: $info-color;
-    display: flex;
-    gap: 0.5em;
-    height: fit-content;
+    // color: $info-color;
 
     &:before {
       content: url("../assets/images/info-icon.svg");

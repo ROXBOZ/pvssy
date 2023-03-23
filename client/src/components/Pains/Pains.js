@@ -2,39 +2,37 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 import { useLocation } from "react-router-dom";
-import { ScalableHeader } from "../../utils/scalableHeader";
 import { HeadingArea } from "../../utils/HeadingArea";
 
 const Pains = () => {
   const { data, Error } = useContext(PainsContext);
   const location = useLocation();
+  const currentUrl = location.pathname;
+  const endsWithDouleurs = /douleurs$/.test(currentUrl);
   const createTag = (appelation, index) => {
     return <tag key={index}>{appelation}</tag>;
   };
 
-  const currentUrl = location.pathname;
-  const endsWithDouleurs = /douleurs$/.test(currentUrl);
-
   return (
     <div>
-      <HeadingArea
-        pretitle="Comprendre"
-        title="Douleurs"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+      {endsWithDouleurs && (
+        <HeadingArea
+          pretitle="Comprendre"
+          title="Douleurs"
+          subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
           sequi reiciendis, vel facere, esse eaque rerum velit labore
           reprehenderit quam, est veniam minus debitis quas quia in expedita
           ullam laborum!"
-      />
+          level="h1"
+        />
+      )}
 
       {endsWithDouleurs ? (
-        <ScalableHeader
-          className="h3"
-          title="Peux-tu orienter ta douleur ?"
-          headerLevel={2}
-        />
+        <h2>Peux-tu orienter ta douleur ?</h2>
       ) : (
-        <ScalableHeader title="Peux-tu orienter ta douleur ?" headerLevel={3} />
+        <h3>Peux-tu orienter ta douleur ?</h3>
       )}
+
       <div className="tag-container">
         {createTag("vagin")}
         {createTag("clitoris ")}

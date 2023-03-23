@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { HeadingArea } from "../../utils/HeadingArea";
 
 const PainExercices = () => {
   const [showExercise, setShowExercise] = useState({});
@@ -85,16 +86,16 @@ const PainExercices = () => {
 
   return (
     <div>
-      <div className="heading-area">
-        <p className="pretitle">{painName}</p>
-        <h1>Exercices</h1>
-        <p className="subtitle">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
+      <HeadingArea
+        pretitle={painName}
+        title="Exercices"
+        subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
           temporibus optio esse possimus doloribus odit quidem accusamus
           consectetur accusantium, cumque harum sunt ipsam hic maxime
-          repudiandae commodi repellendus natus eveniet!
-        </p>
-      </div>
+          repudiandae commodi repellendus natus eveniet!"
+        level="h1"
+      />
+
       <div className="exercises-container">
         {requestedExercises &&
           requestedExercises.map((ex, index) => (

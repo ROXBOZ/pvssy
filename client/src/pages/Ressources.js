@@ -1,10 +1,11 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HeadingArea } from "../utils/HeadingArea";
-import { ScalableHeader } from "../utils/scalableHeader";
 
 const Ressources = () => {
   const location = useLocation();
+  const currentUrl = location.pathname;
+  const endsWithRessources = /ressources$/.test(currentUrl);
   const ResourceCard = ({ to, title, description }) => (
     <Link to={to} className="link-card ressource">
       <div className="card ">
@@ -14,16 +15,16 @@ const Ressources = () => {
     </Link>
   );
 
-  const currentUrl = location.pathname;
-  const endsWithRessources = /ressources$/.test(currentUrl);
-
   return (
     <div>
-      <HeadingArea
-        pretitle="comprendre"
-        title="Ressources"
-        subtitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores nesciunt expedita ullam fuga dolorum architecto explicabo repudiandae hic perspiciatis alias sit laboriosam assumenda esse, dolores ab dolorem, possimus nam voluptatibus."
-      />
+      {endsWithRessources && (
+        <HeadingArea
+          pretitle="comprendre"
+          title="Ressources"
+          subtitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores nesciunt expedita ullam fuga dolorum architecto explicabo repudiandae hic perspiciatis alias sit laboriosam assumenda esse, dolores ab dolorem, possimus nam voluptatibus."
+          level="h1"
+        />
+      )}
 
       <div className="card-grid">
         <ResourceCard

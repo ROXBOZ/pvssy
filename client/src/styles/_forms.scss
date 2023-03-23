@@ -1,11 +1,27 @@
 //TODO TO REFACTORE
 
+@mixin input {
+  color: $txt-color;
+  border: $border-solid $color3;
+  border-radius: $border-radius;
+  font-family: $font-regular;
+  font-size: 100%;
+  background-color: $bg-color;
+  padding: $padding-xs;
+  width: 300px;
+  &:focus {
+    outline: none;
+    border: $border-solid lighten($color3, 20%);
+  }
+}
+
 @mixin placeholder {
   color: lighten($txt-color, 50%);
   font-family: $font-regular;
 }
 
 input {
+  @include input;
   &::placeholder {
     @include placeholder;
   }

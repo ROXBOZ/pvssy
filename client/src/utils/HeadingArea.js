@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react";
-
-export const HeadingArea = ({ pretitle, title, subtitle, isMainContent }) => {
-  const [isFirstUsage, setIsFirstUsage] = useState(false);
-
-  useEffect(() => {
-    const hasH1 = document.querySelector("h1");
-    setIsFirstUsage(!hasH1);
-  }, []);
-
-  const TagName = isMainContent ? "h1" : isFirstUsage ? "h1" : "h2";
+export const HeadingArea = ({ pretitle, title, subtitle, level = "h2" }) => {
+  const HeadingTag = level;
 
   return (
     <div className="heading-area">
       {pretitle && <p className="pretitle">{pretitle}</p>}
-      <TagName>{title}</TagName>
+      <HeadingTag>{title}</HeadingTag>
       {subtitle && <p className="subtitle">{subtitle}</p>}
     </div>
   );

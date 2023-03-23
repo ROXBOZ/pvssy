@@ -72,6 +72,9 @@ const PainArticle = () => {
   };
 
   const highlightParagraphs = (arr) => {
+    if (!highlightedTerms || highlightedTerms.length === 0) {
+      return arr.map((p, index) => <p key={`${index}`}>{p}</p>);
+    }
     const regex = new RegExp(
       `\\b(${highlightedTerms.join("|")}|${highlightedSources.join("|")})\\b`,
       "ig"

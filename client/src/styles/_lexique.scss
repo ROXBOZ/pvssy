@@ -98,7 +98,11 @@ a.term {
     form {
       display: flex;
       margin-top: 0;
-      background-color: yellow;
+      align-items: center;
+      gap: $demi-gap;
+      input {
+        width: 80%;
+      }
     }
   }
 

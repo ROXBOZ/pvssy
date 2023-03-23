@@ -18,6 +18,8 @@ export const PainsContextProvider = (props) => {
   const [isMed, setIsMed] = useState(true);
   const segments = location.pathname.split("/");
   const index = segments.indexOf("douleurs");
+  const [allExercises, setAllExercises] = useState([]);
+  const [allSources, setAllSources] = useState([]);
 
   let painName =
     index !== -1 && index + 1 < segments.length
@@ -55,6 +57,7 @@ export const PainsContextProvider = (props) => {
       console.log("error", error);
     }
   };
+
   const fetchRelatedSources = async () => {
     var requestOptions = {
       method: "GET",
@@ -68,6 +71,23 @@ export const PainsContextProvider = (props) => {
       );
       const result = await response.json();
       setRequestedSources(result.requestedSources);
+    } catch (error) {
+      console.log("error :", error);
+    }
+  };
+  const fetchAllSources = async () => {
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    try {
+      const response = await fetch(
+        `${serverURL}/api/sources/all`,
+        requestOptions
+      );
+      const result = await response.json();
+      setAllSources(result.allSources);
     } catch (error) {
       console.log("error :", error);
     }
@@ -109,6 +129,25 @@ export const PainsContextProvider = (props) => {
       console.log("error :", error);
     }
   };
+  const fetchAllExercises = async () => {
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    try {
+      const response = await fetch(
+        `${serverURL}/api/exercises/all`,
+        requestOptions
+      );
+      const result = await response.json();
+
+      setAllExercises(result.allExercises);
+      console.log("allExercises :", allExercises);
+    } catch (error) {
+      console.log("error :", error);
+    }
+  };
 
   useEffect(() => {
     //NOTE think about a way to call just the fetchfunction you want in each case.
@@ -139,6 +178,10 @@ export const PainsContextProvider = (props) => {
         isSticky,
         setIsSticky,
         requestedExercises,
+        allExercises,
+        fetchAllExercises,
+        fetchAllSources,
+        allSources,
       }}
     >
       {props.children}

@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { PainsContext } from "../contexts/PainsContext";
+import { HeadingArea } from "../utils/HeadingArea";
 
 const Exercises = () => {
+  const { fetchAllExercises, allExercises } = useContext(PainsContext);
+
+  useEffect(() => {
+    fetchAllExercises();
+  }, []);
+
   return (
     <div>
-      <div className="heading-area">
-        <p className="pretitle">Ressources</p>
-        <h1>Exercices</h1>
-        <p className="subtitle">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
-          itaque vel quaerat magni similique corporis qui facere officiis
-          libero, possimus voluptate doloremque ullam unde soluta quod minus
-          numquam sint dolores?
-        </p>
-        <p className="error msg">ajouter tous les exercices</p>
+      <HeadingArea
+        pretitle="Ressources"
+        title="Exercices"
+        subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
+          temporibus optio esse possimus doloribus odit quidem accusamus
+          consectetur accusantium, cumque harum sunt ipsam hic maxime
+          repudiandae commodi repellendus natus eveniet!"
+        level="h1"
+      />
+
+      <p className="reminder msg">ajouter tous les exercices. FILTRES?</p>
+
+      <div>
+        <ol>
+          {allExercises.map((exercise) => (
+            <li key={exercise.id}>{exercise.title}</li>
+          ))}
+        </ol>
       </div>
     </div>
   );

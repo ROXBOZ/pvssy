@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, Outlet, useOutlet } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
+import { HeadingArea } from "../../utils/HeadingArea";
 
 const Pain = () => {
   const outlet = useOutlet();
@@ -51,10 +52,7 @@ const Pain = () => {
   } else {
     return (
       <>
-        <div className="heading-area">
-          <p className="pretitle">Douleur</p>
-          <h1>{painData.name}</h1>
-        </div>
+        <HeadingArea pretitle="douleur" title={painName} level="h1" />
 
         {outlet ? (
           <Outlet />

@@ -1,6 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { serverURL } from "../utils/serverURL";
 import { PainsContext } from "../contexts/PainsContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import React, {
   useContext,
@@ -9,6 +11,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { HeadingArea } from "../utils/HeadingArea";
 
 const Lexique = () => {
   const [allTerms, setAllTerms] = useState(null);
@@ -83,13 +86,12 @@ const Lexique = () => {
     });
   }, [entries]);
 
-  // 5. detelect scrolling
+  // 5. detect scrolling
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const isScrolledPast = scrollY > topList;
       setIsSticky(isScrolledPast);
-      console.log("isScrolledPast :", isScrolledPast);
     };
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -104,29 +106,59 @@ const Lexique = () => {
       const top = element.offsetTop;
       window.scrollTo({ top, behavior: "smooth" });
       setAnchorPosition(top);
-      setTopList(top);
+      setTopList(letterContainerRef.current.offsetTop);
     }
   };
 
-  // 6. decide where it sticks
+  // 7. decide where it sticks
   useLayoutEffect(() => {
     if (letterContainerRef.current) {
       setTopList(letterContainerRef.current.offsetTop);
     }
   }, [letterContainerRef.current]);
 
+  //8. handle input
+
+  const handleInput = (event) => {
+    const searchTerm = event.target.value.toLowerCase();
+    const termElements = document.querySelectorAll(".allLexique-term");
+
+    let matchedTermElement = null;
+    for (let i = 0; i < termElements.length; i++) {
+      const termText = termElements[i]
+        .querySelector("h3")
+        .textContent.toLowerCase();
+      if (termText.startsWith(searchTerm)) {
+        matchedTermElement = termElements[i];
+        break;
+      }
+    }
+    //FIXME
+    if (matchedTermElement) {
+      const glossaryColumn = document.querySelector(".glossary-column");
+      const scrollPosition =
+        matchedTermElement.offsetTop - glossaryColumn.offsetTop;
+      glossaryColumn.scrollTo({ top: scrollPosition, behavior: "smooth" });
+    }
+  };
+
   return (
     <div>
-      <div className="heading-area">
-        <p className="pretitle">Ressources</p>
-        <h1>Glossaire</h1>
-        <p className="subtitle">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam cum
-          iste quas vitae sequi, consequuntur inventore officiis, expedita
-          quaerat accusamus praesentium optio impedit delectus eligendi. Nisi
-          distinctio aspernatur adipisci atque.
-        </p>
-      </div>
+      <HeadingArea
+        pretitle="Ressources"
+        title="Glossaire"
+        subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
+          temporibus optio esse possimus doloribus odit quidem accusamus
+          consectetur accusantium, cumque harum sunt ipsam hic maxime
+          repudiandae commodi repellendus natus eveniet!"
+        level="h1"
+      />
+      <p className="msg info">
+        <span>
+          Tu peux également consulter le glossaire spécifique à{" "}
+          <Link to="../se-soigner/douleurs">chaque douleur</Link>.
+        </span>
+      </p>
 
       <div className="allLexique-term-container">
         <div className="glossary-dashboard-column">
@@ -134,8 +166,13 @@ const Lexique = () => {
             className={`${isSticky ? "fixed" : ""}`}
             ref={letterContainerRef}
           >
-            <form>
-              <input type="text" placeholder="pubarche, plancher pelvien" />
+            <form style={{ opacity: "40%", pointerEvents: "none" }}>
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+              <input
+                onChange={handleInput}
+                type="text"
+                placeholder="en construction"
+              />
             </form>
             <div className="letter-link-container">
               {Array.from({ length: 26 }, (_, i) =>
@@ -154,12 +191,6 @@ const Lexique = () => {
                 </Link>
               ))}
             </div>
-            <p className="msg info">
-              Tu peux également consulter le glossaire
-              <br />
-              relatif à 
-              <Link to="../se-soigner/douleurs">chaque douleur</Link>.
-            </p>
           </div>
         </div>
 
@@ -172,7 +203,7 @@ const Lexique = () => {
                 </p>
                 {terms.map((term, index) => (
                   <div className="entry allLexique-term" key={index}>
-                    <h3 id={termId(term.term)}>
+                    <h3 className="term-entry" id={termId(term.term)}>
                       {term.term.charAt(0).toUpperCase() + term.term.slice(1)}
                     </h3>
 

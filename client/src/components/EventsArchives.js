@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { EventsContext } from "../contexts/eventsContext";
 import EventCard from "./Agenda/EventCard";
 import { Link } from "react-router-dom";
+import { HeadingArea } from "../utils/HeadingArea";
 
 const Connect = () => {
   const { data, archivesURL, Error, fetchData } = useContext(EventsContext);
@@ -12,18 +13,15 @@ const Connect = () => {
 
   return (
     <div>
-      <div className="heading-area">
-        <div className="heading">
-          <p className="pretitle">Pvssy Connect</p>
-          <h1>Archives</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
+      <HeadingArea
+        pretitle="Agenda"
+        title="Archives"
+        subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
             accusantium optio dolore dolorum suscipit ducimus neque quaerat!
             Quas rellendus laudantium, excturi iusto architecto neque natus
-            adipisci, eligendi nesciunt eos odit!
-          </p>
-        </div>
-      </div>
+            adipisci, eligendi nesciunt eos odit!"
+        level="h1"
+      />
 
       <div className="card-grid">
         {data.archivedEvents &&
