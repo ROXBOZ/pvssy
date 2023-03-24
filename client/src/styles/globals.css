@@ -1273,7 +1273,6 @@ figure span a {
   padding-left: 0;
 }
 .lexique-list .lexique-list-item {
-  display: flex;
   align-items: flex-start;
   gap: 2em;
   list-style: none;
@@ -1287,10 +1286,10 @@ figure span a {
   border-radius: 0.25em;
   margin-bottom: 1em;
 }
-.lexique-list .lexique-list-item div h2 {
+.lexique-list .lexique-list-item img + div h2 {
   margin-top: 0;
 }
-.lexique-list .lexique-list-item div .relatedPains {
+.lexique-list .lexique-list-item img + div .relatedPains {
   margin: 1em 0;
 }
 
@@ -1874,6 +1873,9 @@ a {
   font-family: "ESKlarheit-Medium";
   width: -moz-fit-content;
   width: fit-content;
+}
+a.arrow-link {
+  background-color: yellow;
 }
 a:hover {
   border: none;

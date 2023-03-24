@@ -56,11 +56,14 @@ p {
 
 a {
   text-decoration: none;
-
   color: darken($color1, 10%);
   border-bottom: $border-solid;
   font-family: $font-medium;
   width: fit-content;
+
+  &.arrow-link {
+    background-color: yellow;
+  }
 
   &:hover {
     border: none;

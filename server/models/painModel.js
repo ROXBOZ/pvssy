@@ -28,25 +28,21 @@ const painSchema = new mongoose.Schema({
   },
   auto: {
     type: Array,
-    required: true,
   },
-  pro: {
-    intro: {
-      type: Array,
-    },
-    gyne: {
-      type: Array,
-    },
-    kine: {
-      type: Array,
-    },
-    psyc: {
-      type: Array,
-    },
-    sexo: {
-      type: Array,
-    },
+  proIntro: {
+    type: Array,
   },
+  pros: [
+    {
+      proTitle: {
+        type: String,
+      },
+      proDef: {
+        type: Array,
+      },
+    },
+  ],
+
   body: {
     type: Array,
   },

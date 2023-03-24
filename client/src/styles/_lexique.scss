@@ -4,7 +4,7 @@
   padding-left: 0;
 
   .lexique-list-item {
-    display: flex;
+    // display: flex;
     align-items: flex-start;
     gap: $gap;
     list-style: none;
@@ -18,7 +18,7 @@
       margin-bottom: $demi-gap;
     }
 
-    div {
+    img + div {
       h2 {
         margin-top: 0;
       }

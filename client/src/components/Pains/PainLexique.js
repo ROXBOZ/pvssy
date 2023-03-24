@@ -69,9 +69,80 @@ const PainLexique = () => {
           itaque."
         level="h1"
       />
+      <div className="grid-area">
+        {requestedTerms ? (
+          <div className="lexique-list centered">
+            {requestedTerms &&
+              requestedTerms
+                .filter((t) => t.imgUrl)
+                .map((t, index) => {
+                  const termAnchor = t.term
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .replace(/\s+/g, "-")
+                    .toLowerCase();
+                  return (
+                    <ul className=" lexique-list" key={index}>
+                      <li className="lexique-list-item">
+                        <img
+                          src={t.imgUrl}
+                          alt={`shéma descriptif, ${t.term}`}
+                        />
+                        <div>
+                          <h2 className="h3" id={termAnchor}>
+                            {t.term}
+                          </h2>
+                          <div className="relatedPains">
+                            {t.relatedPain
+                              .filter((p) => p !== painName)
+                              .map((p, index) => (
+                                <span key={index}>
+                                  <span> ↗ </span>
+                                  <Link key={index} to={`/douleurs/${p}`}>
+                                    {p}
+                                  </Link>
+                                </span>
+                              ))}
+                          </div>
 
-      <div className="msg info">
-        <p>
+                          {createParagraphs(t.def)}
+                        </div>
+                      </li>
+                    </ul>
+                  );
+                })}
+
+            {requestedTerms &&
+              requestedTerms
+                .filter((t) => !t.imgUrl)
+                .map((t, index) => {
+                  const termAnchor = t.term
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .replace(/\s+/g, "-")
+                    .toLowerCase();
+                  return (
+                    <ul className=" lexique-list" key={index}>
+                      <li className="lexique-list-item">
+                        <div>
+                          <h2 className="h3" id={termAnchor}>
+                            {t.term}
+                          </h2>
+                          {createParagraphs(t.def)}
+                        </div>
+                      </li>
+                    </ul>
+                  );
+                })}
+          </div>
+        ) : (
+          <p className="msg warning">
+            Il n’y a pas de glossaire relatif à cette douleur pour l’instant.
+          </p>
+        )}
+      </div>
+      <div className="grid-area">
+        <p className="msg info centered">
           Retrouve tous{" "}
           <Link to="/se-soigner/ressources/glossaire">
             le glossaire de pvssy talk
@@ -79,74 +150,6 @@ const PainLexique = () => {
           dans les ressources générales.
         </p>
       </div>
-
-      {requestedTerms ? (
-        <div className="lexique-list">
-          {requestedTerms &&
-            requestedTerms
-              .filter((t) => t.imgUrl)
-              .map((t, index) => {
-                const termAnchor = t.term
-                  .normalize("NFD")
-                  .replace(/[\u0300-\u036f]/g, "")
-                  .replace(/\s+/g, "-")
-                  .toLowerCase();
-                return (
-                  <ul className=" lexique-list" key={index}>
-                    <li className="lexique-list-item">
-                      <img src={t.imgUrl} alt={`shéma descriptif, ${t.term}`} />
-                      <div>
-                        <h2 className="h3" id={termAnchor}>
-                          {t.term}
-                        </h2>
-                        <div className="relatedPains">
-                          {t.relatedPain
-                            .filter((p) => p !== painName)
-                            .map((p, index) => (
-                              <span key={index}>
-                                <span> ↗ </span>
-                                <Link key={index} to={`/douleurs/${p}`}>
-                                  {p}
-                                </Link>
-                              </span>
-                            ))}
-                        </div>
-
-                        {createParagraphs(t.def)}
-                      </div>
-                    </li>
-                  </ul>
-                );
-              })}
-
-          {requestedTerms &&
-            requestedTerms
-              .filter((t) => !t.imgUrl)
-              .map((t, index) => {
-                const termAnchor = t.term
-                  .normalize("NFD")
-                  .replace(/[\u0300-\u036f]/g, "")
-                  .replace(/\s+/g, "-")
-                  .toLowerCase();
-                return (
-                  <ul className=" lexique-list" key={index}>
-                    <li className="lexique-list-item">
-                      <div>
-                        <h2 className="h3" id={termAnchor}>
-                          {t.term}
-                        </h2>
-                        {createParagraphs(t.def)}
-                      </div>
-                    </li>
-                  </ul>
-                );
-              })}
-        </div>
-      ) : (
-        <p className="msg warning">
-          Il n’y a pas de glossaire relatif à cette douleur pour l’instant.
-        </p>
-      )}
     </>
   );
 };

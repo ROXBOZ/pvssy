@@ -6,7 +6,7 @@ import { SourceList } from "../../utils/SourceList";
 
 const PainSuggestions = () => {
   const { painName, requestedSources } = useContext(PainsContext);
-
+  console.log("requestedSources :", requestedSources);
   return (
     <div>
       <HeadingArea

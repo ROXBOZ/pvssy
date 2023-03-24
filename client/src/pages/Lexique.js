@@ -214,19 +214,28 @@ const Lexique = () => {
                     <h3 className="term-entry" id={termId(term.term)}>
                       {term.term.charAt(0).toUpperCase() + term.term.slice(1)}
                     </h3>
-                    {term.relatedPain.length > 0 && <span>↗ </span>}
+
+                    {/* {term.relatedPain.length > 0 && (
+                      <span style={{ backgroundColor: "yellow" }}>↗ </span>
+                    )} */}
+
                     {term.relatedPain.map((pain, index) => (
                       <span key={index}>
-                        <Link key={index} to={`/se-soigner/douleurs/${pain}`}>
+                        <Link
+                          className="arrow-link"
+                          key={index}
+                          to={`/se-soigner/douleurs/${pain}`}
+                        >
                           {pain}
                         </Link>
-                        {index < term.relatedPain.length - 1 ? (
-                          <span>  ↗ </span>
+                        {/* {index < term.relatedPain.length - 1 ? (
+                          <span style={{ backgroundColor: "blue" }}>  ↗ </span>
                         ) : (
                           ""
-                        )}
+                        )} */}
                       </span>
                     ))}
+
                     {term.imgUrl && (
                       <div>
                         <img

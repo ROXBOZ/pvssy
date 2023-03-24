@@ -28,6 +28,7 @@ const PainArticle = () => {
     requestedTerms,
     requestedSources,
   } = useContext(PainsContext);
+
   const highlightedTerms = requestedTerms
     ? requestedTerms.map((term) => term.term)
     : [];
@@ -60,6 +61,7 @@ const PainArticle = () => {
       behavior: "smooth",
     });
   };
+
   const highlightTerms = (term, isTerm, index) => {
     const linkTo = isTerm
       ? `../glossaire/#${term.replace(/\s+/g, "-").toLowerCase()}`
@@ -72,7 +74,6 @@ const PainArticle = () => {
 
     return (
       <Link
-        style={{ backgroundColor: "yellow" }}
         className={isTerm ? "term" : "source"}
         key={`${term}-${index}`}
         to={linkTo}
@@ -99,16 +100,19 @@ const PainArticle = () => {
 
         return (
           <p key={`part-${index}`}>
-            {" "}
             {parts.map((part, partIndex) => {
               if (regex.test(part)) {
                 const isTerm = highlightedTerms.includes(part);
                 return highlightTerms(part, isTerm, partIndex);
               } else {
                 return (
-                  <span key={`${part}-${partIndex}`}>
-                    <ReactMarkdown>{part}</ReactMarkdown>
-                  </span>
+                  <ReactMarkdown
+                    components={{
+                      p: ({ children }) => <span> {children} </span>,
+                    }}
+                  >
+                    {part}
+                  </ReactMarkdown>
                 );
               }
             })}
@@ -228,34 +232,26 @@ const PainArticle = () => {
             </div>
             <h2>Pourquoi ça m’arrive ?</h2>
             {highlightParagraphs(painData.why)}
-            <h2>Que puis-je faire solo?</h2>
-            {highlightParagraphs(painData.auto)}
+            {painData.auto.length > 0 ? (
+              <>
+                <h2>Que puis-je faire solo?</h2>
+                {highlightParagraphs(painData.auto)}
+              </>
+            ) : (
+              <></>
+            )}
+
             <h2>Comment me soigner ?</h2>
-            {highlightParagraphs(painData.pro.intro)}
-            {painData.pro.gyne && (
-              <>
-                <h3>Gynécologue</h3>
-                {highlightParagraphs(painData.pro.gyne)}
-              </>
-            )}
-            {painData.pro.kine && (
-              <>
-                <h3>Kinésithérapeute</h3>
-                {highlightParagraphs(painData.pro.kine)}
-              </>
-            )}
-            {painData.pro.psyc && (
-              <>
-                <h3>Psychologue</h3>
-                {highlightParagraphs(painData.pro.psyc)}
-              </>
-            )}
-            {painData.pro.sexo && (
-              <>
-                <h3>Sexologue</h3>
-                {highlightParagraphs(painData.pro.sexo)}
-              </>
-            )}
+            {painData.proIntro && highlightParagraphs(painData.proIntro)}
+            {painData.pros &&
+              painData.pros.map((pro) => {
+                return (
+                  <>
+                    {pro.proTitle && <h3>{pro.proTitle}</h3>}
+                    {pro.proDef && <p>{pro.proDef}</p>}
+                  </>
+                );
+              })}
           </>
         ) : (
           <>
@@ -270,7 +266,6 @@ const PainArticle = () => {
             {highlightParagraphs(painData.libido)}
             <h3>Charge mentale et communication</h3>
             {highlightParagraphs(painData.charge)}
-
             <h3>Sexe et consentement</h3>
             {highlightParagraphs(painData.consent)}
             <h2>Santé mentale</h2>
@@ -294,7 +289,6 @@ const PainArticle = () => {
                 <ul>
                   {requestedSources.map((s, index) => {
                     if (s.isFootnote === true) {
-                      console.log("s.url :", s.url);
                       return (
                         <li data-icon="→" key={s._id} id={index}>
                           <span className="source-list-item">
