@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { PainsContext } from "../contexts/PainsContext";
 import { HeadingArea } from "../utils/HeadingArea";
+import { SourceList } from "../utils/SourceList";
 
 const Suggestions = () => {
   const { fetchAllSources, allSources } = useContext(PainsContext);
@@ -20,20 +21,7 @@ const Suggestions = () => {
           optio repudiandae aperiam."
         level="h1"
       />
-      <div className="grid-area">
-        <p className="msg warning centered">
-          ajouter la liste exhaustive des suggestions. FILTRES?
-        </p>
-
-        <ol className="centered">
-          {allSources.map(
-            (source) =>
-              source.isFootnote === false && (
-                <li key={source.id}>{source.title}</li>
-              )
-          )}
-        </ol>
-      </div>
+      <SourceList sources={allSources} />
     </div>
   );
 };

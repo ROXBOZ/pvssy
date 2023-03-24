@@ -22,7 +22,7 @@ const Exercises = () => {
       />
 
       <div className="grid-area">
-        <p className="reminder msg centered">
+        <p className="warning msg centered">
           ajouter tous les exercices. FILTRES?
         </p>
 

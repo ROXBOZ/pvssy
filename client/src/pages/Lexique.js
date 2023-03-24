@@ -3,6 +3,7 @@ import { serverURL } from "../utils/serverURL";
 import { PainsContext } from "../contexts/PainsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { createParagraph } from "../utils/createParagraphs";
 
 import React, {
   useContext,
@@ -213,7 +214,6 @@ const Lexique = () => {
                     <h3 className="term-entry" id={termId(term.term)}>
                       {term.term.charAt(0).toUpperCase() + term.term.slice(1)}
                     </h3>
-
                     {term.relatedPain.length > 0 && <span>↗ </span>}
                     {term.relatedPain.map((pain, index) => (
                       <span key={index}>
@@ -235,7 +235,8 @@ const Lexique = () => {
                         />
                       </div>
                     )}
-                    <p>{term.def}</p>
+
+                    {createParagraph(term.def)}
                   </div>
                 ))}
               </div>

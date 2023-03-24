@@ -49,47 +49,46 @@ const painSchema = new mongoose.Schema({
   },
   body: {
     type: Array,
-    required: true,
   },
 
   norms: {
     type: Array,
-    required: true,
   },
 
   routine: {
     type: Array,
-    required: true,
   },
 
   libido: {
     type: Array,
-    required: true,
+  },
+
+  charge: {
+    type: Array,
   },
 
   consent: {
     type: Array,
-    required: true,
   },
 
   mental: {
     type: Array,
-    required: true,
   },
 
   parenthood: {
     type: Array,
-    required: true,
   },
 
   checkup: {
     type: Array,
-    required: true,
+  },
+
+  treatment: {
+    type: Array,
   },
 
   pleasure: {
     type: Array,
-    required: true,
   },
 });
 

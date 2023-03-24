@@ -1,6 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 import ShareThis from "../ShareThis";
+import { createParagraph } from "../../utils/createParagraphs";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+
 import React, {
   useContext,
   useEffect,
@@ -11,6 +14,7 @@ import React, {
 
 const PainArticle = () => {
   let currentURL = window.location.pathname;
+  let articleRef = document.getElementById("articleRef");
   const submenuRef = useRef(null);
   const menuRef = useRef();
   const [, setAnchorPosition] = useState(0);
@@ -51,29 +55,39 @@ const PainArticle = () => {
   }, [menuRef.current]);
 
   // article switcher scroll into view
-  let articleRef = document.getElementById("articleRef");
   const scrollToArticle = () => {
     articleRef.scrollIntoView({
       behavior: "smooth",
     });
   };
+  const highlightTerms = (term, isTerm, index) => {
+    const linkTo = isTerm
+      ? `../glossaire/#${term.replace(/\s+/g, "-").toLowerCase()}`
+      : `${currentURL}/#references`;
 
-  // Scroll down to ressources and sources
-  //FIXME it repeats also in glossary
-  const scrollToAnchor = (anchor) => {
-    const element = document.getElementById(anchor);
-    if (element) {
-      const top = element.offsetTop;
-      window.scrollTo({ top, behavior: "smooth" });
-      setAnchorPosition(top);
-      setMenuTop(top);
-    }
+    const onClickHandler = (event) => {
+      event.preventDefault();
+      scrollToAnchor("references");
+    };
+
+    return (
+      <Link
+        style={{ backgroundColor: "yellow" }}
+        className={isTerm ? "term" : "source"}
+        key={`${term}-${index}`}
+        to={linkTo}
+        onClick={isTerm ? null : onClickHandler}
+      >
+        {term}
+        {isTerm && <span>↗</span>}
+      </Link>
+    );
   };
-
   const highlightParagraphs = (arr) => {
     if (!highlightedTerms || highlightedTerms.length === 0) {
-      return arr.map((p, index) => <p key={`${index}`}>{p}</p>);
+      return createParagraph(arr);
     }
+
     const regex = new RegExp(
       `\\b(${highlightedTerms.join("|")}|${highlightedSources.join("|")})\\b`,
       "ig"
@@ -85,67 +99,39 @@ const PainArticle = () => {
 
         return (
           <p key={`part-${index}`}>
-            {parts.map((part, index) => {
+            {" "}
+            {parts.map((part, partIndex) => {
               if (regex.test(part)) {
                 const isTerm = highlightedTerms.includes(part);
-                const linkTo = isTerm
-                  ? `../glossaire/#${part
-                      .normalize("NFD")
-                      .replace(/[\u0300-\u036f]/g, "")
-                      .replace(/\s+/g, "-")
-                      .toLowerCase()}`
-                  : `${currentURL}/#references`;
-                if (isTerm) {
-                  return (
-                    <>
-                      <Link
-                        className="term"
-                        key={`${part}-${index}`}
-                        to={linkTo}
-                      >
-                        {part}
-                        <span>↗</span>
-                      </Link>
-                    </>
-                  );
-                } else {
-                  return (
-                    <>
-                      <Link
-                        className="source"
-                        key={`${part}-${index}`}
-                        to={linkTo}
-                        onClick={(event) => {
-                          event.preventDefault();
-                          scrollToAnchor("references");
-                        }}
-                      >
-                        {part}
-                      </Link>
-                    </>
-                  );
-                }
+                return highlightTerms(part, isTerm, partIndex);
               } else {
                 return (
-                  <>
-                    <span key={`${part}-${index}`}>{part}</span>
-                  </>
+                  <span key={`${part}-${partIndex}`}>
+                    <ReactMarkdown>{part}</ReactMarkdown>
+                  </span>
                 );
               }
             })}
           </p>
         );
       } else {
-        return (
-          <>
-            <p key={`${index}`}>{p}</p>
-          </>
-        );
+        return <p key={`${index}`}>{p}</p>;
       }
     });
   };
 
-  // menus stick // repeats on glossaire page
+  // FIXME Scroll down to ressources and sources, it repeats also in glossary
+  const scrollToAnchor = (anchor) => {
+    const element = document.getElementById(anchor);
+    if (element) {
+      const top = element.offsetTop;
+      window.scrollTo({ top, behavior: "smooth" });
+      setAnchorPosition(top);
+      setMenuTop(top);
+    }
+  };
+
+  // FIXME menus stick // repeats on glossaire page
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -242,9 +228,9 @@ const PainArticle = () => {
             </div>
             <h2>Pourquoi ça m’arrive ?</h2>
             {highlightParagraphs(painData.why)}
-            <h2>Que puis-je faire seule ?</h2>
+            <h2>Que puis-je faire solo?</h2>
             {highlightParagraphs(painData.auto)}
-            <h2>Quelles aides existent ?</h2>
+            <h2>Comment me soigner ?</h2>
             {highlightParagraphs(painData.pro.intro)}
             {painData.pro.gyne && (
               <>
@@ -282,18 +268,19 @@ const PainArticle = () => {
             {highlightParagraphs(painData.routine)}
             <h2>Libido</h2>
             {highlightParagraphs(painData.libido)}
-            <h3>
-              Charge mentale / communication /
-              <br />
-              consentement
-            </h3>
+            <h3>Charge mentale et communication</h3>
+            {highlightParagraphs(painData.charge)}
+
+            <h3>Sexe et consentement</h3>
             {highlightParagraphs(painData.consent)}
             <h2>Santé mentale</h2>
             {highlightParagraphs(painData.mental)}
             <h2>Parentalité</h2>
             {highlightParagraphs(painData.parenthood)}
-            <h2>Avec les pros</h2>
+            <h2>Avec les pros de la santé</h2>
             {highlightParagraphs(painData.checkup)}
+            <h2>Traitement</h2>
+            {highlightParagraphs(painData.treatment)}
             <h2>Plaisir / anti-douleur</h2>
             {highlightParagraphs(painData.pleasure)}
           </>

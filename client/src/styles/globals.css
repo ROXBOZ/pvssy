@@ -473,9 +473,10 @@ button.showPassword:hover {
   flex-direction: column;
   justify-content: space-between;
 }
-.exercises-container .exercise .exercise-open .exercise-article .prealable div hr {
-  margin-top: 2em;
-  background-color: #f5733c;
+.exercises-container .exercise .exercise-open .exercise-article .prealable p {
+  padding-bottom: 1em;
+  border-bottom: 1px solid;
+  margin-bottom: 1em;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions {
   grid-column: 2/5;
