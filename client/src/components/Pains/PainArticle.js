@@ -19,6 +19,9 @@ const PainArticle = () => {
   const menuRef = useRef();
   const [, setAnchorPosition] = useState(0);
   const [menuTop, setMenuTop] = useState(0);
+  const menstrualReminder = [
+    " Pendant la seconde phase, nommée phase lutéale, la progestérone va induire une modification des cellules de l’endomètre qui vont former des glandes sécrétant des nutriments qui vont permettre la survie de l’embryon en cas d’implantation. Sans implantation, la progestérone va chuter après 10 jours, ce qui va provoquer une contraction des artères de l’endomètre ce qui va induire une diminution de l’arrivée de sang dans le tissu et la mort des cellules qui vont partir avec les menstruations et laisser un endomètre très fin.",
+  ];
   const {
     isSticky,
     setIsSticky,
@@ -62,65 +65,56 @@ const PainArticle = () => {
     });
   };
 
-  const highlightTerms = (term, isTerm, index) => {
-    const linkTo = isTerm
-      ? `../glossaire/#${term.replace(/\s+/g, "-").toLowerCase()}`
-      : `${currentURL}/#references`;
-
-    const onClickHandler = (event) => {
-      event.preventDefault();
-      scrollToAnchor("references");
-    };
-
-    return (
-      <Link
-        className={isTerm ? "term" : "source"}
-        key={`${term}-${index}`}
-        to={linkTo}
-        onClick={isTerm ? null : onClickHandler}
-      >
-        {term}
-        {isTerm && <span>↗</span>}
-      </Link>
-    );
-  };
   const highlightParagraphs = (arr) => {
     if (!highlightedTerms || highlightedTerms.length === 0) {
       return createParagraph(arr);
     }
 
-    const regex = new RegExp(
-      `\\b(${highlightedTerms.join("|")}|${highlightedSources.join("|")})\\b`,
-      "ig"
-    );
-
     return arr.map((p, index) => {
-      if (typeof p === "string") {
-        const parts = p.split(regex);
-
-        return (
-          <p key={`part-${index}`}>
-            {parts.map((part, partIndex) => {
-              if (regex.test(part)) {
-                const isTerm = highlightedTerms.includes(part);
-                return highlightTerms(part, isTerm, partIndex);
-              } else {
-                return (
-                  <ReactMarkdown
-                    components={{
-                      p: ({ children }) => <span> {children} </span>,
-                    }}
-                  >
-                    {part}
-                  </ReactMarkdown>
-                );
-              }
-            })}
-          </p>
+      highlightedTerms.forEach((term) => {
+        const regexTerm = new RegExp(term, "ig");
+        p = p.replaceAll(
+          regexTerm,
+          `[${term}](../glossaire/#${term.replace(/\s+/g, "-").toLowerCase()})`
         );
-      } else {
-        return <p key={`${index}`}>{p}</p>;
-      }
+      });
+
+      highlightedSources.forEach((source) => {
+        if (source.toLowerCase() !== painData.name.toLowerCase()) {
+          const regexSource = new RegExp(source, "ig");
+          p = p.replaceAll(
+            regexSource,
+            `[${source}](${currentURL}/#references)`
+          );
+        }
+      });
+
+      return (
+        <ReactMarkdown
+          components={{
+            a: ({ children, href }) => {
+              const isTerm = href.includes("glossaire");
+              const isSource = href.includes("reference");
+              const onClickHandler = (event) => {
+                event.preventDefault();
+                scrollToAnchor("references");
+              };
+              return (
+                <Link
+                  className={isTerm ? "term" : isSource ? "source" : ""}
+                  to={href}
+                  onClick={isSource ? onClickHandler : null}
+                >
+                  {children}
+                  {isTerm && <span> ↗</span>}
+                </Link>
+              );
+            },
+          }}
+        >
+          {p}
+        </ReactMarkdown>
+      );
     });
   };
 
@@ -179,7 +173,7 @@ const PainArticle = () => {
         </div>
       </div>
 
-      <div className="article" id="articleRef">
+      <div className="article-container" id="articleRef">
         <div className="auteurice">
           <div className="img-holder" />
           <em>
@@ -187,7 +181,7 @@ const PainArticle = () => {
             {isMed ? (
               <Link to="https://aemg-ge.com/">Medsexplain</Link>
             ) : (
-              <Link to="https://aemg-ge.com/">Fiona Bourdon + ...</Link>
+              <Link to="https://aemg-ge.com/">Fiona Bourdon</Link>
             )}
           </em>
         </div>
@@ -200,7 +194,11 @@ const PainArticle = () => {
           <p className="h4">
             Ressources
             <br />
-            {painData.name}
+            {painData.name === "Sopk" ? (
+              <span className="acronym">{painData.name}</span>
+            ) : (
+              <span> {painData.name}</span>
+            )}
             <br />
           </p>
 
@@ -216,7 +214,7 @@ const PainArticle = () => {
         </ul>
 
         {isMed ? (
-          <>
+          <div className="article">
             <h2>Définition</h2>
             {highlightParagraphs(painData.def)}
             <h2>Diagnostic</h2>
@@ -234,7 +232,7 @@ const PainArticle = () => {
             {highlightParagraphs(painData.why)}
             {painData.auto.length > 0 ? (
               <>
-                <h2>Que puis-je faire solo?</h2>
+                <h2>Que puis-je faire solo ?</h2>
                 {highlightParagraphs(painData.auto)}
               </>
             ) : (
@@ -248,18 +246,25 @@ const PainArticle = () => {
                 return (
                   <>
                     {pro.proTitle && <h3>{pro.proTitle}</h3>}
-                    {pro.proDef && <p>{pro.proDef}</p>}
+                    {pro.proDef && highlightParagraphs(pro.proDef)}
                   </>
                 );
               })}
-          </>
+          </div>
         ) : (
-          <>
+          <div className="article">
             <h2>Lien à soi</h2>
             <h3>Image /schéma corporel</h3>
             {highlightParagraphs(painData.body)}
             <h3>Normes genrées</h3>
             {highlightParagraphs(painData.norms)}
+
+            {painData.tags.includes("règles") && (
+              <>
+                <h3>Rappel sur le cycle menstruel</h3>
+                {highlightParagraphs(menstrualReminder)}
+              </>
+            )}
             <h3>Vie quotidienne</h3>
             {highlightParagraphs(painData.routine)}
             <h2>Libido</h2>
@@ -278,7 +283,7 @@ const PainArticle = () => {
             {highlightParagraphs(painData.treatment)}
             <h2>Plaisir / anti-douleur</h2>
             {highlightParagraphs(painData.pleasure)}
-          </>
+          </div>
         )}
 
         {requestedSources && (

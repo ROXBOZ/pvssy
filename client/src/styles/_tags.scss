@@ -6,7 +6,7 @@
   align-items: center;
   grid-column: 2/4;
 }
-tag {
+.tag {
   white-space: nowrap;
   border: $border-solid $color1;
   color: darken($color1, 10%);
@@ -14,6 +14,7 @@ tag {
   font-size: 80%;
   border-radius: 40px;
 
+  &.active,
   &:hover {
     cursor: pointer;
     background-color: darken($color1, 10%);

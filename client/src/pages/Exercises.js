@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import Exercise from "../components/Exercise";
 import { PainsContext } from "../contexts/PainsContext";
 import { HeadingArea } from "../utils/HeadingArea";
 
@@ -20,19 +21,9 @@ const Exercises = () => {
           repudiandae commodi repellendus natus eveniet!"
         level="h1"
       />
-
-      <div className="grid-area">
-        <p className="warning msg centered">
-          ajouter tous les exercices. FILTRES?
-        </p>
-
-        <div className="centered">
-          <ol>
-            {allExercises.map((exercise) => (
-              <li key={exercise.id}>{exercise.title}</li>
-            ))}
-          </ol>
-        </div>
+      <div className="exercises-container">
+        {allExercises &&
+          allExercises.map((ex, index) => <Exercise exercise={ex} />)}
       </div>
     </div>
   );

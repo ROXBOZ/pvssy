@@ -170,12 +170,12 @@ $tabbed-navigation-color: $color1;
   }
 }
 
-.sticky + .article {
+.sticky + .article-container {
   padding-top: 10vh;
 }
 
 // TODO REOGANIZE
-.article {
+.article-container {
   @include grid;
   animation: opacityAnimation 500ms ease-in;
   gap: 0;
@@ -194,7 +194,7 @@ $tabbed-navigation-color: $color1;
 }
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
-  .article {
+  .article-container {
     * {
       grid-column: 1/5;
     }

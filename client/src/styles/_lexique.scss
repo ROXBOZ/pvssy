@@ -4,14 +4,13 @@
   padding-left: 0;
 
   .lexique-list-item {
-    // display: flex;
     align-items: flex-start;
     gap: $gap;
     list-style: none;
-    width: 90vw;
+    margin: $gap 0;
 
     img {
-      width: 40%;
+      width: 100%;
       aspect-ratio: 3/2;
       object-fit: cover;
       border-radius: $border-radius;
@@ -31,17 +30,9 @@
 }
 
 a.term {
-  //  position: relative;
   span {
-    //  position: absolute;
     color: $txt-color;
-    // transition: $animation-transition;
   }
-  // &:hover {
-  //   span {
-  //     transform: rotate(45deg);
-  //   }
-  // }
 }
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
@@ -125,12 +116,17 @@ a.term {
         border-bottom: 0;
       }
     }
+    h3 {
+      margin-bottom: 0.75rem;
+    }
+
     .allLexique-term {
-      h4 {
-        margin-top: 0;
-        padding-top: 0;
+      .related-pain-container {
+        display: flex;
+        width: fit-content;
+        margin-bottom: $demi-gap;
+        gap: $demi-gap;
       }
-      grid-column: 2/4;
 
       img {
         margin: $demi-gap 0;

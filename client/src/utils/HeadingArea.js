@@ -4,7 +4,13 @@ export const HeadingArea = ({ pretitle, title, subtitle, level = "h2" }) => {
   return (
     <div className="heading-area">
       {pretitle && <p className="pretitle">{pretitle}</p>}
-      <HeadingTag>{title}</HeadingTag>
+      <HeadingTag>
+        {title && title === "Sopk" ? (
+          <span className="acronym">{title}</span>
+        ) : (
+          <span>{title}</span>
+        )}
+      </HeadingTag>
       {subtitle && <p className="subtitle">{subtitle}</p>}
     </div>
   );

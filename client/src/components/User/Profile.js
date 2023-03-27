@@ -9,7 +9,7 @@ const Profile = () => {
     <div>
       <UserDashboard userProfile={userProfile} />
 
-      {/* <div style={{ display: "flex", gap: "1em" }}>
+      <div style={{ display: "flex", gap: "1em" }}>
         <span className="msg success"> Succès</span>
         <span className="msg reminder"> Rappel</span>
         <span className="msg pending"> En attente</span>
@@ -17,7 +17,7 @@ const Profile = () => {
         <span className="msg archived"> Archivé</span>
         <span className="msg error"> Erreur</span>
         <span className="msg info"> Info</span>
-      </div> */}
+      </div>
 
       <div className="tabbed-navigation-container">
         <div className="tabbed-navigation">

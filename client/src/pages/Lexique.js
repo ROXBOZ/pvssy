@@ -121,6 +121,7 @@ const Lexique = () => {
   //8. handle input
 
   const handleInput = (event) => {
+    event.preventDefault();
     const searchTerm = event.target.value.toLowerCase();
     const termElements = document.querySelectorAll(".allLexique-term");
 
@@ -134,12 +135,18 @@ const Lexique = () => {
         break;
       }
     }
-    //FIXME
+
     if (matchedTermElement) {
-      const glossaryColumn = document.querySelector(".glossary-column");
-      const scrollPosition =
-        matchedTermElement.offsetTop - glossaryColumn.offsetTop;
-      glossaryColumn.scrollTo({ top: scrollPosition, behavior: "smooth" });
+      const id = matchedTermElement.querySelector("h3").id;
+      if (id) {
+        const targetElement = document.getElementById(id);
+        if (targetElement) {
+          const top = targetElement.offsetTop;
+          setTimeout(() => {
+            window.scrollTo({ top, behavior: "smooth" });
+          }, 1000);
+        }
+      }
     }
   };
 
@@ -169,17 +176,12 @@ const Lexique = () => {
             className={`${isSticky ? "fixed" : ""}`}
             ref={letterContainerRef}
           >
-            <form
-              style={{
-                opacity: "40%",
-                pointerEvents: "none",
-              }}
-            >
+            <form>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
               <input
                 onChange={handleInput}
                 type="text"
-                placeholder="en construction"
+                placeholder="ex.: ménarche"
               />
             </form>
             <div className="letter-link-container">
@@ -212,37 +214,29 @@ const Lexique = () => {
                 {terms.map((term, index) => (
                   <div className="entry allLexique-term" key={index}>
                     <h3 className="term-entry" id={termId(term.term)}>
-                      {term.term.charAt(0).toUpperCase() + term.term.slice(1)}
+                      {term.term}
                     </h3>
-
-                    {/* {term.relatedPain.length > 0 && (
-                      <span style={{ backgroundColor: "yellow" }}>↗ </span>
-                    )} */}
-
-                    {term.relatedPain.map((pain, index) => (
-                      <span key={index}>
-                        <Link
-                          className="arrow-link"
-                          key={index}
-                          to={`/se-soigner/douleurs/${pain}`}
-                        >
-                          {pain}
-                        </Link>
-                        {/* {index < term.relatedPain.length - 1 ? (
-                          <span style={{ backgroundColor: "blue" }}>  ↗ </span>
-                        ) : (
-                          ""
-                        )} */}
-                      </span>
-                    ))}
-
+                    <div className="related-pain-container">
+                      {term.relatedPain.map((pain, index) => (
+                        <span className="related-pain">
+                          <span> ↗ </span>
+                          <Link key={index} to={`/se-soigner/douleurs/${pain}`}>
+                            {pain === "Sopk" ? (
+                              <span className="acronym">{pain}</span>
+                            ) : (
+                              <span>{pain}</span>
+                            )}
+                          </Link>
+                        </span>
+                      ))}
+                    </div>
                     {term.imgUrl && (
-                      <div>
+                      <>
                         <img
                           src={term.imgUrl}
                           alt={`shéma pour ${term.term}`}
                         />
-                      </div>
+                      </>
                     )}
 
                     {createParagraph(term.def)}

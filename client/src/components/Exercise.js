@@ -61,11 +61,7 @@ const Exercise = ({ exercise }) => {
             <div className="exercise-article">
               <div className="prealable">
                 {createParagraph(exercise.prealable)}
-                <div>
-                  <span> Cet exercice est utile en cas de</span>
-                  <br />
-                  <span>{exercise.relatedPain}</span>
-                </div>
+                <div>par Fiona Bourdon</div>
               </div>
               <div className="instructions">
                 {exercise.img && (
@@ -75,7 +71,6 @@ const Exercise = ({ exercise }) => {
                     alt={exercise.title}
                   />
                 )}
-
                 <div>{displayInstructions(exercise.howto)}</div>
               </div>
             </div>

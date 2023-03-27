@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { serverURL } from "../../utils/serverURL";
 import { PainsContext } from "../../contexts/PainsContext";
 import { HeadingArea } from "../../utils/HeadingArea";
+import { createParagraph } from "../../utils/createParagraphs";
 
 const PainLexique = () => {
   const { painName } = useContext(PainsContext);
@@ -44,19 +45,7 @@ const PainLexique = () => {
     }
   });
 
-  const createParagraphs = (arr) => {
-    return arr.map((p, index) => {
-      if (typeof p === "string") {
-        return (
-          <p key={index}>
-            <span key={index}>{p}</span>
-          </p>
-        );
-      } else {
-        return <p key={index}>{p}</p>;
-      }
-    });
-  };
+  console.log("requestedTerms :", requestedTerms);
 
   return (
     <>
@@ -104,8 +93,7 @@ const PainLexique = () => {
                                 </span>
                               ))}
                           </div>
-
-                          {createParagraphs(t.def)}
+                          {createParagraph(t.def)}
                         </div>
                       </li>
                     </ul>
@@ -128,7 +116,7 @@ const PainLexique = () => {
                           <h2 className="h3" id={termAnchor}>
                             {t.term}
                           </h2>
-                          {createParagraphs(t.def)}
+                          {createParagraph(t.def)}
                         </div>
                       </li>
                     </ul>

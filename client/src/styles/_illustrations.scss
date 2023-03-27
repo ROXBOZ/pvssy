@@ -37,7 +37,7 @@ figure {
 }
 
 .article-illustration-container {
-  width: 70ch;
+  width: $chperline;
   display: flex;
   align-items: center;
   justify-content: center;

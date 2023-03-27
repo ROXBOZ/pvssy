@@ -5,7 +5,7 @@ import { HeadingArea } from "../../utils/HeadingArea";
 
 const Pain = () => {
   const outlet = useOutlet();
-  const [, setAnchorPosition] = useState(0);
+  // const [, setAnchorPosition] = useState(0);
 
   const { painData, painName, fetchSinglePain, fetchRelatedSources } =
     useContext(PainsContext);
@@ -29,6 +29,7 @@ const Pain = () => {
       </Link>
     );
   };
+
   const ResourceCard = ({ to, title, description }) => (
     <Link to={to} className="link-card ressource">
       <div className="card ">
@@ -38,14 +39,14 @@ const Pain = () => {
     </Link>
   );
 
-  const scrollToAnchor = (anchor) => {
-    const element = document.getElementById(anchor);
-    if (element) {
-      const top = element.offsetTop;
-      window.scrollTo({ top, behavior: "smooth" });
-      setAnchorPosition(top);
-    }
-  };
+  // const scrollToAnchor = (anchor) => {
+  //   const element = document.getElementById(anchor);
+  //   if (element) {
+  //     const top = element.offsetTop;
+  //     window.scrollTo({ top, behavior: "smooth" });
+  //     setAnchorPosition(top);
+  //   }
+  // };
 
   if (!painData) {
     return <div className="msg pending">Chargement...</div>;
