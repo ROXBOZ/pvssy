@@ -66,3 +66,5 @@ const startServer = () => {
   loadRoutes();
   startServer();
 })();
+
+export default app; // export the app instance
