@@ -22,6 +22,9 @@ figure {
   flex-direction: column;
 
   span {
+    padding-top: 0.5rem;
+    padding-right: $border-radius;
+    font-size: $smaller-text;
     font-family: $font-regular-italic;
     margin: 0;
     font-style: normal;

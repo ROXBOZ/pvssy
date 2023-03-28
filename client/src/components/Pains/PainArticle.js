@@ -152,6 +152,7 @@ const PainArticle = () => {
           src={painData.img}
           alt={painData.name}
         />
+
         <span>
           Illustré par <Link to="https://noemiecreux.com/">Noémie Creux</Link>
         </span>

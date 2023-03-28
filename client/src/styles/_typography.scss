@@ -53,10 +53,15 @@ li {
       padding-top: 0.25em;
     }
   }
+
   &.subtitle {
     font-size: x-large;
     margin-bottom: 5vh;
   }
+}
+
+span.smaller-text {
+  font-size: $smaller-text;
 }
 
 a {
