@@ -5,8 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { HeadingArea } from "../utils/HeadingArea";
 import EventCard from "../components/Agenda/EventCard.js";
+import { dateConverter, dateTimeConverter } from "../utils/dateConverter";
+import { generateColor } from "../utils/colorGenerator";
 
 const Agenda = () => {
+  const color1 = "#f5733c";
+  const color2 = "#ff50d7";
   const {
     fetchData,
     Error,
@@ -29,63 +33,119 @@ const Agenda = () => {
 
   return (
     <div>
-      <HeadingArea
-        title="Agenda"
-        subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-          accusantium optio dolore dolorum suscipit ducimus neque quaerat! Quas
-          rellendus laudantium, excturi iusto architecto neque natus adipisci,
-          eligendi nesciunt eos odit!"
-        level="h1"
-      />
-      <p>
-        Vous avez un évènement à proposer ?{" "}
-        <Link to="/login">Connectez-vous</Link>.
-      </p>
+      <dig className="grid-area">
+        <p className="centered">
+          Vous avez un évènement à proposer ?{" "}
+          <Link to="/login">Connectez-vous</Link>.
+        </p>
 
-      <div className="filter-dashboard">
-        <div className="filter">
-          <div className="filter-dropdown">
-            <div className="input-icon">
-              <label htmlFor="region">Région</label>
-              <input
-                placeholder="Lausanne"
-                id="region"
-                type="text"
-                value={value}
-                onClick={handleIconClick}
-                onChange={handleRegionInputChange}
-                onKeyDown={handleKeyDown}
-              />
-              <FontAwesomeIcon
-                className={iconClicked ? "open" : "close"}
-                id="chevron-icon"
-                onClick={handleIconClick}
-                icon={faChevronDown}
-              />
+        <div className="centered filter-dashboard">
+          <div className="filter">
+            <div className="filter-dropdown">
+              <div className="input-icon">
+                <label htmlFor="region">Région</label>
+                <input
+                  className="line"
+                  placeholder="Lausanne"
+                  id="region"
+                  type="text"
+                  value={value}
+                  onClick={handleIconClick}
+                  onChange={handleRegionInputChange}
+                  onKeyDown={handleKeyDown}
+                />
+                <FontAwesomeIcon
+                  className={iconClicked ? "open" : "close"}
+                  id="chevron-icon"
+                  onClick={handleIconClick}
+                  icon={faChevronDown}
+                />
+              </div>
+
+              {showSuggestions && (
+                <ul className="suggestions">
+                  {suggestions.map((suggestion, index) => (
+                    <li
+                      key={index}
+                      className={
+                        index === selectedSuggestionIndex
+                          ? "suggestion-active"
+                          : ""
+                      }
+                      onClick={() => handleSuggestionClick(suggestion)}
+                    >
+                      {suggestion}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
-
-            {showSuggestions && (
-              <ul className="suggestions">
-                {suggestions.map((suggestion, index) => (
-                  <li
-                    key={index}
-                    className={
-                      index === selectedSuggestionIndex
-                        ? "suggestion-active"
-                        : ""
-                    }
-                    onClick={() => handleSuggestionClick(suggestion)}
-                  >
-                    {suggestion}
-                  </li>
-                ))}
-              </ul>
-            )}
           </div>
         </div>
-      </div>
 
-      <div className="card-grid">
+        <div className="centered">
+          {data.upcomingEvents &&
+          data.upcomingEvents
+            .filter((e) => {
+              return (
+                value === "" ||
+                (e.region && e.region.includes(value)) ||
+                !e.region
+              );
+            })
+            .sort((a, b) => {
+              return new Date(a.date) - new Date(b.date);
+            }).length > 0 ? (
+            data.upcomingEvents
+              .filter((e) => {
+                return (
+                  (value === "" ||
+                    (e.region && e.region.includes(value)) ||
+                    !e.region) &&
+                  !e.isPending
+                );
+              })
+              .sort((a, b) => {
+                return new Date(a.date) - new Date(b.date);
+              })
+              .map((e, index) => {
+                return (
+                  <div className="agenda-entry" key={index}>
+                    <div>
+                      <p className="agenda-entry-pretitle">
+                        {e.isOnline ? (
+                          <span>ONLINE</span>
+                        ) : (
+                          <span>{e.city}</span>
+                        )}{" "}
+                        | <nobr>{dateConverter(e.date)}</nobr>
+                      </p>
+                      <div className="agenda-entry-title">
+                        <div
+                          style={{
+                            backgroundColor: generateColor(color1, color2),
+                          }}
+                          className="img-holder"
+                        ></div>
+                        <h3>{e.title}</h3>
+                      </div>
+                    </div>
+
+                    <p>{e.shortDef}</p>
+
+                    <button>en savoir plus</button>
+                  </div>
+                );
+              })
+          ) : (
+            <p className="no-suggestions">
+              Il n'y a aucun événement à venir dans cette région.
+            </p>
+          )}
+        </div>
+      </dig>
+
+      {/* <div className="card-grid">
         {data.upcomingEvents &&
         data.upcomingEvents
           .filter((e) => {
@@ -119,9 +179,7 @@ const Agenda = () => {
           </p>
         )}
         {Error && <p>Erreur</p>}
-      </div>
-
-      {/* <Link to="archives">Consulter les évènements passés</Link> */}
+      </div> */}
     </div>
   );
 };

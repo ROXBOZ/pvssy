@@ -9,7 +9,15 @@
   background-color: $bg-color;
   padding: $padding-xs;
   width: 300px;
+  &.line {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: $border-solid;
+  }
   &:focus {
+    border-radius: $border-radius;
     outline: none;
     border: $border-solid darken($bg-color, 10%);
   }
@@ -66,10 +74,11 @@ input {
     cursor: pointer;
   }
 }
+
 .filter,
 .filter-dropdown {
   input {
-    @include input;
+    // @include input;
   }
 }
 
@@ -120,7 +129,6 @@ form {
 
     div {
       select,
-      input[type="text"],
       input[type="password"],
       input[type="file"],
       input[type="date"],

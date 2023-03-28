@@ -3,11 +3,16 @@
   width: 100vw;
   width: fit-content;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 
   .agenda-entry-pretitle {
     position: relative;
     font-family: $font-bold;
     padding-top: $padding-xs;
+    display: flex;
+    gap: $demi-gap;
+    align-items: center;
 
     &:before {
       top: -$padding-xs;
@@ -17,6 +22,14 @@
       width: 0;
       border-top: $border-solid;
     }
+  }
+
+  .agenda-entry-title {
+    background-color: yellow;
+    display: flex;
+    align-items: centered;
+    width: 100%;
+    gap: $demi-gap;
   }
 
   &:hover {

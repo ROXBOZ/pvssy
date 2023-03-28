@@ -57,11 +57,16 @@
   width: -moz-fit-content;
   width: fit-content;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 .agenda-entry .agenda-entry-pretitle {
   position: relative;
   font-family: "ESKlarheit-Bold";
   padding-top: 0.5em;
+  display: flex;
+  gap: 1em;
+  align-items: center;
 }
 .agenda-entry .agenda-entry-pretitle:before {
   top: -0.5em;
@@ -70,6 +75,13 @@
   left: 0;
   width: 0;
   border-top: 1px solid;
+}
+.agenda-entry .agenda-entry-title {
+  background-color: yellow;
+  display: flex;
+  align-items: centered;
+  width: 100%;
+  gap: 1em;
 }
 .agenda-entry:hover .agenda-entry-pretitle:before {
   animation: border_anim 200ms linear forwards;
@@ -605,7 +617,15 @@ input {
   padding: 0.5em;
   width: 300px;
 }
+input.line {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 1px solid;
+}
 input:focus {
+  border-radius: 40px;
   outline: none;
   border: 1px solid #ffddba;
 }
@@ -657,23 +677,6 @@ input::placeholder {
   cursor: pointer;
 }
 
-.filter input,
-.filter-dropdown input {
-  color: #1f042f;
-  border: 1px solid #ffc387;
-  border-radius: 40px;
-  font-family: "ESKlarheit-Book";
-  font-size: 100%;
-  background-color: #fff6ed;
-  padding: 0.5em;
-  width: 300px;
-}
-.filter input:focus,
-.filter-dropdown input:focus {
-  outline: none;
-  border: 1px solid #ffddba;
-}
-
 .no-suggestions {
   color: #f5733c;
 }
@@ -716,7 +719,6 @@ form .form-section .check-list {
   margin-top: 0;
 }
 form.grid-form div select,
-form.grid-form div input[type=text],
 form.grid-form div input[type=password],
 form.grid-form div input[type=file],
 form.grid-form div input[type=date],
@@ -725,7 +727,6 @@ form.grid-form div input[type=number],
 form.grid-form div input[type=tel],
 form.grid-form div textarea,
 form .form-section div select,
-form .form-section div input[type=text],
 form .form-section div input[type=password],
 form .form-section div input[type=file],
 form .form-section div input[type=date],
@@ -742,8 +743,29 @@ form .form-section div textarea {
   padding: 0.5em;
   width: 300px;
 }
+form.grid-form div select.line,
+form.grid-form div input[type=password].line,
+form.grid-form div input[type=file].line,
+form.grid-form div input[type=date].line,
+form.grid-form div input[type=datetime-local].line,
+form.grid-form div input[type=number].line,
+form.grid-form div input[type=tel].line,
+form.grid-form div textarea.line,
+form .form-section div select.line,
+form .form-section div input[type=password].line,
+form .form-section div input[type=file].line,
+form .form-section div input[type=date].line,
+form .form-section div input[type=datetime-local].line,
+form .form-section div input[type=number].line,
+form .form-section div input[type=tel].line,
+form .form-section div textarea.line {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 1px solid;
+}
 form.grid-form div select:focus,
-form.grid-form div input[type=text]:focus,
 form.grid-form div input[type=password]:focus,
 form.grid-form div input[type=file]:focus,
 form.grid-form div input[type=date]:focus,
@@ -752,7 +774,6 @@ form.grid-form div input[type=number]:focus,
 form.grid-form div input[type=tel]:focus,
 form.grid-form div textarea:focus,
 form .form-section div select:focus,
-form .form-section div input[type=text]:focus,
 form .form-section div input[type=password]:focus,
 form .form-section div input[type=file]:focus,
 form .form-section div input[type=date]:focus,
@@ -760,15 +781,15 @@ form .form-section div input[type=datetime-local]:focus,
 form .form-section div input[type=number]:focus,
 form .form-section div input[type=tel]:focus,
 form .form-section div textarea:focus {
+  border-radius: 40px;
   outline: none;
   border: 1px solid #ffddba;
 }
-form.grid-form div select::-moz-placeholder, form.grid-form div input[type=text]::-moz-placeholder, form.grid-form div input[type=password]::-moz-placeholder, form.grid-form div input[type=file]::-moz-placeholder, form.grid-form div input[type=date]::-moz-placeholder, form.grid-form div input[type=datetime-local]::-moz-placeholder, form.grid-form div input[type=number]::-moz-placeholder, form.grid-form div input[type=tel]::-moz-placeholder, form.grid-form div textarea::-moz-placeholder, form .form-section div select::-moz-placeholder, form .form-section div input[type=text]::-moz-placeholder, form .form-section div input[type=password]::-moz-placeholder, form .form-section div input[type=file]::-moz-placeholder, form .form-section div input[type=date]::-moz-placeholder, form .form-section div input[type=datetime-local]::-moz-placeholder, form .form-section div input[type=number]::-moz-placeholder, form .form-section div input[type=tel]::-moz-placeholder, form .form-section div textarea::-moz-placeholder {
+form.grid-form div select::-moz-placeholder, form.grid-form div input[type=password]::-moz-placeholder, form.grid-form div input[type=file]::-moz-placeholder, form.grid-form div input[type=date]::-moz-placeholder, form.grid-form div input[type=datetime-local]::-moz-placeholder, form.grid-form div input[type=number]::-moz-placeholder, form.grid-form div input[type=tel]::-moz-placeholder, form.grid-form div textarea::-moz-placeholder, form .form-section div select::-moz-placeholder, form .form-section div input[type=password]::-moz-placeholder, form .form-section div input[type=file]::-moz-placeholder, form .form-section div input[type=date]::-moz-placeholder, form .form-section div input[type=datetime-local]::-moz-placeholder, form .form-section div input[type=number]::-moz-placeholder, form .form-section div input[type=tel]::-moz-placeholder, form .form-section div textarea::-moz-placeholder {
   opacity: 50%;
   font-family: "ESKlarheit-Book";
 }
 form.grid-form div select::placeholder,
-form.grid-form div input[type=text]::placeholder,
 form.grid-form div input[type=password]::placeholder,
 form.grid-form div input[type=file]::placeholder,
 form.grid-form div input[type=date]::placeholder,
@@ -777,7 +798,6 @@ form.grid-form div input[type=number]::placeholder,
 form.grid-form div input[type=tel]::placeholder,
 form.grid-form div textarea::placeholder,
 form .form-section div select::placeholder,
-form .form-section div input[type=text]::placeholder,
 form .form-section div input[type=password]::placeholder,
 form .form-section div input[type=file]::placeholder,
 form .form-section div input[type=date]::placeholder,
