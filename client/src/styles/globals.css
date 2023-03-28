@@ -129,7 +129,7 @@
   height: 1.5em;
   vertical-align: top;
   background-position: center;
-  border: 2px solid #418c3d;
+  border: 2px solid #ffb6ee;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -140,13 +140,13 @@
   filter: brightness(90%);
 }
 .form-check-input:focus {
-  border-color: #20451e;
+  border-color: #ff50d7;
   outline: 0;
-  box-shadow: 0 0 0 0.15em #418c3d;
+  box-shadow: 0 0 0 0.15em #ffb6ee;
 }
 .form-check-input:checked {
-  background-color: #20451e;
-  border-color: #20451e;
+  background-color: #ff50d7;
+  border-color: #ff50d7;
 }
 
 .form-check-input[type=checkbox]:disabled {
@@ -158,7 +158,7 @@
 
 .form-check-input[type=radio] {
   border-radius: 50%;
-  background-color: #20451e;
+  background-color: #ff50d7;
 }
 .form-check-input[type=radio]:checked {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
@@ -335,9 +335,9 @@ button.showPassword:hover {
 }
 .pending-event-card {
   grid-column: 1/2;
-  background-color: #73c06f;
+  background-color: #ffe9fa;
+  border: 1px solid #ffb6ee;
   border-radius: 0.25em;
-  border: 1px solid #418c3d;
   padding: 1em;
   margin: 1em 0;
   height: -moz-fit-content;
@@ -847,9 +847,9 @@ form.grid-form .form-section,
 form .form-section .form-section {
   padding: 2em 2em;
   grid-column: 1/2;
-  background-color: #73c06f;
+  background-color: #ffe9fa;
+  border: 1px solid #ffb6ee;
   border-radius: 0.25em;
-  border: 1px solid #418c3d;
 }
 form.grid-form .form-section h3,
 form .form-section .form-section h3 {
@@ -2076,6 +2076,18 @@ html body .main {
   grid-column: 2/4;
 }
 
+.article .menstrual-reminder {
+  margin-top: 2em;
+  background-color: #ffe9fa;
+  padding: 2em;
+  border-radius: 0.25em;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid #ffb6ee;
+}
+.article .menstrual-reminder h3 {
+  margin-top: 0;
+}
 .article ul li {
   margin-bottom: 0.5rem;
 }/*# sourceMappingURL=globals.css.map */

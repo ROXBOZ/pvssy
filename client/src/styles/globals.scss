@@ -71,6 +71,17 @@ html {
 }
 
 .article {
+  .menstrual-reminder {
+    margin-top: $gap;
+    background-color: lighten($color2, 30%);
+    padding: $gap;
+    border-radius: $border-radius;
+    width: fit-content;
+    border: $border-solid lighten($color2, 20%);
+    h3 {
+      margin-top: 0;
+    }
+  }
   ul {
     li {
       margin-bottom: 0.5rem;

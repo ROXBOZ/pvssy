@@ -29,11 +29,15 @@
 
 /*-----Forms-----*/
 
+@mixin lighter-bloc($color) {
+  background-color: lighten($color, 30%);
+  border: $border-solid lighten($color, 20%);
+}
+
 @mixin form-section {
   grid-column: 1/2;
-  background-color: lighten($color3, 40%);
+  @include lighter-bloc($color2);
   border-radius: $border-radius;
-  border: $border-solid lighten($color3, 20%);
 }
 
 /*-----Stick-----*/

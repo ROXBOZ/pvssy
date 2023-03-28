@@ -260,10 +260,10 @@ const PainArticle = () => {
             {highlightParagraphs(painData.norms)}
 
             {painData.tags.includes("règles") && (
-              <>
+              <div className="menstrual-reminder">
                 <h3>Rappel sur le cycle menstruel</h3>
                 {highlightParagraphs(menstrualReminder)}
-              </>
+              </div>
             )}
             <h3>Vie quotidienne</h3>
             {highlightParagraphs(painData.routine)}

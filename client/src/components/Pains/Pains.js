@@ -21,7 +21,7 @@ const Pains = () => {
       // "clitoris",
       // "vulve",
       "utérus",
-      "ovaires",
+      // "ovaires",
       // "anus",
       "règles",
       "pénétration",
