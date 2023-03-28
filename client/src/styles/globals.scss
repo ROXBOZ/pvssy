@@ -73,11 +73,10 @@ html {
 .article {
   .menstrual-reminder {
     margin-top: $gap;
-    background-color: lighten($color2, 30%);
-    padding: $gap;
+    padding: $padding-sm;
     border-radius: $border-radius;
     width: fit-content;
-    border: $border-solid lighten($color2, 20%);
+    @include lighter-bloc($color1);
     h3 {
       margin-top: 0;
     }

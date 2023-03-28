@@ -223,7 +223,8 @@ button.square {
   padding: 0.25em 0.5em;
 }
 button:hover {
-  background-color: #ffe9fa;
+  color: white;
+  background-color: #9f32ff;
   border: transparent 1px solid;
 }
 button:disabled {
@@ -527,6 +528,9 @@ footer {
   align-items: center;
   gap: 1em;
 }
+footer .logo {
+  color: #9637f0;
+}
 footer a {
   color: #1f042f;
 }
@@ -557,6 +561,9 @@ footer .footer-main .footer-main-col:first-child {
 footer .footer-main .footer-main-col:first-child .footer-main-buttons-container {
   display: flex;
   gap: 1em;
+}
+footer .footer-main .footer-main-col:first-child .footer-main-buttons-container button {
+  font-size: 80%;
 }
 footer .footer-main .footer-main-col:first-child p {
   margin-bottom: 0;
@@ -1157,7 +1164,7 @@ form .form-section .form-dropdown-suggestions li {
   header .logo {
     font-size: 1.5rem;
     font-family: "ESRebond";
-    color: #1f042f;
+    color: #9637f0;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -1202,10 +1209,15 @@ form .form-section .form-dropdown-suggestions li {
     border: none;
   }
   header nav.horizontal ul li a:hover {
-    background-color: #ffe9fa;
+    background-color: #9f32ff;
+    color: white;
   }
   header nav.horizontal ul li a.active {
-    background-color: #fcdbce;
+    background-color: #ffe9fa;
+  }
+  header nav.horizontal ul li a.active:hover {
+    background-color: #9f32ff;
+    color: white;
   }
   header nav.horizontal ul li .logout-header {
     display: flex;
@@ -1500,6 +1512,7 @@ a.term span {
   margin-top: 0;
   position: relative;
   z-index: 999;
+  padding-left: 0;
 }
 .category-submenu.fixed {
   position: fixed;
@@ -1892,6 +1905,7 @@ p.pretitle,
 li.pretitle {
   font-family: "ESKlarheit-Bold";
   text-transform: uppercase;
+  color: #f5733c;
   letter-spacing: 0.5px;
   padding-bottom: 0;
   margin-bottom: 0;
@@ -1919,14 +1933,11 @@ a {
   width: -moz-fit-content;
   width: fit-content;
 }
-a.arrow-link {
-  background-color: yellow;
-}
-a.arrow-link:before {
-  content: "> ";
+a.arrow-link:after {
+  content: " ↳";
 }
 a:hover {
-  border: none;
+  border-color: transparent;
 }
 
 sup {
@@ -1986,7 +1997,7 @@ hr {
 /*-----Ratio Scale-----*/
 h4,
 .h4 {
-  font-family: "ESRebond";
+  font-family: "ESKlarheit-Medium";
   font-size: 1.414rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
@@ -2003,7 +2014,7 @@ h4:first-letter,
 
 h3,
 .h3 {
-  font-family: "ESRebond";
+  font-family: "ESKlarheit-Medium";
   font-size: 1.999396rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
@@ -2020,7 +2031,7 @@ h3:first-letter,
 
 h2,
 .h2 {
-  font-family: "ESRebond";
+  font-family: "ESKlarheit-Medium";
   font-size: 2.827145944rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
@@ -2037,7 +2048,7 @@ h2:first-letter,
 
 h1,
 .h1 {
-  font-family: "ESRebond";
+  font-family: "ESKlarheit-Medium";
   font-size: 3.9975843648rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
@@ -2110,12 +2121,12 @@ html body .main {
 
 .article .menstrual-reminder {
   margin-top: 2em;
-  background-color: #ffe9fa;
   padding: 2em;
   border-radius: 40px;
   width: -moz-fit-content;
   width: fit-content;
-  border: 1px solid #ffb6ee;
+  background-color: #fcdbce;
+  border: 1px solid #fab99d;
 }
 .article .menstrual-reminder h3 {
   margin-top: 0;

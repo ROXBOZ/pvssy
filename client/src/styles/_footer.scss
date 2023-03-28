@@ -1,4 +1,7 @@
 footer {
+  .logo {
+    color: $color6;
+  }
   a {
     color: $txt-color;
   }
@@ -22,6 +25,9 @@ footer {
         gap: $demi-gap;
         width: fit-content;
         .footer-main-buttons-container {
+          button {
+            font-size: $smaller-text;
+          }
           display: flex;
           gap: $demi-gap;
         }

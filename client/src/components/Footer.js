@@ -30,11 +30,11 @@ const Footer = () => {
     <footer>
       <div className="footer-main">
         <div className="footer-main-col">
-          <p className="h2">
+          <p className="h3">
             Let’s <span className="logo">pvssy talk</span> !
           </p>
           <div className="footer-main-buttons-container">
-            <button>inscription newsletter</button>
+            <button>newsletter</button>
             <button>faire un don</button>
           </div>
         </div>
@@ -47,10 +47,25 @@ const Footer = () => {
               <Link to="conditions-generales">conditions générales</Link>
             </div>
             <div className="nav-section">
-              <Link to="*">contact</Link>
-              <Link to="https://www.facebook.com/pvssytalk/">Facebook</Link>
-              <Link to="https://www.instagram.com/pvssy_talk/">Instagram</Link>
-              <Link to="https://www.linkedin.com/company/pvssy-talk/">
+              <Link to="*" className="arrow-link">
+                contact
+              </Link>
+              <Link
+                className="arrow-link"
+                to="https://www.facebook.com/pvssytalk/"
+              >
+                Facebook
+              </Link>
+              <Link
+                className="arrow-link"
+                to="https://www.instagram.com/pvssy_talk/"
+              >
+                Instagram
+              </Link>
+              <Link
+                className="arrow-link"
+                to="https://www.linkedin.com/company/pvssy-talk/"
+              >
                 LinkedIn
               </Link>
             </div>

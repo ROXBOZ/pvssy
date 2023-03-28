@@ -41,7 +41,7 @@ li {
   &.pretitle {
     font-family: $font-bold;
     text-transform: uppercase;
-    // color: $color1;
+    color: $color1;
     letter-spacing: 0.5px;
     padding-bottom: 0;
     margin-bottom: 0;
@@ -67,14 +67,14 @@ a {
   width: fit-content;
 
   &.arrow-link {
-    &:before {
-      content: "> ";
+    &:after {
+      content: " ↳";
+      // content: " ↗";
     }
-    background-color: yellow;
   }
 
   &:hover {
-    border: none;
+    border-color: transparent;
   }
 }
 
@@ -160,7 +160,7 @@ $level-size: $type-base-size;
 
   h#{$level},
   .h#{$level} {
-    font-family: $font-logo;
+    font-family: $font-medium;
     font-size: $level-size;
     line-height: calc(2px + 2ex + 2px);
     //margin-bottom: 0.65em;

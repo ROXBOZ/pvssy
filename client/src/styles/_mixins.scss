@@ -8,10 +8,15 @@
   border-radius: $border-radius;
   border: none;
   &:hover {
-    background-color: lighten($color2, 30%);
+    background-color: darken($color5, 20%);
+    color: white;
   }
   &.active {
-    background-color: lighten($color1, 30%);
+    background-color: lighten($color2, 30%);
+    &:hover {
+      background-color: darken($color5, 20%);
+      color: white;
+    }
   }
 }
 

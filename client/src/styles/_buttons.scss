@@ -12,7 +12,8 @@
     padding: 0.25em 0.5em;
   }
   &:hover {
-    background-color: lighten($color2, 30%);
+    color: white;
+    background-color: darken($color5, 20%);
     border: transparent $border-solid;
   }
   &:disabled {
