@@ -34,11 +34,12 @@ const Header = () => {
 
       <nav className={isOpen ? "vertical" : "horizontal"}>
         <ul>
-          <li>
+          <li>|</li>
+          {/* <li>
             <NavLink className="hidden" onClick={handleNavLink} to="/">
               Home
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink onClick={handleNavLink} to="a-propos">
               À propos
@@ -54,13 +55,11 @@ const Header = () => {
               S’informer
             </NavLink>
           </li> */}
-
           <li>
             <NavLink onClick={handleNavLink} to="agenda">
               Agenda
             </NavLink>
           </li>
-
           <li>
             {userProfile ? (
               <div className="logout-header">

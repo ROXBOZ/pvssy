@@ -207,6 +207,9 @@ button {
   height: fit-content;
   cursor: pointer;
 }
+button.square {
+  padding: 0.25em 0.5em;
+}
 button:hover {
   background-color: #ffe9fa;
   border: transparent 1px solid;
@@ -313,7 +316,7 @@ button.showPassword:hover {
   overflow: hidden;
 }
 .card-grid .link-card.ressource .card {
-  background-color: #f5733c;
+  background-color: #cf98ff;
 }
 .card-grid .link-card.agenda .card {
   display: flex;
@@ -417,32 +420,29 @@ button.showPassword:hover {
 .exercises-container {
   grid-column: 1/5;
 }
-.exercises-container .exercise {
-  padding: 1em 0;
-}
-.exercises-container .exercise h3 {
-  margin-top: 0;
-}
-.exercises-container .exercise p {
-  margin-bottom: 0;
-}
 .exercises-container .exercise .exercise-closed {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2em;
-  width: 100%;
+  border-bottom: 1px solid;
+  padding: 1em 0;
+  align-items: baseline;
 }
 @media screen and (max-width: 576px) {
   .exercises-container .exercise .exercise-closed {
     grid-template-columns: 1fr;
   }
 }
-.exercises-container .exercise .exercise-closed .exercise-text {
+.exercises-container .exercise .exercise-closed h2,
+.exercises-container .exercise .exercise-closed p {
+  padding: 0;
+  margin: 0;
+}
+.exercises-container .exercise .exercise-closed p {
   grid-column: 2/4;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #f5733c;
+}
+.exercises-container .exercise .exercise-closed button {
+  grid-column: 4/5;
 }
 .exercises-container .exercise .exercise-open {
   animation: animationOpacity 0.4s ease-in;
@@ -468,26 +468,27 @@ button.showPassword:hover {
 }
 .exercises-container .exercise .exercise-open .exercise-article .prealable {
   font-family: "ESKlarheit-Medium";
-  color: #f2510c;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-right: 1em;
 }
 .exercises-container .exercise .exercise-open .exercise-article .prealable p {
-  padding-bottom: 1em;
-  border-bottom: 1px solid;
   margin-bottom: 1em;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions {
   grid-column: 2/5;
-  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+.exercises-container .exercise .exercise-open .exercise-article .instructions h3 {
+  margin-top: 0;
+}
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step {
   grid-column: 2/4;
   margin-bottom: 2em;
+  align-items: center;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step:last-child {
   margin-bottom: 0;
@@ -504,9 +505,6 @@ button.showPassword:hover {
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step .instructions-step-open:first-of-type {
   margin-top: 1em;
-}
-.exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step h3 .counter {
-  color: #f5733c;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step p {
   margin-bottom: 1em;
@@ -552,7 +550,7 @@ footer .footer-main .footer-main-col:first-child p {
   margin-bottom: 0;
 }
 footer .footer-main .footer-main-col:nth-child(2) {
-  grid-column: 3/5;
+  grid-column: 2/5;
   grid-row: 1/2;
 }
 footer .footer-main .footer-main-col:nth-child(2) nav {
@@ -1157,22 +1155,21 @@ form .form-section .form-dropdown-suggestions li {
   }
 }
 @media (min-width: 768px) {
+  header nav .hidden {
+    display: none;
+  }
   header nav.horizontal {
     grid-column: 2/5;
   }
-  header nav.horizontal .hidden {
-    display: none;
-  }
   header nav.horizontal ul {
-    padding-left: 0;
-    margin-left: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding-left: 0;
   }
   header nav.horizontal ul li {
-    align-items: center;
+    margin-left: 0;
     list-style: none;
     display: flex;
   }

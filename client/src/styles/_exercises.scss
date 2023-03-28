@@ -2,26 +2,21 @@
   grid-column: 1/5;
 
   .exercise {
-    padding: $demi-gap 0;
-
-    h3 {
-      margin-top: 0;
-    }
-
-    p {
-      margin-bottom: 0;
-    }
-
     .exercise-closed {
       @include grid;
-      width: 100%;
-
-      .exercise-text {
+      border-bottom: $border-solid;
+      padding: $demi-gap 0;
+      align-items: baseline;
+      h2,
+      p {
+        padding: 0;
+        margin: 0;
+      }
+      p {
         grid-column: 2/4;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: $border-solid $color1;
+      }
+      button {
+        grid-column: 4/5;
       }
     }
 
@@ -41,26 +36,31 @@
 
         .prealable {
           font-family: $font-medium;
-          color: darken($color1, 10%);
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+          padding-right: $demi-gap;
 
           p {
-            padding-bottom: $demi-gap;
-            border-bottom: $border-solid;
+            // padding-bottom: $demi-gap;
+            // border-bottom: $border-solid;
             margin-bottom: $demi-gap;
           }
         }
         .instructions {
           grid-column: 2/5;
-          padding: 0;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+          h3 {
+            margin-top: 0;
+          }
+
           .instructions-step {
+            // padding: 0 $padding-sm;
             grid-column: 2/4;
             margin-bottom: $gap;
+            align-items: center;
             &:last-child {
               margin-bottom: 0;
             }
@@ -78,12 +78,6 @@
                 margin-top: $demi-gap;
               }
               animation: animationOpacity $animation-transition ease-in;
-            }
-
-            h3 {
-              .counter {
-                color: $color1;
-              }
             }
             p {
               margin-bottom: $demi-gap;

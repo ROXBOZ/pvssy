@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { createParagraph } from "../utils/createParagraphs";
 
 const Exercise = ({ exercise }) => {
@@ -13,15 +13,15 @@ const Exercise = ({ exercise }) => {
         <div className="instructions-step" key={index}>
           <div className="instructions-step-closed">
             <h3 className="h4">
-              <span className="counter">#&thinsp;{index + 1}</span> 
+              <span className="counter">&thinsp;{index + 1}   </span> 
               {step.stepTitle}
             </h3>
-            <button className="icon-button" onClick={() => showOneStep(index)}>
-              <FontAwesomeIcon
-                id="chevron-icon"
-                className={showStep[index] ? "open" : "close"}
-                icon={faChevronDown}
-              />
+            <button className="square" onClick={() => showOneStep(index)}>
+              {showStep[index] ? (
+                <FontAwesomeIcon icon={faMinus} />
+              ) : (
+                <FontAwesomeIcon icon={faPlus} />
+              )}
             </button>
           </div>
           {showStep[index] && (
@@ -41,18 +41,18 @@ const Exercise = ({ exercise }) => {
   };
 
   const showOneStep = (index) => {
+    console.log("showStep :", showStep);
     setShowStep((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
   return (
     <div className="exercise">
       <div className="exercise-closed">
-        <div className="exercise-text">
-          <h2 className="h3">{exercise.title}</h2>
-          <button onClick={() => setShowDetails(!showDetails)}>
-            {showDetails ? "fermer" : "consulter"}
-          </button>
-        </div>
+        <h2 className="h3">{exercise.title}</h2>
+        {showDetails ? <span>par Fiona Bourdon</span> : <p>{exercise.intro}</p>}
+        <button onClick={() => setShowDetails(!showDetails)}>
+          {showDetails ? "fermer" : "en savoir +"}
+        </button>
       </div>
 
       <div>
