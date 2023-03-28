@@ -22,9 +22,12 @@
     position: relative;
     line-height: 1.75;
 
+    a {
+      color: $txt-color;
+    }
+
     &:before {
       position: absolute;
-
       left: -20px;
       content: "↗";
       transition: $animation-transition;
@@ -44,20 +47,31 @@
     &:hover {
       svg {
         circle {
-          fill: $color1 !important;
+          fill: darken($color5, 20%) !important;
+        }
+        path {
+          fill: white;
         }
       }
     }
   }
 
   .copy-url-button-container {
+    $color: $color5;
     display: flex;
     align-items: top;
     gap: 0.5em;
 
     .copy-url-button {
+      background-color: $color;
+      .link-icon {
+        color: $txt-color;
+      }
       &:hover {
-        background-color: $color1;
+        background-color: darken($color, 20%);
+        .link-icon {
+          color: white;
+        }
       }
     }
 
@@ -90,7 +104,7 @@
   }
 }
 
-$tabbed-navigation-color: $color1;
+$tabbed-navigation-color: $color5;
 
 .tabbed-navigation-banner {
   display: flex;
@@ -116,10 +130,11 @@ $tabbed-navigation-color: $color1;
   }
 
   .tabbed-navigation {
-    background-color: rgb(255, 255, 255);
+    background-color: $bg-color;
+    border: $border-solid $tabbed-navigation-color;
     display: flex;
     justify-content: flex-start;
-    border-radius: 40px;
+    border-radius: $border-radius;
     text-align: center;
     white-space: nowrap;
     overflow: auto;
@@ -141,7 +156,7 @@ $tabbed-navigation-color: $color1;
       align-items: center;
       justify-content: center;
       border: none;
-      border-radius: 40px;
+      border-radius: $border-radius;
       line-height: 44px;
       text-decoration: initial;
       cursor: pointer;
@@ -155,7 +170,7 @@ $tabbed-navigation-color: $color1;
       }
       &.active {
         background-color: $tabbed-navigation-color;
-        color: white;
+        // color: white;
         &:hover {
           background-color: darken($tabbed-navigation-color, 5%);
         }

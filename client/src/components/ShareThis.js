@@ -46,7 +46,12 @@ const ShareThis = () => {
           to={`mailto:?body=${shareUrl}`}
           onClick={handleShareButtonClick}
         >
-          <EmailIcon size={25} round={true} bgStyle={{ fill: "#d95720" }} />
+          <EmailIcon
+            size={25}
+            round={true}
+            iconFillColor={{ fill: "#1f042f" }}
+            bgStyle={{ fill: "#cf98ff" }}
+          />
           <span className="tooltiptext">Email</span>
         </Link>
         <Link
@@ -54,7 +59,12 @@ const ShareThis = () => {
           to={`whatsapp://send?text=${shareUrl}`}
           onClick={handleShareButtonClick}
         >
-          <WhatsappIcon size={25} round={true} bgStyle={{ fill: "#d95720" }} />
+          <WhatsappIcon
+            size={25}
+            round={true}
+            iconFillColor={{ fill: "#1f042f" }}
+            bgStyle={{ fill: "#cf98ff" }}
+          />
           <span className="tooltiptext">WhatsApp</span>
         </Link>
         <Link
@@ -62,7 +72,12 @@ const ShareThis = () => {
           to={`https://telegram.me/share/url?url=${shareUrl}`}
           onClick={handleShareButtonClick}
         >
-          <TelegramIcon size={25} round={true} bgStyle={{ fill: "#d95720" }} />
+          <TelegramIcon
+            size={25}
+            round={true}
+            iconFillColor={{ fill: "#1f042f" }}
+            bgStyle={{ fill: "#cf98ff" }}
+          />
           <span className="tooltiptext">Telegram</span>
         </Link>
         <div className="copy-url-button-container">

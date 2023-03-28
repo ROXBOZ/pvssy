@@ -33,7 +33,7 @@
 
 @media screen and (min-width: map-get($breakpoints, "sm")) {
   .breadcrumbs {
-    font-size: 80%;
+    font-size: $smaller-text;
     grid-column: 1/6;
   }
 }

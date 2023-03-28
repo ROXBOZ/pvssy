@@ -135,7 +135,7 @@ function App() {
             </PainsContextProvider>
           </EventsContextProvider>
         </div>
-        <DonationBanner />
+        {/* <DonationBanner /> */}
         <Footer />
       </AuthContextProvider>
     </>

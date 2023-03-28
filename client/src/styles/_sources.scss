@@ -51,7 +51,7 @@
       grid-template-columns: 0 1fr;
       gap: 1.75em;
       align-items: start;
-      font-size: 80%;
+      font-size: $smaller-text;
       line-height: $lineheight;
 
       &:before {

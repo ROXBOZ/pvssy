@@ -1,7 +1,8 @@
 /*-----Colors-----*/
 
 $txt-color: #1f042f;
-$bg-color: #faf8f4;
+// $bg-color: #faf8f4;
+$bg-color: #fff6ed;
 
 $color1: #f5733c;
 $color2: #ff50d7;
@@ -62,6 +63,7 @@ $font-bold: "ESKlarheit-Bold";
 $font-size-basis: 16px;
 $lineheight: 1.5;
 $chperline: 70ch;
+$smaller-text: 80%;
 
 /*-----Margins-----*/
 
@@ -82,7 +84,8 @@ $gap: 2em;
 /*-----Borders-----*/
 
 $border-solid: 1px solid;
-$border-radius: 0.25em;
+// $border-radius: 0.25em;
+$border-radius: 40px;
 
 /*-----Animations-----*/
 

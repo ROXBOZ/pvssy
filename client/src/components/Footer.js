@@ -9,30 +9,63 @@ import { ReactComponent as MailChimpIcon } from "../assets/images/mailchimp.svg"
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const SocialMediaLink = ({ icon: Icon, name, to }) => {
-    return (
-      <a
-        className="tooltip"
-        href={to}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon />
-        <span className="screen-reader-text">
-          (ouvre un nouvel onglet, redirection vers {name})
-        </span>
-        <p className="tooltiptext">{name}</p>
-      </a>
-    );
-  };
+  // const SocialMediaLink = ({ icon: Icon, name, to }) => {
+  //   return (
+  //     <a
+  //       className="tooltip"
+  //       href={to}
+  //       target="_blank"
+  //       rel="noopener noreferrer"
+  //     >
+  //       <Icon />
+  //       <span className="screen-reader-text">
+  //         (ouvre un nouvel onglet, redirection vers {name})
+  //       </span>
+  //       <p className="tooltiptext">{name}</p>
+  //     </a>
+  //   );
+  // };
 
   return (
     <footer>
-      <div className="footer-content">
-        <p className="h4">
+      <div className="footer-main">
+        <div className="footer-main-col">
+          <p className="h2">
+            Let’s <span className="logo">pvssy talk</span> !
+          </p>
+          <div className="footer-main-buttons-container">
+            <button>inscription newsletter</button>
+            <button>faire un don</button>
+          </div>
+        </div>
+        <div className="footer-main-col">
+          <nav>
+            <div className="nav-section">
+              <Link to="a-propos">à propos</Link>
+              <Link to="*">devenir membre</Link>
+              <Link to="*">presse kit</Link>
+              <Link to="conditions-generales">conditions générales</Link>
+            </div>
+            <div className="nav-section">
+              <Link to="*">contact</Link>
+              <Link to="https://www.facebook.com/pvssytalk/">Facebook</Link>
+              <Link to="https://www.instagram.com/pvssy_talk/">Instagram</Link>
+              <Link to="https://www.linkedin.com/company/pvssy-talk/">
+                LinkedIn
+              </Link>
+            </div>
+            <div className="nav-section">
+              <Link to="/">confidentialité</Link>
+              <Link to="/">crédits</Link>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        {/* <p className="h4">
           Let’s <span className="logo">pvssy talk</span> !
-        </p>
-        <div className="social-medias">
+        </p> */}
+        {/* <div className="social-medias">
           <SocialMediaLink
             icon={InstagramIcon}
             name="Instagram"
@@ -54,10 +87,8 @@ const Footer = () => {
             name="Email"
             to="mailto:info@pvssy-talk.org"
           />
-        </div>
-        <p className="copyrights">
-          © <span className="logo">pvssy talk</span>, {currentYear}
-        </p>
+        </div> */}
+        <p className="copyrights">© copyrights {currentYear}</p>
       </div>
     </footer>
   );
