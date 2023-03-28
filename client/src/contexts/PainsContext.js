@@ -29,7 +29,7 @@ export const PainsContextProvider = (props) => {
       : null;
 
   const fetchData = async (url, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Origin", "*");
     try {
       setLoading(true);
       const response = await fetch(url);
@@ -60,7 +60,7 @@ export const PainsContextProvider = (props) => {
   };
 
   const fetchRelatedSources = async (res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Origin", "*");
     var requestOptions = {
       method: "GET",
       redirect: "follow",
@@ -95,7 +95,7 @@ export const PainsContextProvider = (props) => {
     }
   };
   const fetchRelatedTerms = async (res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Origin", "*");
     const requestOptions = {
       method: "GET",
       redirect: "follow",
@@ -116,7 +116,7 @@ export const PainsContextProvider = (props) => {
     }
   };
   const fetchRelatedExercises = async (res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Origin", "*");
     const requestOptions = {
       method: "GET",
       redirect: "follow",

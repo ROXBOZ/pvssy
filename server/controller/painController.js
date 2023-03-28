@@ -1,7 +1,7 @@
 import painModel from "../models/painModel.js";
 
 const getAllPains = async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Origin", "*");
   try {
     const allPains = await painModel.find({});
     res.status(200).json({
@@ -17,6 +17,7 @@ const getAllPains = async (req, res) => {
 };
 
 const addPain = async (req, res) => {
+  // res.header("Access-Control-Allow-Origin", "*");
   const {
     name,
     def,
@@ -58,7 +59,7 @@ const addPain = async (req, res) => {
       pleasure,
     });
     const savedPain = await newPain.save();
-
+    // res.header("Access-Control-Allow-Origin", "*");
     res.status(201).json({
       msg: "new pain added successfully",
       pain: {
@@ -101,7 +102,7 @@ const addPain = async (req, res) => {
 };
 
 const getOnePain = async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Origin", "*");
   const name = req.params.name;
 
   try {

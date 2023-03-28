@@ -157,7 +157,7 @@ const getPendingEvents = async (req, res) => {
 // POST
 
 const addEvent = async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Origin", "*");
 
   const {
     isPending,

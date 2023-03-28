@@ -10,7 +10,7 @@ const imageUpload = async (req, res) => {
       folder: "pvssy-avatar",
     });
     console.log("imgUpload", imgUpload);
-    res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Origin", "*");
     res.status(200).json({
       msg: "woop woop, image downloaded",
       userAvatar: imgUpload.url,
