@@ -28,7 +28,8 @@ export const PainsContextProvider = (props) => {
           .toUpperCase() + decodeURIComponent(segments[index + 1]).slice(1)
       : null;
 
-  const fetchData = async (url) => {
+  const fetchData = async (url, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     try {
       setLoading(true);
       const response = await fetch(url);
@@ -58,7 +59,8 @@ export const PainsContextProvider = (props) => {
     }
   };
 
-  const fetchRelatedSources = async () => {
+  const fetchRelatedSources = async (res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     var requestOptions = {
       method: "GET",
       redirect: "follow",
@@ -92,7 +94,8 @@ export const PainsContextProvider = (props) => {
       console.log("error :", error);
     }
   };
-  const fetchRelatedTerms = async () => {
+  const fetchRelatedTerms = async (res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     const requestOptions = {
       method: "GET",
       redirect: "follow",
@@ -112,7 +115,8 @@ export const PainsContextProvider = (props) => {
       console.log("error", error);
     }
   };
-  const fetchRelatedExercises = async () => {
+  const fetchRelatedExercises = async (res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     const requestOptions = {
       method: "GET",
       redirect: "follow",
