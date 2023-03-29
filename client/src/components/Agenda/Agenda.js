@@ -43,10 +43,10 @@ const Agenda = () => {
   return (
     <div>
       <dig className="grid-area">
-        <p className="centered">
+        {/* <p className="centered">
           Vous avez un évènement à proposer ?{" "}
           <Link to="/login">Connectez-vous</Link>.
-        </p>
+        </p> */}
 
         <div className="centered filter-dashboard">
           <div className="filter">

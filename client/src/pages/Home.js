@@ -32,20 +32,8 @@ const Home = () => {
 
   return (
     <div className="landing-view">
-      <h1>...</h1>
-
-      {/* <p style={{ backgroundColor: "red" }}>
-        douleurs (mais sans titre, sous-titre et filtres)
-      </p> */}
-
-      <HeadingArea
-        title="Agenda"
-        subtitle="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat unde
-          eum animi non. Eaque, nobis vitae corrupti error aliquid nihil
-          temporibus inventore necessitatibus, est cum dolorem laborum dolor,
-          rerum corporis."
-        level="h2"
-      />
+      <h1 className="logo">pvssy talk</h1>
+      <h2>pour une sexualité sans douleurs et sans tabous</h2>
       <Agenda />
     </div>
   );
