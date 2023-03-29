@@ -61,9 +61,15 @@ const startServer = () => {
 };
 
 async function controller() {
-  await mongoDBConnexion();
   addMiddlewares(); // always add middlewares before loading routes
   loadRoutes();
+
+  try {
+    await mongoDBConnexion();
+  } catch (error) {
+    console.log("error :", error);
+  }
+
   startServer();
 }
 controller();
