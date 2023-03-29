@@ -39,7 +39,11 @@ const addMiddlewares = () => {
     })
   );
 
-  app.use(cors());
+  const corsOptions = {
+    origin: "*",
+    credentials: true,
+  };
+  app.use(cors(corsOptions));
   cloudinaryConfig();
   app.use(passport.initialize());
   passport.use(jwtStrategy);
