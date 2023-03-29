@@ -39,13 +39,11 @@ const addMiddlewares = () => {
     })
   );
 
-  // CAN > ADD THIS CONST (1)
   const allowedUrls = [
     "https://pvssy-frontend.vercel.app",
     "http://localhost:3000",
   ];
 
-  // CAN > ADD THIS CONST (2)
   const corsOptionsDelegate = function (req, callback) {
     var corsOptions;
     if (allowedUrls.indexOf(req.header("Origin")) !== -1) {
@@ -55,8 +53,6 @@ const addMiddlewares = () => {
     }
     callback(null, corsOptions); // callback expects two parameters: error and options
   };
-
-  // ADD THE CORS OPTIONS DELEGATE AS OPTION OF APP.USE (3)
 
   app.use(cors(corsOptionsDelegate));
   cloudinaryConfig();
