@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { dateTimeConverter } from "../utils/dateConverter";
 import { generateColor } from "../utils/colorGenerator";
-import Agenda from "./Agenda";
+import Agenda from "../components/Agenda/Agenda";
 import { HeadingArea } from "../utils/HeadingArea";
 
 const Home = () => {

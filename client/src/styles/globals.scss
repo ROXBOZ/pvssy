@@ -70,6 +70,12 @@ html {
   }
 }
 
+.flex-center {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+
 .article {
   .menstrual-reminder {
     margin-top: $gap;

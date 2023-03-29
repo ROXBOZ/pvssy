@@ -218,17 +218,21 @@ const PainArticle = () => {
           <div className="article">
             <h2>Définition</h2>
             {highlightParagraphs(painData.def)}
+            <img
+              style={{ maxWidth: "70ch" }}
+              src={require(`../../assets/images/shemas/${painData.name}-shema-1.png`)}
+              alt={`shéma ${painData.name}`}
+            />
             <h2>Diagnostic</h2>
             {highlightParagraphs(painData.diag)}
+            <img
+              style={{ maxWidth: "70ch" }}
+              src={require(`../../assets/images/shemas/${painData.name}-shema-2.png`)}
+              alt={`shéma ${painData.name}`}
+            />
             <h2>Symptômes</h2>
             {highlightParagraphs(painData.sympt)}
-            <div className="article-illustration-container">
-              <img
-                className="article-illustration"
-                src="https://res.cloudinary.com/dkyialww7/image/upload/v1679401608/pain-img/Screenshot_2023-03-21_at_13.21.51_pqlhce.png"
-                alt={painData.name}
-              />
-            </div>
+
             <h2>Pourquoi ça m’arrive ?</h2>
             {highlightParagraphs(painData.why)}
             {painData.auto.length > 0 ? (
@@ -257,6 +261,13 @@ const PainArticle = () => {
             <h2>Lien à soi</h2>
             <h3>Image /schéma corporel</h3>
             {highlightParagraphs(painData.body)}
+            <div className="article-illustration-container">
+              <img
+                className="article-illustration"
+                src="https://res.cloudinary.com/dkyialww7/image/upload/v1679401608/pain-img/Screenshot_2023-03-21_at_13.21.51_pqlhce.png"
+                alt={painData.name}
+              />
+            </div>
             <h3>Normes genrées</h3>
             {highlightParagraphs(painData.norms)}
 

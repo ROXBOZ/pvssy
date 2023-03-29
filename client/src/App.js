@@ -9,7 +9,7 @@ import Donation from "./pages/Donate";
 import SeSoigner from "./pages/SeSoigner";
 import SInformer from "./pages/SInformer";
 import Shop from "./pages/Shop";
-import Agenda from "./pages/Agenda";
+import Agenda from "./components/Agenda/Agenda";
 import GeneralConditions from "./pages/GeneralConditions";
 import Breadcrumbs from "./components/Breadcrumbs";
 import Header from "./components/Header";
@@ -41,7 +41,6 @@ import { AuthContextProvider } from "./contexts/authContext";
 // utils
 import getToken from "./utils/getToken";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import DonationBanner from "./components/DonationBanner";
 import Exercises from "./pages/Exercises";
 import Suggestions from "./pages/Suggestions";
 

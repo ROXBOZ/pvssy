@@ -53,69 +53,20 @@
 
 .agenda-entry {
   margin-top: 2em;
-  width: 100vw;
-  width: -moz-fit-content;
-  width: fit-content;
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  padding-bottom: 1em;
+  border-bottom: 1px solid;
 }
-.agenda-entry .agenda-entry-pretitle {
-  position: relative;
-  font-family: "ESKlarheit-Bold";
-  padding-top: 0.5em;
-  display: flex;
-  gap: 1em;
-  align-items: center;
-}
-.agenda-entry .agenda-entry-pretitle:before {
-  top: -0.5em;
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 0;
-  border-top: 1px solid;
-}
-.agenda-entry .agenda-entry-title {
-  background-color: yellow;
-  display: flex;
-  align-items: centered;
-  width: 100%;
-  gap: 1em;
-}
-.agenda-entry:hover .agenda-entry-pretitle:before {
-  animation: border_anim 200ms linear forwards;
-}
-.agenda-entry .img-holder {
-  border: #faf8f4 2px solid;
-  height: 1.5em;
-  width: 1.5em;
-}
-.agenda-entry p + h3 {
-  margin-top: 0;
-  padding-top: 0;
-}
-.agenda-entry p {
-  margin-bottom: 0;
-}
-.agenda-entry .entry-title {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-  margin: 2em 0 1em;
-}
-.agenda-entry .entry-title h3 {
+.agenda-entry .agenda-entry-title h3 {
   margin: 0;
+  padding: 1rem 0;
+}
+.agenda-entry .flex-center {
+  justify-content: space-between;
 }
 
-@keyframes border_anim {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-}
 @keyframes animationOpacity {
   0% {
     opacity: 0;
@@ -329,7 +280,7 @@ button.showPassword:hover {
   overflow: hidden;
 }
 .card-grid .link-card.ressource .card {
-  background-color: #ce96ff;
+  background-color: #ff793f;
 }
 .card-grid .link-card.agenda .card {
   display: flex;
@@ -888,12 +839,6 @@ form.grid-form .form-section p,
 form .form-section .form-section p {
   grid-column: 1/5;
 }
-form.grid-form .flex-center,
-form .form-section .flex-center {
-  display: flex;
-  align-items: center;
-  gap: 2em;
-}
 form.grid-form .event-title-label,
 form.grid-form .event-shortDef-label,
 form.grid-form .event-longDef-label,
@@ -1250,7 +1195,7 @@ form .form-section .form-dropdown-suggestions li {
 .pain-illu-cover {
   width: 100%;
   border-radius: 40px;
-  aspect-ratio: 16/6;
+  aspect-ratio: 16/9;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: top;
@@ -2124,6 +2069,12 @@ html body .main {
 }
 .grid-area .centered {
   grid-column: 2/4;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  gap: 2em;
 }
 
 .article .menstrual-reminder {

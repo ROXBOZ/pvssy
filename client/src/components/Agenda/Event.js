@@ -29,7 +29,7 @@ const Event = () => {
   };
 
   return (
-    <div className="article event">
+    <div className="event">
       <div className="heading-area">
         <h1>{title}</h1>
         <p>
