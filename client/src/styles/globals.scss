@@ -66,7 +66,7 @@ html {
 .grid-area {
   @include grid;
   .centered {
-    grid-column: 2/4;
+    grid-column: #{$grid-center};
   }
 }
 
@@ -79,12 +79,21 @@ html {
 .vh-view {
   height: 100vh;
   background: $gradient;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: $padding-sm;
   text-align: center;
-  border-radius: $border-radius;
+  flex-direction: column;
+  display: flex;
+  align-items: flex-start;
+  header {
+    align-self: flex-start;
+    width: 96%;
+    .logo {
+      color: $txt-color;
+    }
+  }
+
+  h1 {
+    padding: 22vh $padding-sm;
+  }
 }
 
 //TODO REORGANIZE

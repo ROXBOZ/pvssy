@@ -132,7 +132,7 @@ const PainLexique = () => {
       <div className="grid-area">
         <p className="msg info centered">
           Retrouve tous{" "}
-          <Link to="/se-soigner/ressources/glossaire">
+          <Link to="/s-informer/ressources/glossaire">
             le glossaire de pvssy talk
           </Link>{" "}
           dans les ressources générales.

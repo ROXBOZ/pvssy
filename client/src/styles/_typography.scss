@@ -11,7 +11,7 @@
     margin-top: 0;
   }
   * {
-    grid-column: 2/4;
+    grid-column: #{$grid-center};
     height: fit-content;
   }
 

@@ -79,7 +79,7 @@ const Pains = () => {
             <Link
               className="link-card"
               to={{
-                pathname: `/se-soigner/douleurs/${p.name.toLowerCase()}/medical`,
+                pathname: `/s-informer/douleurs/${p.name.toLowerCase()}/medical`,
               }}
               key={p._id}
             >

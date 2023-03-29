@@ -48,7 +48,7 @@ const Exercise = ({ exercise }) => {
     <div className="exercise">
       <div className="exercise-closed">
         <h2 className="h3">{exercise.title}</h2>
-        {showDetails ? <span>par Fiona Bourdon</span> : <p>{exercise.intro}</p>}
+        {showDetails ? <p>par Fiona Bourdon</p> : <p>{exercise.intro}</p>}
         <button onClick={() => setShowDetails(!showDetails)}>
           {showDetails ? "fermer" : "en savoir +"}
         </button>

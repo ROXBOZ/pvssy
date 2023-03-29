@@ -67,7 +67,7 @@
 .additional-ressources {
   @include grid;
   ul {
-    grid-column: 2/4;
+    grid-column: #{$grid-center};
     padding-left: 0;
     li {
       gap: 1.75em;

@@ -98,7 +98,7 @@ a.term {
   }
 
   .glossary-column {
-    grid-column: 2/4;
+    grid-column: #{$grid-center};
 
     .letter-title:first-of-type {
       .h1 {

@@ -47,25 +47,10 @@ const Footer = () => {
               <Link to="conditions-generales">conditions générales</Link>
             </div>
             <div className="nav-section">
-              <Link to="*" className="arrow-link">
-                contact
-              </Link>
-              <Link
-                className="arrow-link"
-                to="https://www.facebook.com/pvssytalk/"
-              >
-                Facebook
-              </Link>
-              <Link
-                className="arrow-link"
-                to="https://www.instagram.com/pvssy_talk/"
-              >
-                Instagram
-              </Link>
-              <Link
-                className="arrow-link"
-                to="https://www.linkedin.com/company/pvssy-talk/"
-              >
+              <Link to="*">contact</Link>
+              <Link to="https://www.facebook.com/pvssytalk/">Facebook</Link>
+              <Link to="https://www.instagram.com/pvssy_talk/">Instagram</Link>
+              <Link to="https://www.linkedin.com/company/pvssy-talk/">
                 LinkedIn
               </Link>
             </div>

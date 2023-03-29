@@ -28,17 +28,17 @@ const Ressources = () => {
 
       <div className="card-grid">
         <ResourceCard
-          to="/se-soigner/ressources/glossaire"
+          to="/s-informer/ressources/glossaire"
           title="Glossaire"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
         />
         <ResourceCard
-          to="/se-soigner/ressources/exercices"
+          to="/s-informer/ressources/exercices"
           title="Exercices"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
         />
         <ResourceCard
-          to="/se-soigner/ressources/suggestions"
+          to="/s-informer/ressources/suggestions"
           title="Suggestions"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
         />

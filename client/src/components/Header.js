@@ -50,9 +50,7 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink style={{ opacity: "30%" }} to="*">
-              Se soigner{" "}
-            </NavLink>
+            <p style={{ opacity: "30%", paddingTop: "1em" }}>Se soigner</p>
           </li>
           <li>
             <NavLink onClick={handleNavLink} to="agenda">

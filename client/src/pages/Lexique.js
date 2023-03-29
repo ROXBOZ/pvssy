@@ -165,7 +165,7 @@ const Lexique = () => {
         <p className="msg info centered">
           <span>
             Tu peux également consulter le glossaire spécifique à{" "}
-            <Link to="../se-soigner/douleurs">chaque douleur</Link>.
+            <Link to="../s-informer/douleurs">chaque douleur</Link>.
           </span>
         </p>
       </div>
@@ -220,7 +220,7 @@ const Lexique = () => {
                       {term.relatedPain.map((pain, index) => (
                         <span className="related-pain">
                           <span> ↗ </span>
-                          <Link key={index} to={`/se-soigner/douleurs/${pain}`}>
+                          <Link key={index} to={`/s-informer/douleurs/${pain}`}>
                             {pain === "Sopk" ? (
                               <span className="acronym">{pain}</span>
                             ) : (

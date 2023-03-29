@@ -33,13 +33,6 @@ const Home = () => {
 
   return (
     <>
-      <div className="vh-view">
-        <h1 className="logo">
-          Bien s’informer sur ses douleurs pour mieux se réapproprier son corps
-          et sa sexualité.
-        </h1>
-      </div>
-
       <div className="grid-area">
         <div className="centered">
           <h2>Comprendre</h2>

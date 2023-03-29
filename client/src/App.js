@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import "./styles/globals.css";
 import { Navigate } from "react-router-dom";
 
@@ -46,10 +46,24 @@ import Suggestions from "./pages/Suggestions";
 
 function App() {
   const token = getToken();
+  const location = useLocation();
   return (
     <>
       <AuthContextProvider>
-        <Header />
+        {location.pathname !== "/" && <Header />}
+
+        {location.pathname === "/" && (
+          <>
+            <div className="vh-view">
+              <Header />
+              <h1 className="logo">
+                Bien s’informer sur ses douleurs pour mieux se réapproprier son
+                corps et sa sexualité.
+              </h1>
+            </div>
+          </>
+        )}
+
         <div className="main">
           <ScrollToTop />
           <Breadcrumbs />
@@ -60,43 +74,42 @@ function App() {
                   <Route index element={<Home />} />
                   <Route path="a-propos" element={<About />} />
                   <Route path="se-soigner" element={<SeSoigner />} />
-                  <Route path="se-soigner/douleurs" element={<Pains />} />
-
-                  <Route path="se-soigner/douleurs/:name" element={<Pain />}>
+                  <Route path="s-informer/douleurs" element={<Pains />} />
+                  <Route path="s-informer/douleurs/:name" element={<Pain />}>
                     <Route path="medical" element={<PainArticle />} />
                     <Route path="sexologie" element={<PainArticle />} />
                   </Route>
 
                   <Route
-                    path="se-soigner/ressources/glossaire"
+                    path="s-informer/ressources/glossaire"
                     element={<Lexique />}
                   />
                   <Route
-                    path="se-soigner/ressources/exercices"
+                    path="s-informer/ressources/exercices"
                     element={<Exercises />}
                   />
                   <Route
-                    path="se-soigner/ressources/suggestions"
+                    path="s-informer/ressources/suggestions"
                     element={<Suggestions />}
                   />
                   <Route
-                    path="se-soigner/douleurs/:name/glossaire"
+                    path="s-informer/douleurs/:name/glossaire"
                     element={<PainLexique />}
                   />
                   <Route
-                    path="se-soigner/douleurs/:name/glossaire/#:term"
+                    path="s-informer/douleurs/:name/glossaire/#:term"
                     element={<PainLexique />}
                   />
                   <Route
-                    path="se-soigner/douleurs/:name/exercices"
+                    path="s-informer/douleurs/:name/exercices"
                     element={<PainExercices />}
                   />
                   <Route
-                    path="se-soigner/douleurs/:name/suggestions"
+                    path="s-informer/douleurs/:name/suggestions"
                     element={<PainSuggestions />}
                   />
                   <Route
-                    path="se-soigner/ressources"
+                    path="s-informer/ressources"
                     element={<Ressources />}
                   />
                   <Route path="s-informer" element={<SInformer />} />

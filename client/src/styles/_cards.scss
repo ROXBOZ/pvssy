@@ -4,6 +4,7 @@
   @include grid;
 
   .link-card {
+    grid-column: span 4;
     border-bottom: none;
     color: $txt-color;
     display: flex;
@@ -69,7 +70,7 @@
     }
 
     &.article {
-      grid-column: span 2;
+      grid-column: span 6;
 
       .card {
         background: $gradient;

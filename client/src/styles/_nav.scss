@@ -2,12 +2,9 @@
 
 .category-submenu {
   width: 30vh;
-  grid-column: 1/2 !important;
-  grid-row: 3/6;
   margin-top: 0;
   position: relative;
   z-index: 999;
-  padding-left: 0;
 
   &.fixed {
     @include stick;
@@ -194,11 +191,10 @@ $tabbed-navigation-color: $color5;
 .article-container {
   @include grid;
   animation: opacityAnimation 500ms ease-in;
-  gap: 0;
   flex-direction: column;
 
   * {
-    grid-column: 2/5;
+    grid-column: #{$grid-center};
   }
 
   &.event {

@@ -25,7 +25,7 @@ const PainSuggestions = () => {
         <p className="msg info centered">
           <span>
             Retrouve{" "}
-            <Link to="/se-soigner/ressources/suggestions">
+            <Link to="/s-informer/ressources/suggestions">
               toutes les suggestions de pvssy talk
             </Link>{" "}
             dans les ressources générales.

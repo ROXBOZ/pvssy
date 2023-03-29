@@ -7,16 +7,19 @@
       border-bottom: $border-solid;
       padding: $demi-gap 0;
       align-items: baseline;
+      h2 {
+        grid-column: #{$grid-first-third};
+      }
       h2,
       p {
         padding: 0;
         margin: 0;
       }
       p {
-        grid-column: 2/4;
+        grid-column: #{$grid-center};
       }
       button {
-        grid-column: 4/5;
+        grid-column: #{$grid-last-third};
       }
     }
 
@@ -40,7 +43,7 @@
           flex-direction: column;
           justify-content: space-between;
           padding-right: $demi-gap;
-
+          grid-column: #{$grid-first-third};
           p {
             // padding-bottom: $demi-gap;
             // border-bottom: $border-solid;
@@ -48,7 +51,7 @@
           }
         }
         .instructions {
-          grid-column: 2/5;
+          grid-column: #{$grid-last-thirds};
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -57,8 +60,7 @@
           }
 
           .instructions-step {
-            // padding: 0 $padding-sm;
-            grid-column: 2/4;
+            grid-column: #{$grid-center};
             margin-bottom: $gap;
             align-items: center;
             &:last-child {

@@ -27,7 +27,7 @@
         border-bottom: none;
       }
       &:first-child {
-        grid-column: 1/2;
+        grid-column: #{$grid-first-third};
         p {
           width: 100%;
           margin-bottom: 0;
@@ -37,7 +37,7 @@
           }
         }
       }
-      grid-column: 2/5;
+      grid-column: #{$grid-last-thirds};
       .show-counter {
         color: $color6;
       }
