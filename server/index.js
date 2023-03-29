@@ -60,9 +60,10 @@ const startServer = () => {
   });
 };
 
-(async function controller() {
+async function controller() {
   await mongoDBConnexion();
   addMiddlewares(); // always add middlewares before loading routes
   loadRoutes();
   startServer();
-})();
+}
+controller();
