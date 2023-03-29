@@ -32,6 +32,9 @@
           width: 100%;
           margin-bottom: 0;
           border-bottom: $border-solid;
+          &:last-child {
+            border-bottom: none;
+          }
         }
       }
       grid-column: 2/5;

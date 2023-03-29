@@ -76,15 +76,40 @@ html {
   gap: $gap;
 }
 
+.vh-view {
+  height: 100vh;
+  background: $gradient;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $padding-sm;
+  text-align: center;
+  border-radius: $border-radius;
+}
+
+//TODO REORGANIZE
 .article {
+  img {
+    max-width: $chperline;
+    margin: $gap 0;
+  }
   .menstrual-reminder {
-    margin-top: $gap;
-    padding: $padding-sm;
+    margin-top: $gap * 2;
+    padding: $border-radius;
     border-radius: $border-radius;
     width: fit-content;
-    @include lighter-bloc($color1);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: $gap * 2;
     h3 {
       margin-top: 0;
+    }
+    p {
+      margin-bottom: 0;
+    }
+    img {
+      max-width: $chperline;
     }
   }
   ul {

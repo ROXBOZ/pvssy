@@ -5,6 +5,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { dateTimeConverter } from "../utils/dateConverter";
 import { generateColor } from "../utils/colorGenerator";
 import Agenda from "../components/Agenda/Agenda";
+import Pains from "../components/Pains/Pains";
 import { HeadingArea } from "../utils/HeadingArea";
 
 const Home = () => {
@@ -31,11 +32,35 @@ const Home = () => {
   }, [agendaURL]);
 
   return (
-    <div className="landing-view">
-      <h1 className="logo">pvssy talk</h1>
-      <h2>pour une sexualité sans douleurs et sans tabous</h2>
+    <>
+      <div className="vh-view">
+        <h1 className="logo">
+          Bien s’informer sur ses douleurs pour mieux se réapproprier son corps
+          et sa sexualité.
+        </h1>
+      </div>
+
+      <div className="grid-area">
+        <div className="centered">
+          <h2>Comprendre</h2>
+          <p>
+            <strong>
+              Les douleurs sexuelles concernent une personne à vulve sur cinq.
+              Elles peuvent toucher à la vulve, au vagin, et s’étendre au delà
+              de l’utérus. Ces douleurs peuvent avoir des répercussions
+              importantes sur différents aspects de sa vie, sa sexualité, ou sa
+              santé mentale et physique. Avoir mal n’est pas normal. Encore
+              moins lorsqu’il s’agit de ton plaisir et ta sexualité. N’hésite
+              pas à t’informer et t’entourer de soignant·e·sx safe pour
+              t’accompagner dans ton parcours de soin.
+            </strong>
+          </p>
+        </div>
+      </div>
+      <Pains />
+      <HeadingArea title="Agenda" level="h2" />
       <Agenda />
-    </div>
+    </>
   );
 };
 

@@ -1,14 +1,18 @@
 import React, { useEffect, useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { EventsContext } from "../../contexts/eventsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { dateConverter, timeConverter } from "../../utils/dateConverter";
 import CountdownTimer from "../CountdownTimer";
 import { fromNowToDate } from "../../utils/fromNowToDate";
+import { HeadingArea } from "../../utils/HeadingArea";
 
 const Agenda = () => {
+  const location = useLocation();
   const [showEvent, setShowEvent] = useState({});
+  const currentUrl = location.pathname;
+  const endsWithAgenda = /agenda$/.test(currentUrl);
 
   const redirectToMeeting = () => {
     console.log("redirect to meeting :");
@@ -42,6 +46,13 @@ const Agenda = () => {
 
   return (
     <div>
+      {endsWithAgenda && (
+        <HeadingArea
+          title="Agenda"
+          subtitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores nesciunt expedita ullam fuga dolorum architecto explicabo repudiandae hic perspiciatis alias sit laboriosam assumenda esse, dolores ab dolorem, possimus nam voluptatibus."
+          level="h1"
+        />
+      )}
       <dig className="grid-area">
         {/* <p className="centered">
           Vous avez un évènement à proposer ?{" "}
@@ -176,7 +187,11 @@ const Agenda = () => {
                               <a href={`mailto:${e.email}`}>{e.email}</a>
                             )}
                             {e.email && e.tel && <span> ou </span>}
-                            {e.tel && <a href={`tel:${e.tel}`}>{e.tel}</a>}
+                            {e.tel && (
+                              <nobr>
+                                <a href={`tel:${e.tel}`}>{e.tel}</a>
+                              </nobr>
+                            )}
                           </p>
                         </div>
 

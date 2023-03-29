@@ -34,7 +34,6 @@ const Header = () => {
 
       <nav className={isOpen ? "vertical" : "horizontal"}>
         <ul>
-          <li>|</li>
           {/* <li>
             <NavLink className="hidden" onClick={handleNavLink} to="/">
               Home
@@ -46,15 +45,15 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink onClick={handleNavLink} to="se-soigner">
-              Se soigner
-            </NavLink>
-          </li>
-          {/* <li>
             <NavLink onClick={handleNavLink} to="s-informer">
               S’informer
             </NavLink>
-          </li> */}
+          </li>
+          <li>
+            <NavLink style={{ opacity: "30%" }} to="*">
+              Se soigner{" "}
+            </NavLink>
+          </li>
           <li>
             <NavLink onClick={handleNavLink} to="agenda">
               Agenda

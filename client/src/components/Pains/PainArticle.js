@@ -22,6 +22,15 @@ const PainArticle = () => {
   const menstrualReminder = [
     " Pendant la seconde phase, nommée phase lutéale, la progestérone va induire une modification des cellules de l’endomètre qui vont former des glandes sécrétant des nutriments qui vont permettre la survie de l’embryon en cas d’implantation. Sans implantation, la progestérone va chuter après 10 jours, ce qui va provoquer une contraction des artères de l’endomètre ce qui va induire une diminution de l’arrivée de sang dans le tissu et la mort des cellules qui vont partir avec les menstruations et laisser un endomètre très fin.",
   ];
+
+  const imgSrc = (painName, section, num) => {
+    try {
+      return require(`../../assets/images/shemas/${painName}-${section}-${num}.png`);
+    } catch (error) {
+      return "";
+    }
+  };
+
   const {
     isSticky,
     setIsSticky,
@@ -218,23 +227,70 @@ const PainArticle = () => {
           <div className="article">
             <h2>Définition</h2>
             {highlightParagraphs(painData.def)}
-            <img
-              style={{ maxWidth: "70ch" }}
-              src={require(`../../assets/images/shemas/${painData.name}-shema-1.png`)}
-              alt={`shéma ${painData.name}`}
-            />
+            {/*  //FIX ME  */}
+            {imgSrc && (
+              <img
+                src={imgSrc(painData.name, "def", "1")}
+                alt=""
+                onError={(e) => {
+                  e.target.src = null;
+                }}
+              />
+            )}
+
+            {painData.tags.includes("règles") && (
+              <div className="menstrual-reminder">
+                <div>
+                  <h3>Rappel sur le cycle menstruel</h3>
+                  {highlightParagraphs(menstrualReminder)}
+                </div>
+                <img
+                  src={require(`../../assets/images/shemas/menstruation-reminder.png`)}
+                  alt={`shéma ${painData.name}`}
+                />
+              </div>
+            )}
+
             <h2>Diagnostic</h2>
             {highlightParagraphs(painData.diag)}
-            <img
-              style={{ maxWidth: "70ch" }}
-              src={require(`../../assets/images/shemas/${painData.name}-shema-2.png`)}
-              alt={`shéma ${painData.name}`}
-            />
+
+            {/*  //FIX ME  */}
+            {imgSrc && (
+              <img
+                src={imgSrc(painData.name, "diag", "1")}
+                alt=""
+                onError={(e) => {
+                  e.target.src = null;
+                }}
+              />
+            )}
+            {/*  //FIX ME  */}
+            {imgSrc && (
+              <img
+                src={imgSrc(painData.name, "diag", "2")}
+                alt=""
+                onError={(e) => {
+                  e.target.src = null;
+                }}
+              />
+            )}
+
             <h2>Symptômes</h2>
             {highlightParagraphs(painData.sympt)}
 
             <h2>Pourquoi ça m’arrive ?</h2>
             {highlightParagraphs(painData.why)}
+            {/*  //FIX ME  */}
+            {imgSrc && (
+              <img
+                src={imgSrc(painData.name, "why", "1")}
+                alt=""
+                onError={(e) => {
+                  e.target.src = null;
+                }}
+              />
+            )}
+
             {painData.auto.length > 0 ? (
               <>
                 <h2>Que puis-je faire solo ?</h2>
@@ -261,22 +317,9 @@ const PainArticle = () => {
             <h2>Lien à soi</h2>
             <h3>Image /schéma corporel</h3>
             {highlightParagraphs(painData.body)}
-            <div className="article-illustration-container">
-              <img
-                className="article-illustration"
-                src="https://res.cloudinary.com/dkyialww7/image/upload/v1679401608/pain-img/Screenshot_2023-03-21_at_13.21.51_pqlhce.png"
-                alt={painData.name}
-              />
-            </div>
             <h3>Normes genrées</h3>
             {highlightParagraphs(painData.norms)}
 
-            {painData.tags.includes("règles") && (
-              <div className="menstrual-reminder">
-                <h3>Rappel sur le cycle menstruel</h3>
-                {highlightParagraphs(menstrualReminder)}
-              </div>
-            )}
             <h3>Vie quotidienne</h3>
             {highlightParagraphs(painData.routine)}
             <h2>Libido</h2>

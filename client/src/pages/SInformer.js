@@ -1,23 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Annuaire from "../components/Annuaire";
+import Pains from "../components/Pains/Pains";
+import Ressources from "./Ressources";
+import { HeadingArea } from "../utils/HeadingArea";
 
-const SInformer = () => {
+const Sinformer = () => {
   return (
     <div>
-      <h1>S’informer</h1>
-      <p className="subtitle">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio at
-        natus placeat quia accusantium officia architecto dolore pariatur
-        ratione labore similique voluptatum sapiente, expedita ab praesentium
-        saepe deserunt quos consectetur.
-      </p>
-      {/* <Link to="glossaire">
-        Lien temporaire vers Glossaire global (en construction)
-      </Link> */}
-      <Annuaire />
+      <HeadingArea title="S’informer" level="h1" />
+      <HeadingArea pretitle="Comprendre" title="Douleurs" level="h2" />
+      <div className="grid-area">
+        <p className="centered">
+          <strong>
+            Les douleurs sexuelles concernent une personne à vulve sur cinq.
+            Elles peuvent toucher à la vulve, au vagin, et s’étendre au delà de
+            l’utérus. Ces douleurs peuvent avoir des répercussions importantes
+            sur différents aspects de sa vie, sa sexualité, ou sa santé mentale
+            et physique. Avoir mal n’est pas normal. Encore moins lorsqu’il
+            s’agit de ton plaisir et ta sexualité. N’hésite pas à t’informer et
+            t’entourer de soignant·e·sx safe pour t’accompagner dans ton
+            parcours de soin.
+          </strong>
+        </p>
+      </div>
+      <Pains />
+      <HeadingArea pretitle="Comprendre" title="Ressources" level="h2" />
+      <Ressources />
     </div>
   );
 };
 
-export default SInformer;
+export default Sinformer;

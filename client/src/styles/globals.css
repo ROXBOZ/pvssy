@@ -96,6 +96,9 @@
   margin-bottom: 0;
   border-bottom: 1px solid;
 }
+.agenda-entry .event-container .event-col:first-child p:last-child {
+  border-bottom: none;
+}
 .agenda-entry .event-container .event-col .show-counter {
   color: #9637f0;
 }
@@ -1203,14 +1206,14 @@ form .form-section .form-dropdown-suggestions li {
     gap: 2em;
   }
   header nav.horizontal ul li .logout-header .user-icon-link {
-    padding: 0;
+    padding: 0.2em 1.5em;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.25em;
   }
   header nav.horizontal ul li .logout-header .user-icon-link:hover {
-    background-color: transparent;
+    background-color: #9637f0;
   }
   header nav.horizontal ul li .logout-header .user-icon-link #userIcon {
     border: 1px solid;
@@ -2110,17 +2113,40 @@ html body .main {
   gap: 2em;
 }
 
-.article .menstrual-reminder {
-  margin-top: 2em;
+.vh-view {
+  height: 100vh;
+  background: radial-gradient(circle, #ff6c2e 0%, #ce96ff 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 2em;
+  text-align: center;
+  border-radius: 40px;
+}
+
+.article img {
+  max-width: 70ch;
+  margin: 2em 0;
+}
+.article .menstrual-reminder {
+  margin-top: 4em;
+  padding: 40px;
   border-radius: 40px;
   width: -moz-fit-content;
   width: fit-content;
-  background-color: #ffd8c7;
-  border: 1px solid #ffb494;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
 }
 .article .menstrual-reminder h3 {
   margin-top: 0;
+}
+.article .menstrual-reminder p {
+  margin-bottom: 0;
+}
+.article .menstrual-reminder img {
+  max-width: 70ch;
 }
 .article ul li {
   margin-bottom: 0.5rem;
