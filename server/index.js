@@ -44,7 +44,7 @@ const addMiddlewares = () => {
   //   credentials: true,
   // };
   const allowedUrls = [
-    "http://https://pvssy-frontend.vercel.app",
+    "https://pvssy-frontend.vercel.app",
     "http://localhost:3000",
   ];
   const corsOptionsDelegate = function (req, callback) {
