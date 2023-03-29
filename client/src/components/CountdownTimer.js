@@ -5,13 +5,13 @@ import { fromNowToDate } from "../utils/fromNowToDate";
 
 const ShowCounter = ({ days, hours, minutes }) => {
   return (
-    <span className="show-counter">
+    <div className="show-counter">
       <DateTimeDisplay value={days} type={"jrs"} />
-      <span>·</span>
+      <span> · </span>
       <DateTimeDisplay value={hours} type={"hrs"} />
-      <span>·</span>
+      <span> · </span>
       <DateTimeDisplay value={minutes} type={"min"} />
-    </span>
+    </div>
   );
 };
 

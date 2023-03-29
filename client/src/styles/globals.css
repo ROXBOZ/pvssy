@@ -59,12 +59,45 @@
   padding-bottom: 1em;
   border-bottom: 1px solid;
 }
+.agenda-entry .agenda-entry-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .agenda-entry .agenda-entry-title h3 {
   margin: 0;
   padding: 1rem 0;
 }
-.agenda-entry .flex-center {
-  justify-content: space-between;
+.agenda-entry .event-container {
+  border-top: 1px solid;
+  padding-top: 1em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+}
+@media screen and (max-width: 576px) {
+  .agenda-entry .event-container {
+    grid-template-columns: 1fr;
+  }
+}
+.agenda-entry .event-container .event-col {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2/5;
+}
+.agenda-entry .event-container .event-col a {
+  border-bottom: none;
+}
+.agenda-entry .event-container .event-col:first-child {
+  grid-column: 1/2;
+}
+.agenda-entry .event-container .event-col:first-child p {
+  width: 100%;
+  margin-bottom: 0;
+  border-bottom: 1px solid;
+}
+.agenda-entry .event-container .event-col .show-counter {
+  color: #9637f0;
 }
 
 @keyframes animationOpacity {
@@ -276,11 +309,11 @@ button.showPassword:hover {
   grid-column: span 2;
 }
 .card-grid .link-card.article .card {
-  background: radial-gradient(circle, #ff793f 0%, #ce96ff 70%);
+  background: radial-gradient(circle, #ff6c2e 0%, #ce96ff 70%);
   overflow: hidden;
 }
 .card-grid .link-card.ressource .card {
-  background-color: #ff793f;
+  background-color: #ff6c2e;
 }
 .card-grid .link-card.agenda .card {
   display: flex;
@@ -636,7 +669,7 @@ input::placeholder {
 }
 
 .no-suggestions {
-  color: #ff793f;
+  color: #ff6c2e;
 }
 
 .suggestions {
@@ -1039,7 +1072,7 @@ form .form-section .form-dropdown-suggestions li {
     top: 0;
     bottom: 0;
     height: 1000px;
-    background: radial-gradient(circle, #ff793f 0%, #ce96ff 70%);
+    background: radial-gradient(circle, #ff6c2e 0%, #ce96ff 70%);
     background-color: white;
     display: flex;
     align-items: center;
@@ -1329,7 +1362,7 @@ a.term span {
   background-color: transparent;
 }
 .allLexique-term-container .glossary-dashboard-column .letter-link-container .letter-link:hover {
-  background-color: #fff6f2;
+  background-color: #ffeae1;
   border-radius: 40px;
 }
 .allLexique-term-container .glossary-dashboard-column form {
@@ -1764,15 +1797,15 @@ a.term span {
 
 .tag {
   white-space: nowrap;
-  border: 1px solid #ff793f;
-  color: #ff550c;
+  border: 1px solid #ff6c2e;
+  color: #fa4a00;
   padding: 0.5em 1.5em;
   font-size: 80%;
   border-radius: 40px;
 }
 .tag.active, .tag:hover {
   cursor: pointer;
-  background-color: #ff550c;
+  background-color: #fa4a00;
   color: #faf8f4;
 }
 
@@ -1853,7 +1886,7 @@ p.pretitle,
 li.pretitle {
   font-family: "ESKlarheit-Bold";
   text-transform: uppercase;
-  color: #ff793f;
+  color: #ff6c2e;
   letter-spacing: 0.5px;
   padding-bottom: 0;
   margin-bottom: 0;
@@ -1879,7 +1912,7 @@ span.smaller-text {
 
 a {
   text-decoration: none;
-  color: #ff550c;
+  color: #fa4a00;
   border-bottom: 1px solid;
   font-family: "ESKlarheit-Medium";
   width: -moz-fit-content;
@@ -1916,7 +1949,7 @@ hr {
 .auteurice .img-holder {
   height: 2.5em;
   width: 2.5em;
-  background: radial-gradient(circle, #ff793f 0%, #ce96ff 70%);
+  background: radial-gradient(circle, #ff6c2e 0%, #ce96ff 70%);
 }
 .auteurice em {
   font-style: normal;
@@ -2019,7 +2052,7 @@ h1:first-letter,
   outline: none;
 }
 *:focus {
-  border: 1px solid #ffe4d8;
+  border: 1px solid #ffd8c7;
 }
 *::-moz-selection {
   color: #faf8f4;
@@ -2083,8 +2116,8 @@ html body .main {
   border-radius: 40px;
   width: -moz-fit-content;
   width: fit-content;
-  background-color: #ffe4d8;
-  border: 1px solid #ffc0a5;
+  background-color: #ffd8c7;
+  border: 1px solid #ffb494;
 }
 .article .menstrual-reminder h3 {
   margin-top: 0;

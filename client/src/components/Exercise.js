@@ -41,7 +41,6 @@ const Exercise = ({ exercise }) => {
   };
 
   const showOneStep = (index) => {
-    console.log("showStep :", showStep);
     setShowStep((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 

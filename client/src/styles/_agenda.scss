@@ -7,13 +7,37 @@
   border-bottom: $border-solid;
 
   .agenda-entry-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     h3 {
       margin: 0;
       padding: 1rem 0;
     }
   }
 
-  .flex-center {
-    justify-content: space-between;
+  .event-container {
+    border-top: $border-solid;
+    padding-top: $demi-gap;
+    @include grid;
+    .event-col {
+      display: flex;
+      flex-direction: column;
+      a {
+        border-bottom: none;
+      }
+      &:first-child {
+        grid-column: 1/2;
+        p {
+          width: 100%;
+          margin-bottom: 0;
+          border-bottom: $border-solid;
+        }
+      }
+      grid-column: 2/5;
+      .show-counter {
+        color: $color6;
+      }
+    }
   }
 }
