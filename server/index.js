@@ -54,7 +54,8 @@ const addMiddlewares = () => {
   //   callback(null, corsOptions); // callback expects two parameters: error and options
   // };
 
-  app.use(cors({ origin: allowedUrls }));
+  // app.use(cors({ origin: allowedUrls }));
+  app.use(cors());
   // app.use(cors(corsOptionsDelegate));
   cloudinaryConfig();
   app.use(passport.initialize());
