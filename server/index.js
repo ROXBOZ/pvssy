@@ -44,35 +44,23 @@ const addMiddlewares = () => {
     "http://localhost:3000",
   ];
 
-  // const corsOptionsDelegate = function (req, callback) {
-  //   var corsOptions;
-  //   if (allowedUrls.indexOf(req.header("Origin")) !== -1) {
-  //     corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
-  //   } else {
-  //     corsOptions = { origin: false }; // disable CORS for this request
-  //   }
-  //   callback(null, corsOptions); // callback expects two parameters: error and options
-  // };
   const corsOptionsDelegate = function (req, callback) {
     var corsOptions;
     if (allowedUrls.indexOf(req.header("Origin")) !== -1) {
-      corsOptions = {
-        origin: "https://pvssy-frontend.vercel.app",
-        optionsSuccessStatus: 200,
-      }; // reflect (enable) the requested origin in the CORS response
+      corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
     } else {
       corsOptions = { origin: false }; // disable CORS for this request
     }
     callback(null, corsOptions); // callback expects two parameters: error and options
   };
 
-  const corsOptions2 = {
-    origin: "https://pvssy-frontend.vercel.app",
-    optionsSuccessStatus: 200,
-  };
+  // const corsOptions2 = {
+  //   origin: "https://pvssy-frontend.vercel.app",
+  //   optionsSuccessStatus: 200,
+  // };
   // app.use(cors({ origin: allowedUrls }));
-  // app.use(cors(corsOptionsDelegate));
-  app.use(cors(corsOptions2));
+  app.use(cors(corsOptionsDelegate));
+  // app.use(cors(corsOptions2));
   cloudinaryConfig();
   app.use(passport.initialize());
   passport.use(jwtStrategy);
