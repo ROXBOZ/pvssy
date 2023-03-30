@@ -7,9 +7,9 @@
   position: relative;
   z-index: 999;
 
-  // &.fixed {
-  //   @include stick;
-  // }
+  &.fixed {
+    @include stick;
+  }
 
   h4 {
     margin: 0;
