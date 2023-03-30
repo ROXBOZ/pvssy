@@ -14,7 +14,7 @@
   ],
   "functions": {
     "api/**/*.js": {
-      "timeout": 20
+      "timeout": 50
     }
   }
 }
