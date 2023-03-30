@@ -53,7 +53,7 @@ const addMiddlewares = () => {
     }
     callback(null, corsOptions); // callback expects two parameters: error and options
   };
-
+  //
   // const corsOptions2 = {
   //   origin: "https://pvssy-frontend.vercel.app",
   //   optionsSuccessStatus: 200,
