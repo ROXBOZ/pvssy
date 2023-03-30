@@ -77,17 +77,38 @@ const startServer = () => {
   });
 };
 
-async function controller() {
-  addMiddlewares(); // always add middlewares before loading routes
-  loadRoutes();
+// async function controller() {
+//   addMiddlewares(); // always add middlewares before loading routes
+//   loadRoutes();
 
-  // PUT THE MONGODBCONNEXION IN TRY AND CATCH (4)
+//   // PUT THE MONGODBCONNEXION IN TRY AND CATCH (4)
+//   try {
+//     await mongoDBConnexion();
+//   } catch (error) {
+//     console.log("error :", error);
+//   }
+
+//   startServer();
+// }
+// controller();
+
+function middlewares() {
+  addMiddlewares();
+  console.log("middlewaresLoaded :");
+  loadRoutes();
+  console.log("routes loaded");
+  conntectMongoDB();
+}
+
+async function conntectMongoDB(params) {
+  console.log("connectiong to mongo");
   try {
     await mongoDBConnexion();
+    console.log("mongo conected");
+    startServer();
   } catch (error) {
     console.log("error :", error);
   }
-
-  startServer();
 }
-controller();
+
+middlewares();
