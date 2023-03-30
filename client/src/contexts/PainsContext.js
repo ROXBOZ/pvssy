@@ -67,6 +67,8 @@ export const PainsContextProvider = (props) => {
     };
 
     try {
+      console.log("process.env.NODE_ENV :", process.env.NODE_ENV);
+      console.log("serverURL :", serverURL);
       const response = await fetch(
         `${serverURL}/api/sources/byPain?relatedPain=${painName}`,
         requestOptions
