@@ -35,13 +35,8 @@
 /*-----Forms-----*/
 
 @mixin lighter-bloc($color) {
-  background-color: lighten($color, 20%);
+  background-color: lighten($color, 15%);
   border: $border-solid lighten($color, 10%);
-}
-
-@mixin form-section {
-  grid-column: 1/12;
-  border-radius: $border-radius;
 }
 
 /*-----Stick-----*/

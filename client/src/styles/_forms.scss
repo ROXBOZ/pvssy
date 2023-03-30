@@ -2,8 +2,8 @@
 
 @mixin input {
   color: $txt-color;
-  border: $border-solid darken($bg-color, 20%);
-  border-radius: $border-radius;
+  border: $border-solid;
+  border-radius: 0.25em;
   font-family: $font-regular;
   font-size: 100%;
   background-color: $bg-color;
@@ -171,22 +171,21 @@ form {
       grid-column: 1/5;
     }
 
-    h2 {
-      border: 0;
-      clip: rect(1px, 1px, 1px, 1px);
-      clip-path: inset(50%);
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute !important;
-      width: 1px;
-      word-wrap: normal !important;
-      word-break: normal;
-    }
+    // h2 {
+    //   border: 0;
+    //   clip: rect(1px, 1px, 1px, 1px);
+    //   clip-path: inset(50%);
+    //   height: 1px;
+    //   margin: -1px;
+    //   overflow: hidden;
+    //   padding: 0;
+    //   position: absolute !important;
+    //   width: 1px;
+    //   word-wrap: normal !important;
+    //   word-break: normal;
+    // }
     .form-section {
-      padding: $padding-sm $padding-sm;
-      @include form-section;
+      grid-column: 1/12;
 
       h3 {
         margin-top: 0;
@@ -213,14 +212,22 @@ form {
       background-color: red;
     }
 
-    .event-title-input {
+    .event-title-input,
+    .user-type-input,
+    .event-address-input,
+    .event-region-input {
       grid-column: 4/7;
+      background-color: yellow;
     }
-    .event-date-label {
-      grid-column: 3/4;
+    .event-date-label,
+    .event-city-label {
+      background-color: lightgreen;
+      grid-column: 7/10;
     }
-    .event-date-input {
-      grid-column: 4/5;
+    .event-date-input,
+    .event-city-input {
+      background-color: lightblue;
+      grid-column: 10/13;
 
       input {
         box-sizing: border-box;
@@ -230,7 +237,7 @@ form {
 
     .event-shortDef-input,
     .event-longDef-input {
-      grid-column: 2/5;
+      grid-column: 4/13;
       display: flex;
       textarea {
         box-sizing: border-box;

@@ -28,7 +28,7 @@ const PainSuggestions = () => {
             <Link to="/s-informer/ressources/suggestions">
               toutes les suggestions de pvssy talk
             </Link>{" "}
-            dans les ressources générales.
+            à un seul endroit !
           </span>
         </p>
       </div>

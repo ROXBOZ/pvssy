@@ -14,7 +14,7 @@ $archived-color: dimgrey;
   display: flex;
   gap: 0.5em;
   height: fit-content;
-
+  @include lighter-bloc($color4);
   * {
     margin-bottom: 0;
   }

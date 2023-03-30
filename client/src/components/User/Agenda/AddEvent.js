@@ -128,9 +128,11 @@ const AddEvent = () => {
       <form className="grid-form" ref={formRef}>
         <div className="form-section">
           <h3>Informations essentielles</h3>
+
           <div className="event-title-label flex-center">
             <label htmlFor="eventTitle">Titre *</label>
           </div>
+
           <div className="event-title-input">
             <input
               name="eventTitle"
