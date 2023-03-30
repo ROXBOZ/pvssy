@@ -11,5 +11,10 @@
       "src": "/(.*)",
       "dest": "/"
     }
-  ]
+  ],
+  "functions": {
+    "api/**/*.js": {
+      "timeout": 20 // Extend the timeout to 20 seconds
+    }
+  }
 }

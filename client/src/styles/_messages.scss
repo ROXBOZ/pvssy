@@ -9,13 +9,12 @@ $archived-color: dimgrey;
 .msg {
   margin: $gap 0;
   font-family: $font-medium;
-  background-color: darken($bg-color, 3%);
-  border: $border-solid darken($bg-color, 15%);
   padding: $demi-gap;
   border-radius: $border-radius;
   display: flex;
   gap: 0.5em;
   height: fit-content;
+
   * {
     margin-bottom: 0;
   }
@@ -65,8 +64,6 @@ $archived-color: dimgrey;
   }
 
   &.info {
-    // color: $info-color;
-
     &:before {
       content: url("../assets/images/info-icon.svg");
       width: 20px;

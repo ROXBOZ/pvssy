@@ -119,11 +119,8 @@ form {
 
   &.grid-form,
   .form-section {
-    display: grid;
-    gap: $demi-gap;
-    grid-template-columns: repeat(4, max-content);
-
-    .check-list {
+    @include grid;
+    check-list {
       margin-top: 0;
     }
 
@@ -195,7 +192,7 @@ form {
         margin-top: 0;
         display: flex;
         align-items: center;
-        grid-column: 1/5;
+        grid-column: span 12;
       }
 
       p {
@@ -212,11 +209,12 @@ form {
     .event-region-label,
     .event-tel-label,
     .event-entry-label {
-      grid-column: 1/2;
+      grid-column: 1/4;
+      background-color: red;
     }
 
     .event-title-input {
-      grid-column: 2/3;
+      grid-column: 4/7;
     }
     .event-date-label {
       grid-column: 3/4;

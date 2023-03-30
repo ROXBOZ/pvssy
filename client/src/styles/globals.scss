@@ -85,7 +85,7 @@ html {
   align-items: flex-start;
   header {
     align-self: flex-start;
-    width: 96%;
+    width: 95%; //FIXME
     .logo {
       color: $txt-color;
     }

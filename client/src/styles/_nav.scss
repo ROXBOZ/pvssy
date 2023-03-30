@@ -3,12 +3,13 @@
 .category-submenu {
   width: 30vh;
   margin-top: 0;
+  grid-column: 1/3 !important;
   position: relative;
   z-index: 999;
 
-  &.fixed {
-    @include stick;
-  }
+  // &.fixed {
+  //   @include stick;
+  // }
 
   h4 {
     margin: 0;

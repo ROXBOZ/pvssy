@@ -125,29 +125,7 @@ const AddEvent = () => {
 
   return (
     <>
-      {userProfile && userProfile.userIsAdmin === true ? (
-        <>
-          <h1>
-            Ajouter un évènement<sup>prototype</sup>
-          </h1>
-          <p className="reminder msg">
-            L’évènement sera ajouté immédiatement au calendrier. Les évènements
-            marqués d’une astérisque (*) sont obligatoires.
-          </p>
-        </>
-      ) : (
-        <>
-          <h1>
-            Proposer un évènement<sup>prototype</sup>
-          </h1>
-          <p className="reminder msg">
-            Les évènements marqués d’une astérisque (*) sont obligatoires.
-          </p>
-        </>
-      )}
-
       <form className="grid-form" ref={formRef}>
-        <h2>Formulaire à compléter</h2>
         <div className="form-section">
           <h3>Informations essentielles</h3>
           <div className="event-title-label flex-center">

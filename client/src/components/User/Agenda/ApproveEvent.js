@@ -30,14 +30,7 @@ const ApproveEvent = () => {
 
   // if no pending events
   if (!pendingEvents || pendingEvents.length === 0) {
-    return (
-      <>
-        <h1>
-          Évènements en attente<sup>prototype</sup>
-        </h1>
-        <p className="success msg">Pas d’évènement en attente.</p>
-      </>
-    );
+    return <p className="success msg">Pas d’évènement en attente.</p>;
   }
 
   // in alphabetical order
@@ -47,9 +40,6 @@ const ApproveEvent = () => {
 
   return (
     <div>
-      <h1>
-        Évènements en attente<sup>prototype</sup>
-      </h1>
       <p className="msg warning">
         Une fois approuvé, un évènement ne peut qu’être supprimé via l’onglet.
       </p>

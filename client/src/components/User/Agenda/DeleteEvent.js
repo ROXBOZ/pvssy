@@ -95,23 +95,11 @@ const DeleteEvent = () => {
     !myEvents ||
     myEvents.length === 0
   ) {
-    return (
-      <>
-        <h1>
-          Supprimer un évènement<sup>prototype</sup>
-        </h1>
-        <p className="warning msg">
-          <strong>Aucun évènement dans le calendrier!</strong>
-        </p>
-      </>
-    );
+    return <p className="warning msg">Aucun évènement dans le calendrier!</p>;
   }
 
   return (
     <>
-      <h1>
-        Supprimer un évènement<sup>prototype</sup>
-      </h1>
       <p className="warning msg">La suppression est irréversible.</p>
 
       <form className="grid-form">
