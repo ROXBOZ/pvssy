@@ -98,3 +98,4 @@ async function controller() {
   }
 }
 controller();
+export default app;
