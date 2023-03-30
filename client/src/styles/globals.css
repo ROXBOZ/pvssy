@@ -1497,6 +1497,12 @@ a.term span {
   position: relative;
   z-index: 999;
 }
+.category-submenu.fixed {
+  position: fixed;
+  top: 48vh;
+  transform: translateY(-48%);
+  transition: transform 0.5s ease-in;
+}
 .category-submenu h4 {
   margin: 0;
 }
