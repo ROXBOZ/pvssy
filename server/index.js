@@ -44,17 +44,18 @@ const addMiddlewares = () => {
     "http://localhost:3000",
   ];
 
-  const corsOptionsDelegate = function (req, callback) {
-    var corsOptions;
-    if (allowedUrls.indexOf(req.header("Origin")) !== -1) {
-      corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
-    } else {
-      corsOptions = { origin: false }; // disable CORS for this request
-    }
-    callback(null, corsOptions); // callback expects two parameters: error and options
-  };
+  // const corsOptionsDelegate = function (req, callback) {
+  //   var corsOptions;
+  //   if (allowedUrls.indexOf(req.header("Origin")) !== -1) {
+  //     corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
+  //   } else {
+  //     corsOptions = { origin: false }; // disable CORS for this request
+  //   }
+  //   callback(null, corsOptions); // callback expects two parameters: error and options
+  // };
 
-  app.use(cors(corsOptionsDelegate));
+  app.use(cors({ origin: allowedUrls }));
+  // app.use(cors(corsOptionsDelegate));
   cloudinaryConfig();
   app.use(passport.initialize());
   passport.use(jwtStrategy);
