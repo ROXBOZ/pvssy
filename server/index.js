@@ -94,7 +94,7 @@ async function controller() {
     const connected = await mongoDBConnexion();
     connected && startServer();
   } catch (error) {
-    console.log("error :", error);
+    console.log("errooor :", error);
   }
 }
 controller();
