@@ -9,8 +9,9 @@ import { fromNowToDate } from "../../utils/fromNowToDate";
 import { HeadingArea } from "../../utils/HeadingArea";
 
 const Agenda = () => {
-  const location = useLocation();
   const [showEvent, setShowEvent] = useState({});
+  const location = useLocation();
+
   const currentUrl = location.pathname;
   const endsWithAgenda = /agenda$/.test(currentUrl);
 

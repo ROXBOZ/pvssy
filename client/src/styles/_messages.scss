@@ -7,14 +7,15 @@ $archived-color: dimgrey;
 // $info-color: steelblue;
 
 .msg {
-  margin: $gap 0;
+  margin: $demi-gap 0;
   font-family: $font-medium;
-  padding: $demi-gap;
-  border-radius: $border-radius;
+  // padding: $demi-gap;
+  // border-radius: $border-radius;
   display: flex;
   gap: 0.5em;
   height: fit-content;
-  @include lighter-bloc($color4);
+  white-space: nowrap;
+  // @include lighter-bloc($color4);
   * {
     margin-bottom: 0;
   }
@@ -86,7 +87,7 @@ $archived-color: dimgrey;
   padding: 0;
   line-height: 2;
   color: $error-color;
-  grid-column: 1/2;
+  grid-column: 1/6;
   li {
     font-family: $font-medium;
     list-style: none;

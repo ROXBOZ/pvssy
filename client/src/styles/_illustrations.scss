@@ -49,3 +49,19 @@ figure {
     height: 40vh;
   }
 }
+.avatar-button-container {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2/4;
+  justify-content: center;
+  align-items: center;
+  gap: $demi-gap;
+  .user-avatar,
+  .avatar-placeholder {
+    object-fit: cover;
+    background-color: $color1;
+    aspect-ratio: 1/1;
+    width: 100%;
+    border-radius: 100%;
+  }
+}

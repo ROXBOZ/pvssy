@@ -65,9 +65,13 @@ const Pains = () => {
       <div className="grid-area">
         <span className="centered">
           {endsWithDouleurs ? (
-            <h2 style={{ marginBottom: "0" }}>Peux-tu orienter ta douleur ?</h2>
+            <h2 style={{ marginBottom: "0" }}>
+              Peux-tu catégoriser ta douleur ?
+            </h2>
           ) : (
-            <h3 style={{ marginBottom: "0" }}>Peux-tu orienter ta douleur ?</h3>
+            <h3 style={{ marginBottom: "0" }}>
+              Peux-tu catégoriser ta douleur ?
+            </h3>
           )}
         </span>
         <CreateTags />

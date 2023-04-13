@@ -126,251 +126,212 @@ const AddEvent = () => {
   return (
     <>
       <form className="grid-form" ref={formRef}>
+        <h3>Informations essentielles</h3>
         <div className="form-section">
-          <h3>Informations essentielles</h3>
-
-          <div className="event-title-label flex-center">
-            <label htmlFor="eventTitle">Titre *</label>
-          </div>
-
-          <div className="event-title-input">
-            <input
-              name="eventTitle"
-              id="eventTitle"
-              type="text"
-              placeholder="Titre de l’évènement"
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="event-date-label flex-center">
-            <label htmlFor="eventDate">Date et heure *</label>
-          </div>
-          <div className="event-date-input">
-            <input
-              name="eventDateTime"
-              id="eventDateTime"
-              type="datetime-local"
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="event-shortDef-label flex-center">
-            <label htmlFor="eventShortDef">En bref *</label>
-          </div>
-          <div className="event-shortDef-input">
-            <textarea
-              name="eventShortDef"
-              id="eventShortDef"
-              placeholder="Veuillez entrer une définition de l'événement courte et concise de max. 120 caractères."
-              onChange={handleInputChange}
-              maxlength="120"
-              required
-            />
-          </div>
-          <div className="event-longDef-label flex-center">
-            <label htmlFor="eventLongDef">En détails</label>
-          </div>
-          <div className="event-longDef-input">
-            <textarea
-              name="eventLongDef"
-              id="eventLongDef"
-              rows="5"
-              placeholder="La définition en détails n’est pas obligatoire mais fortement recommandée. Elle devrait expliquer brièvement de quoi il s'agit, le public cible et les objectifs de l'événement. Vous pouvez également inclure d'autres informations pertinentes, telles que les sujets abordés ou les intervenant·e·s invité·e·s."
-              onChange={handleInputChange}
-            />
-          </div>
+          <label htmlFor="eventTitle">Titre *</label>
+          <input
+            name="eventTitle"
+            id="eventTitle"
+            type="text"
+            placeholder="Titre de l’évènement"
+            onChange={handleInputChange}
+            required
+            className="line"
+          />
+          <label htmlFor="eventDate">Date et heure *</label>
+          <input
+            name="eventDateTime"
+            id="eventDateTime"
+            type="datetime-local"
+            onChange={handleInputChange}
+            required
+            className="line"
+          />
+          <label htmlFor="eventShortDef">En bref *</label>
+          <textarea
+            name="eventShortDef"
+            id="eventShortDef"
+            placeholder="Définition max. 120 caractères"
+            onChange={handleInputChange}
+            maxlength="120"
+            required
+          />
+          <label htmlFor="eventLongDef">En détails</label>
+          <textarea
+            name="eventLongDef"
+            id="eventLongDef"
+            rows="10"
+            placeholder="Définition détaillée"
+            onChange={handleInputChange}
+          />
         </div>
+        <h3>Format</h3>
         <div className="form-section">
-          <h3>Format</h3>
-          <div className="event-type-label flex-center">
-            <label htmlFor="eventType">Format *</label>
+          <label htmlFor="eventType">Format *</label>
+
+          <div className="input-label-container">
+            <input
+              className="form-check-input"
+              id="online"
+              type="radio"
+              name="eventType"
+              checked={eventType === "online"}
+              onChange={(e) => {
+                setEventType("online");
+                if (e.target.checked) {
+                  setNewEvent({ ...newEvent, isOnline: true });
+                }
+              }}
+            />
+            <label htmlFor="online">Online</label>
           </div>
-          <div className="user-type-input">
-            <span>
-              <input
-                className="form-check-input"
-                id="online"
-                type="radio"
-                name="eventType"
-                checked={eventType === "online"}
-                onChange={(e) => {
-                  setEventType("online");
-                  if (e.target.checked) {
-                    setNewEvent({ ...newEvent, isOnline: true });
-                  }
-                }}
-              />
-              <label htmlFor="online">Online</label>
-            </span>
-            <span>
-              <input
-                className="form-check-input"
-                id="offline"
-                type="radio"
-                name="eventType"
-                checked={eventType === "offline"}
-                onChange={(e) => {
-                  setEventType("offline");
-                  if (e.target.checked) {
-                    setNewEvent({ ...newEvent, isOnline: false });
-                  }
-                }}
-              />
-              <label htmlFor="offline">Sur place</label>
-            </span>
+          <div className="input-label-container">
+            <input
+              className="form-check-input"
+              id="offline"
+              type="radio"
+              name="eventType"
+              checked={eventType === "offline"}
+              onChange={(e) => {
+                setEventType("offline");
+                if (e.target.checked) {
+                  setNewEvent({ ...newEvent, isOnline: false });
+                }
+              }}
+            />
+            <label htmlFor="offline">Sur place</label>
           </div>
           {eventType === "offline" && (
             <>
-              <div className="event-address-label flex-center">
-                <label htmlFor="eventAddress">Adresse *</label>
-              </div>
-              <div className="event-address-input">
-                <input
-                  name="eventAddress"
-                  id="eventAddress"
-                  type="text"
-                  placeholder="Rue, numéro"
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="event-city-label flex-center">
-                <label htmlFor="eventCity">Lieu *</label>
-              </div>
-              <div className="event-city-input">
-                <input
-                  name="eventCity"
-                  id="eventCity"
-                  type="text"
-                  placeholder="ZIP, Lieu"
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="event-region-label flex-center">
-                <label htmlFor="eventRegion">Agglomération *</label>
-              </div>
-              <div className="event-region-input">
-                <select
-                  name="eventRegion"
-                  id="eventRegion"
-                  onChange={handleInputChange}
-                  selected="Genève"
-                >
-                  {regions &&
-                    regions.map((region) => {
-                      return (
-                        <option key={region} value={region}>
-                          {region}
-                        </option>
-                      );
-                    })}
-                </select>
-              </div>
+              <label htmlFor="eventAddress">Adresse *</label>
+              <input
+                name="eventAddress"
+                id="eventAddress"
+                type="text"
+                placeholder="Rue, numéro"
+                onChange={handleInputChange}
+                required
+                className="line"
+              />
+              <label htmlFor="eventCity">Lieu *</label>
+              <input
+                name="eventCity"
+                id="eventCity"
+                type="text"
+                placeholder="ZIP, Lieu"
+                onChange={handleInputChange}
+                required
+                className="line"
+              />
+
+              <label htmlFor="eventRegion">Région *</label>
+
+              <select
+                name="eventRegion"
+                id="eventRegion"
+                onChange={handleInputChange}
+                selected="Genève"
+                className="line"
+              >
+                {regions &&
+                  regions.map((region) => {
+                    return (
+                      <option key={region} value={region}>
+                        {region}
+                      </option>
+                    );
+                  })}
+              </select>
             </>
           )}
           {eventType === "online" && (
             <>
-              <div className="event-onlineMeeting-label flex-center">
-                <label htmlFor="onlineMeeting">Lien *</label>
-              </div>
-              <div className="event-onlineMeeting-input">
-                <input
-                  name="onlineMeeting"
-                  id="onlineMeeting"
-                  type="text"
-                  placeholder="https://..."
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
+              <label htmlFor="onlineMeeting">Lien réunion *</label>
+              <input
+                name="onlineMeeting"
+                id="onlineMeeting"
+                type="text"
+                placeholder="https://..."
+                onChange={handleInputChange}
+                required
+                className="line"
+              />
             </>
           )}
         </div>
+        <h3>Réservations</h3>
         <div className="form-section">
-          <h3>Réservations</h3>
+          <label htmlFor="eventTel">Téléphone</label>
+          <input
+            name="eventTel"
+            id="eventTel"
+            type="tel"
+            placeholder="+41(0)..."
+            onChange={handleInputChange}
+            className="line"
+          />
 
-          <div className="event-tel-label flex-center">
-            <label htmlFor="eventTel">Téléphone</label>
-          </div>
-          <div className="event-tel-input">
-            <input
-              name="eventTel"
-              id="eventTel"
-              type="tel"
-              placeholder="+41(0)..."
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="event-email-label flex-center">
-            <label htmlFor="eventTel">Adresse Email</label>
-          </div>
-          <div className="event-email-input">
-            <input
-              name="eventEmail"
-              id="eventEmail"
-              type="text"
-              placeholder="info@..."
-              onChange={handleInputChange}
-            />
-          </div>
+          <label htmlFor="eventTel">Adresse Email</label>
+          <input
+            name="eventEmail"
+            id="eventEmail"
+            type="text"
+            placeholder="info@..."
+            onChange={handleInputChange}
+            className="line"
+          />
         </div>
+        <h3>Tarif d’entrée /participation</h3>
         <div className="form-section">
-          <h3>Prix</h3>
-          <div className="event-entry-label flex-center">
-            <label htmlFor="eventEntry">Entrée / participation *</label>
+          <label htmlFor="eventEntry">Entrée / participation *</label>
+          <div className="input-label-container">
+            <input
+              className="form-check-input"
+              id="freeEntry"
+              type="radio"
+              name="eventEntry"
+              checked={eventEntry === "gratuite"}
+              onChange={(e) => {
+                setEventEntry("gratuite");
+                if (e.target.checked) {
+                  setNewEvent({ ...newEvent, freeEntry: true });
+                }
+              }}
+            />
+            <label htmlFor="admissionFee">gratuite</label>
           </div>
-          <div className="event-entry-input flex-center">
-            <span>
-              <input
-                className="form-check-input"
-                id="freeEntry"
-                type="radio"
-                name="eventEntry"
-                checked={eventEntry === "gratuite"}
-                onChange={(e) => {
-                  setEventEntry("gratuite");
-                  if (e.target.checked) {
-                    setNewEvent({ ...newEvent, freeEntry: true });
-                  }
-                }}
-              />
-              <label htmlFor="admissionFee">gratuite</label>
-              <input
-                className="form-check-input"
-                id="admissionFee"
-                type="radio"
-                name="eventEntry"
-                checked={eventEntry === "payante"}
-                onChange={(e) => {
-                  setEventEntry("payante");
-                  if (e.target.checked) {
-                    setNewEvent({ ...newEvent, freeEntry: false });
-                  }
-                }}
-              />
-              <label htmlFor="online">payante</label>
-            </span>
+          <div className="input-label-container">
+            <input
+              className="form-check-input"
+              id="admissionFee"
+              type="radio"
+              name="eventEntry"
+              checked={eventEntry === "payante"}
+              onChange={(e) => {
+                setEventEntry("payante");
+                if (e.target.checked) {
+                  setNewEvent({ ...newEvent, freeEntry: false });
+                }
+              }}
+            />
+            <label htmlFor="online">payante</label>
           </div>
+
           {eventEntry === "payante" && (
             <>
-              <div className="event-admissionFee-label flex-center">
-                <label htmlFor="admissionFee">Prix d’entrée</label>
-              </div>
-              <div className="event-admissionFee-input">
-                <input
-                  name="admissionFee"
-                  id="admissionFee"
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  max="999.99"
-                  placeholder="10.5"
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
+              <label htmlFor="admissionFee">Prix d’entrée</label>
+              <input
+                name="admissionFee"
+                id="admissionFee"
+                type="number"
+                step="0.01"
+                min="0"
+                max="999.99"
+                placeholder="10-20 CHF"
+                onChange={handleInputChange}
+                required
+                className="line"
+              />
             </>
           )}
         </div>

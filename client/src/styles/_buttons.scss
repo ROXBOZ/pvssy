@@ -8,19 +8,20 @@
   width: fit-content;
   height: fit-content;
   cursor: pointer;
+  white-space: nowrap;
+
   &.square {
     padding: 0.25em 0.5em;
   }
+
   &:hover {
-    color: white;
-    background-color: darken($color5, 20%);
+    color: $txt-color;
+    background-color: $color5;
     border: transparent $border-solid;
   }
+
   &:disabled {
-    background-color: $bg-color;
-    opacity: 60%;
-    cursor: auto;
-    border: $border-solid;
+    pointer-events: none;
   }
 }
 
@@ -34,7 +35,7 @@ button {
     border: none !important;
     &:hover {
       background-color: transparent;
-      color: $color3;
+      opacity: 80%;
     }
   }
 }

@@ -8,7 +8,13 @@ import { serverURL } from "../utils/serverURL";
 import { HeadingArea } from "../utils/HeadingArea";
 
 const SignupForm = () => {
-  const { seePassword, isVisible } = useContext(AuthContext);
+  const {
+    handleInputChange,
+    wrongPWMessage,
+    isVisible,
+    seePassword,
+    inputValue,
+  } = useContext(AuthContext);
   const [selectedFile, setSelectedFile] = useState(null);
   const [newUser, setNewUser] = useState({});
   const [conditionsAccepted, setConditionsAccepted] = useState(null);
@@ -38,14 +44,11 @@ const SignupForm = () => {
       console.log("error", error);
     }
   };
-  const handleInputChange = (e) => {
-    setNewUser({ ...newUser, [e.target.name]: e.target.value });
-  };
+
   const signup = async (e) => {
     e.preventDefault();
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
     const raw = JSON.stringify({
       userName: newUser.userName,
       userEmail: newUser.userEmail,
@@ -93,7 +96,7 @@ const SignupForm = () => {
   }, [message]);
 
   return (
-    <div>
+    <>
       <HeadingArea
         title="Créer un compte"
         subtitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error quasi
@@ -102,61 +105,35 @@ const SignupForm = () => {
           voluptates placeat voluptatum."
         level="h1"
       />
-
       <div className="grid-area">
-        {newUser.userAvatar ? (
-          <img
-            name="userAvatar"
-            className="user-avatar centered"
-            src={newUser.userAvatar}
-            alt="user avatar"
-          />
-        ) : (
-          <p className="avatar-placeholder" />
-        )}
-
-        <form className="grid-form centered">
-          {/* <div className="user-type flex-center">
-          <span>
-            <input
-              className="form-check-input"
-              id="asso"
-              type="radio"
-              name="userType"
-              checked={userType === "association"}
-              onChange={() => setUserType("association")}
+        <div className="avatar-button-container">
+          {newUser.userAvatar ? (
+            <img
+              name="userAvatar"
+              className="user-avatar"
+              src={newUser.userAvatar}
+              alt="user avatar"
             />
-            <label htmlFor="asso">Association</label>
-          </span>
-          <span>
-            <input
-              className="form-check-input"
-              id="person"
-              type="radio"
-              name="userType"
-              checked={userType === "personne"}
-              onChange={() => setUserType("personne")}
-            />
-            <label htmlFor="person">Personne</label>
-          </span>
-        </div> */}
-          <div className="user-name-label flex-center">
+          ) : (
+            <>
+              <div alt="placeholder" className="avatar-placeholder" />
+              <button onClick={submitImg}>attacher le fichier</button>
+            </>
+          )}
+        </div>
+        <form className="centered grid-form">
+          <div className="form-section">
             <label htmlFor="userName">Nom *</label>
-          </div>
-          <div className="user-name-input">
             <input
               name="userName"
               id="userName"
               type="text"
               placeholder="Nom"
               onChange={handleInputChange}
+              className="line"
               required
             />
-          </div>
-          <div className="user-email-label flex-center">
             <label htmlFor="userEmail">Adresse Email *</label>
-          </div>
-          <div className="user-email-input">
             <input
               placeholder="Adresse Email"
               id="userEmail"
@@ -164,112 +141,100 @@ const SignupForm = () => {
               name="userEmail"
               onChange={handleInputChange}
               required
+              className="line"
             />
-          </div>
-          <div className="user-website-label flex-center">
             <label htmlFor="userWebsite">Site internet</label>
-          </div>
-          <div className="user-website-input">
             <input
               name="userWebsite"
               id="userWebsite"
               type="text"
               placeholder="https://..."
               onChange={handleInputChange}
+              className="line"
             />
-          </div>
-          <div className="user-avatar-label flex-center">
             <label htmlFor="avatar">Photo de profil</label>
-          </div>
-          <div className="user-avatar-input">
+
             <input
               type="file"
               id="avatar"
               name="userAvatar"
               onChange={handleAttachImg}
-            ></input>
-          </div>
-          <div className="user-avatar-button flex-center">
-            <button onClick={submitImg}>choisir</button>
-          </div>
-          <div className="user-password-label flex-center">
-            <label htmlFor="userPassword">Mot de passe *</label>
-          </div>
-          <div className="user-password-input">
-            <input
-              placeholder="Mot de passe"
-              type={isVisible ? "text" : "password"}
-              id="userPassword"
-              name="userPassword"
-              onChange={handleInputChange}
-              required
+              className="line"
             />
-          </div>
 
-          <div className="user-password-error">
-            <button className="showPassword" onClick={seePassword}>
-              <FontAwesomeIcon
-                id="eye-icon"
-                icon={isVisible ? faEye : faEyeSlash}
+            <label htmlFor="userPassword">Mot de passe</label>
+            <div className="input-label-container fullwidth">
+              <input
+                placeholder="Mot de passe"
+                type={isVisible ? "text" : "password"}
+                id="userPassword"
+                name="userPassword"
+                onChange={handleInputChange}
+                className=" line"
               />
-            </button>
-            {newUser.userPassword && newUser.userPassword.length < 6 && (
-              <li className="error msg">min 6 caractères.</li>
-            )}
-          </div>
 
-          <div className="conditions-generales">
-            <input
-              className="form-check-input"
-              id="conditionsCheckbox"
-              type="checkbox"
-              onChange={(e) => setConditionsAccepted(e.target.checked)}
-              required
-            />
-            <label htmlFor="conditionsCheckbox">
-              J’ai lu et j’accepte les{" "}
-              <Link to="/conditions-generales ">conditions générales</Link>.
-            </label>
+              <button className="showPassword" onClick={seePassword}>
+                <FontAwesomeIcon
+                  id="eye-icon"
+                  icon={isVisible ? faEye : faEyeSlash}
+                />
+              </button>
+            </div>
           </div>
-          <div className="submit-button">
-            <button
-              onClick={signup}
-              disabled={
-                !(newUser.userPassword &&
-                newUser.userPassword > 6 &&
-                newUser.userName &&
-                newUser.userName > 2 &&
-                newUser.Website
-                  ? urlRegex.test(newUser.userWebsite)
-                  : true && conditionsAccepted)
-              }
-            >
-              Créer un compte
-            </button>
-          </div>
-        </form>
-        <ul className="error-list">
-          {newUser.userName && newUser.userName.length < 2 && (
-            <li className="error msg">
-              Le nom doit être entre 2 et 20 lettres.
-            </li>
-          )}
-          {newUser.userEmail && !emailRegex.test(newUser.userEmail) && (
-            <li className="error msg">L’adresse email est invalide.</li>
+          {/* //TOFIX */}
+          {/* {newUser.userName && newUser.userName.length < 2 && (
+            <p className="msg error">Le nom doit être entre 2 et 20 lettres.</p>
+          )} */}
+          {inputValue.userEmail && !emailRegex.test(inputValue.userEmail) && (
+            <p className="msg error">L'adresse e-mail est invalide.</p>
           )}
           {newUser.userWebsite && !urlRegex.test(newUser.userWebsite) && (
             <li className="error msg">L’URL du site internet est invalide.</li>
           )}
-        </ul>
+          {wrongPWMessage && <p className="msg error">{wrongPWMessage}</p>}
+          {inputValue.userPassword && inputValue.userPassword.length < 6 && (
+            <p className="msg error">Mot de passe min. 6 caractères.</p>
+          )}
+        </form>
+        <div className="centered">
+          <input
+            className="form-check-input"
+            id="conditionsCheckbox"
+            type="checkbox"
+            onChange={(e) => setConditionsAccepted(e.target.checked)}
+            required
+          />
+          <label htmlFor="conditionsCheckbox">
+            J’ai lu et j’accepte les{" "}
+            <Link to="/conditions-generales ">conditions générales</Link>.
+          </label>
+        </div>
+
+        <button
+          className="centered"
+          onClick={signup}
+          disabled={
+            !(newUser.userPassword &&
+            newUser.userPassword > 6 &&
+            newUser.userName &&
+            newUser.userName > 2 &&
+            newUser.Website
+              ? urlRegex.test(newUser.userWebsite)
+              : true && conditionsAccepted)
+          }
+        >
+          Créer un compte
+        </button>
+
         {message && (
           <div className={`message ${message.type}`}>{message.content}</div>
         )}
 
         <p className="centered">
-          Déjà inscrit·e ? <Link to="/login">Se connecter</Link>
+          Déjà inscrit·e ? <Link to="/login">Se connecter</Link>.
         </p>
       </div>
-    </div>
+    </>
   );
 };
 

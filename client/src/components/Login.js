@@ -6,66 +6,65 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 function LoginForm() {
-  const { login, handleInputChange, wrongPWMessage, isVisible, seePassword } =
-    useContext(AuthContext);
-  const { inputValue } = useContext(AuthContext);
+  const {
+    login,
+    handleInputChange,
+    wrongPWMessage,
+    isVisible,
+    seePassword,
+    inputValue,
+  } = useContext(AuthContext);
 
   return (
     <div className="grid-area">
-      <h1 className="centered">Se connecter</h1>
+      <h1 className="centered ">Se connecter</h1>
       <form className="centered grid-form">
-        <div className="user-email-label flex-center">
-          <label htmlFor="userEmail">Adresse Email </label>
-        </div>
-        <div className="user-email-input">
+        <div className="form-section">
+          <label htmlFor="userEmail">Adresse Email</label>
           <input
-            placeholder="Adresse email"
+            placeholder="Adresse Email"
             id="userEmail"
             type="text"
             name="userEmail"
             onChange={handleInputChange}
+            className="line"
           />
-        </div>
-        <div className="user-email-requirements">
-          {inputValue.userEmail && !emailRegex.test(inputValue.userEmail) && (
-            <p className="msg error">L'adresse e-mail est invalide.</p>
-          )}
-        </div>
-        <div className="user-password-label flex-center">
+
           <label htmlFor="userPassword">Mot de passe</label>
-        </div>
-        <div className="user-password-input">
-          <input
-            placeholder="Mot de passe"
-            type={isVisible ? "text" : "password"}
-            id="userPassword"
-            name="userPassword"
-            onChange={handleInputChange}
-          />
-        </div>
 
-        <div className="user-password-error">
-          <button className="showPassword" onClick={seePassword}>
-            <FontAwesomeIcon
-              id="eye-icon"
-              icon={isVisible ? faEye : faEyeSlash}
+          <div className="input-label-container fullwidth">
+            <input
+              placeholder="Mot de passe"
+              type={isVisible ? "text" : "password"}
+              id="userPassword"
+              name="userPassword"
+              onChange={handleInputChange}
+              className=" line"
             />
-          </button>
-          {wrongPWMessage && <p className="msg error">{wrongPWMessage}</p>}
-          {inputValue.userPassword && inputValue.userPassword.length < 6 && (
-            <p className="msg error">min 6 caractères.</p>
-          )}
-        </div>
 
-        <div className="submit-button">
-          <button
-            onClick={login}
-            disabled={!emailRegex.test(inputValue.userEmail)}
-          >
-            Se connecter
-          </button>
+            <button className="showPassword" onClick={seePassword}>
+              <FontAwesomeIcon
+                id="eye-icon"
+                icon={isVisible ? faEye : faEyeSlash}
+              />
+            </button>
+          </div>
         </div>
+        {inputValue.userEmail && !emailRegex.test(inputValue.userEmail) && (
+          <p className="msg error">L'adresse e-mail est invalide.</p>
+        )}
+        {wrongPWMessage && <p className="msg error">{wrongPWMessage}</p>}
+        {inputValue.userPassword && inputValue.userPassword.length < 6 && (
+          <p className="msg error">min 6 caractères.</p>
+        )}
       </form>
+      <button
+        className="centered submit-button"
+        onClick={login}
+        disabled={!emailRegex.test(inputValue.userEmail)}
+      >
+        Se connecter
+      </button>
 
       <p className="centered">
         Pas encore inscrit·e ?{" "}
