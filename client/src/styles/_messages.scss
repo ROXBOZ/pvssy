@@ -7,15 +7,12 @@ $archived-color: dimgrey;
 // $info-color: steelblue;
 
 .msg {
-  margin: $demi-gap 0;
+  margin: $sm-space 0;
   font-family: $font-medium;
-  // padding: $demi-gap;
-  // border-radius: $border-radius;
   display: flex;
   gap: 0.5em;
   height: fit-content;
   white-space: nowrap;
-  // @include lighter-bloc($color4);
   * {
     margin-bottom: 0;
   }

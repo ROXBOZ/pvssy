@@ -1,9 +1,9 @@
 @import "vars";
 @import "mixins";
-//
 @import "accessibility";
 @import "agenda";
 @import "animations";
+@import "article";
 @import "bootstrap";
 @import "breadcrumbs";
 @import "buttons";
@@ -13,6 +13,7 @@
 @import "exercises";
 @import "footer";
 @import "forms";
+@import "grids";
 @import "header";
 @import "illustrations";
 @import "lexique";
@@ -26,14 +27,8 @@
 
 * {
   outline: none;
-
   &:focus {
-    border: $border-solid lighten($color1, 30%);
-  }
-
-  &::selection {
-    color: $bg-color;
-    background: $txt-color;
+    border: $border-solid lighten($primary, 30%);
   }
 }
 
@@ -52,7 +47,7 @@ html {
     padding: 0;
     height: auto;
     .main {
-      padding: 10vh $padding-sm;
+      padding: 10vh $reg-space;
       display: flex;
       flex-direction: column;
       overflow: hidden;
@@ -63,67 +58,57 @@ html {
   }
 }
 
-.grid-area {
-  @include grid;
-  .centered {
-    grid-column: #{$grid-center};
-  }
-}
-
-.flex-center {
-  display: flex;
-  align-items: center;
-  gap: $gap;
-}
-
 .vh-view {
   height: 100vh;
   background: $gradient;
   text-align: center;
   flex-direction: column;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  padding: 0 $reg-space;
+
   header {
-    align-self: flex-start;
-    width: 95%; //FIXME
+    width: 100%;
+    @include grid;
+    * {
+      white-space: nowrap;
+    }
     .logo {
       color: $txt-color;
     }
   }
 
   h1 {
-    padding: 22vh $padding-sm;
+    font-family: $font-logo;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 44px); /* 44px is the height of the header */
+    max-width: 80vw;
   }
 }
 
-//TODO REORGANIZE
-.article {
-  img {
-    max-width: $chperline;
-    margin: $gap 0;
-  }
-  .menstrual-reminder {
-    margin-top: $gap * 2;
-    padding: $border-radius;
-    border-radius: $border-radius;
-    width: fit-content;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    gap: $gap * 2;
-    h3 {
-      margin-top: 0;
-    }
-    p {
-      margin-bottom: 0;
-    }
-    img {
-      max-width: $chperline;
-    }
-  }
-  ul {
-    li {
-      margin-bottom: 0.5rem;
-    }
-  }
+//TODO class ==> mixins
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  gap: $reg-space;
+}
+
+.logo {
+  font-family: $font-logo;
+}
+
+strong {
+  font-family: $font-bold;
+  font-weight: 500;
+}
+
+.smaller-text {
+  font-size: $smaller-text;
+}
+
+.acronym {
+  text-transform: uppercase;
 }

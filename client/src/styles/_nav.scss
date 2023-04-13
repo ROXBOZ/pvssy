@@ -46,7 +46,7 @@
     &:hover {
       svg {
         circle {
-          fill: darken($color5, 20%) !important;
+          fill: darken($secondary, 20%) !important;
         }
         path {
           fill: white;
@@ -56,7 +56,7 @@
   }
 
   .copy-url-button-container {
-    $color: $color5;
+    $color: $secondary;
     display: flex;
     align-items: top;
     gap: 0.5em;
@@ -103,7 +103,7 @@
   }
 }
 
-$tabbed-navigation-color: $color5;
+$tabbed-navigation-color: $secondary;
 
 .tabbed-navigation-banner {
   display: flex;
@@ -111,7 +111,7 @@ $tabbed-navigation-color: $color5;
 }
 
 .tabbed-navigation-container {
-  margin: $demi-gap 0;
+  margin: $sm-space 0;
   z-index: 99;
   top: 0;
   height: fit-content;

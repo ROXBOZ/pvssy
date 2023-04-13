@@ -44,7 +44,7 @@ figure {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: $gap 0;
+  margin: $reg-space 0;
   .article-illustration {
     height: 40vh;
   }
@@ -55,11 +55,11 @@ figure {
   grid-column: 2/4;
   justify-content: center;
   align-items: center;
-  gap: $demi-gap;
+  gap: $sm-space;
   .user-avatar,
   .avatar-placeholder {
     object-fit: cover;
-    background-color: $color1;
+    background-color: $primary;
     aspect-ratio: 1/1;
     width: 100%;
     border-radius: 100%;

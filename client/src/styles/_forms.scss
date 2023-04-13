@@ -1,5 +1,5 @@
 .grid-form {
-  margin-bottom: $gap;
+  margin-bottom: $reg-space;
   .form-section {
     @include grid;
     .input-label-container {
@@ -9,9 +9,9 @@
         margin-bottom: 0.25rem;
       }
       &.fullwidth {
-        grid-column: span 6;
+        grid-column: span 7;
         justify-content: space-between;
-        gap: $demi-gap;
+        gap: $sm-space;
         input {
           width: 100%;
         }
@@ -21,7 +21,7 @@
     label {
       display: flex;
       align-items: center;
-      grid-column: 1/7;
+      grid-column: #{$grid-first-half};
     }
   }
 }
@@ -35,7 +35,7 @@ input[type="file"],
 select,
 textarea {
   background-color: $bg-color;
-  grid-column: 7/13;
+  grid-column: #{$grid-second-half};
   color: $txt-color;
   border: $border-solid;
   border-radius: $border-radius;

@@ -4,12 +4,12 @@
 
   .crumb {
     a {
-      color: darken($color6, 5%);
+      color: darken($secondary, 30%);
     }
     &:after {
       color: $txt-color;
       content: "→";
-      padding: 0 $padding-xs;
+      padding: 0 $xs-space;
     }
 
     &:last-child {
@@ -22,7 +22,7 @@
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
   .breadcrumbs {
-    margin-top: $demi-gap;
+    margin-top: $sm-space;
     .crumb {
       a {
         white-space: nowrap;
@@ -33,7 +33,6 @@
 
 @media screen and (min-width: map-get($breakpoints, "sm")) {
   .breadcrumbs {
-    font-size: $smaller-text;
     grid-column: 1/6;
   }
 }

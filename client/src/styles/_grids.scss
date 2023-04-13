@@ -1,0 +1,14 @@
+.grid-area {
+  @include grid;
+  .centered {
+    grid-column: #{$grid-center};
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints, "lg")) {
+  .grid-area {
+    .centered {
+      grid-column: 1/13;
+    }
+  }
+}

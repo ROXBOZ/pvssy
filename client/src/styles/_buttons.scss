@@ -1,7 +1,7 @@
 @mixin button {
   padding: $padding-btn;
   border-radius: $border-radius;
-  border: $border-solid;
+  border: $border-solid $txt-color;
   background-color: transparent;
   font-size: $font-size-basis;
   font-family: $font-medium;
@@ -9,15 +9,15 @@
   height: fit-content;
   cursor: pointer;
   white-space: nowrap;
-
+  color: $txt-color;
   &.square {
     padding: 0.25em 0.5em;
   }
 
   &:hover {
     color: $txt-color;
-    background-color: $color5;
-    border: transparent $border-solid;
+    background-color: $secondary;
+    border: $border-solid;
   }
 
   &:disabled {
@@ -30,7 +30,7 @@ button {
 
   &.showPassword {
     color: $txt-color;
-    padding: $quarter-gap;
+    padding: $xs-space;
     align-items: center;
     border: none !important;
     &:hover {

@@ -33,7 +33,7 @@
 }
 
 .footnotes {
-  margin-top: $gap;
+  margin-top: $reg-space;
   max-width: $chperline;
 
   .source-editor {
@@ -72,7 +72,7 @@
     li {
       gap: 1.75em;
       list-style: none;
-      padding: $demi-gap 0;
+      padding: $sm-space 0;
       .source-title {
         font-family: $font-regular-italic;
       }

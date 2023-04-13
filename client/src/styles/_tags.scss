@@ -1,15 +1,15 @@
 .tag-container {
   display: flex;
-  gap: $demi-gap;
-  margin: 0 0 $gap;
+  gap: $sm-space;
+  margin: 0 0 $reg-space;
   flex-wrap: wrap;
   align-items: center;
   grid-column: #{$grid-center};
 }
 .tag {
   white-space: nowrap;
-  border: $border-solid $color1;
-  color: darken($color1, 10%);
+  border: $border-solid $primary;
+  color: darken($primary, 10%);
   padding: $padding-btn;
   font-size: $smaller-text;
   border-radius: 40px;
@@ -17,7 +17,7 @@
   &.active,
   &:hover {
     cursor: pointer;
-    background-color: darken($color1, 10%);
+    background-color: darken($primary, 10%);
     color: $bg-color;
   }
 }

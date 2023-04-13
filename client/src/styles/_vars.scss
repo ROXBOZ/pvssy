@@ -2,17 +2,9 @@
 
 $txt-color: #31064b;
 $bg-color: #fff7ef;
-// $bg-color: #fff6ed;
-
-$color1: #ff560f;
-$color2: #ff50d7;
-$color3: #20451e;
-$color4: #c8ffa5;
-
-$color5: #ce96ff;
-$color6: #8800ff;
-
-$gradient: radial-gradient(circle, $color1 0%, $color5 70%);
+$primary: #ff560f;
+$secondary: #ce96ff;
+$gradient: radial-gradient(circle, $primary 0%, $secondary 70%);
 
 /*-----Fonts-----*/
 
@@ -21,42 +13,41 @@ $gradient: radial-gradient(circle, $color1 0%, $color5 70%);
   src: url("../assets/fonts/ESRebondGrotesque-Semibold.otf") format("otf"),
     url("../assets/fonts/ESRebondGrotesque-Semibold.ttf") format("truetype");
 }
+$font-logo: "ESRebond";
 
 @font-face {
   font-family: "ESKlarheit-Book";
   src: url("../assets/fonts/ESKlarheitGrotesk-Book.woff") format("woff"),
     url("../assets/fonts/ESKlarheitGrotesk-Book.woff") format("woff2");
 }
+$font-regular: "ESKlarheit-Book";
 
 @font-face {
   font-family: "ESKlarheit-Book-italic";
   src: url("../assets/fonts/ESKlarheitGrotesk-BookItalic.woff") format("woff"),
     url("../assets/fonts/ESKlarheitGrotesk-BookItalic.woff") format("woff2");
 }
+$font-regular-italic: "ESKlarheit-Book-Italic";
 
 @font-face {
   font-family: "ESKlarheit-Medium";
   src: url("../assets/fonts/ESKlarheitGrotesk-Medium.woff") format("woff"),
     url("../assets/fonts/ESKlarheitGrotesk-Medium.woff") format("woff2");
 }
+$font-medium: "ESKlarheit-Medium";
 
 @font-face {
   font-family: "ESKlarheit-Medium-Italic";
   src: url("../assets/fonts/ESKlarheitGrotesk-MediumItalic.woff") format("woff"),
     url("../assets/fonts/ESKlarheitGrotesk-MediumItalic.woff") format("woff2");
 }
+$font-medium-italic: "ESKlarheit-Medium-Italic";
 
 @font-face {
   font-family: "ESKlarheit-Bold";
   src: url("../assets/fonts/ESKlarheitGrotesk-Bold.woff") format("woff"),
     url("../assets/fonts/ESKlarheitGrotesk-Bold.woff") format("woff2");
 }
-
-$font-logo: "ESRebond";
-$font-regular: "ESKlarheit-Book";
-$font-regular-italic: "ESKlarheit-Book-Italic";
-$font-medium: "ESKlarheit-Medium";
-$font-medium-italic: "ESKlarheit-Medium-Italic";
 $font-bold: "ESKlarheit-Bold";
 
 /*-----Typography-----*/
@@ -66,36 +57,29 @@ $lineheight: 1.5;
 $chperline: 70ch;
 $smaller-text: 80%;
 
-/*-----Margins-----*/
+/*-----Paddings & Gap-----*/
 
-$margin-sm: 50px;
-
-/*-----Paddings-----*/
-
-$padding-xs: 0.5em;
-$padding-sm: 2em;
 $padding-btn: 0.5em 1.5em;
-
-/*-----Gap-----*/
-
-$quarter-gap: 0.5em;
-$demi-gap: 1em;
-$gap: 2em;
+$reg-space: 2rem;
+$sm-space: $reg-space / 2;
+$xs-space: $sm-space / 2;
+$lg-space: $reg-space * 2;
 
 /*-----Borders-----*/
 
 $border-solid: 1px solid;
-// $border-radius: 0.25em;
 $border-radius: 40px;
 
-/*-----Grid-----*/
+/*-----Grid Columns-----*/
 
 $grid-center: "4/10";
 $grid-first-third: "1/4";
 $grid-last-thirds: "4/12";
 $grid-last-third: "10/12";
+$grid-first-half: "1/6";
+$grid-second-half: "6/13";
 
-/*-----Animations-----*/
+/*-----Transitions-----*/
 
 $animation-transition: 0.4s;
 
@@ -103,7 +87,6 @@ $animation-transition: 0.4s;
 
 $elevation-8: 0 8px 10px rgba(0, 0, 0, 0.12), 0 3px 14px rgba(0, 0, 0, 0.08),
   0 5px 5px rgba(0, 0, 0, 0.14);
-
 $elevation-4: 0 4px 5px rgba(0, 0, 0, 0.06), 0 1.5px 7px rgba(0, 0, 0, 0.04),
   0 2.5px 2.5px rgba(0, 0, 0, 0.07);
 

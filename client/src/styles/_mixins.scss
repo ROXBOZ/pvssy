@@ -1,31 +1,9 @@
-/*-----Links-----*/
-
-@mixin navlink {
-  font-family: $font-medium;
-  color: $txt-color;
-  text-decoration: none;
-  padding: $padding-btn;
-  border-radius: $border-radius;
-  border: none;
-  &:hover {
-    background-color: darken($color5, 20%);
-    color: white;
-  }
-  &.active {
-    background-color: lighten($color2, 30%);
-    &:hover {
-      background-color: darken($color5, 20%);
-      color: white;
-    }
-  }
-}
-
 /*-----Grid-----*/
 
 @mixin grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: $gap;
+  gap: $reg-space;
 
   @media screen and (max-width: map-get($breakpoints, "sm")) {
     grid-template-columns: 1fr;

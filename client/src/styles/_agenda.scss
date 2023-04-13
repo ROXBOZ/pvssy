@@ -1,9 +1,9 @@
 .agenda-entry {
-  margin-top: $gap;
+  margin-top: $reg-space;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  padding-bottom: $demi-gap;
+  padding-bottom: $sm-space;
   border-bottom: $border-solid;
 
   .agenda-entry-title {
@@ -18,7 +18,7 @@
 
   .event-container {
     border-top: $border-solid;
-    padding-top: $demi-gap;
+    padding-top: $sm-space;
     @include grid;
     .event-col {
       display: flex;
@@ -39,7 +39,7 @@
       }
       grid-column: #{$grid-last-thirds};
       .show-counter {
-        color: $color6;
+        color: darken($secondary, 30%);
       }
     }
   }

@@ -1,12 +1,12 @@
 .countdown {
   display: flex;
   align-items: center;
-  gap: $gap;
+  gap: $reg-space;
 
   .show-counter {
-    color: $color3;
+    color: $primary;
     display: flex;
-    gap: $gap;
+    gap: $reg-space;
     div {
       display: flex;
     }

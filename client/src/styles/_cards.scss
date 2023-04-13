@@ -25,12 +25,12 @@
       flex: max-content;
       box-shadow: $elevation-8;
       overflow: hidden;
-      padding-bottom: $demi-gap;
+      padding-bottom: $sm-space;
 
       h2,
       h3,
       p {
-        padding: 0 $demi-gap;
+        padding: 0 $sm-space;
       }
 
       h3 {
@@ -55,7 +55,7 @@
     &.article,
     &.ressource {
       .card {
-        padding: $padding-sm;
+        padding: $reg-space;
         h2,
         h3,
         p {
@@ -80,7 +80,7 @@
 
     &.ressource {
       .card {
-        background-color: $color1;
+        background-color: $primary;
       }
     }
 
@@ -111,8 +111,8 @@
 
 .pending-event-card {
   // @include form-section;
-  padding: $demi-gap;
-  margin: $demi-gap 0;
+  padding: $sm-space;
+  margin: $sm-space 0;
   height: fit-content;
   .collapsed {
     display: flex;
@@ -126,12 +126,12 @@
   }
   .pending-event-detail {
     .pending-event-detail-content {
-      margin-top: $demi-gap;
+      margin-top: $sm-space;
     }
   }
   .button-flex {
     display: flex;
-    gap: $demi-gap;
+    gap: $sm-space;
     align-items: center;
   }
 }

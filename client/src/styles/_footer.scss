@@ -1,48 +1,53 @@
 footer {
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  gap: $sm-space;
   margin-top: 10vh;
+
   .logo {
-    color: $color6;
+    color: darken($secondary, 30%);
   }
   a {
     color: $txt-color;
   }
-  justify-content: center;
-  align-items: center;
-  gap: $demi-gap;
 
   .footer-main {
-    border-top: $border-solid;
-    padding: $padding-sm;
     @include grid;
+    border-top: $border-solid;
+    padding: $reg-space;
 
-    .footer-main-col {
+    .footer-column {
       display: flex;
 
       &:first-child {
-        grid-column: #{$grid-first-third};
         display: flex;
         flex-direction: column;
-        gap: $demi-gap;
+        gap: $sm-space;
+        grid-column: #{$grid-first-third};
 
         .footer-main-buttons-container {
           display: flex;
-          gap: $demi-gap;
+          gap: $sm-space;
         }
 
         p {
           margin-bottom: 0;
         }
       }
+
       &:nth-child(2) {
         grid-column: #{$grid-last-thirds};
 
         nav {
           display: flex;
-          gap: $gap * 2;
+          gap: $lg-space;
+
           a {
             width: fit-content;
             display: inline-block;
           }
+
           .nav-section {
             display: flex;
             flex-direction: column;
@@ -53,11 +58,12 @@ footer {
   }
 
   .footer-bottom {
+    border-top: $border-solid;
     display: flex;
     justify-content: flex-end;
-    border-top: $border-solid;
-    gap: $demi-gap;
-    padding: $padding-sm;
+    gap: $sm-space;
+    padding: $reg-space;
+
     .copyrights {
       margin-bottom: 0;
     }
@@ -66,21 +72,37 @@ footer {
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
   footer {
-    padding: $demi-gap $gap;
     flex-direction: column;
     align-items: flex-start;
-    .footer-content {
+    .footer-main {
       flex-direction: column;
-      h2 {
-        text-align: center;
-        margin-bottom: 0;
+      .footer-main-buttons-container {
+        flex-direction: column;
       }
-      .social-medias {
-        a {
-          height: 2.5em;
-          width: 2.5em;
+      .footer-column {
+        &:nth-child(2) {
+          grid-column-start: 1;
+          nav {
+            flex-direction: column;
+            gap: $reg-space;
+          }
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints, "md")) {
+  .footer-column {
+    .h3 {
+      white-space: nowrap;
+    }
+    .footer-main-buttons-container {
+      flex-direction: row;
+      width: fit-content;
+    }
+    &:nth-child(2) {
+      grid-column-start: 1 !important;
     }
   }
 }

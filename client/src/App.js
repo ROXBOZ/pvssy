@@ -56,7 +56,7 @@ function App() {
           <>
             <div className="vh-view">
               <Header />
-              <h1 className="logo">
+              <h1>
                 Bien s’informer sur ses douleurs pour mieux se réapproprier son
                 corps et sa sexualité.
               </h1>

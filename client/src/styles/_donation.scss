@@ -1,6 +1,6 @@
 .donation-banner {
   border-top: $border-solid darken($bg-color, 10%);
-  padding: $padding-sm;
+  padding: $reg-space;
   @include grid;
   align-items: center;
   justify-content: left;
@@ -15,7 +15,7 @@
 
     .button-link-container {
       display: flex;
-      gap: $demi-gap;
+      gap: $sm-space;
       align-items: center;
 
       a {

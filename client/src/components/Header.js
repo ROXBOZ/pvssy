@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <header>
       <Link to="/" className="logo">
-        pvssy talk
+        pvssy talk
       </Link>
       <button className="burger-menu" onClick={() => openMenu()}>
         <span id="nav-icon" className={!isOpen ? "close" : "open"}>
@@ -34,11 +34,6 @@ const Header = () => {
 
       <nav className={isOpen ? "vertical" : "horizontal"}>
         <ul>
-          {/* <li>
-            <NavLink className="hidden" onClick={handleNavLink} to="/">
-              Home
-            </NavLink>
-          </li> */}
           <li>
             <NavLink onClick={handleNavLink} to="a-propos">
               À propos
@@ -49,9 +44,7 @@ const Header = () => {
               S’informer
             </NavLink>
           </li>
-          <li>
-            <p style={{ opacity: "30%", paddingTop: "1em" }}>Se soigner</p>
-          </li>
+
           <li>
             <NavLink onClick={handleNavLink} to="agenda">
               Agenda

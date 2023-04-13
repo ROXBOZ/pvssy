@@ -1,8 +1,8 @@
 .userProfile-info {
   display: flex;
-  gap: $gap;
+  gap: $reg-space;
   align-items: center;
-  padding: $padding-sm 0;
+  padding: $reg-space 0;
 
   .userProfile-avatar {
     height: 10rem;

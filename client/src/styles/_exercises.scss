@@ -5,7 +5,7 @@
     .exercise-closed {
       @include grid;
       border-bottom: $border-solid;
-      padding: $demi-gap 0;
+      padding: $sm-space 0;
       align-items: baseline;
       h2 {
         grid-column: #{$grid-first-third};
@@ -31,23 +31,23 @@
         width: 100%;
         aspect-ratio: 16/4.5;
         object-fit: cover;
-        margin-bottom: $gap;
+        margin-bottom: $reg-space;
       }
       .exercise-article {
         @include grid;
-        margin: $gap 0;
+        margin: $reg-space 0;
 
         .prealable {
           font-family: $font-medium;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          padding-right: $demi-gap;
+          padding-right: $sm-space;
           grid-column: #{$grid-first-third};
           p {
-            // padding-bottom: $demi-gap;
+            // padding-bottom: $sm-space;
             // border-bottom: $border-solid;
-            margin-bottom: $demi-gap;
+            margin-bottom: $sm-space;
           }
         }
         .instructions {
@@ -61,7 +61,7 @@
 
           .instructions-step {
             grid-column: #{$grid-center};
-            margin-bottom: $gap;
+            margin-bottom: $reg-space;
             align-items: center;
             &:last-child {
               margin-bottom: 0;
@@ -77,12 +77,12 @@
 
             .instructions-step-open {
               &:first-of-type {
-                margin-top: $demi-gap;
+                margin-top: $sm-space;
               }
               animation: animationOpacity $animation-transition ease-in;
             }
             p {
-              margin-bottom: $demi-gap;
+              margin-bottom: $sm-space;
             }
           }
         }

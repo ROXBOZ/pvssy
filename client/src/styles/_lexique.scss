@@ -5,16 +5,16 @@
 
   .lexique-list-item {
     align-items: flex-start;
-    gap: $gap;
+    gap: $reg-space;
     list-style: none;
-    margin: $gap 0;
+    margin: $reg-space 0;
 
     img {
       width: 100%;
       aspect-ratio: 3/2;
       object-fit: cover;
       border-radius: $border-radius;
-      margin-bottom: $demi-gap;
+      margin-bottom: $sm-space;
     }
 
     img + div {
@@ -23,7 +23,7 @@
       }
 
       .relatedPains {
-        margin: $demi-gap 0;
+        margin: $sm-space 0;
       }
     }
   }
@@ -58,7 +58,7 @@ a.term {
 
     .letter-link-container {
       display: grid;
-      gap: $demi-gap;
+      gap: $sm-space;
       grid-template-columns: repeat(6, 1fr);
       height: fit-content;
       width: fit-content;
@@ -80,7 +80,7 @@ a.term {
           }
         }
         &:hover {
-          background-color: lighten($color1, 35%);
+          background-color: lighten($primary, 35%);
           border-radius: $border-radius;
         }
       }
@@ -90,7 +90,7 @@ a.term {
       display: flex;
       margin-top: 0;
       align-items: center;
-      gap: $demi-gap;
+      gap: $sm-space;
       input {
         width: 80%;
       }
@@ -124,12 +124,12 @@ a.term {
       .related-pain-container {
         display: flex;
         width: fit-content;
-        margin-bottom: $demi-gap;
-        gap: $demi-gap;
+        margin-bottom: $sm-space;
+        gap: $sm-space;
       }
 
       img {
-        margin: $demi-gap 0;
+        margin: $sm-space 0;
         border-radius: $border-radius;
       }
     }

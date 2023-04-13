@@ -1,0 +1,55 @@
+.article {
+  img {
+    max-width: $chperline;
+    margin: $reg-space 0;
+  }
+  .menstrual-reminder {
+    margin-top: $reg-space * 2;
+    padding: $border-radius;
+    border-radius: $border-radius;
+    width: fit-content;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: $reg-space * 2;
+    h3 {
+      margin-top: 0;
+    }
+    p {
+      margin-bottom: 0;
+    }
+    img {
+      max-width: $chperline;
+    }
+  }
+  ul {
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.auteurice {
+  margin-top: 10vh;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  margin-left: -3em;
+  .img-holder {
+    height: 2.5em;
+    width: 2.5em;
+    background: $gradient;
+  }
+  em {
+    font-style: normal;
+    font-family: $font-medium-italic;
+    a {
+      font-style: normal;
+      font-family: $font-medium-italic;
+    }
+  }
+
+  @media screen and (max-width: map-get($breakpoints, "sm")) {
+    margin-left: 0;
+  }
+}
