@@ -68,11 +68,6 @@ html {
   padding: 0 $reg-space;
 
   header {
-    width: 100%;
-    @include grid;
-    * {
-      white-space: nowrap;
-    }
     .logo {
       color: $txt-color;
     }

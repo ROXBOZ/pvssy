@@ -751,11 +751,15 @@ header {
   grid-template-columns: repeat(12, 1fr);
   gap: 2rem;
   padding: 0 2rem;
+  width: 100%;
 }
 @media screen and (max-width: 576px) {
   header {
     grid-template-columns: 1fr;
   }
+}
+header * {
+  white-space: nowrap;
 }
 header .logo {
   font-size: 1.5rem;
@@ -839,6 +843,7 @@ header nav.horizontal ul li .logout-header .user-icon-link p {
     position: fixed;
     left: 0;
     right: 0;
+    width: 100vw;
   }
   header .logo {
     z-index: 999;
@@ -1795,20 +1800,6 @@ html body .main {
   display: flex;
   align-items: center;
   padding: 0 2rem;
-}
-.vh-view header {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 2rem;
-}
-@media screen and (max-width: 576px) {
-  .vh-view header {
-    grid-template-columns: 1fr;
-  }
-}
-.vh-view header * {
-  white-space: nowrap;
 }
 .vh-view header .logo {
   color: #31064b;
