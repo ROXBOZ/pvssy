@@ -1,3 +1,18 @@
+.author {
+  @include grid;
+  font-size: $smaller-text;
+  * {
+    grid-column: #{$grid-center};
+  }
+}
+@media screen and (max-width: map-get($breakpoints, "lg")) {
+  .author {
+    * {
+      grid-column: #{$grid-fullwidth};
+    }
+  }
+}
+
 .article {
   img {
     max-width: $chperline;
@@ -26,30 +41,5 @@
     li {
       margin-bottom: 0.5rem;
     }
-  }
-}
-
-.auteurice {
-  margin-top: 10vh;
-  display: flex;
-  gap: 0.5em;
-  align-items: center;
-  margin-left: -3em;
-  .img-holder {
-    height: 2.5em;
-    width: 2.5em;
-    background: $gradient;
-  }
-  em {
-    font-style: normal;
-    font-family: $font-medium-italic;
-    a {
-      font-style: normal;
-      font-family: $font-medium-italic;
-    }
-  }
-
-  @media screen and (max-width: map-get($breakpoints, "sm")) {
-    margin-left: 0;
   }
 }

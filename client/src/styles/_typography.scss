@@ -35,6 +35,7 @@ li {
     padding-bottom: 0;
     margin-bottom: 0;
     max-width: fit-content;
+    font-size: $smaller-text;
     & + h1,
     & + h2,
     & + h3 {
@@ -51,7 +52,7 @@ li {
 
 a {
   text-decoration: none;
-  color: darken($primary, 10%);
+  color: $primary;
   border-bottom: $border-solid;
   font-family: $font-medium;
   width: fit-content;
@@ -79,7 +80,7 @@ hr {
   .heading-area {
     * {
       width: 100%;
-      grid-column: 1/13;
+      grid-column: #{$grid-fullwidth};
     }
   }
 

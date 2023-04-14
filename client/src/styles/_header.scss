@@ -1,7 +1,6 @@
 header {
   @include grid;
   padding: 0 $reg-space;
-  width: 100%;
 
   * {
     white-space: nowrap;
@@ -97,7 +96,7 @@ header {
     position: fixed;
     left: 0;
     right: 0;
-    width: 100vw;
+    width: auto;
 
     .logo {
       z-index: 999;
@@ -187,6 +186,7 @@ header {
         background: $bg-color;
         display: flex;
         align-items: center;
+        text-align: left;
 
         ul {
           padding: $reg-space;

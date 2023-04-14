@@ -30,17 +30,17 @@ const Ressources = () => {
         <ResourceCard
           to="/s-informer/ressources/glossaire"
           title="Glossaire"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          // description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
         />
         <ResourceCard
           to="/s-informer/ressources/exercices"
           title="Exercices"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          // description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
         />
         <ResourceCard
           to="/s-informer/ressources/suggestions"
           title="Suggestions"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          // description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
         />
       </div>
     </div>

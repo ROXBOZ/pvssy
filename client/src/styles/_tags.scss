@@ -6,10 +6,10 @@
   align-items: center;
   grid-column: #{$grid-center};
 }
+
 .tag {
   white-space: nowrap;
-  border: $border-solid $primary;
-  color: darken($primary, 10%);
+  border: $border-solid $secondary;
   padding: $padding-btn;
   font-size: $smaller-text;
   border-radius: 40px;
@@ -17,7 +17,21 @@
   &.active,
   &:hover {
     cursor: pointer;
-    background-color: darken($primary, 10%);
-    color: $bg-color;
+    background-color: $secondary;
+    border-color: $txt-color;
+  }
+}
+
+.reset {
+  font-size: $smaller-text;
+  cursor: pointer;
+  &:hover {
+    opacity: 70%;
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .tag-container {
+    grid-column: #{$grid-fullwidth};
   }
 }

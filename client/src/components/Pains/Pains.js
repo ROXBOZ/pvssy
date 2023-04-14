@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 import { useLocation } from "react-router-dom";
 import { HeadingArea } from "../../utils/HeadingArea";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Pains = () => {
   const { data, Error } = useContext(PainsContext);
@@ -15,17 +17,16 @@ const Pains = () => {
     setSelectedTag((prevTag) => (prevTag === tag ? null : tag));
   };
 
+  function handleReset() {
+    setSelectedTag(null);
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   const CreateTags = () => {
-    let painTags = [
-      "vagin",
-      // "clitoris",
-      // "vulve",
-      "utérus",
-      // "ovaires",
-      // "anus",
-      "règles",
-      "pénétration",
-    ];
+    let painTags = ["vagin", "utérus", "règles", "pénétration"];
 
     return (
       <div className="tag-container">
@@ -40,6 +41,10 @@ const Pains = () => {
             </span>
           );
         })}
+        <span className="reset" onClick={() => handleReset()}>
+          <FontAwesomeIcon icon={faXmark} />
+           réinitialiser
+        </span>
       </div>
     );
   };
@@ -82,6 +87,7 @@ const Pains = () => {
           return (
             <Link
               className="link-card"
+              onClick={scrollToTop}
               to={{
                 pathname: `/s-informer/douleurs/${p.name.toLowerCase()}/medical`,
               }}

@@ -8,7 +8,7 @@
 @media screen and (max-width: map-get($breakpoints, "lg")) {
   .grid-area {
     .centered {
-      grid-column: 1/13;
+      grid-column: #{$grid-fullwidth};
     }
   }
 }

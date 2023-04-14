@@ -68,7 +68,8 @@ $lg-space: $reg-space * 2;
 /*-----Borders-----*/
 
 $border-solid: 1px solid;
-$border-radius: 40px;
+$border-radius: 50px;
+$border-radius-soft: 10px;
 
 /*-----Grid Columns-----*/
 
@@ -78,6 +79,7 @@ $grid-last-thirds: "4/12";
 $grid-last-third: "10/12";
 $grid-first-half: "1/6";
 $grid-second-half: "6/13";
+$grid-fullwidth: "1/12";
 
 /*-----Transitions-----*/
 

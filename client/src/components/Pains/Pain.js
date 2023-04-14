@@ -5,8 +5,6 @@ import { HeadingArea } from "../../utils/HeadingArea";
 
 const Pain = () => {
   const outlet = useOutlet();
-  // const [, setAnchorPosition] = useState(0);
-
   const { painData, painName, fetchSinglePain, fetchRelatedSources } =
     useContext(PainsContext);
 
@@ -55,6 +53,22 @@ const Pain = () => {
       <>
         <HeadingArea pretitle="douleur" title={painName} level="h1" />
 
+        <div className="author">
+          <p>
+            Articles par <Link to="https://aemg-ge.com/">Medsexplain</Link> +{" "}
+            <Link to="https://aemg-ge.com/">Fiona Bourdon</Link>. Illustrations
+            par <Link to="https://noemiecreux.com/">Noémie Creux</Link>
+            {/* <em>
+              par{" "}
+              {isMed ? (
+                <Link to="https://aemg-ge.com/">Medsexplain</Link>
+              ) : (
+                <Link to="https://aemg-ge.com/">Fiona Bourdon</Link>
+              )}
+            </em> */}
+          </p>
+        </div>
+
         {outlet ? (
           <Outlet />
         ) : (
@@ -72,23 +86,11 @@ const Pain = () => {
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quo amet quaerat repellat, voluptatum reprehenderit quod dolore ea dignissimos facilis cum cumque asperiores. Praesentium delectus perspiciatis magnam repudiandae dolor alias."
               />
 
-              <ResourceCard
-                to="glossaire"
-                title="Glossaire"
-                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-              />
+              <ResourceCard to="glossaire" title="Glossaire" />
 
-              <ResourceCard
-                to="exercices"
-                title="Exercices"
-                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-              />
+              <ResourceCard to="exercices" title="Exercices" />
 
-              <ResourceCard
-                to="suggestions"
-                title="Suggestions"
-                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-              />
+              <ResourceCard to="suggestions" title="Suggestions" />
             </div>
           </>
         )}

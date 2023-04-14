@@ -162,9 +162,9 @@ const PainArticle = () => {
           alt={painData.name}
         />
 
-        <span>
+        {/* <span>
           Illustré par <Link to="https://noemiecreux.com/">Noémie Creux</Link>
-        </span>
+        </span> */}
       </figure>
 
       <div className="tabbed-navigation-banner">
@@ -184,20 +184,10 @@ const PainArticle = () => {
       </div>
 
       <div className="article-container" id="articleRef">
-        <div className="auteurice">
-          <div className="img-holder" />
-          <em>
-            par{" "}
-            {isMed ? (
-              <Link to="https://aemg-ge.com/">Medsexplain</Link>
-            ) : (
-              <Link to="https://aemg-ge.com/">Fiona Bourdon</Link>
-            )}
-          </em>
-        </div>
-
         <ul
-          className={`category-submenu ${isSticky ? "fixed" : ""}`}
+          className={`category-submenu ${
+            window.innerWidth > 992 && isSticky ? "fixed" : ""
+          }`}
           ref={submenuRef}
         >
           <ShareThis />

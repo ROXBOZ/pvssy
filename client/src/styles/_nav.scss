@@ -1,15 +1,8 @@
-//TODO TO REFACTORE
-
 .category-submenu {
   width: 30vh;
   margin-top: 0;
   grid-column: 1/4 !important;
   position: relative;
-  z-index: 999;
-
-  &.fixed {
-    @include stick;
-  }
 
   h4 {
     margin: 0;
@@ -39,8 +32,11 @@
     }
     list-style: none;
   }
-}
 
+  &.fixed {
+    @include stick;
+  }
+}
 .share-button {
   a {
     &:hover {
@@ -97,14 +93,6 @@
   }
 }
 
-@media screen and (max-width: map-get($breakpoints, "sm")) {
-  .category-submenu {
-    background-color: yellow;
-  }
-}
-
-$tabbed-navigation-color: $secondary;
-
 .tabbed-navigation-banner {
   display: flex;
   flex-direction: column;
@@ -126,11 +114,14 @@ $tabbed-navigation-color: $secondary;
     align-self: center;
     justify-self: center;
     transition: width 400ms ease-out;
+    & + .article-container {
+      padding-top: 10vh;
+    }
   }
 
   .tabbed-navigation {
     background-color: $bg-color;
-    border: $border-solid $tabbed-navigation-color;
+    border: $border-solid $secondary;
     display: flex;
     justify-content: flex-start;
     border-radius: $border-radius;
@@ -156,7 +147,7 @@ $tabbed-navigation-color: $secondary;
       justify-content: center;
       border: none;
       border-radius: $border-radius;
-      line-height: 44px;
+      line-height: 2rem;
       text-decoration: initial;
       cursor: pointer;
       vertical-align: middle;
@@ -165,13 +156,12 @@ $tabbed-navigation-color: $secondary;
         border: 0;
       }
       &:hover {
-        background-color: lighten($tabbed-navigation-color, 20%);
+        background-color: lighten($secondary, 20%);
       }
       &.active {
-        background-color: $tabbed-navigation-color;
-        // color: white;
+        background-color: $secondary;
         &:hover {
-          background-color: darken($tabbed-navigation-color, 5%);
+          background-color: darken($secondary, 5%);
         }
       }
     }
@@ -180,19 +170,22 @@ $tabbed-navigation-color: $secondary;
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
   .tabbed-navigation-container {
-    border: 5px solid yellow;
+    background-color: $bg-color;
+    &.sticky {
+      width: 100vw;
+    }
+    .tabbed-navigation {
+      height: 68px; // header height
+    }
   }
-}
-
-.sticky + .article-container {
-  padding-top: 10vh;
 }
 
 // TODO REOGANIZE
 .article-container {
   @include grid;
-  animation: opacityAnimation 500ms ease-in;
+  animation: animationOpacity 500ms ease-in;
   flex-direction: column;
+  padding-top: 10vh;
 
   * {
     grid-column: #{$grid-center};
@@ -211,14 +204,5 @@ $tabbed-navigation-color: $secondary;
     * {
       grid-column: 1/5;
     }
-  }
-}
-
-@keyframes opacityAnimation {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 100%;
   }
 }

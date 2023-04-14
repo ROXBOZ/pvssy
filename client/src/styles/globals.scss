@@ -41,6 +41,7 @@ html {
   line-height: 1.5;
   font-size: $font-size-basis;
   height: auto;
+  overflow-x: hidden;
 
   body {
     margin: 0;
@@ -66,8 +67,9 @@ html {
   display: flex;
   align-items: center;
   padding: 0 $reg-space;
-
+  //NOTE important!
   header {
+    width: 100%;
     .logo {
       color: $txt-color;
     }
@@ -106,4 +108,26 @@ strong {
 
 .acronym {
   text-transform: uppercase;
+}
+
+.CGUV {
+  h2 {
+    margin-top: $reg-space;
+    border-top: $border-solid;
+    padding-top: $reg-space;
+  }
+  a {
+    white-space: nowrap;
+  }
+  ol,
+  ul {
+    list-style-position: outside;
+    li {
+      padding: $xs-space 0;
+    }
+  }
+
+  ol li ul li {
+    list-style-type: disc;
+  }
 }
