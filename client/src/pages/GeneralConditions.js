@@ -108,14 +108,17 @@ const GeneralConditions = () => {
                   financements obtenus exclusivement de sources publiques ou de
                   consommateur·rice·s·x ;
                 </li>
-                <li>
+                <li style={{ color: "red" }}>
                   collaborations avec […] afin de rédiger le contenu du Site
                   Internet ; et
                 </li>
                 <li>
                   en traitant les données strictement conformément à sa
                   politique de confidentialité et en collaborant avec des
-                  fournisseurs basés en Suisse
+                  fournisseurs basés en Suisse.{" "}
+                  <span style={{ color: "red" }}>
+                    herbergement USA = fournisseur ???
+                  </span>
                 </li>
               </ul>
             </li>
@@ -241,7 +244,7 @@ const GeneralConditions = () => {
               remboursement sera effectué sur la même carte. Il peut s'écouler
               jusqu'à 14 jours avant que l'argent ne soit crédité.
             </li>
-            <li>
+            <li style={{ color: "red" }}>
               Si vous souhaitez échanger une commande expédiée en-dehors de la
               Suisse, veuillez noter que No Dolor vous facturera à nouveau […].-
               pour les frais d'expédition et de manutention.
@@ -253,7 +256,7 @@ const GeneralConditions = () => {
           </ol>
           <h3>Conditions de paiement</h3>
           <ol>
-            <li>
+            <li style={{ color: "red" }}>
               Les paiements s'effectuent généralement par carte de crédit via
               Stripe directement sur le Site Internet.
             </li>
@@ -332,8 +335,8 @@ const GeneralConditions = () => {
             fichier texte auquel un serveur accède pour lire et enregistrer des
             informations. Certaines parties du Site Internet ne peuvent être
             fonctionnelles sans l’acceptation de cookies. Vous pouvez vous
-            référer à la Politique de confidentialité si vous souhaitez
-            davantage d’informations.
+            référer à la <a href="#PC">Politique de confidentialité</a> si vous
+            souhaitez davantage d’informations.
           </p>
           <h3>Marketing</h3>
           <p>
@@ -424,7 +427,7 @@ const GeneralConditions = () => {
             remboursement sera effectué sur la même carte. Il peut s'écouler
             jusqu'à 14 jours avant que l'argent ne soit crédité.
           </p>
-          <p>
+          <p style={{ color: "red" }}>
             Si vous souhaitez échanger une commande expédiée en-dehors de la
             Suisse, veuillez noter que No Dolor vous facturera à nouveau […].-
             pour les frais d'expédition et de manutention.
@@ -500,12 +503,11 @@ const GeneralConditions = () => {
           <h3>Hébergement</h3>
           <ol style={{ color: "green" }}>
             <li>
-              Le Site internet est hébergé aux États-Unis chez Vercel, Inc. une
-              entreprise appartenant à Amazon.com, Inc.{" "}
+              L’hébergement est géré via les services de Vercel, Inc.{" "}
               <a href="https://vercel.com/legal/privacy-policy">
                 Vous pouvez en apprendre plus sur eux ici
               </a>
-              .
+              . Le Site Internet est hébergé aux États Unis par Amazon, Inc.
             </li>
             <li>
               La base de données est gérée via les services de Mongo DB.{" "}
@@ -513,9 +515,9 @@ const GeneralConditions = () => {
                 Vous pouvez en apprendre plus sur eux ici
               </a>
               . Vos données sont stockées dans leur système de stockage de
-              données, dans un Cloud partagé AWS (Amazon.com, Inc.) à Paris,
-              France. Elles sont conservées sur un serveur sécurisé protégé par
-              un pare-feu. .
+              données, dans un Cloud partagé AWS (Amazon, Inc.) à Paris, France.
+              Elles sont conservées sur un serveur sécurisé protégé par un
+              pare-feu.
             </li>
           </ol>
 
@@ -527,7 +529,8 @@ const GeneralConditions = () => {
               </p>
               <ul style={{ color: "red" }}>
                 <li>Strapi comme content management system</li>
-                <li>PayPay, TWINT, MailChimp ?</li>
+                <li>PayPay, TWINT, Stripe, MailChimp ?</li>
+                <li>Matomo ?</li>
               </ul>
             </li>
             <li>
