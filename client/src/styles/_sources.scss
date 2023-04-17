@@ -47,16 +47,8 @@
     padding-left: 0;
     gap: 0.25rem;
     li {
-      display: grid;
-      grid-template-columns: 0 1fr;
-      gap: 1.75em;
-      align-items: start;
       font-size: $smaller-text;
       line-height: $lineheight;
-
-      &:before {
-        content: attr(data-icon);
-      }
       .source-title {
         font-family: $font-medium-italic;
       }

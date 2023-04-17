@@ -21,6 +21,7 @@
   }
 
   &:disabled {
+    opacity: 30%;
     pointer-events: none;
   }
 }

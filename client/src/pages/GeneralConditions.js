@@ -4,14 +4,18 @@ import { HeadingArea } from "../utils/HeadingArea";
 const GeneralConditions = () => {
   return (
     <div>
-      <HeadingArea
-        title="Conditions générales"
-        level="h1"
-        subtitle='Les présentes conditions générales d’utilisation et de vente ("CGUV") sont applicables à la relation entre l’association No Dolor ("No Dolor"), en tant que propriétaire du site internet pvssy-talk.org (le "Site Internet") et venderesse, et vous en tant qu’utilisateur·rice·x du Site Internet et client·e·x lors de commande passée sur le Site Internet ou via email.'
-      />
+      <HeadingArea title="Conditions générales" level="h1" />
       <div className="grid-area">
         <div className="CGUV centered">
           <div>
+            <p>
+              Les présentes conditions générales d’utilisation et de vente
+              ("CGUV") sont applicables à la relation entre l’association
+              No Dolor ("No Dolor"), en tant que propriétaire du site internet
+              pvssy-talk.org (le "Site Internet") et venderesse, et vous en tant
+              qu’utilisateur·rice·x du Site Internet et client·e·x lors de
+              commande passée sur le Site Internet ou via email.
+            </p>
             <ul>
               <li>
                 <a href="#CGUV">
@@ -28,7 +32,7 @@ const GeneralConditions = () => {
           </div>
 
           <h2 id="CGUV">Conditions générales d’utilisation et de vente</h2>
-          <h3>Vocation du Site Internet</h3>
+          <h3 className="h4">Vocation du Site Internet</h3>
           <ol>
             <li>
               <p>
@@ -130,7 +134,7 @@ const GeneralConditions = () => {
               vous mettre en relation avec ces institutions.
             </li>
           </ol>
-          <h3>Conclusion d’un contrat</h3>
+          <h3 className="h4">Conclusion d’un contrat</h3>
           <ol>
             <li>
               La partie des présentes CGUV réglant l’utilisation du Site
@@ -150,7 +154,7 @@ const GeneralConditions = () => {
               sélectionnés.
             </li>
           </ol>
-          <h3>Contenu et exclusion de responsabilité</h3>
+          <h3 className="h4">Contenu et exclusion de responsabilité</h3>
           <ol>
             <li>
               Le contenu du Site Internet est rédigé avec soin par des
@@ -183,14 +187,14 @@ const GeneralConditions = () => {
               et/ou ressources.
             </li>
           </ol>
-          <h3>Prix</h3>
+          <h3 className="h4">Prix</h3>
           <p>
             Les prix et informations indiqués pour un article, une carte cadeau
             ou un code de réduction au moment de la commande sur le Site web
             s'appliquent à la transaction. Tous les prix sur le Site Internet
             sont hors TVA.
           </p>
-          <h3>Expédition</h3>
+          <h3 className="h4">Expédition</h3>
           <ol>
             <li>
               Les frais d'expédition sont basés sur la destination sélectionnée.
@@ -199,7 +203,10 @@ const GeneralConditions = () => {
             <li>
               Si vous êtes intéressé·e·x par nos produits et ne résidez pas en
               Suisse, ou pour toute question, n’hésitez pas à écrire à{" "}
-              <a href="maitlo:info@pvssy-talk.org">info@pvssy-talk.org</a>.
+              <a href="maitlo:info@pvssy-talk.org">
+                <nobr>info@pvssy-talk.org</nobr>
+              </a>
+              .
             </li>
             <li>
               Une fois votre commande expédiée, vous recevrez un numéro de suivi
@@ -207,11 +214,13 @@ const GeneralConditions = () => {
             </li>
             <li>
               N’hésitez pas à envoyer un email à{" "}
-              <a href="maitlo:info@pvssy-talk.org">info@pvssy-talk.org</a> si
-              vous avez des questions.
+              <a href="maitlo:info@pvssy-talk.org">
+                <nobr>info@pvssy-talk.org</nobr>
+              </a>{" "}
+              si vous avez des questions.
             </li>
           </ol>
-          <h3>Retours</h3>
+          <h3 className="h4">Retours</h3>
           <ol>
             <li>
               No Dolor espère que vous serez satisfait·e·x de votre commande.
@@ -225,9 +234,11 @@ const GeneralConditions = () => {
             <li>
               Pour organiser le retour, ainsi que l'échange et/ou le
               remboursement, veuillez envoyer un email à{" "}
-              <a href="maitlo:info@pvssy-talk.org">info@pvssy-talk.org</a> pour
-              obtenir des instructions et/ou pour vous assurer que le produit
-              que vous souhaitez échanger soit mis de côté.
+              <a href="maitlo:info@pvssy-talk.org">
+                <nobr>info@pvssy-talk.org</nobr>
+              </a>{" "}
+              pour obtenir des instructions et/ou pour vous assurer que le
+              produit que vous souhaitez échanger soit mis de côté.
             </li>
             <li>
               Les produits doivent être retournés dans leur état d'origine,
@@ -254,7 +265,7 @@ const GeneralConditions = () => {
               sont non remboursables.
             </li>
           </ol>
-          <h3>Conditions de paiement</h3>
+          <h3 className="h4">Conditions de paiement</h3>
           <ol>
             <li style={{ color: "red" }}>
               Les paiements s'effectuent généralement par carte de crédit via
@@ -268,10 +279,13 @@ const GeneralConditions = () => {
               délai, elle se réserve le droit d'annuler la commande et de
               remettre la marchandise en vente. Si vous souhaitez procéder au
               paiement par virement bancaire, veuillez écrire directement à{" "}
-              <a href="maitlo:info@pvssy-talk.org">info@pvssy-talk.org</a>.
+              <a href="maitlo:info@pvssy-talk.org">
+                <nobr>info@pvssy-talk.org</nobr>
+              </a>
+              .
             </li>
           </ol>
-          <h3>Informations transmises</h3>
+          <h3 className="h4">Informations transmises</h3>
           <p>
             Outre les informations relatives à votre carte de crédit nécessaire
             à votre paiement sur le Site Internet, No Dolor a besoin des
@@ -283,7 +297,7 @@ const GeneralConditions = () => {
             <li>Adresse email ; et</li>
             <li>Numéro de téléphone portable le cas échéant.</li>
           </ul>
-          <h3>Traitement des données</h3>
+          <h3 className="h4">Traitement des données</h3>
           <ol>
             <li>
               No Dolor enregistre et traite les données personnelles transmises
@@ -323,10 +337,13 @@ const GeneralConditions = () => {
               information personnelle vous concernant dont No Dolor dispose,
               déposer une plainte ou obtenir d’avantage d’information, vous
               pouvez envoyer un email à{" "}
-              <a href="maitlo:info@pvssy-talk.org">info@pvssy-talk.org</a>.
+              <a href="maitlo:info@pvssy-talk.org">
+                <nobr>info@pvssy-talk.org</nobr>
+              </a>
+              .
             </li>
           </ol>
-          <h3>Cookies</h3>
+          <h3 className="h4">Cookies</h3>
           <p>
             Le Site Internet utilise des cookies [uniquement] nécessaires à son
             bon fonctionnement. Un cookie est une information déposée sur votre
@@ -338,7 +355,7 @@ const GeneralConditions = () => {
             référer à la <a href="#PC">Politique de confidentialité</a> si vous
             souhaitez davantage d’informations.
           </p>
-          <h3>Marketing</h3>
+          <h3 className="h4">Marketing</h3>
           <p>
             Si vous avez choisi de vous inscrire lors de la validation de votre
             commande, si vous vous êtes abonné·e·x à la lettre d'information de
@@ -346,9 +363,12 @@ const GeneralConditions = () => {
             prévu à cet effet, elle peut vous envoyer des courriels marketing.
             Vous pouvez bien sûr vous désinscrire à tout moment et/ou lui
             envoyer vos commentaires à l'adresse{" "}
-            <a href="maitlo:info@pvssy-talk.org">info@pvssy-talk.org</a>.
+            <a href="maitlo:info@pvssy-talk.org">
+              <nobr>info@pvssy-talk.org</nobr>
+            </a>
+            .
           </p>
-          <h3>Propriété intellectuelle</h3>
+          <h3 className="h4">Propriété intellectuelle</h3>
           <p>
             L’ensemble du contenu présent sur le Site Internet, notamment les
             designs, illustrations, images, graphismes, vidéos, animations,
@@ -357,14 +377,14 @@ const GeneralConditions = () => {
             sociétés ou auteurs. Rien dans les présentes CGUV n’opère une
             session de droit de No Dolor envers vous.
           </p>
-          <h3>Modifications des CGUV</h3>
+          <h3 className="h4">Modifications des CGUV</h3>
           <p>
             No Dolor se réserve le droit de modifier les présentes CGUV à tout
             moment et sans préavis (notamment pour ménager les boîtes de
             réception de ses clients et utilisateurs). La version disponible en
             ligne au moment de la commande s'applique à celle-ci.
           </p>
-          <h3>Droit applicable et for</h3>
+          <h3 className="h4">Droit applicable et for</h3>
           <p>
             Sauf dispositions impératives contraires en matière de droit de la
             consommation :
@@ -381,7 +401,7 @@ const GeneralConditions = () => {
           </ul>
 
           <h2 id="PER">Politique d’expédition et de retours</h2>
-          <h3>Expéditions</h3>
+          <h3 className="h4">Expéditions</h3>
           <p>
             Les frais d'expédition sont basés sur la destination sélectionnée.
             L'expédition en Suisse est comprise dans les prix affichés.{" "}
@@ -389,13 +409,16 @@ const GeneralConditions = () => {
           <p>
             Si vous êtes intéressés par nos produits et ne résidez pas en
             Suisse, ou pour toute question, n’hésitez pas à écrire à{" "}
-            <a href="maitlo:info@pvssy-talk.org">info@pvssy-talk.org</a>.
+            <a href="maitlo:info@pvssy-talk.org">
+              <nobr>info@pvssy-talk.org</nobr>
+            </a>
+            .
           </p>
           <p>
             Une fois votre commande expédiée, vous recevrez un numéro de suivi
             par email.
           </p>
-          <h3>Retours</h3>
+          <h3 className="h4">Retours</h3>
           <p>
             No Dolor espère que vous serez satisfait·e·s·x de votre commande.
             Toutefois, si pour une raison quelconque, vous n'êtes pas
@@ -408,9 +431,11 @@ const GeneralConditions = () => {
           <p>
             Pour organiser le retour, ainsi que l'échange et/ou le
             remboursement, veuillez envoyer un email à{" "}
-            <a href="maitlo:info@pvssy-talk.org">info@pvssy-talk.org</a> pour
-            obtenir des instructions et/ou pour vous assurer que le produit que
-            vous souhaitez échanger soit mis de côté.
+            <a href="maitlo:info@pvssy-talk.org">
+              <nobr>info@pvssy-talk.org</nobr>
+            </a>{" "}
+            pour obtenir des instructions et/ou pour vous assurer que le produit
+            que vous souhaitez échanger soit mis de côté.
           </p>
           <p>
             Les produits doivent être retournés dans leur état d'origine,
@@ -445,7 +470,7 @@ const GeneralConditions = () => {
             en lien avec l’utilisation de celles-ci.
           </p>
 
-          <h3>Informations personnelles</h3>
+          <h3 className="h4">Informations personnelles</h3>
           <ol>
             <li>
               Lorsque vous naviguez sur ou effectuez un achat en ligne depuis le
@@ -470,7 +495,7 @@ const GeneralConditions = () => {
             </li>
           </ol>
 
-          <h3>Consentement</h3>
+          <h3 className="h4">Consentement</h3>
           <ol>
             <li>
               Lorsque vos informations personnelles sont transmises à No Dolor
@@ -487,12 +512,14 @@ const GeneralConditions = () => {
               Après avoir donné votre consentement, vous pouvez bien évidemment
               changer d’avis en tout temps et ne plus souhaiter être contacté.
               Dans ce cas, vous pouvez envoyer un email à{" "}
-              <a href="maitlo:info@pvssy-talk.org">info@pvssy-talk.org</a> afin
-              que No Dolor procède à un ajustement.
+              <a href="maitlo:info@pvssy-talk.org">
+                <nobr>info@pvssy-talk.org</nobr>
+              </a>{" "}
+              afin que No Dolor procède à un ajustement.
             </li>
           </ol>
 
-          <h3>Divulgation</h3>
+          <h3 className="h4">Divulgation</h3>
           <p>
             En principe, No Dolor ne divulgue pas vos informations personnelles.
             Elle peut le faire si elle y est contrainte par la loi, si cela est
@@ -500,35 +527,32 @@ const GeneralConditions = () => {
             de violation des CGUV.
           </p>
 
-          <h3>Hébergement</h3>
+          <h3 className="h4">Hébergement</h3>
           <ol style={{ color: "green" }}>
             <li>
-              L’hébergement est géré via les services de Vercel, Inc.{" "}
-              <a href="https://vercel.com/legal/privacy-policy">
-                Vous pouvez en apprendre plus sur eux ici
-              </a>
-              . Le Site Internet est hébergé aux États Unis par Amazon, Inc.
+              L’hébergement est géré via les services de Vercel, Inc. Le Site
+              Internet est hébergé aux États Unis par Amazon, Inc.
             </li>
             <li>
-              La base de données est gérée via les services de Mongo DB.{" "}
-              <a href="https://www.mongodb.com/legal/legal-notices">
-                Vous pouvez en apprendre plus sur eux ici
-              </a>
-              . Vos données sont stockées dans leur système de stockage de
-              données, dans un Cloud partagé AWS (Amazon, Inc.) à Paris, France.
-              Elles sont conservées sur un serveur sécurisé protégé par un
-              pare-feu.
+              La base de données est gérée via les services de Mongo DB. Vos
+              données sont stockées dans leur système de stockage de données,
+              dans un Cloud partagé AWS à Paris, France. Elles sont conservées
+              sur un serveur sécurisé protégé par un pare-feu.
             </li>
           </ol>
 
-          <h3>Services de tiers</h3>
+          <h3 className="h4">Services de tiers</h3>
           <ol>
             <li>
               <p>
                 Le Site internet a recours aux services de fournisseurs tiers :
               </p>
               <ul style={{ color: "red" }}>
-                <li>Strapi comme content management system</li>
+                <li>
+                  Strapi comme Content Management System (à checker si il faut
+                  le lister car ça fonctionne complètement differement que
+                  Wordpress)
+                </li>
                 <li>PayPay, TWINT, Stripe, MailChimp ?</li>
                 <li>Matomo ?</li>
               </ul>
@@ -569,7 +593,7 @@ const GeneralConditions = () => {
             </li>
           </ol>
 
-          <h3>Sécurité</h3>
+          <h3 className="h4">Sécurité</h3>
           <p>
             No Dolor fait preuve de diligence et suit les pratiques de
             l’industrie afin de protéger vos informations personnelles et que
@@ -577,7 +601,7 @@ const GeneralConditions = () => {
             modifiées ou détruites de façon inappropriée.{" "}
           </p>
 
-          <h3>Cookies</h3>
+          <h3 className="h4">Cookies</h3>
 
           <ol>
             <li style={{ color: "red" }}>
@@ -590,7 +614,7 @@ const GeneralConditions = () => {
             <li>Vous avez l’opportunité de les accepter ou de les refuser.</li>
           </ol>
 
-          <h3>Modifications</h3>
+          <h3 className="h4">Modifications</h3>
           <p>
             No Dolor se réserve le droit de modifier la présente Politique de
             confidentialité à tout moment et sans préavis (notamment pour
@@ -599,13 +623,16 @@ const GeneralConditions = () => {
             Internet est applicable.
           </p>
 
-          <h3>Contact</h3>
+          <h3 className="h4">Contact</h3>
           <p>
             Si vous souhaitez connaître, corriger, modifier ou supprimer toute
             information personnelle vous concernant dont No Dolor dispose,
             déposer une plainte ou obtenir davantage d’information, vous pouvez
             envoyer un email à{" "}
-            <a href="maitlo:info@pvssy-talk.org">info@pvssy-talk.org</a>.
+            <a href="maitlo:info@pvssy-talk.org">
+              <nobr>info@pvssy-talk.org</nobr>
+            </a>
+            .
           </p>
         </div>
       </div>

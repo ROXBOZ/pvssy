@@ -19,17 +19,18 @@ const PainArticle = () => {
   const menuRef = useRef();
   const [, setAnchorPosition] = useState(0);
   const [menuTop, setMenuTop] = useState(0);
+
   const menstrualReminder = [
     " Pendant la seconde phase, nommée phase lutéale, la progestérone va induire une modification des cellules de l’endomètre qui vont former des glandes sécrétant des nutriments qui vont permettre la survie de l’embryon en cas d’implantation. Sans implantation, la progestérone va chuter après 10 jours, ce qui va provoquer une contraction des artères de l’endomètre ce qui va induire une diminution de l’arrivée de sang dans le tissu et la mort des cellules qui vont partir avec les menstruations et laisser un endomètre très fin.",
   ];
 
-  const imgSrc = (painName, section, num) => {
-    try {
-      return require(`../../assets/images/shemas/${painName}-${section}-${num}.png`);
-    } catch (error) {
-      return "";
-    }
-  };
+  // const imgSrc = (painName, section, num) => {
+  //   try {
+  //     return require(`../../assets/images/shemas/${painName}-${section}-${num}.png`);
+  //   } catch (error) {
+  //     return "";
+  //   }
+  // };
 
   const {
     isSticky,
@@ -161,10 +162,6 @@ const PainArticle = () => {
           src={painData.img}
           alt={painData.name}
         />
-
-        {/* <span>
-          Illustré par <Link to="https://noemiecreux.com/">Noémie Creux</Link>
-        </span> */}
       </figure>
 
       <div className="tabbed-navigation-banner">
@@ -191,15 +188,14 @@ const PainArticle = () => {
           ref={submenuRef}
         >
           <ShareThis />
+
           <p className="h4">
             Ressources
-            <br />
             {painData.name === "Sopk" ? (
               <span className="acronym">{painData.name}</span>
             ) : (
               <span> {painData.name}</span>
             )}
-            <br />
           </p>
 
           <li>
@@ -212,166 +208,132 @@ const PainArticle = () => {
             <Link to="../suggestions">Suggestions</Link>
           </li>
         </ul>
+        <div>
+          {isMed ? (
+            <div className="article">
+              <h2>Définition</h2>
+              {highlightParagraphs(painData.def)}
 
-        {isMed ? (
-          <div className="article">
-            <h2>Définition</h2>
-            {highlightParagraphs(painData.def)}
-            {/*  //FIX ME  */}
-            {imgSrc && (
-              <img
-                src={imgSrc(painData.name, "def", "1")}
-                alt=""
-                onError={(e) => {
-                  e.target.src = null;
-                }}
-              />
-            )}
-
-            {painData.tags.includes("règles") && (
-              <div className="menstrual-reminder">
-                <div>
-                  <h3>Rappel sur le cycle menstruel</h3>
-                  {highlightParagraphs(menstrualReminder)}
+              {painData.tags.includes("règles") && (
+                <div className="menstrual-reminder">
+                  <div>
+                    <h3>Rappel sur le cycle menstruel</h3>
+                    {highlightParagraphs(menstrualReminder)}
+                  </div>
+                  <figure>
+                    <img
+                      src={require(`../../assets/images/shemas/menstruation-reminder.png`)}
+                      alt={`shéma ${painData.name}`}
+                    />
+                    <br />
+                    <caption>
+                      <strong>Shéma sur le cycle menstruel</strong> : Lorem
+                      ipsum dolor, sit amet consectetur adipisicing elit. Cumque
+                      asperiores nobis in omnis labore necessitatibus unde
+                      impedit, nesciunt maxime earum iure deleniti explicabo
+                      similique, quaerat quae, aspernatur libero placeat
+                      temporibus?
+                    </caption>
+                  </figure>
                 </div>
-                <img
-                  src={require(`../../assets/images/shemas/menstruation-reminder.png`)}
-                  alt={`shéma ${painData.name}`}
-                />
-              </div>
-            )}
+              )}
 
-            <h2>Diagnostic</h2>
-            {highlightParagraphs(painData.diag)}
+              <h2>Diagnostic</h2>
+              {highlightParagraphs(painData.diag)}
+              <h2>Symptômes</h2>
+              {highlightParagraphs(painData.sympt)}
+              <h2>Pourquoi ça m’arrive ?</h2>
+              {highlightParagraphs(painData.why)}
 
-            {/*  //FIX ME  */}
-            {imgSrc && (
-              <img
-                src={imgSrc(painData.name, "diag", "1")}
-                alt=""
-                onError={(e) => {
-                  e.target.src = null;
-                }}
-              />
-            )}
-            {/*  //FIX ME  */}
-            {imgSrc && (
-              <img
-                src={imgSrc(painData.name, "diag", "2")}
-                alt=""
-                onError={(e) => {
-                  e.target.src = null;
-                }}
-              />
-            )}
+              {painData.auto.length > 0 && (
+                <>
+                  <h2>Que puis-je faire solo ?</h2>
+                  {highlightParagraphs(painData.auto)}
+                </>
+              )}
 
-            <h2>Symptômes</h2>
-            {highlightParagraphs(painData.sympt)}
+              <h2>Comment me soigner ?</h2>
+              {painData.proIntro && highlightParagraphs(painData.proIntro)}
 
-            <h2>Pourquoi ça m’arrive ?</h2>
-            {highlightParagraphs(painData.why)}
-            {/*  //FIX ME  */}
-            {imgSrc && (
-              <img
-                src={imgSrc(painData.name, "why", "1")}
-                alt=""
-                onError={(e) => {
-                  e.target.src = null;
-                }}
-              />
-            )}
-
-            {painData.auto.length > 0 ? (
-              <>
-                <h2>Que puis-je faire solo ?</h2>
-                {highlightParagraphs(painData.auto)}
-              </>
-            ) : (
-              <></>
-            )}
-
-            <h2>Comment me soigner ?</h2>
-            {painData.proIntro && highlightParagraphs(painData.proIntro)}
-            {painData.pros &&
-              painData.pros.map((pro) => {
-                return (
-                  <>
-                    {pro.proTitle && <h3>{pro.proTitle}</h3>}
-                    {pro.proDef && highlightParagraphs(pro.proDef)}
-                  </>
-                );
-              })}
-          </div>
-        ) : (
-          <div className="article">
-            <h2>Lien à soi</h2>
-            <h3>Image /schéma corporel</h3>
-            {highlightParagraphs(painData.body)}
-            <h3>Normes genrées</h3>
-            {highlightParagraphs(painData.norms)}
-
-            <h3>Vie quotidienne</h3>
-            {highlightParagraphs(painData.routine)}
-            <h2>Libido</h2>
-            {highlightParagraphs(painData.libido)}
-            <h3>Charge mentale et communication</h3>
-            {highlightParagraphs(painData.charge)}
-            <h3>Sexe et consentement</h3>
-            {highlightParagraphs(painData.consent)}
-            <h2>Santé mentale</h2>
-            {highlightParagraphs(painData.mental)}
-            <h2>Parentalité</h2>
-            {highlightParagraphs(painData.parenthood)}
-            <h2>Avec les pros de la santé</h2>
-            {highlightParagraphs(painData.checkup)}
-            <h2>Traitement</h2>
-            {highlightParagraphs(painData.treatment)}
-            <h2>Plaisir / anti-douleur</h2>
-            {highlightParagraphs(painData.pleasure)}
-          </div>
-        )}
-
-        {requestedSources && (
-          <>
-            {requestedSources.some((s) => s.isFootnote) && (
-              <div id="references" className="footnotes">
-                <h4>Bibliographie</h4>
-                <ul>
-                  {requestedSources.map((s, index) => {
-                    if (s.isFootnote === true) {
-                      return (
-                        <li data-icon="→" key={s._id} id={index}>
-                          <span className="source-list-item">
-                            <span className="source-author">{s.author}</span>
-                            <span className="source-year"> ({s.year}). </span>
-                            <span className="source-title">
-                              {s.url ? (
-                                <Link to={s.url}>{s.title}</Link>
-                              ) : (
-                                <span>{s.title}</span>
+              {painData.pros &&
+                painData.pros.map((pro) => {
+                  return (
+                    <>
+                      {pro.proTitle && <h3>{pro.proTitle}</h3>}
+                      {pro.proDef && highlightParagraphs(pro.proDef)}
+                    </>
+                  );
+                })}
+            </div>
+          ) : (
+            <div className="article">
+              <h2>Lien à soi</h2>
+              <h3>Image /schéma corporel</h3>
+              {highlightParagraphs(painData.body)}
+              <h3>Normes genrées</h3>
+              {highlightParagraphs(painData.norms)}
+              <h3>Vie quotidienne</h3>
+              {highlightParagraphs(painData.routine)}
+              <h2>Libido</h2>
+              {highlightParagraphs(painData.libido)}
+              <h3>Charge mentale et communication</h3>
+              {highlightParagraphs(painData.charge)}
+              <h3>Sexe et consentement</h3>
+              {highlightParagraphs(painData.consent)}
+              <h2>Santé mentale</h2>
+              {highlightParagraphs(painData.mental)}
+              <h2>Parentalité</h2>
+              {highlightParagraphs(painData.parenthood)}
+              <h2>Avec les pros de la santé</h2>
+              {highlightParagraphs(painData.checkup)}
+              <h2>Traitement</h2>
+              {highlightParagraphs(painData.treatment)}
+              <h2>Plaisir / anti-douleur</h2>
+              {highlightParagraphs(painData.pleasure)}
+            </div>
+          )}
+          {requestedSources && (
+            <>
+              {requestedSources.some((s) => s.isFootnote) && (
+                <div id="references" className="footnotes">
+                  <h4>Bibliographie</h4>
+                  <ul>
+                    {requestedSources.map((s, index) => {
+                      if (s.isFootnote === true) {
+                        return (
+                          <li data-icon="→" key={s._id} id={index}>
+                            <span className="source-list-item">
+                              <span className="source-author">{s.author}</span>
+                              <span className="source-year"> ({s.year}). </span>
+                              <span className="source-title">
+                                {s.url ? (
+                                  <Link to={s.url}>{s.title}</Link>
+                                ) : (
+                                  <span>{s.title}</span>
+                                )}
+                              </span>{" "}
+                              <span className="source-category">
+                                [{s.category}]
+                              </span>{" "}
+                              {s.edition && (
+                                <span className="source-edition">
+                                  {" "}
+                                  ({s.edition}
+                                  {s.edition === "1" ? "ère" : "ème"} éd.){" "}
+                                </span>
                               )}
-                            </span>{" "}
-                            <span className="source-category">
-                              [{s.category}]
-                            </span>{" "}
-                            {s.edition && (
-                              <span className="source-edition">
-                                {" "}
-                                ({s.edition}
-                                {s.edition === "1" ? "ère" : "ème"} éd.){" "}
-                              </span>
-                            )}
-                            <span className="source-editor">{s.editor}</span>.
-                          </span>
-                        </li>
-                      );
-                    }
-                  })}
-                </ul>
-              </div>
-            )}
-          </>
-        )}
+                              <span className="source-editor">{s.editor}</span>.
+                            </span>
+                          </li>
+                        );
+                      }
+                    })}
+                  </ul>
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </div>
     </>
   );

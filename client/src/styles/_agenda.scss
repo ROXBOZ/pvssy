@@ -12,7 +12,7 @@
     justify-content: space-between;
     h3 {
       margin: 0;
-      padding: 1rem 0;
+      padding: $sm-space 0;
     }
   }
 
@@ -28,10 +28,11 @@
       }
       &:first-child {
         grid-column: #{$grid-first-third};
+
         p {
-          width: 100%;
           margin-bottom: 0;
           border-bottom: $border-solid;
+          padding: $xs-space;
           &:last-child {
             border-bottom: none;
           }
@@ -41,6 +42,17 @@
       .show-counter {
         color: darken($secondary, 30%);
       }
+    }
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .event-container {
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+    .event-col {
+      width: 100%;
     }
   }
 }

@@ -1,30 +1,12 @@
 import React, { useEffect, useContext } from "react";
 import { EventsContext } from "../contexts/eventsContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { dateTimeConverter } from "../utils/dateConverter";
-import { generateColor } from "../utils/colorGenerator";
 import Agenda from "../components/Agenda/Agenda";
 import Pains from "../components/Pains/Pains";
 import { HeadingArea } from "../utils/HeadingArea";
 
 const Home = () => {
   console.log("%chome component run again", "color:orange");
-  const {
-    fetchData,
-    Error,
-    data,
-    agendaURL,
-    value,
-    suggestions,
-    showSuggestions,
-    selectedSuggestionIndex,
-    iconClicked,
-    handleRegionInputChange,
-    handleSuggestionClick,
-    handleIconClick,
-    handleKeyDown,
-  } = useContext(EventsContext);
+  const { fetchData, agendaURL } = useContext(EventsContext);
 
   //NOTE try to use useMemo() to store the lenght of data.upcomingEvents
   useEffect(() => {

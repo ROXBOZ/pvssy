@@ -78,9 +78,8 @@
   }
 }
 .copy-url-button {
-  width: 25px;
-  height: 25px;
-  background-color: #d95720;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: none !important;
   display: flex !important;
@@ -92,12 +91,10 @@
     color: white;
   }
 }
-
 .tabbed-navigation-banner {
   display: flex;
   flex-direction: column;
 }
-
 .tabbed-navigation-container {
   margin: $sm-space 0;
   z-index: 99;
@@ -169,40 +166,26 @@
 }
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
+  .category-submenu {
+    width: auto;
+    border-top: $border-solid;
+    padding-top: $reg-space;
+    padding-left: 0;
+    li {
+      margin-left: $sm-space;
+    }
+  }
   .tabbed-navigation-container {
-    background-color: $bg-color;
+    background-color: white;
+    height: 69px;
+    display: flex;
+    align-items: flex-end;
+    .tabbed-navigation {
+      align-self: flex-end;
+      width: 100%;
+    }
     &.sticky {
       width: 100vw;
-    }
-    .tabbed-navigation {
-      height: 68px; // header height
-    }
-  }
-}
-
-// TODO REOGANIZE
-.article-container {
-  @include grid;
-  animation: animationOpacity 500ms ease-in;
-  flex-direction: column;
-  padding-top: 10vh;
-
-  * {
-    grid-column: #{$grid-center};
-  }
-
-  &.event {
-    max-width: 50vw;
-    .heading-area {
-      margin-top: 0;
-    }
-  }
-}
-
-@media screen and (max-width: map-get($breakpoints, "sm")) {
-  .article-container {
-    * {
-      grid-column: 1/5;
     }
   }
 }

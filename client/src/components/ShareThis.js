@@ -47,7 +47,7 @@ const ShareThis = () => {
           onClick={handleShareButtonClick}
         >
           <EmailIcon
-            size={25}
+            size={30}
             round={true}
             iconFillColor={{ fill: "#1f042f" }}
             bgStyle={{ fill: "#cf98ff" }}
@@ -60,7 +60,7 @@ const ShareThis = () => {
           onClick={handleShareButtonClick}
         >
           <WhatsappIcon
-            size={25}
+            size={30}
             round={true}
             iconFillColor={{ fill: "#1f042f" }}
             bgStyle={{ fill: "#cf98ff" }}
@@ -73,7 +73,7 @@ const ShareThis = () => {
           onClick={handleShareButtonClick}
         >
           <TelegramIcon
-            size={25}
+            size={30}
             round={true}
             iconFillColor={{ fill: "#1f042f" }}
             bgStyle={{ fill: "#cf98ff" }}

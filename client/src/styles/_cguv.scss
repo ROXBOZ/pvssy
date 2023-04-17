@@ -1,0 +1,26 @@
+.CGUV {
+  h2 {
+    margin-top: $reg-space;
+    border-top: $border-solid;
+    padding-top: $reg-space;
+  }
+
+  ol,
+  ul {
+    li {
+      padding: $xs-space 0;
+    }
+  }
+
+  ol li ul li {
+    list-style-type: disc;
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints, "lg")) {
+  .CGUV {
+    a {
+      white-space: break-spaces;
+    }
+  }
+}

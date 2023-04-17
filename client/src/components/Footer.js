@@ -19,13 +19,11 @@ const Footer = () => {
         <div className="footer-column">
           <nav>
             <div className="nav-section">
-              <Link to="a-propos">à propos</Link>
               <Link to="*">devenir membre</Link>
               <Link to="*">presse kit</Link>
               <Link to="conditions-generales">conditions générales</Link>
             </div>
             <div className="nav-section">
-              <a href="mailto:info@pvssy-talk.org">Email</a>
               <Link to="https://www.facebook.com/pvssytalk/">Facebook</Link>
               <Link to="https://www.instagram.com/pvssy_talk/">Instagram</Link>
               <Link to="https://www.linkedin.com/company/pvssy-talk/">
@@ -33,7 +31,7 @@ const Footer = () => {
               </Link>
             </div>
             <div className="nav-section">
-              <Link to="/">confidentialité</Link>
+              <a href="mailto:info@pvssy-talk.org">envoyer un email</a>
               <Link to="/">crédits</Link>
             </div>
           </nav>

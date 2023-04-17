@@ -50,12 +50,11 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-        {location.pathname !== "/" && <Header />}
+        <Header />
 
         {location.pathname === "/" && (
           <>
             <div className="vh-view">
-              <Header />
               <h1>
                 Bien s’informer sur ses douleurs pour mieux se réapproprier son
                 corps et sa sexualité.

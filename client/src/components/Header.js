@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-
 import { AuthContext } from "../contexts/authContext";
 import { useContext, useState } from "react";
 
@@ -12,7 +11,6 @@ const Header = () => {
   const openMenu = () => {
     setIsOpen((prevState) => !prevState);
   };
-
   const handleNavLink = () => {
     setIsOpen(false);
   };

@@ -24,6 +24,7 @@
 @import "tags";
 @import "tooltips";
 @import "typography";
+@import "cguv";
 
 * {
   outline: none;
@@ -59,38 +60,14 @@ html {
   }
 }
 
-.vh-view {
-  height: 100vh;
-  background: $gradient;
-  text-align: center;
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  padding: 0 $reg-space;
-  //NOTE important!
-  header {
-    width: 100%;
-    .logo {
-      color: $txt-color;
-    }
-  }
-
-  h1 {
-    font-family: $font-logo;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 44px); /* 44px is the height of the header */
-    max-width: 80vw;
-  }
-}
-
-//TODO class ==> mixins
-
 .flex-center {
   display: flex;
   align-items: center;
   gap: $reg-space;
+  @media screen and (max-width: map-get($breakpoints, "sm")) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .logo {
@@ -110,24 +87,23 @@ strong {
   text-transform: uppercase;
 }
 
-.CGUV {
-  h2 {
-    margin-top: $reg-space;
-    border-top: $border-solid;
-    padding-top: $reg-space;
-  }
-  a {
-    white-space: nowrap;
-  }
-  ol,
-  ul {
-    list-style-position: outside;
-    li {
-      padding: $xs-space 0;
-    }
-  }
+//TODO HOME PAGE HEADER CREATE FILE
 
-  ol li ul li {
-    list-style-type: disc;
+.vh-view {
+  height: 100vh;
+  background: $gradient;
+  text-align: center;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  padding: 0 $reg-space;
+
+  h1 {
+    font-family: $font-logo;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 44px); /* 44px is the height of the header */
+    max-width: 80vw;
   }
 }

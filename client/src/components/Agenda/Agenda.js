@@ -7,6 +7,7 @@ import { dateConverter, timeConverter } from "../../utils/dateConverter";
 import CountdownTimer from "../CountdownTimer";
 import { fromNowToDate } from "../../utils/fromNowToDate";
 import { HeadingArea } from "../../utils/HeadingArea";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 const Agenda = () => {
   const [showEvent, setShowEvent] = useState({});
@@ -197,7 +198,7 @@ const Agenda = () => {
                         </div>
 
                         <div className="event-col">
-                          <p>{e.longDef}</p>
+                          <ReactMarkdown>{e.longDef}</ReactMarkdown>
                           {e.isOnline && (
                             <div className="flex-center">
                               <button
