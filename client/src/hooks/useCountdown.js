@@ -5,7 +5,7 @@ const useCountdown = (isoDate) => {
   const [countDown, setCountDown] = useState(
     countDownDate - new Date().getTime()
   );
-  //
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCountDown(countDownDate - new Date().getTime());
