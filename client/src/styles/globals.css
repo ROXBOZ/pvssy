@@ -645,7 +645,8 @@ footer .footer-bottom .copyrights {
 .grid-form .form-section .input-label-container.fullwidth input {
   width: 100%;
 }
-.grid-form .form-section label {
+.grid-form .form-section label,
+.grid-form .form-section .label-detail {
   display: flex;
   align-items: center;
   grid-column: 1/6;
@@ -1147,9 +1148,9 @@ a.term span {
   font-family: "ESKlarheit-Medium";
   display: flex;
   gap: 0.5em;
-  height: -moz-fit-content;
-  height: fit-content;
-  white-space: nowrap;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
 }
 .msg * {
   margin-bottom: 0;
@@ -1173,10 +1174,7 @@ a.term span {
   content: "⌛  ";
 }
 .msg.warning:before {
-  content: url("../assets/images/warning.svg");
-  width: 20px;
-  height: 20px;
-  padding-top: 2.5px;
+  content: "⚠️  ";
 }
 .msg.archived {
   color: dimgrey;

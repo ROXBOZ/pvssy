@@ -5,8 +5,10 @@ import { AuthContext } from "../../../contexts/authContext";
 import { serverURL } from "../../../utils/serverURL";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import ReactMde from "react-mde";
-import * as Showdown from "showdown";
 import "react-mde/lib/styles/css/react-mde-all.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
+
 import {
   addressRegex,
   cityRegex,
@@ -17,7 +19,6 @@ import {
   todayISO,
   urlRegex,
 } from "../../../utils/regexExpressions";
-
 const AddEvent = () => {
   const formRef = useRef();
   const { userProfile } = useContext(AuthContext);
@@ -36,17 +37,25 @@ const AddEvent = () => {
     eventRegion: "Genève",
     freeEntry: true,
   });
-  const converter = new Showdown.Converter({
-    tables: true,
-    simplifiedAutoLink: true,
-    strikethrough: true,
-    tasklists: true,
-  });
-  const customCommand: Command = {
+
+  const newLineCommand = {
     name: "newLine",
     icon: () => <span>↵</span>,
     execute: (opts) => {
       opts.textApi.replaceSelection("  \n");
+    },
+  };
+  const linkCommand = {
+    name: "link",
+    icon: () => (
+      <FontAwesomeIcon
+        style={{ opacity: "30%" }}
+        className="link-icon"
+        icon={faLink}
+      />
+    ),
+    execute: () => {
+      console.log("object");
     },
   };
   const handleInputChange = (e) => {
@@ -145,12 +154,16 @@ const AddEvent = () => {
       }, 3000);
     }
   }, [message]);
-
-  console.log("newEvent.eventLongDef :", newEvent.eventLongDef);
+  console.log("newEvent :", newEvent);
   return (
     <>
       <form className="grid-form" ref={formRef}>
         <h3>Informations essentielles</h3>
+        <p className="msg warning">
+          Pour un événement sur plusieurs jours, précisez les heures chaque jour
+          dans "En détails". Pour un festival, créez plusieurs événements pour
+          les différentes activités.
+        </p>
         <div className="form-section">
           <label htmlFor="eventTitle">Nom de l’évènement *</label>
           <input
@@ -163,6 +176,7 @@ const AddEvent = () => {
             className="line"
           />
           <label htmlFor="eventDateTimeStart">Début *</label>
+
           <input
             name="eventDateTimeStart"
             id="eventDateTimeStart"
@@ -192,9 +206,10 @@ const AddEvent = () => {
           <div className="react-mde-container">
             <ReactMde
               commands={{
-                newLine: customCommand,
+                newLine: newLineCommand,
+                link: linkCommand,
               }}
-              toolbarCommands={[["newLine", "bold", "italic"]]}
+              toolbarCommands={[["newLine", "bold", "italic", "link"]]}
               name="eventLongDef"
               id="eventLongDef"
               value={markdown}
@@ -221,14 +236,20 @@ const AddEvent = () => {
                 type="checkbox"
                 name="eventOrganizer"
                 onChange={(e) => {
-                  if (userProfile.userName && e.target.checked) {
-                    setEventOrganizer(userProfile.userName);
-                    setEventOrganizerWebsite(userProfile.userWebsite);
+                  if (e.target.checked) {
                     setOrganizerIsUserName(true);
+                    setNewEvent({
+                      ...newEvent,
+                      eventOrganizer: userProfile.userName,
+                      eventOrganizerWebsite: userProfile.userWebsite,
+                    });
                   } else {
-                    setEventOrganizer(null);
-                    setEventOrganizerWebsite(null);
                     setOrganizerIsUserName(false);
+                    setNewEvent({
+                      ...newEvent,
+                      eventOrganizer: null,
+                      eventOrganizerWebsite: null,
+                    });
                   }
                 }}
               />
@@ -507,7 +528,6 @@ const AddEvent = () => {
           </div>
         )}
       </form>
-
       <button
         onClick={submitForm}
         type="submit"
@@ -541,7 +561,6 @@ const AddEvent = () => {
           ? "Ajouter l’évènement"
           : "Proposer l’évènement"}
       </button>
-
       {message && (
         <div className={`message ${message.type}`}>{message.content}</div>
       )}

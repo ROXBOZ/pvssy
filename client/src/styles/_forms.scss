@@ -18,11 +18,10 @@
       }
     }
 
-    label {
+    label,
+    .label-detail {
       display: flex;
       align-items: center;
-      // grid-column: 4/6;
-
       grid-column: #{$grid-first-half};
     }
   }

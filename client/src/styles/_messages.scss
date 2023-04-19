@@ -11,8 +11,9 @@ $archived-color: dimgrey;
   font-family: $font-medium;
   display: flex;
   gap: 0.5em;
-  height: fit-content;
-  white-space: nowrap;
+  background-color: white;
+  padding: $sm-space;
+  border-radius: $border-radius-soft;
   * {
     margin-bottom: 0;
   }
@@ -38,12 +39,11 @@ $archived-color: dimgrey;
   }
 
   &.warning {
-    // color: $warning-color;
     &:before {
-      content: url("../assets/images/warning.svg");
-      width: 20px;
-      height: 20px;
-      padding-top: 2.5px;
+      content: ("⚠️  ");
+      // content: url("../assets/images/warning.svg");
+      // width: 30px;
+      // padding-top: 2.5px;
     }
   }
 

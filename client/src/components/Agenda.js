@@ -56,8 +56,6 @@ const Agenda = () => {
     }
   };
 
-  console.log("data.upcomingEvents :", data.upcomingEvents);
-
   return (
     <div>
       {endsWithAgenda && (
@@ -168,24 +166,35 @@ const Agenda = () => {
                     <>
                       <div className="event-container">
                         <div className="event-col">
-                          {!e.dateEnd ? (
-                            <p>{dateConverter(e.dateStart)}</p>
+                          {dateConverter(e.dateStart) ===
+                          dateConverter(e.dateEnd) ? (
+                            <>
+                              <p>{dateConverter(e.dateStart)}</p>
+                              <p>
+                                de {timeConverter(e.dateStart)} à{" "}
+                                {timeConverter(e.dateEnd)}
+                              </p>
+                            </>
                           ) : (
-                            <p>
-                              du {dateConverter(e.dateStart)} au 
-                              {dateConverter(e.dateEnd)}.
-                            </p>
+                            <>
+                              <p>
+                                Début : {dateConverter(e.dateStart)},{" "}
+                                {timeConverter(e.dateStart)}
+                              </p>
+                              <p>
+                                Fin : {dateConverter(e.dateEnd)},{" "}
+                                {timeConverter(e.dateEnd)}
+                              </p>
+                            </>
                           )}
-
-                          {e.dateEnd ? (
+                          {/* {e.dateEnd ? (
                             <p style={{ color: "red" }}>
                               de {timeConverter(e.dateStart)} à{" "}
                               {timeConverter(e.dateEnd)}
                             </p>
                           ) : (
                             <p>dès {timeConverter(e.dateStart)}</p>
-                          )}
-
+                          )} */}
                           <p>
                             {e.isOnline ? (
                               <>ONLINE</>
