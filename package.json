@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "react-icons": "^4.8.0",
-    "react-mde": "^11.5.0",
-    "showdown": "^2.1.0"
-  }
-}
