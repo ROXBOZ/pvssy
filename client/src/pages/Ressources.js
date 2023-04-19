@@ -10,7 +10,7 @@ const Ressources = () => {
     <Link to={to} className="link-card ressource">
       <div className="card ">
         <h3>{title}</h3>
-        <p>{description}</p>
+        {/* <p>{description}</p> */}
       </div>
     </Link>
   );

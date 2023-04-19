@@ -1,8 +1,8 @@
 import React from "react";
-import CountdownTimer from "../CountdownTimer";
+import CountdownTimer from "../components/CountdownTimer";
 import { Link, useLocation } from "react-router-dom";
-import { fromNowToDate } from "../../utils/fromNowToDate";
-import { dateTimeConverter } from "../../utils/dateConverter";
+import { fromNowToDate } from "../utils/fromNowToDate";
+import { dateTimeConverter } from "../utils/dateConverter";
 
 const Event = () => {
   let location = useLocation();
@@ -21,8 +21,10 @@ const Event = () => {
     tel,
     entryFee,
   } = location.state.content;
+
   const { eventDateInMilli, todayStartinMilli, todayEndinMilli } =
     fromNowToDate(isoDate);
+
   const dateTime = dateTimeConverter(isoDate);
   const redirectToMeeting = () => {
     window.location.href = onlineMeeting;

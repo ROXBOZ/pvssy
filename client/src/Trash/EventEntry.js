@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { dateConverter } from "../../utils/dateConverter";
 
 const EventCard = ({ e }) => {
   const id = e._id;
@@ -17,14 +16,6 @@ const EventCard = ({ e }) => {
   const email = e.email;
   const tel = e.tel;
   const entryFee = e.entryFee;
-  const dateTime = dateConverter(e.date);
-
-  let shortTitle;
-  if (title.length > 30) {
-    shortTitle = title.substring(0, 30) + "...";
-  } else {
-    shortTitle = title;
-  }
 
   const color1 = "#f5733c";
   const color2 = "#ff50d7";
@@ -74,7 +65,7 @@ const EventCard = ({ e }) => {
         className="card"
         style={{ background: generateColor(color1, color2) }}
       >
-        <h3>{shortTitle}</h3>
+        {/* <h3>{shortTitle}</h3> */}
         <p className="card-date">
           {dateTime}
           <br />

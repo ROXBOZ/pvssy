@@ -110,7 +110,7 @@ const DeleteEvent = () => {
                 <ul className="check-list">
                   {data.upcomingEvents &&
                     data.upcomingEvents.map((e) => {
-                      const dateTime = dateTimeConverter(e.date);
+                      const dateTime = dateTimeConverter(e.dateStart);
                       return (
                         <li key={e._id}>
                           <input

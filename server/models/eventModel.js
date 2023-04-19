@@ -12,14 +12,16 @@ const eventSchema = new mongoose.Schema({
     unique: true,
   },
 
-  date: {
+  dateStart: {
     type: Date,
-    required: true,
+  },
+
+  dateEnd: {
+    type: Date,
   },
 
   organizer: {
     type: String,
-    required: true,
   },
 
   organizerWebsite: {

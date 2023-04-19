@@ -1,20 +1,20 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { EventsContext } from "../../contexts/eventsContext";
+import { EventsContext } from "../contexts/eventsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { dateConverter, timeConverter } from "../../utils/dateConverter";
-import CountdownTimer from "../CountdownTimer";
-import { fromNowToDate } from "../../utils/fromNowToDate";
-import { HeadingArea } from "../../utils/HeadingArea";
+import { dateConverter, timeConverter } from "../utils/dateConverter";
+import CountdownTimer from "./CountdownTimer";
+import { fromNowToDate } from "../utils/fromNowToDate";
+import { HeadingArea } from "../utils/HeadingArea";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 const Agenda = () => {
   const [showEvent, setShowEvent] = useState({});
   const location = useLocation();
-
   const currentUrl = location.pathname;
   const endsWithAgenda = /agenda$/.test(currentUrl);
+  const [openAccordion, setOpenAccordion] = useState(null);
 
   const redirectToMeeting = () => {
     console.log("redirect to meeting :");
@@ -44,7 +44,19 @@ const Agenda = () => {
       ...prevState,
       [id]: !prevState[id],
     }));
+
+    if (openAccordion !== id) {
+      setShowEvent((prevState) => ({
+        ...prevState,
+        [openAccordion]: false,
+      }));
+      setOpenAccordion(id);
+    } else {
+      setOpenAccordion(null);
+    }
   };
+
+  console.log("data.upcomingEvents :", data.upcomingEvents);
 
   return (
     <div>
@@ -56,11 +68,6 @@ const Agenda = () => {
         />
       )}
       <dig className="grid-area">
-        {/* <p className="centered">
-          Vous avez un évènement à proposer ?{" "}
-          <Link to="/login">Connectez-vous</Link>.
-        </p> */}
-
         <div className="centered filter-dashboard">
           <div className="filter">
             <div className="filter-dropdown">
@@ -105,6 +112,7 @@ const Agenda = () => {
           </div>
         </div>
       </dig>
+
       <div>
         {data.upcomingEvents &&
         data.upcomingEvents
@@ -116,7 +124,7 @@ const Agenda = () => {
             );
           })
           .sort((a, b) => {
-            return new Date(a.date) - new Date(b.date);
+            return new Date(a.dateStart) - new Date(b.dateStart);
           }).length > 0 ? (
           data.upcomingEvents
             .filter((e) => {
@@ -128,21 +136,28 @@ const Agenda = () => {
               );
             })
             .sort((a, b) => {
-              return new Date(a.date) - new Date(b.date);
+              return new Date(a.dateStart) - new Date(b.dateStart);
             })
             .map((e, index) => {
               const { eventDateInMilli, todayStartinMilli, todayEndinMilli } =
-                fromNowToDate(e.date);
+                fromNowToDate(e.dateStart);
               return (
                 <div className="agenda-entry" key={index}>
                   <p className="pretitle">
-                    {e.isOnline ? <span>ONLINE</span> : <span>{e.city}</span>} ·{" "}
-                    <nobr>{dateConverter(e.date)}</nobr>
+                    {e.isOnline ? (
+                      <span>ONLINE</span>
+                    ) : (
+                      <span>{e.city.replace(/\d+/g, "")}</span>
+                    )}{" "}
+                    · <nobr>{dateConverter(e.dateStart)}</nobr>
                   </p>
 
-                  <div className="agenda-entry-title ">
+                  <div
+                    onClick={() => handleClick(e._id)}
+                    className="agenda-entry-title "
+                  >
                     <h3>{e.title}</h3>
-                    <button onClick={() => handleClick(e._id)}>
+                    <button>
                       {showEvent[e._id] ? "fermer" : "en savoir +"}
                     </button>
                   </div>
@@ -153,8 +168,24 @@ const Agenda = () => {
                     <>
                       <div className="event-container">
                         <div className="event-col">
-                          <p>{dateConverter(e.date)}</p>
-                          <p>dès {timeConverter(e.date)}</p>
+                          {!e.dateEnd ? (
+                            <p>{dateConverter(e.dateStart)}</p>
+                          ) : (
+                            <p>
+                              du {dateConverter(e.dateStart)} au 
+                              {dateConverter(e.dateEnd)}.
+                            </p>
+                          )}
+
+                          {e.dateEnd ? (
+                            <p style={{ color: "red" }}>
+                              de {timeConverter(e.dateStart)} à{" "}
+                              {timeConverter(e.dateEnd)}
+                            </p>
+                          ) : (
+                            <p>dès {timeConverter(e.dateStart)}</p>
+                          )}
+
                           <p>
                             {e.isOnline ? (
                               <>ONLINE</>
@@ -167,34 +198,39 @@ const Agenda = () => {
                           {!e.entryFee ? (
                             <p>entrée libre</p>
                           ) : (
-                            <p>Entrée : {e.entryFee} CHF</p>
+                            <p>entrée : {e.entryFee} CHF</p>
                           )}
                           <p>
                             organisé par{" "}
-                            <Link
-                              to={`${e.DateorganizerWebsite}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {e.organizer}
-                              <span className="screen-reader-text">
-                                ouvre un nouvel onglet
-                              </span>
-                            </Link>
-                          </p>
-
-                          <p>
-                            réservations : 
-                            {e.email && (
-                              <a href={`mailto:${e.email}`}>{e.email}</a>
-                            )}
-                            {e.email && e.tel && <span> ou </span>}
-                            {e.tel && (
-                              <nobr>
-                                <a href={`tel:${e.tel}`}>{e.tel}</a>
-                              </nobr>
+                            {e.organizerWebsite ? (
+                              <a
+                                href={`http://${e.organizerWebsite}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {e.organizer}
+                                <span className="screen-reader-text">
+                                  ouvre un nouvel onglet
+                                </span>
+                              </a>
+                            ) : (
+                              <span>{e.organizer}</span>
                             )}
                           </p>
+                          {(e.email || e.tel) && (
+                            <p>
+                              réservations : 
+                              {e.email && (
+                                <a href={`mailto:${e.email}`}>{e.email}</a>
+                              )}
+                              {e.email && e.tel && <span> ou </span>}
+                              {e.tel && (
+                                <nobr>
+                                  <a href={`tel:${e.tel}`}>{e.tel}</a>
+                                </nobr>
+                              )}
+                            </p>
+                          )}
                         </div>
 
                         <div className="event-col">
@@ -212,7 +248,7 @@ const Agenda = () => {
                               >
                                 Rejoindre la réunion
                               </button>
-                              <CountdownTimer isoDate={e.date} />
+                              <CountdownTimer isoDate={e.dateStart} />
                             </div>
                           )}
                         </div>

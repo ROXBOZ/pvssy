@@ -32,7 +32,7 @@ const Pain = () => {
     <Link to={to} className="link-card ressource">
       <div className="card ">
         <h3>{title}</h3>
-        <p>{description}</p>
+        {/* <p>{description}</p> */}
       </div>
     </Link>
   );
@@ -77,13 +77,13 @@ const Pain = () => {
               <ArticleLink
                 to="medical"
                 title="Médical"
-                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quo amet quaerat repellat, voluptatum reprehenderit quod dolore ea dignissimos facilis cum cumque asperiores. Praesentium delectus perspiciatis magnam repudiandae dolor alias."
+                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quo amet quaerat repellat, voluptatum reprehenderit quod dolore ea dignissimos facilis cum cumque asperiores. Praesentium delectus perspiciatis magnam repudiandae dolor alias."
               />
 
               <ArticleLink
                 to="sexologie"
                 title="Sexologie"
-                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quo amet quaerat repellat, voluptatum reprehenderit quod dolore ea dignissimos facilis cum cumque asperiores. Praesentium delectus perspiciatis magnam repudiandae dolor alias."
+                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quo amet quaerat repellat, voluptatum reprehenderit quod dolore ea dignissimos facilis cum cumque asperiores. Praesentium delectus perspiciatis magnam repudiandae dolor alias."
               />
 
               <ResourceCard to="glossaire" title="Glossaire" />

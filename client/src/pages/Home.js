@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { EventsContext } from "../contexts/eventsContext";
-import Agenda from "../components/Agenda/Agenda";
+import Agenda from "../components/Agenda";
 import Pains from "../components/Pains/Pains";
 import { HeadingArea } from "../utils/HeadingArea";
 

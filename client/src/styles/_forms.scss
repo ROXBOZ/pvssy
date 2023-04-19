@@ -21,11 +21,29 @@
     label {
       display: flex;
       align-items: center;
+      // grid-column: 4/6;
+
       grid-column: #{$grid-first-half};
     }
   }
 }
+.react-mde-container {
+  grid-column: #{$grid-second-half};
+}
+.react-mde {
+  border-radius: $border-radius !important;
+  border-color: $txt-color !important;
+  padding: $sm-space;
+  overflow: hidden;
 
+  .mde-header {
+    background-color: transparent;
+  }
+
+  .mde-text {
+    border-radius: 0;
+  }
+}
 input[type="text"],
 input[type="datetime-local"],
 input[type="tel"],

@@ -10,13 +10,6 @@
   display: flex;
   width: 100%;
 
-  &:hover {
-    .card {
-      border-color: $txt-color;
-      background-color: white;
-    }
-  }
-
   .card {
     background-color: $bg-color;
     border: $border-solid $secondary;
@@ -25,98 +18,38 @@
     flex-direction: column;
     flex: max-content;
     overflow: hidden;
-    padding-bottom: $sm-space;
     align-items: center;
-
-    h2,
-    h3,
-    p {
-      padding: 0 $sm-space;
-    }
-
-    h3 {
-      margin-bottom: 0.5em;
-    }
-
-    h3 + p {
-      padding-top: 0;
-      margin-top: 0;
-    }
 
     img {
       max-width: 100%;
     }
   }
 
-  &.article,
-  &.ressource {
+  &:hover {
     .card {
-      padding: $reg-space;
-      h2,
-      h3,
-      p {
-        margin: 0;
-        padding: 0;
-      }
+      border-color: $txt-color;
+      background-color: white;
     }
+  }
+
+  &.article .card {
+    padding: $reg-space;
+    text-align: center;
   }
 
   &.article {
     grid-column: span 6;
-
     .card {
       background: $gradient;
-      overflow: hidden;
     }
   }
 
-  &.agenda {
-    .card {
-      display: flex;
-      justify-content: space-between;
-
-      h3 {
-        text-align: center;
+  @media screen and (max-width: map-get($breakpoints, "sm")) {
+    .card-grid {
+      .link-card.article {
+        margin-top: 0;
+        grid-column: span 1 !important;
       }
-    }
-  }
-}
-
-.pending-event-card {
-  padding: $sm-space;
-  margin: $sm-space 0;
-  height: fit-content;
-
-  .collapsed {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0;
-    padding-bottom: 0;
-
-    p {
-      margin-bottom: 0;
-    }
-  }
-
-  .pending-event-detail {
-    .pending-event-detail-content {
-      margin-top: $sm-space;
-    }
-  }
-
-  .button-flex {
-    display: flex;
-    gap: $sm-space;
-    align-items: center;
-  }
-}
-
-@media screen and (max-width: map-get($breakpoints, "sm")) {
-  .card-grid {
-    .link-card.article {
-      margin-top: 0;
-      grid-column: span 1 !important;
     }
   }
 }

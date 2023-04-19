@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import { EventsContext } from "../../../contexts/eventsContext";
 import { AuthContext } from "../../../contexts/authContext";
 import { serverURL } from "../../../utils/serverURL";
-
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import ReactMde from "react-mde";
+import * as Showdown from "showdown";
+import "react-mde/lib/styles/css/react-mde-all.css";
 import {
   addressRegex,
   cityRegex,
@@ -16,19 +19,65 @@ import {
 } from "../../../utils/regexExpressions";
 
 const AddEvent = () => {
+  const formRef = useRef();
   const { userProfile } = useContext(AuthContext);
   const [eventType, setEventType] = useState("offline");
   const [eventEntry, setEventEntry] = useState("gratuite");
+  const [eventOrganizer, setEventOrganizer] = useState(null);
+  const [eventOrganizerWebsite, setEventOrganizerWebsite] = useState(null);
+  const [organizerIsUserName, setOrganizerIsUserName] = useState(false);
   const [conditionsAccepted, setConditionsAccepted] = useState(null);
   const [message, setMessage] = useState("");
   const { regions } = useContext(EventsContext);
-  const formRef = useRef();
+  const [markdown, setMarkdown] = useState("");
+  const [selectedTab, setSelectedTab] = useState("write");
   const [newEvent, setNewEvent] = useState({
     isOnline: false,
     eventRegion: "Genève",
     freeEntry: true,
   });
-
+  const converter = new Showdown.Converter({
+    tables: true,
+    simplifiedAutoLink: true,
+    strikethrough: true,
+    tasklists: true,
+  });
+  const customCommand: Command = {
+    name: "newLine",
+    icon: () => <span>↵</span>,
+    execute: (opts) => {
+      opts.textApi.replaceSelection("  \n");
+    },
+  };
+  const handleInputChange = (e) => {
+    setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
+  };
+  const handleMdeEditor = (value) => {
+    setMarkdown(value);
+    setNewEvent({ ...newEvent, eventLongDef: markdown });
+  };
+  const submitForm = (e) => {
+    e.preventDefault();
+    if (!newEvent.eventTitle) {
+      alert("Titre manquant");
+    } else if (!newEvent.eventDateTimeStart) {
+      alert("Date et/ou heure de début manquante");
+    } else if (!newEvent.eventShortDef) {
+      alert("Description 'En bref' manquante");
+    } else if (newEvent.isOnline === true && !newEvent.onlineMeeting) {
+      alert("Lien manquant pour la réunion en ligne");
+    } else if (newEvent.isOnline === false && !newEvent.eventAddress) {
+      alert("Rue et numéro manquants");
+    } else if (newEvent.isOnline === false && !newEvent.eventCity) {
+      alert("Lieu manquante");
+    } else if (newEvent.freeEntry === false && !newEvent.admissionFee) {
+      alert("Prix manquant");
+    } else {
+      userProfile && userProfile.userIsAdmin === true
+        ? addNewEvent(false)
+        : addNewEvent(true);
+    }
+  };
   const addNewEvent = async (isPending) => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -36,10 +85,11 @@ const AddEvent = () => {
     const raw = JSON.stringify({
       isPending: isPending,
       title: newEvent.eventTitle,
-      date: newEvent.eventDateTime,
-      organizer: userProfile.userName,
+      dateStart: newEvent.eventDateTimeStart,
+      dateEnd: newEvent.eventDateTimeEnd,
+      organizer: newEvent.eventOrganizer,
+      organizerWebsite: newEvent.eventOrganizerWebsite,
       organizerContact: userProfile.userEmail,
-      organizerWebsite: userProfile.userWebsite,
       shortDef: newEvent.eventShortDef,
       longDef: newEvent.eventLongDef,
       isOnline: eventType === "online" ? true : false,
@@ -51,7 +101,6 @@ const AddEvent = () => {
       tel: newEvent.eventTel,
       entryFee: newEvent.admissionFee,
     });
-
     const requestOptions = {
       method: "POST",
       headers: myHeaders,
@@ -83,32 +132,6 @@ const AddEvent = () => {
       });
     }
   };
-  const submitForm = (e) => {
-    e.preventDefault();
-    if (!newEvent.eventTitle) {
-      alert("Titre manquant");
-    } else if (!newEvent.eventDateTime) {
-      alert("Date et/ou heure manquante");
-    } else if (!newEvent.eventShortDef) {
-      alert("Description 'En bref' manquante");
-    } else if (newEvent.isOnline === true && !newEvent.onlineMeeting) {
-      alert("Lien manquant pour la réunion en ligne");
-    } else if (newEvent.isOnline === false && !newEvent.eventAddress) {
-      alert("Rue et numéro manquants");
-    } else if (newEvent.isOnline === false && !newEvent.eventCity) {
-      alert("Lieu manquante");
-    } else if (newEvent.freeEntry === false && !newEvent.admissionFee) {
-      alert("Prix manquant");
-    } else {
-      userProfile && userProfile.userIsAdmin === true
-        ? addNewEvent(false)
-        : addNewEvent(true);
-    }
-  };
-  const handleInputChange = (e) => {
-    setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
-  };
-
   useEffect(() => {
     if (message && message.type === "success") {
       setNewEvent({
@@ -123,28 +146,37 @@ const AddEvent = () => {
     }
   }, [message]);
 
+  console.log("newEvent.eventLongDef :", newEvent.eventLongDef);
   return (
     <>
       <form className="grid-form" ref={formRef}>
         <h3>Informations essentielles</h3>
         <div className="form-section">
-          <label htmlFor="eventTitle">Titre *</label>
+          <label htmlFor="eventTitle">Nom de l’évènement *</label>
           <input
             name="eventTitle"
             id="eventTitle"
             type="text"
-            placeholder="Titre de l’évènement"
+            placeholder="Nom de l’évènement"
             onChange={handleInputChange}
             required
             className="line"
           />
-          <label htmlFor="eventDate">Date et heure *</label>
+          <label htmlFor="eventDateTimeStart">Début *</label>
           <input
-            name="eventDateTime"
-            id="eventDateTime"
+            name="eventDateTimeStart"
+            id="eventDateTimeStart"
             type="datetime-local"
             onChange={handleInputChange}
             required
+            className="line"
+          />
+          <label htmlFor="eventDateTimeEnd">Fin</label>
+          <input
+            name="eventDateTimeEnd"
+            id="eventDateTimeEnd"
+            type="datetime-local"
+            onChange={handleInputChange}
             className="line"
           />
           <label htmlFor="eventShortDef">En bref *</label>
@@ -153,18 +185,81 @@ const AddEvent = () => {
             id="eventShortDef"
             placeholder="Définition max. 120 caractères"
             onChange={handleInputChange}
-            maxlength="120"
+            maxLength="120"
             required
           />
           <label htmlFor="eventLongDef">En détails</label>
-          <textarea
-            name="eventLongDef"
-            id="eventLongDef"
-            rows="10"
-            placeholder="Définition détaillée"
-            onChange={handleInputChange}
-          />
+          <div className="react-mde-container">
+            <ReactMde
+              commands={{
+                newLine: customCommand,
+              }}
+              toolbarCommands={[["newLine", "bold", "italic"]]}
+              name="eventLongDef"
+              id="eventLongDef"
+              value={markdown}
+              onChange={handleMdeEditor}
+              newLineOnEnter={true}
+              selectedTab={selectedTab}
+              onTabChange={setSelectedTab}
+              generateMarkdownPreview={(markdown) =>
+                Promise.resolve(<ReactMarkdown>{markdown}</ReactMarkdown>)
+              }
+              childProps={{
+                writeButton: {
+                  tabIndex: -1,
+                },
+              }}
+            />
+          </div>
+
+          <label htmlFor="eventOrganizer">Organisé par *</label>
+          {userProfile && (
+            <div style={{ whiteSpace: "nowrap" }}>
+              <input
+                className="form-check-input"
+                type="checkbox"
+                name="eventOrganizer"
+                onChange={(e) => {
+                  if (userProfile.userName && e.target.checked) {
+                    setEventOrganizer(userProfile.userName);
+                    setEventOrganizerWebsite(userProfile.userWebsite);
+                    setOrganizerIsUserName(true);
+                  } else {
+                    setEventOrganizer(null);
+                    setEventOrganizerWebsite(null);
+                    setOrganizerIsUserName(false);
+                  }
+                }}
+              />
+              <a href={`http://${userProfile.userWebsite}`}>
+                {userProfile.userName}
+              </a>
+            </div>
+          )}
+          {!organizerIsUserName && (
+            <>
+              <input
+                name="eventOrganizer"
+                id="eventOrganizer"
+                type="text"
+                onChange={handleInputChange}
+                className="line"
+                placeholder="Organisé par"
+              />
+              <label htmlFor="eventOrganizerWebsite">Site Internet</label>
+              <input
+                name="eventOrganizerWebsite"
+                id="eventOrganizerWebsite"
+                type="text"
+                onChange={handleInputChange}
+                className="line"
+                placeholder="https://..."
+              />
+            </>
+          )}
         </div>
+
         <h3>Format</h3>
         <div className="form-section">
           <label htmlFor="eventType">Format *</label>
@@ -199,7 +294,7 @@ const AddEvent = () => {
                 }
               }}
             />
-            <label htmlFor="offline">Sur place</label>
+            <label htmlFor="offline">Sur place</label>
           </div>
           {eventType === "offline" && (
             <>
@@ -230,7 +325,7 @@ const AddEvent = () => {
                 name="eventRegion"
                 id="eventRegion"
                 onChange={handleInputChange}
-                selected="Genève"
+                value="Genève"
                 className="line"
               >
                 {regions &&
@@ -337,9 +432,9 @@ const AddEvent = () => {
         </div>
 
         <ul className="error-list">
-          {newEvent.eventDateTime &&
-            newEvent.eventDateTime > todayISO &&
-            !isMoreThan3Days(newEvent.eventDateTime) && (
+          {newEvent.eventDateTimeStart &&
+            newEvent.eventDateTimeStart > todayISO &&
+            !isMoreThan3Days(newEvent.eventDateTimeStart) && (
               <p className="msg warning">
                 L’évènement a lieu dans moins de 3 jours. Nous ne garantissons
                 pas sa publication.
@@ -350,11 +445,12 @@ const AddEvent = () => {
               newEvent.eventTitle.length > 40) && (
               <li>Le titre doit contenir entre 3 et 40 caractères.</li>
             )}
-          {newEvent.eventDateTime && newEvent.eventDateTime < todayISO && (
-            <li>La date est déjà passée.</li>
-          )}
-          {newEvent.eventDateTime &&
-            !dateRegex.test(newEvent.eventDateTime) && (
+          {newEvent.eventDateTimeStart &&
+            newEvent.eventDateTimeStart < todayISO && (
+              <li>La date est déjà passée.</li>
+            )}
+          {newEvent.eventDateTimeStart &&
+            !dateRegex.test(newEvent.eventDateTimeStart) && (
               <li>La date est invalide.</li>
             )}
           {newEvent.eventShortDef &&
@@ -419,12 +515,13 @@ const AddEvent = () => {
           !(newEvent.eventTitle &&
           newEvent.eventTitle.length > 3 &&
           newEvent.eventTitle.length < 40 &&
-          newEvent.eventDateTime &&
-          newEvent.eventDateTime > todayISO &&
-          dateRegex.test(newEvent.eventDateTime) &&
+          newEvent.eventDateTimeStart &&
+          newEvent.eventDateTimeStart > todayISO &&
+          dateRegex.test(newEvent.eventDateTimeStart) &&
           newEvent.eventShortDef &&
           newEvent.eventShortDef.length > 60 &&
           newEvent.eventShortDef.length < 200 &&
+          newEvent.eventOrganizer &&
           (newEvent.isOnline
             ? newEvent.onlineMeeting && urlRegex.test(newEvent.onlineMeeting)
             : newEvent.eventAddress &&

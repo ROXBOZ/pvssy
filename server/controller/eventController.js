@@ -23,7 +23,7 @@ const getAllEvents = async (req, res) => {
 const getUpcomingEvents = async (req, res) => {
   try {
     const upcomingEvents = await eventModel
-      .find({ date: { $gte: today } })
+      .find({ dateStart: { $gte: today } })
       .exec();
     res.status(200).json({
       number: upcomingEvents.length,
@@ -157,12 +157,11 @@ const getPendingEvents = async (req, res) => {
 // POST
 
 const addEvent = async (req, res) => {
-  // res.header("Access-Control-Allow-Origin", "*");
-
   const {
     isPending,
     title,
-    date,
+    dateStart,
+    dateEnd,
     organizer,
     organizerWebsite,
     organizerContact,
@@ -182,7 +181,8 @@ const addEvent = async (req, res) => {
     const newEvent = new eventModel({
       isPending,
       title,
-      date,
+      dateStart,
+      dateEnd,
       organizer,
       organizerWebsite,
       organizerContact,
@@ -204,7 +204,8 @@ const addEvent = async (req, res) => {
       event: {
         isPending: savedEvent.isPending,
         title: savedEvent.title,
-        date: savedEvent.date,
+        dateStart: savedEvent.dateStart,
+        dateEnd: savedEvent.dateEnd,
         organizer: savedEvent.organizer,
         organizerWebsite: savedEvent.organizerWebsite,
         organizerContact: savedEvent.organizerContact,

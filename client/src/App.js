@@ -9,7 +9,7 @@ import Donation from "./pages/Donate";
 import SeSoigner from "./pages/SeSoigner";
 import SInformer from "./pages/SInformer";
 import Shop from "./pages/Shop";
-import Agenda from "./components/Agenda/Agenda";
+import Agenda from "./components/Agenda";
 import GeneralConditions from "./pages/GeneralConditions";
 import Breadcrumbs from "./components/Breadcrumbs";
 import Header from "./components/Header";
@@ -17,8 +17,8 @@ import Footer from "./components/Footer";
 import Pains from "./components/Pains/Pains";
 import Pain from "./components/Pains/Pain";
 import PainArticle from "./components/Pains/PainArticle";
-import EventsArchives from "./components/EventsArchives";
-import Event from "./components/Agenda/Event";
+// import EventsArchives from "./components/EventsArchives";
+// import Event from "./components/Agenda/Event";
 import ScrollToTop from "./utils/ScrollToTop";
 import Annuaire from "./components/Annuaire";
 import Ressources from "./pages/Ressources";
@@ -117,8 +117,8 @@ function App() {
                   <Route path="s-informer/annuaire/:name" element={<Pain />} />
                   <Route path="shop" element={<Shop />} />
                   <Route path="agenda" element={<Agenda />} />
-                  <Route path="agenda/:title" element={<Event />} />
-                  <Route path="agenda/archives" element={<EventsArchives />} />
+                  {/* <Route path="agenda/:title" element={<Event />} />
+                  <Route path="agenda/archives" element={<EventsArchives />} /> */}
                   <Route path="login" element={<Login />} />
                   <Route path="creer-un-compte" element={<Signup />} />
                   <Route path="faire-un-don" element={<Donation />} />
