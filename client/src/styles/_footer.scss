@@ -37,8 +37,8 @@ footer {
       }
 
       &:nth-child(2) {
-        grid-column: #{$grid-last-thirds};
-
+        // grid-column: #{$grid-last-thirds};
+        grid-column: 7/12;
         nav {
           display: flex;
           gap: $lg-space;

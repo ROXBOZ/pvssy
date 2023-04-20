@@ -104,7 +104,7 @@ const DeleteEvent = () => {
 
       <form className="grid-form">
         <div className="form-section">
-          <div>
+          <div className="check-list-container">
             {userProfile && userProfile.userIsAdmin === true ? (
               <>
                 <ul className="check-list">

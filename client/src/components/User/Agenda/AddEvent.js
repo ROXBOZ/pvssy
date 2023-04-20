@@ -341,13 +341,12 @@ const AddEvent = () => {
                 className="line"
               />
 
-              <label htmlFor="eventRegion">Région *</label>
+              <label htmlFor="eventRegion">Canton *</label>
 
               <select
                 name="eventRegion"
                 id="eventRegion"
                 onChange={handleInputChange}
-                value="Genève"
                 className="line"
               >
                 {regions &&

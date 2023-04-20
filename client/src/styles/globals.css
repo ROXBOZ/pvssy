@@ -559,7 +559,7 @@ footer .footer-main .footer-column:first-child p {
   margin-bottom: 0;
 }
 footer .footer-main .footer-column:nth-child(2) {
-  grid-column: 4/12;
+  grid-column: 7/12;
 }
 footer .footer-main .footer-column:nth-child(2) nav {
   display: flex;
@@ -651,6 +651,14 @@ footer .footer-bottom .copyrights {
   align-items: center;
   grid-column: 1/6;
 }
+.grid-form .form-section .check-list-container {
+  grid-column: 1/12;
+}
+.grid-form .form-section .check-list-container .check-list {
+  list-style-type: none;
+  padding-left: 0;
+  grid-column: 1/12;
+}
 
 .react-mde-container {
   grid-column: 6/13;
@@ -728,7 +736,8 @@ textarea.line {
     grid-template-columns: 1fr;
   }
 }
-.grid-area .centered {
+
+.centered {
   grid-column: 4/10;
 }
 
@@ -834,6 +843,7 @@ header nav.horizontal ul li .logout-header .user-icon-link p {
     left: 0;
     right: 0;
     width: auto;
+    z-index: 9999;
   }
   header .logo {
     z-index: 999;
@@ -1327,6 +1337,14 @@ a.term span {
   height: fit-content;
   width: 100%;
   transition: none;
+}
+.tabbed-navigation-container.profil {
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: transparent !important;
+  z-index: 1;
+  position: relative;
+  max-width: 100%;
 }
 .tabbed-navigation-container.sticky {
   margin-top: 0;
@@ -1835,4 +1853,9 @@ strong {
   align-items: center;
   height: calc(100vh - 44px); /* 44px is the height of the header */
   max-width: 80vw;
+}
+
+.suggestions {
+  color: red;
+  list-style: none;
 }/*# sourceMappingURL=globals.css.map */

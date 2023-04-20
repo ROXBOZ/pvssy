@@ -17,9 +17,9 @@ const Pains = () => {
     setSelectedTag((prevTag) => (prevTag === tag ? null : tag));
   };
 
-  function handleReset() {
+  const handleReset = () => {
     setSelectedTag(null);
-  }
+  };
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);

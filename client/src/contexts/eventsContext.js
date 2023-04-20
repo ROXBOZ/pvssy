@@ -18,19 +18,8 @@ export const EventsContextProvider = (props) => {
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
   const [iconClicked, setIconClicked] = useState(false);
 
-  const regions = [
-    "Berne",
-    "Fribourg",
-    "Genève",
-    "La Chaux-de-Fonds",
-    "Lausanne",
-    "Montreux",
-    "Neuchâtel",
-    "Nyon",
-    "Sion",
-    "Vevey",
-    "Yverdon-les-Bains",
-  ];
+  const regions = ["Genève", "Vaud", "Neuchâtel", "Jura", "Fribourg", "Valais"];
+
   const fetchData = async (url) => {
     try {
       setLoading(true);
@@ -44,53 +33,53 @@ export const EventsContextProvider = (props) => {
       setError(error);
     }
   };
-  // console.log("value :", value);
-  const handleRegionInputChange = (event) => {
-    const newValue = event.target.value;
-    setValue(newValue);
 
-    if (newValue.length === 0) {
-      setSuggestions([]);
-      setShowSuggestions(false);
-      setIconClicked(false);
-      return;
-    }
+  // const handleRegionInputChange = (event) => {
+  //   const newValue = event.target.value;
+  //   setValue(newValue);
 
-    const matchingSuggestions = regions.filter((suggestion) =>
-      suggestion.toLowerCase().includes(newValue.toLowerCase())
-    );
-    setSuggestions(matchingSuggestions);
-    setShowSuggestions(matchingSuggestions.length > 0);
-    setIconClicked(true);
-  };
-  const handleSuggestionClick = (suggestion) => {
-    setValue(suggestion);
-    setShowSuggestions(false);
-    setIconClicked(false);
-  };
-  const toggleIconClicked = () => {
-    setIconClicked(!iconClicked);
-  };
-  const handleIconClick = () => {
-    toggleIconClicked();
-    setSuggestions([...regions]);
-    setShowSuggestions(showSuggestions ? false : true);
-  };
-  const handleKeyDown = (e) => {
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      setSelectedSuggestionIndex(
-        (selectedSuggestionIndex + 1) % suggestions.length
-      );
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      setSelectedSuggestionIndex(
-        (selectedSuggestionIndex - 1 + suggestions.length) % suggestions.length
-      );
-    } else if (e.key === "Enter" && selectedSuggestionIndex >= 0) {
-      handleSuggestionClick(suggestions[selectedSuggestionIndex]);
-    }
-  };
+  //   if (newValue.length === 0) {
+  //     setSuggestions([]);
+  //     setShowSuggestions(false);
+  //     setIconClicked(false);
+  //     return;
+  //   }
+
+  //   const matchingSuggestions = regions.filter((suggestion) =>
+  //     suggestion.toLowerCase().includes(newValue.toLowerCase())
+  //   );
+  //   setSuggestions(matchingSuggestions);
+  //   setShowSuggestions(matchingSuggestions.length > 0);
+  //   setIconClicked(true);
+  // };
+  // const handleSuggestionClick = (suggestion) => {
+  //   setValue(suggestion);
+  //   setShowSuggestions(false);
+  //   setIconClicked(false);
+  // };
+  // const toggleIconClicked = () => {
+  //   setIconClicked(!iconClicked);
+  // };
+  // const handleIconClick = () => {
+  //   toggleIconClicked();
+  //   setSuggestions([...regions]);
+  //   setShowSuggestions(showSuggestions ? false : true);
+  // };
+  // const handleKeyDown = (e) => {
+  //   if (e.key === "ArrowDown") {
+  //     e.preventDefault();
+  //     setSelectedSuggestionIndex(
+  //       (selectedSuggestionIndex + 1) % suggestions.length
+  //     );
+  //   } else if (e.key === "ArrowUp") {
+  //     e.preventDefault();
+  //     setSelectedSuggestionIndex(
+  //       (selectedSuggestionIndex - 1 + suggestions.length) % suggestions.length
+  //     );
+  //   } else if (e.key === "Enter" && selectedSuggestionIndex >= 0) {
+  //     handleSuggestionClick(suggestions[selectedSuggestionIndex]);
+  //   }
+  // };
 
   return (
     <EventsContext.Provider
@@ -114,13 +103,11 @@ export const EventsContextProvider = (props) => {
         setSelectedSuggestionIndex,
         iconClicked,
         setIconClicked,
-        handleRegionInputChange,
-        handleSuggestionClick,
-        toggleIconClicked,
-        handleIconClick,
-        handleKeyDown,
-        // eventRegion,
-        // setEventRegion,
+        // handleRegionInputChange,
+        // handleSuggestionClick,
+        // toggleIconClicked,
+        // handleIconClick,
+        // handleKeyDown,
       }}
     >
       {props.children}

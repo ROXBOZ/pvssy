@@ -56,8 +56,8 @@ function App() {
           <>
             <div className="vh-view">
               <h1>
-                Bien s’informer sur ses douleurs pour mieux se réapproprier son
-                corps et sa sexualité.
+                S’informer sur ses douleurs pour mieux se réapproprier son corps
+                et sa sexualité.
               </h1>
             </div>
           </>
@@ -117,8 +117,6 @@ function App() {
                   <Route path="s-informer/annuaire/:name" element={<Pain />} />
                   <Route path="shop" element={<Shop />} />
                   <Route path="agenda" element={<Agenda />} />
-                  {/* <Route path="agenda/:title" element={<Event />} />
-                  <Route path="agenda/archives" element={<EventsArchives />} /> */}
                   <Route path="login" element={<Login />} />
                   <Route path="creer-un-compte" element={<Signup />} />
                   <Route path="faire-un-don" element={<Donation />} />
@@ -146,7 +144,7 @@ function App() {
             </PainsContextProvider>
           </EventsContextProvider>
         </div>
-        {/* <DonationBanner /> */}
+
         <Footer />
       </AuthContextProvider>
     </>

@@ -18,17 +18,9 @@ const Profile = () => {
     <div>
       <UserDashboard userProfile={userProfile} />
 
-      <div
-        className="tabbed-navigation-container"
-        style={{
-          height: "fit-content",
-          backgroundColor: "transparent",
-          zIndex: "-99",
-          position: "relative",
-        }}
-      >
-        <div className="tabbed-navigation" style={{ overflowX: "hidden" }}>
-          <NavLink className="tab" to="ajouter">
+      <div className="tabbed-navigation-container profil">
+        <div className="tabbed-navigation">
+          <NavLink to="ajouter">
             {isMobile ? (
               <FontAwesomeIcon icon={faPlus} />
             ) : (
@@ -67,7 +59,6 @@ const Profile = () => {
           </p>
         </div>
       </div>
-
       <Outlet />
     </div>
   );
