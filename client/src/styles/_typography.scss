@@ -56,7 +56,7 @@ a {
   border-bottom: $border-solid;
   font-family: $font-medium;
   width: fit-content;
-  // white-space: nowrap;
+  transition: border-color $animation-transition;
 
   &:hover {
     border-color: transparent;

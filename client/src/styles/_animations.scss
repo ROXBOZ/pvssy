@@ -18,3 +18,14 @@
     height: fit-content;
   }
 }
+@keyframes gradient {
+  0% {
+    background-size: 100%;
+    background-position: center;
+  }
+
+  100% {
+    background-size: 200%;
+    background-position: center;
+  }
+}

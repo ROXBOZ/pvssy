@@ -5,11 +5,16 @@ footer {
   gap: $sm-space;
   margin-top: 10vh;
 
-  .logo {
-    color: darken($secondary, 30%);
-  }
   a {
     color: $txt-color;
+
+    .logo {
+      color: darken($secondary, 30%);
+      transition: color $animation-transition;
+      &:hover {
+        color: $secondary;
+      }
+    }
   }
 
   .footer-main {

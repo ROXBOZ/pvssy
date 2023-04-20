@@ -1,11 +1,9 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import "./styles/globals.css";
 import { Navigate } from "react-router-dom";
-
-// pages and components
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Donation from "./pages/Donate";
+import Donate from "./pages/Donate";
 import SeSoigner from "./pages/SeSoigner";
 import SInformer from "./pages/SInformer";
 import Shop from "./pages/Shop";
@@ -17,8 +15,6 @@ import Footer from "./components/Footer";
 import Pains from "./components/Pains/Pains";
 import Pain from "./components/Pains/Pain";
 import PainArticle from "./components/Pains/PainArticle";
-// import EventsArchives from "./components/EventsArchives";
-// import Event from "./components/Agenda/Event";
 import ScrollToTop from "./utils/ScrollToTop";
 import Annuaire from "./components/Annuaire";
 import Ressources from "./pages/Ressources";
@@ -47,20 +43,24 @@ import Suggestions from "./pages/Suggestions";
 function App() {
   const token = getToken();
   const location = useLocation();
+
   return (
     <>
       <AuthContextProvider>
-        <Header />
-
-        {location.pathname === "/" && (
+        {location.pathname === "/" ? (
           <>
-            <div className="vh-view">
-              <h1>
-                S’informer sur ses douleurs pour mieux se réapproprier son corps
-                et sa sexualité.
-              </h1>
+            <div className="landing-view">
+              <Header />
+              <div className="h1-container">
+                <h1>
+                  S’informer sur ses douleurs pour mieux se réapproprier son
+                  corps et sa sexualité.
+                </h1>
+              </div>
             </div>
           </>
+        ) : (
+          <Header />
         )}
 
         <div className="main">
@@ -112,14 +112,14 @@ function App() {
                     element={<Ressources />}
                   />
                   <Route path="s-informer" element={<SInformer />} />
-
                   <Route path="s-informer/annuaire" element={<Annuaire />} />
                   <Route path="s-informer/annuaire/:name" element={<Pain />} />
                   <Route path="shop" element={<Shop />} />
                   <Route path="agenda" element={<Agenda />} />
                   <Route path="login" element={<Login />} />
                   <Route path="creer-un-compte" element={<Signup />} />
-                  <Route path="faire-un-don" element={<Donation />} />
+                  <Route path="faire-un-don" element={<Donate />} />
+
                   <Route
                     path="profile"
                     element={<ProtectedRoute />}

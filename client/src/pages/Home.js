@@ -1,23 +1,16 @@
-import React, { useEffect, useContext } from "react";
-import { EventsContext } from "../contexts/eventsContext";
-import Agenda from "../components/Agenda";
+import React from "react";
 import Pains from "../components/Pains/Pains";
+import Agenda from "../components/Agenda";
 import { HeadingArea } from "../utils/HeadingArea";
 
 const Home = () => {
   console.log("%chome component run again", "color:orange");
-  const { fetchData, agendaURL } = useContext(EventsContext);
-
-  //NOTE try to use useMemo() to store the lenght of data.upcomingEvents
-  useEffect(() => {
-    fetchData(agendaURL);
-  }, [agendaURL]);
-
+  //NOTE grid-area centered is not well thought...
   return (
     <>
+      <HeadingArea title="Comprendre" level="h2" />
       <div className="grid-area">
         <div className="centered">
-          <h2>Comprendre</h2>
           <p>
             Les douleurs sexuelles concernent une personne à vulve sur cinq.
             Elles peuvent toucher à la vulve, au vagin, et s’étendre au delà de

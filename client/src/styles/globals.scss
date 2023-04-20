@@ -25,6 +25,7 @@
 @import "tooltips";
 @import "typography";
 @import "cguv";
+@import "view";
 
 * {
   outline: none;
@@ -85,30 +86,4 @@ strong {
 
 .acronym {
   text-transform: uppercase;
-}
-
-//TODO HOME PAGE HEADER CREATE FILE
-
-.vh-view {
-  height: 100vh;
-  background: $gradient;
-  text-align: center;
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  padding: 0 $reg-space;
-
-  h1 {
-    font-family: $font-logo;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 44px); /* 44px is the height of the header */
-    max-width: 80vw;
-  }
-}
-
-.suggestions {
-  color: red;
-  list-style: none;
 }

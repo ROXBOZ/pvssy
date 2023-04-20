@@ -130,6 +130,16 @@
     height: fit-content;
   }
 }
+@keyframes gradient {
+  0% {
+    background-size: 100%;
+    background-position: center;
+  }
+  100% {
+    background-size: 200%;
+    background-position: center;
+  }
+}
 .author {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -283,6 +293,7 @@ button {
   cursor: pointer;
   white-space: nowrap;
   color: #31064b;
+  transition: background-color 0.2s ease-in;
 }
 button.square {
   padding: 0.25em 0.5em;
@@ -451,7 +462,7 @@ button.showPassword:hover {
   grid-column: 10/12;
 }
 .exercises-container .exercise .exercise-open {
-  animation: animationOpacity 0.4s ease-in;
+  animation: animationOpacity 0.2s ease-in ease-in;
 }
 .exercises-container .exercise .exercise-open .exercise-img {
   border-radius: 50px;
@@ -508,7 +519,7 @@ button.showPassword:hover {
   margin-bottom: 0;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step .instructions-step-open {
-  animation: animationOpacity 0.4s ease-in;
+  animation: animationOpacity 0.2s ease-in ease-in;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step .instructions-step-open:first-of-type {
   margin-top: 1rem;
@@ -524,11 +535,15 @@ footer {
   gap: 1rem;
   margin-top: 10vh;
 }
-footer .logo {
-  color: #8600fc;
-}
 footer a {
   color: #31064b;
+}
+footer a .logo {
+  color: #8600fc;
+  transition: color 0.2s ease-in;
+}
+footer a .logo:hover {
+  color: #ce96ff;
 }
 footer .footer-main {
   display: grid;
@@ -1268,7 +1283,7 @@ a.term span {
   position: absolute;
   left: -20px;
   content: "↗";
-  transition: 0.4s;
+  transition: 0.2s ease-in;
 }
 .category-submenu li:hover:before {
   transform: rotate(45deg);
@@ -1378,7 +1393,7 @@ a.term span {
 .tabbed-navigation-container .tabbed-navigation a {
   color: #31064b;
   padding: 0.5em 1.5em;
-  transition: 0.4s;
+  transition: 0.2s ease-in;
   display: inline-flex;
   position: relative;
   flex-grow: 1;
@@ -1653,6 +1668,7 @@ a {
   font-family: "ESKlarheit-Medium";
   width: -moz-fit-content;
   width: fit-content;
+  transition: border-color 0.2s ease-in;
 }
 a:hover {
   border-color: transparent;
@@ -1773,6 +1789,50 @@ h1:first-letter,
     white-space: break-spaces;
   }
 }
+.landing-view {
+  height: 100vh;
+  background-image: radial-gradient(circle, #ff560f 0%, #ce96ff 70%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: gradient 3s infinite alternate;
+}
+.landing-view .logo {
+  color: #31064b;
+}
+.landing-view .h1-container {
+  display: flex;
+  width: 100vw;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+}
+.landing-view .h1-container h1 {
+  margin-top: -44px;
+  text-align: center;
+  font-family: "ESRebond";
+  max-width: 80vw;
+}
+
+.landing-view {
+  height: 100vh;
+  background: radial-gradient(circle, #ff560f 0%, #ce96ff 70%);
+}
+.landing-view .logo {
+  color: #31064b;
+}
+.landing-view .h1-container {
+  display: flex;
+  width: 100vw;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.landing-view .h1-container h1 {
+  text-align: center;
+  font-family: "ESRebond";
+  max-width: 80vw;
+}
+
 * {
   outline: none;
 }
@@ -1835,27 +1895,4 @@ strong {
 
 .acronym {
   text-transform: uppercase;
-}
-
-.vh-view {
-  height: 100vh;
-  background: radial-gradient(circle, #ff560f 0%, #ce96ff 70%);
-  text-align: center;
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  padding: 0 2rem;
-}
-.vh-view h1 {
-  font-family: "ESRebond";
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(100vh - 44px); /* 44px is the height of the header */
-  max-width: 80vw;
-}
-
-.suggestions {
-  color: red;
-  list-style: none;
 }/*# sourceMappingURL=globals.css.map */

@@ -2,7 +2,9 @@ import React from "react";
 import { HeadingArea } from "../utils/HeadingArea";
 
 const About = () => {
-  console.log("localStorage.getItem();", localStorage.getItem("token"));
+  console.log("localStorage.getItem();", localStorage.getItem("token")); // this means I need to get about out of auth context ?
+  //NOTE grid-area centered is not well thought...
+
   return (
     <div>
       <HeadingArea title="À propos" level="h1" />
