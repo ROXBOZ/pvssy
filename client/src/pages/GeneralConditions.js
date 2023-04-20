@@ -19,7 +19,7 @@ const GeneralConditions = () => {
             <ul>
               <li>
                 <a href="#CGUV">
-                  Conditions générales d’utilisation et de vente
+                  Conditions générales d’utilisation et de vente
                 </a>
               </li>
               <li>
@@ -31,7 +31,7 @@ const GeneralConditions = () => {
             </ul>
           </div>
 
-          <h2 id="CGUV">Conditions générales d’utilisation et de vente</h2>
+          <h2 id="CGUV">Conditions générales d’utilisation et de vente</h2>
           <h3 className="h4">Vocation du Site Internet</h3>
           <ol>
             <li>
