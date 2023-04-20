@@ -158,12 +158,14 @@ const AddEvent = () => {
   return (
     <>
       <form className="grid-form" ref={formRef}>
-        <h3>Informations essentielles</h3>
+        <h2>Ajouter un évènement</h2>
         <p className="msg warning">
-          Pour un événement sur plusieurs jours, précisez les heures chaque jour
-          dans "En détails". Pour un festival, créez plusieurs événements pour
-          les différentes activités.
+          Pour un événement sur plusieurs jours, précisez les heures de chaque
+          jour dans "En détails". Pour un festival, créez plusieurs événements
+          pour les différentes activités.
         </p>
+        <h3>Informations essentielles</h3>
+
         <div className="form-section">
           <label htmlFor="eventTitle">Nom de l’évènement *</label>
           <input
@@ -197,7 +199,7 @@ const AddEvent = () => {
           <textarea
             name="eventShortDef"
             id="eventShortDef"
-            placeholder="Définition max. 120 caractères"
+            placeholder="Définition 60-120 caractères"
             onChange={handleInputChange}
             maxLength="120"
             required
@@ -280,7 +282,6 @@ const AddEvent = () => {
             </>
           )}
         </div>
-
         <h3>Format</h3>
         <div className="form-section">
           <label htmlFor="eventType">Format *</label>
@@ -397,9 +398,9 @@ const AddEvent = () => {
             className="line"
           />
         </div>
-        <h3>Tarif d’entrée /participation</h3>
+        <h3>Tarif d’entrée / participation</h3>
         <div className="form-section">
-          <label htmlFor="eventEntry">Entrée / participation *</label>
+          <label htmlFor="eventEntry">Entrée / participation *</label>
           <div className="input-label-container">
             <input
               className="form-check-input"
@@ -451,7 +452,6 @@ const AddEvent = () => {
             </>
           )}
         </div>
-
         <ul className="error-list">
           {newEvent.eventDateTimeStart &&
             newEvent.eventDateTimeStart > todayISO &&
@@ -511,7 +511,6 @@ const AddEvent = () => {
             </li>
           )}
         </ul>
-
         {userProfile && userProfile.userIsAdmin === false && (
           <div className="conditions-generales">
             <input

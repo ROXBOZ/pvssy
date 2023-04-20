@@ -18,8 +18,8 @@
       }
     }
 
-    label,
-    .label-detail {
+    label {
+      font-family: $font-medium;
       display: flex;
       align-items: center;
       grid-column: #{$grid-first-half};
@@ -65,5 +65,22 @@ textarea {
     border-right: none;
     border-top: none;
     border-bottom: $border-solid;
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .form-section {
+    display: flex !important;
+    flex-direction: column;
+    gap: $sm-space !important;
+    label {
+      height: fit-content;
+      width: fit-content;
+      white-space: nowrap;
+    }
+
+    textarea {
+      min-height: 50vw;
+    }
   }
 }

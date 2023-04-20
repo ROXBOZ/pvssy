@@ -16,6 +16,7 @@ export const AuthContextProvider = (props) => {
   const [loading, setLoading] = useState(false);
   const [wrongPWMessage, setWrongPWMessage] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const isMobile = window.innerWidth <= 576;
 
   const handleInputChange = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
@@ -136,6 +137,7 @@ export const AuthContextProvider = (props) => {
         isVisible,
         setIsVisible,
         seePassword,
+        isMobile,
       }}
     >
       {props.children}

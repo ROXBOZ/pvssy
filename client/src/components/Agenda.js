@@ -187,14 +187,7 @@ const Agenda = () => {
                               </p>
                             </>
                           )}
-                          {/* {e.dateEnd ? (
-                            <p style={{ color: "red" }}>
-                              de {timeConverter(e.dateStart)} à{" "}
-                              {timeConverter(e.dateEnd)}
-                            </p>
-                          ) : (
-                            <p>dès {timeConverter(e.dateStart)}</p>
-                          )} */}
+
                           <p>
                             {e.isOnline ? (
                               <>ONLINE</>
