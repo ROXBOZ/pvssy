@@ -40,15 +40,13 @@ header {
           font-family: $font-medium;
           color: $txt-color;
           text-decoration: none;
-          padding: $padding-btn;
-          border-radius: $border-radius;
-          border: none;
+          border-bottom: $border-solid transparent;
           white-space: nowrap;
-          &.active {
-            background-color: $secondary;
-          }
+
+          &.active,
           &:hover {
-            background-color: lighten($secondary, 10%);
+            color: darken($secondary, 30%);
+            border-bottom-color: darken($secondary, 30%);
           }
         }
 
@@ -79,15 +77,6 @@ header {
               border: $border-solid transparent;
             }
 
-            // #userIcon {
-            //   border: $border-solid;
-            //   padding: $xs-space;
-            //   border-radius: 50%;
-            //   aspect-ratio: 1/1;
-            //   &:hover {
-            //     cursor: pointer;
-            //   }
-            // }
             p {
               margin: 0;
             }

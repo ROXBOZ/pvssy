@@ -39,6 +39,7 @@ import getToken from "./utils/getToken";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import Exercises from "./pages/Exercises";
 import Recommendations from "./pages/Recommendations";
+import { ContactsContextProvider } from "./contexts/contactsContext";
 
 function App() {
   const token = getToken();
@@ -66,83 +67,88 @@ function App() {
         <div className="main">
           <ScrollToTop />
           <Breadcrumbs />
-          <EventsContextProvider>
-            <PainsContextProvider>
-              <TermsContextProvider>
-                <Routes>
-                  <Route index element={<Home />} />
-                  <Route path="a-propos" element={<About />} />
-                  <Route path="se-soigner" element={<SeSoigner />} />
-                  <Route path="s-informer/douleurs" element={<Pains />} />
-                  <Route path="s-informer/douleurs/:name" element={<Pain />}>
-                    <Route path="medical" element={<PainArticle />} />
-                    <Route path="sexologie" element={<PainArticle />} />
-                  </Route>
+          <ContactsContextProvider>
+            <EventsContextProvider>
+              <PainsContextProvider>
+                <TermsContextProvider>
+                  <Routes>
+                    <Route index element={<Home />} />
+                    <Route path="a-propos" element={<About />} />
+                    <Route path="se-soigner" element={<SeSoigner />} />
+                    <Route path="s-informer/douleurs" element={<Pains />} />
+                    <Route path="s-informer/douleurs/:name" element={<Pain />}>
+                      <Route path="medical" element={<PainArticle />} />
+                      <Route path="sexologie" element={<PainArticle />} />
+                    </Route>
 
-                  <Route
-                    path="s-informer/ressources/glossaire"
-                    element={<Lexique />}
-                  />
-                  <Route
-                    path="s-informer/ressources/exercices"
-                    element={<Exercises />}
-                  />
-                  <Route
-                    path="s-informer/ressources/recommendations"
-                    element={<Recommendations />}
-                  />
-                  <Route
-                    path="s-informer/douleurs/:name/glossaire"
-                    element={<PainLexique />}
-                  />
-                  <Route
-                    path="s-informer/douleurs/:name/glossaire/#:term"
-                    element={<PainLexique />}
-                  />
-                  <Route
-                    path="s-informer/douleurs/:name/exercices"
-                    element={<PainExercices />}
-                  />
-                  <Route
-                    path="s-informer/douleurs/:name/recommendations"
-                    element={<PainSuggestions />}
-                  />
-                  <Route
-                    path="s-informer/ressources"
-                    element={<Ressources />}
-                  />
-                  <Route path="s-informer" element={<SInformer />} />
-                  <Route path="s-informer/annuaire" element={<Annuaire />} />
-                  <Route path="s-informer/annuaire/:name" element={<Pain />} />
-                  <Route path="shop" element={<Shop />} />
-                  <Route path="agenda" element={<Agenda />} />
-                  <Route path="login" element={<Login />} />
-                  <Route path="creer-un-compte" element={<Signup />} />
-                  <Route path="faire-un-don" element={<Donate />} />
+                    <Route
+                      path="s-informer/ressources/glossaire"
+                      element={<Lexique />}
+                    />
+                    <Route
+                      path="s-informer/ressources/exercices"
+                      element={<Exercises />}
+                    />
+                    <Route
+                      path="s-informer/ressources/recommendations"
+                      element={<Recommendations />}
+                    />
+                    <Route
+                      path="s-informer/douleurs/:name/glossaire"
+                      element={<PainLexique />}
+                    />
+                    <Route
+                      path="s-informer/douleurs/:name/glossaire/#:term"
+                      element={<PainLexique />}
+                    />
+                    <Route
+                      path="s-informer/douleurs/:name/exercices"
+                      element={<PainExercices />}
+                    />
+                    <Route
+                      path="s-informer/douleurs/:name/recommendations"
+                      element={<PainSuggestions />}
+                    />
+                    <Route
+                      path="s-informer/ressources"
+                      element={<Ressources />}
+                    />
+                    <Route path="s-informer" element={<SInformer />} />
+                    <Route path="se-soigner/annuaire" element={<Annuaire />} />
+                    <Route
+                      path="s-informer/annuaire/:name"
+                      element={<Pain />}
+                    />
+                    <Route path="shop" element={<Shop />} />
+                    <Route path="agenda" element={<Agenda />} />
+                    <Route path="login" element={<Login />} />
+                    <Route path="creer-un-compte" element={<Signup />} />
+                    <Route path="faire-un-don" element={<Donate />} />
 
-                  <Route
-                    path="profile"
-                    element={<ProtectedRoute />}
-                    key={token}
-                  >
-                    <Route path="ajouter" element={<AddEvent />} />
-                    <Route path="approuver" element={<ApproveEvent />} />
-                    <Route path="supprimer" element={<DeleteEvent />} />
-                  </Route>
-                  <Route
-                    path="conditions-generales"
-                    element={<GeneralConditions />}
-                  />
+                    <Route
+                      path="profile"
+                      element={<ProtectedRoute />}
+                      key={token}
+                    >
+                      <Route path="ajouter" element={<AddEvent />} />
+                      <Route path="approuver" element={<ApproveEvent />} />
+                      <Route path="supprimer" element={<DeleteEvent />} />
+                    </Route>
+                    <Route
+                      path="conditions-generales"
+                      element={<GeneralConditions />}
+                    />
 
-                  <Route path="*" element={<NotFound />} />
-                  <Route
-                    path="*"
-                    element={<Navigate to="/notfound" replace />}
-                  />
-                </Routes>
-              </TermsContextProvider>
-            </PainsContextProvider>
-          </EventsContextProvider>
+                    <Route path="*" element={<NotFound />} />
+                    <Route
+                      path="*"
+                      element={<Navigate to="/notfound" replace />}
+                    />
+                  </Routes>
+                </TermsContextProvider>
+              </PainsContextProvider>
+            </EventsContextProvider>
+          </ContactsContextProvider>
         </div>
 
         <Footer />

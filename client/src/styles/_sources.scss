@@ -69,7 +69,7 @@
         font-family: $font-regular-italic;
       }
       &:not(:first-child) {
-        border-top: $border-solid darken($bg-color, 10%);
+        border-top: $border-solid $secondary;
       }
     }
   }

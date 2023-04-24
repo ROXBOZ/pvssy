@@ -9,6 +9,7 @@ import painRoutes from "./routes/painRoutes.js";
 import eventRoutes from "./routes/eventRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import termRoutes from "./routes/termRoutes.js";
+import contactRoutes from "./routes/contactRoutes.js";
 import sourceRoutes from "./routes/sourceRoutes.js";
 import exerciseRoutes from "./routes/exerciseRoutes.js";
 import jwtStrategy from "./utils/passport.js";
@@ -51,20 +52,15 @@ const addMiddlewares = () => {
   const corsOptionsDelegate = function (req, callback) {
     var corsOptions;
     if (allowedUrls.indexOf(req.header("Origin")) !== -1) {
-      corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
+      corsOptions = { origin: true };
     } else {
-      corsOptions = { origin: false }; // disable CORS for this request
+      corsOptions = { origin: false };
     }
-    callback(null, corsOptions); // callback expects two parameters: error and options
+    callback(null, corsOptions);
   };
-  //
-  // const corsOptions2 = {
-  //   origin: "https://pvssy-frontend.vercel.app",
-  //   optionsSuccessStatus: 200,
-  // };
-  // app.use(cors({ origin: allowedUrls }));
+
   app.use(cors(corsOptionsDelegate));
-  // app.use(cors(corsOptions2));
+
   cloudinaryConfig();
   app.use(passport.initialize());
   passport.use(jwtStrategy);
@@ -77,6 +73,7 @@ const loadRoutes = () => {
   app.use("/api/terms", termRoutes);
   app.use("/api/sources", sourceRoutes);
   app.use("/api/exercises", exerciseRoutes);
+  app.use("/api/contacts", contactRoutes);
 };
 
 const startServer = () => {
@@ -86,10 +83,9 @@ const startServer = () => {
 };
 
 async function controller() {
-  addMiddlewares(); // always add middlewares before loading routes
+  addMiddlewares();
   loadRoutes();
 
-  // PUT THE MONGODBCONNEXION IN TRY AND CATCH (4)
   try {
     const connected = await mongoDBConnexion();
     connected && startServer();

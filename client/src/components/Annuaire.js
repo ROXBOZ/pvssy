@@ -1,16 +1,43 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { HeadingArea } from "../utils/HeadingArea";
+import { ContactsContext } from "../contexts/contactsContext";
 
 const Annuaire = () => {
+  const { fetchContacts, allContacts, contactsUrl } =
+    useContext(ContactsContext);
+
+  useEffect(() => {
+    fetchContacts(contactsUrl);
+  }, [contactsUrl]);
+
   return (
     <div>
-      <p className="pretitle">Annuaire</p>
-      <h2>Soignant·es</h2>
-      {/* <p>filtre : type, pratiques, approche, selon type de douleurs</p> */}
-      <h2>Associations</h2>
-      <h2>Groupes de paroles</h2>
-      <h2>Sites spécialisés</h2>
-      <h2>Comptes Insta</h2>
-      <h2>Magasins</h2>
+      <HeadingArea
+        title="Annuaire"
+        subtitle="Cette liste a été établie grâce aux recommandations de personnes concernées par les douleurs sexuelles."
+        level="h1"
+      />
+      <div className="grid-area">
+        <div className="centered">
+          {allContacts &&
+            allContacts.map((c, index) => {
+              return (
+                <div className={index}>
+                  {c.name}
+                  <br />
+                  {c.address}, {c.city} <br />
+                  {c.region}
+                  <br />
+                  <ul>
+                    {c.specialities.map((s) => {
+                      return <li>{s}</li>;
+                    })}
+                  </ul>
+                </div>
+              );
+            })}
+        </div>
+      </div>
     </div>
   );
 };

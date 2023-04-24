@@ -471,7 +471,7 @@ button.showPassword:hover {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 1rem;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #ce96ff;
   padding: 1rem 0;
   align-items: baseline;
 }
@@ -859,16 +859,12 @@ header nav.horizontal ul li a {
   font-family: "ESKlarheit-Medium";
   color: #31064b;
   text-decoration: none;
-  padding: 0.5em 1.5em;
-  border-radius: 50px;
-  border: none;
+  border-bottom: 1px solid transparent;
   white-space: nowrap;
 }
-header nav.horizontal ul li a.active {
-  background-color: #ce96ff;
-}
-header nav.horizontal ul li a:hover {
-  background-color: #e6c9ff;
+header nav.horizontal ul li a.active, header nav.horizontal ul li a:hover {
+  color: #8600fc;
+  border-bottom-color: #8600fc;
 }
 header nav.horizontal ul li .logout-header {
   display: flex;
@@ -1600,7 +1596,7 @@ a.term span {
   font-family: "ESKlarheit-Book-Italic";
 }
 .additional-ressources ul li:not(:first-child) {
-  border-top: 1px solid #ffdebc;
+  border-top: 1px solid #ce96ff;
 }
 
 .tag-container {

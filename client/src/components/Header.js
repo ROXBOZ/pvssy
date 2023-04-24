@@ -42,6 +42,11 @@ const Header = () => {
               S’informer
             </NavLink>
           </li>
+          <li>
+            <NavLink onClick={handleNavLink} to="se-soigner">
+              Se soigner
+            </NavLink>
+          </li>
 
           <li>
             <NavLink onClick={handleNavLink} to="agenda">

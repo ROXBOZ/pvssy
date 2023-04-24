@@ -1,21 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Annuaire from "../components/Annuaire";
+import { HeadingArea } from "../utils/HeadingArea";
+import { TitleLink } from "../utils/TitleLink";
 
 const SInformer = () => {
   return (
     <div>
-      <h1>S’informer</h1>
-      <p className="subtitle">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio at
-        natus placeat quia accusantium officia architecto dolore pariatur
-        ratione labore similique voluptatum sapiente, expedita ab praesentium
-        saepe deserunt quos consectetur.
-      </p>
-      {/* <Link to="glossaire">
-        Lien temporaire vers Glossaire global (en construction)
-      </Link> */}
-      <Annuaire />
+      <h1 className="invisible">S’informer</h1>
+      <HeadingArea
+        title="Avec des pros de la santé"
+        subtitle="Des recommendations pour mieux vivre son parcours de soin"
+      />
+      <div className="ressources-container">
+        <TitleLink to="annuaire" title="Annuaire" />
+      </div>
+
+      <HeadingArea title="Se réapproprier son corps solo" />
     </div>
   );
 };

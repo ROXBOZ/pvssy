@@ -4,7 +4,7 @@
   .exercise {
     .exercise-closed {
       @include grid;
-      border-bottom: $border-solid;
+      border-bottom: $border-solid $secondary;
       padding: $sm-space 0;
       align-items: baseline;
       h2 {

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { PainsContext } from "../contexts/PainsContext";
 import { HeadingArea } from "../utils/HeadingArea";
 import { SourceList } from "../utils/SourceList";
-import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Recommendations = () => {
   const { fetchAllSources, allSources } = useContext(PainsContext);
@@ -13,15 +13,15 @@ const Recommendations = () => {
 
   return (
     <div>
-      <HeadingArea
-        pretitle="Ressources"
-        title="Recommendations"
-        subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-          accusamus est ipsum minus voluptatem voluptas quos aperiam saepe
-          molestias repudiandae! Distinctio architecto amet dolor, fuga at quod
-          optio repudiandae aperiam."
-        level="h1"
-      />
+      <HeadingArea pretitle="Ressources" title="Recommendations" level="h1" />
+      <div className="grid-area">
+        <p className="msg info centered">
+          <span>
+            Tu peux également consulter les recommendations spécifiques à{" "}
+            <Link to="../s-informer/douleurs">chaque douleur</Link>.
+          </span>
+        </p>
+      </div>
       <SourceList sources={allSources} />
     </div>
   );
