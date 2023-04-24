@@ -26,21 +26,19 @@ const Footer = () => {
         <div className="footer-column">
           <nav>
             <div className="nav-section">
-              <Link to="https://www.facebook.com/pvssytalk/">Facebook</Link>
-              <Link to="https://www.instagram.com/pvssy_talk/">Instagram</Link>
-              <Link to="https://www.linkedin.com/company/pvssy-talk/">
-                LinkedIn
-              </Link>
-            </div>
-            <div className="nav-section">
-              <a href="a-propos">À propos</a>
-              <a href="mailto:info@pvssy-talk.org">Email</a>
-              <a href="*">Newsletter</a>
-            </div>
-            <div className="nav-section">
-              <Link to="conditions-generales">CGUV</Link>
-              <Link to="*">presse kit</Link>
+              <Link to="">devenir membre</Link>
+              <Link to="faire-un-don">faire un don</Link>
+              <Link to="">presse kit</Link>
+              <Link to="conditions-generales">conditions générales</Link>
               <Link to="/">crédits</Link>
+            </div>
+            <div className="nav-section">
+              <a href="mailto:info@pvssy-talk.org">email</a>
+              <Link to="https://www.facebook.com/pvssytalk/">facebook</Link>
+              <Link to="https://www.instagram.com/pvssy_talk/">instagram</Link>
+              <Link to="https://www.linkedin.com/company/pvssy-talk/">
+                linkedIn
+              </Link>
             </div>
           </nav>
         </div>

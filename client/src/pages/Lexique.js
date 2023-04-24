@@ -13,6 +13,7 @@ import React, {
   useState,
 } from "react";
 import { HeadingArea } from "../utils/HeadingArea";
+import { AuthContext } from "../contexts/authContext";
 
 const Lexique = () => {
   const [allTerms, setAllTerms] = useState(null);
@@ -21,6 +22,7 @@ const Lexique = () => {
   const [topList, setTopList] = useState(0);
   const [entries, setEntries] = useState([]);
   const { isSticky, setIsSticky } = useContext(PainsContext);
+  const { isMobile } = useContext(AuthContext);
   const letterContainerRef = useRef(null);
 
   // 1. fetch all terms
@@ -152,15 +154,7 @@ const Lexique = () => {
 
   return (
     <div>
-      <HeadingArea
-        pretitle="Ressources"
-        title="Glossaire"
-        subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-          temporibus optio esse possimus doloribus odit quidem accusamus
-          consectetur accusantium, cumque harum sunt ipsam hic maxime
-          repudiandae commodi repellendus natus eveniet!"
-        level="h1"
-      />
+      <HeadingArea pretitle="Ressources" title="Glossaire" level="h1" />
       <div className="grid-area">
         <p className="msg info centered">
           <span>
@@ -173,15 +167,16 @@ const Lexique = () => {
       <div className="allLexique-term-container">
         <div className="glossary-dashboard-column">
           <div
-            className={`${isSticky ? "fixed" : ""}`}
+            className={`${!isMobile && isSticky ? "fixed" : "float"}`}
             ref={letterContainerRef}
           >
             <form>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
               <input
+                className="search-bar"
                 onChange={handleInput}
                 type="text"
-                placeholder="ex.: ménarche"
+                placeholder="recherche"
               />
             </form>
             <div className="letter-link-container">

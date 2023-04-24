@@ -4,7 +4,8 @@
   display: flex;
   flex-direction: column;
   padding-bottom: $sm-space;
-  border-bottom: $border-solid;
+  margin-bottom: $reg-space;
+  border-bottom: $border-solid $secondary;
 
   .agenda-entry-title {
     display: flex;

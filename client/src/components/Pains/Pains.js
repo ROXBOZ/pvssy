@@ -55,33 +55,10 @@ const Pains = () => {
 
   return (
     <div>
-      {endsWithDouleurs && (
-        <HeadingArea
-          pretitle="Comprendre"
-          title="Douleurs"
-          subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-          sequi reiciendis, vel facere, esse eaque rerum velit labore
-          reprehenderit quam, est veniam minus debitis quas quia in expedita
-          ullam laborum!"
-          level="h1"
-        />
-      )}
-
+      {endsWithDouleurs && <HeadingArea title="Douleurs" level="h1" />}
       <div className="grid-area">
-        <span className="centered">
-          {endsWithDouleurs ? (
-            <h2 style={{ marginBottom: "0" }}>
-              Peux-tu catégoriser ta douleur ?
-            </h2>
-          ) : (
-            <h3 style={{ marginBottom: "0" }}>
-              Peux-tu catégoriser ta douleur ?
-            </h3>
-          )}
-        </span>
         <CreateTags />
       </div>
-
       <div className="card-grid">
         {filteredData.map((p) => {
           return (

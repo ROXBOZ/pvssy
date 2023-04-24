@@ -15,11 +15,12 @@
     height: 90%;
     justify-content: center;
     align-items: center;
+
     h1 {
       margin-top: -44px; //header height
-      text-align: center;
-      font-family: $font-logo;
-      max-width: 80vw;
+      text-align: left !important;
+      font-family: $font-medium !important;
+      max-width: 25ch !important;
     }
   }
 }

@@ -63,16 +63,31 @@ header {
             align-items: center;
             justify-content: space-between;
             gap: 0.25em;
+            &:hover {
+              background-color: transparent;
 
-            #userIcon {
-              border: $border-solid;
-              padding: $xs-space;
-              border-radius: 50%;
-              aspect-ratio: 1/1;
-              &:hover {
-                cursor: pointer;
+              #userIcon {
+                border: $border-solid;
               }
             }
+
+            #userIcon {
+              background-color: $primary;
+              width: 1.5rem;
+              height: 1.5rem;
+              border-radius: 50%;
+              border: $border-solid transparent;
+            }
+
+            // #userIcon {
+            //   border: $border-solid;
+            //   padding: $xs-space;
+            //   border-radius: 50%;
+            //   aspect-ratio: 1/1;
+            //   &:hover {
+            //     cursor: pointer;
+            //   }
+            // }
             p {
               margin: 0;
             }

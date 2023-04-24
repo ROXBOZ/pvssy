@@ -4,7 +4,7 @@
 }
 
 .link-card {
-  grid-column: span 4;
+  grid-column: span 3;
   border-bottom: none;
   color: $txt-color;
   display: flex;
@@ -13,7 +13,7 @@
   .card {
     background-color: $bg-color;
     border: $border-solid $secondary;
-    border-radius: $border-radius;
+    border-radius: $border-radius-soft;
     display: flex;
     flex-direction: column;
     flex: max-content;
@@ -49,6 +49,24 @@
       .link-card.article {
         margin-top: 0;
         grid-column: span 1 !important;
+      }
+    }
+  }
+}
+
+.ressources-container {
+  grid-column: #{$grid-center};
+  a {
+    color: $txt-color;
+
+    .ressource {
+      border-top: $border-solid $secondary;
+      padding-top: $sm-space;
+      display: flex;
+      justify-content: space-between;
+
+      &:after {
+        content: "→";
       }
     }
   }

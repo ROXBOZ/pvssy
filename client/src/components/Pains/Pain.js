@@ -32,19 +32,9 @@ const Pain = () => {
     <Link to={to} className="link-card ressource">
       <div className="card ">
         <h3>{title}</h3>
-        {/* <p>{description}</p> */}
       </div>
     </Link>
   );
-
-  // const scrollToAnchor = (anchor) => {
-  //   const element = document.getElementById(anchor);
-  //   if (element) {
-  //     const top = element.offsetTop;
-  //     window.scrollTo({ top, behavior: "smooth" });
-  //     setAnchorPosition(top);
-  //   }
-  // };
 
   if (!painData) {
     return <div className="msg pending">Chargement...</div>;
@@ -52,20 +42,11 @@ const Pain = () => {
     return (
       <>
         <HeadingArea pretitle="douleur" title={painName} level="h1" />
-
         <div className="author">
           <p>
             Articles par <Link to="https://aemg-ge.com/">Medsexplain</Link> +{" "}
             <Link to="https://aemg-ge.com/">Fiona Bourdon</Link>. Illustrations
             par <Link to="https://noemiecreux.com/">Noémie Creux</Link>
-            {/* <em>
-              par{" "}
-              {isMed ? (
-                <Link to="https://aemg-ge.com/">Medsexplain</Link>
-              ) : (
-                <Link to="https://aemg-ge.com/">Fiona Bourdon</Link>
-              )}
-            </em> */}
           </p>
         </div>
 
@@ -79,17 +60,13 @@ const Pain = () => {
                 title="Médical"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quo amet quaerat repellat, voluptatum reprehenderit quod dolore ea dignissimos facilis cum cumque asperiores. Praesentium delectus perspiciatis magnam repudiandae dolor alias."
               />
-
               <ArticleLink
                 to="sexologie"
                 title="Sexologie"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quo amet quaerat repellat, voluptatum reprehenderit quod dolore ea dignissimos facilis cum cumque asperiores. Praesentium delectus perspiciatis magnam repudiandae dolor alias."
               />
-
               <ResourceCard to="glossaire" title="Glossaire" />
-
               <ResourceCard to="exercices" title="Exercices" />
-
               <ResourceCard to="suggestions" title="Suggestions" />
             </div>
           </>

@@ -156,9 +156,7 @@ const DeleteEvent = () => {
               </ul>
             )}
 
-            <button onClick={handleDelete}>
-              Supprimer le(s) évènement(s) sélectionné(s)
-            </button>
+            <button onClick={handleDelete}>Supprimer</button>
           </div>
         </div>
       </form>

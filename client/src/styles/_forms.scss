@@ -31,6 +31,11 @@
         list-style-type: none;
         padding-left: 0;
         grid-column: 1/12;
+        li:not(:first-child) {
+          margin-top: $sm-space;
+          padding-top: $sm-space;
+          border-top: $border-solid darken($bg-color, 10%);
+        }
       }
     }
   }
@@ -52,6 +57,17 @@
     border-radius: 0;
   }
 }
+
+.search-bar {
+  padding: 0.5rem 1.5rem !important;
+  border-color: $secondary !important;
+
+  &::placeholder {
+    color: $txt-color;
+    opacity: 50%;
+  }
+}
+
 input[type="text"],
 input[type="datetime-local"],
 input[type="tel"],

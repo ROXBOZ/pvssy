@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../contexts/authContext";
 import { useContext, useState } from "react";
 
@@ -56,11 +56,8 @@ const Header = () => {
                   to="/profile/ajouter"
                   aria-label="profil"
                 >
-                  <FontAwesomeIcon
-                    className="user-icon"
-                    id="userIcon"
-                    icon={faUser}
-                  />
+                  <div id="userIcon"></div>
+
                   <p>{userProfile.userName}</p>
                 </Link>
                 <button onClick={logout}>se déconnecter</button>

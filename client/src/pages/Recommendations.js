@@ -2,8 +2,9 @@ import React, { useContext, useEffect } from "react";
 import { PainsContext } from "../contexts/PainsContext";
 import { HeadingArea } from "../utils/HeadingArea";
 import { SourceList } from "../utils/SourceList";
+import { useLocation } from "react-router-dom";
 
-const Suggestions = () => {
+const Recommendations = () => {
   const { fetchAllSources, allSources } = useContext(PainsContext);
 
   useEffect(() => {
@@ -14,7 +15,7 @@ const Suggestions = () => {
     <div>
       <HeadingArea
         pretitle="Ressources"
-        title="Suggestions"
+        title="Recommendations"
         subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
           accusamus est ipsum minus voluptatem voluptas quos aperiam saepe
           molestias repudiandae! Distinctio architecto amet dolor, fuga at quod
@@ -26,4 +27,4 @@ const Suggestions = () => {
   );
 };
 
-export default Suggestions;
+export default Recommendations;

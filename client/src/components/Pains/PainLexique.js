@@ -45,19 +45,9 @@ const PainLexique = () => {
     }
   });
 
-  console.log("requestedTerms :", requestedTerms);
-
   return (
     <>
-      <HeadingArea
-        pretitle={painName}
-        title="Glossaire"
-        subtitle="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non autem
-          perspiciatis eos quisquam maiores ratione quasi in, deleniti officiis
-          omnis suscipit libero accusamus, rem quod expedita beatae sit vel
-          itaque."
-        level="h1"
-      />
+      <HeadingArea pretitle={painName} title="Glossaire" level="h1" />
       <div className="grid-area">
         {requestedTerms ? (
           <div className="lexique-list centered">

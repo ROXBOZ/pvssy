@@ -3,7 +3,7 @@
 @mixin grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: $reg-space;
+  gap: $sm-space;
 
   @media screen and (max-width: map-get($breakpoints, "sm")) {
     grid-template-columns: 1fr;

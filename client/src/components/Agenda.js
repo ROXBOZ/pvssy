@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { EventsContext } from "../contexts/eventsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -80,7 +80,6 @@ const Agenda = () => {
           </span>
         </div>
       </div>
-
       <div>
         {data.upcomingEvents && filteredData.length > 0 ? (
           filteredData.map((e, index) => {
@@ -97,7 +96,6 @@ const Agenda = () => {
                   )}{" "}
                   · <nobr>{dateConverter(e.dateStart)}</nobr>
                 </p>
-
                 <div
                   onClick={() => handleClick(e._id)}
                   className="agenda-entry-title "
@@ -105,9 +103,7 @@ const Agenda = () => {
                   <h3>{e.title}</h3>
                   <button>{showEvent[e._id] ? "fermer" : "en savoir +"}</button>
                 </div>
-
                 {showEvent[e._id] ? <span></span> : <span>{e.shortDef}</span>}
-
                 {showEvent[e._id] && (
                   <>
                     <div className="event-container">
@@ -214,6 +210,10 @@ const Agenda = () => {
           </div>
         )}
       </div>
+
+      <Link style={{ border: "none" }} to="creer-un-compte">
+        <button>proposer un évènement</button>
+      </Link>
     </div>
   );
 };

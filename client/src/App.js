@@ -38,7 +38,7 @@ import { AuthContextProvider } from "./contexts/authContext";
 import getToken from "./utils/getToken";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import Exercises from "./pages/Exercises";
-import Suggestions from "./pages/Suggestions";
+import Recommendations from "./pages/Recommendations";
 
 function App() {
   const token = getToken();
@@ -88,8 +88,8 @@ function App() {
                     element={<Exercises />}
                   />
                   <Route
-                    path="s-informer/ressources/suggestions"
-                    element={<Suggestions />}
+                    path="s-informer/ressources/recommendations"
+                    element={<Recommendations />}
                   />
                   <Route
                     path="s-informer/douleurs/:name/glossaire"
@@ -104,7 +104,7 @@ function App() {
                     element={<PainExercices />}
                   />
                   <Route
-                    path="s-informer/douleurs/:name/suggestions"
+                    path="s-informer/douleurs/:name/recommendations"
                     element={<PainSuggestions />}
                   />
                   <Route
