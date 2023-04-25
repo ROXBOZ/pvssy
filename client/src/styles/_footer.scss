@@ -47,6 +47,7 @@ footer {
         nav {
           display: flex;
           gap: $lg-space;
+          text-transform: lowercase;
 
           a {
             width: fit-content;

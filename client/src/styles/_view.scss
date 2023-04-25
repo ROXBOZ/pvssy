@@ -4,6 +4,30 @@
   background-size: cover;
   background-repeat: no-repeat;
   animation: gradient 3s infinite alternate;
+  &:before {
+    --size: 0;
+    content: "";
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    background: radial-gradient(circle closest-side, $secondary, transparent);
+    transform: translate(-50%, -50%);
+    animation: gradient 3s infinite alternate;
+    overflow: hidden !important;
+    pointer-events: none;
+  }
+
+  &:hover {
+    &:before {
+      --size: 400px;
+    }
+  }
+
+  header {
+    position: relative;
+  }
 
   .logo {
     color: $txt-color;
@@ -15,6 +39,9 @@
     height: 90%;
     justify-content: center;
     align-items: center;
+    position: relative;
+    pointer-events: none;
+    z-index: 1;
 
     h1 {
       margin-top: -44px; //header height

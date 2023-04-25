@@ -190,7 +190,7 @@ const PainArticle = () => {
           <ShareThis />
 
           <p className="h4">
-            Ressources
+            Ressources{" "}
             {painData.name === "Sopk" ? (
               <span className="acronym">{painData.name}</span>
             ) : (
@@ -205,7 +205,7 @@ const PainArticle = () => {
             <Link to="../exercices">Exercices</Link>
           </li>
           <li>
-            <Link to="../suggestions">Suggestions</Link>
+            <Link to="../recommendations">Recommendations</Link>
           </li>
         </ul>
         <div>

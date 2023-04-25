@@ -10,9 +10,7 @@ const Ressources = () => {
 
   return (
     <div>
-      {endsWithRessources && (
-        <HeadingArea title="Ressources" subtitle="Pour aller plus loin..." />
-      )}
+      {endsWithRessources && <HeadingArea title="Ressources" level="h1" />}
       <div className="ressources-container">
         <TitleLink to="/s-informer/ressources/glossaire" title="Glossaire" />
         <TitleLink to="/s-informer/ressources/exercices" title="Exercices" />

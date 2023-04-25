@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import Exercise from "../components/Exercise";
 import { PainsContext } from "../contexts/PainsContext";
 import { HeadingArea } from "../utils/HeadingArea";
+import { Link } from "react-router-dom";
 
 const Exercises = () => {
   const { fetchAllExercises, allExercises } = useContext(PainsContext);
@@ -12,15 +13,7 @@ const Exercises = () => {
 
   return (
     <div>
-      <HeadingArea
-        pretitle="Ressources"
-        title="Exercices"
-        subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-          temporibus optio esse possimus doloribus odit quidem accusamus
-          consectetur accusantium, cumque harum sunt ipsam hic maxime
-          repudiandae commodi repellendus natus eveniet!"
-        level="h1"
-      />
+      <HeadingArea pretitle="Ressources" title="Exercices" level="h1" />
       <div className="exercises-container">
         {allExercises &&
           allExercises.map((ex, index) => <Exercise exercise={ex} />)}

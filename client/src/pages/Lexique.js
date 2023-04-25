@@ -155,14 +155,6 @@ const Lexique = () => {
   return (
     <div>
       <HeadingArea pretitle="Ressources" title="Glossaire" level="h1" />
-      <div className="grid-area">
-        <p className="msg info centered">
-          <span>
-            Tu peux également consulter le glossaire spécifique à{" "}
-            <Link to="../s-informer/douleurs">chaque douleur</Link>.
-          </span>
-        </p>
-      </div>
 
       <div className="allLexique-term-container">
         <div className="glossary-dashboard-column">
@@ -198,7 +190,6 @@ const Lexique = () => {
             </div>
           </div>
         </div>
-
         <div className="glossary-column">
           {termGroups &&
             Object.entries(termGroups).map(([letter, terms]) => (

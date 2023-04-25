@@ -1,4 +1,5 @@
 header {
+  z-index: 1;
   @include grid;
   padding: 0 $reg-space;
 
@@ -16,6 +17,12 @@ header {
     grid-column: 1/3;
     border: none;
   }
+
+  // .connect {
+  //   padding: $padding-btn;
+  //   border-radius: $border-radius;
+  //   border: $border-solid rgb(139, 255, 124) !important;
+  // }
 
   .burger-menu {
     display: none;
@@ -45,8 +52,8 @@ header {
 
           &.active,
           &:hover {
-            color: darken($secondary, 30%);
-            border-bottom-color: darken($secondary, 30%);
+            color: darken($secondary, 40%);
+            border-bottom-color: darken($secondary, 40%);
           }
         }
 

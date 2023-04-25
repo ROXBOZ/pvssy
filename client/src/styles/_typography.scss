@@ -9,9 +9,11 @@
     height: fit-content;
   }
 
-  h1,
+  h1 {
+    margin-top: 5vh;
+  }
   h2 {
-    margin-top: 10rem;
+    margin-top: 10vh;
   }
 }
 
@@ -29,10 +31,9 @@ li {
   max-width: $chperline;
 
   &.pretitle {
-    font-family: $font-bold;
-    text-transform: uppercase;
+    text-transform: lowercase;
     color: $primary;
-    letter-spacing: 0.5px;
+    font-family: $font-medium;
     padding-bottom: 0;
     margin-bottom: 0;
     max-width: fit-content;

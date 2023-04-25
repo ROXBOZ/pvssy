@@ -8,7 +8,7 @@ export const HeadingArea = ({ pretitle, title, subtitle, level = "h2" }) => {
         {title && title === "Sopk" ? (
           <span className="acronym">{title}</span>
         ) : (
-          <span>{title}</span>
+          <>{title}</>
         )}
       </HeadingTag>
       {subtitle && <p className="subtitle">{subtitle}</p>}

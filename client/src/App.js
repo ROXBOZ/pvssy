@@ -28,6 +28,7 @@ import AddEvent from "./components/User/Agenda/AddEvent";
 import DeleteEvent from "./components/User/Agenda/DeleteEvent";
 import ApproveEvent from "./components/User/Agenda/ApproveEvent";
 import Lexique from "./pages/Lexique";
+import Accessibility from "./components/Accessibility";
 
 //contexts
 import { PainsContextProvider } from "./contexts/PainsContext";
@@ -40,17 +41,46 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import Exercises from "./pages/Exercises";
 import Recommendations from "./pages/Recommendations";
 import { ContactsContextProvider } from "./contexts/contactsContext";
+import { useRef } from "react";
 
 function App() {
   const token = getToken();
   const location = useLocation();
+  const grdRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const rect = e.target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    grdRef.current.style.setProperty("--x", x + "px");
+    grdRef.current.style.setProperty("--y", y + "px");
+  };
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+      }, delay);
+    };
+  };
+  const handleMouseLeave = (e) => {
+    grdRef.current.style.setProperty("--size", "0");
+  };
+  const debouncedHandleMouseMove = debounce(handleMouseMove, 100);
+  grdRef.current?.addEventListener("mousemove", debouncedHandleMouseMove);
+  grdRef.current?.addEventListener("mouseleave", handleMouseLeave);
 
   return (
     <>
       <AuthContextProvider>
         {location.pathname === "/" ? (
           <>
-            <div className="landing-view">
+            <div
+              className="landing-view"
+              ref={grdRef}
+              onMouseMove={handleMouseMove}
+            >
               <Header />
               <div className="h1-container">
                 <h1>
@@ -138,6 +168,8 @@ function App() {
                       path="conditions-generales"
                       element={<GeneralConditions />}
                     />
+
+                    <Route path="accessibilite" element={<Accessibility />} />
 
                     <Route path="*" element={<NotFound />} />
                     <Route

@@ -9,29 +9,8 @@ const PainSuggestions = () => {
   console.log("requestedSources :", requestedSources);
   return (
     <div>
-      <HeadingArea
-        pretitle={painName}
-        title="Suggestions"
-        subtitle=" Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id ab unde
-          nisi, amet veritatis eum nulla voluptatum quidem quod placeat iusto
-          suscipit voluptas possimus obcaecati blanditiis, neque totam. Soluta,
-          beatae."
-        level="h1"
-      />
-
+      <HeadingArea pretitle={painName} title="Recommendations" level="h1" />
       <SourceList sources={requestedSources} />
-
-      <div className="grid-area">
-        <p className="msg info centered">
-          <span>
-            Retrouve{" "}
-            <Link to="/s-informer/ressources/suggestions">
-              toutes les suggestions de pvssy talk
-            </Link>{" "}
-            à un seul endroit !
-          </span>
-        </p>
-      </div>
     </div>
   );
 };

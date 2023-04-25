@@ -26,10 +26,11 @@ const Footer = () => {
         <div className="footer-column">
           <nav>
             <div className="nav-section">
-              <Link to="">devenir membre</Link>
-              <Link to="faire-un-don">faire un don</Link>
+              {/* <Link to="">devenir membre</Link>
+              <Link to="faire-un-don">faire un don</Link> */}
               <Link to="">presse kit</Link>
               <Link to="conditions-generales">conditions générales</Link>
+              <Link to="accessibilite">Accessibilité</Link>
               <Link to="/">crédits</Link>
             </div>
             <div className="nav-section">

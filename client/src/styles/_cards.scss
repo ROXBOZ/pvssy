@@ -56,6 +56,7 @@
 
 .ressources-container {
   grid-column: #{$grid-center};
+
   a {
     color: $txt-color;
 
@@ -66,7 +67,17 @@
       justify-content: space-between;
 
       &:after {
-        content: "→";
+        content: "↗";
+        color: $txt-color;
+      }
+
+      &:hover {
+        color: $primary;
+        &:after {
+          transition: $animation-transition;
+          transform: rotate(45deg);
+          color: $txt-color;
+        }
       }
     }
   }

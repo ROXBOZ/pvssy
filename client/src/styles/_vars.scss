@@ -17,36 +17,36 @@ $font-logo: "ESRebond";
 
 @font-face {
   font-family: "ESKlarheit-Book";
-  src: url("../assets/fonts/ESKlarheitGrotesk-Book.woff") format("woff"),
-    url("../assets/fonts/ESKlarheitGrotesk-Book.woff") format("woff2");
+  src: url("../assets/fonts/ESKlarheitGrotesk-Bk.woff2") format("woff"),
+    url("../assets/fonts/ESKlarheitGrotesk-Bk.woff2") format("woff2");
 }
 $font-regular: "ESKlarheit-Book";
 
 @font-face {
   font-family: "ESKlarheit-Book-italic";
-  src: url("../assets/fonts/ESKlarheitGrotesk-BookItalic.woff") format("woff"),
-    url("../assets/fonts/ESKlarheitGrotesk-BookItalic.woff") format("woff2");
+  src: url("../assets/fonts/ESKlarheitGrotesk-BkIt.woff2") format("woff"),
+    url("../assets/fonts/ESKlarheitGrotesk-BkIt.woff2") format("woff2");
 }
 $font-regular-italic: "ESKlarheit-Book-Italic";
 
 @font-face {
   font-family: "ESKlarheit-Medium";
-  src: url("../assets/fonts/ESKlarheitGrotesk-Medium.woff") format("woff"),
-    url("../assets/fonts/ESKlarheitGrotesk-Medium.woff") format("woff2");
+  src: url("../assets/fonts/ESKlarheitGrotesk-Md.woff2") format("woff"),
+    url("../assets/fonts/ESKlarheitGrotesk-Md.woff2") format("woff2");
 }
 $font-medium: "ESKlarheit-Medium";
 
 @font-face {
   font-family: "ESKlarheit-Medium-Italic";
-  src: url("../assets/fonts/ESKlarheitGrotesk-MediumItalic.woff") format("woff"),
-    url("../assets/fonts/ESKlarheitGrotesk-MediumItalic.woff") format("woff2");
+  src: url("../assets/fonts/ESKlarheitGrotesk-MdIt.woff2") format("woff"),
+    url("../assets/fonts/ESKlarheitGrotesk-MdIt.woff2") format("woff2");
 }
 $font-medium-italic: "ESKlarheit-Medium-Italic";
 
 @font-face {
   font-family: "ESKlarheit-Bold";
-  src: url("../assets/fonts/ESKlarheitGrotesk-Bold.woff") format("woff"),
-    url("../assets/fonts/ESKlarheitGrotesk-Bold.woff") format("woff2");
+  src: url("../assets/fonts/ESKlarheitGrotesk-Bd.woff2") format("woff"),
+    url("../assets/fonts/ESKlarheitGrotesk-Bd.woff2") format("woff2");
 }
 $font-bold: "ESKlarheit-Bold";
 

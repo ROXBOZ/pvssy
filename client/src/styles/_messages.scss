@@ -11,7 +11,9 @@ $archived-color: dimgrey;
   font-family: $font-medium;
   display: flex;
   gap: 0.5em;
-  border-radius: $border-radius-soft;
+  border-radius: $border-radius;
+  padding: $padding-btn;
+  border: $border-solid lighten($primary, 30%);
   * {
     margin-bottom: 0;
   }
@@ -89,5 +91,21 @@ $archived-color: dimgrey;
     &:before {
       content: ("🚨  ");
     }
+  }
+}
+
+.redirection {
+  width: fit-content;
+  a {
+    border-bottom: none;
+    padding-left: 16px; /* Add padding to create space */
+  }
+  &:before {
+    position: absolute;
+    content: "↗";
+    transition: $animation-transition;
+  }
+  &:hover:before {
+    transform: rotate(45deg);
   }
 }

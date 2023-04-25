@@ -39,14 +39,13 @@
 }
 .share-button {
   a {
-    &:hover {
-      svg {
-        circle {
-          fill: darken($secondary, 20%) !important;
-        }
-        path {
-          fill: white;
-        }
+    svg {
+      border: $border-solid transparent;
+      transition: none;
+      &:hover {
+        border-color: $txt-color;
+        height: auto;
+        border-radius: 50%;
       }
     }
   }
@@ -63,10 +62,7 @@
         color: $txt-color;
       }
       &:hover {
-        background-color: darken($color, 20%);
-        .link-icon {
-          color: white;
-        }
+        border: $border-solid $txt-color !important;
       }
     }
 

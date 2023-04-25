@@ -49,6 +49,11 @@ const PainLexique = () => {
     <>
       <HeadingArea pretitle={painName} title="Glossaire" level="h1" />
       <div className="grid-area">
+        <div className="centered">
+          <div className="redirection msg">
+            <Link to="/s-informer/ressources/glossaire">glossaire complet</Link>
+          </div>
+        </div>
         {requestedTerms ? (
           <div className="lexique-list centered">
             {requestedTerms &&
@@ -89,7 +94,6 @@ const PainLexique = () => {
                     </ul>
                   );
                 })}
-
             {requestedTerms &&
               requestedTerms
                 .filter((t) => !t.imgUrl)
@@ -118,15 +122,6 @@ const PainLexique = () => {
             Il n’y a pas de glossaire relatif à cette douleur pour l’instant.
           </p>
         )}
-      </div>
-      <div className="grid-area">
-        <p className="msg info centered">
-          Retrouve tous{" "}
-          <Link to="/s-informer/ressources/glossaire">
-            le glossaire de pvssy talk
-          </Link>{" "}
-          dans les ressources générales.
-        </p>
       </div>
     </>
   );

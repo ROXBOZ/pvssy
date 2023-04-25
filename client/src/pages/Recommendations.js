@@ -14,14 +14,6 @@ const Recommendations = () => {
   return (
     <div>
       <HeadingArea pretitle="Ressources" title="Recommendations" level="h1" />
-      <div className="grid-area">
-        <p className="msg info centered">
-          <span>
-            Tu peux également consulter les recommendations spécifiques à{" "}
-            <Link to="../s-informer/douleurs">chaque douleur</Link>.
-          </span>
-        </p>
-      </div>
       <SourceList sources={allSources} />
     </div>
   );

@@ -29,6 +29,12 @@
 
 * {
   outline: none;
+  transition: $animation-transition;
+
+  &::selection {
+    color: white;
+    background: $txt-color;
+  }
   &:focus {
     border: $border-solid lighten($primary, 30%);
   }
@@ -78,6 +84,11 @@ html {
 strong {
   font-family: $font-bold;
   font-weight: 500;
+}
+
+u {
+  text-decoration: none;
+  border-bottom: $border-solid $secondary;
 }
 
 .smaller-text {

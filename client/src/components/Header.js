@@ -68,7 +68,7 @@ const Header = () => {
                 <button onClick={logout}>se déconnecter</button>
               </div>
             ) : (
-              <NavLink onClick={handleNavLink} to="login">
+              <NavLink className="connect" onClick={handleNavLink} to="login">
                 Se connecter
               </NavLink>
             )}
