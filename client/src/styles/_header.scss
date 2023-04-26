@@ -137,12 +137,12 @@ header {
         position: relative;
         transform: rotate(0deg);
         transition: 0.5s ease-in-out;
-        cursor: pointer;
+        cursor: url("../assets/images/cursor-pointer.svg"), auto;
 
         span {
           display: block;
           position: absolute;
-          height: 3px;
+          height: 2px;
           width: 100%;
           background: $txt-color;
           border-radius: $border-radius;
@@ -247,7 +247,7 @@ header {
                   border-radius: 50%;
                   aspect-ratio: 1/1;
                   &:hover {
-                    cursor: pointer;
+                    cursor: url("../assets/images/cursor-pointer.svg"), auto;
                   }
                 }
                 p {

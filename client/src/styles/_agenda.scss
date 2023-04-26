@@ -1,6 +1,6 @@
 .agenda-entry {
   margin-top: $reg-space;
-  cursor: pointer;
+  cursor: url("../assets/images/cursor-pointer.svg"), auto;
   display: flex;
   flex-direction: column;
   padding-bottom: $sm-space;

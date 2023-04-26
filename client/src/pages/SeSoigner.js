@@ -8,13 +8,21 @@ const SInformer = () => {
       <h1 className="invisible">S’informer</h1>
       <HeadingArea
         title="Avec des pros de la santé"
-        subtitle="Des recommendations pour mieux vivre son parcours de soin"
+        subtitle="Des recommendations pour mieux vivre son parcours de soin."
       />
       <div className="ressources-container">
-        <TitleLink to="annuaire" title="Annuaire" />
+        <TitleLink to="annuaire" title="Annuaire de spécialistes" />
       </div>
 
       <HeadingArea title="Se réapproprier son corps solo" />
+      <div className="ressources-container">
+        <TitleLink to="*" title="Exercices" />
+        <p style={{ color: "red" }}>
+          appeler ça autrement? c'est quoi la diff entre les exercices ici et
+          ceux des douleurs?
+        </p>
+        <TitleLink to="*" title="Plaisir" />
+      </div>
     </div>
   );
 };

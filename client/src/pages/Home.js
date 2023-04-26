@@ -29,7 +29,7 @@ const Home = () => {
       <HeadingArea
         title="Agenda"
         level="h2"
-        subtitle="Pour participer à des évènements en ligne ou près de chez soi"
+        subtitle="Pour proposer et participer à des évènements en ligne ou en Suisse Romande."
       />
       <Agenda />
     </>

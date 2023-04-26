@@ -59,6 +59,7 @@ a {
   font-family: $font-medium;
   width: fit-content;
   transition: border-color $animation-transition;
+  cursor: url("../assets/images/cursor-pointer.svg"), auto;
 
   &:hover {
     border-color: transparent;

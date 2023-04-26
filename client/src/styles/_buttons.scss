@@ -1,4 +1,4 @@
-@mixin button {
+button {
   padding: $padding-btn;
   border-radius: $border-radius;
   border: $border-solid $secondary;
@@ -7,7 +7,7 @@
   font-family: $font-medium;
   width: fit-content;
   height: fit-content;
-  cursor: pointer;
+  cursor: url("../assets/images/cursor-pointer.svg"), auto;
   white-space: nowrap;
   color: $txt-color;
   transition: background-color $animation-transition;
@@ -15,22 +15,6 @@
   &.square {
     padding: 0.25em 0.5em;
   }
-
-  &:hover {
-    color: $txt-color;
-    background-color: $secondary;
-    border: $border-solid;
-  }
-
-  &:disabled {
-    opacity: 30%;
-    pointer-events: none;
-  }
-}
-
-button {
-  @include button;
-
   &.showPassword {
     color: $txt-color;
     padding: $xs-space;
@@ -41,7 +25,17 @@ button {
       opacity: 80%;
     }
   }
+  &:hover {
+    color: $txt-color;
+    background-color: $secondary;
+    border: $border-solid;
+  }
+  &:disabled {
+    opacity: 30%;
+    pointer-events: none;
+  }
 }
+
 .icon-button {
   padding: 0;
   border: none;

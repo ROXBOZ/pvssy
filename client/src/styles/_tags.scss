@@ -1,6 +1,6 @@
 .tag-container {
   display: flex;
-  gap: $sm-space;
+  gap: $xs-space;
   margin: 0 0 $reg-space;
   flex-wrap: wrap;
   align-items: center;
@@ -16,7 +16,7 @@
 
   &.active,
   &:hover {
-    cursor: pointer;
+    cursor: url("../assets/images/cursor-pointer.svg"), auto;
     background-color: $secondary;
     border-color: $txt-color;
   }
@@ -24,7 +24,7 @@
 
 .reset {
   font-size: $smaller-text;
-  cursor: pointer;
+  cursor: url("../assets/images/cursor-pointer.svg"), auto;
   &:hover {
     color: $secondary;
   }
