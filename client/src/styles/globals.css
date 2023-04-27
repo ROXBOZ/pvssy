@@ -301,7 +301,7 @@ button {
   border-radius: 50px;
   border: 1px solid #ce96ff;
   background-color: transparent;
-  font-size: 16px;
+  font-size: 18px;
   font-family: "ESKlarheit-Medium";
   width: -moz-fit-content;
   width: fit-content;
@@ -1959,7 +1959,7 @@ html {
   color: #31064b;
   font-family: "ESKlarheit-Book";
   line-height: 1.5;
-  font-size: 16px;
+  font-size: 18px;
   height: auto;
   overflow-x: hidden;
 }

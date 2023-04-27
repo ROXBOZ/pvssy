@@ -1,5 +1,6 @@
 import React from "react";
 import { HeadingArea } from "../utils/HeadingArea";
+import { Link } from "react-router-dom";
 
 const About = () => {
   console.log("localStorage.getItem();", localStorage.getItem("token")); // this means I need to get about out of auth context ?
@@ -11,25 +12,28 @@ const About = () => {
       <div className="grid-area">
         <div className="centered">
           <p>
-            <strong>Pvssy talk</strong> est porté par l’association à but non
-            lucratif <strong>No Dolor</strong> qui a pour but d’informer sur la
+            <u className="logo">pvssy talk</u> est porté par l’association à but
+            non lucratif <u>No Dolor</u> qui a pour but d’informer sur la
             sexualité et les douleurs sexuelles. C’est grâce à une équipe
             impliquée et motivée à aider les patient·es concerné·es par les
             douleurs que la plateforme existe aujourd’hui. Les contenus ont été
-            réalisés par les psycho-sexologues de <strong>Sexopraxis</strong> et
-            les médecin de l’association <strong>Medsexplain</strong>.
+            réalisés par les psycho-sexologues de{" "}
+            <Link to="https://www.sexopraxis.ch">Sexopraxis</Link> et les
+            médecin de l’association{" "}
+            <Link to="https://aemg-ge.com/medsexplain/">Medsexplain</Link>.
           </p>
           <p>
-            <strong>
+            <Link to="https://as-takoordyal.com">
               <nobr>Anne-Soorya</nobr> Takoordyal
-            </strong>{" "}
+            </Link>{" "}
             créatrice et cheffe de projet
             <br />
-            <strong>Roxanne Borloz</strong> développeuse web
+            <Link to="https://www.roxanne-borloz.net">Roxanne Borloz</Link>{" "}
+            développeuse web
             <br />
-            <strong>Noémie Creux</strong> illustratrice
+            <Link to="https://noemiecreux.com">Noémie Creux</Link> illustratrice
             <br />
-            <strong>Isaline Rogg</strong> communication
+            <u>Isaline Rogg</u> communication
           </p>
         </div>
       </div>
