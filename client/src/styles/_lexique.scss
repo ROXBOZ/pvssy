@@ -67,9 +67,13 @@ a.term {
 
       .letter-link {
         font-size: 110%;
-        border: transparent;
+        border: $border-solid transparent;
         border-radius: $border-radius;
         padding: 0.1em 0.4em;
+        width: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &:hover {
           border: $border-solid $secondary;
