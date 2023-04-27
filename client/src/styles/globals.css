@@ -1934,6 +1934,7 @@ h1:first-letter,
 * {
   outline: none;
   transition: 0.2s ease-in;
+  font-feature-settings: "ss02", "ss11";
 }
 *::-moz-selection {
   color: white;

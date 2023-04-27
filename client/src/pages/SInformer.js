@@ -19,7 +19,7 @@ const Sinformer = () => {
       </div>
 
       <HeadingArea
-        title="Douleurs"
+        title="S’informer sur ses douleurs"
         subtitle="Chaque douleur est traitée avec une approche à la fois médicale et sexologique pour te donner une vision complète des douleurs."
         level="h2"
       />
