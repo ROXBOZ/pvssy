@@ -2,6 +2,7 @@ import React from "react";
 import Pains from "../components/Pains/Pains";
 import Agenda from "../components/Agenda";
 import { HeadingArea } from "../utils/HeadingArea";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   console.log("%chome component run again", "color:orange");
@@ -12,24 +13,30 @@ const Home = () => {
       <div className="grid-area">
         <div className="centered">
           <p>
-            Les douleurs sexuelles concernent{" "}
-            <u>une personne à vulve sur cinq</u>. Elles peuvent toucher à la
-            vulve, au vagin, et s’étendre au delà de l’utérus. Ces douleurs
-            peuvent avoir des répercussions importantes sur différents aspects
-            de sa vie, sa sexualité, ou sa santé mentale et physique.{" "}
+            Les douleurs sexuelles concernent <u>1 personne à vulve sur 5</u>.
+            Elles peuvent toucher à la vulve, au vagin, et s’étendre au delà de
+            l’utérus. Ces douleurs peuvent avoir des répercussions importantes
+            sur différents aspects de sa vie, sa sexualité, ou sa santé mentale
+            et physique.
+          </p>
+          <p>
             <u>Avoir mal n’est pas normal</u>. Encore moins lorsqu’il s’agit de
             ton plaisir et ta sexualité. N’hésite pas à t’informer et t’entourer
             de soignant·e·sx <em>safe</em> pour t’accompagner dans ton parcours
-            de soin.
+            de soin.
           </p>
         </div>
       </div>
-      <HeadingArea title="S’informer sur ses douleurs" level="h3" />
+      <HeadingArea
+        title="Comprendre"
+        level="h3"
+        subtitle="Chaque douleur est traitée avec une approche à la fois médicale et sexologique pour te donner une vision complète."
+      />
       <Pains />
       <HeadingArea
         title="Agenda"
         level="h2"
-        subtitle="Pour proposer et participer à des évènements en ligne ou en Suisse Romande."
+        subtitle="Pour proposer et participer à des évènements en ligne ou en Suisse Romande."
       />
       <Agenda />
     </>

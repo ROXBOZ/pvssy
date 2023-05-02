@@ -1,52 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 import { useLocation } from "react-router-dom";
 import { HeadingArea } from "../../utils/HeadingArea";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import CreateTags from "../../utils/CreateTags";
 
 const Pains = () => {
   const { data, Error } = useContext(PainsContext);
   const location = useLocation();
   const currentUrl = location.pathname;
   const endsWithDouleurs = /douleurs$/.test(currentUrl);
-  const [selectedTag, setSelectedTag] = useState(null);
-
-  const handleFilter = (tag) => {
-    setSelectedTag((prevTag) => (prevTag === tag ? null : tag));
-  };
-
-  const handleReset = () => {
-    setSelectedTag(null);
-  };
+  const { selectedTag, painTags } = useContext(PainsContext);
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
-  };
-
-  const CreateTags = () => {
-    let painTags = ["vagin", "utérus", "règles", "pénétration"];
-
-    return (
-      <div className="tag-container">
-        {painTags.map((tag, index) => {
-          return (
-            <span
-              key={index}
-              className={`tag ${selectedTag === tag ? "active" : ""}`}
-              onClick={() => handleFilter(tag)}
-            >
-              {tag}
-            </span>
-          );
-        })}
-        <span className="reset" onClick={() => handleReset()}>
-          <FontAwesomeIcon icon={faXmark} />
-           réinitialiser
-        </span>
-      </div>
-    );
   };
 
   const filteredData = selectedTag
@@ -55,10 +22,18 @@ const Pains = () => {
 
   return (
     <div>
-      {endsWithDouleurs && <HeadingArea title="Douleurs" level="h1" />}
-      <div className="grid-area">
-        <CreateTags />
-      </div>
+      {endsWithDouleurs && (
+        <>
+          <HeadingArea
+            title="Douleurs"
+            level="h1"
+            subtitle="Chaque douleur est traitée avec une approche à la fois médicale et sexologique pour te donner une vision complète."
+          />
+        </>
+      )}
+
+      <CreateTags tags={painTags} />
+
       <div className="card-grid">
         {filteredData.map((p) => {
           return (

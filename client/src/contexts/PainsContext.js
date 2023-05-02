@@ -20,7 +20,15 @@ export const PainsContextProvider = (props) => {
   const index = segments.indexOf("douleurs");
   const [allExercises, setAllExercises] = useState([]);
   const [allSources, setAllSources] = useState([]);
-
+  const [selectedTag, setSelectedTag] = useState(null);
+  let painTags = ["vulve", "vagin", "utérus", "règles", "pénétration"];
+  let painList = [
+    "Vaginisme",
+    "Endométriose",
+    "SOPK",
+    "Lichen scléreux",
+    "Vaginiste et mycose",
+  ];
   let painName =
     index !== -1 && index + 1 < segments.length
       ? decodeURIComponent(segments[index + 1])
@@ -188,6 +196,10 @@ export const PainsContextProvider = (props) => {
         fetchAllExercises,
         fetchAllSources,
         allSources,
+        selectedTag,
+        setSelectedTag,
+        painTags,
+        painList,
       }}
     >
       {props.children}

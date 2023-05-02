@@ -17,7 +17,7 @@
 .source {
   @include dotted-border;
   display: inline;
-  font-family: $font-regular-italic;
+  font-family: $font-medium-italic;
   color: $txt-color;
   word-wrap: break-word;
 
@@ -66,7 +66,10 @@
       list-style: none;
       padding: $sm-space 0;
       .source-title {
-        font-family: $font-regular-italic;
+        font-family: $font-medium-italic;
+      }
+      .source-category {
+        text-transform: lowercase;
       }
       &:not(:first-child) {
         border-top: $border-solid $secondary;

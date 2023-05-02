@@ -45,6 +45,7 @@ html {
   padding: 0;
   background-color: $bg-color;
   color: $txt-color;
+  // font-family: $font-medium;
   font-family: $font-regular;
   line-height: 1.5;
   font-size: $font-size-basis;
@@ -71,7 +72,10 @@ html {
 .flex-center {
   display: flex;
   align-items: center;
-  gap: $reg-space;
+  gap: $sm-space;
+  p {
+    margin-bottom: 0;
+  }
   @media screen and (max-width: map-get($breakpoints, "sm")) {
     flex-direction: column;
     align-items: flex-start;
@@ -80,6 +84,13 @@ html {
 
 .logo {
   font-family: $font-logo;
+}
+
+.noun {
+  text-transform: capitalize;
+  * {
+    text-transform: capitalize;
+  }
 }
 
 strong {

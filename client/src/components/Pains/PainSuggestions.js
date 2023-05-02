@@ -9,7 +9,11 @@ const PainSuggestions = () => {
   console.log("requestedSources :", requestedSources);
   return (
     <div>
-      <HeadingArea pretitle={painName} title="Recommendations" level="h1" />
+      <HeadingArea
+        pretitle={painName}
+        title="Littérature et médias"
+        level="h1"
+      />
       <SourceList sources={requestedSources} />
     </div>
   );

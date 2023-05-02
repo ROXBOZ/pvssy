@@ -23,11 +23,10 @@
 
   .menstrual-reminder {
     margin-top: $reg-space * 2;
-    padding: $border-radius;
-    border-radius: $border-radius;
+    padding: $reg-space;
+    border-radius: $border-radius-soft;
     width: fit-content;
     border: $border-solid;
-    // background-color: white;
     display: flex;
     flex-direction: column;
     gap: $reg-space * 2;

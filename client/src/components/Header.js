@@ -33,24 +33,24 @@ const Header = () => {
       <nav className={isOpen ? "vertical" : "horizontal"}>
         <ul>
           <li>
-            <NavLink onClick={handleNavLink} to="a-propos">
-              À propos
-            </NavLink>
-          </li>
-          <li>
             <NavLink onClick={handleNavLink} to="s-informer">
               S’informer
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink onClick={handleNavLink} to="se-soigner">
               Se soigner
             </NavLink>
-          </li>
+          </li> */}
 
           <li>
             <NavLink onClick={handleNavLink} to="agenda">
               Agenda
+            </NavLink>
+          </li>
+          <li>
+            <NavLink onClick={handleNavLink} to="a-propos">
+              À propos
             </NavLink>
           </li>
           <li>
@@ -69,7 +69,7 @@ const Header = () => {
               </div>
             ) : (
               <NavLink className="connect" onClick={handleNavLink} to="login">
-                Se connecter
+                <button>Se connecter</button>
               </NavLink>
             )}
           </li>

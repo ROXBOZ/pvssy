@@ -1,10 +1,11 @@
 .tag-container {
   display: flex;
   gap: $xs-space;
-  margin: 0 0 $reg-space;
   flex-wrap: wrap;
   align-items: center;
   grid-column: #{$grid-center};
+  margin: $xs-space 0;
+  max-width: 90%;
 }
 
 .tag {
@@ -13,6 +14,7 @@
   padding: $padding-btn;
   font-size: $smaller-text;
   border-radius: 40px;
+  text-transform: lowercase;
 
   &.active,
   &:hover {
@@ -25,6 +27,8 @@
 .reset {
   font-size: $smaller-text;
   cursor: url("../assets/images/cursor-pointer.svg"), auto;
+  display: flex;
+  align-items: center;
   &:hover {
     color: $secondary;
   }

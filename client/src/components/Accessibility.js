@@ -22,10 +22,10 @@ const Accessibility = () => {
             plus répandus.
           </p>
           <p>
-            Nous sommes fières de notre engagement en faveur de l’accessibilité,
-            mais nous reconnaissons qu’il est toujours possible de l’améliorer.
-            Si vous avez des suggestions ou des problèmes d’accessibilité,
-            n’hésitez pas à nous contacter à{" "}
+            Nous sommes heureuses de notre engagement en faveur de
+            l’accessibilité et nous reconnaissons qu’il est toujours possible de
+            l’améliorer. Si vous avez des suggestions ou des problèmes
+            d’accessibilité, n’hésitez pas à nous contacter à{" "}
             <a href="maitlo:info@pvssy-talk.org">
               <nobr>info@pvssy-talk.org</nobr>
             </a>

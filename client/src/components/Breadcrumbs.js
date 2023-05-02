@@ -31,7 +31,8 @@ export default function Breadcrumbs() {
                 .replaceAll("%20", " ")
                 .replaceAll("%C3%A8", "è")
                 .replaceAll("%C3%A0", "à")
-                .replaceAll("-", " ")}
+                .replaceAll("-", " ")
+                .replaceAll("%C2%A0", " ")}
             </span>
           ) : (
             <Link to={currentLink}>
@@ -41,7 +42,8 @@ export default function Breadcrumbs() {
                 .replaceAll("%20", " ")
                 .replaceAll("%C3%A8", "è")
                 .replaceAll("%C3%A0", "à")
-                .replaceAll("-", " ")}
+                .replaceAll("-", " ")
+                .replaceAll("%C2%A0", " ")}
             </Link>
           )}
         </div>

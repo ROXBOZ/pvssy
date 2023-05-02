@@ -1,5 +1,6 @@
 .landing-view {
   background-size: cover;
+  position: relative;
   background-repeat: no-repeat;
   animation: gradient 4s infinite alternate;
   height: 100vh;
@@ -31,6 +32,19 @@
     .logo {
       color: $txt-color;
     }
+
+    .connect {
+      button {
+        border-color: rgb(139, 255, 124);
+      }
+
+      &:hover {
+        button {
+          background-color: transparent;
+          border-color: $primary;
+        }
+      }
+    }
   }
 
   .h1-container {
@@ -41,12 +55,8 @@
     align-items: center;
     position: relative;
     pointer-events: none;
-    z-index: 1;
-    margin-top: -44px; //header height
-
-    h1 {
-      color: $txt-color;
-      font-family: $font-medium !important;
+    margin-top: -77px; //header height
+    * {
       max-width: 25ch !important;
     }
   }

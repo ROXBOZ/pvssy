@@ -1,11 +1,2 @@
-La maladie est aussi un bon alibi pour explorer d’autres pratiques que le script sexuel normatif qui met le focus sur la pénétration. Jouer et explorer avec douceur et plaisir est possible. Tu peux mettre en place des « rituels anti-douleur » en collaboration avec taon partenaire : prévoir dans les agendas le moment d’intimité (dans les phases les moins douloureuses), et induire une ambiance calme « anti-stress ». Tu peux demander à ta·on partenaire de faire couler un bain, augmenter la température de la pièce, prévoir du lubrifiant, avoir une huile de massage à dispo, mettre un ovule de CBD dans le vagin avant un rapport, faire 10 minutes de respiration ensemble pour se connecter et détendre les muscles.
-
-Au préalable des moments de sexualité, vous pouvez vous mettre d’accord sur des codes couleurs qui reflètent l’intensité de ta douleur afin de réajuster les pratiques et pouvoir sur un mot ou un geste, stopper la sexualité (voir exercices).
-
-Autorise-toi à dire non : tu as le droit de changer d’avis, et garde l’option plaisir/massage si tu as trop mal. Si tu pratiques la pénétration, ta·on partenaire peut aussi mettre à la base du pénis/jouet un anneau de confort qui rend la pénétration moins profonde (ainsi la verge/le jouet n’atteint pas le fond du vagin et ne vient pas exercer de pression sur l’utérus/rectum). De plus, ta·on partenaire et toi vous pouvez créer un catalogue commun de positions sexuelles peu profonde : la cuillère, le lotus, ou avec plus de contrôle sur la profondeur : missionnaire, andromaque.
-
-En solo, tu peux te poser pour un moment de masturbation qui inclut ton corps en entier et ta vulve : laisse tes mains se balader sans jugement, écoute ton corps, tes ressentis, tu peux utiliser une huile pour avoir des sensations encore plus douces [(voir exercice)](excercices).
-
-Si l’envie t’en dit, explore l’intimité non pénétrative comme : les jeux de rôle, le BDSM, les jeux de communication (avec support, comme le jeu Jouissance Club), caresses et massages érotiques, massage body/body… Tu peux imaginer la sexualité comme une rencontre des corps (et non pas que des sexes) et essayer une intimité tantrique (frottements, synchronisation des mouvements des bassins, synchronisation de la respiration …)
-
-Tu peux aussi pratiquer la masturbation et l’orgasme à but antalgique ! En effet, le plaisir et l’orgasme libèrent un condensé d’hormones antalgiques, cela peut être utile avant un rapport sexuel à deux (les personnes à vulve peuvent jouir plusieurs fois, c’est pratique).
+- Quand c’est un champignon, les pertes sont épaisses, elles ressemblent à du lait caillé ou du yogourt et elles ont une odeur inhabituelle.
+- Quand c’est une bactérie, les pertes sont plutôt jaunâtres ou grisâtres. Elles sentent mauvais.

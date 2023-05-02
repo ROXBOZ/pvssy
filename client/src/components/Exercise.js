@@ -63,13 +63,6 @@ const Exercise = ({ exercise }) => {
                 <div>par Fiona Bourdon</div>
               </div>
               <div className="instructions">
-                {exercise.img && (
-                  <img
-                    className="exercise-img"
-                    src={exercise.img}
-                    alt={exercise.title}
-                  />
-                )}
                 <div>{displayInstructions(exercise.howto)}</div>
               </div>
             </div>

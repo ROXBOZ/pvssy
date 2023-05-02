@@ -154,7 +154,7 @@ const Lexique = () => {
 
   return (
     <div>
-      <HeadingArea pretitle="Ressources" title="Glossaire" level="h1" />
+      <HeadingArea title="Glossaire" level="h1" />
 
       <div className="allLexique-term-container">
         <div className="glossary-dashboard-column">

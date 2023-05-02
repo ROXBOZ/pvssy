@@ -1,8 +1,52 @@
+.banner {
+  border-top: $border-solid $txt-color;
+  padding: $reg-space 0;
+  white-space: nowrap;
+  width: 100%;
+  margin: 10vh 0 0;
+  position: relative;
+  overflow: hidden;
+  height: 2rem;
+
+  p {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    position: absolute;
+    white-space: nowrap;
+    animation: transitionX 40s linear infinite;
+    animation-play-state: running;
+
+    .h3 {
+      font-family: $font-regular !important;
+    }
+
+    &:nth-child(1) {
+      left: 0;
+    }
+
+    &:nth-child(2) {
+      left: 100%;
+    }
+
+    .logo {
+      color: $primary;
+      border-bottom: none;
+    }
+  }
+
+  & + footer {
+    margin: 0;
+  }
+}
+
 footer {
   justify-content: center;
   align-items: center;
   gap: $sm-space;
-  margin-top: 10vh;
+  margin: 10vh 0 0;
+  .h3 {
+    margin-top: 0;
+  }
 
   a {
     color: $txt-color;

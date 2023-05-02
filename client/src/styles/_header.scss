@@ -18,11 +18,12 @@ header {
     border: none;
   }
 
-  // .connect {
-  //   padding: $padding-btn;
-  //   border-radius: $border-radius;
-  //   border: $border-solid rgb(139, 255, 124) !important;
-  // }
+  .connect {
+    border-bottom: none !important;
+    &:hover {
+      border-bottom: none !important;
+    }
+  }
 
   .burger-menu {
     display: none;
@@ -42,6 +43,7 @@ header {
         margin-left: 0;
         list-style: none;
         display: flex;
+        text-transform: lowercase;
 
         a {
           font-family: $font-medium;

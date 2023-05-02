@@ -190,7 +190,8 @@ const PainArticle = () => {
           <ShareThis />
 
           <p className="h4">
-            Ressources{" "}
+            Ressources
+            <br />
             {painData.name === "Sopk" ? (
               <span className="acronym">{painData.name}</span>
             ) : (
@@ -205,14 +206,18 @@ const PainArticle = () => {
             <Link to="../exercices">Exercices</Link>
           </li>
           <li>
-            <Link to="../recommendations">Recommendations</Link>
+            <Link to="../recommendations">Littérature et médias</Link>
           </li>
         </ul>
         <div>
           {isMed ? (
             <div className="article">
-              <h2>Définition</h2>
-              {highlightParagraphs(painData.def)}
+              {painData.def && painData.def.length > 0 && (
+                <>
+                  <h2>Définition</h2>
+                  {highlightParagraphs(painData.def)}
+                </>
+              )}
 
               {painData.tags.includes("règles") && (
                 <div className="menstrual-reminder">
@@ -225,7 +230,7 @@ const PainArticle = () => {
                       src={require(`../../assets/images/shemas/menstruation-reminder.png`)}
                       alt={`shéma ${painData.name}`}
                     />
-                    <br />
+
                     <caption>
                       <strong>Shéma sur le cycle menstruel</strong> : Lorem
                       ipsum dolor, sit amet consectetur adipisicing elit. Cumque
@@ -238,22 +243,42 @@ const PainArticle = () => {
                 </div>
               )}
 
-              <h2>Diagnostic</h2>
-              {highlightParagraphs(painData.diag)}
-              <h2>Symptômes</h2>
-              {highlightParagraphs(painData.sympt)}
-              <h2>Pourquoi ça m’arrive ?</h2>
-              {highlightParagraphs(painData.why)}
-
-              {painData.auto.length > 0 && (
+              {painData.diag && painData.diag.length > 0 && (
                 <>
-                  <h2>Que puis-je faire solo ?</h2>
-                  {highlightParagraphs(painData.auto)}
+                  <h2>Diagnostic</h2>
+                  {highlightParagraphs(painData.diag)}
+                </>
+              )}
+
+              {painData.sympt && painData.sympt.length > 0 && (
+                <>
+                  <h2>Symptômes</h2>
+                  {highlightParagraphs(painData.sympt)}
+                </>
+              )}
+
+              {painData.why && painData.why.length > 0 && (
+                <>
+                  <h2>Pourquoi ça m’arrive ?</h2>
+                  {highlightParagraphs(painData.why)}
                 </>
               )}
 
               <h2>Comment me soigner ?</h2>
-              {painData.proIntro && highlightParagraphs(painData.proIntro)}
+
+              {painData.auto && painData.auto.length > 0 && (
+                <>
+                  <h3>Que puis-je faire solo ?</h3>
+                  {highlightParagraphs(painData.auto)}
+                </>
+              )}
+
+              {painData.proIntro && painData.proIntro.length > 0 && (
+                <>
+                  <h3>Qui consulter ?</h3>
+                  {painData.proIntro && highlightParagraphs(painData.proIntro)}
+                </>
+              )}
 
               {painData.pros &&
                 painData.pros.map((pro) => {
@@ -268,28 +293,76 @@ const PainArticle = () => {
           ) : (
             <div className="article">
               <h2>Lien à soi</h2>
-              <h3>Image /schéma corporel</h3>
-              {highlightParagraphs(painData.body)}
-              <h3>Normes genrées</h3>
-              {highlightParagraphs(painData.norms)}
-              <h3>Vie quotidienne</h3>
-              {highlightParagraphs(painData.routine)}
+              {painData.body && painData.body.length > 0 && (
+                <>
+                  <h3>Image /schéma corporel</h3>
+                  {highlightParagraphs(painData.body)}
+                </>
+              )}
+              {painData.norms && painData.norms.length > 0 && (
+                <>
+                  <h3>Normes genrées</h3>
+                  {highlightParagraphs(painData.norms)}
+                </>
+              )}
+              {painData.routine && painData.routine.length > 0 && (
+                <>
+                  <h3>Vie quotidienne</h3>
+                  {highlightParagraphs(painData.routine)}
+                </>
+              )}
               <h2>Libido</h2>
-              {highlightParagraphs(painData.libido)}
-              <h3>Charge mentale et communication</h3>
-              {highlightParagraphs(painData.charge)}
-              <h3>Sexe et consentement</h3>
-              {highlightParagraphs(painData.consent)}
-              <h2>Santé mentale</h2>
-              {highlightParagraphs(painData.mental)}
-              <h2>Parentalité</h2>
-              {highlightParagraphs(painData.parenthood)}
-              <h2>Avec les pros de la santé</h2>
-              {highlightParagraphs(painData.checkup)}
-              <h2>Traitement</h2>
-              {highlightParagraphs(painData.treatment)}
-              <h2>Plaisir / anti-douleur</h2>
-              {highlightParagraphs(painData.pleasure)}
+              {painData.libido && painData.libido.length > 0 && (
+                <>{highlightParagraphs(painData.libido)}</>
+              )}
+              {painData.charge && painData.charge.length > 0 && (
+                <>
+                  <h3>Charge mentale et communication</h3>
+                  {highlightParagraphs(painData.charge)}
+                </>
+              )}
+
+              {painData.consent && painData.consent.length > 0 && (
+                <>
+                  <h3>Sexe et consentement</h3>
+                  {highlightParagraphs(painData.consent)}
+                </>
+              )}
+
+              {painData.mental && painData.mental.length > 0 && (
+                <>
+                  <h2>Santé mentale</h2>
+                  {highlightParagraphs(painData.mental)}
+                </>
+              )}
+
+              {painData.parenthood && painData.parenthood.length > 0 && (
+                <>
+                  <h2>Parentalité</h2>
+                  {highlightParagraphs(painData.parenthood)}
+                </>
+              )}
+
+              {painData.checkup && painData.checkup.length > 0 && (
+                <>
+                  <h2>Avec les pros de la santé</h2>
+                  {highlightParagraphs(painData.checkup)}
+                </>
+              )}
+
+              {painData.treatment && painData.treatment.length > 0 && (
+                <>
+                  <h2>Traitement</h2>
+                  {highlightParagraphs(painData.treatment)}
+                </>
+              )}
+
+              {painData.pleasure && painData.pleasure.length > 0 && (
+                <>
+                  <h2>Plaisir / anti-douleur</h2>
+                  {highlightParagraphs(painData.pleasure)}
+                </>
+              )}
             </div>
           )}
           {requestedSources && (

@@ -16,8 +16,9 @@ const Ressources = () => {
         <TitleLink to="/s-informer/ressources/exercices" title="Exercices" />
         <TitleLink
           to="/s-informer/ressources/recommendations"
-          title="Recommendations"
+          title="Littérature et médias"
         />
+        <TitleLink to="/s-informer/ressources/annuaire" title="Annuaire" />
       </div>
     </div>
   );

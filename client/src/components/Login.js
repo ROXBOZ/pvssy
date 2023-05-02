@@ -17,7 +17,8 @@ function LoginForm() {
 
   return (
     <div className="grid-area">
-      <h1 className="centered ">Se connecter</h1>
+      <h1 className="h2">Se connecter</h1>
+
       <form className="centered grid-form">
         <div className="form-section">
           <label htmlFor="userEmail">Adresse Email</label>
@@ -58,18 +59,20 @@ function LoginForm() {
           <p className="msg error">min 6 caractères.</p>
         )}
       </form>
-      <button
-        className="centered submit-button"
-        onClick={login}
-        disabled={!emailRegex.test(inputValue.userEmail)}
-      >
-        Se connecter
-      </button>
+      <div className="flex-center centered">
+        <button
+          className="centered submit-button"
+          onClick={login}
+          disabled={!emailRegex.test(inputValue.userEmail)}
+        >
+          Se connecter
+        </button>
 
-      <p className="centered">
-        Pas encore inscrit·e ?{" "}
-        <Link to="/creer-un-compte">Créer un compte</Link>.
-      </p>
+        <p className="centered">
+          Pas encore inscrit·e ?{" "}
+          <Link to="/creer-un-compte">Créer un compte</Link>.
+        </p>
+      </div>
     </div>
   );
 }

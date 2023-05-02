@@ -13,7 +13,7 @@ const Exercises = () => {
 
   return (
     <div>
-      <HeadingArea pretitle="Ressources" title="Exercices" level="h1" />
+      <HeadingArea title="Exercices" level="h1" />
       <div className="exercises-container">
         {allExercises &&
           allExercises.map((ex, index) => <Exercise exercise={ex} />)}

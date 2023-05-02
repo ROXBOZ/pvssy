@@ -1,14 +1,14 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import "./styles/globals.css";
 import { Navigate } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Donate from "./pages/Donate";
-import SeSoigner from "./pages/SeSoigner";
-import SInformer from "./pages/SInformer";
-import Shop from "./pages/Shop";
+import Home from "./components/Home";
+import About from "./components/About";
+import Donate from "./components/Donate";
+import SeSoigner from "./components/SeSoigner";
+import SInformer from "./components/SInformer";
+import Shop from "./components/Shop";
 import Agenda from "./components/Agenda";
-import GeneralConditions from "./pages/GeneralConditions";
+import GeneralConditions from "./components/GeneralConditions";
 import Breadcrumbs from "./components/Breadcrumbs";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -17,17 +17,17 @@ import Pain from "./components/Pains/Pain";
 import PainArticle from "./components/Pains/PainArticle";
 import ScrollToTop from "./utils/ScrollToTop";
 import Annuaire from "./components/Annuaire";
-import Ressources from "./pages/Ressources";
+import Ressources from "./components/Ressources";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import NotFound from "./pages/NotFound";
+import NotFound from "./components/NotFound";
 import PainLexique from "./components/Pains/PainLexique";
 import PainExercices from "./components/Pains/PainExercices";
 import PainSuggestions from "./components/Pains/PainSuggestions";
 import AddEvent from "./components/User/Agenda/AddEvent";
 import DeleteEvent from "./components/User/Agenda/DeleteEvent";
 import ApproveEvent from "./components/User/Agenda/ApproveEvent";
-import Lexique from "./pages/Lexique";
+import Lexique from "./components/Lexique";
 import Accessibility from "./components/Accessibility";
 
 //contexts
@@ -38,8 +38,8 @@ import { AuthContextProvider } from "./contexts/authContext";
 // utils
 import getToken from "./utils/getToken";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import Exercises from "./pages/Exercises";
-import Recommendations from "./pages/Recommendations";
+import Exercises from "./components/Exercises";
+import Recommendations from "./components/Recommendations";
 import { ContactsContextProvider } from "./contexts/contactsContext";
 import { useRef } from "react";
 
@@ -83,10 +83,11 @@ function App() {
             >
               <Header />
               <div className="h1-container">
-                <h1>
-                  S’informer sur ses douleurs pour mieux se réapproprier son
-                  corps et sa sexualité.
-                </h1>
+                {/* <h1>
+                  S’informer sur <span className="logo">ses douleurs</span> pour
+                  se réapproprier <span className="logo">son corps</span> et{" "}
+                  <span className="logo">sa sexualité</span>.
+                </h1> */}
               </div>
             </div>
           </>
@@ -144,7 +145,10 @@ function App() {
                       element={<Ressources />}
                     />
                     <Route path="s-informer" element={<SInformer />} />
-                    <Route path="se-soigner/annuaire" element={<Annuaire />} />
+                    <Route
+                      path="s-informer/ressources/annuaire"
+                      element={<Annuaire />}
+                    />
                     <Route
                       path="s-informer/annuaire/:name"
                       element={<Pain />}

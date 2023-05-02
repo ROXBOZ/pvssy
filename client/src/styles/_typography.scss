@@ -45,18 +45,38 @@ li {
       padding-top: 0.25em;
     }
   }
+}
 
-  &.subtitle {
-    font-size: x-large;
-    margin-bottom: 5vh;
-  }
+h1 + .subtitle,
+h2 + .subtitle,
+h3 + .subtitle,
+h4 + .subtitle {
+  border-bottom: $border-solid $secondary;
+  padding-bottom: $reg-space;
+  margin-bottom: $reg-space;
+}
+h1 + .subtitle {
+  font-size: 140%;
+}
+
+h2 + .subtitle {
+  font-size: 130%;
+}
+
+h3 + .subtitle {
+  font-size: 120%;
+}
+
+h4 + .subtitle {
+  color: violet;
+  font-size: 110%;
 }
 
 a {
   text-decoration: none;
   color: $primary;
   border-bottom: $border-solid;
-  font-family: $font-medium;
+  // font-family: $font-medium;
   width: fit-content;
   transition: border-color $animation-transition;
   cursor: url("../assets/images/cursor-pointer.svg"), auto;
@@ -101,9 +121,6 @@ hr {
 /*-----Ratio Scale-----*/
 
 $type-ratios: (
-  "minorSecond": 1.067,
-  "majorSecond": 1.125,
-  "minorThird": 1.2,
   "majorThird": 1.25,
   "perfectFourth": 1.333,
   "augmentedFourth": 1.414,
@@ -129,8 +146,9 @@ $level-size: $type-base-size;
     font-family: $font-medium;
     font-size: $level-size;
     line-height: calc(2px + 2ex + 2px);
-    //margin-bottom: 0.65em;
     font-weight: 500;
+    margin-top: calc(#{$level-size} * 2);
+    margin-bottom: calc(#{$level-size}/ 1.5);
 
     &:first-letter {
       text-transform: capitalize;

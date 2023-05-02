@@ -14,20 +14,20 @@ const Pain = () => {
     fetchRelatedSources();
   }, []);
 
-  const ArticleLink = ({ to, title, description }) => {
-    const scrollToTop = () => {
-      window.scrollTo(0, 0);
-    };
+  // const ArticleLink = ({ to, title, description }) => {
+  //   const scrollToTop = () => {
+  //     window.scrollTo(0, 0);
+  //   };
 
-    return (
-      <Link className="link-card article" to={to} onClick={scrollToTop}>
-        <div className="card">
-          <h2>{title}</h2>
-          <p>{description}</p>
-        </div>
-      </Link>
-    );
-  };
+  //   return (
+  //     <Link className="link-card article" to={to} onClick={scrollToTop}>
+  //       <div className="card">
+  //         <h2>{title}</h2>
+  //         <p>{description}</p>
+  //       </div>
+  //     </Link>
+  //   );
+  // };
 
   // const ResourceCard = ({ to, title, description }) => (
   //   <Link to={to} className="link-card ressource">
@@ -60,7 +60,8 @@ const Pain = () => {
               <TitleLink to="sexologie" title="Sexologie" />
               <TitleLink to="glossaire" title="Glossaire" />
               <TitleLink to="exercices" title="Exercices" />
-              <TitleLink to="recommendations" title="Recommandations" />
+              <TitleLink to="recommendations" title="Littérature et médias" />
+              <TitleLink to="annuaire" title="Annuaire" />
             </div>
           </>
         )}

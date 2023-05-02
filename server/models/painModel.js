@@ -4,7 +4,6 @@ const painSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
   },
   img: {
     type: String,
@@ -12,19 +11,15 @@ const painSchema = new mongoose.Schema({
   },
   def: {
     type: Array,
-    required: true,
   },
   diag: {
     type: Array,
-    required: true,
   },
   sympt: {
     type: Array,
-    required: true,
   },
   why: {
     type: Array,
-    required: true,
   },
   auto: {
     type: Array,

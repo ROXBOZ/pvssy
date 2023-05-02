@@ -12,8 +12,8 @@ const About = () => {
       <div className="grid-area">
         <div className="centered">
           <p>
-            <u className="logo">pvssy talk</u> est porté par l’association à but
-            non lucratif <u>No Dolor</u> qui a pour but d’informer sur la
+            <span className="logo">pvssy talk</span> est porté par l’association
+            à but non lucratif <u>No Dolor</u> qui a pour but d’informer sur la
             sexualité et les douleurs sexuelles. C’est grâce à une équipe
             impliquée et motivée à aider les patient·es concerné·es par les
             douleurs que la plateforme existe aujourd’hui. Les contenus ont été
@@ -25,15 +25,16 @@ const About = () => {
           <p>
             <Link to="https://as-takoordyal.com">
               <nobr>Anne-Soorya</nobr> Takoordyal
-            </Link>{" "}
-            créatrice et cheffe de projet
+            </Link>
+            , créatrice et cheffe de projet
             <br />
-            <Link to="https://www.roxanne-borloz.net">Roxanne Borloz</Link>{" "}
+            <Link to="https://www.roxanne-borloz.net">Roxanne Borloz</Link>,
             développeuse web
             <br />
-            <Link to="https://noemiecreux.com">Noémie Creux</Link> illustratrice
+            <Link to="https://noemiecreux.com">Noémie Creux</Link>,
+            illustratrice
             <br />
-            <u>Isaline Rogg</u> communication
+            <u>Isaline Rogg</u>, communication
           </p>
         </div>
       </div>

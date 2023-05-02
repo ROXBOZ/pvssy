@@ -15,14 +15,14 @@ const Donate = () => {
 
       <div className="grid-area">
         <div className="centered">
-          <h2>TWINT (+ RaiseNow)</h2>
+          <h2 className="h3">TWINT (+ RaiseNow)</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
             laboriosam eveniet laudantium illum velit tenetur eius expedita
             aliquid deleniti ab explicabo non accusantium dolorum atque, nulla
             quibusdam error distinctio earum.
           </p>
-          <h2>PayPal</h2>
+          <h2 className="h3">PayPal</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
             voluptatum esse dolore odit consectetur nobis veniam odio totam
@@ -30,7 +30,7 @@ const Donate = () => {
             placeat nam reiciendis, similique tempore?
           </p>
           <button>Virement par Paypal</button>
-          <h2>Virement bancaire</h2>
+          <h2 className="h3">Virement bancaire</h2>
           <p>
             <strong>
               Association NO DOLOR, Banque Cantonale Genevoise, IBAN: 12345 6789

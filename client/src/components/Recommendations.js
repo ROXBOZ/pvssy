@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { PainsContext } from "../contexts/PainsContext";
 import { HeadingArea } from "../utils/HeadingArea";
 import { SourceList } from "../utils/SourceList";
-import { Link } from "react-router-dom";
 
 const Recommendations = () => {
   const { fetchAllSources, allSources } = useContext(PainsContext);
@@ -13,7 +12,7 @@ const Recommendations = () => {
 
   return (
     <div>
-      <HeadingArea pretitle="Ressources" title="Recommendations" level="h1" />
+      <HeadingArea title="Littérature et médias" level="h1" />
       <SourceList sources={allSources} />
     </div>
   );

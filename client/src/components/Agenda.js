@@ -1,13 +1,13 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { EventsContext } from "../contexts/eventsContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { dateConverter, timeConverter } from "../utils/dateConverter";
 import CountdownTimer from "./CountdownTimer";
 import { fromNowToDate } from "../utils/fromNowToDate";
 import { HeadingArea } from "../utils/HeadingArea";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import CreateTags from "../utils/CreateTags";
+import { PainsContext } from "../contexts/PainsContext";
 
 const Agenda = () => {
   const { regions } = useContext(EventsContext);
@@ -16,15 +16,8 @@ const Agenda = () => {
   const currentUrl = location.pathname;
   const endsWithAgenda = /agenda$/.test(currentUrl);
   const [openAccordion, setOpenAccordion] = useState(null);
-  const [selectedTag, setSelectedTag] = useState(null);
+  const { selectedTag } = useContext(PainsContext);
 
-  const handleFilter = (tag) => {
-    setSelectedTag((prevTag) => (prevTag === tag ? null : tag));
-  };
-
-  const handleReset = () => {
-    setSelectedTag(null);
-  };
   const redirectToMeeting = () => {
     console.log("redirect to meeting :");
   };
@@ -61,25 +54,11 @@ const Agenda = () => {
   return (
     <div>
       {endsWithAgenda && <HeadingArea title="Agenda" level="h1" />}
-      <div className="grid-area">
-        <div className="tag-container">
-          {regions.map((tag, index) => {
-            return (
-              <span
-                key={index}
-                className={`tag ${selectedTag === tag ? "active" : ""}`}
-                onClick={() => handleFilter(tag)}
-              >
-                {tag}
-              </span>
-            );
-          })}
-          <span className="reset" onClick={() => handleReset()}>
-            <FontAwesomeIcon icon={faXmark} />
-             réinitialiser
-          </span>
-        </div>
+
+      <div className="noun">
+        <CreateTags tags={regions} />
       </div>
+
       <div>
         {data.upcomingEvents && filteredData.length > 0 ? (
           filteredData.map((e, index) => {
@@ -92,7 +71,7 @@ const Agenda = () => {
                   {e.isOnline ? (
                     <span>ONLINE</span>
                   ) : (
-                    <span>{e.city.replace(/\d+/g, "")}</span>
+                    <span className="noun">{e.city.replace(/\d+/g, "")}</span>
                   )}{" "}
                   · <nobr>{dateConverter(e.dateStart)}</nobr>
                 </p>
@@ -204,14 +183,16 @@ const Agenda = () => {
           })
         ) : (
           <div className="grid-area">
-            <p className="no-suggestions centered">
-              Il n'y a aucun événement à venir aux alentours.
-            </p>
+            <div className="centered">
+              <p className="msg">
+                Il n'y a aucun événement à venir aux alentours.
+              </p>
+            </div>
           </div>
         )}
       </div>
 
-      <Link style={{ border: "none" }} to="creer-un-compte">
+      <Link style={{ border: "none" }} to="login">
         <button>proposer un évènement</button>
       </Link>
     </div>

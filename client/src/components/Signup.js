@@ -106,7 +106,7 @@ const SignupForm = () => {
         level="h1"
       />
       <div className="grid-area">
-        <div className="avatar-button-container">
+        {/* <div className="avatar-button-container">
           {newUser.userAvatar ? (
             <img
               name="userAvatar"
@@ -120,7 +120,7 @@ const SignupForm = () => {
               <button onClick={submitImg}>attacher le fichier</button>
             </>
           )}
-        </div>
+        </div> */}
         <form className="centered grid-form">
           <div className="form-section">
             <label htmlFor="userName">Nom *</label>
@@ -152,7 +152,7 @@ const SignupForm = () => {
               onChange={handleInputChange}
               className="line"
             />
-            <label htmlFor="avatar">Photo de profil</label>
+            {/* <label htmlFor="avatar">Photo de profil</label>
 
             <input
               type="file"
@@ -160,7 +160,7 @@ const SignupForm = () => {
               name="userAvatar"
               onChange={handleAttachImg}
               className="line"
-            />
+            /> */}
 
             <label htmlFor="userPassword">Mot de passe</label>
             <div className="input-label-container fullwidth">
@@ -196,6 +196,7 @@ const SignupForm = () => {
             <p className="msg error">Mot de passe min. 6 caractères.</p>
           )}
         </form>
+
         <div className="centered">
           <input
             className="form-check-input"
@@ -209,30 +210,29 @@ const SignupForm = () => {
             <Link to="/conditions-generales ">conditions générales</Link>.
           </label>
         </div>
-
-        <button
-          className="centered"
-          onClick={signup}
-          disabled={
-            !(newUser.userPassword &&
-            newUser.userPassword > 6 &&
-            newUser.userName &&
-            newUser.userName > 2 &&
-            newUser.Website
-              ? urlRegex.test(newUser.userWebsite)
-              : true && conditionsAccepted)
-          }
-        >
-          Créer un compte
-        </button>
+        <div>
+          <button
+            onClick={signup}
+            disabled={
+              !(newUser.userPassword &&
+              newUser.userPassword > 6 &&
+              newUser.userName &&
+              newUser.userName > 2 &&
+              newUser.Website
+                ? urlRegex.test(newUser.userWebsite)
+                : true && conditionsAccepted)
+            }
+          >
+            Créer un compte
+          </button>
+          <p>
+            Déjà inscrit·e ? <Link to="/login">Se connecter</Link>.
+          </p>
+        </div>
 
         {message && (
           <div className={`message ${message.type}`}>{message.content}</div>
         )}
-
-        <p className="centered">
-          Déjà inscrit·e ? <Link to="/login">Se connecter</Link>.
-        </p>
       </div>
     </>
   );
