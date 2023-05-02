@@ -1881,15 +1881,15 @@ hr {
 h4,
 .h4 {
   font-family: "ESKlarheit-Medium";
-  font-size: 1.414rem;
+  font-size: 1.333rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
-  margin-top: calc(1.414rem * 2);
-  margin-bottom: calc(1.414rem/ 1.5);
+  margin-top: calc(1.333rem * 2);
+  margin-bottom: calc(1.333rem/ 1.5);
   font-size: clamp(
         1rem,
-        4.414vw + 1rem,
-        1.414rem
+        4.333vw + 1rem,
+        1.333rem
       );
 }
 h4:first-letter,
@@ -1900,15 +1900,15 @@ h4:first-letter,
 h3,
 .h3 {
   font-family: "ESKlarheit-Medium";
-  font-size: 1.999396rem;
+  font-size: 1.776889rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
-  margin-top: calc(1.999396rem * 2);
-  margin-bottom: calc(1.999396rem/ 1.5);
+  margin-top: calc(1.776889rem * 2);
+  margin-bottom: calc(1.776889rem/ 1.5);
   font-size: clamp(
-        1.33959532rem,
-        4.65980068vw + 1rem,
-        1.999396rem
+        1.19051563rem,
+        4.58637337vw + 1rem,
+        1.776889rem
       );
 }
 h3:first-letter,
@@ -1919,15 +1919,15 @@ h3:first-letter,
 h2,
 .h2 {
   font-family: "ESKlarheit-Medium";
-  font-size: 2.827145944rem;
+  font-size: 2.368593037rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
-  margin-top: calc(2.827145944rem * 2);
-  margin-bottom: calc(2.827145944rem/ 1.5);
+  margin-top: calc(2.368593037rem * 2);
+  margin-bottom: calc(2.368593037rem/ 1.5);
   font-size: clamp(
-        1.8941877825rem,
-        4.9329581615vw + 1rem,
-        2.827145944rem
+        1.5869573348rem,
+        4.7816357022vw + 1rem,
+        2.368593037rem
       );
 }
 h2:first-letter,
@@ -1938,15 +1938,15 @@ h2:first-letter,
 h1,
 .h1 {
   font-family: "ESKlarheit-Medium";
-  font-size: 3.9975843648rem;
+  font-size: 3.1573345183rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
-  margin-top: calc(3.9975843648rem * 2);
-  margin-bottom: calc(3.9975843648rem/ 1.5);
+  margin-top: calc(3.1573345183rem * 2);
+  margin-bottom: calc(3.1573345183rem/ 1.5);
   font-size: clamp(
-        2.6783815244rem,
-        5.3192028404vw + 1rem,
-        3.9975843648rem
+        2.1154141273rem,
+        5.041920391vw + 1rem,
+        3.1573345183rem
       );
 }
 h1:first-letter,
