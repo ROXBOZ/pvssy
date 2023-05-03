@@ -6,7 +6,7 @@
       @include grid;
       border-bottom: $border-solid $secondary;
       padding: $sm-space 0;
-      align-items: baseline;
+      align-items: flex-end;
       h2 {
         grid-column: #{$grid-first-third};
       }
@@ -44,6 +44,7 @@
           justify-content: space-between;
           padding-right: $sm-space;
           grid-column: #{$grid-first-third};
+          border-bottom: $border-solid $secondary;
           p {
             // padding-bottom: $sm-space;
             // border-bottom: $border-solid;

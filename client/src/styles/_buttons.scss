@@ -4,7 +4,7 @@ button {
   border: $border-solid $secondary;
   background-color: transparent;
   font-size: $font-size-basis;
-  font-family: $font-medium;
+  font-family: $font-regular;
   width: fit-content;
   height: fit-content;
   cursor: url("../assets/images/cursor-pointer.svg"), auto;
@@ -33,6 +33,10 @@ button {
   &:disabled {
     opacity: 30%;
     pointer-events: none;
+  }
+
+  &:active {
+    border: $border-solid lighten($secondary, 10%);
   }
 }
 

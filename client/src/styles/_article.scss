@@ -1,5 +1,4 @@
 .author {
-  @include grid;
   font-size: $smaller-text;
   * {
     grid-column: #{$grid-center};

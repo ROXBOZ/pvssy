@@ -17,7 +17,7 @@ function LoginForm() {
 
   return (
     <div className="grid-area">
-      <h1 className="h2">Se connecter</h1>
+      <h1 className="centered">Se connecter</h1>
 
       <form className="centered grid-form">
         <div className="form-section">

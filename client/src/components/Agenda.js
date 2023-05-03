@@ -1,7 +1,11 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { EventsContext } from "../contexts/eventsContext";
-import { dateConverter, timeConverter } from "../utils/dateConverter";
+import {
+  dateConverter,
+  dateConverterNoWeekday,
+  timeConverter,
+} from "../utils/dateConverter";
 import CountdownTimer from "./CountdownTimer";
 import { fromNowToDate } from "../utils/fromNowToDate";
 import { HeadingArea } from "../utils/HeadingArea";
@@ -73,7 +77,7 @@ const Agenda = () => {
                   ) : (
                     <span className="noun">{e.city.replace(/\d+/g, "")}</span>
                   )}{" "}
-                  · <nobr>{dateConverter(e.dateStart)}</nobr>
+                  · <nobr>{dateConverterNoWeekday(e.dateStart)}</nobr>
                 </p>
                 <div
                   onClick={() => handleClick(e._id)}
@@ -99,11 +103,11 @@ const Agenda = () => {
                         ) : (
                           <>
                             <p>
-                              Début : {dateConverter(e.dateStart)},{" "}
+                              commence le {dateConverter(e.dateStart)} à{" "}
                               {timeConverter(e.dateStart)}
                             </p>
                             <p>
-                              Fin : {dateConverter(e.dateEnd)},{" "}
+                              termine le {dateConverter(e.dateEnd)} à{" "}
                               {timeConverter(e.dateEnd)}
                             </p>
                           </>
@@ -113,9 +117,9 @@ const Agenda = () => {
                           {e.isOnline ? (
                             <>ONLINE</>
                           ) : (
-                            <>
+                            <span style={{ textTransform: "capitalize" }}>
                               {e.address}, {e.city}
-                            </>
+                            </span>
                           )}
                         </p>
                         {!e.entryFee ? (
@@ -192,7 +196,7 @@ const Agenda = () => {
         )}
       </div>
 
-      <Link style={{ border: "none" }} to="login">
+      <Link style={{ border: "none" }} to="/login">
         <button>proposer un évènement</button>
       </Link>
     </div>

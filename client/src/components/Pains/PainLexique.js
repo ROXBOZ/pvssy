@@ -49,11 +49,11 @@ const PainLexique = () => {
     <>
       <HeadingArea pretitle={painName} title="Glossaire" level="h1" />
       <div className="grid-area">
-        <div className="centered">
+        {/* <div className="centered">
           <div className="redirection msg">
             <Link to="/s-informer/ressources/glossaire">glossaire complet</Link>
           </div>
-        </div>
+        </div> */}
         {requestedTerms ? (
           <div className="lexique-list centered">
             {requestedTerms &&
@@ -64,6 +64,7 @@ const PainLexique = () => {
                     .normalize("NFD")
                     .replace(/[\u0300-\u036f]/g, "")
                     .replace(/\s+/g, "-")
+                    .replace("œ", "oe")
                     .toLowerCase();
                   return (
                     <ul className=" lexique-list" key={index}>
@@ -102,6 +103,7 @@ const PainLexique = () => {
                     .normalize("NFD")
                     .replace(/[\u0300-\u036f]/g, "")
                     .replace(/\s+/g, "-")
+                    .replace("œ", "oe")
                     .toLowerCase();
                   return (
                     <ul className=" lexique-list" key={index}>

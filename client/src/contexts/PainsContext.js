@@ -27,7 +27,7 @@ export const PainsContextProvider = (props) => {
     "Endométriose",
     "SOPK",
     "Lichen scléreux",
-    "Vaginiste et mycose",
+    "Vaginite et mycose",
   ];
   let painName =
     index !== -1 && index + 1 < segments.length

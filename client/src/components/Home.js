@@ -9,7 +9,7 @@ const Home = () => {
   //NOTE grid-area centered is not well thought...
   return (
     <>
-      <HeadingArea title="Avoir mal n’est pas normal" level="h2" />
+      <HeadingArea title="Avoir mal n’est pas normal" />
       <div className="grid-area">
         <div className="centered">
           <p>
@@ -26,19 +26,25 @@ const Home = () => {
             de soin.
           </p>
         </div>
+        <div className="centered">
+          <Link to="/s-informer" style={{ border: "none" }}>
+            <button style={{ fontSize: "large" }}>Je m’informe</button>
+          </Link>
+        </div>
       </div>
-      <HeadingArea
-        title="Comprendre"
+      {/* <HeadingArea
+        title="S’informer sur ses douleurs"
         level="h3"
         subtitle="Chaque douleur est traitée avec une approche à la fois médicale et sexologique pour te donner une vision complète."
-      />
-      <Pains />
-      <HeadingArea
+      /> */}
+
+      {/* <Pains /> */}
+      {/* <HeadingArea
         title="Agenda"
         level="h2"
         subtitle="Pour proposer et participer à des évènements en ligne ou en Suisse Romande."
       />
-      <Agenda />
+      <Agenda /> */}
     </>
   );
 };

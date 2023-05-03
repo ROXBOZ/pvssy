@@ -1,24 +1,35 @@
 $success-color: mediumseagreen;
 $reminder-color: DarkGoldenRod;
-$pending-color: mediumslateblue;
-// $warning-color: indianred;
+$pending-color: $secondary;
+$warning-color: $primary;
 $error-color: crimson;
 $archived-color: dimgrey;
 // $info-color: steelblue;
 
-.msg {
+.msg-box {
   margin: $reg-space 0;
+  display: flex;
+  gap: $xs-space;
+  flex-wrap: wrap;
+  * {
+    margin: 0;
+    white-space: nowrap;
+    height: fit-content;
+  }
+}
+.msg {
+  &:only-child {
+    margin: $reg-space 0;
+  }
+
   width: fit-content;
-  font-family: $font-medium;
   display: flex;
   gap: 0.5em;
   border-radius: $border-radius;
   padding: $padding-btn;
-  border: $border-solid lighten($primary, 30%);
-  * {
-    margin-bottom: 0;
-  }
+
   &.success {
+    border: $border-solid lighten($success-color, 30%);
     color: $success-color;
     &:before {
       content: ("👏  ");
@@ -26,6 +37,7 @@ $archived-color: dimgrey;
   }
 
   &.reminder {
+    border: $border-solid lighten($reminder-color, 30%);
     color: $reminder-color;
     &:before {
       content: ("🔔  ");
@@ -33,6 +45,7 @@ $archived-color: dimgrey;
   }
 
   &.pending {
+    border: $border-solid lighten($pending-color, 30%);
     color: $pending-color;
     &:before {
       content: ("⌛  ");
@@ -40,8 +53,10 @@ $archived-color: dimgrey;
   }
 
   &.warning {
+    border: $border-solid lighten($warning-color, 30%);
+    color: $warning-color;
     &:before {
-      content: url("../assets/images/warning-icon.svg");
+      content: ("⚠️  ");
       width: 20px;
       height: 20px;
       padding-top: 2.5px;
@@ -56,10 +71,8 @@ $archived-color: dimgrey;
   }
 
   &.error {
+    border: $border-solid lighten($error-color, 30%);
     color: $error-color;
-    &:before {
-      content: ("🚨  ");
-    }
   }
 
   &.info {

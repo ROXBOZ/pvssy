@@ -49,7 +49,8 @@ header {
           font-family: $font-medium;
           color: $txt-color;
           text-decoration: none;
-          border-bottom: $border-solid transparent;
+          // border-bottom: $border-solid transparent;
+          border: none;
           white-space: nowrap;
 
           &.active,
@@ -63,6 +64,9 @@ header {
           display: flex;
           align-items: center;
           gap: $reg-space;
+          a {
+            border-bottom: none;
+          }
 
           .user-icon-link {
             padding: 0.2em 1.5em;
@@ -70,11 +74,13 @@ header {
             align-items: center;
             justify-content: space-between;
             gap: 0.25em;
+
             &:hover {
               background-color: transparent;
+              border-bottom: none !important;
 
               #userIcon {
-                border: $border-solid;
+                background-color: darken($secondary, 40%);
               }
             }
 
@@ -83,7 +89,6 @@ header {
               width: 1.5rem;
               height: 1.5rem;
               border-radius: 50%;
-              border: $border-solid transparent;
             }
 
             p {
@@ -100,7 +105,7 @@ header {
   header {
     padding: $sm-space $reg-space;
     height: fit-content;
-    background-color: white;
+    background-color: $bg-color;
     border-bottom: $border-solid $txt-color;
     display: flex;
     align-items: center;
@@ -114,7 +119,7 @@ header {
 
     .logo {
       z-index: 999;
-      color: darken($secondary, 30%);
+      color: $primary;
     }
 
     .burger-menu {
@@ -208,7 +213,7 @@ header {
           flex-direction: column;
 
           li {
-            font-family: $font-bold;
+            // font-family: $font-bold;
             font-size: 140%;
             list-style: none;
             line-height: 3;

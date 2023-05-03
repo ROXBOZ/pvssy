@@ -58,12 +58,35 @@ const Footer = () => {
               </div>
               <div className="nav-section">
                 <a href="mailto:info@pvssy-talk.org">email</a>
-                <Link to="https://www.facebook.com/pvssytalk/">facebook</Link>
-                <Link to="https://www.instagram.com/pvssy_talk/">
-                  instagram
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  to="https://www.facebook.com/pvssytalk/"
+                >
+                  facebook
+                  <span className="screen-reader-text">
+                    (ouvre un nouvel onglet)
+                  </span>
                 </Link>
-                <Link to="https://www.linkedin.com/company/pvssy-talk/">
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  to="https://www.instagram.com/pvssy_talk/"
+                >
+                  instagram
+                  <span className="screen-reader-text">
+                    (ouvre un nouvel onglet)
+                  </span>
+                </Link>
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  to="https://www.linkedin.com/company/pvssy-talk/"
+                >
                   linkedIn
+                  <span className="screen-reader-text">
+                    (ouvre un nouvel onglet)
+                  </span>
                 </Link>
               </div>
             </nav>

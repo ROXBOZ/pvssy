@@ -59,7 +59,7 @@
 
 .ressources-container {
   grid-column: #{$grid-center};
-
+  margin-top: $reg-space;
   a {
     color: $txt-color;
 
@@ -68,7 +68,9 @@
       padding-top: $sm-space;
       display: flex;
       justify-content: space-between;
-      margin: $reg-space 0;
+      margin: 0;
+      padding-bottom: $reg-space;
+      max-height: fit-content;
 
       &:after {
         content: "↗";

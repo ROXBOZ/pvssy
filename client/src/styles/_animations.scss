@@ -29,12 +29,20 @@
     background-position: center;
   }
 }
-
 @keyframes transitionX {
   0% {
     transform: translate3d(100%, 0, 0);
   }
   100% {
     transform: translate3d(-340%, 0, 0);
+  }
+}
+@keyframes apparition {
+  0% {
+    color: $secondary;
+  }
+
+  100% {
+    color: $txt-color;
   }
 }

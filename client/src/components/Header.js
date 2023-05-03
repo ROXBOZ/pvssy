@@ -62,8 +62,7 @@ const Header = () => {
                   aria-label="profil"
                 >
                   <div id="userIcon"></div>
-
-                  <p>{userProfile.userName}</p>
+                  <p className="noun">{userProfile.userName}</p>
                 </Link>
                 <button onClick={logout}>se déconnecter</button>
               </div>

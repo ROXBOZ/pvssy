@@ -11,6 +11,8 @@ export const dateTimeConverter = (isoDate) => {
   const timeOptions = {
     hour: "numeric",
     minute: "numeric",
+    hour12: false,
+    hourCycle: "h23",
   };
   const dateTimeoptions = { ...dateOptions, ...timeOptions };
   return `${weekday} ${newDate.toLocaleDateString("fr-CH", dateTimeoptions)}`;
@@ -28,11 +30,24 @@ export const dateConverter = (isoDate) => {
   return newDate.toLocaleDateString("fr-CH", dateTimeoptions);
 };
 
+export const dateConverterNoWeekday = (isoDate) => {
+  const newDate = new Date(isoDate);
+  const dateOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const dateTimeoptions = { ...dateOptions };
+  return newDate.toLocaleDateString("fr-CH", dateTimeoptions);
+};
+
 export const timeConverter = (isoDate) => {
   const date = new Date(isoDate);
   const timeOptions = {
     hour: "numeric",
     minute: "numeric",
   };
-  return date.toLocaleTimeString("fr-CH", timeOptions);
+  const timeString = date.toLocaleTimeString("fr-CH", timeOptions);
+  const formattedTimeString = timeString.replace(":", "h");
+  return formattedTimeString;
 };

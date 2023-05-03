@@ -85,7 +85,12 @@ const PainArticle = () => {
         const regexTerm = new RegExp(term, "ig");
         p = p.replaceAll(
           regexTerm,
-          `[${term}](../glossaire/#${term.replace(/\s+/g, "-").toLowerCase()})`
+          `[${term}](../glossaire/#${term
+            .replace(/\s+/g, "-")
+            .replaceAll("é", "e")
+            .replace("è", "e")
+            .replace("œ", "oe")
+            .toLowerCase()})`
         );
       });
 
@@ -198,7 +203,6 @@ const PainArticle = () => {
               <span> {painData.name}</span>
             )}
           </p>
-
           <li>
             <Link to="../glossaire">Glossaire</Link>
           </li>
@@ -208,6 +212,14 @@ const PainArticle = () => {
           <li>
             <Link to="../recommendations">Littérature et médias</Link>
           </li>
+          <br />
+          <div className="author">
+            <p>
+              Articles par <Link to="https://aemg-ge.com/">Medsexplain</Link> +{" "}
+              <Link to="https://aemg-ge.com/">Sexopraxis</Link>. Illustrations
+              par <Link to="https://noemiecreux.com/">Noémie Creux</Link>.
+            </p>
+          </div>
         </ul>
         <div>
           {isMed ? (
@@ -232,6 +244,7 @@ const PainArticle = () => {
                     />
 
                     <caption>
+                      <br />
                       <strong>Shéma sur le cycle menstruel</strong> : Lorem
                       ipsum dolor, sit amet consectetur adipisicing elit. Cumque
                       asperiores nobis in omnis labore necessitatibus unde

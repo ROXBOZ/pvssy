@@ -43,13 +43,6 @@ const Pain = () => {
     return (
       <>
         <HeadingArea title={painName} level="h1" />
-        <div className="author">
-          <p>
-            Articles par <Link to="https://aemg-ge.com/">Medsexplain</Link> +{" "}
-            <Link to="https://aemg-ge.com/">Sexopraxis</Link>. Illustrations par{" "}
-            <Link to="https://noemiecreux.com/">Noémie Creux</Link>.
-          </p>
-        </div>
 
         {outlet ? (
           <Outlet />

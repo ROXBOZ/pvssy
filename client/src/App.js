@@ -39,7 +39,7 @@ import { AuthContextProvider } from "./contexts/authContext";
 import getToken from "./utils/getToken";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import Exercises from "./components/Exercises";
-import Recommendations from "./components/Recommendations";
+import Medias from "./components/Medias";
 import { ContactsContextProvider } from "./contexts/contactsContext";
 import { useRef } from "react";
 
@@ -82,12 +82,11 @@ function App() {
               onMouseMove={handleMouseMove}
             >
               <Header />
-              <div className="h1-container">
-                {/* <h1>
-                  S’informer sur <span className="logo">ses douleurs</span> pour
-                  se réapproprier <span className="logo">son corps</span> et{" "}
-                  <span className="logo">sa sexualité</span>.
-                </h1> */}
+              <div className="title-container">
+                <h1>
+                  S’informer sur ses douleurs pour se réapproprier son corps et
+                  sa sexualité
+                </h1>
               </div>
             </div>
           </>
@@ -121,8 +120,8 @@ function App() {
                       element={<Exercises />}
                     />
                     <Route
-                      path="s-informer/ressources/recommendations"
-                      element={<Recommendations />}
+                      path="s-informer/ressources/litterature-et-medias"
+                      element={<Medias />}
                     />
                     <Route
                       path="s-informer/douleurs/:name/glossaire"

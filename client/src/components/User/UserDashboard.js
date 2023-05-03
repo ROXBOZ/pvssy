@@ -9,11 +9,11 @@ const UserDashboard = ({ userProfile }) => {
     <div>
       {userProfile && (
         <div className="userProfile-info">
-          <img
+          {/* <img
             className="userProfile-avatar"
             src={userProfile.userAvatar}
             alt={userProfile.userName}
-          />
+          /> */}
           <p>
             <strong> {userProfile.userName}</strong>
             <br />

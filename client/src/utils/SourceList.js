@@ -1,21 +1,8 @@
 import { Link } from "react-router-dom";
-import CreateTags from "./CreateTags";
 
 export const SourceList = ({ sources }) => {
-  const medias = [
-    "livre",
-    "bande dessinée",
-    "article",
-    "podcast",
-    "vidéo",
-    "site web",
-    "association",
-    "témoignage",
-  ];
   return (
     <>
-      <CreateTags tags={medias} />
-
       <div className="additional-ressources">
         <ul>
           {sources &&
@@ -29,8 +16,15 @@ export const SourceList = ({ sources }) => {
                         <span className="source-year"> ({s.year}).</span>
                       )}{" "}
                       {s.url ? (
-                        <Link to={s.url}>
+                        <Link
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          to={s.url}
+                        >
                           <span className="source-title">{s.title}</span>
+                          <span className="screen-reader-text">
+                            (ouvre un nouvel onglet)
+                          </span>
                         </Link>
                       ) : (
                         <span className="source-title">{s.title}</span>

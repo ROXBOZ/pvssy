@@ -31,7 +31,12 @@ const Pains = () => {
           />
         </>
       )}
-
+      <div className="grid-area">
+        <p className="centered">
+          Dans quelles régions de ta vulve ou dans quelles circonstances{" "}
+          <nobr>as-tu mal ?</nobr>
+        </p>
+      </div>
       <CreateTags tags={painTags} />
 
       <div className="card-grid">

@@ -46,7 +46,9 @@ li {
     }
   }
 }
-
+.subtitle {
+  max-width: $chperline;
+}
 h1 + .subtitle,
 h2 + .subtitle,
 h3 + .subtitle,

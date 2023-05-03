@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../contexts/authContext";
 import { serverURL } from "../utils/serverURL";
-import { HeadingArea } from "../utils/HeadingArea";
 
 const SignupForm = () => {
   const {
@@ -15,35 +14,11 @@ const SignupForm = () => {
     seePassword,
     inputValue,
   } = useContext(AuthContext);
-  const [selectedFile, setSelectedFile] = useState(null);
   const [newUser, setNewUser] = useState({});
   const [conditionsAccepted, setConditionsAccepted] = useState(null);
   const [message, setMessage] = useState("");
 
   const redirectTo = useNavigate();
-
-  const handleAttachImg = (e) => {
-    setSelectedFile(e.target.files[0]);
-  };
-  const submitImg = async (e) => {
-    e.preventDefault();
-    const formdata = new FormData();
-    formdata.append("image", selectedFile);
-    const requestOptions = {
-      method: "POST",
-      body: formdata,
-    };
-    try {
-      const response = await fetch(
-        `${serverURL}/api/users/imageUpload`,
-        requestOptions
-      );
-      const result = await response.json();
-      setNewUser({ ...newUser, userAvatar: result.userAvatar });
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
 
   const signup = async (e) => {
     e.preventDefault();
@@ -54,12 +29,8 @@ const SignupForm = () => {
       userEmail: newUser.userEmail,
       userWebsite: newUser.userWebsite,
       userPassword: newUser.userPassword,
-      userAvatar: newUser.userAvatar
-        ? newUser.userAvatar
-        : "https://res.cloudinary.com/dkyialww7/image/upload/v1676473404/pvssy-avatar/default-avatar_hffziv.jpg",
       userIsAdmin: false,
     });
-    console.log("raw", raw);
 
     const requestOptions = {
       method: "POST",
@@ -96,145 +67,112 @@ const SignupForm = () => {
   }, [message]);
 
   return (
-    <>
-      <HeadingArea
-        title="Créer un compte"
-        subtitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error quasi
-          eum debitis dicta minus, molestiae quidem necessitatibus fuga optio
-          ratione alias voluptas, suscipit, laudantium adipisci quam? Illum
-          voluptates placeat voluptatum."
-        level="h1"
-      />
-      <div className="grid-area">
-        {/* <div className="avatar-button-container">
-          {newUser.userAvatar ? (
-            <img
-              name="userAvatar"
-              className="user-avatar"
-              src={newUser.userAvatar}
-              alt="user avatar"
-            />
-          ) : (
-            <>
-              <div alt="placeholder" className="avatar-placeholder" />
-              <button onClick={submitImg}>attacher le fichier</button>
-            </>
-          )}
-        </div> */}
-        <form className="centered grid-form">
-          <div className="form-section">
-            <label htmlFor="userName">Nom *</label>
-            <input
-              name="userName"
-              id="userName"
-              type="text"
-              placeholder="Nom"
-              onChange={handleInputChange}
-              className="line"
-              required
-            />
-            <label htmlFor="userEmail">Adresse Email *</label>
-            <input
-              placeholder="Adresse Email"
-              id="userEmail"
-              type="text"
-              name="userEmail"
-              onChange={handleInputChange}
-              required
-              className="line"
-            />
-            <label htmlFor="userWebsite">Site internet</label>
-            <input
-              name="userWebsite"
-              id="userWebsite"
-              type="text"
-              placeholder="https://..."
-              onChange={handleInputChange}
-              className="line"
-            />
-            {/* <label htmlFor="avatar">Photo de profil</label>
+    <div className="grid-area">
+      <h1 className="centered">Créer un compte</h1>
 
+      <form className="centered grid-form">
+        <div className="form-section">
+          <label htmlFor="userName">Nom *</label>
+          <input
+            name="userName"
+            id="userName"
+            type="text"
+            placeholder="Nom"
+            onChange={handleInputChange}
+            className="line"
+            required
+          />
+          <label htmlFor="userEmail">Adresse Email *</label>
+          <input
+            placeholder="Adresse Email"
+            id="userEmail"
+            type="text"
+            name="userEmail"
+            onChange={handleInputChange}
+            required
+            className="line"
+          />
+          <label htmlFor="userWebsite">Site internet</label>
+          <input
+            name="userWebsite"
+            id="userWebsite"
+            type="text"
+            placeholder="https://..."
+            onChange={handleInputChange}
+            className="line"
+          />
+          <label htmlFor="userPassword">Mot de passe</label>
+          <div className="input-label-container fullwidth">
             <input
-              type="file"
-              id="avatar"
-              name="userAvatar"
-              onChange={handleAttachImg}
-              className="line"
-            /> */}
-
-            <label htmlFor="userPassword">Mot de passe</label>
-            <div className="input-label-container fullwidth">
-              <input
-                placeholder="Mot de passe"
-                type={isVisible ? "text" : "password"}
-                id="userPassword"
-                name="userPassword"
-                onChange={handleInputChange}
-                className=" line"
+              placeholder="Mot de passe"
+              type={isVisible ? "text" : "password"}
+              id="userPassword"
+              name="userPassword"
+              onChange={handleInputChange}
+              className=" line"
+            />
+            <button className="showPassword" onClick={seePassword}>
+              <FontAwesomeIcon
+                id="eye-icon"
+                icon={isVisible ? faEye : faEyeSlash}
               />
-
-              <button className="showPassword" onClick={seePassword}>
-                <FontAwesomeIcon
-                  id="eye-icon"
-                  icon={isVisible ? faEye : faEyeSlash}
-                />
-              </button>
-            </div>
+            </button>
           </div>
-          {/* //TOFIX */}
-          {/* {newUser.userName && newUser.userName.length < 2 && (
-            <p className="msg error">Le nom doit être entre 2 et 20 lettres.</p>
-          )} */}
+        </div>
+        <div className="msg-box">
+          {inputValue.userName && inputValue.userName.length < 2 && (
+            <p className="msg error">Le nom doit avoir au moins 2 lettres.</p>
+          )}
           {inputValue.userEmail && !emailRegex.test(inputValue.userEmail) && (
             <p className="msg error">L'adresse e-mail est invalide.</p>
           )}
-          {newUser.userWebsite && !urlRegex.test(newUser.userWebsite) && (
+          {inputValue.userWebsite && !urlRegex.test(inputValue.userWebsite) && (
             <li className="error msg">L’URL du site internet est invalide.</li>
           )}
           {wrongPWMessage && <p className="msg error">{wrongPWMessage}</p>}
           {inputValue.userPassword && inputValue.userPassword.length < 6 && (
             <p className="msg error">Mot de passe min. 6 caractères.</p>
           )}
-        </form>
-
-        <div className="centered">
-          <input
-            className="form-check-input"
-            id="conditionsCheckbox"
-            type="checkbox"
-            onChange={(e) => setConditionsAccepted(e.target.checked)}
-            required
-          />
-          <label htmlFor="conditionsCheckbox">
-            J’ai lu et j’accepte les{" "}
-            <Link to="/conditions-generales ">conditions générales</Link>.
-          </label>
         </div>
-        <div>
-          <button
-            onClick={signup}
-            disabled={
-              !(newUser.userPassword &&
-              newUser.userPassword > 6 &&
-              newUser.userName &&
-              newUser.userName > 2 &&
-              newUser.Website
-                ? urlRegex.test(newUser.userWebsite)
-                : true && conditionsAccepted)
-            }
-          >
-            Créer un compte
-          </button>
-          <p>
-            Déjà inscrit·e ? <Link to="/login">Se connecter</Link>.
-          </p>
-        </div>
+      </form>
 
-        {message && (
-          <div className={`message ${message.type}`}>{message.content}</div>
-        )}
+      <div className="centered">
+        <input
+          className="form-check-input"
+          id="conditionsCheckbox"
+          type="checkbox"
+          onChange={(e) => setConditionsAccepted(e.target.checked)}
+          required
+        />
+        <label htmlFor="conditionsCheckbox">
+          J’ai lu et j’accepte les{" "}
+          <Link to="/conditions-generales ">conditions générales</Link>.
+        </label>
       </div>
-    </>
+      <div className="flex-center centered">
+        <button
+          onClick={signup}
+          disabled={
+            !(inputValue.userPassword &&
+            inputValue.userPassword > 6 &&
+            inputValue.userName &&
+            inputValue.userName >= 2 &&
+            inputValue.Website
+              ? urlRegex.test(inputValue.userWebsite)
+              : true && conditionsAccepted)
+          }
+        >
+          Créer un compte
+        </button>
+        <p>
+          Déjà inscrit·e ? <Link to="/login">Se connecter</Link>.
+        </p>
+      </div>
+
+      {message && (
+        <div className={`message ${message.type}`}>{message.content}</div>
+      )}
+    </div>
   );
 };
 
