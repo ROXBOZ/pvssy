@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { HeadingArea } from "../utils/HeadingArea";
-import { TitleLink } from "../utils/TitleLink";
+import { HeadingArea } from "../../utils/HeadingArea";
+import { TitleLink } from "../../utils/TitleLink";
 
 const Ressources = () => {
   const location = useLocation();

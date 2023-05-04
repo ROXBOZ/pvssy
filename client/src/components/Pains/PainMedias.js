@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 import { HeadingArea } from "../../utils/HeadingArea";
 import { SourceList } from "../../utils/SourceList";
 
-const PainSuggestions = () => {
+const PainMedias = () => {
   const { painName, requestedSources } = useContext(PainsContext);
   console.log("requestedSources :", requestedSources);
   return (
@@ -19,4 +18,4 @@ const PainSuggestions = () => {
   );
 };
 
-export default PainSuggestions;
+export default PainMedias;

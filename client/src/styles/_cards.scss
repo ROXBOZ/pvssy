@@ -58,32 +58,34 @@
 }
 
 .ressources-container {
-  grid-column: #{$grid-center};
   margin-top: $reg-space;
+  overflow: hidden;
+
   a {
     color: $txt-color;
+  }
 
-    .ressource {
-      border-top: $border-solid $secondary;
-      padding-top: $sm-space;
-      display: flex;
-      justify-content: space-between;
-      margin: 0;
-      padding-bottom: $reg-space;
-      max-height: fit-content;
+  h3 {
+    cursor: pointer;
+    border-top: $border-solid $secondary;
+    padding-top: $sm-space;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding-bottom: $reg-space;
+    max-height: fit-content;
 
+    &:after {
+      content: "↗";
+      color: $txt-color;
+    }
+
+    &:hover {
+      color: $primary;
       &:after {
-        content: "↗";
+        transition: $animation-transition;
+        transform: rotate(45deg);
         color: $txt-color;
-      }
-
-      &:hover {
-        color: $primary;
-        &:after {
-          transition: $animation-transition;
-          transform: rotate(45deg);
-          color: $txt-color;
-        }
       }
     }
   }

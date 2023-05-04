@@ -1,35 +1,35 @@
 import { Routes, Route, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import "./styles/globals.css";
 import { Navigate } from "react-router-dom";
-import Home from "./components/Home";
-import About from "./components/About";
-import Donate from "./components/Donate";
-import SeSoigner from "./components/SeSoigner";
-import SInformer from "./components/SInformer";
-import Shop from "./components/Shop";
-import Agenda from "./components/Agenda";
+import Home from "./components/Pages/Home";
+import About from "./components/Pages/About";
+import Donate from "./components/Pages/Donate";
+import SInformer from "./components/Pages/SInformer";
+import Agenda from "./components/Pages/Agenda";
 import GeneralConditions from "./components/GeneralConditions";
 import Breadcrumbs from "./components/Breadcrumbs";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Pains from "./components/Pains/Pains";
-import Pain from "./components/Pains/Pain";
+import Pains from "./components/Pages/Pains";
+import Pain from "./components/Pages/Pain";
 import PainArticle from "./components/Pains/PainArticle";
 import ScrollToTop from "./utils/ScrollToTop";
-import Annuaire from "./components/Annuaire";
-import Ressources from "./components/Ressources";
+import Annuaire from "./components/Pages/Annuaire";
+import Ressources from "./components/Pages/Ressources";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NotFound from "./components/NotFound";
-import PainLexique from "./components/Pains/PainLexique";
+import PainGlossary from "./components/Pains/PainGlossary";
 import PainExercices from "./components/Pains/PainExercices";
-import PainSuggestions from "./components/Pains/PainSuggestions";
+import PainMedias from "./components/Pains/PainMedias";
 import AddEvent from "./components/User/Agenda/AddEvent";
 import DeleteEvent from "./components/User/Agenda/DeleteEvent";
 import ApproveEvent from "./components/User/Agenda/ApproveEvent";
-import Lexique from "./components/Lexique";
+import Lexique from "./components/Pages/Glossary";
 import Accessibility from "./components/Accessibility";
-
+import Exercises from "./components/Pages/Exercises";
+import Medias from "./components/Pages/Medias";
 //contexts
 import { PainsContextProvider } from "./contexts/PainsContext";
 import { EventsContextProvider } from "./contexts/eventsContext";
@@ -38,8 +38,6 @@ import { AuthContextProvider } from "./contexts/authContext";
 // utils
 import getToken from "./utils/getToken";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import Exercises from "./components/Exercises";
-import Medias from "./components/Medias";
 import { ContactsContextProvider } from "./contexts/contactsContext";
 import { useRef } from "react";
 
@@ -93,6 +91,14 @@ function App() {
         ) : (
           <Header />
         )}
+        <Helmet>
+          <title>pvssy talk</title>
+          <meta
+            name="description"
+            content=" S'informer sur ses douleurs pour se réapproprier son corps et sa sexualité"
+          />
+          <meta name="keywords" content="douleurs sexuelles, sexualité" />
+        </Helmet>
 
         <div className="main">
           <ScrollToTop />
@@ -104,13 +110,11 @@ function App() {
                   <Routes>
                     <Route index element={<Home />} />
                     <Route path="a-propos" element={<About />} />
-                    <Route path="se-soigner" element={<SeSoigner />} />
                     <Route path="s-informer/douleurs" element={<Pains />} />
                     <Route path="s-informer/douleurs/:name" element={<Pain />}>
                       <Route path="medical" element={<PainArticle />} />
                       <Route path="sexologie" element={<PainArticle />} />
                     </Route>
-
                     <Route
                       path="s-informer/ressources/glossaire"
                       element={<Lexique />}
@@ -125,19 +129,19 @@ function App() {
                     />
                     <Route
                       path="s-informer/douleurs/:name/glossaire"
-                      element={<PainLexique />}
+                      element={<PainGlossary />}
                     />
                     <Route
                       path="s-informer/douleurs/:name/glossaire/#:term"
-                      element={<PainLexique />}
+                      element={<PainGlossary />}
                     />
                     <Route
                       path="s-informer/douleurs/:name/exercices"
                       element={<PainExercices />}
                     />
                     <Route
-                      path="s-informer/douleurs/:name/recommendations"
-                      element={<PainSuggestions />}
+                      path="s-informer/douleurs/:name/litterature-et-medias"
+                      element={<PainMedias />}
                     />
                     <Route
                       path="s-informer/ressources"
@@ -152,12 +156,10 @@ function App() {
                       path="s-informer/annuaire/:name"
                       element={<Pain />}
                     />
-                    <Route path="shop" element={<Shop />} />
                     <Route path="agenda" element={<Agenda />} />
                     <Route path="login" element={<Login />} />
                     <Route path="creer-un-compte" element={<Signup />} />
                     <Route path="faire-un-don" element={<Donate />} />
-
                     <Route
                       path="profile"
                       element={<ProtectedRoute />}
@@ -171,9 +173,7 @@ function App() {
                       path="conditions-generales"
                       element={<GeneralConditions />}
                     />
-
                     <Route path="accessibilite" element={<Accessibility />} />
-
                     <Route path="*" element={<NotFound />} />
                     <Route
                       path="*"

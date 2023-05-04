@@ -1,6 +1,7 @@
 import React from "react";
-import { HeadingArea } from "../utils/HeadingArea";
+import { HeadingArea } from "../../utils/HeadingArea";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const About = () => {
   console.log("localStorage.getItem();", localStorage.getItem("token")); // this means I need to get about out of auth context ?
@@ -8,6 +9,18 @@ const About = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>À propos de Pvssy Talk</title>
+        <meta
+          name="description"
+          content="Pvssy Talk est un projet porté par l'association No Dolor qui a pour but d’informer sur la
+            sexualité et les douleurs sexuelles"
+        />
+        <meta
+          name="keywords"
+          content="Association No Dolor, Anne-Soorya Takoordyal, Roxanne Borloz, Noémie Creux, Isaline Rogg, Sexopraxis, Medsexplain"
+        />
+      </Helmet>
       <HeadingArea title="À propos" level="h1" />
       <div className="grid-area">
         <div className="centered">

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { PainsContext } from "../contexts/PainsContext";
-import { HeadingArea } from "../utils/HeadingArea";
-import { SourceList } from "../utils/SourceList";
-import CreateTags from "../utils/CreateTags";
+import { PainsContext } from "../../contexts/PainsContext";
+import { HeadingArea } from "../../utils/HeadingArea";
+import { SourceList } from "../../utils/SourceList";
+import CreateTags from "../../utils/CreateTags";
 
 const Medias = () => {
   const { fetchAllSources, allSources } = useContext(PainsContext);

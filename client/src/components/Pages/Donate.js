@@ -1,5 +1,5 @@
 import React from "react";
-import { HeadingArea } from "../utils/HeadingArea";
+import { HeadingArea } from "../../utils/HeadingArea";
 
 const Donate = () => {
   return (

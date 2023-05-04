@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { HeadingArea } from "../utils/HeadingArea";
-import { ContactsContext } from "../contexts/contactsContext";
+import { HeadingArea } from "../../utils/HeadingArea";
+import { ContactsContext } from "../../contexts/contactsContext";
+import { Helmet } from "react-helmet";
 
 const Annuaire = () => {
   const { fetchContacts, allContacts, contactsUrl } =
@@ -12,6 +13,17 @@ const Annuaire = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Annuaire Pvssy Talk</title>
+        <meta
+          name="description"
+          content="Liste de spécialistes établie grâce aux recommandations de personnes concernées par les douleurs sexuelles."
+        />
+        <meta
+          name="keywords"
+          content="Évènements en lien avec les douleurs sexuelles en Suisse Romande, Genève, Vaud, Neuchâtel, Jura, Fribourg, Valais"
+        />
+      </Helmet>
       <HeadingArea
         title="Annuaire"
         subtitle="Cette liste a été établie grâce aux recommandations de personnes concernées par les douleurs sexuelles."

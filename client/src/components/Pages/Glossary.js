@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { serverURL } from "../utils/serverURL";
-import { PainsContext } from "../contexts/PainsContext";
+import { serverURL } from "../../utils/serverURL";
+import { PainsContext } from "../../contexts/PainsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { createParagraph } from "../utils/createParagraphs";
+import { createParagraph } from "../../utils/createParagraphs";
 
 import React, {
   useContext,
@@ -12,10 +12,10 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { HeadingArea } from "../utils/HeadingArea";
-import { AuthContext } from "../contexts/authContext";
+import { HeadingArea } from "../../utils/HeadingArea";
+import { AuthContext } from "../../contexts/authContext";
 
-const Lexique = () => {
+const Glossary = () => {
   const [allTerms, setAllTerms] = useState(null);
   const location = useLocation();
   const [, setAnchorPosition] = useState(0);
@@ -236,4 +236,4 @@ const Lexique = () => {
   );
 };
 
-export default Lexique;
+export default Glossary;

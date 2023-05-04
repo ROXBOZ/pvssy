@@ -7,7 +7,7 @@ import { PainsContext } from "../../contexts/PainsContext";
 import { HeadingArea } from "../../utils/HeadingArea";
 import { createParagraph } from "../../utils/createParagraphs";
 
-const PainLexique = () => {
+const PainGlossary = () => {
   const { painName } = useContext(PainsContext);
   const [requestedTerms, setRequestedTerms] = useState(null);
 
@@ -129,4 +129,4 @@ const PainLexique = () => {
   );
 };
 
-export default PainLexique;
+export default PainGlossary;

@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import Exercise from "../components/Exercise";
-import { PainsContext } from "../contexts/PainsContext";
-import { HeadingArea } from "../utils/HeadingArea";
-import { Link } from "react-router-dom";
+import Exercise from "../Exercise";
+import { PainsContext } from "../../contexts/PainsContext";
+import { HeadingArea } from "../../utils/HeadingArea";
 
 const Exercises = () => {
   const { fetchAllExercises, allExercises } = useContext(PainsContext);

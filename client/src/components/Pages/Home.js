@@ -1,7 +1,7 @@
 import React from "react";
-import Pains from "../components/Pains/Pains";
-import Agenda from "../components/Agenda";
-import { HeadingArea } from "../utils/HeadingArea";
+import Pains from "./Pains";
+import Agenda from "./Agenda";
+import { HeadingArea } from "../../utils/HeadingArea";
 import { Link } from "react-router-dom";
 
 const Home = () => {

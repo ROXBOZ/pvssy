@@ -1,17 +1,18 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { EventsContext } from "../contexts/eventsContext";
+import { EventsContext } from "../../contexts/eventsContext";
 import {
   dateConverter,
   dateConverterNoWeekday,
   timeConverter,
-} from "../utils/dateConverter";
-import CountdownTimer from "./CountdownTimer";
-import { fromNowToDate } from "../utils/fromNowToDate";
-import { HeadingArea } from "../utils/HeadingArea";
+} from "../../utils/dateConverter";
+import CountdownTimer from "../CountdownTimer";
+import { fromNowToDate } from "../../utils/fromNowToDate";
+import { HeadingArea } from "../../utils/HeadingArea";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import CreateTags from "../utils/CreateTags";
-import { PainsContext } from "../contexts/PainsContext";
+import CreateTags from "../../utils/CreateTags";
+import { PainsContext } from "../../contexts/PainsContext";
+import { Helmet } from "react-helmet";
 
 const Agenda = () => {
   const { regions } = useContext(EventsContext);
@@ -57,8 +58,18 @@ const Agenda = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Agenda Pvssy Talk</title>
+        <meta
+          name="description"
+          content="Participe à des évènements en lien avec les douleurs sexuelles en ligne ou en Suisse Romande."
+        />
+        <meta
+          name="keywords"
+          content="Évènements en lien avec les douleurs sexuelles en Suisse Romande, Genève, Vaud, Neuchâtel, Jura, Fribourg, Valais"
+        />
+      </Helmet>
       {endsWithAgenda && <HeadingArea title="Agenda" level="h1" />}
-
       <div className="noun">
         <CreateTags tags={regions} />
       </div>

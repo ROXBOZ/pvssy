@@ -417,13 +417,14 @@ button:active {
 }
 
 .ressources-container {
-  grid-column: 4/10;
   margin-top: 2rem;
+  overflow: hidden;
 }
 .ressources-container a {
   color: #31064b;
 }
-.ressources-container a .ressource {
+.ressources-container h3 {
+  cursor: pointer;
   border-top: 1px solid #ce96ff;
   padding-top: 1rem;
   display: flex;
@@ -433,14 +434,14 @@ button:active {
   max-height: -moz-fit-content;
   max-height: fit-content;
 }
-.ressources-container a .ressource:after {
+.ressources-container h3:after {
   content: "↗";
   color: #31064b;
 }
-.ressources-container a .ressource:hover {
+.ressources-container h3:hover {
   color: #ff560f;
 }
-.ressources-container a .ressource:hover:after {
+.ressources-container h3:hover:after {
   transition: 0.2s ease-in;
   transform: rotate(45deg);
   color: #31064b;
@@ -2055,14 +2056,17 @@ h1:first-letter,
 .landing-view .title-container {
   display: flex;
   width: 100vw;
+  height: 100vw;
   justify-content: center;
   padding: 2rem;
   position: relative;
   pointer-events: none;
-  align-items: flex-end;
+  align-items: center;
 }
 .landing-view .title-container h1 {
   margin: 0;
+  max-width: 30ch;
+  font-size: 400%;
 }
 
 @media screen and (max-width: 576px) {

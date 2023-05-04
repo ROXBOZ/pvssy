@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
-import ShareThis from "../ShareThis";
+import ShareThis from "../../utils/ShareThis";
 import { createParagraph } from "../../utils/createParagraphs";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 

@@ -1,8 +1,8 @@
 import React from "react";
-import Pains from "../components/Pains/Pains";
+import Pains from "./Pains";
 import Ressources from "./Ressources";
-import { HeadingArea } from "../utils/HeadingArea";
-import { TitleLink } from "../utils/TitleLink";
+import { HeadingArea } from "../../utils/HeadingArea";
+import { TitleLink } from "../../utils/TitleLink";
 
 const Sinformer = () => {
   return (
@@ -21,7 +21,8 @@ const Sinformer = () => {
 
       <HeadingArea
         title="S’informer sur ses douleurs"
-        subtitle="Chaque douleur est traitée avec une approche à la fois médicale et sexologique pour te donner une vision complète."
+        subtitle="Chaque douleur est traitée avec une approche à la fois médicale et sexologique pour te donner une vision complète. Tu trouveras également des ressources pour aller plus loin.
+      "
         level="h2"
       />
       <Pains />

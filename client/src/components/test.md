@@ -1,2 +1,0 @@
-- Quand c’est un champignon, les pertes sont épaisses, elles ressemblent à du lait caillé ou du yogourt et elles ont une odeur inhabituelle.
-- Quand c’est une bactérie, les pertes sont plutôt jaunâtres ou grisâtres. Elles sentent mauvais.
