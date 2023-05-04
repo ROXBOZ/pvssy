@@ -1,9 +1,21 @@
 import React from "react";
-import { HeadingArea } from "../../utils/HeadingArea";
+import { HeadingArea } from "../../utilities/HeadingArea";
+import { Helmet } from "react-helmet";
 
 const Donate = () => {
   return (
     <div>
+      <Helmet>
+        <title>Faire un don à Pvssy Talk</title>
+        <meta
+          name="description"
+          content="Faire un don à Pvssy Talk pour soutenir notre travail et nous permettre de continuer à offrir des ressources gratuites et accessibles à toustes."
+        />
+        <meta
+          name="keywords"
+          content="faire un don, twint, paypal, virement bancaire"
+        />
+      </Helmet>
       <HeadingArea
         title="Faire un don"
         level="h1"

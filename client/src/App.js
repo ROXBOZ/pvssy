@@ -7,27 +7,27 @@ import About from "./components/Pages/About";
 import Donate from "./components/Pages/Donate";
 import SInformer from "./components/Pages/SInformer";
 import Agenda from "./components/Pages/Agenda";
-import GeneralConditions from "./components/GeneralConditions";
-import Breadcrumbs from "./components/Breadcrumbs";
+import GeneralConditions from "./components/Pages/GeneralConditions";
+import Breadcrumbs from "./utilities/Breadcrumbs";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Pains from "./components/Pages/Pains";
 import Pain from "./components/Pages/Pain";
-import PainArticle from "./components/Pains/PainArticle";
-import ScrollToTop from "./utils/ScrollToTop";
-import Annuaire from "./components/Pages/Annuaire";
+import PainArticle from "./components/PainArticle";
+import ScrollToTop from "./utilities/ScrollToTop";
+import Directory from "./components/Pages/Directory";
 import Ressources from "./components/Pages/Ressources";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
+import Login from "./components/Pages/Login";
+import Signup from "./components/Pages/Signup";
 import NotFound from "./components/NotFound";
-import PainGlossary from "./components/Pains/PainGlossary";
-import PainExercices from "./components/Pains/PainExercices";
-import PainMedias from "./components/Pains/PainMedias";
-import AddEvent from "./components/User/Agenda/AddEvent";
-import DeleteEvent from "./components/User/Agenda/DeleteEvent";
-import ApproveEvent from "./components/User/Agenda/ApproveEvent";
+import PainGlossary from "./components/Pages/PainGlossary";
+import PainExercices from "./components/Pages/PainExercices";
+import PainMedias from "./components/Pages/PainMedias";
+import AddEvent from "./components/User/AddEvent";
+import DeleteEvent from "./components/User/DeleteEvent";
+import ApproveEvent from "./components/User/ApproveEvent";
 import Lexique from "./components/Pages/Glossary";
-import Accessibility from "./components/Accessibility";
+import Accessibility from "./components/Pages/Accessibility";
 import Exercises from "./components/Pages/Exercises";
 import Medias from "./components/Pages/Medias";
 //contexts
@@ -36,7 +36,7 @@ import { EventsContextProvider } from "./contexts/eventsContext";
 import { TermsContextProvider } from "./contexts/termsContext";
 import { AuthContextProvider } from "./contexts/authContext";
 // utils
-import getToken from "./utils/getToken";
+import getToken from "./utilities/getToken";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { ContactsContextProvider } from "./contexts/contactsContext";
 import { useRef } from "react";
@@ -92,7 +92,7 @@ function App() {
           <Header />
         )}
         <Helmet>
-          <title>pvssy talk</title>
+          <title>Pvssy Talk – avoir mal n'est pas normal</title>
           <meta
             name="description"
             content=" S'informer sur ses douleurs pour se réapproprier son corps et sa sexualité"
@@ -150,7 +150,7 @@ function App() {
                     <Route path="s-informer" element={<SInformer />} />
                     <Route
                       path="s-informer/ressources/annuaire"
-                      element={<Annuaire />}
+                      element={<Directory />}
                     />
                     <Route
                       path="s-informer/annuaire/:name"

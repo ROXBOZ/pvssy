@@ -34,11 +34,11 @@
         margin-bottom: $reg-space;
       }
       .exercise-article {
+        background-color: yellow;
         @include grid;
         margin: $reg-space 0;
 
         .prealable {
-          font-family: $font-medium;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -46,8 +46,6 @@
           grid-column: #{$grid-first-third};
           border-bottom: $border-solid $secondary;
           p {
-            // padding-bottom: $sm-space;
-            // border-bottom: $border-solid;
             margin-bottom: $sm-space;
           }
         }

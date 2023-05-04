@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
-import { PainsContext } from "../../contexts/PainsContext";
-import ShareThis from "../../utils/ShareThis";
-import { createParagraph } from "../../utils/createParagraphs";
+import { PainsContext } from "../contexts/PainsContext";
+import ShareThis from "../utilities/ShareThis";
+import { createParagraph } from "../utilities/createParagraphs";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 import React, {
@@ -19,6 +19,7 @@ const PainArticle = () => {
   const menuRef = useRef();
   const [, setAnchorPosition] = useState(0);
   const [menuTop, setMenuTop] = useState(0);
+  const [isSticky, setIsSticky] = useState(false);
 
   const menstrualReminder = [
     " Pendant la seconde phase, nommée phase lutéale, la progestérone va induire une modification des cellules de l’endomètre qui vont former des glandes sécrétant des nutriments qui vont permettre la survie de l’embryon en cas d’implantation. Sans implantation, la progestérone va chuter après 10 jours, ce qui va provoquer une contraction des artères de l’endomètre ce qui va induire une diminution de l’arrivée de sang dans le tissu et la mort des cellules qui vont partir avec les menstruations et laisser un endomètre très fin.",
@@ -32,15 +33,8 @@ const PainArticle = () => {
   //   }
   // };
 
-  const {
-    isSticky,
-    setIsSticky,
-    isMed,
-    setIsMed,
-    painData,
-    requestedTerms,
-    requestedSources,
-  } = useContext(PainsContext);
+  const { isMed, setIsMed, painData, requestedTerms, requestedSources } =
+    useContext(PainsContext);
 
   const highlightedTerms = requestedTerms
     ? requestedTerms.map((term) => term.term)
@@ -49,7 +43,6 @@ const PainArticle = () => {
     ? requestedSources.map((source) => source.title)
     : [];
 
-  // URL depending on article type
   const articleType = () => {
     if (currentURL.endsWith("/medical")) {
       setIsMed(true);
@@ -57,18 +50,17 @@ const PainArticle = () => {
       setIsMed(false);
     }
   };
+
   useEffect(() => {
     articleType();
   }, [currentURL]);
 
-  // article switcher
   useLayoutEffect(() => {
     if (menuRef.current) {
       setMenuTop(menuRef.current.offsetTop);
     }
   }, [menuRef.current]);
 
-  // article switcher scroll into view
   const scrollToArticle = () => {
     articleRef.scrollIntoView({
       behavior: "smooth",
@@ -145,7 +137,7 @@ const PainArticle = () => {
   };
 
   // FIXME menus stick // repeats on glossaire page
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const isScrolledPast = scrollY > menuTop;
@@ -210,16 +202,16 @@ const PainArticle = () => {
             <Link to="../exercices">Exercices</Link>
           </li>
           <li>
-            <Link to="../recommendations">Littérature et médias</Link>
+            <Link to="../litterature-et-medias">Littérature et médias</Link>
           </li>
           <br />
-          <div className="author">
+          {/* <div className="author">
             <p>
               Articles par <Link to="https://aemg-ge.com/">Medsexplain</Link> +{" "}
               <Link to="https://aemg-ge.com/">Sexopraxis</Link>. Illustrations
               par <Link to="https://noemiecreux.com/">Noémie Creux</Link>.
             </p>
-          </div>
+          </div> */}
         </ul>
         <div>
           {isMed ? (
@@ -239,7 +231,7 @@ const PainArticle = () => {
                   </div>
                   <figure>
                     <img
-                      src={require(`../../assets/images/shemas/menstruation-reminder.png`)}
+                      src={require(`../assets/images/shemas/menstruation-reminder.png`)}
                       alt={`shéma ${painData.name}`}
                     />
 

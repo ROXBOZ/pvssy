@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import { PainsContext } from "../contexts/PainsContext";
+import { Helmet } from "react-helmet";
 
 const CreateTags = (tags) => {
   const { selectedTag, setSelectedTag } = useContext(PainsContext);
@@ -13,6 +14,7 @@ const CreateTags = (tags) => {
   const handleReset = () => {
     setSelectedTag(null);
   };
+  console.log("selectedTag :", selectedTag);
   return (
     <div className="grid-area">
       <div className="tag-container">

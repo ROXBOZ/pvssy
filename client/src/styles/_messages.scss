@@ -4,7 +4,6 @@ $pending-color: $secondary;
 $warning-color: $primary;
 $error-color: crimson;
 $archived-color: dimgrey;
-// $info-color: steelblue;
 
 .msg-box {
   margin: $reg-space 0;
@@ -17,67 +16,85 @@ $archived-color: dimgrey;
     height: fit-content;
   }
 }
-.msg {
-  &:only-child {
-    margin: $reg-space 0;
-  }
 
+.msg {
   width: fit-content;
   display: flex;
   gap: 0.5em;
   border-radius: $border-radius;
   padding: $padding-btn;
+  align-items: center;
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
 
   &.success {
-    border: $border-solid lighten($success-color, 30%);
     color: $success-color;
+    &.bordered {
+      border: $border-solid lighten($success-color, 30%);
+    }
+
     &:before {
       content: ("👏  ");
     }
   }
 
   &.reminder {
-    border: $border-solid lighten($reminder-color, 30%);
     color: $reminder-color;
+    &.bordered {
+      border: $border-solid lighten($reminder-color, 30%);
+    }
+
     &:before {
       content: ("🔔  ");
     }
   }
 
   &.pending {
-    border: $border-solid lighten($pending-color, 30%);
     color: $pending-color;
+    &.bordered {
+      border: $border-solid lighten($pending-color, 30%);
+    }
     &:before {
       content: ("⌛  ");
     }
   }
 
   &.warning {
-    border: $border-solid lighten($warning-color, 30%);
     color: $warning-color;
+
+    &.bordered {
+      border: $border-solid lighten($warning-color, 30%);
+    }
     &:before {
       content: ("⚠️  ");
       width: 20px;
-      height: 20px;
-      padding-top: 2.5px;
+      height: auto;
     }
   }
 
   &.archived {
     color: $archived-color;
+    &.bordered {
+      border: $border-solid lighten($archived-color, 30%);
+    }
     &:before {
       content: ("📁  ");
     }
   }
 
   &.error {
-    border: $border-solid lighten($error-color, 30%);
     color: $error-color;
+    &.bordered {
+      border: $border-solid lighten($error-color, 30%);
+    }
   }
 
   &.info {
     &:before {
-      content: url("../assets/images/info-icon.svg");
+      content: url("../assets/images/icon-info.svg");
       width: 20px;
       height: 20px;
       padding-top: 2.5px;

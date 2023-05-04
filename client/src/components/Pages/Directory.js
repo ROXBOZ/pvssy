@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
-import { HeadingArea } from "../../utils/HeadingArea";
+import { HeadingArea } from "../../utilities/HeadingArea";
 import { ContactsContext } from "../../contexts/contactsContext";
 import { Helmet } from "react-helmet";
 
-const Annuaire = () => {
+const Directory = () => {
   const { fetchContacts, allContacts, contactsUrl } =
     useContext(ContactsContext);
 
@@ -11,6 +11,7 @@ const Annuaire = () => {
     fetchContacts(contactsUrl);
   }, [contactsUrl]);
 
+  //FIXME : add a filter to sort by TYPE
   return (
     <div>
       <Helmet>
@@ -21,7 +22,7 @@ const Annuaire = () => {
         />
         <meta
           name="keywords"
-          content="Évènements en lien avec les douleurs sexuelles en Suisse Romande, Genève, Vaud, Neuchâtel, Jura, Fribourg, Valais"
+          content="gynécologie, obstétrique, psychologie, physiothérapie, thérapie, kinésithérapie, sexpositive"
         />
       </Helmet>
       <HeadingArea
@@ -54,4 +55,4 @@ const Annuaire = () => {
   );
 };
 
-export default Annuaire;
+export default Directory;

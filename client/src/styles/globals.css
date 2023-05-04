@@ -127,6 +127,17 @@ h1.invisible {
     width: 100%;
   }
 }
+.pending-event-card {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ffc2a8;
+}
+.pending-event-card:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
 @keyframes animationOpacity {
   0% {
     opacity: 0;
@@ -170,6 +181,12 @@ h1.invisible {
   }
   100% {
     color: #31064b;
+  }
+}
+@keyframes ripple {
+  to {
+    transform: scale(3);
+    opacity: 0;
   }
 }
 .author {
@@ -535,6 +552,7 @@ button:active {
   margin-bottom: 2rem;
 }
 .exercises-container .exercise .exercise-open .exercise-article {
+  background-color: yellow;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 1rem;
@@ -546,7 +564,6 @@ button:active {
   }
 }
 .exercises-container .exercise .exercise-open .exercise-article .prealable {
-  font-family: "ESKlarheit-Medium";
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1311,6 +1328,12 @@ a.term span {
   margin-bottom: 1rem;
   gap: 1rem;
 }
+.allLexique-term-container .glossary-column .allLexique-term .related-pain-container .related-pain {
+  border-bottom: 1px solid #ff560f;
+}
+.allLexique-term-container .glossary-column .allLexique-term .related-pain-container .related-pain a {
+  border-bottom: none;
+}
 .allLexique-term-container .glossary-column .allLexique-term img {
   margin: 1rem 0;
   border-radius: 50px;
@@ -1344,53 +1367,67 @@ a.term span {
   gap: 0.5em;
   border-radius: 50px;
   padding: 0.5em 1.5em;
+  align-items: center;
 }
-.msg:only-child {
-  margin: 2rem 0;
+.msg * {
+  padding: 0;
+  margin: 0;
 }
 .msg.success {
-  border: 1px solid #a7e1c1;
   color: mediumseagreen;
+}
+.msg.success.bordered {
+  border: 1px solid #a7e1c1;
 }
 .msg.success:before {
   content: "👏  ";
 }
 .msg.reminder {
-  border: 1px solid #f6cc66;
   color: DarkGoldenRod;
+}
+.msg.reminder.bordered {
+  border: 1px solid #f6cc66;
 }
 .msg.reminder:before {
   content: "🔔  ";
 }
 .msg.pending {
-  border: 1px solid white;
   color: #ce96ff;
+}
+.msg.pending.bordered {
+  border: 1px solid white;
 }
 .msg.pending:before {
   content: "⌛  ";
 }
 .msg.warning {
-  border: 1px solid #ffc2a8;
   color: #ff560f;
+}
+.msg.warning.bordered {
+  border: 1px solid #ffc2a8;
 }
 .msg.warning:before {
   content: "⚠️  ";
   width: 20px;
-  height: 20px;
-  padding-top: 2.5px;
+  height: auto;
 }
 .msg.archived {
   color: dimgrey;
+}
+.msg.archived.bordered {
+  border: 1px solid #b6b6b6;
 }
 .msg.archived:before {
   content: "📁  ";
 }
 .msg.error {
-  border: 1px solid #f594a7;
   color: crimson;
 }
+.msg.error.bordered {
+  border: 1px solid #f594a7;
+}
 .msg.info:before {
-  content: url("../assets/images/info-icon.svg");
+  content: url("../assets/images/icon-info.svg");
   width: 20px;
   height: 20px;
   padding-top: 2.5px;
@@ -1625,7 +1662,7 @@ a.term span {
   gap: 2rem;
   align-items: center;
   padding: 2rem 0;
-  justify-content: center;
+  margin-left: 2rem;
 }
 .userProfile-info .userProfile-avatar {
   height: 10rem;
@@ -2124,7 +2161,7 @@ html body .main {
 .flex-center {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 .flex-center p {
   margin-bottom: 0;

@@ -1,20 +1,17 @@
+//refactored 04.05.2023
 import React from "react";
-import { HeadingArea } from "../../utils/HeadingArea";
+import { HeadingArea } from "../../utilities/HeadingArea";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 const About = () => {
-  console.log("localStorage.getItem();", localStorage.getItem("token")); // this means I need to get about out of auth context ?
-  //NOTE grid-area centered is not well thought...
-
   return (
     <div>
       <Helmet>
         <title>À propos de Pvssy Talk</title>
         <meta
           name="description"
-          content="Pvssy Talk est un projet porté par l'association No Dolor qui a pour but d’informer sur la
-            sexualité et les douleurs sexuelles"
+          content="Pvssy Talk est un projet porté par l'association No Dolor qui a pour but d’informer sur la sexualité et les douleurs sexuelles"
         />
         <meta
           name="keywords"
@@ -27,7 +24,7 @@ const About = () => {
           <p>
             <span className="logo">pvssy talk</span> est porté par l’association
             à but non lucratif <u>No Dolor</u> qui a pour but d’informer sur la
-            sexualité et les douleurs sexuelles. C’est grâce à une équipe
+            sexualité et les douleurs sexuelles. C’est grâce à une équipe
             impliquée et motivée à aider les patient·es concerné·es par les
             douleurs que la plateforme existe aujourd’hui. Les contenus ont été
             réalisés par les psycho-sexologues de{" "}

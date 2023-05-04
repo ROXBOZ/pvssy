@@ -5,12 +5,12 @@ import {
   dateConverter,
   dateConverterNoWeekday,
   timeConverter,
-} from "../../utils/dateConverter";
-import CountdownTimer from "../CountdownTimer";
-import { fromNowToDate } from "../../utils/fromNowToDate";
-import { HeadingArea } from "../../utils/HeadingArea";
+} from "../../utilities/dateConverter";
+import CountdownTimer from "../../utilities/CountdownTimer";
+import { fromNowToDate } from "../../utilities/fromNowToDate";
+import { HeadingArea } from "../../utilities/HeadingArea";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import CreateTags from "../../utils/CreateTags";
+import CreateTags from "../../utilities/CreateTags";
 import { PainsContext } from "../../contexts/PainsContext";
 import { Helmet } from "react-helmet";
 
@@ -22,12 +22,11 @@ const Agenda = () => {
   const endsWithAgenda = /agenda$/.test(currentUrl);
   const [openAccordion, setOpenAccordion] = useState(null);
   const { selectedTag } = useContext(PainsContext);
-
-  const redirectToMeeting = () => {
-    console.log("redirect to meeting :");
-  };
-
   const { fetchData, data, agendaURL } = useContext(EventsContext);
+
+  const redirectToMeeting = (url) => {
+    window.open(url, "_blank");
+  };
 
   useEffect(() => {
     fetchData(agendaURL);
@@ -57,9 +56,14 @@ const Agenda = () => {
     : data.upcomingEvents;
 
   return (
-    <div>
+    <>
       <Helmet>
-        <title>Agenda Pvssy Talk</title>
+        {selectedTag ? (
+          <title>Agenda ({selectedTag}) Pvssy Talk</title>
+        ) : (
+          <title>Agenda Pvssy Talk</title>
+        )}
+
         <meta
           name="description"
           content="Participe à des évènements en lien avec les douleurs sexuelles en ligne ou en Suisse Romande."
@@ -176,7 +180,7 @@ const Agenda = () => {
                         {e.isOnline && (
                           <div className="flex-center">
                             <button
-                              onClick={redirectToMeeting}
+                              onClick={redirectToMeeting(e.onlineMeeting)}
                               disabled={
                                 eventDateInMilli < todayStartinMilli ||
                                 eventDateInMilli > todayEndinMilli
@@ -210,7 +214,7 @@ const Agenda = () => {
       <Link style={{ border: "none" }} to="/login">
         <button>proposer un évènement</button>
       </Link>
-    </div>
+    </>
   );
 };
 

@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
-import { serverURL } from "../../utils/serverURL";
+import { serverURL } from "../../utilities/serverURL";
 import { PainsContext } from "../../contexts/PainsContext";
-import { HeadingArea } from "../../utils/HeadingArea";
-import { createParagraph } from "../../utils/createParagraphs";
+import { HeadingArea } from "../../utilities/HeadingArea";
+import { createParagraph } from "../../utilities/createParagraphs";
+import { Helmet } from "react-helmet";
 
 const PainGlossary = () => {
   const { painName } = useContext(PainsContext);
@@ -47,6 +48,13 @@ const PainGlossary = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Glossaire {painName} – Pvssy Talk</title>
+        <meta
+          name="description"
+          content={`${painName}: termes et définitions liés à la douleur `}
+        />
+      </Helmet>
       <HeadingArea pretitle={painName} title="Glossaire" level="h1" />
       <div className="grid-area">
         {/* <div className="centered">

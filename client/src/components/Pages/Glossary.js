@@ -1,10 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { serverURL } from "../../utils/serverURL";
+import { serverURL } from "../../utilities/serverURL";
 import { PainsContext } from "../../contexts/PainsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { createParagraph } from "../../utils/createParagraphs";
-
+import { createParagraph } from "../../utilities/createParagraphs";
 import React, {
   useContext,
   useEffect,
@@ -12,8 +11,9 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { HeadingArea } from "../../utils/HeadingArea";
+import { HeadingArea } from "../../utilities/HeadingArea";
 import { AuthContext } from "../../contexts/authContext";
+import { Helmet } from "react-helmet";
 
 const Glossary = () => {
   const [allTerms, setAllTerms] = useState(null);
@@ -154,6 +154,14 @@ const Glossary = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Glossaire Pvssy Talk</title>
+        <meta
+          name="description"
+          content="Glossaire de termes en lien avec les douleurs sexuelles et la sexualité"
+        />
+        <meta name="keywords" content="glossaire, douleurs sexuelles" />
+      </Helmet>
       <HeadingArea title="Glossaire" level="h1" />
 
       <div className="allLexique-term-container">

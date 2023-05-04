@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import getToken from "../utils/getToken";
-import { serverURL } from "../utils/serverURL";
+import getToken from "../utilities/getToken";
+import { serverURL } from "../utilities/serverURL";
 
 export const AuthContext = createContext();
 export const AuthContextProvider = (props) => {

@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { Link, Outlet, useOutlet } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
-import { HeadingArea } from "../../utils/HeadingArea";
-import { TitleLink } from "../../utils/TitleLink";
+import { HeadingArea } from "../../utilities/HeadingArea";
+import { TitleLink } from "../../utilities/TitleLink";
+import { Helmet } from "react-helmet";
 
 const Pain = () => {
   const outlet = useOutlet();
@@ -14,36 +15,20 @@ const Pain = () => {
     fetchRelatedSources();
   }, []);
 
-  // const ArticleLink = ({ to, title, description }) => {
-  //   const scrollToTop = () => {
-  //     window.scrollTo(0, 0);
-  //   };
-
-  //   return (
-  //     <Link className="link-card article" to={to} onClick={scrollToTop}>
-  //       <div className="card">
-  //         <h2>{title}</h2>
-  //         <p>{description}</p>
-  //       </div>
-  //     </Link>
-  //   );
-  // };
-
-  // const ResourceCard = ({ to, title, description }) => (
-  //   <Link to={to} className="link-card ressource">
-  //     <div className="card ">
-  //       <h3>{title}</h3>
-  //     </div>
-  //   </Link>
-  // );
-
   if (!painData) {
     return <div className="msg pending">Chargement...</div>;
   } else {
     return (
       <>
-        <HeadingArea title={painName} level="h1" />
+        <Helmet>
+          <title>{painName} – Pvssy Talk</title>
+          <meta
+            name="description"
+            content={`${painName}: médecine, sexologie, ressources `}
+          />
+        </Helmet>
 
+        <HeadingArea title={painName} level="h1" />
         {outlet ? (
           <Outlet />
         ) : (
@@ -53,7 +38,10 @@ const Pain = () => {
               <TitleLink to="sexologie" title="Sexologie" />
               <TitleLink to="glossaire" title="Glossaire" />
               <TitleLink to="exercices" title="Exercices" />
-              <TitleLink to="recommendations" title="Littérature et médias" />
+              <TitleLink
+                to="litterature-et-medias"
+                title="Littérature et médias"
+              />
               <TitleLink to="annuaire" title="Annuaire" />
             </div>
           </>

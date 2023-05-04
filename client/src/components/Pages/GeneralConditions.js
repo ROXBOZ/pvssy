@@ -1,9 +1,17 @@
 import React from "react";
-import { HeadingArea } from "../utils/HeadingArea";
+import { HeadingArea } from "../../utilities/HeadingArea";
+import { Helmet } from "react-helmet";
 
 const GeneralConditions = () => {
   return (
     <div>
+      <Helmet>
+        <title>Conditions générales – Pvssy Talk</title>
+        <meta
+          name="description"
+          content="Conditions générales d’utilisation et de vente de Pvssy Talk."
+        />
+      </Helmet>
       <HeadingArea title="Conditions générales" level="h1" />
       <div className="grid-area">
         <div className="CGUV centered">

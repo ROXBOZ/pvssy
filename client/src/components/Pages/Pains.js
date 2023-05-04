@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 import { useLocation } from "react-router-dom";
-import { HeadingArea } from "../../utils/HeadingArea";
-import CreateTags from "../../utils/CreateTags";
+import { HeadingArea } from "../../utilities/HeadingArea";
+import CreateTags from "../../utilities/CreateTags";
+import { Helmet } from "react-helmet";
 
 const Pains = () => {
   const { data, Error } = useContext(PainsContext);
@@ -24,6 +25,18 @@ const Pains = () => {
     <div>
       {endsWithDouleurs && (
         <>
+          <Helmet>
+            {selectedTag ? (
+              <title>Douleurs sexuelles ({selectedTag}) – Pvssy Talk</title>
+            ) : (
+              <title>Douleurs sexuelles – Pvssy Talk</title>
+            )}
+
+            <meta
+              name="description"
+              content="Pvssy Talk t'aide à identifier les douleurs sexuelles que tu peux ressentir et à trouver des solutions."
+            />
+          </Helmet>
           <HeadingArea
             title="Douleurs"
             level="h1"

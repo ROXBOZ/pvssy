@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../contexts/authContext";
-import { emailRegex } from "../utils/regexExpressions";
+import { AuthContext } from "../../contexts/authContext";
+import { emailRegex } from "../../utilities/regexExpressions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { Helmet } from "react-helmet";
 
 function LoginForm() {
   const {
@@ -17,6 +18,9 @@ function LoginForm() {
 
   return (
     <div className="grid-area">
+      <Helmet>
+        <title>Se connecter – Pvssy Talk</title>
+      </Helmet>
       <h1 className="centered">Se connecter</h1>
 
       <form className="centered grid-form">

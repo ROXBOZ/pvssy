@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { serverURL } from "../utils/serverURL";
+import { serverURL } from "../utilities/serverURL";
 
 export const TermsContext = createContext();
 export const TermsContextProvider = (props) => {

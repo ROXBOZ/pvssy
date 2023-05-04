@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Profile from "../components/User/Profile";
-import getToken from "../utils/getToken";
+import getToken from "../utilities/getToken";
 
 const ProtectedRoute = () => {
   const token = getToken();

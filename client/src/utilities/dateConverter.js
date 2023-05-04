@@ -1,9 +1,11 @@
 export const dateTimeConverter = (isoDate) => {
   const newDate = new Date(isoDate);
-  const weekday = new Intl.DateTimeFormat("fr-CH", { weekday: "long" })
-    .format(newDate)
-    .replace(/^\w/, (c) => c.toUpperCase());
+  // const weekday = new Intl.DateTimeFormat("fr-CH", { weekday: "long" })
+  //   .format(newDate)
+  //   .replace(/^\w/, (c) => c.toUpperCase());
+
   const dateOptions = {
+    weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -15,7 +17,7 @@ export const dateTimeConverter = (isoDate) => {
     hourCycle: "h23",
   };
   const dateTimeoptions = { ...dateOptions, ...timeOptions };
-  return `${weekday} ${newDate.toLocaleDateString("fr-CH", dateTimeoptions)}`;
+  return `${newDate.toLocaleDateString("fr-CH", dateTimeoptions)}`;
 };
 
 export const dateConverter = (isoDate) => {

@@ -1,12 +1,19 @@
 import React from "react";
 import Pains from "./Pains";
 import Ressources from "./Ressources";
-import { HeadingArea } from "../../utils/HeadingArea";
-import { TitleLink } from "../../utils/TitleLink";
+import { HeadingArea } from "../../utilities/HeadingArea";
+import { Helmet } from "react-helmet";
 
 const Sinformer = () => {
   return (
     <div>
+      <Helmet>
+        <title>S'informer sur ses douleurs sexuelles – Pvssy Talk</title>
+        <meta
+          name="description"
+          content="Pvssy Talk offre des de l'information, des pistes et des ressources pour gérer tes douleurs sexuelles."
+        />
+      </Helmet>
       <h1 className="invisible">S’informer</h1>
       <HeadingArea
         title="(Re)découvrir ton corps"

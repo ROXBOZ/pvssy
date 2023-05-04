@@ -57,3 +57,14 @@
     }
   }
 }
+
+.pending-event-card {
+  margin-top: $sm-space;
+  padding-top: $sm-space;
+  border-top: $border-solid lighten($primary, 30%);
+  &:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+}

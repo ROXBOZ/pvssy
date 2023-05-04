@@ -1,7 +1,7 @@
 import React from "react";
 import DateTimeDisplay from "./DateTimeDisplay";
-import useCountdown from "../utils/useCountdown";
-import { fromNowToDate } from "../utils/fromNowToDate";
+import useCountdown from "./useCountdown";
+import { fromNowToDate } from "./fromNowToDate";
 
 const ShowCounter = ({ days, hours, minutes }) => {
   return (

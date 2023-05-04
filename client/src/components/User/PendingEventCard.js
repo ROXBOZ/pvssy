@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { serverURL } from "../../../utils/serverURL";
+import { serverURL } from "../../utilities/serverURL";
 
 const PendingEventCard = ({ event, dateTime, getPendingEvent }) => {
   const [showDetail, setShowDetail] = useState(false);
@@ -25,7 +25,7 @@ const PendingEventCard = ({ event, dateTime, getPendingEvent }) => {
     const diffInDays = Math.ceil(diffInTime / (1000 * 3600 * 24));
     return diffInDays;
   };
-  const daysFromNow = getDaysFromNow(event.date);
+  const daysFromNow = getDaysFromNow(event.dateStart);
 
   const approveEvent = async (eventId) => {
     const urlencoded = new URLSearchParams();
@@ -71,11 +71,10 @@ const PendingEventCard = ({ event, dateTime, getPendingEvent }) => {
 
   return (
     <div className="pending-event-card" onClick={handleShowButton}>
-      <div className="collapsed">
+      <div className="collapsed flex-center">
         <p>
-          <strong>{event.title}</strong>
-          &nbsp;
-          <span className={daysFromNow < 3 && "msg warning"}>
+          <strong>{event.title}</strong>{" "}
+          <span className={daysFromNow < 3 && "msg warning bordered"}>
             (J-{daysFromNow})
           </span>{" "}
           par {event.organizer}
@@ -90,6 +89,7 @@ const PendingEventCard = ({ event, dateTime, getPendingEvent }) => {
       <div className="pending-event-detail">
         {showDetail && showDetail === true && (
           <div className="pending-event-detail-content">
+            <br />
             <p>
               {dateTime}, par{" "}
               <Link
@@ -135,7 +135,7 @@ const PendingEventCard = ({ event, dateTime, getPendingEvent }) => {
                 <span>N/A</span>
               )}
             </p>
-            <div className="button-flex">
+            <div className="flex-center">
               <button onClick={() => approveEvent(event._id)}>approuver</button>
               <button onClick={() => declineEvent(event._id)}>supprimer</button>
 

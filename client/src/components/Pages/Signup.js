@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { emailRegex, urlRegex } from "../utils/regexExpressions";
+import { emailRegex, urlRegex } from "../../utilities/regexExpressions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { AuthContext } from "../contexts/authContext";
-import { serverURL } from "../utils/serverURL";
+import { AuthContext } from "../../contexts/authContext";
+import { serverURL } from "../../utilities/serverURL";
+import { Helmet } from "react-helmet";
 
 const SignupForm = () => {
   const {
@@ -68,6 +69,9 @@ const SignupForm = () => {
 
   return (
     <div className="grid-area">
+      <Helmet>
+        <title>Créer un compte – Pvssy Talk</title>
+      </Helmet>
       <h1 className="centered">Créer un compte</h1>
 
       <form className="centered grid-form">

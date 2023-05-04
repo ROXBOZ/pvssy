@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { AuthContext } from "../../../contexts/authContext";
-import { EventsContext } from "../../../contexts/eventsContext";
-import { dateTimeConverter } from "../../../utils/dateConverter";
-import { todayISO } from "../../../utils/regexExpressions";
-import { serverURL } from "../../../utils/serverURL";
+import { AuthContext } from "../../contexts/authContext";
+import { EventsContext } from "../../contexts/eventsContext";
+import { dateTimeConverter } from "../../utilities/dateConverter";
+import { todayISO } from "../../utilities/regexExpressions";
+import { serverURL } from "../../utilities/serverURL";
 
 const DeleteEvent = () => {
   const { userProfile } = useContext(AuthContext);
@@ -100,8 +100,6 @@ const DeleteEvent = () => {
 
   return (
     <>
-      <p className="warning msg">La suppression est irréversible.</p>
-
       <form className="grid-form">
         <div className="form-section">
           <div className="check-list-container">
@@ -156,7 +154,10 @@ const DeleteEvent = () => {
               </ul>
             )}
 
-            <button onClick={handleDelete}>Supprimer</button>
+            <div className="flex-center" style={{ marginTop: "5vh" }}>
+              <button onClick={handleDelete}>Supprimer</button>
+              <p className="warning msg">La suppression est irréversible.</p>
+            </div>
           </div>
         </div>
       </form>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PendingEventCard from "./PendingEventCard";
-import { dateTimeConverter } from "../../../utils/dateConverter";
-import { serverURL } from "../../../utils/serverURL";
+import { dateTimeConverter } from "../../utilities/dateConverter";
+import { serverURL } from "../../utilities/serverURL";
 
 const ApproveEvent = () => {
   const [pendingEvents, setPendingEvents] = useState(null);
@@ -38,6 +38,8 @@ const ApproveEvent = () => {
     (a, b) => new Date(a.date) - new Date(b.date)
   );
 
+  console.log("sortedEvents :", sortedEvents);
+
   return (
     <div>
       <p className="msg warning">
@@ -46,7 +48,8 @@ const ApproveEvent = () => {
 
       {sortedEvents &&
         sortedEvents.map((e) => {
-          const dateTime = dateTimeConverter(e.date);
+          const dateTime = dateTimeConverter(e.dateStart);
+
           return (
             <PendingEventCard
               event={e}

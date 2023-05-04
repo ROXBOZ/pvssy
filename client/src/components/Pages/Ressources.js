@@ -1,7 +1,8 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { HeadingArea } from "../../utils/HeadingArea";
-import { TitleLink } from "../../utils/TitleLink";
+import { HeadingArea } from "../../utilities/HeadingArea";
+import { TitleLink } from "../../utilities/TitleLink";
+import { Helmet } from "react-helmet";
 
 const Ressources = () => {
   const location = useLocation();
@@ -10,7 +11,18 @@ const Ressources = () => {
 
   return (
     <div>
-      {endsWithRessources && <HeadingArea title="Ressources" level="h1" />}
+      {endsWithRessources && (
+        <>
+          <HeadingArea title="Ressources" level="h1" />
+          <Helmet>
+            <title>Ressources – Pvssy Talk</title>
+            <meta
+              name="description"
+              content="Glossaire, Exercices, Littérature et médias, Annuaire en lien avec les douleurs sexuelles."
+            />
+          </Helmet>
+        </>
+      )}
       <div className="ressources-container">
         <TitleLink to="/s-informer/ressources/glossaire" title="Glossaire" />
         <TitleLink to="/s-informer/ressources/exercices" title="Exercices" />

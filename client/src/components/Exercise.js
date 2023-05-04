@@ -1,30 +1,39 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-import { createParagraph } from "../utils/createParagraphs";
+import { createParagraph } from "../utilities/createParagraphs";
 
-const Exercise = ({ exercise }) => {
-  const [showDetails, setShowDetails] = useState(false);
-  const [showStep, setShowStep] = useState({});
+const Exercise = ({ exercise, isExerciseOpen, handleExerciseToggle }) => {
+  const [openStepId, setOpenStepId] = useState(null);
+
+  const handleStepToggle = (id) => {
+    setOpenStepId((prevId) => (prevId === id ? null : id));
+  };
+
+  const isStepOpen = (id) => {
+    return openStepId === id;
+  };
 
   const displayInstructions = (arr) => {
     return arr.map((step, index) => {
+      const stepId = `step-${index}`;
+
       return (
-        <div className="instructions-step" key={index}>
+        <div className="instructions-step" key={stepId}>
           <div className="instructions-step-closed">
             <h3 className="h4">
-              <span className="counter">&thinsp;{index + 1}   </span> 
+              <span className="counter">&thinsp;{index + 1}   </span>
               {step.stepTitle}
             </h3>
-            <button className="square" onClick={() => showOneStep(index)}>
-              {showStep[index] ? (
+            <button className="square" onClick={() => handleStepToggle(stepId)}>
+              {isStepOpen(stepId) ? (
                 <FontAwesomeIcon icon={faMinus} />
               ) : (
                 <FontAwesomeIcon icon={faPlus} />
               )}
             </button>
           </div>
-          {showStep[index] && (
+          {isStepOpen(stepId) && (
             <>
               {step.stepInstructions.map((instruction, index) => {
                 return (
@@ -40,27 +49,22 @@ const Exercise = ({ exercise }) => {
     });
   };
 
-  const showOneStep = (index) => {
-    setShowStep((prev) => ({ ...prev, [index]: !prev[index] }));
-  };
-
   return (
     <div className="exercise">
       <div className="exercise-closed">
         <h2 className="h3">{exercise.title}</h2>
-        {showDetails ? <p>par Fiona Bourdon</p> : <p>{exercise.intro}</p>}
-        <button onClick={() => setShowDetails(!showDetails)}>
-          {showDetails ? "fermer" : "en savoir +"}
+        {isExerciseOpen ? <></> : <p>{exercise.intro}</p>}
+        <button onClick={() => handleExerciseToggle(exercise._id)}>
+          {isExerciseOpen ? "fermer" : "en savoir +"}
         </button>
       </div>
 
       <div>
-        {showDetails && (
+        {isExerciseOpen && (
           <div className="exercise-open">
             <div className="exercise-article">
               <div className="prealable">
                 {createParagraph(exercise.prealable)}
-                <div>par Fiona Bourdon</div>
               </div>
               <div className="instructions">
                 <div>{displayInstructions(exercise.howto)}</div>

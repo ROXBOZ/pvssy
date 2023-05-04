@@ -1,12 +1,13 @@
+//refactored 04.05.2023
 import React from "react";
-import Pains from "./Pains";
-import Agenda from "./Agenda";
-import { HeadingArea } from "../../utils/HeadingArea";
+import { HeadingArea } from "../../utilities/HeadingArea";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  //TODO
   console.log("%chome component run again", "color:orange");
-  //NOTE grid-area centered is not well thought...
+  //FIXME  if we keep the big button, improve SCSS
+
   return (
     <>
       <HeadingArea title="Avoir mal n’est pas normal" />
@@ -32,19 +33,6 @@ const Home = () => {
           </Link>
         </div>
       </div>
-      {/* <HeadingArea
-        title="S’informer sur ses douleurs"
-        level="h3"
-        subtitle="Chaque douleur est traitée avec une approche à la fois médicale et sexologique pour te donner une vision complète."
-      /> */}
-
-      {/* <Pains /> */}
-      {/* <HeadingArea
-        title="Agenda"
-        level="h2"
-        subtitle="Pour proposer et participer à des évènements en ligne ou en Suisse Romande."
-      />
-      <Agenda /> */}
     </>
   );
 };

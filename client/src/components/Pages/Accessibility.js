@@ -1,9 +1,18 @@
+//refactored 04.05.2023
 import React from "react";
-import { HeadingArea } from "../utils/HeadingArea";
+import { HeadingArea } from "../../utilities/HeadingArea";
+import { Helmet } from "react-helmet";
 
 const Accessibility = () => {
   return (
     <>
+      <Helmet>
+        <title>Accessibilité – Pvssy Talk</title>
+        <meta
+          name="description"
+          content="Pvssy Talk met l’accent sur l’accessibilité du web, dont elle fait une valeur fondamentale. Nous l’avons donc conçue de manière à ce qu'elle soit conviviale pour toustes, quelles que soient leurs capacités physiques, visuelles, auditives ou cognitives."
+        />
+      </Helmet>
       <HeadingArea level="h1" title="Accessibilité" />
       <div className="grid-area">
         <div className="centered">
@@ -26,7 +35,7 @@ const Accessibility = () => {
             l’accessibilité et nous reconnaissons qu’il est toujours possible de
             l’améliorer. Si vous avez des suggestions ou des problèmes
             d’accessibilité, n’hésitez pas à nous contacter à{" "}
-            <a href="maitlo:info@pvssy-talk.org">
+            <a href="mailto:info@pvssy-talk.org">
               <nobr>info@pvssy-talk.org</nobr>
             </a>
             .

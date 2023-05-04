@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { EventsContext } from "../contexts/eventsContext";
+import { EventsContext } from "../../contexts/eventsContext";
 import EventCard from "./Agenda/EventCard";
 import { Link } from "react-router-dom";
-import { HeadingArea } from "../utils/HeadingArea";
+import { HeadingArea } from "../../utilities/HeadingArea";
 
 const Connect = () => {
   const { data, archivesURL, Error, fetchData } = useContext(EventsContext);

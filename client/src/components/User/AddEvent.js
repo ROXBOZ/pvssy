@@ -1,14 +1,13 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
-import { EventsContext } from "../../../contexts/eventsContext";
-import { AuthContext } from "../../../contexts/authContext";
-import { serverURL } from "../../../utils/serverURL";
+import { EventsContext } from "../../contexts/eventsContext";
+import { AuthContext } from "../../contexts/authContext";
+import { serverURL } from "../../utilities/serverURL";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import ReactMde from "react-mde";
 import "react-mde/lib/styles/css/react-mde-all.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
-
 import {
   addressRegex,
   cityRegex,
@@ -18,14 +17,12 @@ import {
   swissTelRegex,
   todayISO,
   urlRegex,
-} from "../../../utils/regexExpressions";
+} from "../../utilities/regexExpressions";
 const AddEvent = () => {
   const formRef = useRef();
   const { userProfile } = useContext(AuthContext);
   const [eventType, setEventType] = useState("offline");
   const [eventEntry, setEventEntry] = useState("gratuite");
-  const [eventOrganizer, setEventOrganizer] = useState(null);
-  const [eventOrganizerWebsite, setEventOrganizerWebsite] = useState(null);
   const [organizerIsUserName, setOrganizerIsUserName] = useState(false);
   const [conditionsAccepted, setConditionsAccepted] = useState(null);
   const [message, setMessage] = useState("");
@@ -512,6 +509,7 @@ const AddEvent = () => {
         </ul>
         {userProfile && userProfile.userIsAdmin === false && (
           <div className="conditions-generales">
+            <br />
             <input
               className="form-check-input"
               id="conditionsCheckbox"
@@ -526,42 +524,48 @@ const AddEvent = () => {
           </div>
         )}
       </form>
-      <button
-        onClick={submitForm}
-        type="submit"
-        disabled={
-          !(newEvent.eventTitle &&
-          newEvent.eventTitle.length > 3 &&
-          newEvent.eventTitle.length < 40 &&
-          newEvent.eventDateTimeStart &&
-          newEvent.eventDateTimeStart > todayISO &&
-          dateRegex.test(newEvent.eventDateTimeStart) &&
-          newEvent.eventShortDef &&
-          newEvent.eventShortDef.length > 60 &&
-          newEvent.eventShortDef.length < 200 &&
-          newEvent.eventOrganizer &&
-          (newEvent.isOnline
-            ? newEvent.onlineMeeting && urlRegex.test(newEvent.onlineMeeting)
-            : newEvent.eventAddress &&
-              addressRegex.test(newEvent.eventAddress) &&
-              newEvent.eventCity &&
-              cityRegex.test(newEvent.eventCity)) &&
-          (newEvent.eventTel ? swissTelRegex.test(newEvent.eventTel) : true) &&
-          (newEvent.eventEmail ? emailRegex.test(newEvent.eventEmail) : true) &&
-          (newEvent.freeEntry ? true : newEvent.admissionFee) &&
-          userProfile &&
-          userProfile.userIsAdmin
-            ? true
-            : conditionsAccepted)
-        }
-      >
-        {userProfile && userProfile.userIsAdmin === true
-          ? "Ajouter l’évènement"
-          : "Proposer l’évènement"}
-      </button>
-      {message && (
-        <div className={`message ${message.type}`}>{message.content}</div>
-      )}
+      <div className="flex-center">
+        <button
+          onClick={submitForm}
+          type="submit"
+          disabled={
+            !(newEvent.eventTitle &&
+            newEvent.eventTitle.length > 3 &&
+            newEvent.eventTitle.length < 40 &&
+            newEvent.eventDateTimeStart &&
+            newEvent.eventDateTimeStart > todayISO &&
+            dateRegex.test(newEvent.eventDateTimeStart) &&
+            newEvent.eventShortDef &&
+            newEvent.eventShortDef.length > 60 &&
+            newEvent.eventShortDef.length < 200 &&
+            newEvent.eventOrganizer &&
+            (newEvent.isOnline
+              ? newEvent.onlineMeeting && urlRegex.test(newEvent.onlineMeeting)
+              : newEvent.eventAddress &&
+                addressRegex.test(newEvent.eventAddress) &&
+                newEvent.eventCity &&
+                cityRegex.test(newEvent.eventCity)) &&
+            (newEvent.eventTel
+              ? swissTelRegex.test(newEvent.eventTel)
+              : true) &&
+            (newEvent.eventEmail
+              ? emailRegex.test(newEvent.eventEmail)
+              : true) &&
+            (newEvent.freeEntry ? true : newEvent.admissionFee) &&
+            userProfile &&
+            userProfile.userIsAdmin
+              ? true
+              : conditionsAccepted)
+          }
+        >
+          {userProfile && userProfile.userIsAdmin === true
+            ? "Ajouter l’évènement"
+            : "Proposer l’évènement"}
+        </button>
+        {message && (
+          <div className={`message ${message.type}`}>{message.content}</div>
+        )}
+      </div>
     </>
   );
 };
