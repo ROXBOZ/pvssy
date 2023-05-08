@@ -30,7 +30,6 @@ const Ressources = () => {
           to="/s-informer/ressources/litterature-et-medias"
           title="Littérature et médias"
         />
-        <TitleLink to="/s-informer/ressources/annuaire" title="Annuaire" />
       </div>
     </div>
   );
