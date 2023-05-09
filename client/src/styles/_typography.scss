@@ -28,7 +28,7 @@ li {
 
   &.pretitle {
     text-transform: lowercase;
-    color: $primary;
+    color: darken($secondary, 40%);
     font-family: $font-medium;
     padding-bottom: 0;
     margin-bottom: 0;
@@ -72,9 +72,8 @@ h4 + .subtitle {
 
 a {
   text-decoration: none;
-  color: $primary;
+  color: darken($secondary, 40%);
   border-bottom: $border-solid;
-  // font-family: $font-medium;
   width: fit-content;
   transition: border-color $animation-transition;
   cursor: url("../assets/images/cursor-pointer.svg"), auto;
@@ -98,11 +97,13 @@ hr {
   border: none;
 }
 
-caption {
+figcaption {
+  text-align: center;
   margin-top: $sm-space;
   color: darken($secondary, 40%);
   font-size: $smaller-text;
   display: block;
+  width: 100%;
 }
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {

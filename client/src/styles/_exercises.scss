@@ -34,7 +34,6 @@
         margin-bottom: $reg-space;
       }
       .exercise-article {
-        background-color: yellow;
         @include grid;
         margin: $reg-space 0;
 
@@ -81,7 +80,10 @@
               animation: animationOpacity $animation-transition ease-in;
             }
             p {
+              padding: $reg-space;
+              border-radius: $border-radius-soft;
               margin-bottom: $sm-space;
+              border: $border-solid $secondary;
             }
           }
         }

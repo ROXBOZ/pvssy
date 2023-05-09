@@ -52,6 +52,11 @@
   margin: $reg-space 0;
   width: 100%;
   border: $border-solid $txt-color;
+  align-items: center;
+  h3 {
+    margin: 0;
+    padding: 0;
+  }
   .shema {
     width: 100%;
   }

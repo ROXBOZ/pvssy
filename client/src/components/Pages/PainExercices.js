@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { PainsContext } from "../../contexts/PainsContext";
 import { HeadingArea } from "../../utilities/HeadingArea";
 import Exercise from "../Exercise";
@@ -6,6 +6,11 @@ import { Helmet } from "react-helmet";
 
 const PainExercices = () => {
   const { requestedExercises, painName } = useContext(PainsContext);
+  const [openExerciseId, setOpenExerciseId] = useState(null);
+
+  const handleExerciseToggle = (id) => {
+    setOpenExerciseId((prevId) => (prevId === id ? null : id));
+  };
 
   return (
     <div>
@@ -19,7 +24,14 @@ const PainExercices = () => {
       <HeadingArea pretitle={painName} title="Exercices" level="h1" />
       <div className="exercises-container">
         {requestedExercises &&
-          requestedExercises.map((ex, index) => <Exercise exercise={ex} />)}
+          requestedExercises.map((ex, index) => (
+            <Exercise
+              exercise={ex}
+              handleExerciseToggle={handleExerciseToggle}
+              isExerciseOpen={openExerciseId === ex._id}
+              key={ex._id}
+            />
+          ))}
       </div>
     </div>
   );

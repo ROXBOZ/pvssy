@@ -13,11 +13,11 @@ const Home = () => {
       <div className="grid-area">
         <div className="centered">
           <p>
-            Les douleurs sexuelles concernent <u>1 personne à vulve sur 5</u>.
-            Elles peuvent toucher à la vulve, au vagin, et s’étendre au delà de
-            l’utérus. Ces douleurs peuvent avoir des répercussions importantes
-            sur différents aspects de sa vie, sa sexualité, ou sa santé mentale
-            et physique.
+            Les douleurs sexuelles concernent{" "}
+            <u>une personne à vulve sur cinq</u>. Elles peuvent toucher à la
+            vulve, au vagin, et s’étendre au delà de l’utérus. Ces douleurs
+            peuvent avoir des répercussions importantes sur différents aspects
+            de sa vie, sa sexualité, ou sa santé mentale et physique.
           </p>
           <p>
             <u>Avoir mal n’est pas normal</u>. Encore moins lorsqu’il s’agit de

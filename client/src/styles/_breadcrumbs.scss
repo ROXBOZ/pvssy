@@ -1,12 +1,16 @@
 .breadcrumbs {
   display: flex;
-  color: lighten($txt-color, 50%);
+  color: $txt-color;
   font-size: $smaller-text;
   margin: 5vh 0 10vh;
 
+  &:only-child {
+    color: red;
+  }
+
   .crumb {
     a {
-      color: darken($secondary, 30%);
+      color: darken($secondary, 20%);
       white-space: nowrap;
     }
     &:after {

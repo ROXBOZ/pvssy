@@ -18,7 +18,7 @@ const Medias = () => {
   useEffect(() => {
     fetchAllSources();
   }, []);
-  console.log("selectedTag :", selectedTag);
+
   return (
     <div>
       <Helmet>

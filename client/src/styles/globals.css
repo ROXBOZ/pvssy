@@ -221,6 +221,11 @@ h1.invisible {
   margin: 2rem 0;
   width: 100%;
   border: 1px solid #31064b;
+  align-items: center;
+}
+.shema-container h3 {
+  margin: 0;
+  padding: 0;
 }
 .shema-container .shema {
   width: 100%;
@@ -292,12 +297,15 @@ h1.invisible {
 
 .breadcrumbs {
   display: flex;
-  color: #ba5ef2;
+  color: #31064b;
   font-size: 80%;
   margin: 5vh 0 10vh;
 }
+.breadcrumbs:only-child {
+  color: red;
+}
 .breadcrumbs .crumb a {
-  color: #8600fc;
+  color: #9e30ff;
   white-space: nowrap;
 }
 .breadcrumbs .crumb:after {
@@ -557,7 +565,6 @@ button:active,
   margin-bottom: 2rem;
 }
 .exercises-container .exercise .exercise-open .exercise-article {
-  background-color: yellow;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 1rem;
@@ -610,7 +617,10 @@ button:active,
   margin-top: 1rem;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step p {
+  padding: 2rem;
+  border-radius: 10px;
   margin-bottom: 1rem;
+  border: 1px solid #ce96ff;
 }
 
 .banner {
@@ -1341,7 +1351,7 @@ a.term span {
   gap: 1rem;
 }
 .allLexique-term-container .glossary-column .allLexique-term .related-pain-container .related-pain {
-  border-bottom: 1px solid #ff560f;
+  border-bottom: 1px solid #6b00c9;
 }
 .allLexique-term-container .glossary-column .allLexique-term .related-pain-container .related-pain a {
   border-bottom: none;
@@ -1490,11 +1500,17 @@ a.term span {
   margin-top: 0;
   grid-column: 1/4 !important;
   position: relative;
+  margin-left: 2rem;
 }
 .category-submenu .h4 {
   margin-top: 0;
 }
+.category-submenu ul {
+  padding-left: 20px;
+  list-style-position: inside;
+}
 .category-submenu li {
+  white-space: nowrap;
   font-family: "ESKlarheit-Medium";
   font-weight: 400;
   position: relative;
@@ -1535,7 +1551,7 @@ a.term span {
   gap: 0.5em;
 }
 .share-button .copy-url-button-container .copy-url-button {
-  background-color: #ce96ff;
+  background-color: #ff560f;
 }
 .share-button .copy-url-button-container .copy-url-button .link-icon {
   color: #31064b;
@@ -1656,13 +1672,13 @@ a.term span {
     margin-left: 1rem;
   }
   .tabbed-navigation-container {
-    background-color: white;
+    background-color: #fff7ef;
     height: 69px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    z-index: 999999;
   }
   .tabbed-navigation-container .tabbed-navigation {
-    align-self: flex-end;
     width: 100%;
   }
   .tabbed-navigation-container.sticky {
@@ -1776,7 +1792,7 @@ a.term span {
   gap: 0.5rem;
   flex-wrap: wrap;
   align-items: center;
-  grid-column: 4/10;
+  grid-column: 4/13;
   margin: 0.5rem 0;
   max-width: 90%;
 }
@@ -1875,7 +1891,7 @@ li {
 p.pretitle,
 li.pretitle {
   text-transform: lowercase;
-  color: #ff560f;
+  color: #6b00c9;
   font-family: "ESKlarheit-Medium";
   padding-bottom: 0;
   margin-bottom: 0;
@@ -1923,7 +1939,7 @@ h4 + .subtitle {
 
 a {
   text-decoration: none;
-  color: #ff560f;
+  color: #6b00c9;
   border-bottom: 1px solid;
   width: -moz-fit-content;
   width: fit-content;
@@ -1948,11 +1964,13 @@ hr {
   border: none;
 }
 
-caption {
+figcaption {
+  text-align: center;
   margin-top: 1rem;
   color: #6b00c9;
   font-size: 80%;
   display: block;
+  width: 100%;
 }
 
 @media screen and (max-width: 576px) {
@@ -2108,7 +2126,7 @@ h1:first-letter,
 .landing-view .title-container {
   display: flex;
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
   justify-content: center;
   padding: 2rem;
   position: relative;
@@ -2121,13 +2139,20 @@ h1:first-letter,
 }
 
 @media screen and (max-width: 576px) {
+  .landing-view {
+    height: 100vh;
+  }
   .landing-view .title-container {
     padding: 1rem;
     width: auto !important;
   }
 }
+@media screen and (min-width: 992px) {
+  .landing-view h1 {
+    font-size: 400%;
+  }
+}
 * {
-  outline: none;
   transition: 0.2s ease-in;
   font-feature-settings: "ss02", "ss11";
 }
@@ -2140,7 +2165,7 @@ h1:first-letter,
   background: #31064b;
 }
 *:focus {
-  border: 1px solid #ffc2a8;
+  outline: 2px ridge #ce96ff;
 }
 
 html {

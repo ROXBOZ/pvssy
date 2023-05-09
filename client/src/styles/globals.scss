@@ -28,7 +28,6 @@
 @import "view";
 
 * {
-  outline: none;
   transition: $animation-transition;
   font-feature-settings: "ss02", "ss11";
   &::selection {
@@ -36,7 +35,7 @@
     background: $txt-color;
   }
   &:focus {
-    border: $border-solid lighten($primary, 30%);
+    outline: 2px ridge $secondary;
   }
 }
 

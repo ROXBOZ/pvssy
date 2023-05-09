@@ -96,7 +96,6 @@ function App() {
             name="description"
             content=" S'informer sur ses douleurs pour se réapproprier son corps et sa sexualité"
           />
-          <meta name="keywords" content="douleurs sexuelles, sexualité" />
         </Helmet>
         <div className="main">
           <ScrollToTop />

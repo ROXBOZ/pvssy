@@ -11,7 +11,7 @@ export default function Breadcrumbs() {
   ) {
     return null;
   }
-  //NOTE try to find a way to map only over all the elements except index 0
+
   const crumbs = location.pathname
     .split("/")
     .filter((crumb) => {
@@ -21,23 +21,27 @@ export default function Breadcrumbs() {
       currentLink += `/${crumb}`;
       const isLastCrumb = index === arr.length - 1;
 
+      // Replace "sopk" with "SOPK"
+      const crumbText = crumb.replace(/sopk/gi, "SOPK");
+
       return (
         <div className="crumb" key={crumb}>
           {isLastCrumb ? (
             <span>
-              {crumb
-                // TOD0 batch this
-                .replaceAll("%C3%A9", "é")
-                .replaceAll("%20", " ")
-                .replaceAll("%C3%A8", "è")
-                .replaceAll("%C3%A0", "à")
-                .replaceAll("-", " ")
-                .replaceAll("%C2%A0", " ")}
+              <>
+                {" "}
+                {crumbText
+                  .replaceAll("%C3%A9", "é")
+                  .replaceAll("%20", " ")
+                  .replaceAll("%C3%A8", "è")
+                  .replaceAll("%C3%A0", "à")
+                  .replaceAll("-", " ")
+                  .replaceAll("%C2%A0", " ")}
+              </>
             </span>
           ) : (
             <Link to={currentLink}>
-              {crumb
-                // T0D0 batch this
+              {crumbText
                 .replaceAll("%C3%A9", "é")
                 .replaceAll("%20", " ")
                 .replaceAll("%C3%A8", "è")

@@ -25,7 +25,11 @@ const Exercise = ({ exercise, isExerciseOpen, handleExerciseToggle }) => {
               <span className="counter">&thinsp;{index + 1}   </span>
               {step.stepTitle}
             </h3>
-            <button className="square" onClick={() => handleStepToggle(stepId)}>
+            <button
+              aria-label="ouvrir ou fermer les instructions"
+              className="square"
+              onClick={() => handleStepToggle(stepId)}
+            >
               {isStepOpen(stepId) ? (
                 <FontAwesomeIcon icon={faMinus} />
               ) : (

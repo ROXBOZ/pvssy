@@ -108,6 +108,7 @@ const PainArticle = () => {
               };
               return (
                 <Link
+                  key={index}
                   className={isTerm ? "term" : isSource ? "source" : ""}
                   to={href}
                   onClick={isSource ? onClickHandler : null}
@@ -178,7 +179,7 @@ const PainArticle = () => {
       </div>
 
       <div className="article-container" id="articleRef">
-        <ul
+        <div
           className={`category-submenu ${
             window.innerWidth > 992 && isSticky ? "fixed" : ""
           }`}
@@ -195,24 +196,18 @@ const PainArticle = () => {
               <span> {painData.name}</span>
             )}
           </p>
-          <li>
-            <Link to="../glossaire">Glossaire</Link>
-          </li>
-          <li>
-            <Link to="../exercices">Exercices</Link>
-          </li>
-          <li>
-            <Link to="../litterature-et-medias">Littérature et médias</Link>
-          </li>
-          <br />
-          {/* <div className="author">
-            <p>
-              Articles par <Link to="https://aemg-ge.com/">Medsexplain</Link> +{" "}
-              <Link to="https://aemg-ge.com/">Sexopraxis</Link>. Illustrations
-              par <Link to="https://noemiecreux.com/">Noémie Creux</Link>.
-            </p>
-          </div> */}
-        </ul>
+          <ul>
+            <li>
+              <Link to="../glossaire">Glossaire</Link>
+            </li>
+            <li>
+              <Link to="../exercices">Exercices</Link>
+            </li>
+            <li>
+              <Link to="../litterature-et-medias">Littérature et médias</Link>
+            </li>
+          </ul>
+        </div>
         <div>
           {isMed ? (
             <div className="article">
@@ -223,18 +218,20 @@ const PainArticle = () => {
                 </>
               )}
 
-              {[1, 2].map((num) => {
+              {[1, 2].map((num, index) => {
                 const shemaDef = painData[`shemaDef${num}`];
+
                 return (
-                  shemaDef && (
-                    <div className="shema-container">
+                  shemaDef.length > 0 && (
+                    <figure key={index} className="shema-container">
+                      <h3>{`Shéma ${painData.name} ${num}`}</h3>
                       <img
                         className="shema"
                         src={shemaDef[0]}
                         alt={`shéma ${painData.name} : ${shemaDef[1]}`}
                       />
-                      <caption>{shemaDef[1]}</caption>
-                    </div>
+                      <figcaption>{shemaDef[1]}</figcaption>
+                    </figure>
                   )
                 );
               })}
@@ -251,14 +248,14 @@ const PainArticle = () => {
                       alt={`shéma ${painData.name}`}
                     />
 
-                    <caption>
+                    <figcaption>
                       <strong>Shéma sur le cycle menstruel</strong> : Lorem
                       ipsum dolor, sit amet consectetur adipisicing elit. Cumque
                       asperiores nobis in omnis labore necessitatibus unde
                       impedit, nesciunt maxime earum iure deleniti explicabo
                       similique, quaerat quae, aspernatur libero placeat
                       temporibus?
-                    </caption>
+                    </figcaption>
                   </figure>
                 </div>
               )}

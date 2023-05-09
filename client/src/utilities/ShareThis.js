@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ShareButton from "react-share/lib/ShareButton";
 import { EmailIcon, TelegramIcon, WhatsappIcon } from "react-share";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -36,25 +35,26 @@ const ShareThis = () => {
 
   return (
     <div>
-      <ShareButton
+      <div
         className="share-button"
         url={shareUrl}
         onShareWindowClose={onShareWindowClose}
       >
-        <Link
+        <a
+          aria-label="partager par email"
           className="tooltip"
-          to={`mailto:?body=${shareUrl}`}
-          onClick={handleShareButtonClick}
+          href="mailto:info@pvssy-talk.org"
         >
           <EmailIcon
             size={30}
             round={true}
             iconFillColor={{ fill: "#1f042f" }}
-            bgStyle={{ fill: "#cf98ff" }}
+            bgStyle={{ fill: "#ff560f" }}
           />
           <span className="tooltiptext">Email</span>
-        </Link>
+        </a>
         <Link
+          aria-label="partager par WhatsApp"
           className="tooltip"
           to={`whatsapp://send?text=${shareUrl}`}
           onClick={handleShareButtonClick}
@@ -63,11 +63,12 @@ const ShareThis = () => {
             size={30}
             round={true}
             iconFillColor={{ fill: "#1f042f" }}
-            bgStyle={{ fill: "#cf98ff" }}
+            bgStyle={{ fill: "#ff560f" }}
           />
           <span className="tooltiptext">WhatsApp</span>
         </Link>
         <Link
+          aria-label="partager par Telegram"
           className="tooltip"
           to={`https://telegram.me/share/url?url=${shareUrl}`}
           onClick={handleShareButtonClick}
@@ -76,12 +77,13 @@ const ShareThis = () => {
             size={30}
             round={true}
             iconFillColor={{ fill: "#1f042f" }}
-            bgStyle={{ fill: "#cf98ff" }}
+            bgStyle={{ fill: "#ff560f" }}
           />
           <span className="tooltiptext">Telegram</span>
         </Link>
         <div className="copy-url-button-container">
           <div
+            aria-label="copier l'url dans le presse-papier"
             role="button"
             onClick={copyUrlToClipboard}
             className=" tooltip copy-url-button"
@@ -91,10 +93,8 @@ const ShareThis = () => {
               <p>{isCopied === true ? "URL copiée" : "copier"}</p>
             </span>{" "}
           </div>
-
-          {/* {isCopied === true && <p>URL copiée</p>} */}
         </div>
-      </ShareButton>
+      </div>
     </div>
   );
 };

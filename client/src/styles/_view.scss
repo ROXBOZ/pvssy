@@ -54,7 +54,7 @@
   .title-container {
     display: flex;
     width: 100vw;
-    height: 100vw;
+    height: 100vh;
     justify-content: center;
     padding: $reg-space;
     position: relative;
@@ -70,9 +70,18 @@
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
   .landing-view {
+    height: 100vh;
     .title-container {
       padding: $sm-space;
       width: auto !important;
+    }
+  }
+}
+
+@media screen and (min-width: map-get($breakpoints, "lg")) {
+  .landing-view {
+    h1 {
+      font-size: 400%;
     }
   }
 }
