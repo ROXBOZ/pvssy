@@ -1185,7 +1185,6 @@ figure span {
   padding-top: 0.5rem;
   padding-right: 50px;
   font-size: 80%;
-  font-family: "ESKlarheit-Medium-Italic";
   margin: 0;
   font-style: normal;
   height: -moz-fit-content;
@@ -1194,7 +1193,6 @@ figure span {
 figure span a {
   width: -moz-fit-content;
   width: fit-content;
-  font-family: "ESKlarheit-Medium-Italic";
   width: fit-content;
   font-style: normal;
 }
@@ -1349,7 +1347,7 @@ a.term span {
   gap: 1rem;
 }
 .allLexique-term-container .glossary-column .allLexique-term .related-pain-container .related-pain {
-  border-bottom: 1px solid #6b00c9;
+  border-bottom: 1px solid #ff9e75;
 }
 .allLexique-term-container .glossary-column .allLexique-term .related-pain-container .related-pain a {
   border-bottom: none;
@@ -1393,28 +1391,19 @@ a.term span {
   margin: 0;
 }
 .msg.success {
-  color: mediumseagreen;
-}
-.msg.success.bordered {
-  border: 1px solid #a7e1c1;
+  border-bottom: 1px solid mediumseagreen;
 }
 .msg.success:before {
   content: "👏  ";
 }
 .msg.reminder {
-  color: DarkGoldenRod;
-}
-.msg.reminder.bordered {
-  border: 1px solid #f6cc66;
+  border-bottom: 1px solid DarkGoldenRod;
 }
 .msg.reminder:before {
   content: "🔔  ";
 }
 .msg.pending {
-  color: #ce96ff;
-}
-.msg.pending.bordered {
-  border: 1px solid white;
+  border-bottom: 1px solid #ce96ff;
 }
 .msg.pending:before {
   content: "⌛  ";
@@ -1750,7 +1739,7 @@ a.term span {
   line-height: 1.5;
 }
 .footnotes ul li .source-title {
-  font-family: "ESKlarheit-Medium-Italic";
+  font-family: "ESKlarheit-Book-Italic";
 }
 
 .additional-ressources {
@@ -1773,7 +1762,7 @@ a.term span {
   padding: 1rem 0;
 }
 .additional-ressources ul li .source-title {
-  font-family: "ESKlarheit-Medium-Italic";
+  font-family: "ESKlarheit-Book-Italic";
 }
 .additional-ressources ul li .source-category {
   text-transform: lowercase;
@@ -1788,7 +1777,6 @@ a.term span {
   flex-wrap: wrap;
   align-items: center;
   grid-column: 4/13;
-  margin: 0.5rem 0;
   max-width: 90%;
 }
 

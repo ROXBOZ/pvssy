@@ -129,7 +129,7 @@ a.term {
         margin-bottom: $sm-space;
         gap: $sm-space;
         .related-pain {
-          border-bottom: $border-solid darken($secondary, 40%);
+          border-bottom: $border-solid lighten($primary, 20%);
           a {
             border-bottom: none;
           }

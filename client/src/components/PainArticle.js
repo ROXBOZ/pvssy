@@ -11,6 +11,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { HeadingArea } from "../utilities/HeadingArea";
 
 const PainArticle = () => {
   let currentURL = window.location.pathname;
@@ -224,7 +225,6 @@ const PainArticle = () => {
                 return (
                   shemaDef.length > 0 && (
                     <figure key={index} className="shema-container">
-                      <h3>{`Shéma ${painData.name} ${num}`}</h3>
                       <img
                         className="shema"
                         src={shemaDef[0]}
@@ -285,7 +285,7 @@ const PainArticle = () => {
 
               {painData.auto && painData.auto.length > 0 && (
                 <>
-                  <h3>Que puis-je faire solo ?</h3>
+                  {/* <h3>Que puis-je faire solo ?</h3> */}
                   {highlightParagraphs(painData.auto)}
                 </>
               )}

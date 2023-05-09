@@ -15,7 +15,7 @@ export const HeadingArea = ({
           <span className="acronym">{title}</span>
         ) : (
           <>
-            {title} {color && <span className="colored">{color}</span>}
+            {title} {color && <span className="colored">{color}</span>}
           </>
         )}
       </HeadingTag>

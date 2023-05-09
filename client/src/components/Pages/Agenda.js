@@ -203,17 +203,22 @@ const Agenda = () => {
         ) : (
           <div className="grid-area">
             <div className="centered">
-              <p className="msg">
-                Il n'y a aucun événement à venir aux alentours.
-              </p>
+              <div className="msg-box">
+                <p className="msg pending">
+                  Il n'y a aucun événement à venir aux alentours.
+                </p>
+              </div>
             </div>
           </div>
         )}
       </div>
-
-      <Link style={{ border: "none" }} to="/login">
-        <button>proposer un évènement</button>
-      </Link>
+      <div className="grid-area">
+        <div className="centered">
+          <Link style={{ border: "none" }} to="/login">
+            <button>proposer un évènement</button>
+          </Link>
+        </div>
+      </div>
     </>
   );
 };

@@ -53,9 +53,10 @@ const Pains = () => {
       <CreateTags tags={painTags} />
 
       <div className="card-grid">
-        {filteredData.map((p) => {
+        {filteredData.map((p, index) => {
           return (
             <Link
+              key={index}
               className="link-card"
               onClick={scrollToTop}
               to={{

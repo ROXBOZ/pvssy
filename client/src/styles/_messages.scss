@@ -21,7 +21,7 @@ $archived-color: dimgrey;
   width: fit-content;
   display: flex;
   gap: 0.5em;
-  // border-radius: $border-radius;
+
   padding: $padding-btn;
   align-items: center;
 
@@ -31,10 +31,7 @@ $archived-color: dimgrey;
   }
 
   &.success {
-    color: $success-color;
-    &.bordered {
-      border: $border-solid lighten($success-color, 30%);
-    }
+    border-bottom: $border-solid $success-color;
 
     &:before {
       content: ("👏  ");
@@ -42,10 +39,7 @@ $archived-color: dimgrey;
   }
 
   &.reminder {
-    color: $reminder-color;
-    &.bordered {
-      border: $border-solid lighten($reminder-color, 30%);
-    }
+    border-bottom: $border-solid $reminder-color;
 
     &:before {
       content: ("🔔  ");
@@ -53,10 +47,7 @@ $archived-color: dimgrey;
   }
 
   &.pending {
-    color: $pending-color;
-    &.bordered {
-      border: $border-solid lighten($pending-color, 30%);
-    }
+    border-bottom: $border-solid $pending-color;
     &:before {
       content: ("⌛  ");
     }
