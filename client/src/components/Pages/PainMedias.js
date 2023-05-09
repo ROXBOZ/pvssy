@@ -17,11 +17,23 @@ const PainMedias = () => {
         />
       </Helmet>
       <HeadingArea
-        pretitle={painName}
+        color={
+          painName === "Sopk" ? painName.toUpperCase() : painName.toLowerCase()
+        }
         title="Littérature et médias"
         level="h1"
       />
-      <SourceList sources={requestedSources} />
+      {requestedSources ? (
+        <SourceList sources={requestedSources} />
+      ) : (
+        <div className="grid-area">
+          <div className="centered">
+            <p className="msg warning">
+              Il n’y a pas de médias relatifs à cette douleur pour l’instant.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

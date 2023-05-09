@@ -35,7 +35,7 @@
     background: $txt-color;
   }
   &:focus {
-    outline: 2px ridge $secondary;
+    outline: 2px dotted $secondary;
   }
 }
 
@@ -90,6 +90,10 @@ html {
   * {
     text-transform: capitalize;
   }
+}
+
+.colored {
+  color: $primary;
 }
 
 strong {

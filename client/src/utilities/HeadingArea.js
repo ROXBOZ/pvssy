@@ -1,4 +1,10 @@
-export const HeadingArea = ({ pretitle, title, subtitle, level = "h2" }) => {
+export const HeadingArea = ({
+  pretitle,
+  title,
+  subtitle,
+  level = "h2",
+  color,
+}) => {
   const HeadingTag = level;
 
   return (
@@ -8,7 +14,9 @@ export const HeadingArea = ({ pretitle, title, subtitle, level = "h2" }) => {
         {title && title === "Sopk" ? (
           <span className="acronym">{title}</span>
         ) : (
-          <>{title}</>
+          <>
+            {title} {color && <span className="colored">{color}</span>}
+          </>
         )}
       </HeadingTag>
       {subtitle && <p className="subtitle">{subtitle}</p>}

@@ -21,9 +21,15 @@ const PainExercices = () => {
           content={`${painName}: exercices liés à la douleur `}
         />
       </Helmet>
-      <HeadingArea pretitle={painName} title="Exercices" level="h1" />
+      <HeadingArea
+        title="Exercices"
+        level="h1"
+        color={
+          painName === "Sopk" ? painName.toUpperCase() : painName.toLowerCase()
+        }
+      />
       <div className="exercises-container">
-        {requestedExercises &&
+        {requestedExercises ? (
           requestedExercises.map((ex, index) => (
             <Exercise
               exercise={ex}
@@ -31,7 +37,17 @@ const PainExercices = () => {
               isExerciseOpen={openExerciseId === ex._id}
               key={ex._id}
             />
-          ))}
+          ))
+        ) : (
+          <div className="grid-area">
+            <div className="centered">
+              <p className="msg warning">
+                Il n’y a pas d’exercices relatifs à cette douleur pour
+                l’instant.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

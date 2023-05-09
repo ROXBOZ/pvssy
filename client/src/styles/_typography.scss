@@ -28,7 +28,7 @@ li {
 
   &.pretitle {
     text-transform: lowercase;
-    color: darken($secondary, 40%);
+    border-bottom: $secondary $border-solid;
     font-family: $font-medium;
     padding-bottom: 0;
     margin-bottom: 0;
@@ -72,8 +72,8 @@ h4 + .subtitle {
 
 a {
   text-decoration: none;
-  color: darken($secondary, 40%);
-  border-bottom: $border-solid;
+  color: $txt-color;
+  border-bottom: $border-solid lighten($primary, 20%);
   width: fit-content;
   transition: border-color $animation-transition;
   cursor: url("../assets/images/cursor-pointer.svg"), auto;

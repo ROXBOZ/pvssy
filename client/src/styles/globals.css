@@ -197,7 +197,7 @@ h1.invisible {
   padding: 2rem;
   border-radius: 10px;
   width: 100%;
-  border: 1px solid;
+  border: 1px solid #ce96ff;
   display: flex;
   flex-direction: column;
   gap: 4rem;
@@ -220,7 +220,7 @@ h1.invisible {
   border-radius: 10px;
   margin: 2rem 0;
   width: 100%;
-  border: 1px solid #31064b;
+  border: 1px solid #ce96ff;
   align-items: center;
 }
 .shema-container h3 {
@@ -301,12 +301,10 @@ h1.invisible {
   font-size: 80%;
   margin: 5vh 0 10vh;
 }
-.breadcrumbs:only-child {
-  color: red;
-}
 .breadcrumbs .crumb a {
   color: #9e30ff;
   white-space: nowrap;
+  border-bottom: none;
 }
 .breadcrumbs .crumb:after {
   color: #31064b;
@@ -1387,7 +1385,6 @@ a.term span {
   width: fit-content;
   display: flex;
   gap: 0.5em;
-  border-radius: 50px;
   padding: 0.5em 1.5em;
   align-items: center;
 }
@@ -1423,10 +1420,7 @@ a.term span {
   content: "⌛  ";
 }
 .msg.warning {
-  color: #ff560f;
-}
-.msg.warning.bordered {
-  border: 1px solid #ffc2a8;
+  border-bottom: 1px solid #ff560f;
 }
 .msg.warning:before {
   content: "⚠️  ";
@@ -1519,6 +1513,7 @@ a.term span {
 }
 .category-submenu li a {
   color: #31064b;
+  border: none;
 }
 .category-submenu li:before {
   position: absolute;
@@ -1551,7 +1546,7 @@ a.term span {
   gap: 0.5em;
 }
 .share-button .copy-url-button-container .copy-url-button {
-  background-color: #ff560f;
+  background-color: #ce96ff;
 }
 .share-button .copy-url-button-container .copy-url-button .link-icon {
   color: #31064b;
@@ -1891,7 +1886,7 @@ li {
 p.pretitle,
 li.pretitle {
   text-transform: lowercase;
-  color: #6b00c9;
+  border-bottom: #ce96ff 1px solid;
   font-family: "ESKlarheit-Medium";
   padding-bottom: 0;
   margin-bottom: 0;
@@ -1939,8 +1934,8 @@ h4 + .subtitle {
 
 a {
   text-decoration: none;
-  color: #6b00c9;
-  border-bottom: 1px solid;
+  color: #31064b;
+  border-bottom: 1px solid #ff9e75;
   width: -moz-fit-content;
   width: fit-content;
   transition: border-color 0.2s ease-in;
@@ -2165,7 +2160,7 @@ h1:first-letter,
   background: #31064b;
 }
 *:focus {
-  outline: 2px ridge #ce96ff;
+  outline: 2px dotted #ce96ff;
 }
 
 html {
@@ -2222,6 +2217,10 @@ html body .main {
 }
 .noun * {
   text-transform: capitalize;
+}
+
+.colored {
+  color: #ff560f;
 }
 
 strong {

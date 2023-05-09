@@ -21,6 +21,7 @@
 
     a {
       color: $txt-color;
+      border: none;
     }
 
     &:before {
@@ -56,7 +57,7 @@
   }
 
   .copy-url-button-container {
-    $color: $primary;
+    $color: $secondary;
     display: flex;
     align-items: top;
     gap: 0.5em;

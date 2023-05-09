@@ -21,7 +21,7 @@ $archived-color: dimgrey;
   width: fit-content;
   display: flex;
   gap: 0.5em;
-  border-radius: $border-radius;
+  // border-radius: $border-radius;
   padding: $padding-btn;
   align-items: center;
 
@@ -63,11 +63,8 @@ $archived-color: dimgrey;
   }
 
   &.warning {
-    color: $warning-color;
+    border-bottom: $border-solid $warning-color;
 
-    &.bordered {
-      border: $border-solid lighten($warning-color, 30%);
-    }
     &:before {
       content: ("⚠️  ");
       width: 20px;

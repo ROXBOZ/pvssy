@@ -55,13 +55,14 @@ const PainGlossary = () => {
           content={`${painName}: termes et définitions liés à la douleur `}
         />
       </Helmet>
-      <HeadingArea pretitle={painName} title="Glossaire" level="h1" />
+      <HeadingArea
+        title="Glossaire"
+        level="h1"
+        color={
+          painName === "Sopk" ? painName.toUpperCase() : painName.toLowerCase()
+        }
+      />
       <div className="grid-area">
-        {/* <div className="centered">
-          <div className="redirection msg">
-            <Link to="/s-informer/ressources/glossaire">glossaire complet</Link>
-          </div>
-        </div> */}
         {requestedTerms ? (
           <div className="lexique-list centered">
             {requestedTerms &&
@@ -128,9 +129,11 @@ const PainGlossary = () => {
                 })}
           </div>
         ) : (
-          <p className="msg warning">
-            Il n’y a pas de glossaire relatif à cette douleur pour l’instant.
-          </p>
+          <div className="centered">
+            <p className="msg warning">
+              Il n’y a pas de glossaire relatif à cette douleur pour l’instant.
+            </p>
+          </div>
         )}
       </div>
     </>

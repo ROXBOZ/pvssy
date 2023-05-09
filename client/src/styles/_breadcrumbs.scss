@@ -4,14 +4,11 @@
   font-size: $smaller-text;
   margin: 5vh 0 10vh;
 
-  &:only-child {
-    color: red;
-  }
-
   .crumb {
     a {
       color: darken($secondary, 20%);
       white-space: nowrap;
+      border-bottom: none;
     }
     &:after {
       color: $txt-color;
