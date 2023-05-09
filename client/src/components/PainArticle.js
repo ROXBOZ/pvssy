@@ -27,7 +27,7 @@ const PainArticle = () => {
 
   // const imgSrc = (painName, section, num) => {
   //   try {
-  //     return require(`../../assets/images/shemas/${painName}-${section}-${num}.png`);
+  //     return require(`../assets/images/shemas/${painName}-${section}-${num}.png`);
   //   } catch (error) {
   //     return "";
   //   }
@@ -223,6 +223,22 @@ const PainArticle = () => {
                 </>
               )}
 
+              {[1, 2].map((num) => {
+                const shemaDef = painData[`shemaDef${num}`];
+                return (
+                  shemaDef && (
+                    <div className="shema-container">
+                      <img
+                        className="shema"
+                        src={shemaDef[0]}
+                        alt={`shéma ${painData.name} : ${shemaDef[1]}`}
+                      />
+                      <caption>{shemaDef[1]}</caption>
+                    </div>
+                  )
+                );
+              })}
+
               {painData.tags.includes("règles") && (
                 <div className="menstrual-reminder">
                   <div>
@@ -236,7 +252,6 @@ const PainArticle = () => {
                     />
 
                     <caption>
-                      <br />
                       <strong>Shéma sur le cycle menstruel</strong> : Lorem
                       ipsum dolor, sit amet consectetur adipisicing elit. Cumque
                       asperiores nobis in omnis labore necessitatibus unde

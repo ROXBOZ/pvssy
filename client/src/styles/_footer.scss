@@ -7,6 +7,8 @@
   position: relative;
   overflow: hidden;
   height: 2rem;
+  display: flex;
+  align-items: center;
 
   p {
     margin-bottom: 0;
@@ -44,6 +46,7 @@ footer {
   align-items: center;
   gap: $sm-space;
   margin: 10vh 0 0;
+
   .h3 {
     margin-top: 0;
   }
@@ -54,6 +57,7 @@ footer {
     .logo {
       color: $primary;
       transition: color $animation-transition;
+
       &:hover {
         color: $txt-color;
       }
@@ -67,27 +71,26 @@ footer {
 
     .footer-column {
       display: flex;
+      flex-direction: column;
+      gap: $sm-space;
 
       &:first-child {
-        display: flex;
-        flex-direction: column;
-        gap: $sm-space;
         grid-column: #{$grid-first-third};
 
         .footer-main-buttons-container {
           display: flex;
           gap: $xs-space;
-        }
 
-        p {
-          margin-bottom: 0;
+          p {
+            margin-bottom: 0;
+          }
         }
       }
 
       &:nth-child(2) {
         grid-column: #{$grid-last-thirds};
-        display: flex;
-        justify-content: flex-end;
+        align-items: flex-end;
+
         nav {
           display: flex;
           gap: $lg-space;
@@ -121,17 +124,29 @@ footer {
 }
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
+  .banner {
+    padding: $sm-space 0;
+    .h3 {
+      font-size: 120%;
+    }
+  }
   footer {
     flex-direction: column;
     align-items: flex-start;
+
     .footer-main {
       flex-direction: column;
+      padding: $reg-space $sm-space;
+
       .footer-main-buttons-container {
         flex-direction: column;
       }
+
       .footer-column {
         &:nth-child(2) {
+          margin-top: $reg-space;
           grid-column-start: 1;
+          align-items: flex-start;
           nav {
             flex-direction: column;
             gap: $reg-space;
@@ -147,10 +162,12 @@ footer {
     .h3 {
       white-space: nowrap;
     }
+
     .footer-main-buttons-container {
       flex-direction: row;
       width: fit-content;
     }
+
     &:nth-child(2) {
       justify-content: flex-start !important;
     }

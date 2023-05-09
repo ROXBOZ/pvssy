@@ -17,10 +17,6 @@
   }
 }
 
-h1 {
-  font-family: $font-logo;
-}
-
 h2 + h3 {
   margin-top: 0;
 }
@@ -102,11 +98,17 @@ hr {
   border: none;
 }
 
+caption {
+  margin-top: $sm-space;
+  color: darken($secondary, 40%);
+  font-size: $smaller-text;
+  display: block;
+}
+
 @media screen and (max-width: map-get($breakpoints, "sm")) {
   .heading-area {
     * {
-      width: 100%;
-      grid-column: #{$grid-fullwidth};
+      grid-column: 1/10;
     }
   }
 

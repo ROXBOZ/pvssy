@@ -1,17 +1,17 @@
-.author {
-  font-size: $smaller-text;
-  * {
-    grid-column: #{$grid-center};
-  }
-}
+// .author {
+//   font-size: $smaller-text;
+//   * {
+//     grid-column: #{$grid-center};
+//   }
+// }
 
-@media screen and (max-width: map-get($breakpoints, "lg")) {
-  .author {
-    * {
-      grid-column: #{$grid-fullwidth};
-    }
-  }
-}
+// @media screen and (max-width: map-get($breakpoints, "lg")) {
+//   .author {
+//     * {
+//       grid-column: #{$grid-fullwidth};
+//     }
+//   }
+// }
 
 .article {
   h2 {
@@ -24,7 +24,7 @@
     margin-top: $reg-space * 2;
     padding: $reg-space;
     border-radius: $border-radius-soft;
-    width: fit-content;
+    width: 100%;
     border: $border-solid;
     display: flex;
     flex-direction: column;
@@ -43,6 +43,17 @@
     li {
       margin-bottom: 0.5rem;
     }
+  }
+}
+
+.shema-container {
+  padding: $reg-space;
+  border-radius: $border-radius-soft;
+  margin: $reg-space 0;
+  width: 100%;
+  border: $border-solid $txt-color;
+  .shema {
+    width: 100%;
   }
 }
 

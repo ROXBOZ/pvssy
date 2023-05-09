@@ -45,7 +45,6 @@ html {
   padding: 0;
   background-color: $bg-color;
   color: $txt-color;
-  // font-family: $font-medium;
   font-family: $font-regular;
   line-height: 1.5;
   font-size: $font-size-basis;
@@ -63,7 +62,7 @@ html {
       flex-direction: column;
       overflow: hidden;
       @media screen and (max-width: map-get($breakpoints, "sm")) {
-        padding-bottom: 0;
+        padding: 0 $sm-space;
       }
     }
   }

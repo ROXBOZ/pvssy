@@ -1,4 +1,5 @@
-button {
+button,
+.button {
   padding: $padding-btn;
   border-radius: $border-radius;
   border: $border-solid $secondary;
@@ -6,7 +7,7 @@ button {
   font-size: $font-size-basis;
   font-family: $font-regular;
   width: fit-content;
-  height: fit-content;
+  height: fit-content !important;
   cursor: url("../assets/images/cursor-pointer.svg"), auto;
   white-space: nowrap;
   color: $txt-color;

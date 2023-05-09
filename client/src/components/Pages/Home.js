@@ -1,4 +1,3 @@
-//refactored 04.05.2023
 import React from "react";
 import { HeadingArea } from "../../utilities/HeadingArea";
 import { Link } from "react-router-dom";
@@ -6,7 +5,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   //TODO
   console.log("%chome component run again", "color:orange");
-  //FIXME  if we keep the big button, improve SCSS
+  //FIXME button inside a link + inline CSS
 
   return (
     <>
@@ -26,10 +25,9 @@ const Home = () => {
             de soignant·e·sx <em>safe</em> pour t’accompagner dans ton parcours
             de soin.
           </p>
-        </div>
-        <div className="centered">
+          <br />
           <Link to="/s-informer" style={{ border: "none" }}>
-            <button style={{ fontSize: "large" }}>Je m’informe</button>
+            <button>Je m’informe</button>
           </Link>
         </div>
       </div>

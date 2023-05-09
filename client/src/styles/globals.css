@@ -6,23 +6,23 @@
   src: url("../assets/fonts/ESRebondGrotesque-Semibold.otf") format("otf"), url("../assets/fonts/ESRebondGrotesque-Semibold.ttf") format("truetype");
 }
 @font-face {
-  font-family: "ESKlarheit-Book";
+  font-family: "ESKlarheit-Book, Arial, sans-serif";
   src: url("../assets/fonts/ESKlarheitGrotesk-Bk.woff2") format("woff"), url("../assets/fonts/ESKlarheitGrotesk-Bk.woff2") format("woff2");
 }
 @font-face {
-  font-family: "ESKlarheit-Book-Italic";
+  font-family: "ESKlarheit-Book-Italic, Arial, sans-serif";
   src: url("../assets/fonts/ESKlarheitGrotesk-BkIt.woff2") format("woff"), url("../assets/fonts/ESKlarheitGrotesk-BkIt.woff2") format("woff2");
 }
 @font-face {
-  font-family: "ESKlarheit-Medium";
+  font-family: "ESKlarheit-Medium, Arial, sans-serif";
   src: url("../assets/fonts/ESKlarheitGrotesk-Md.woff2") format("woff"), url("../assets/fonts/ESKlarheitGrotesk-Md.woff2") format("woff2");
 }
 @font-face {
-  font-family: "ESKlarheit-Medium-Italic";
+  font-family: "ESKlarheit-Medium-Italic, Arial, sans-serif";
   src: url("../assets/fonts/ESKlarheitGrotesk-MdIt.woff2") format("woff"), url("../assets/fonts/ESKlarheitGrotesk-MdIt.woff2") format("woff2");
 }
 @font-face {
-  font-family: "ESKlarheit-Bold";
+  font-family: "ESKlarheit-Bold, Arial, sans-serif";
   src: url("../assets/fonts/ESKlarheitGrotesk-Bd.woff2") format("woff"), url("../assets/fonts/ESKlarheitGrotesk-Bd.woff2") format("woff2");
 }
 /*-----Typography-----*/
@@ -189,18 +189,6 @@ h1.invisible {
     opacity: 0;
   }
 }
-.author {
-  font-size: 80%;
-}
-.author * {
-  grid-column: 4/10;
-}
-
-@media screen and (max-width: 992px) {
-  .author * {
-    grid-column: 1/12;
-  }
-}
 .article h2:first-of-type {
   margin-top: 0;
 }
@@ -208,8 +196,7 @@ h1.invisible {
   margin-top: 4rem;
   padding: 2rem;
   border-radius: 10px;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   border: 1px solid;
   display: flex;
   flex-direction: column;
@@ -226,6 +213,17 @@ h1.invisible {
 }
 .article ul li {
   margin-bottom: 0.5rem;
+}
+
+.shema-container {
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+  width: 100%;
+  border: 1px solid #31064b;
+}
+.shema-container .shema {
+  width: 100%;
 }
 
 .article-container {
@@ -321,7 +319,8 @@ h1.invisible {
     grid-column: 1/6;
   }
 }
-button {
+button,
+.button {
   padding: 0.5em 1.5em;
   border-radius: 50px;
   border: 1px solid #ce96ff;
@@ -330,36 +329,42 @@ button {
   font-family: "ESKlarheit-Book";
   width: -moz-fit-content;
   width: fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
   cursor: url("../assets/images/cursor-pointer.svg"), auto;
   white-space: nowrap;
   color: #31064b;
   transition: background-color 0.2s ease-in;
 }
-button.square {
+button.square,
+.button.square {
   padding: 0.25em 0.5em;
 }
-button.showPassword {
+button.showPassword,
+.button.showPassword {
   color: #31064b;
   padding: 0.5rem;
   align-items: center;
   border: none !important;
 }
-button.showPassword:hover {
+button.showPassword:hover,
+.button.showPassword:hover {
   background-color: transparent;
   opacity: 80%;
 }
-button:hover {
+button:hover,
+.button:hover {
   color: #31064b;
   background-color: #ce96ff;
   border: 1px solid;
 }
-button:disabled {
+button:disabled,
+.button:disabled {
   opacity: 30%;
   pointer-events: none;
 }
-button:active {
+button:active,
+.button:active {
   border: 1px solid #e6c9ff;
 }
 
@@ -617,6 +622,8 @@ button:active {
   position: relative;
   overflow: hidden;
   height: 2rem;
+  display: flex;
+  align-items: center;
 }
 .banner p {
   margin-bottom: 0;
@@ -676,24 +683,22 @@ footer .footer-main {
 }
 footer .footer-main .footer-column {
   display: flex;
-}
-footer .footer-main .footer-column:first-child {
-  display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+footer .footer-main .footer-column:first-child {
   grid-column: 1/4;
 }
 footer .footer-main .footer-column:first-child .footer-main-buttons-container {
   display: flex;
   gap: 0.5rem;
 }
-footer .footer-main .footer-column:first-child p {
+footer .footer-main .footer-column:first-child .footer-main-buttons-container p {
   margin-bottom: 0;
 }
 footer .footer-main .footer-column:nth-child(2) {
   grid-column: 4/13;
-  display: flex;
-  justify-content: flex-end;
+  align-items: flex-end;
 }
 footer .footer-main .footer-column:nth-child(2) nav {
   display: flex;
@@ -721,18 +726,27 @@ footer .footer-bottom .copyrights {
 }
 
 @media screen and (max-width: 576px) {
+  .banner {
+    padding: 1rem 0;
+  }
+  .banner .h3 {
+    font-size: 120%;
+  }
   footer {
     flex-direction: column;
     align-items: flex-start;
   }
   footer .footer-main {
     flex-direction: column;
+    padding: 2rem 1rem;
   }
   footer .footer-main .footer-main-buttons-container {
     flex-direction: column;
   }
   footer .footer-main .footer-column:nth-child(2) {
+    margin-top: 2rem;
     grid-column-start: 1;
+    align-items: flex-start;
   }
   footer .footer-main .footer-column:nth-child(2) nav {
     flex-direction: column;
@@ -924,10 +938,10 @@ header .logo {
   grid-column: 1/3;
   border: none;
 }
-header .connect {
+header .login {
   border-bottom: none !important;
 }
-header .connect:hover {
+header .login:hover {
   border-bottom: none !important;
 }
 header .burger-menu {
@@ -960,41 +974,41 @@ header nav.horizontal ul li a.active, header nav.horizontal ul li a:hover {
   color: #6b00c9;
   border-bottom-color: #6b00c9;
 }
-header nav.horizontal ul li .logout-header {
+header nav.horizontal ul li .profile-in-header {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
-header nav.horizontal ul li .logout-header a {
+header nav.horizontal ul li .profile-in-header a {
   border-bottom: none;
 }
-header nav.horizontal ul li .logout-header .user-icon-link {
+header nav.horizontal ul li .profile-in-header a {
   padding: 0.2em 1.5em;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.25em;
 }
-header nav.horizontal ul li .logout-header .user-icon-link:hover {
+header nav.horizontal ul li .profile-in-header a:hover {
   background-color: transparent;
   border-bottom: none !important;
 }
-header nav.horizontal ul li .logout-header .user-icon-link:hover #userIcon {
+header nav.horizontal ul li .profile-in-header a:hover .user-dot {
   background-color: #6b00c9;
 }
-header nav.horizontal ul li .logout-header .user-icon-link #userIcon {
+header nav.horizontal ul li .profile-in-header a .user-dot {
   background-color: #ff560f;
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;
 }
-header nav.horizontal ul li .logout-header .user-icon-link p {
+header nav.horizontal ul li .profile-in-header a p {
   margin: 0;
 }
 
 @media screen and (max-width: 992px) {
   header {
-    padding: 1rem 2rem;
+    padding: 1rem;
     height: -moz-fit-content;
     height: fit-content;
     background-color: #fff7ef;
@@ -1082,15 +1096,16 @@ header nav.horizontal ul li .logout-header .user-icon-link p {
     background: #fff7ef;
     display: flex;
     align-items: center;
-    text-align: left;
+    text-align: center;
+    justify-content: center;
+    max-width: 100vw;
   }
   header nav.vertical ul {
-    padding: 2rem;
+    padding: 1rem;
     margin-left: 0;
     flex-direction: column;
   }
   header nav.vertical ul li {
-    font-size: 140%;
     list-style: none;
     line-height: 3;
   }
@@ -1099,7 +1114,7 @@ header nav.horizontal ul li .logout-header .user-icon-link p {
     border-bottom: none;
     color: #31064b;
   }
-  header nav.vertical ul li .logout-header {
+  header nav.vertical ul li .profile-in-header {
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
@@ -1108,10 +1123,7 @@ header nav.horizontal ul li .logout-header .user-icon-link p {
     border-top: 1px solid #31064b;
     padding-top: 2rem;
   }
-  header nav.vertical ul li .logout-header button {
-    font-size: 100%;
-  }
-  header nav.vertical ul li .logout-header .user-icon-link {
+  header nav.vertical ul li .profile-in-header a {
     padding: 0;
     display: flex;
     align-items: center;
@@ -1119,19 +1131,19 @@ header nav.horizontal ul li .logout-header .user-icon-link p {
     gap: 0.25em;
     flex-direction: row-reverse;
   }
-  header nav.vertical ul li .logout-header .user-icon-link:hover {
+  header nav.vertical ul li .profile-in-header a:hover {
     background-color: transparent;
   }
-  header nav.vertical ul li .logout-header .user-icon-link #userIcon {
+  header nav.vertical ul li .profile-in-header a .user-dot {
     border: 1px solid;
     padding: 0.5rem;
     border-radius: 50%;
     aspect-ratio: 1/1;
   }
-  header nav.vertical ul li .logout-header .user-icon-link #userIcon:hover {
+  header nav.vertical ul li .profile-in-header a .user-dot:hover {
     cursor: url("../assets/images/cursor-pointer.svg"), auto;
   }
-  header nav.vertical ul li .logout-header .user-icon-link p {
+  header nav.vertical ul li .profile-in-header a p {
     margin: 0;
   }
 }
@@ -1851,10 +1863,6 @@ a.term span {
   margin-top: 10vh;
 }
 
-h1 {
-  font-family: "ESRebond";
-}
-
 h2 + h3 {
   margin-top: 0;
 }
@@ -1940,10 +1948,16 @@ hr {
   border: none;
 }
 
+caption {
+  margin-top: 1rem;
+  color: #6b00c9;
+  font-size: 80%;
+  display: block;
+}
+
 @media screen and (max-width: 576px) {
   .heading-area * {
-    width: 100%;
-    grid-column: 1/12;
+    grid-column: 1/10;
   }
   h1,
   h2,
@@ -2060,6 +2074,7 @@ h1:first-letter,
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-bottom: 1px solid #31064b;
 }
 .landing-view:before {
   --size: 0;
@@ -2083,10 +2098,10 @@ h1:first-letter,
 .landing-view header .logo {
   color: #31064b;
 }
-.landing-view header .connect button {
+.landing-view header .login button {
   border-color: rgb(139, 255, 124);
 }
-.landing-view header .connect:hover button {
+.landing-view header .login:hover button {
   background-color: transparent;
   border-color: #ff560f;
 }
@@ -2103,12 +2118,11 @@ h1:first-letter,
 .landing-view .title-container h1 {
   margin: 0;
   max-width: 30ch;
-  font-size: 400%;
 }
 
 @media screen and (max-width: 576px) {
-  .h1-container {
-    padding: 2rem;
+  .landing-view .title-container {
+    padding: 1rem;
     width: auto !important;
   }
 }
@@ -2154,7 +2168,7 @@ html body .main {
 }
 @media screen and (max-width: 576px) {
   html body .main {
-    padding-bottom: 0;
+    padding: 0 1rem;
   }
 }
 

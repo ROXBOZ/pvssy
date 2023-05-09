@@ -1,26 +1,68 @@
 import { Link, NavLink } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { AuthContext } from "../contexts/authContext";
 import { useContext, useState } from "react";
+import { AuthContext } from "../contexts/authContext";
 
 const Header = () => {
   const { logout, userProfile } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
 
-  const openMenu = () => {
+  const toggleMenu = () => {
     setIsOpen((prevState) => !prevState);
   };
-  const handleNavLink = () => {
+
+  const handleNavLinkClick = () => {
     setIsOpen(false);
+  };
+
+  const renderProfile = () => {
+    if (userProfile) {
+      return (
+        <div className="profile-in-header">
+          <Link to="/profile/ajouter" aria-label="profil">
+            <div className="user-dot"></div>
+            <span className="noun">{userProfile.userName}</span>
+          </Link>
+          <button onClick={logout}>se déconnecter</button>
+        </div>
+      );
+    }
+
+    return (
+      <NavLink className="login" onClick={handleNavLinkClick} to="login">
+        <button>Se connecter</button>
+      </NavLink>
+    );
+  };
+
+  const renderMenu = () => {
+    return (
+      <ul>
+        <li>
+          <NavLink onClick={handleNavLinkClick} to="s-informer">
+            S’informer
+          </NavLink>
+        </li>
+        <li>
+          <NavLink onClick={handleNavLinkClick} to="agenda">
+            Agenda
+          </NavLink>
+        </li>
+        <li>
+          <NavLink onClick={handleNavLinkClick} to="a-propos">
+            À propos
+          </NavLink>
+        </li>
+        <li>{renderProfile()}</li>
+      </ul>
+    );
   };
 
   return (
     <header>
       <Link to="/" className="logo">
-        pvssy talk
+        pvssy talk
       </Link>
-      <button className="burger-menu" onClick={() => openMenu()}>
+      <button className="burger-menu" onClick={toggleMenu}>
         <span id="nav-icon" className={!isOpen ? "close" : "open"}>
           <span></span>
           <span></span>
@@ -29,51 +71,7 @@ const Header = () => {
         </span>
         <span className="menu-label screen-reader-text">menu</span>
       </button>
-
-      <nav className={isOpen ? "vertical" : "horizontal"}>
-        <ul>
-          <li>
-            <NavLink onClick={handleNavLink} to="s-informer">
-              S’informer
-            </NavLink>
-          </li>
-          {/* <li>
-            <NavLink onClick={handleNavLink} to="se-soigner">
-              Se soigner
-            </NavLink>
-          </li> */}
-
-          <li>
-            <NavLink onClick={handleNavLink} to="agenda">
-              Agenda
-            </NavLink>
-          </li>
-          <li>
-            <NavLink onClick={handleNavLink} to="a-propos">
-              À propos
-            </NavLink>
-          </li>
-          <li>
-            {userProfile ? (
-              <div className="logout-header">
-                <Link
-                  className="user-icon-link"
-                  to="/profile/ajouter"
-                  aria-label="profil"
-                >
-                  <div id="userIcon"></div>
-                  <p className="noun">{userProfile.userName}</p>
-                </Link>
-                <button onClick={logout}>se déconnecter</button>
-              </div>
-            ) : (
-              <NavLink className="connect" onClick={handleNavLink} to="login">
-                <button>Se connecter</button>
-              </NavLink>
-            )}
-          </li>
-        </ul>
-      </nav>
+      <nav className={isOpen ? "vertical" : "horizontal"}>{renderMenu()}</nav>
     </header>
   );
 };

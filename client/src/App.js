@@ -1,20 +1,25 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import "./styles/globals.css";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { Navigate } from "react-router-dom";
+import { useRef } from "react";
+import { PainsContextProvider } from "./contexts/PainsContext";
+import { EventsContextProvider } from "./contexts/eventsContext";
+import { TermsContextProvider } from "./contexts/termsContext";
+import { AuthContextProvider } from "./contexts/authContext";
+import { ContactsContextProvider } from "./contexts/contactsContext";
+import Breadcrumbs from "./utilities/Breadcrumbs";
+import ScrollToTop from "./utilities/ScrollToTop";
+import ProtectedRoute from "./routes/ProtectedRoute";
 import Home from "./components/Pages/Home";
 import About from "./components/Pages/About";
 import Donate from "./components/Pages/Donate";
 import SInformer from "./components/Pages/SInformer";
 import Agenda from "./components/Pages/Agenda";
 import GeneralConditions from "./components/Pages/GeneralConditions";
-import Breadcrumbs from "./utilities/Breadcrumbs";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Pains from "./components/Pages/Pains";
 import Pain from "./components/Pages/Pain";
 import PainArticle from "./components/PainArticle";
-import ScrollToTop from "./utilities/ScrollToTop";
 import Directory from "./components/Pages/Directory";
 import Ressources from "./components/Pages/Ressources";
 import Login from "./components/Pages/Login";
@@ -26,26 +31,38 @@ import PainMedias from "./components/Pages/PainMedias";
 import AddEvent from "./components/User/AddEvent";
 import DeleteEvent from "./components/User/DeleteEvent";
 import ApproveEvent from "./components/User/ApproveEvent";
-import Lexique from "./components/Pages/Glossary";
+import Glossary from "./components/Pages/Glossary";
 import Accessibility from "./components/Pages/Accessibility";
 import Exercises from "./components/Pages/Exercises";
 import Medias from "./components/Pages/Medias";
-//contexts
-import { PainsContextProvider } from "./contexts/PainsContext";
-import { EventsContextProvider } from "./contexts/eventsContext";
-import { TermsContextProvider } from "./contexts/termsContext";
-import { AuthContextProvider } from "./contexts/authContext";
-// utils
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import getToken from "./utilities/getToken";
-import ProtectedRoute from "./routes/ProtectedRoute";
-import { ContactsContextProvider } from "./contexts/contactsContext";
-import { useRef } from "react";
 
 function App() {
   const token = getToken();
   const location = useLocation();
   const grdRef = useRef(null);
 
+  const LandingView = () => {
+    return (
+      <>
+        <div
+          className="landing-view"
+          ref={grdRef}
+          onMouseMove={handleMouseMove}
+        >
+          <Header />
+          <div className="title-container">
+            <h1>
+              S’informer sur ses douleurs pour se réapproprier son corps et
+              sa sexualité
+            </h1>
+          </div>
+        </div>
+      </>
+    );
+  };
   const handleMouseMove = (e) => {
     const rect = e.target.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -72,25 +89,7 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-        {location.pathname === "/" ? (
-          <>
-            <div
-              className="landing-view"
-              ref={grdRef}
-              onMouseMove={handleMouseMove}
-            >
-              <Header />
-              <div className="title-container">
-                <h1>
-                  S’informer sur ses douleurs pour se réapproprier son corps et
-                  sa sexualité
-                </h1>
-              </div>
-            </div>
-          </>
-        ) : (
-          <Header />
-        )}
+        {location.pathname === "/" ? <LandingView /> : <Header />}
         <Helmet>
           <title>Pvssy Talk – avoir mal n'est pas normal</title>
           <meta
@@ -99,7 +98,6 @@ function App() {
           />
           <meta name="keywords" content="douleurs sexuelles, sexualité" />
         </Helmet>
-
         <div className="main">
           <ScrollToTop />
           <Breadcrumbs />
@@ -117,7 +115,7 @@ function App() {
                     </Route>
                     <Route
                       path="s-informer/ressources/glossaire"
-                      element={<Lexique />}
+                      element={<Glossary />}
                     />
                     <Route
                       path="s-informer/ressources/exercices"
@@ -185,7 +183,6 @@ function App() {
             </EventsContextProvider>
           </ContactsContextProvider>
         </div>
-
         <Footer />
       </AuthContextProvider>
     </>

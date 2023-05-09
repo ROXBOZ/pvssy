@@ -37,6 +37,9 @@ const addPain = async (req, res) => {
     parenthood,
     checkup,
     pleasure,
+    tags,
+    shemaDef1,
+    shemaDef2,
   } = req.body;
 
   try {
@@ -58,6 +61,9 @@ const addPain = async (req, res) => {
       parenthood,
       checkup,
       pleasure,
+      tags,
+      shemaDef1,
+      shemaDef2,
     });
     const savedPain = await newPain.save();
     // res.header("Access-Control-Allow-Origin", "*");
@@ -66,6 +72,9 @@ const addPain = async (req, res) => {
       pain: {
         name: savedPain.name,
         img: savedPain.img,
+        tags: savedPain.tags,
+        shemaDef1: savedPain.shemaDef1,
+        shemaDef2: savedPain.shemaDef2,
         medical: {
           def: savedPain.def,
           diag: savedPain.diag,

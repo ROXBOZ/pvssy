@@ -81,6 +81,18 @@ const painSchema = new mongoose.Schema({
   pleasure: {
     type: Array,
   },
+
+  tags: {
+    type: Array,
+  },
+
+  shemaDef1: {
+    type: Array,
+  },
+
+  shemaDef2: {
+    type: Array,
+  },
 });
 
 const painModel = mongoose.model("pain", painSchema);

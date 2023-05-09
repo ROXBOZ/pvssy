@@ -111,7 +111,11 @@ export const AuthContextProvider = (props) => {
   }, [token]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex-center" style={{ height: "100vh", width: "100vw" }}>
+        <p className="msg pending">chargement...</p>
+      </div>
+    );
   }
 
   const seePassword = (e) => {

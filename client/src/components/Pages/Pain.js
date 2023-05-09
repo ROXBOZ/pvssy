@@ -42,7 +42,6 @@ const Pain = () => {
                 to="litterature-et-medias"
                 title="Littérature et médias"
               />
-              <TitleLink to="annuaire" title="Annuaire" />
             </div>
           </>
         )}

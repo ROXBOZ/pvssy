@@ -2,38 +2,43 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  //FIXME button inside a link + inline CSS
   const currentYear = new Date().getFullYear();
   const location = useLocation();
   const isHome = location.pathname === "/";
+
+  const MoodBanner = () => {
+    return (
+      <div className="banner">
+        <p>
+          <span className="h3">
+            partager · témoigner · proposer · diffuser · échanger · discuter ·
+            exprimer, informer · apprendre · soutenir · encourager ·
+            sensibiliser · explorer · réfléchir · éduquer · inspirer ·
+            influencer · défendre · promouvoir · célébrer · connecter · unir ·
+            engager · agir ? Let’s <span className="logo">pvssy talk</span>!
+          </span>
+          <span className="h3">
+            partager · témoigner · proposer · diffuser · échanger · discuter ·
+            exprimer, informer · apprendre · soutenir · encourager ·
+            sensibiliser · explorer · réfléchir · éduquer · inspirer ·
+            influencer · défendre · promouvoir · célébrer · connecter · unir ·
+            engager · agir ? Let’s <span className="logo">pvssy talk</span>!
+          </span>
+        </p>
+      </div>
+    );
+  };
+
   return (
     <>
-      {isHome && (
-        <div class="banner">
-          <p>
-            <span className="h3">
-              partager · témoigner · proposer · diffuser · échanger · discuter ·
-              exprimer, informer · apprendre · soutenir · encourager ·
-              sensibiliser · explorer · réfléchir · éduquer · inspirer ·
-              influencer · défendre · promouvoir · célébrer · connecter · unir ·
-              engager · agir ? Let’s <span className="logo">pvssy talk</span>!
-            </span>
-            <span className="h3">
-              partager · témoigner · proposer · diffuser · échanger · discuter ·
-              exprimer, informer · apprendre · soutenir · encourager ·
-              sensibiliser · explorer · réfléchir · éduquer · inspirer ·
-              influencer · défendre · promouvoir · célébrer · connecter · unir ·
-              engager · agir ? Let’s <span className="logo">pvssy talk</span>!
-            </span>
-          </p>
-        </div>
-      )}
-
+      {isHome && <MoodBanner />}
       <footer>
         <div className="footer-main">
           <div className="footer-column">
             <a
-              href="mailto:info@pvssy-talk.org"
               className="h3"
+              href="mailto:info@pvssy-talk.org"
               style={{ border: "none" }}
             >
               Let’s <span className="logo">pvssy talk</span>
@@ -49,13 +54,18 @@ const Footer = () => {
           <div className="footer-column">
             <nav>
               <div className="nav-section">
-                {/* <Link to="">devenir membre</Link>
-              <Link to="faire-un-don">faire un don</Link> */}
-                <Link to="">presse kit</Link>
+                <a
+                  href="https://drive.google.com/drive/folders/1l47TaPu9BNp-Qya2Ips7ovipUBmAejqu"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  presse kit
+                </a>
                 <Link to="conditions-generales">conditions générales</Link>
                 <Link to="accessibilite">Accessibilité</Link>
-                <Link to="/">crédits</Link>
+                <Link to="*">crédits</Link>
               </div>
+
               <div className="nav-section">
                 <a href="mailto:info@pvssy-talk.org">email</a>
                 <Link
