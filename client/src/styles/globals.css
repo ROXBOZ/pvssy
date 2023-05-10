@@ -1352,7 +1352,8 @@ a.term span {
   height: -moz-fit-content;
   height: fit-content;
 }
-.msg-box .msg {
+
+.msg {
   width: -moz-fit-content;
   width: fit-content;
   display: flex;
@@ -1360,44 +1361,44 @@ a.term span {
   padding: 0.5em 1.5em;
   align-items: center;
 }
-.msg-box .msg * {
+.msg * {
   padding: 0;
   margin: 0;
 }
-.msg-box .msg.success {
+.msg.success {
   border-bottom: 1px solid mediumseagreen;
 }
-.msg-box .msg.success:before {
+.msg.success:before {
   content: "👏  ";
 }
-.msg-box .msg.reminder {
+.msg.reminder {
   border-bottom: 1px solid DarkGoldenRod;
 }
-.msg-box .msg.reminder:before {
+.msg.reminder:before {
   content: "🔔  ";
 }
-.msg-box .msg.pending {
+.msg.pending {
   border-bottom: 1px solid #ce96ff;
 }
-.msg-box .msg.pending:before {
+.msg.pending:before {
   content: "⌛  ";
 }
-.msg-box .msg.warning {
+.msg.warning {
   border-bottom: 1px solid #ff560f;
 }
-.msg-box .msg.warning:before {
+.msg.warning:before {
   content: "⚠️  ";
 }
-.msg-box .msg.archived {
+.msg.archived {
   border-bottom: 1px solid dimgrey;
 }
-.msg-box .msg.archived:before {
+.msg.archived:before {
   content: "📁  ";
 }
-.msg-box .msg.error {
+.msg.error {
   border-bottom: 1px solid crimson;
 }
-.msg-box .msg.info:before {
+.msg.info:before {
   content: url("../assets/images/icon-info.svg");
   width: 20px;
   height: 20px;
@@ -1855,10 +1856,6 @@ li.pretitle + h2,
 li.pretitle + h3 {
   margin-top: 0;
   padding-top: 0.25em;
-}
-
-li {
-  margin-top: 1rem;
 }
 
 .subtitle {

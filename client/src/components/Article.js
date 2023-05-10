@@ -291,14 +291,14 @@ const Article = () => {
 
               {painData.auto && painData.auto.length > 0 && (
                 <>
-                  {/* <h3>Que puis-je faire solo ?</h3> */}
+                  <h3>Que puis-je faire solo ?</h3>
                   {highlightParagraphs(painData.auto)}
                 </>
               )}
 
               {painData.proIntro && painData.proIntro.length > 0 && (
                 <>
-                  {/* <h3>Qui consulter ?</h3> */}
+                  <h3>Qui consulter ?</h3>
                   {painData.proIntro && highlightParagraphs(painData.proIntro)}
                 </>
               )}

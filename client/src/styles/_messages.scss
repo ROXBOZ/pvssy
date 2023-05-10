@@ -15,65 +15,65 @@ $archived-color: dimgrey;
     white-space: nowrap;
     height: fit-content;
   }
+}
 
-  .msg {
-    width: fit-content;
-    display: flex;
-    gap: 0.5em;
-    padding: $padding-btn;
-    align-items: center;
+.msg {
+  width: fit-content;
+  display: flex;
+  gap: 0.5em;
+  padding: $padding-btn;
+  align-items: center;
 
-    * {
-      padding: 0;
-      margin: 0;
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  &.success {
+    border-bottom: $border-solid $success-color;
+    &:before {
+      content: ("👏  ");
     }
+  }
 
-    &.success {
-      border-bottom: $border-solid $success-color;
-      &:before {
-        content: ("👏  ");
-      }
+  &.reminder {
+    border-bottom: $border-solid $reminder-color;
+    &:before {
+      content: ("🔔  ");
     }
+  }
 
-    &.reminder {
-      border-bottom: $border-solid $reminder-color;
-      &:before {
-        content: ("🔔  ");
-      }
+  &.pending {
+    border-bottom: $border-solid $pending-color;
+    &:before {
+      content: ("⌛  ");
     }
+  }
 
-    &.pending {
-      border-bottom: $border-solid $pending-color;
-      &:before {
-        content: ("⌛  ");
-      }
+  &.warning {
+    border-bottom: $border-solid $warning-color;
+    &:before {
+      content: ("⚠️  ");
     }
+  }
 
-    &.warning {
-      border-bottom: $border-solid $warning-color;
-      &:before {
-        content: ("⚠️  ");
-      }
+  &.archived {
+    border-bottom: $border-solid $archived-color;
+    &:before {
+      content: ("📁  ");
     }
+  }
 
-    &.archived {
-      border-bottom: $border-solid $archived-color;
-      &:before {
-        content: ("📁  ");
-      }
-    }
+  &.error {
+    border-bottom: $border-solid $error-color;
+  }
 
-    &.error {
-      border-bottom: $border-solid $error-color;
-    }
-
-    &.info {
-      &:before {
-        content: url("../assets/images/icon-info.svg");
-        width: 20px;
-        height: 20px;
-        padding-top: 2.5px;
-      }
+  &.info {
+    &:before {
+      content: url("../assets/images/icon-info.svg");
+      width: 20px;
+      height: 20px;
+      padding-top: 2.5px;
     }
   }
 }
