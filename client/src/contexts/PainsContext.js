@@ -21,6 +21,7 @@ export const PainsContextProvider = (props) => {
   const [allExercises, setAllExercises] = useState([]);
   const [allSources, setAllSources] = useState([]);
   const [selectedTag, setSelectedTag] = useState(null);
+
   let painTags = ["vulve", "vagin", "utérus", "règles", "pénétration"];
   let painList = [
     "Vaginisme",
