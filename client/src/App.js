@@ -19,7 +19,7 @@ import Agenda from "./components/Pages/Agenda";
 import GeneralConditions from "./components/Pages/GeneralConditions";
 import Pains from "./components/Pages/Pains";
 import Pain from "./components/Pages/Pain";
-import PainArticle from "./components/PainArticle";
+import Article from "./components/Article";
 import Directory from "./components/Pages/Directory";
 import Ressources from "./components/Pages/Ressources";
 import Login from "./components/Pages/Login";
@@ -109,8 +109,8 @@ function App() {
                     <Route path="a-propos" element={<About />} />
                     <Route path="s-informer/douleurs" element={<Pains />} />
                     <Route path="s-informer/douleurs/:name" element={<Pain />}>
-                      <Route path="medical" element={<PainArticle />} />
-                      <Route path="sexologie" element={<PainArticle />} />
+                      <Route path="medical" element={<Article />} />
+                      <Route path="sexologie" element={<Article />} />
                     </Route>
                     <Route
                       path="s-informer/ressources/glossaire"

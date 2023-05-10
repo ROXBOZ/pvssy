@@ -1,7 +1,7 @@
-$success-color: mediumseagreen;
-$reminder-color: DarkGoldenRod;
 $pending-color: $secondary;
 $warning-color: $primary;
+$success-color: mediumseagreen;
+$reminder-color: DarkGoldenRod;
 $error-color: crimson;
 $archived-color: dimgrey;
 
@@ -15,77 +15,65 @@ $archived-color: dimgrey;
     white-space: nowrap;
     height: fit-content;
   }
-}
 
-.msg {
-  width: fit-content;
-  display: flex;
-  gap: 0.5em;
+  .msg {
+    width: fit-content;
+    display: flex;
+    gap: 0.5em;
+    padding: $padding-btn;
+    align-items: center;
 
-  padding: $padding-btn;
-  align-items: center;
-
-  * {
-    padding: 0;
-    margin: 0;
-  }
-
-  &.success {
-    border-bottom: $border-solid $success-color;
-
-    &:before {
-      content: ("👏  ");
+    * {
+      padding: 0;
+      margin: 0;
     }
-  }
 
-  &.reminder {
-    border-bottom: $border-solid $reminder-color;
-
-    &:before {
-      content: ("🔔  ");
+    &.success {
+      border-bottom: $border-solid $success-color;
+      &:before {
+        content: ("👏  ");
+      }
     }
-  }
 
-  &.pending {
-    border-bottom: $border-solid $pending-color;
-    &:before {
-      content: ("⌛  ");
+    &.reminder {
+      border-bottom: $border-solid $reminder-color;
+      &:before {
+        content: ("🔔  ");
+      }
     }
-  }
 
-  &.warning {
-    border-bottom: $border-solid $warning-color;
-
-    &:before {
-      content: ("⚠️  ");
-      width: 20px;
-      height: auto;
+    &.pending {
+      border-bottom: $border-solid $pending-color;
+      &:before {
+        content: ("⌛  ");
+      }
     }
-  }
 
-  &.archived {
-    color: $archived-color;
-    &.bordered {
-      border: $border-solid lighten($archived-color, 30%);
+    &.warning {
+      border-bottom: $border-solid $warning-color;
+      &:before {
+        content: ("⚠️  ");
+      }
     }
-    &:before {
-      content: ("📁  ");
-    }
-  }
 
-  &.error {
-    color: $error-color;
-    &.bordered {
-      border: $border-solid lighten($error-color, 30%);
+    &.archived {
+      border-bottom: $border-solid $archived-color;
+      &:before {
+        content: ("📁  ");
+      }
     }
-  }
 
-  &.info {
-    &:before {
-      content: url("../assets/images/icon-info.svg");
-      width: 20px;
-      height: 20px;
-      padding-top: 2.5px;
+    &.error {
+      border-bottom: $border-solid $error-color;
+    }
+
+    &.info {
+      &:before {
+        content: url("../assets/images/icon-info.svg");
+        width: 20px;
+        height: 20px;
+        padding-top: 2.5px;
+      }
     }
   }
 }
@@ -96,19 +84,19 @@ $archived-color: dimgrey;
     margin: 0;
     padding: 0;
   }
-}
 
-.error-list:not(:empty) {
-  display: block;
-  padding: 0;
-  line-height: 2;
-  color: $error-color;
-  grid-column: 1/6;
-  li {
-    font-family: $font-medium;
-    list-style: none;
-    &:before {
-      content: ("🚨  ");
+  &:not(:empty) {
+    display: block;
+    padding: 0;
+    line-height: 2;
+    color: $error-color;
+    grid-column: 1/6;
+    li {
+      font-family: $font-medium;
+      list-style: none;
+      &:before {
+        content: ("🚨  ");
+      }
     }
   }
 }
@@ -117,7 +105,7 @@ $archived-color: dimgrey;
   width: fit-content;
   a {
     border-bottom: none;
-    padding-left: 16px; /* Add padding to create space */
+    padding-left: 16px;
   }
   &:before {
     position: absolute;

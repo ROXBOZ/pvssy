@@ -11,7 +11,7 @@ import React, {
   useState,
 } from "react";
 
-const PainArticle = () => {
+const Article = () => {
   let currentURL = window.location.pathname;
   let articleRef = document.getElementById("articleRef");
   const submenuRef = useRef(null);
@@ -435,4 +435,4 @@ const PainArticle = () => {
   );
 };
 
-export default PainArticle;
+export default Article;

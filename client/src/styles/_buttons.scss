@@ -1,36 +1,40 @@
 button,
 .button {
   padding: $padding-btn;
-  border-radius: $border-radius;
-  border: $border-solid $secondary;
-  background-color: transparent;
-  font-size: $font-size-basis;
-  font-family: $font-regular;
   width: fit-content;
   height: fit-content !important;
-  cursor: url("../assets/images/cursor-pointer.svg"), auto;
+  font-size: $font-size-basis;
+  font-family: $font-regular;
   white-space: nowrap;
   color: $txt-color;
+  cursor: url("../assets/images/cursor-pointer.svg"), auto;
   transition: background-color $animation-transition;
+  background-color: transparent;
+  border: $border-solid $secondary;
+  border-radius: $border-radius;
 
   &.square {
     padding: 0.25em 0.5em;
   }
+
   &.showPassword {
     color: $txt-color;
     padding: $xs-space;
     align-items: center;
     border: none !important;
+
     &:hover {
       background-color: transparent;
       opacity: 80%;
     }
   }
+
   &:hover {
     color: $txt-color;
     background-color: $secondary;
     border: $border-solid;
   }
+
   &:disabled {
     opacity: 30%;
     pointer-events: none;
@@ -45,10 +49,12 @@ button,
   padding: 0;
   border: none;
 }
+
 .share-button {
   display: flex;
   margin: 0.25em 0 1em;
   gap: 0.5em;
+
   a {
     border-bottom: 0;
   }

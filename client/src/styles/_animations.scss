@@ -46,9 +46,3 @@
     color: $txt-color;
   }
 }
-@keyframes ripple {
-  to {
-    transform: scale(3);
-    opacity: 0;
-  }
-}

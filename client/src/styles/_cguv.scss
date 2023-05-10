@@ -5,11 +5,8 @@
     padding-top: $reg-space;
   }
 
-  ol,
-  ul {
-    li {
-      padding: $xs-space 0;
-    }
+  ol ul li {
+    padding: $xs-space 0;
   }
 
   ol li ul li {

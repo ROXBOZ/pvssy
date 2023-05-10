@@ -1,5 +1,3 @@
-/*-----Grid-----*/
-
 @mixin grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -10,14 +8,11 @@
   }
 }
 
-/*-----Forms-----*/
-
 @mixin lighter-bloc($color) {
   background-color: lighten($color, 15%);
   border: $border-solid lighten($color, 10%);
 }
 
-/*-----Stick-----*/
 @mixin stick {
   position: fixed;
   top: 48vh;

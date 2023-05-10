@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     h3 {
       margin: 0;
       padding: $sm-space 0;
@@ -21,47 +22,32 @@
     border-top: $border-solid;
     padding-top: $sm-space;
     @include grid;
+
     .event-col {
       display: flex;
       flex-direction: column;
-      a {
-        border-bottom: none;
-      }
+
       &:first-child {
         grid-column: #{$grid-first-third};
-
         p {
           margin-bottom: 0;
           border-bottom: $border-solid;
           padding: $xs-space;
+
           &:last-child {
             border-bottom: none;
           }
         }
       }
+
       grid-column: #{$grid-last-thirds};
       .show-counter {
         color: darken($secondary, 30%);
       }
-    }
-  }
-}
 
-@media screen and (max-width: map-get($breakpoints, "sm")) {
-  .event-container {
-    display: flex !important;
-    flex-direction: column;
-    width: 100%;
-    .event-col {
-      width: 100%;
-    }
-  }
-
-  .agenda-entry-title {
-    flex-direction: column;
-    padding-bottom: $sm-space;
-    button {
-      align-self: flex-start;
+      a {
+        border-bottom: none;
+      }
     }
   }
 }
@@ -70,9 +56,31 @@
   margin-top: $sm-space;
   padding-top: $sm-space;
   border-top: $border-solid lighten($primary, 30%);
+
   &:first-of-type {
     margin-top: 0;
     padding-top: 0;
     border-top: none;
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .event-container {
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+
+    .event-col {
+      width: 100%;
+    }
+  }
+
+  .agenda-entry-title {
+    flex-direction: column;
+    padding-bottom: $sm-space;
+
+    button {
+      align-self: flex-start;
+    }
   }
 }

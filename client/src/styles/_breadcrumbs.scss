@@ -1,8 +1,8 @@
 .breadcrumbs {
   display: flex;
+  margin: 5vh 0 10vh;
   color: $txt-color;
   font-size: $smaller-text;
-  margin: 5vh 0 10vh;
 
   .crumb {
     a {
@@ -14,9 +14,9 @@
       white-space: nowrap;
     }
     &:after {
-      color: $txt-color;
       content: "→";
       padding: 0 $xs-space;
+      color: $txt-color;
     }
 
     &:last-child {

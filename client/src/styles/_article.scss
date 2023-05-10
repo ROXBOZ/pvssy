@@ -1,44 +1,31 @@
-// .author {
-//   font-size: $smaller-text;
-//   * {
-//     grid-column: #{$grid-center};
-//   }
-// }
-
-// @media screen and (max-width: map-get($breakpoints, "lg")) {
-//   .author {
-//     * {
-//       grid-column: #{$grid-fullwidth};
-//     }
-//   }
-// }
-
 .article {
-  h2 {
-    &:first-of-type {
-      margin-top: 0;
-    }
+  h2:first-of-type {
+    margin-top: 0;
   }
 
   .menstrual-reminder {
     margin-top: $reg-space * 2;
     padding: $reg-space;
-    border-radius: $border-radius-soft;
     width: 100%;
+    border-radius: $border-radius-soft;
     border: $border-solid $secondary;
     display: flex;
     flex-direction: column;
     gap: $reg-space * 2;
+
     h3 {
       margin-top: 0;
     }
+
     p {
       margin-bottom: 0;
     }
+
     img {
       max-width: $chperline;
     }
   }
+
   ul {
     li {
       margin-bottom: 0.5rem;
@@ -48,15 +35,17 @@
 
 .shema-container {
   padding: $reg-space;
+  width: 100%;
   border-radius: $border-radius-soft;
   margin: $reg-space 0;
-  width: 100%;
   border: $border-solid $secondary;
   align-items: center;
+
   h3 {
     margin: 0;
     padding: 0;
   }
+
   .shema {
     width: 100%;
   }
@@ -74,13 +63,16 @@
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
   .article-container {
-    padding-top: 0;
     display: flex;
     flex-direction: column-reverse;
+    padding-top: 0;
   }
 
   .menstrual-reminder {
+    margin-top: $reg-space * 2;
+    padding: $reg-space;
     width: auto !important;
+
     img {
       max-width: 100% !important;
     }
@@ -88,6 +80,7 @@
 
   .shema-container {
     width: auto;
+
     img {
       max-width: 100%;
     }

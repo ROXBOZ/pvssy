@@ -5,24 +5,25 @@
 
 .link-card {
   grid-column: span 3;
-  border-bottom: none;
-  color: $txt-color;
-  display: flex;
   width: 100%;
+  display: flex;
+  color: $txt-color;
+  border-bottom: none;
 
   .card {
-    background-color: $bg-color;
-    border: $border-solid $secondary;
-    border-radius: $border-radius-soft;
     display: flex;
     flex-direction: column;
     flex: max-content;
-    overflow: hidden;
     align-items: center;
+    overflow: hidden;
+    background-color: $bg-color;
+    border: $border-solid $secondary;
+    border-radius: $border-radius-soft;
 
     h3 {
       margin: $reg-space 0;
     }
+
     img {
       width: 100%;
     }
@@ -35,24 +36,16 @@
     }
   }
 
-  &.article .card {
-    padding: $reg-space;
-    text-align: center;
-  }
-
   &.article {
     grid-column: span 6;
+
     .card {
       background: $gradient;
     }
-  }
 
-  @media screen and (max-width: map-get($breakpoints, "sm")) {
-    .card-grid {
-      .link-card.article {
-        margin-top: 0;
-        grid-column: span 1 !important;
-      }
+    &.card {
+      padding: $reg-space;
+      text-align: center;
     }
   }
 }
@@ -61,19 +54,15 @@
   margin-top: $reg-space;
   overflow: hidden;
 
-  a {
-    color: $txt-color;
-  }
-
   h3 {
-    cursor: pointer;
-    border-top: $border-solid $secondary;
+    margin: 0;
     padding-top: $sm-space;
+    padding-bottom: $reg-space;
+    border-top: $border-solid $secondary;
     display: flex;
     justify-content: space-between;
-    margin: 0;
-    padding-bottom: $reg-space;
     max-height: fit-content;
+    cursor: pointer;
 
     &:after {
       content: "↗";
@@ -82,11 +71,25 @@
 
     &:hover {
       color: $primary;
+
       &:after {
+        color: $txt-color;
         transition: $animation-transition;
         transform: rotate(45deg);
-        color: $txt-color;
       }
+    }
+  }
+
+  a {
+    color: $txt-color;
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .card-grid {
+    .link-card.article {
+      margin-top: 0;
+      grid-column: span 1 !important;
     }
   }
 }

@@ -1,7 +1,16 @@
 .grid-form {
   margin-bottom: $reg-space;
+
   .form-section {
     @include grid;
+
+    label {
+      font-family: $font-medium;
+      display: flex;
+      align-items: center;
+      grid-column: #{$grid-first-half};
+    }
+
     .input-label-container {
       display: flex;
       align-items: center;
@@ -18,19 +27,14 @@
       }
     }
 
-    label {
-      font-family: $font-medium;
-      display: flex;
-      align-items: center;
-      grid-column: #{$grid-first-half};
-    }
-
     .check-list-container {
       grid-column: 1/12;
+
       .check-list {
         list-style-type: none;
         padding-left: 0;
         grid-column: 1/12;
+
         li:not(:first-child) {
           margin-top: $sm-space;
           padding-top: $sm-space;
@@ -39,73 +43,77 @@
       }
     }
   }
-}
-.react-mde-container {
-  grid-column: #{$grid-second-half};
-}
-.react-mde {
-  border-radius: $border-radius !important;
-  border-color: $txt-color !important;
-  padding: $sm-space;
-  overflow: hidden;
 
-  .mde-header {
-    background-color: transparent;
+  .react-mde-container {
+    grid-column: #{$grid-second-half};
   }
 
-  .mde-text {
-    border-radius: 0;
-  }
-}
+  .react-mde {
+    border-radius: $border-radius !important;
+    border-color: $txt-color !important;
+    padding: $sm-space;
+    overflow: hidden;
 
-.search-bar {
-  padding: 0.5rem 1.5rem !important;
-  border-color: $secondary !important;
-
-  &::placeholder {
-    color: $txt-color;
-    opacity: 50%;
-  }
-}
-
-input[type="text"],
-input[type="datetime-local"],
-input[type="tel"],
-input[type="number"],
-input[type="password"],
-input[type="file"],
-select,
-textarea {
-  background-color: $bg-color;
-  grid-column: #{$grid-second-half};
-  color: $txt-color;
-  border: $border-solid;
-  border-radius: $border-radius;
-  font-family: $font-medium;
-  font-size: 100%;
-  padding: 1rem 1.5rem;
-  &.line {
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    border-bottom: $border-solid;
-  }
-}
-
-@media screen and (max-width: map-get($breakpoints, "sm")) {
-  .form-section {
-    display: flex !important;
-    flex-direction: column;
-    gap: $sm-space !important;
-    label {
-      height: fit-content;
-      width: fit-content;
-      white-space: nowrap;
+    .mde-header {
+      background-color: transparent;
     }
 
-    textarea {
-      min-height: 50vw;
+    .mde-text {
+      border-radius: 0;
+    }
+  }
+
+  .search-bar {
+    padding: 0.5rem 1.5rem !important;
+    border-color: $secondary !important;
+
+    &::placeholder {
+      color: $txt-color;
+      opacity: 50%;
+    }
+  }
+
+  input[type="text"],
+  input[type="datetime-local"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="password"],
+  input[type="file"],
+  select,
+  textarea {
+    background-color: $bg-color;
+    color: $txt-color;
+    border: $border-solid;
+    border-radius: $border-radius;
+    font-family: $font-medium;
+    font-size: 100%;
+    padding: 1rem 1.5rem;
+    grid-column: #{$grid-second-half};
+
+    &.line {
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      border-bottom: $border-solid;
+    }
+  }
+
+  @media screen and (max-width: map-get($breakpoints, "sm")) {
+    .form-section {
+      display: flex !important;
+      flex-direction: column;
+      gap: $sm-space !important;
+
+      label {
+        height: fit-content;
+        width: fit-content;
+        white-space: nowrap;
+      }
+
+      textarea {
+        min-height: 50vw;
+      }
     }
   }
 }
