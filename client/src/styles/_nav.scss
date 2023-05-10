@@ -113,7 +113,7 @@
   }
 
   &.sticky {
-    background-color: red;
+    background-color: $bg-color;
     margin-top: 0;
     position: fixed;
     top: 4.3em;

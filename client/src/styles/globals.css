@@ -1552,7 +1552,7 @@ a.term span {
   max-width: 100%;
 }
 .tabbed-navigation-container.sticky {
-  background-color: red;
+  background-color: #fff7ef;
   margin-top: 0;
   position: fixed;
   top: 4.3em;
