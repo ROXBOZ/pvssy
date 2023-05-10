@@ -56,6 +56,14 @@
       width: 100%;
     }
   }
+
+  .agenda-entry-title {
+    flex-direction: column;
+    padding-bottom: $sm-space;
+    button {
+      align-self: flex-start;
+    }
+  }
 }
 
 .pending-event-card {

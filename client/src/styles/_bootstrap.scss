@@ -12,11 +12,7 @@
   &:active {
     filter: brightness(90%);
   }
-  &:focus {
-    border-color: $primary;
-    outline: 0;
-    box-shadow: 0 0 0 0.15em lighten($primary, 20%);
-  }
+
   &:checked {
     background-color: $primary;
     border-color: $primary;

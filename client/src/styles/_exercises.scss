@@ -91,3 +91,12 @@
     }
   }
 }
+
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .exercise-article,
+  .exercise-closed {
+    * {
+      grid-column: #{$grid-fullwidth} !important;
+    }
+  }
+}

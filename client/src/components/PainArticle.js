@@ -3,7 +3,6 @@ import { PainsContext } from "../contexts/PainsContext";
 import ShareThis from "../utilities/ShareThis";
 import { createParagraph } from "../utilities/createParagraphs";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-
 import React, {
   useContext,
   useEffect,
@@ -11,7 +10,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { HeadingArea } from "../utilities/HeadingArea";
 
 const PainArticle = () => {
   let currentURL = window.location.pathname;
@@ -186,28 +184,36 @@ const PainArticle = () => {
           }`}
           ref={submenuRef}
         >
-          <ShareThis />
-
-          <p className="h4">
-            Ressources
-            <br />
-            {painData.name === "Sopk" ? (
-              <span className="acronym">{painData.name}</span>
-            ) : (
-              <span> {painData.name}</span>
+          <div>
+            {window.innerWidth < 576 && (
+              <p className="h4" style={{ paddingTop: "2rem" }}>
+                Partager cette page
+              </p>
             )}
-          </p>
-          <ul>
-            <li>
-              <Link to="../glossaire">Glossaire</Link>
-            </li>
-            <li>
-              <Link to="../exercices">Exercices</Link>
-            </li>
-            <li>
-              <Link to="../litterature-et-medias">Littérature et médias</Link>
-            </li>
-          </ul>
+            <ShareThis />
+          </div>
+          <div>
+            <p className="h4">
+              Ressources
+              <br />
+              {painData.name === "Sopk" ? (
+                <span className="acronym">{painData.name}</span>
+              ) : (
+                <span> {painData.name}</span>
+              )}
+            </p>
+            <ul>
+              <li>
+                <Link to="../glossaire">Glossaire</Link>
+              </li>
+              <li>
+                <Link to="../exercices">Exercices</Link>
+              </li>
+              <li>
+                <Link to="../litterature-et-medias">Littérature et médias</Link>
+              </li>
+            </ul>
+          </div>
         </div>
         <div>
           {isMed ? (
@@ -292,7 +298,7 @@ const PainArticle = () => {
 
               {painData.proIntro && painData.proIntro.length > 0 && (
                 <>
-                  <h3>Qui consulter ?</h3>
+                  {/* <h3>Qui consulter ?</h3> */}
                   {painData.proIntro && highlightParagraphs(painData.proIntro)}
                 </>
               )}

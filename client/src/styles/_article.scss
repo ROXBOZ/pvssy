@@ -78,4 +78,18 @@
     display: flex;
     flex-direction: column-reverse;
   }
+
+  .menstrual-reminder {
+    width: auto !important;
+    img {
+      max-width: 100% !important;
+    }
+  }
+
+  .shema-container {
+    width: auto;
+    img {
+      max-width: 100%;
+    }
+  }
 }

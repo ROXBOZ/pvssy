@@ -21,6 +21,8 @@ const Pains = () => {
     ? data.filter((p) => p.tags.includes(selectedTag))
     : data;
 
+  console.log("filteredData :", filteredData);
+
   return (
     <div>
       {endsWithDouleurs && (
@@ -53,16 +55,15 @@ const Pains = () => {
       <CreateTags tags={painTags} />
 
       <div className="card-grid">
-        {filteredData.map((p, index) => {
+        {filteredData.map((p) => {
           return (
             <Link
-              key={index}
+              key={p._id}
               className="link-card"
               onClick={scrollToTop}
               to={{
                 pathname: `/s-informer/douleurs/${p.name.toLowerCase()}/medical`,
               }}
-              key={p._id}
             >
               <div className="card">
                 <img src={p.img} alt={p.name} />

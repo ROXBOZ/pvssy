@@ -26,10 +26,6 @@
       width: 0;
     }
   }
-  &:focus {
-    border: 0;
-    outline: 0;
-  }
 }
 
 .footnotes {
@@ -74,6 +70,19 @@
       &:not(:first-child) {
         border-top: $border-solid $secondary;
       }
+    }
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .additional-ressources {
+    ul {
+      grid-column: #{$grid-fullwidth};
+    }
+  }
+  .footnotes {
+    ul {
+      padding-left: $sm-space;
     }
   }
 }
