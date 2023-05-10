@@ -1,0 +1,7 @@
+- une interaction entre les différents endroits du cerveau qui régulent la douleur
+- un dysfonctionnement du périnée ou du système nerveux
+- de l’anxiété ou une dépression
+- un taux bas d’œstrogènes (des hormones sexuelles)
+- une hyper-innervation de la vulve
+- une hypersensibilité de la muqueuse
+- de la maltraitance pendant l’enfance
