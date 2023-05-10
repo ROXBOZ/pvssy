@@ -42,6 +42,11 @@ li {
     }
   }
 }
+
+li {
+  margin-top: $sm-space;
+}
+
 .subtitle {
   max-width: $chperline;
 }

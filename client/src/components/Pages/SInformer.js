@@ -3,6 +3,7 @@ import Pains from "./Pains";
 import Ressources from "./Ressources";
 import { HeadingArea } from "../../utilities/HeadingArea";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const Sinformer = () => {
   return (
@@ -20,6 +21,16 @@ const Sinformer = () => {
         level="h2"
         subtitle="Des pistes pour bien observer ton corps, l’écouter, et mieux localiser tes douleurs."
       />
+
+      <div className="grid-area">
+        <div className="centered">
+          <Link to="introduction">introduction</Link>
+        </div>
+      </div>
+      {/* <div className="ressources-container">
+        <TitleLink to="/s-informer/introduction" title="Introduction" />
+      </div> */}
+
       <HeadingArea
         title="S’informer sur ses douleurs"
         subtitle="Chaque douleur est traitée avec une approche à la fois médicale et sexologique pour te donner une vision complète. Tu trouveras également des ressources pour aller plus loin.

@@ -38,6 +38,7 @@ import Medias from "./components/Pages/Medias";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import getToken from "./utilities/getToken";
+import Introduction from "./components/Pages/Introduction";
 
 function App() {
   const token = getToken();
@@ -108,6 +109,10 @@ function App() {
                     <Route index element={<Home />} />
                     <Route path="a-propos" element={<About />} />
                     <Route path="s-informer/douleurs" element={<Pains />} />
+                    <Route
+                      path="s-informer/introduction"
+                      element={<Introduction />}
+                    />
                     <Route path="s-informer/douleurs/:name" element={<Pain />}>
                       <Route path="medical" element={<Article />} />
                       <Route path="sexologie" element={<Article />} />
