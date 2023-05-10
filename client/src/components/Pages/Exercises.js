@@ -3,11 +3,13 @@ import Exercise from "../Exercise";
 import { PainsContext } from "../../contexts/PainsContext";
 import { HeadingArea } from "../../utilities/HeadingArea";
 import { Helmet } from "react-helmet";
+import CreateTags from "../../utilities/CreateTags";
 
 const Exercises = () => {
   const { fetchAllExercises, allExercises } = useContext(PainsContext);
-
   const [openExerciseId, setOpenExerciseId] = useState(null);
+  const { painList } = useContext(PainsContext);
+  const { selectedTag } = useContext(PainsContext);
 
   const handleExerciseToggle = (id) => {
     setOpenExerciseId((prevId) => (prevId === id ? null : id));
@@ -16,6 +18,10 @@ const Exercises = () => {
   useEffect(() => {
     fetchAllExercises();
   }, []);
+
+  const filteredData = selectedTag
+    ? allExercises.filter((e) => e.relatedPain.includes(selectedTag))
+    : allExercises;
 
   return (
     <div>
@@ -27,10 +33,15 @@ const Exercises = () => {
         />
         <meta name="keywords" content="exercices, douleurs sexuelles" />
       </Helmet>
-      <HeadingArea title="Exercices" level="h1" />
+      <HeadingArea
+        title="Exercices"
+        level="h1"
+        subtitle="gnagnagna et gnagnagna"
+      />
+      <CreateTags tags={painList} />
       <div className="exercises-container">
-        {allExercises &&
-          allExercises.map((ex, index) => (
+        {filteredData &&
+          filteredData.map((ex) => (
             <Exercise
               handleExerciseToggle={handleExerciseToggle}
               exercise={ex}

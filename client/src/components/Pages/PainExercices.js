@@ -28,9 +28,11 @@ const PainExercices = () => {
           painName === "Sopk" ? painName.toUpperCase() : painName.toLowerCase()
         }
       />
+
       <div className="exercises-container">
+        {console.log("requestedExercises :", requestedExercises)}
         {requestedExercises ? (
-          requestedExercises.map((ex, index) => (
+          requestedExercises.map((ex) => (
             <Exercise
               exercise={ex}
               handleExerciseToggle={handleExerciseToggle}

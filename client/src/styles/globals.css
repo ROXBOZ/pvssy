@@ -496,6 +496,7 @@ button:active,
 }
 
 .exercises-container {
+  margin-top: 2rem;
   grid-column: 1/5;
 }
 .exercises-container .exercise .exercise-closed {
@@ -583,16 +584,17 @@ button:active,
   margin-bottom: 0;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step .instructions-step-open {
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ce96ff;
   animation: animationOpacity 0.2s ease-in ease-in;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step .instructions-step-open:first-of-type {
   margin-top: 1rem;
 }
 .exercises-container .exercise .exercise-open .exercise-article .instructions .instructions-step p {
-  padding: 2rem;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  border: 1px solid #ce96ff;
+  margin-bottom: 0;
 }
 
 @media screen and (max-width: 576px) {
@@ -816,18 +818,6 @@ footer .footer-bottom .copyrights {
 .grid-form .react-mde .mde-text {
   border-radius: 0;
 }
-.grid-form .search-bar {
-  padding: 0.5rem 1.5rem !important;
-  border-color: #ce96ff !important;
-}
-.grid-form .search-bar::-moz-placeholder {
-  color: #31064b;
-  opacity: 50%;
-}
-.grid-form .search-bar::placeholder {
-  color: #31064b;
-  opacity: 50%;
-}
 .grid-form input[type=text],
 .grid-form input[type=datetime-local],
 .grid-form input[type=tel],
@@ -875,6 +865,20 @@ footer .footer-bottom .copyrights {
   .grid-form .form-section textarea {
     min-height: 50vw;
   }
+}
+
+.search-bar {
+  padding: 0.5rem 1.5rem !important;
+  border: 1px solid #ce96ff !important;
+  border-radius: 50px;
+}
+.search-bar::-moz-placeholder {
+  color: #31064b;
+  opacity: 50%;
+}
+.search-bar::placeholder {
+  color: #31064b;
+  opacity: 50%;
 }
 
 .grid-area {
@@ -1139,8 +1143,8 @@ header nav.horizontal ul li .profile-in-header a p {
   aspect-ratio: 16/9;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  -o-object-position: cover;
+     object-position: cover;
 }
 @media screen and (max-width: 576px) {
   .pain-illu-cover {
@@ -1158,6 +1162,10 @@ figure {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  max-width: 100%;
+}
+figure img {
+  max-width: 100%;
 }
 figure span {
   padding-top: 0.5rem;
@@ -1556,12 +1564,11 @@ a.term span {
   background-color: #fff7ef;
   margin-top: 0;
   position: fixed;
-  top: 4.3em;
+  top: 0;
   width: 66vw;
   align-self: center;
   justify-self: center;
   transition: width 400ms ease-out;
-  padding: 0.5rem 0;
 }
 .tabbed-navigation-container.sticky + .article-container {
   padding-top: 10vh;
@@ -1630,7 +1637,9 @@ a.term span {
     width: 100%;
   }
   .tabbed-navigation-container.sticky {
+    top: 4.3em;
     width: 100vw;
+    padding: 0.5rem 0;
   }
 }
 .userProfile-info {
@@ -1703,6 +1712,7 @@ a.term span {
 }
 
 .additional-ressources {
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 1rem;
@@ -1944,7 +1954,7 @@ h4,
   font-size: 1.333rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
-  margin-top: calc(1.333rem * 2);
+  margin-top: calc(1.333rem);
   margin-bottom: calc(1.333rem/ 1.5);
   font-size: clamp(
         1rem,
@@ -1963,7 +1973,7 @@ h3,
   font-size: 1.776889rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
-  margin-top: calc(1.776889rem * 2);
+  margin-top: calc(1.776889rem);
   margin-bottom: calc(1.776889rem/ 1.5);
   font-size: clamp(
         1.19051563rem,
@@ -1982,7 +1992,7 @@ h2,
   font-size: 2.368593037rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
-  margin-top: calc(2.368593037rem * 2);
+  margin-top: calc(2.368593037rem);
   margin-bottom: calc(2.368593037rem/ 1.5);
   font-size: clamp(
         1.5869573348rem,
@@ -2001,7 +2011,7 @@ h1,
   font-size: 3.1573345183rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
-  margin-top: calc(3.1573345183rem * 2);
+  margin-top: calc(3.1573345183rem);
   margin-bottom: calc(3.1573345183rem/ 1.5);
   font-size: clamp(
         2.1154141273rem,

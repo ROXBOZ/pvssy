@@ -1,8 +1,16 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const Introduction = () => {
   return (
     <div className="grid-area">
+      <Helmet>
+        <title>Introduction</title>
+        <meta
+          name="description"
+          content="Introduction à Pvssy Talk, le site qui parle des douleurs sexuelles."
+        />
+      </Helmet>
       <div className="centered">
         <h1>Introduction</h1>
         <h2>Normalité</h2>

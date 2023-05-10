@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { createParagraph } from "../utilities/createParagraphs";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 const Exercise = ({ exercise, isExerciseOpen, handleExerciseToggle }) => {
   const [openStepId, setOpenStepId] = useState(null);
@@ -42,7 +43,7 @@ const Exercise = ({ exercise, isExerciseOpen, handleExerciseToggle }) => {
               {step.stepInstructions.map((instruction, index) => {
                 return (
                   <p className="instructions-step-open" key={index}>
-                    {instruction}
+                    <ReactMarkdown>{instruction}</ReactMarkdown>
                   </p>
                 );
               })}

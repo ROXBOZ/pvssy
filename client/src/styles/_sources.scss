@@ -53,6 +53,7 @@
 }
 
 .additional-ressources {
+  margin-top: $reg-space;
   @include grid;
   ul {
     grid-column: #{$grid-center};

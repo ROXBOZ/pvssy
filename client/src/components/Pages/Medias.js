@@ -12,7 +12,7 @@ const Medias = () => {
   const medias = ["livre", "bande dessinée", "article", "podcast", "vidéo"];
 
   const filteredData = selectedTag
-    ? allSources.filter((p) => p.category.includes(selectedTag))
+    ? allSources.filter((p) => p.category.toLowerCase().includes(selectedTag))
     : allSources;
 
   useEffect(() => {
@@ -37,7 +37,11 @@ const Medias = () => {
           content="Livres, articles, podcasts, vidéos et bandes dessinées en lien avec les douleurs sexuelles"
         />
       </Helmet>
-      <HeadingArea title="Littérature et médias" level="h1" />
+      <HeadingArea
+        title="Littérature et médias"
+        level="h1"
+        subtitle="gna gna gnaaa"
+      />
 
       <CreateTags tags={medias} />
       <SourceList sources={filteredData} />

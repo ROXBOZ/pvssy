@@ -29,6 +29,9 @@ export const PainsContextProvider = (props) => {
     "SOPK",
     "Lichen scléreux",
     "Vaginite et mycose",
+    "Sécheresse vaginale",
+    "Utérus rétroversé",
+    "Vulvodynie",
   ];
   let painName =
     index !== -1 && index + 1 < segments.length

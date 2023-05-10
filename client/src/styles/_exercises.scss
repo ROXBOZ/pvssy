@@ -1,4 +1,5 @@
 .exercises-container {
+  margin-top: $reg-space;
   grid-column: 1/5;
 
   .exercise {
@@ -84,6 +85,11 @@
             }
 
             .instructions-step-open {
+              padding: $reg-space;
+              border-radius: $border-radius-soft;
+              margin-bottom: $sm-space;
+              border: $border-solid $secondary;
+
               &:first-of-type {
                 margin-top: $sm-space;
               }
@@ -91,10 +97,7 @@
             }
 
             p {
-              padding: $reg-space;
-              border-radius: $border-radius-soft;
-              margin-bottom: $sm-space;
-              border: $border-solid $secondary;
+              margin-bottom: 0;
             }
           }
         }

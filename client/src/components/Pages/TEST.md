@@ -1,7 +1,4 @@
-- une interaction entre les différents endroits du cerveau qui régulent la douleur
-- un dysfonctionnement du périnée ou du système nerveux
-- de l’anxiété ou une dépression
-- un taux bas d’œstrogènes (des hormones sexuelles)
-- une hyper-innervation de la vulve
-- une hypersensibilité de la muqueuse
-- de la maltraitance pendant l’enfance
+Déterminez ensemble les limites et les possibilités en fonction de l’intensité de tes douleurs. **Par exemple** :
+-- Vert : sexualité génitale possible avec pénétration vaginale, en option avec un anneau de confort et une position de pénétration peu profonde
+-- Orange : sexualité génitale possible sans pénétration
+-- Rouge : intimité de type caresses ou massages, pas de génitalité, pas de pénétration.

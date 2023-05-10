@@ -25,6 +25,8 @@ const Sinformer = () => {
       <div className="grid-area">
         <div className="centered">
           <Link to="introduction">introduction</Link>
+          <br />
+          <Link to="auto-observation">Guide d’auto-observation</Link>
         </div>
       </div>
       {/* <div className="ressources-container">

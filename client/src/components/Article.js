@@ -288,6 +288,7 @@ const Article = () => {
               )}
 
               <h2>Comment me soigner ?</h2>
+              <p style={{ color: "red" }}>!!!ERROR RESTRUCTURE</p>
 
               {painData.auto && painData.auto.length > 0 && (
                 <>
@@ -315,10 +316,10 @@ const Article = () => {
             </div>
           ) : (
             <div className="article">
-              <h2>Lien à soi</h2>
+              <h2>Ma vie avec la douleur</h2>
               {painData.body && painData.body.length > 0 && (
                 <>
-                  <h3>Image /schéma corporel</h3>
+                  <h3>Moi et mon corps</h3>
                   {highlightParagraphs(painData.body)}
                 </>
               )}
@@ -375,7 +376,7 @@ const Article = () => {
 
               {painData.treatment && painData.treatment.length > 0 && (
                 <>
-                  <h2>Traitement</h2>
+                  <h2>Quels soins pour me soulager</h2>
                   {highlightParagraphs(painData.treatment)}
                 </>
               )}
