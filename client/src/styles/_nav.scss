@@ -113,13 +113,16 @@
   }
 
   &.sticky {
+    background-color: $bg-color;
     margin-top: 0;
     position: fixed;
-    top: 0;
+    top: 4.3em;
     width: 66vw;
     align-self: center;
     justify-self: center;
     transition: width 400ms ease-out;
+    padding: $xs-space 0;
+
     & + .article-container {
       padding-top: 10vh;
     }
@@ -185,11 +188,11 @@
     }
   }
   .tabbed-navigation-container {
-    background-color: $bg-color;
-    height: 69px;
+    // background-color: $bg-color;
+    // height: 69px;
     display: flex;
     align-items: center;
-    z-index: 999999;
+    // z-index: 999999;
     .tabbed-navigation {
       width: 100%;
     }
