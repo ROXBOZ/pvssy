@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 import { useLocation } from "react-router-dom";
@@ -21,7 +21,9 @@ const Pains = () => {
     ? data.filter((p) => p.tags.includes(selectedTag))
     : data;
 
-  console.log("filteredData :", filteredData);
+  // useEffect(() => {
+  //   CreateTags(painTags);
+  // }, []);
 
   return (
     <div>
@@ -52,6 +54,7 @@ const Pains = () => {
           <nobr>as-tu mal ?</nobr>
         </p>
       </div>
+
       <CreateTags tags={painTags} />
 
       <div className="card-grid">

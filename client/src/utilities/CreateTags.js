@@ -1,9 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useContext, useEffect } from "react";
+import { PainsContext } from "../contexts/PainsContext";
 
 const CreateTags = (tags) => {
-  const [selectedTag, setSelectedTag] = useState(null);
+  const { selectedTag, setSelectedTag } = useContext(PainsContext);
+
+  useEffect(() => {
+    return () => {
+      setSelectedTag(null);
+    };
+  }, [setSelectedTag]);
 
   const handleFilter = (tag) => {
     setSelectedTag((prevTag) => (prevTag === tag ? null : tag));

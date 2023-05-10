@@ -11,6 +11,7 @@ import { fromNowToDate } from "../../utilities/fromNowToDate";
 import { HeadingArea } from "../../utilities/HeadingArea";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import CreateTags from "../../utilities/CreateTags";
+import { PainsContext } from "../../contexts/PainsContext";
 import { Helmet } from "react-helmet";
 
 const Agenda = () => {
@@ -20,8 +21,7 @@ const Agenda = () => {
   const currentUrl = location.pathname;
   const endsWithAgenda = /agenda$/.test(currentUrl);
   const [openAccordion, setOpenAccordion] = useState(null);
-  const [selectedTag] = useState(null);
-
+  const { selectedTag } = useContext(PainsContext);
   const { fetchData, data, agendaURL } = useContext(EventsContext);
 
   const redirectToMeeting = (url) => {
