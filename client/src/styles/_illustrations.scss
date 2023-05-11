@@ -1,3 +1,9 @@
+img {
+  // filter: hue-rotate(5deg) brightness(1.1) contrast(1.1);
+  // mix-blend-mode: multiply;
+  mix-blend-mode: multiply;
+}
+
 .pain-illu-cover {
   width: 100%;
   border-radius: $border-radius-soft;

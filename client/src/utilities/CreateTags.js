@@ -19,11 +19,21 @@ const CreateTags = (tags) => {
   const handleReset = () => {
     setSelectedTag(null);
   };
+
+  console.log("selectedTag :", selectedTag);
   return (
     <div className="grid-area">
       <div className="tag-container">
         {tags.tags.map((tag, index) => {
-          return (
+          return tag === "SOPK" ? (
+            <span
+              key={index}
+              className={`acronym tag ${selectedTag === tag ? "active" : ""} `}
+              onClick={() => handleFilter(tag)}
+            >
+              {tag}
+            </span>
+          ) : (
             <span
               key={index}
               className={`tag ${selectedTag === tag ? "active" : ""} `}

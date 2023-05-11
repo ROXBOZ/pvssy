@@ -66,9 +66,13 @@ $archived-color: dimgrey;
 
   &.error {
     border-bottom: $border-solid $error-color;
+    &:before {
+      content: ("🚩 ");
+    }
   }
 
   &.info {
+    border-bottom: $border-solid $secondary;
     &:before {
       content: url("../assets/images/icon-info.svg");
       width: 20px;

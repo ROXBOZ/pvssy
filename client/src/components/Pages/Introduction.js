@@ -1,19 +1,24 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import Author from "../../utilities/Author";
 
 const Introduction = () => {
   return (
     <div className="grid-area">
       <Helmet>
-        <title>Introduction</title>
+        <title>Introduction aux douleurs</title>
         <meta
           name="description"
           content="Introduction à Pvssy Talk, le site qui parle des douleurs sexuelles."
         />
       </Helmet>
       <div className="centered">
-        <h1>Introduction</h1>
-        <h2>Normalité</h2>
+        <h1>Introduction aux douleurs</h1>
+        <Author
+          name="MedSexplain (AEMG)"
+          url="https://aemg-ge.com/medsexplain/"
+        />
+
         <p>
           S’il y a une chose à retenir c’est qu’il n’est pas normal d’avoir mal
           pendant les rapports sexuels. Si c’est le cas, c’est un signe que
@@ -68,7 +73,7 @@ const Introduction = () => {
             sont bien réelles. Leur causes peuvent varier, on les distingue en
             plusieurs catégories :
           </strong>
-          <ul>
+          <ul className="breathing">
             <li>
               <strong> les douleurs musculaires</strong> <br />
               Tous nos muscles peuvent faire mal pour toutes sortes de raison,
@@ -110,7 +115,7 @@ const Introduction = () => {
             </li>
           </ul>
           <h3>Pour synthétiser</h3>
-          <ol>
+          <ol className="breathing">
             <li>Une douleur, c’est jamais que “dans la tête”. </li>
             <li>Une douleur pendant les rapports, ça n’est jamais “normal”.</li>
             <li>

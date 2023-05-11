@@ -5,9 +5,15 @@
   .exercise {
     .exercise-closed {
       @include grid;
+      margin-top: $sm-space;
       border-bottom: $border-solid $secondary;
       padding: $sm-space 0;
       align-items: flex-end;
+
+      .pretitle {
+        grid-column: #{$grid-fullwidth};
+        width: fit-content;
+      }
 
       h2 {
         grid-column: #{$grid-first-third};

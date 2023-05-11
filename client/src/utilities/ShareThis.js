@@ -43,7 +43,7 @@ const ShareThis = () => {
         <a
           aria-label="partager par email"
           className="tooltip"
-          href="mailto:info@pvssy-talk.org"
+          href="mailto:hello@pvssy-talk.org"
         >
           <EmailIcon
             size={30}

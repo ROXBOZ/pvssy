@@ -28,21 +28,50 @@ const About = () => {
             impliquée et motivée à aider les patient·es concerné·es par les
             douleurs que la plateforme existe aujourd’hui. Les contenus ont été
             réalisés par les psycho-sexologues de{" "}
-            <Link to="https://www.sexopraxis.ch">Sexopraxis</Link> et les
-            médecin de l’association{" "}
-            <Link to="https://aemg-ge.com/medsexplain/">Medsexplain</Link>.
+            <Link
+              to="https://www.sexopraxis.ch"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Sexopraxis
+            </Link>{" "}
+            et les médecin du projet{" "}
+            <Link
+              to="https://aemg-ge.com/medsexplain/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              MedSexplain (AEMG)
+            </Link>
+            .
           </p>
           <p>
-            <Link to="https://as-takoordyal.com">
+            <Link
+              to="https://as-takoordyal.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <nobr>Anne-Soorya</nobr> Takoordyal
             </Link>
             , créatrice et cheffe de projet
             <br />
-            <Link to="https://www.roxanne-borloz.net">Roxanne Borloz</Link>,
-            développeuse web
+            <Link
+              to="https://www.roxanne-borloz.net"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Roxanne Borloz
+            </Link>
+            , développeuse web
             <br />
-            <Link to="https://noemiecreux.com">Noémie Creux</Link>,
-            illustratrice
+            <Link
+              to="https://noemiecreux.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Noémie Creux
+            </Link>
+            , illustratrice
             <br />
             <u>Isaline Rogg</u>, communication
           </p>

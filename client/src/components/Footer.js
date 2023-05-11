@@ -38,7 +38,7 @@ const Footer = () => {
           <div className="footer-column">
             <a
               className="h3"
-              href="mailto:info@pvssy-talk.org"
+              href="mailto:hello@pvssy-talk.org"
               style={{ border: "none" }}
             >
               Let’s <span className="logo">pvssy talk</span>
@@ -67,7 +67,7 @@ const Footer = () => {
               </div>
 
               <div className="nav-section">
-                <a href="mailto:info@pvssy-talk.org">email</a>
+                <a href="mailto:hello@pvssy-talk.org">email</a>
                 <Link
                   target="_blank"
                   rel="noopener noreferrer"

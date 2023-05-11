@@ -11,7 +11,7 @@ const NotFound = () => {
           <Link to="/">Retour à la page d’accueil</Link>.
           <br />
           Tu as détecté un bug ?{" "}
-          <a href="mailto:info@pvssy-talk.org">Avertis nous par email</a>.
+          <a href="mailto:hello@pvssy-talk.org">Avertis nous par email</a>.
         </p>
       </div>
     </div>

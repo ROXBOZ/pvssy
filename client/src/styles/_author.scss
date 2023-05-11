@@ -1,0 +1,9 @@
+.author {
+  font-family: $font-regular-italic;
+  //   padding-bottom: $xs-space;
+  margin-bottom: $reg-space;
+  display: flex;
+  &:before {
+    content: ("par ");
+  }
+}

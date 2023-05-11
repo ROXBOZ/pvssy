@@ -40,6 +40,7 @@ import Footer from "./components/Footer";
 import getToken from "./utilities/getToken";
 import Introduction from "./components/Pages/Introduction";
 import AutoObservation from "./components/Pages/AutoObservation";
+import Consultation from "./components/Pages/Consultation";
 
 function App() {
   const token = getToken();
@@ -117,6 +118,10 @@ function App() {
                     <Route
                       path="s-informer/auto-observation"
                       element={<AutoObservation />}
+                    />
+                    <Route
+                      path="s-informer/consulter"
+                      element={<Consultation />}
                     />
                     <Route path="s-informer/douleurs/:name" element={<Pain />}>
                       <Route path="medical" element={<Article />} />

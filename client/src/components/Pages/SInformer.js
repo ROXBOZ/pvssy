@@ -24,9 +24,11 @@ const Sinformer = () => {
 
       <div className="grid-area">
         <div className="centered">
-          <Link to="introduction">introduction</Link>
+          <Link to="introduction">Introduction</Link>
           <br />
           <Link to="auto-observation">Guide d’auto-observation</Link>
+          <br />
+          <Link to="consulter">Consulter des pros de la santé</Link>
         </div>
       </div>
       {/* <div className="ressources-container">

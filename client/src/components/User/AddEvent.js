@@ -22,6 +22,7 @@ const AddEvent = () => {
   const formRef = useRef();
   const { userProfile } = useContext(AuthContext);
   const [eventType, setEventType] = useState("offline");
+  const [eventIsOneDay, setEventIsOneDay] = useState(true);
   const [eventEntry, setEventEntry] = useState("gratuite");
   const [organizerIsUserName, setOrganizerIsUserName] = useState(false);
   const [conditionsAccepted, setConditionsAccepted] = useState(null);
@@ -91,6 +92,7 @@ const AddEvent = () => {
     const raw = JSON.stringify({
       isPending: isPending,
       title: newEvent.eventTitle,
+
       dateStart: newEvent.eventDateTimeStart,
       dateEnd: newEvent.eventDateTimeEnd,
       organizer: newEvent.eventOrganizer,
@@ -151,20 +153,23 @@ const AddEvent = () => {
       }, 3000);
     }
   }, [message]);
-  console.log("newEvent :", newEvent);
+
   return (
     <>
       <form className="grid-form" ref={formRef}>
         <h2>Ajouter un évènement</h2>
         <p className="msg warning">
-          Pour un événement sur plusieurs jours, précisez les heures de chaque
-          jour dans "En détails". Pour un festival, créez plusieurs événements
-          pour les différentes activités.
+          Pour les évènements s’étalant sur plusieurs jours, préciser les
+          horaires journaliers dans « Détails » ou créer plusieurs évènements
+          pour chaque activité/journée.
         </p>
+
         <h3>Informations essentielles</h3>
 
         <div className="form-section">
-          <label htmlFor="eventTitle">Nom de l’évènement *</label>
+          <label className="mandatory" htmlFor="eventTitle">
+            Nom de l’évènement
+          </label>
           <input
             name="eventTitle"
             id="eventTitle"
@@ -174,33 +179,174 @@ const AddEvent = () => {
             required
             className="line"
           />
-          <label htmlFor="eventDateTimeStart">Début *</label>
+          {newEvent.eventTitle &&
+            (newEvent.eventTitle.length < 3 ||
+              newEvent.eventTitle.length > 40) && (
+              <p className="msg error">
+                Le titre doit contenir entre 3 et 40 caractères.
+              </p>
+            )}
+          <label className="mandatory" htmlFor="eventTitle">
+            Durée
+          </label>
 
-          <input
-            name="eventDateTimeStart"
-            id="eventDateTimeStart"
-            type="datetime-local"
-            onChange={handleInputChange}
-            required
-            className="line"
-          />
-          <label htmlFor="eventDateTimeEnd">Fin</label>
-          <input
-            name="eventDateTimeEnd"
-            id="eventDateTimeEnd"
-            type="datetime-local"
-            onChange={handleInputChange}
-            className="line"
-          />
-          <label htmlFor="eventShortDef">En bref *</label>
+          <div className="input-label-container">
+            <input
+              className="form-check-input"
+              id="isOneDay"
+              type="radio"
+              name="eventDuration"
+              checked={eventIsOneDay === true}
+              onChange={(e) => {
+                setEventIsOneDay(true);
+                if (e.target.checked) {
+                  setNewEvent({ ...newEvent, isOneDay: true });
+                }
+              }}
+            />
+            <label htmlFor="isOneDay">Un jour</label>
+          </div>
+          <div
+            style={{
+              gridColumn: "span 2",
+            }}
+            className="input-label-container"
+          >
+            <input
+              className="form-check-input"
+              id="isMoreDays"
+              type="radio"
+              name="eventDuration"
+              checked={eventIsOneDay === false}
+              onChange={(e) => {
+                setEventIsOneDay(false);
+                if (e.target.checked) {
+                  setNewEvent({ ...newEvent, isMoreDays: false });
+                }
+              }}
+            />
+            <label htmlFor="isMoreDays">Plusieurs jours</label>
+          </div>
+
+          {eventIsOneDay ? (
+            <>
+              <label className="mandatory" htmlFor="eventDate">
+                Date
+              </label>
+              <input
+                name="eventDate"
+                id="eventDate"
+                type="date"
+                onChange={handleInputChange}
+                required
+                className="line"
+              />
+              {newEvent.eventDate && newEvent.eventDate < todayISO && (
+                <p className="error msg">La date est déjà passée.</p>
+              )}
+
+              {console.log("newEvent.eventDate ", newEvent.eventDate)}
+              {console.log("todayISO :", todayISO)}
+              {console.log(
+                "isMoreThan3Days(newEvent.eventDate) :",
+                isMoreThan3Days(newEvent.eventDate)
+              )}
+
+              {/* {newEvent.eventDate &&
+                newEvent.eventDate > todayISO &&
+                !isMoreThan3Days(newEvent.eventDate) && (
+                  <p className="msg warning">
+                    L’évènement a lieu dans moins de 3 jours.
+                    <br />
+                    Nous ne garantissons pas sa publication.
+                  </p>
+                )} */}
+
+              <label className="mandatory" htmlFor="eventTimeStart">
+                Heure de début
+              </label>
+              <input
+                name="eventTimeStart"
+                id="eventTimeStart"
+                type="time"
+                onChange={handleInputChange}
+                required
+                className="line"
+              />
+
+              <label className="mandatory" htmlFor="eventDateTimeStart">
+                Heure de fin
+              </label>
+              <input
+                name="eventTimeEnd"
+                id="eventTimeEnd"
+                type="time"
+                onChange={handleInputChange}
+                required
+                className="line"
+              />
+            </>
+          ) : (
+            <>
+              <label className="mandatory" htmlFor="eventDateTimeStart">
+                Date de début
+              </label>
+
+              <input
+                name="eventDateStart"
+                id="eventDateStart"
+                type="date"
+                onChange={handleInputChange}
+                required
+                className="line"
+              />
+
+              {newEvent.eventDateStart &&
+                newEvent.eventDateStart < todayISO && (
+                  <p className="error msg">La date est déjà passée.</p>
+                )}
+
+              <label className="mandatory" htmlFor="eventDateEnd">
+                Date de fin
+              </label>
+              <input
+                name="eventDateEnd"
+                id="eventDateEnd"
+                type="date"
+                onChange={handleInputChange}
+                className="line"
+              />
+              {/* {newEvent.eventDateStart &&
+                newEvent.eventDateStart > todayISO &&
+                !isMoreThan3Days(newEvent.eventDateStart) && (
+                  <p className="msg warning">
+                    L’évènement commence dans moins de 3 jours.
+                    <br />
+                    Nous ne garantissons pas sa publication.
+                  </p>
+                )} */}
+            </>
+          )}
+
+          <label className="mandatory" htmlFor="eventShortDef">
+            En bref
+          </label>
           <textarea
             name="eventShortDef"
             id="eventShortDef"
             placeholder="Définition 60-120 caractères"
             onChange={handleInputChange}
-            maxLength="120"
             required
+            rows="2"
           />
+          {newEvent.eventShortDef &&
+            (newEvent.eventShortDef.length < 60 ||
+              newEvent.eventShortDef.length > 120) && (
+              <p className="msg error">
+                La description brève doit contenir entre 60 et 120 caractères.
+              </p>
+            )}
+          {!eventIsOneDay && <p className="msg info">Préciser heures ici  ↓</p>}
           <label htmlFor="eventLongDef">En détails</label>
           <div className="react-mde-container">
             <ReactMde
@@ -227,9 +373,33 @@ const AddEvent = () => {
             />
           </div>
 
-          <label htmlFor="eventOrganizer">Organisé par *</label>
+          <label className="mandatory" htmlFor="eventOrganizer">
+            Organisé par
+          </label>
+
+          {!organizerIsUserName && (
+            <>
+              <input
+                name="eventOrganizer"
+                id="eventOrganizer"
+                type="text"
+                onChange={handleInputChange}
+                className="line"
+                placeholder="Nom Association organisatrice"
+              />
+              <label htmlFor="eventOrganizerWebsite">Site Internet</label>
+              <input
+                name="eventOrganizerWebsite"
+                id="eventOrganizerWebsite"
+                type="text"
+                onChange={handleInputChange}
+                className="line"
+                placeholder="https://..."
+              />
+            </>
+          )}
           {userProfile && (
-            <div style={{ whiteSpace: "nowrap" }}>
+            <div style={{ gridColumn: "6", whiteSpace: "nowrap" }}>
               <input
                 className="form-check-input"
                 type="checkbox"
@@ -256,27 +426,6 @@ const AddEvent = () => {
                 {userProfile.userName}
               </a>
             </div>
-          )}
-          {!organizerIsUserName && (
-            <>
-              <input
-                name="eventOrganizer"
-                id="eventOrganizer"
-                type="text"
-                onChange={handleInputChange}
-                className="line"
-                placeholder="Organisé par"
-              />
-              <label htmlFor="eventOrganizerWebsite">Site Internet</label>
-              <input
-                name="eventOrganizerWebsite"
-                id="eventOrganizerWebsite"
-                type="text"
-                onChange={handleInputChange}
-                className="line"
-                placeholder="https://..."
-              />
-            </>
           )}
         </div>
         <h3>Format</h3>
@@ -357,6 +506,15 @@ const AddEvent = () => {
               </select>
             </>
           )}
+          {!newEvent.isOnline &&
+            ((newEvent.eventAddress &&
+              !addressRegex.test(newEvent.eventAddress)) ||
+              (newEvent.eventCity && !cityRegex.test(newEvent.eventCity))) && (
+              <p className="msg error">
+                L’adresse doit inclure la rue et le numéro, le lieu doit inclure
+                le code postal et la commune.{" "}
+              </p>
+            )}
           {eventType === "online" && (
             <>
               <label htmlFor="onlineMeeting">Lien réunion *</label>
@@ -371,6 +529,11 @@ const AddEvent = () => {
               />
             </>
           )}
+          {newEvent.isOnline &&
+            newEvent.onlineMeeting &&
+            !urlRegex.test(newEvent.onlineMeeting) && (
+              <p className="msg error">L’URL de la réunion n’est pas valide.</p>
+            )}
         </div>
         <h3>Réservations</h3>
         <div className="form-section">
@@ -384,6 +547,13 @@ const AddEvent = () => {
             className="line"
           />
 
+          {newEvent.eventTel && !swissTelRegex.test(newEvent.eventTel) && (
+            <p className="msg error">
+              Le numéro de téléphone doit être suisse au format international :
+              +41 (0) ...
+            </p>
+          )}
+
           <label htmlFor="eventTel">Adresse Email</label>
           <input
             name="eventEmail"
@@ -393,6 +563,9 @@ const AddEvent = () => {
             onChange={handleInputChange}
             className="line"
           />
+          {newEvent.eventEmail && !emailRegex.test(newEvent.eventEmail) && (
+            <p className="msg error">L'adresse e-mail est invalide.</p>
+          )}
         </div>
         <h3>Tarif d’entrée / participation</h3>
         <div className="form-section">
@@ -447,66 +620,13 @@ const AddEvent = () => {
               />
             </>
           )}
-        </div>
-        <ul className="error-list">
-          {newEvent.eventDateTimeStart &&
-            newEvent.eventDateTimeStart > todayISO &&
-            !isMoreThan3Days(newEvent.eventDateTimeStart) && (
-              <p className="msg warning">
-                L’évènement a lieu dans moins de 3 jours. Nous ne garantissons
-                pas sa publication.
-              </p>
-            )}
-          {newEvent.eventTitle &&
-            (newEvent.eventTitle.length < 3 ||
-              newEvent.eventTitle.length > 40) && (
-              <li>Le titre doit contenir entre 3 et 40 caractères.</li>
-            )}
-          {newEvent.eventDateTimeStart &&
-            newEvent.eventDateTimeStart < todayISO && (
-              <li>La date est déjà passée.</li>
-            )}
-          {newEvent.eventDateTimeStart &&
-            !dateRegex.test(newEvent.eventDateTimeStart) && (
-              <li>La date est invalide.</li>
-            )}
-          {newEvent.eventShortDef &&
-            (newEvent.eventShortDef.length < 60 ||
-              newEvent.eventShortDef.length > 200) && (
-              <li>
-                La description brève doit contenir entre 60 et 200 caractères.
-              </li>
-            )}
-          {newEvent.isOnline &&
-            newEvent.onlineMeeting &&
-            !urlRegex.test(newEvent.onlineMeeting) && (
-              <li>L’URL de la réunion n’est pas valide.</li>
-            )}
-          {!newEvent.isOnline &&
-            ((newEvent.eventAddress &&
-              !addressRegex.test(newEvent.eventAddress)) ||
-              (newEvent.eventCity && !cityRegex.test(newEvent.eventCity))) && (
-              <li>
-                Le format de l'adresse ou du lieu est invalide. L’adresse doit
-                inclure la rue et le numéro, le lieu doit inclure le code postal
-                et la commune.{" "}
-              </li>
-            )}
-          {newEvent.eventTel && !swissTelRegex.test(newEvent.eventTel) && (
-            <li>
-              Le numéro de téléphone doit être suisse au format international :
-              +41 (0) ...
-            </li>
-          )}
-          {newEvent.eventEmail && !emailRegex.test(newEvent.eventEmail) && (
-            <li>L'adresse e-mail est invalide.</li>
-          )}
           {newEvent.freeEntry === false && !newEvent.admissionFee && (
-            <li>
-              Veuillez renseigner un prix ou sélectionner l'option "Gratuit".
-            </li>
+            <p className="error msg">
+              Renseigner un prix ou sélectionner « Gratuit ».
+            </p>
           )}
-        </ul>
+        </div>
+
         {userProfile && userProfile.userIsAdmin === false && (
           <div className="conditions-generales">
             <br />

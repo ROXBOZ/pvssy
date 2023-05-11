@@ -211,8 +211,8 @@ const GeneralConditions = () => {
             <li>
               Si vous êtes intéressé·e·x par nos produits et ne résidez pas en
               Suisse, ou pour toute question, n’hésitez pas à écrire à{" "}
-              <a href="maitlo:info@pvssy-talk.org">
-                <nobr>info@pvssy-talk.org</nobr>
+              <a href="maitlo:hello@pvssy-talk.org">
+                <nobr>hello@pvssy-talk.org</nobr>
               </a>
               .
             </li>
@@ -222,8 +222,8 @@ const GeneralConditions = () => {
             </li>
             <li>
               N’hésitez pas à envoyer un email à{" "}
-              <a href="maitlo:info@pvssy-talk.org">
-                <nobr>info@pvssy-talk.org</nobr>
+              <a href="maitlo:hello@pvssy-talk.org">
+                <nobr>hello@pvssy-talk.org</nobr>
               </a>{" "}
               si vous avez des questions.
             </li>
@@ -242,8 +242,8 @@ const GeneralConditions = () => {
             <li>
               Pour organiser le retour, ainsi que l'échange et/ou le
               remboursement, veuillez envoyer un email à{" "}
-              <a href="maitlo:info@pvssy-talk.org">
-                <nobr>info@pvssy-talk.org</nobr>
+              <a href="maitlo:hello@pvssy-talk.org">
+                <nobr>hello@pvssy-talk.org</nobr>
               </a>{" "}
               pour obtenir des instructions et/ou pour vous assurer que le
               produit que vous souhaitez échanger soit mis de côté.
@@ -287,8 +287,8 @@ const GeneralConditions = () => {
               délai, elle se réserve le droit d'annuler la commande et de
               remettre la marchandise en vente. Si vous souhaitez procéder au
               paiement par virement bancaire, veuillez écrire directement à{" "}
-              <a href="maitlo:info@pvssy-talk.org">
-                <nobr>info@pvssy-talk.org</nobr>
+              <a href="maitlo:hello@pvssy-talk.org">
+                <nobr>hello@pvssy-talk.org</nobr>
               </a>
               .
             </li>
@@ -345,8 +345,8 @@ const GeneralConditions = () => {
               information personnelle vous concernant dont No Dolor dispose,
               déposer une plainte ou obtenir d’avantage d’information, vous
               pouvez envoyer un email à{" "}
-              <a href="maitlo:info@pvssy-talk.org">
-                <nobr>info@pvssy-talk.org</nobr>
+              <a href="maitlo:hello@pvssy-talk.org">
+                <nobr>hello@pvssy-talk.org</nobr>
               </a>
               .
             </li>
@@ -371,8 +371,8 @@ const GeneralConditions = () => {
             prévu à cet effet, elle peut vous envoyer des courriels marketing.
             Vous pouvez bien sûr vous désinscrire à tout moment et/ou lui
             envoyer vos commentaires à l'adresse{" "}
-            <a href="maitlo:info@pvssy-talk.org">
-              <nobr>info@pvssy-talk.org</nobr>
+            <a href="maitlo:hello@pvssy-talk.org">
+              <nobr>hello@pvssy-talk.org</nobr>
             </a>
             .
           </p>
@@ -417,8 +417,8 @@ const GeneralConditions = () => {
           <p>
             Si vous êtes intéressés par nos produits et ne résidez pas en
             Suisse, ou pour toute question, n’hésitez pas à écrire à{" "}
-            <a href="maitlo:info@pvssy-talk.org">
-              <nobr>info@pvssy-talk.org</nobr>
+            <a href="maitlo:hello@pvssy-talk.org">
+              <nobr>hello@pvssy-talk.org</nobr>
             </a>
             .
           </p>
@@ -439,8 +439,8 @@ const GeneralConditions = () => {
           <p>
             Pour organiser le retour, ainsi que l'échange et/ou le
             remboursement, veuillez envoyer un email à{" "}
-            <a href="maitlo:info@pvssy-talk.org">
-              <nobr>info@pvssy-talk.org</nobr>
+            <a href="maitlo:hello@pvssy-talk.org">
+              <nobr>hello@pvssy-talk.org</nobr>
             </a>{" "}
             pour obtenir des instructions et/ou pour vous assurer que le produit
             que vous souhaitez échanger soit mis de côté.
@@ -520,8 +520,8 @@ const GeneralConditions = () => {
               Après avoir donné votre consentement, vous pouvez bien évidemment
               changer d’avis en tout temps et ne plus souhaiter être contacté.
               Dans ce cas, vous pouvez envoyer un email à{" "}
-              <a href="maitlo:info@pvssy-talk.org">
-                <nobr>info@pvssy-talk.org</nobr>
+              <a href="maitlo:hello@pvssy-talk.org">
+                <nobr>hello@pvssy-talk.org</nobr>
               </a>{" "}
               afin que No Dolor procède à un ajustement.
             </li>
@@ -637,8 +637,8 @@ const GeneralConditions = () => {
             information personnelle vous concernant dont No Dolor dispose,
             déposer une plainte ou obtenir davantage d’information, vous pouvez
             envoyer un email à{" "}
-            <a href="maitlo:info@pvssy-talk.org">
-              <nobr>info@pvssy-talk.org</nobr>
+            <a href="maitlo:hello@pvssy-talk.org">
+              <nobr>hello@pvssy-talk.org</nobr>
             </a>
             .
           </p>

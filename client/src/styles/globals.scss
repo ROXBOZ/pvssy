@@ -25,6 +25,7 @@
 @import "typography";
 @import "cguv";
 @import "view";
+@import "author";
 
 * {
   transition: $animation-transition;
@@ -93,6 +94,19 @@ html {
 
 .colored {
   color: $primary;
+}
+
+.mandatory {
+  &:after {
+    content: (" *");
+    color: $primary;
+  }
+}
+
+.breathing {
+  * {
+    margin: $xs-space 0;
+  }
 }
 
 strong {

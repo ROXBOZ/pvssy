@@ -35,8 +35,8 @@ const Accessibility = () => {
             l’accessibilité et nous reconnaissons qu’il est toujours possible de
             l’améliorer. Si vous avez des suggestions ou des problèmes
             d’accessibilité, n’hésitez pas à nous contacter à{" "}
-            <a href="mailto:info@pvssy-talk.org">
-              <nobr>info@pvssy-talk.org</nobr>
+            <a href="mailto:hello@pvssy-talk.org">
+              <nobr>hello@pvssy-talk.org</nobr>
             </a>
             .
           </p>
