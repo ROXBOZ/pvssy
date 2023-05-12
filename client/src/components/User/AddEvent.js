@@ -103,10 +103,7 @@ const AddEvent = () => {
       email: newEvent.eventEmail,
       tel: newEvent.eventTel,
       isFreeEntry: newEvent.isFreeEntry,
-      admissionFee:
-        !isFreeEntry && isUniquePrice ? newEvent.admissionFee : null,
-      admissionFeeMin:
-        !isFreeEntry && !isUniquePrice ? newEvent.admissionFeeMin : null,
+      admissionFeeMin: !isFreeEntry && newEvent.admissionFeeMin,
       admissionFeeMax:
         !isFreeEntry && !isUniquePrice ? newEvent.admissionFeeMax : null,
     });
@@ -145,6 +142,8 @@ const AddEvent = () => {
     }
   };
 
+  console.log("newEvent :", newEvent);
+
   useEffect(() => {
     if (message && message.type === "success") {
       setNewEvent({
@@ -161,7 +160,6 @@ const AddEvent = () => {
       }, 3000);
     }
   }, [message]);
-  console.log("newEvent :", newEvent);
   return (
     <>
       <form className="grid-form" ref={formRef}>
@@ -416,7 +414,7 @@ const AddEvent = () => {
                 onChange={handleInputChange}
                 className="line"
                 placeholder="Nom Association organisatrice"
-                maxlength="21"
+                maxLength="21"
               />
               {newEvent.eventOrganizer &&
                 (newEvent.eventOrganizer.length < 3 ||
@@ -654,7 +652,7 @@ const AddEvent = () => {
               className="form-check-input"
               id="freeEntry"
               type="radio"
-              name="eventEntry"
+              name="isFreeEntry"
               checked={isFreeEntry === true}
               onChange={(e) => {
                 setIsFreeEntry(true);
@@ -663,16 +661,16 @@ const AddEvent = () => {
                 }
               }}
             />
-            <label className="radio-label" htmlFor="admissionFee">
+            <label className="radio-label" htmlFor="freeEntry">
               gratuite
             </label>
           </div>
           <div className="input-label-container">
             <input
               className="form-check-input"
-              id="admissionFee"
+              id="paidEntry"
               type="radio"
-              name="eventEntry"
+              name="isFreeEntry"
               checked={isFreeEntry === false}
               onChange={(e) => {
                 setIsFreeEntry(false);
@@ -681,7 +679,7 @@ const AddEvent = () => {
                 }
               }}
             />
-            <label className="radio-label" htmlFor="online">
+            <label className="radio-label" htmlFor="paidEntry">
               payante
             </label>
           </div>
@@ -738,12 +736,12 @@ const AddEvent = () => {
 
               {isUniquePrice ? (
                 <>
-                  <label className="mandatory" htmlFor="admissionFee">
+                  <label className="mandatory" htmlFor="admissionFeeUnique">
                     Tarif en CHF
                   </label>
                   <input
-                    name="admissionFee"
-                    id="admissionFee"
+                    name="admissionFeeMin"
+                    id="admissionFeeUnique"
                     type="number"
                     placeholder="25,50"
                     onChange={handleInputChange}
@@ -777,6 +775,25 @@ const AddEvent = () => {
                     // required
                     className="line"
                   />
+
+                  {console.log(
+                    "newEvent.admissionFeeMin ",
+                    newEvent.admissionFeeMin
+                  )}
+
+                  {console.log(
+                    "newEvent.admissionFeeMax ",
+                    newEvent.admissionFeeMax
+                  )}
+
+                  {newEvent.admissionFeeMin &&
+                    newEvent.admissionFeeMax &&
+                    newEvent.admissionFeeMin > newEvent.admissionFeeMax && (
+                      <p className="msg error">
+                        Le prix maxium doit être supérieur au prix minimum.
+                      </p>
+                    )}
+
                   <p className="msg info">
                     Détailler la fourchette de prix dans « En détails ».
                   </p>
@@ -784,7 +801,7 @@ const AddEvent = () => {
               )}
             </>
           )}
-          {newEvent.freeEntry === false && !newEvent.admissionFee && (
+          {newEvent.freeEntry === false && !newEvent.admissionFeeMin && (
             <p className="error msg">
               Renseigner un chiffre ou sélectionner « gratuite ».
             </p>

@@ -103,16 +103,10 @@ const eventSchema = new mongoose.Schema({
     type: Boolean,
   },
 
-  admissionFee: {
-    type: Number,
-    required: function () {
-      return this.isUniquePrice && !this.isFreeEntry;
-    },
-  },
   admissionFeeMin: {
     type: Number,
     required: function () {
-      return !this.isUniquePrice && !this.isFreeEntry;
+      return !this.isFreeEntry;
     },
   },
   admissionFeeMax: {

@@ -237,7 +237,6 @@ const addEvent = async (req, res) => {
         tel: savedEvent.tel,
         isFreeEntry: savedEvent.isFreeEntry,
         isUniquePrice: savedEvent.isUniquePrice,
-        admissionFee: savedEvent.admissionFee,
         admissionFeeMin: savedEvent.admissionFeeMin,
         admissionFeeMax: savedEvent.admissionFeeMax,
       },
