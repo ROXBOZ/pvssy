@@ -22,7 +22,7 @@ const AddEvent = () => {
   const { userProfile } = useContext(AuthContext);
   const [eventType, setEventType] = useState("offline");
   const [eventIsOneDay, setEventIsOneDay] = useState(true);
-  const [eventEntry, setEventEntry] = useState("gratuite");
+  const [isFreeEntry, setIsFreeEntry] = useState(true);
   const [isUniquePrice, setIsUniquePrice] = useState(true);
   const [organizerIsUserName, setOrganizerIsUserName] = useState(false);
   const [conditionsAccepted, setConditionsAccepted] = useState(null);
@@ -34,7 +34,8 @@ const AddEvent = () => {
     isOnline: false,
     eventIsOneDay: true,
     eventRegion: "Genève",
-    freeEntry: true,
+    isFreeEntry: true,
+    isUniquePrice: true,
   });
 
   const newLineCommand = {
@@ -131,7 +132,7 @@ const AddEvent = () => {
       setNewEvent({
         isOnline: false,
         eventRegion: "Genève",
-        freeEntry: true,
+        isFreeEntry: true,
       });
       formRef.current.reset();
       setTimeout(() => {
@@ -621,11 +622,11 @@ const AddEvent = () => {
               id="freeEntry"
               type="radio"
               name="eventEntry"
-              checked={eventEntry === "gratuite"}
+              checked={isFreeEntry === true}
               onChange={(e) => {
-                setEventEntry("gratuite");
+                setIsFreeEntry(true);
                 if (e.target.checked) {
-                  setNewEvent({ ...newEvent, freeEntry: true });
+                  setNewEvent({ ...newEvent, isFreeEntry: true });
                 }
               }}
             />
@@ -637,18 +638,18 @@ const AddEvent = () => {
               id="admissionFee"
               type="radio"
               name="eventEntry"
-              checked={eventEntry === "payante"}
+              checked={isFreeEntry === false}
               onChange={(e) => {
-                setEventEntry("payante");
+                setIsFreeEntry(false);
                 if (e.target.checked) {
-                  setNewEvent({ ...newEvent, freeEntry: false });
+                  setNewEvent({ ...newEvent, isFreeEntry: false });
                 }
               }}
             />
             <label htmlFor="online">payante</label>
           </div>
 
-          {eventEntry === "payante" && (
+          {isFreeEntry === false && (
             <>
               <label className="mandatory" htmlFor="eventEntry">
                 Type de tarification
@@ -684,7 +685,10 @@ const AddEvent = () => {
                   onChange={(e) => {
                     setIsUniquePrice(true);
                     if (e.target.checked) {
-                      setNewEvent({ ...newEvent, isUniquePrice: true });
+                      setNewEvent({
+                        ...newEvent,
+                        isUniquePrice: true,
+                      });
                     }
                   }}
                 />
@@ -708,24 +712,24 @@ const AddEvent = () => {
                 </>
               ) : (
                 <>
-                  <label className="mandatory" htmlFor="admissionFee">
+                  <label className="mandatory" htmlFor="admissionFeeMin">
                     Tarif minimum en CHF
                   </label>
                   <input
-                    name="admissionFee"
-                    id="admissionFee"
+                    name="admissionFeeMin"
+                    id="admissionFeeMin"
                     type="number"
                     placeholder="10"
                     onChange={handleInputChange}
                     required
                     className="line"
                   />
-                  <label className="mandatory" htmlFor="admissionFee">
+                  <label className="mandatory" htmlFor="admissionFeeMax">
                     Tarif maximum en CHF
                   </label>
                   <input
-                    name="admissionFee"
-                    id="admissionFee"
+                    name="admissionFeeMax"
+                    id="admissionFeeMax"
                     type="number"
                     placeholder="20"
                     onChange={handleInputChange}
@@ -804,12 +808,6 @@ const AddEvent = () => {
                     !newEvent.eventEmail) ||
                   emailRegex.test(newEvent.eventEmail))
 
-              //     (!newEvent.eventTel ||
-              //       (swissTelRegex.test(newEvent.eventTel) &&
-              //         !newEvent.eventEmail) ||
-              //       emailRegex.test(newEvent.eventEmail)))
-
-              // (newEvent.freeEntry || newEvent.admissionFee)
               // (userProfile && userProfile.userIsAdmin
               //   ? true
               //   : conditionsAccepted)
