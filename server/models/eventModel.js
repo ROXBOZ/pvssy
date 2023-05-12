@@ -3,21 +3,42 @@ import mongoose from "mongoose";
 const eventSchema = new mongoose.Schema({
   isPending: {
     type: Boolean,
-    required: true,
+    // required: true,
   },
 
   title: {
     type: String,
-    required: true,
-    unique: true,
+    // required: true,
+    // unique: true,
   },
 
-  dateStart: {
+  eventIsOneDay: {
+    type: Boolean,
+  },
+
+  eventDateStart: {
     type: Date,
   },
 
-  dateEnd: {
+  eventDateEnd: {
     type: Date,
+    required: function () {
+      return !this.eventIsOneDay;
+    },
+  },
+
+  eventTimeStart: {
+    type: String,
+    required: function () {
+      return this.eventIsOneDay;
+    },
+  },
+
+  eventTimeEnd: {
+    type: String,
+    required: function () {
+      return this.eventIsOneDay;
+    },
   },
 
   organizer: {
@@ -30,12 +51,10 @@ const eventSchema = new mongoose.Schema({
 
   organizerContact: {
     type: String,
-    required: true,
   },
 
   shortDef: {
     type: String,
-    required: true,
   },
 
   longDef: {
@@ -44,7 +63,6 @@ const eventSchema = new mongoose.Schema({
 
   isOnline: {
     type: Boolean,
-    required: true,
   },
 
   onlineMeeting: {
@@ -81,8 +99,27 @@ const eventSchema = new mongoose.Schema({
     type: String,
   },
 
-  entryFee: {
+  isFreeEntry: {
+    type: Boolean,
+  },
+
+  admissionFee: {
     type: Number,
+    required: function () {
+      return this.isUniquePrice && !this.isFreeEntry;
+    },
+  },
+  admissionFeeMin: {
+    type: Number,
+    required: function () {
+      return !this.isUniquePrice && !this.isFreeEntry;
+    },
+  },
+  admissionFeeMax: {
+    type: Number,
+    required: function () {
+      return !this.isUniquePrice && !this.isFreeEntry;
+    },
   },
 });
 const eventModel = mongoose.model("event", eventSchema);

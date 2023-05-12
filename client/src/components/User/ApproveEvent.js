@@ -48,7 +48,7 @@ const ApproveEvent = () => {
 
       {sortedEvents &&
         sortedEvents.map((e) => {
-          const dateTime = dateTimeConverter(e.dateStart);
+          const dateTime = dateTimeConverter(e.eventDateStart);
 
           return (
             <PendingEventCard

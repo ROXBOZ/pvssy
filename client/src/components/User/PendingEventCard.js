@@ -25,7 +25,7 @@ const PendingEventCard = ({ event, dateTime, getPendingEvent }) => {
     const diffInDays = Math.ceil(diffInTime / (1000 * 3600 * 24));
     return diffInDays;
   };
-  const daysFromNow = getDaysFromNow(event.dateStart);
+  const daysFromNow = getDaysFromNow(event.eventDateStart);
 
   const approveEvent = async (eventId) => {
     const urlencoded = new URLSearchParams();

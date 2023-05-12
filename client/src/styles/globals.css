@@ -814,7 +814,7 @@ footer .footer-bottom .copyrights {
 }
 .grid-form .react-mde {
   border-radius: 10px !important;
-  border-color: #43064b !important;
+  border-color: #ce96ff !important;
   padding: 1rem;
   overflow: hidden;
 }
@@ -836,7 +836,7 @@ footer .footer-bottom .copyrights {
 .grid-form textarea {
   background-color: #fff7ef;
   color: #43064b;
-  border: 1px solid;
+  border: 1px solid #ce96ff;
   border-radius: 10px;
   font-family: "ESKlarheit-Medium";
   font-size: 100%;
@@ -857,7 +857,7 @@ footer .footer-bottom .copyrights {
   border-left: none;
   border-right: none;
   border-top: none;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #ce96ff;
 }
 @media screen and (max-width: 576px) {
   .grid-form .form-section {
@@ -865,15 +865,15 @@ footer .footer-bottom .copyrights {
     flex-direction: column;
     gap: 1rem !important;
   }
-  .grid-form .form-section label {
-    height: -moz-fit-content;
-    height: fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    white-space: nowrap;
+  .grid-form .form-section label:not(.radio-label) {
+    margin-top: 2rem;
+    font-size: 120%;
   }
   .grid-form .form-section textarea {
     min-height: 50vw;
+  }
+  .grid-form h3 {
+    margin-top: 4rem;
   }
 }
 
@@ -1427,10 +1427,7 @@ a.term span {
   border-bottom: 1px solid #ce96ff;
 }
 .msg.info:before {
-  content: url("../assets/images/icon-info.svg");
-  width: 20px;
-  height: 20px;
-  padding-top: 2.5px;
+  content: "☝️ ";
 }
 
 .error-list {
@@ -1683,6 +1680,7 @@ a.term span {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+    margin-left: 0;
   }
 }
 .source {

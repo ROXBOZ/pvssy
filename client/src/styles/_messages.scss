@@ -74,10 +74,7 @@ $archived-color: dimgrey;
   &.info {
     border-bottom: $border-solid $secondary;
     &:before {
-      content: url("../assets/images/icon-info.svg");
-      width: 20px;
-      height: 20px;
-      padding-top: 2.5px;
+      content: ("☝️ ");
     }
   }
 }

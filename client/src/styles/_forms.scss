@@ -3,7 +3,6 @@
 
   .form-section {
     @include grid;
-
     label {
       font-family: $font-medium;
       display: flex;
@@ -54,7 +53,7 @@
 
   .react-mde {
     border-radius: $border-radius-soft !important;
-    border-color: $txt-color !important;
+    border-color: $secondary !important;
     padding: $sm-space;
     overflow: hidden;
 
@@ -80,7 +79,7 @@
     background-color: $bg-color;
 
     color: $txt-color;
-    border: $border-solid;
+    border: $border-solid $secondary;
     border-radius: $border-radius-soft;
     font-family: $font-medium;
     font-size: 100%;
@@ -92,7 +91,7 @@
       border-left: none;
       border-right: none;
       border-top: none;
-      border-bottom: $border-solid;
+      border-bottom: $border-solid $secondary;
     }
   }
 
@@ -102,15 +101,18 @@
       flex-direction: column;
       gap: $sm-space !important;
 
-      label {
-        height: fit-content;
-        width: fit-content;
-        white-space: nowrap;
+      label:not(.radio-label) {
+        margin-top: $reg-space;
+        font-size: 120%;
       }
 
       textarea {
         min-height: 50vw;
       }
+    }
+
+    h3 {
+      margin-top: $lg-space;
     }
   }
 }

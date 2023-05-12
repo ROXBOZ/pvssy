@@ -23,7 +23,7 @@ const getAllEvents = async (req, res) => {
 const getUpcomingEvents = async (req, res) => {
   try {
     const upcomingEvents = await eventModel
-      .find({ dateStart: { $gte: today } })
+      .find({ eventDateStart: { $gte: today } })
       .exec();
     res.status(200).json({
       number: upcomingEvents.length,
@@ -40,7 +40,7 @@ const getUpcomingEvents = async (req, res) => {
 const getArchivedEvents = async (req, res) => {
   try {
     const archivedEvents = await eventModel
-      .find({ date: { $lt: today }, isPending: false })
+      .find({ eventDateStart: { $lt: today }, isPending: false })
       .exec();
     res.status(200).json({
       number: archivedEvents.length,
@@ -160,8 +160,11 @@ const addEvent = async (req, res) => {
   const {
     isPending,
     title,
-    dateStart,
-    dateEnd,
+    eventIsOneDay,
+    eventDateStart,
+    eventDateEnd,
+    eventTimeStart,
+    eventTimeEnd,
     organizer,
     organizerWebsite,
     organizerContact,
@@ -174,15 +177,22 @@ const addEvent = async (req, res) => {
     region,
     email,
     tel,
-    entryFee,
+    isFreeEntry,
+    isUniquePrice,
+    admissionFee,
+    admissionFeeMin,
+    admissionFeeMax,
   } = req.body;
 
   try {
     const newEvent = new eventModel({
       isPending,
       title,
-      dateStart,
-      dateEnd,
+      eventIsOneDay,
+      eventDateStart,
+      eventDateEnd,
+      eventTimeStart,
+      eventTimeEnd,
       organizer,
       organizerWebsite,
       organizerContact,
@@ -195,7 +205,11 @@ const addEvent = async (req, res) => {
       region,
       email,
       tel,
-      entryFee,
+      isFreeEntry,
+      isUniquePrice,
+      admissionFee,
+      admissionFeeMin,
+      admissionFeeMax,
     });
     const savedEvent = await newEvent.save();
 
@@ -204,8 +218,11 @@ const addEvent = async (req, res) => {
       event: {
         isPending: savedEvent.isPending,
         title: savedEvent.title,
-        dateStart: savedEvent.dateStart,
-        dateEnd: savedEvent.dateEnd,
+        eventIsOneDay: savedEvent.eventIsOneDay,
+        eventDateStart: savedEvent.eventDateStart,
+        eventDateEnd: savedEvent.eventDateEnd,
+        eventTimeStart: savedEvent.eventTimeStart,
+        eventTimeEnd: savedEvent.eventTimeEnd,
         organizer: savedEvent.organizer,
         organizerWebsite: savedEvent.organizerWebsite,
         organizerContact: savedEvent.organizerContact,
@@ -218,7 +235,11 @@ const addEvent = async (req, res) => {
         region: savedEvent.region,
         email: savedEvent.email,
         tel: savedEvent.tel,
-        entryFee: savedEvent.entryFee,
+        isFreeEntry: savedEvent.isFreeEntry,
+        isUniquePrice: savedEvent.isUniquePrice,
+        admissionFee: savedEvent.admissionFee,
+        admissionFeeMin: savedEvent.admissionFeeMin,
+        admissionFeeMax: savedEvent.admissionFeeMax,
       },
     });
   } catch (error) {

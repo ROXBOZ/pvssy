@@ -82,7 +82,7 @@ const Agenda = () => {
         {data.upcomingEvents && filteredData.length > 0 ? (
           filteredData.map((e, index) => {
             const { eventDateInMilli, todayStartinMilli, todayEndinMilli } =
-              fromNowToDate(e.dateStart);
+              fromNowToDate(e.eventDateStart);
 
             return (
               <div className="agenda-entry" key={index}>
@@ -92,7 +92,7 @@ const Agenda = () => {
                   ) : (
                     <span className="noun">{e.city.replace(/\d+/g, "")}</span>
                   )}{" "}
-                  · <nobr>{dateConverterNoWeekday(e.dateStart)}</nobr>
+                  · <nobr>{dateConverterNoWeekday(e.eventDateStart)}</nobr>
                 </p>
                 <div
                   onClick={() => handleClick(e._id)}
@@ -106,24 +106,24 @@ const Agenda = () => {
                   <>
                     <div className="event-container">
                       <div className="event-col">
-                        {dateConverter(e.dateStart) ===
-                        dateConverter(e.dateEnd) ? (
+                        {dateConverter(e.eventDateStart) ===
+                        dateConverter(e.eventDateEnd) ? (
                           <>
-                            <p>{dateConverter(e.dateStart)}</p>
+                            <p>{dateConverter(e.eventDateStart)}</p>
                             <p>
-                              de {timeConverter(e.dateStart)} à{" "}
-                              {timeConverter(e.dateEnd)}
+                              de {timeConverter(e.eventDateStart)} à{" "}
+                              {timeConverter(e.eventDateEnd)}
                             </p>
                           </>
                         ) : (
                           <>
                             <p>
-                              commence le {dateConverter(e.dateStart)} à{" "}
-                              {timeConverter(e.dateStart)}
+                              commence le {dateConverter(e.eventDateStart)} à{" "}
+                              {timeConverter(e.eventDateStart)}
                             </p>
                             <p>
-                              termine le {dateConverter(e.dateEnd)} à{" "}
-                              {timeConverter(e.dateEnd)}
+                              termine le {dateConverter(e.eventDateEnd)} à{" "}
+                              {timeConverter(e.eventDateEnd)}
                             </p>
                           </>
                         )}
@@ -190,7 +190,7 @@ const Agenda = () => {
                             >
                               Rejoindre la réunion
                             </button>
-                            <CountdownTimer isoDate={e.dateStart} />
+                            <CountdownTimer isoDate={e.eventDateStart} />
                           </div>
                         )}
                       </div>
