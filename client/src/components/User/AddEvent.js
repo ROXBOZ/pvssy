@@ -774,44 +774,45 @@ const AddEvent = () => {
           onClick={submitForm}
           type="submit"
           disabled={
-            !(
-              (newEvent.eventTitle &&
-              newEvent.eventTitle.length >= 3 &&
-              newEvent.eventTitle.length < 40 &&
-              (newEvent.eventIsOneDay
-                ? newEvent.eventDate &&
-                  newEvent.eventDate > todayISO &&
-                  newEvent.eventTimeStart &&
-                  newEvent.eventTimeEnd &&
-                  newEvent.eventTimeStart < newEvent.eventTimeEnd
-                : newEvent.eventDateStart &&
-                  newEvent.eventDateStart > todayISO &&
-                  newEvent.eventDateEnd &&
-                  newEvent.eventDateStart < newEvent.eventDateEnd) &&
-              newEvent.eventShortDef &&
-              newEvent.eventShortDef.length >= 60 &&
-              newEvent.eventShortDef.length <= 120 &&
-              newEvent.eventOrganizer &&
-              newEvent.eventOrganizer.length >= 3 &&
-              newEvent.eventOrganizer.length <= 20 &&
-              (!newEvent.eventOrganizerWebsite ||
-                urlRegex.test(newEvent.eventOrganizerWebsite)) &&
-              newEvent.isOnline
-                ? newEvent.onlineMeeting &&
-                  urlRegex.test(newEvent.onlineMeeting)
-                : (newEvent.eventAddress &&
-                    addressRegex.test(newEvent.eventAddress) &&
-                    newEvent.eventCity &&
-                    cityRegex.test(newEvent.eventCity) &&
-                    (!newEvent.eventTel ||
-                      swissTelRegex.test(newEvent.eventTel)) &&
-                    !newEvent.eventEmail) ||
-                  emailRegex.test(newEvent.eventEmail))
-
-              // (userProfile && userProfile.userIsAdmin
-              //   ? true
-              //   : conditionsAccepted)
-            )
+            !((newEvent.eventTitle &&
+            newEvent.eventTitle.length >= 3 &&
+            newEvent.eventTitle.length < 40 &&
+            (newEvent.eventIsOneDay
+              ? newEvent.eventDate &&
+                newEvent.eventDate > todayISO &&
+                newEvent.eventTimeStart &&
+                newEvent.eventTimeEnd &&
+                newEvent.eventTimeStart < newEvent.eventTimeEnd
+              : newEvent.eventDateStart &&
+                newEvent.eventDateStart > todayISO &&
+                newEvent.eventDateEnd &&
+                newEvent.eventDateStart < newEvent.eventDateEnd) &&
+            newEvent.eventShortDef &&
+            newEvent.eventShortDef.length >= 60 &&
+            newEvent.eventShortDef.length <= 120 &&
+            newEvent.eventOrganizer &&
+            newEvent.eventOrganizer.length >= 3 &&
+            newEvent.eventOrganizer.length <= 20 &&
+            (!newEvent.eventOrganizerWebsite ||
+              urlRegex.test(newEvent.eventOrganizerWebsite)) &&
+            newEvent.isOnline
+              ? newEvent.onlineMeeting && urlRegex.test(newEvent.onlineMeeting)
+              : newEvent.eventAddress &&
+                addressRegex.test(newEvent.eventAddress) &&
+                newEvent.eventCity &&
+                cityRegex.test(newEvent.eventCity) &&
+                (!newEvent.eventTel || swissTelRegex.test(newEvent.eventTel)) &&
+                (!newEvent.eventEmail ||
+                  emailRegex.test(newEvent.eventEmail))) && newEvent.isFreeEntry
+              ? true
+              : isUniquePrice
+              ? newEvent.admissionFee
+              : newEvent.admissionFeeMin &&
+                newEvent.admissionFeeMax &&
+                userProfile &&
+                userProfile.userIsAdmin
+              ? true
+              : conditionsAccepted)
           }
         >
           {userProfile && userProfile.userIsAdmin === true
