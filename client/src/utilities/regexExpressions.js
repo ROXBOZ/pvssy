@@ -7,8 +7,7 @@ const swissTelRegex =
   /^(0041|\+41|0)((\s?\(0\)\s?)|(\s?))?([1-9]\d{1}\s?\d{3}\s?\d{2}\s?\d{2})$/;
 
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-const urlRegex =
-  /^(https?:\/\/)(www\.)?[a-zA-Z0-9-]{1,63}\.[a-z]{2,}(?:[/?#]\S*)?$/;
+const urlRegex = /^(https?:\/\/|www\.)[^\s.]+\.[^\s]{2,}$/i;
 
 const isMoreThan3Days = (isoDateString) => {
   const inputDate = new Date(Date.parse(isoDateString));

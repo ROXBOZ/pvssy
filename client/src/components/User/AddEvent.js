@@ -11,7 +11,6 @@ import { faLink } from "@fortawesome/free-solid-svg-icons";
 import {
   addressRegex,
   cityRegex,
-  dateRegex,
   emailRegex,
   isMoreThan3Days,
   swissTelRegex,
@@ -33,6 +32,7 @@ const AddEvent = () => {
   const [selectedTab, setSelectedTab] = useState("write");
   const [newEvent, setNewEvent] = useState({
     isOnline: false,
+    eventIsOneDay: true,
     eventRegion: "Genève",
     freeEntry: true,
   });
@@ -408,7 +408,8 @@ const AddEvent = () => {
             newEvent.eventOrganizerWebsite &&
             !urlRegex.test(newEvent.eventOrganizerWebsite) && (
               <p className="msg error">
-                L’URL doit commencer par https:// ou http:// et être valide.
+                L’URL doit commencer par https:// ou http:// ou www. et être
+                valide.
               </p>
             )}
 
@@ -439,6 +440,11 @@ const AddEvent = () => {
                   }
                 }}
               />
+              {console.log(" eventOrganizer ", newEvent.eventOrganizer)}
+              {console.log(
+                " eventOrganizerWebsite ",
+                newEvent.eventOrganizerWebsite
+              )}
               <label htmlFor="eventOrganizer">
                 <a href={`http://${userProfile.userWebsite}`}>
                   {userProfile.userName}
@@ -758,47 +764,52 @@ const AddEvent = () => {
         )}
       </form>
       <div className="flex-center">
+        {console.log("newEvent ", newEvent)}
+        {console.log("newEvent.eventOrganizer ", newEvent.eventOrganizer)}
         <button
           onClick={submitForm}
           type="submit"
           disabled={
             !(
-              (newEvent.eventTitle &&
-              newEvent.eventTitle.length >= 3 &&
-              newEvent.eventTitle.length < 40 &&
-              newEvent.eventIsOneDay
-                ? newEvent.eventDate &&
-                  newEvent.eventDate > todayISO &&
-                  newEvent.eventTimeStart &&
-                  newEvent.eventTimeEnd &&
-                  newEvent.eventTimeStart < newEvent.eventTimeEnd
-                : newEvent.eventDateStart &&
-                  newEvent.eventDateStart > todayISO &&
-                  newEvent.eventDateEnd &&
-                  newEvent.eventDateStart < newEvent.eventDateEnd) &&
-              newEvent.eventShortDef &&
-              newEvent.eventShortDef.length > 60 &&
-              newEvent.eventShortDef.length < 120 &&
-              newEvent.eventOrganizer &&
-              newEvent.eventOrganizer.length > 3 &&
-              newEvent.eventOrganizer.length < 20 &&
-              newEvent.eventOrganizerWebsite &&
-              urlRegex.test(newEvent.eventOrganizerWebsite) &&
-              (newEvent.isOnline
-                ? newEvent.onlineMeeting &&
-                  urlRegex.test(newEvent.onlineMeeting)
-                : newEvent.eventAddress &&
-                  addressRegex.test(newEvent.eventAddress) &&
-                  newEvent.eventCity &&
-                  cityRegex.test(newEvent.eventCity)) &&
-              newEvent.eventTel &&
-              swissTelRegex.test(newEvent.eventTel) &&
-              newEvent.eventEmail &&
-              emailRegex.test(newEvent.eventEmail) &&
-              // (newEvent.freeEntry ? true : newEvent.admissionFee) &&
-              (userProfile && userProfile.userIsAdmin
-                ? true
-                : conditionsAccepted)
+              (
+                newEvent.eventTitle &&
+                newEvent.eventTitle.length >= 3 &&
+                newEvent.eventTitle.length < 40 &&
+                (newEvent.eventIsOneDay
+                  ? newEvent.eventDate &&
+                    newEvent.eventDate > todayISO &&
+                    newEvent.eventTimeStart &&
+                    newEvent.eventTimeEnd &&
+                    newEvent.eventTimeStart < newEvent.eventTimeEnd
+                  : newEvent.eventDateStart &&
+                    newEvent.eventDateStart > todayISO &&
+                    newEvent.eventDateEnd &&
+                    newEvent.eventDateStart < newEvent.eventDateEnd) &&
+                newEvent.eventShortDef &&
+                newEvent.eventShortDef.length >= 60 &&
+                newEvent.eventShortDef.length <= 120 &&
+                newEvent.eventOrganizer &&
+                newEvent.eventOrganizer.length >= 3 &&
+                newEvent.eventOrganizer.length <= 20
+              )
+              //   !newEvent.eventOrganizerWebsite) ||
+              // urlRegex.test(newEvent.eventOrganizerWebsite)
+              //       newEvent.isOnline)
+              //   ? newEvent.onlineMeeting &&
+              //     urlRegex.test(newEvent.onlineMeeting)
+              //   : newEvent.eventAddress &&
+              //     addressRegex.test(newEvent.eventAddress) &&
+              //     newEvent.eventCity &&
+              //     cityRegex.test(newEvent.eventCity) &&
+              //     (!newEvent.eventTel ||
+              //       (swissTelRegex.test(newEvent.eventTel) &&
+              //         !newEvent.eventEmail) ||
+              //       emailRegex.test(newEvent.eventEmail)))
+
+              // (newEvent.freeEntry || newEvent.admissionFee)
+              // (userProfile && userProfile.userIsAdmin
+              //   ? true
+              //   : conditionsAccepted)
             )
           }
         >
@@ -807,47 +818,6 @@ const AddEvent = () => {
             : "Proposer l’évènement"}
         </button>
 
-        {/* <button
-          onClick={submitForm}
-          type="submit"
-          disabled={
-            !(newEvent.eventTitle &&
-            newEvent.eventTitle.length > 3 &&
-            newEvent.eventTitle.length < 40 &&
-            newEvent.eventDate &&
-            newEvent.eventDate > todayISO &&
-            newEvent.eventDateStart &&
-            newEvent.eventDateStart > todayISO &&
-            newEvent.eventDateStart &&
-            newEvent.eventDateEnd &&
-            newEvent.eventDateStart < newEvent.eventDateEnd &&
-            newEvent.eventShortDef &&
-            newEvent.eventShortDef.length > 60 &&
-            newEvent.eventShortDef.length < 200 &&
-            newEvent.eventOrganizer &&
-            (newEvent.isOnline
-              ? newEvent.onlineMeeting && urlRegex.test(newEvent.onlineMeeting)
-              : newEvent.eventAddress &&
-                addressRegex.test(newEvent.eventAddress) &&
-                newEvent.eventCity &&
-                cityRegex.test(newEvent.eventCity)) &&
-            (newEvent.eventTel
-              ? swissTelRegex.test(newEvent.eventTel)
-              : true) &&
-            (newEvent.eventEmail
-              ? emailRegex.test(newEvent.eventEmail)
-              : true) &&
-            (newEvent.freeEntry ? true : newEvent.admissionFee) &&
-            userProfile &&
-            userProfile.userIsAdmin
-              ? true
-              : conditionsAccepted)
-          }
-        >
-          {userProfile && userProfile.userIsAdmin === true
-            ? "Ajouter l’évènement"
-            : "Proposer l’évènement"}
-        </button> */}
         {message && (
           <div className={`message ${message.type}`}>{message.content}</div>
         )}
