@@ -111,9 +111,9 @@ const eventSchema = new mongoose.Schema({
   },
   admissionFeeMax: {
     type: Number,
-    required: function () {
-      return !this.isUniquePrice && !this.isFreeEntry;
-    },
+    // required: function () {
+    //   return !this.isUniquePrice && !this.isFreeEntry;
+    // },
   },
 });
 const eventModel = mongoose.model("event", eventSchema);

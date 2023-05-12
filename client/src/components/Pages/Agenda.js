@@ -102,47 +102,42 @@ const Agenda = () => {
                   <>
                     <div className="event-container">
                       <div className="event-col">
-                        {dateConverter(e.eventDateStart) ===
-                        dateConverter(e.eventDateEnd) ? (
-                          <>
-                            <p>{dateConverter(e.eventDateStart)}</p>
-                            <p>
-                              de {timeConverter(e.eventDateStart)} à{" "}
-                              {timeConverter(e.eventDateEnd)}
-                            </p>
-                          </>
+                        {e.eventIsOneDay ? (
+                          <p>{dateConverter(e.eventDateStart)}</p>
                         ) : (
-                          <>
-                            <p>
-                              commence le {dateConverter(e.eventDateStart)} à{" "}
-                              {timeConverter(e.eventDateStart)}
-                            </p>
-                            <p>
-                              termine le {dateConverter(e.eventDateEnd)} à{" "}
-                              {timeConverter(e.eventDateEnd)}
-                            </p>
-                          </>
+                          <p>
+                            du {dateConverter(e.eventDateStart)} au{" "}
+                            {dateConverter(e.eventDateEnd)}
+                          </p>
                         )}
 
-                        <p>
-                          {e.isOnline ? (
-                            <>ONLINE</>
-                          ) : (
-                            <span style={{ textTransform: "capitalize" }}>
-                              {e.address}, {e.city}
-                            </span>
-                          )}
-                        </p>
-                        {!e.entryFee ? (
-                          <p>entrée libre</p>
+                        {e.isOnline ? (
+                          <p>ONLINE</p>
                         ) : (
-                          <p>entrée : {e.entryFee} CHF</p>
+                          <p style={{ textTransform: "capitalize" }}>
+                            {!e.address.trim().endsWith(" 0") && (
+                              <span className="address">{e.address}, </span>
+                            )}
+                            <nobr>{e.city}</nobr>
+                          </p>
+                        )}
+
+                        {console.log("e.isFreeEntry ", e.isFreeEntry)}
+
+                        {e.isFreeEntry ? (
+                          <p>entrée libre</p>
+                        ) : e.admissionFeeMax ? (
+                          <p>
+                            {e.admissionFeeMin}-{e.admissionFeeMax} CHF
+                          </p>
+                        ) : (
+                          <p>{e.admissionFeeMin} CHF</p>
                         )}
                         <p>
                           organisé par{" "}
                           {e.organizerWebsite ? (
                             <a
-                              href={`http://${e.organizerWebsite}`}
+                              href={`${e.organizerWebsite}`}
                               target="_blank"
                               rel="noopener noreferrer"
                             >

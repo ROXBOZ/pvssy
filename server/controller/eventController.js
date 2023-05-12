@@ -80,7 +80,7 @@ const getEventById = async (req, res) => {
 const getEventByOrganizer = async (req, res) => {
   try {
     const requestedEvents = await eventModel
-      .find({ organizer: req.params.organizer })
+      .find({ organizerContact: req.params.organizer })
       .exec();
     if (requestedEvents.length === 0) {
       res.status(200).json({

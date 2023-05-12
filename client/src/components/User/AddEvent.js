@@ -26,7 +26,6 @@ const AddEvent = () => {
   const [isFreeEntry, setIsFreeEntry] = useState(true);
   const [isUniquePrice, setIsUniquePrice] = useState(true);
   const [organizerIsUserName, setOrganizerIsUserName] = useState(false);
-  const [setConditionsAccepted] = useState(false);
   const [message, setMessage] = useState("");
   const { regions } = useContext(EventsContext);
   const [markdown, setMarkdown] = useState("");
@@ -542,6 +541,9 @@ const AddEvent = () => {
                 !addressRegex.test(newEvent.eventAddress) && (
                   <p className="msg error">
                     L’adresse doit inclure la rue et le numéro.
+                    <br />
+                    Si l’évènement a plusieurs lieux, mentionnez la ville suivie
+                    de 0.
                   </p>
                 )}
               <label className="mandatory" htmlFor="eventCity">
@@ -560,8 +562,8 @@ const AddEvent = () => {
                 newEvent.eventCity &&
                 !cityRegex.test(newEvent.eventCity) && (
                   <p className="msg error">
-                    Le lieu doit inclure le code postale (4 chiffres) et la
-                    ville.
+                    Le code postale doit contenir (4 chiffres) mais n’est pas
+                    obligatoire.
                   </p>
                 )}
 
@@ -816,7 +818,7 @@ const AddEvent = () => {
               id="conditionsCheckbox"
               type="checkbox"
               onChange={(e) => {
-                setConditionsAccepted(true);
+                // setConditionsAccepted(true);
                 if (e.target.checked) {
                   setNewEvent({ ...newEvent, conditionsAccepted: true });
                 } else {
@@ -872,7 +874,7 @@ const AddEvent = () => {
               newEvent.isFreeEntry
                 ? true
                 : isUniquePrice
-                ? newEvent.admissionFee
+                ? newEvent.admissionFeeMin
                 : newEvent.admissionFeeMin && newEvent.admissionFeeMax) &&
               (userProfile.userIsAdmin || newEvent.conditionsAccepted)
             )
