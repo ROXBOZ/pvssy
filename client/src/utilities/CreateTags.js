@@ -20,7 +20,6 @@ const CreateTags = (tags) => {
     setSelectedTag(null);
   };
 
-  console.log("selectedTag :", selectedTag);
   return (
     <div className="grid-area">
       <div className="tag-container">

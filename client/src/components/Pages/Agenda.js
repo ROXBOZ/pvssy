@@ -24,10 +24,6 @@ const Agenda = () => {
   const { selectedTag } = useContext(PainsContext);
   const { fetchData, data, agendaURL } = useContext(EventsContext);
 
-  const redirectToMeeting = (url) => {
-    window.open(url, "_blank");
-  };
-
   useEffect(() => {
     fetchData(agendaURL);
   }, [agendaURL]);
@@ -179,17 +175,23 @@ const Agenda = () => {
                         <ReactMarkdown>{e.longDef}</ReactMarkdown>
                         {e.isOnline && (
                           <div className="flex-center">
-                            <button
-                              onClick={redirectToMeeting(e.onlineMeeting)}
-                              disabled={
-                                eventDateInMilli < todayStartinMilli ||
-                                eventDateInMilli > todayEndinMilli
-                                  ? true
-                                  : false
-                              }
+                            <a
+                              style={{ borderBottom: "none" }}
+                              href={e.onlineMeeting}
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
-                              Rejoindre la réunion
-                            </button>
+                              <button
+                                disabled={
+                                  eventDateInMilli < todayStartinMilli ||
+                                  eventDateInMilli > todayEndinMilli
+                                    ? true
+                                    : false
+                                }
+                              >
+                                Rejoindre la réunion
+                              </button>
+                            </a>
                             <CountdownTimer isoDate={e.eventDateStart} />
                           </div>
                         )}
