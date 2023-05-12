@@ -96,6 +96,20 @@ html {
   color: $primary;
 }
 
+.mobile-only {
+  display: none;
+}
+
+@media screen and (max-width: map-get($breakpoints, "sm")) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}
+
 .mandatory {
   &:after {
     content: (" *");

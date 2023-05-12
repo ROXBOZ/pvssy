@@ -22,7 +22,7 @@ router.get("/approved", getApprovedEvents);
 router.get("/pending", getPendingEvents);
 router.get("/byRegion/:region", getEventsByRegion);
 router.get("/byId/:_id", getEventById);
-router.get("/byOrganizer/:organizer", getEventByOrganizer);
+router.get("/byOrganizer/:organizerContact", getEventByOrganizer);
 
 //POST
 router.post("/all", addEvent);

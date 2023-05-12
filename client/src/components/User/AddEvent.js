@@ -885,7 +885,7 @@ const AddEvent = () => {
             : "Proposer l’évènement"}
         </button>
 
-        {userProfile && userProfile.userIsAdmin === false && (
+        {/* {userProfile && userProfile.userIsAdmin === false && (
           <p className="msg info">
             <span>
               Si ton évènement n’a pas été traité après 3 jours, contacte-nous à{" "}
@@ -898,7 +898,7 @@ const AddEvent = () => {
               .
             </span>
           </p>
-        )}
+        )} */}
 
         {message && (
           <div className={`message ${message.type}`}>{message.content}</div>

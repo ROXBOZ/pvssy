@@ -134,6 +134,8 @@ h1.invisible {
   .agenda-entry-title {
     flex-direction: column;
     padding-bottom: 1rem;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
   }
   .agenda-entry-title button {
     align-self: flex-start;
@@ -184,6 +186,10 @@ h1.invisible {
     color: #43064b;
   }
 }
+#chevron-icon.close {
+  transform: rotate(-90deg);
+}
+
 .article h2:first-of-type {
   margin-top: 0;
 }
@@ -796,19 +802,6 @@ footer .footer-bottom .copyrights {
 .grid-form .form-section .input-label-container.fullwidth input {
   width: 100%;
 }
-.grid-form .form-section .check-list-container {
-  grid-column: 1/12;
-}
-.grid-form .form-section .check-list-container .check-list {
-  list-style-type: none;
-  padding-left: 0;
-  grid-column: 1/12;
-}
-.grid-form .form-section .check-list-container .check-list li:not(:first-child) {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid #ffdebc;
-}
 .grid-form .react-mde-container {
   grid-column: 6/13;
 }
@@ -889,6 +882,27 @@ footer .footer-bottom .copyrights {
 .search-bar::placeholder {
   color: #43064b;
   opacity: 50%;
+}
+
+.check-list-container {
+  margin: 2rem 0;
+  grid-column: 1/12;
+}
+.check-list-container .check-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+.check-list-container .check-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 100vw;
+}
+.check-list-container .check-list li:not(:first-child) {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ffdebc;
 }
 
 .grid-area {
@@ -2215,6 +2229,18 @@ html body .main {
   color: #ff5c3f;
 }
 
+.mobile-only {
+  display: none;
+}
+
+@media screen and (max-width: 576px) {
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
+  }
+}
 .mandatory:after {
   content: " *";
   color: #ff5c3f;

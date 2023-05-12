@@ -74,6 +74,8 @@
   .agenda-entry-title {
     flex-direction: column;
     padding-bottom: $sm-space;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
 
     button {
       align-self: flex-start;

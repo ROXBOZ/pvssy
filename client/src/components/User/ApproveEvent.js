@@ -41,25 +41,34 @@ const ApproveEvent = () => {
   console.log("sortedEvents :", sortedEvents);
 
   return (
-    <div>
-      <p className="msg warning">
-        Une fois approuvé, un évènement ne peut qu’être supprimé via l’onglet.
-      </p>
+    <form className="grid-form">
+      <div className="form-section">
+        <div className="check-list-container">
+          <p
+            className="msg warning flex-center"
+            style={{ marginBottom: "5vh" }}
+          >
+            Une fois approuvé, un évènement ne peut qu’être supprimé via
+            l’onglet.
+          </p>
+          <div className="check-list">
+            {sortedEvents &&
+              sortedEvents.map((e) => {
+                const dateTime = dateTimeConverter(e.eventDateStart);
 
-      {sortedEvents &&
-        sortedEvents.map((e) => {
-          const dateTime = dateTimeConverter(e.eventDateStart);
-
-          return (
-            <PendingEventCard
-              event={e}
-              key={e._id}
-              dateTime={dateTime}
-              getPendingEvent={getPendingEvent}
-            />
-          );
-        })}
-    </div>
+                return (
+                  <PendingEventCard
+                    event={e}
+                    key={e._id}
+                    dateTime={dateTime}
+                    getPendingEvent={getPendingEvent}
+                  />
+                );
+              })}
+          </div>
+        </div>
+      </div>
+    </form>
   );
 };
 

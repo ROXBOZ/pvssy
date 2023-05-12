@@ -4,7 +4,6 @@ import { EventsContext } from "../../contexts/eventsContext";
 import {
   dateConverter,
   dateConverterNoWeekday,
-  timeConverter,
 } from "../../utilities/dateConverter";
 import CountdownTimer from "../../utilities/CountdownTimer";
 import { fromNowToDate } from "../../utilities/fromNowToDate";
@@ -13,6 +12,7 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import CreateTags from "../../utilities/CreateTags";
 import { PainsContext } from "../../contexts/PainsContext";
 import { Helmet } from "react-helmet";
+import { todayISO } from "../../utilities/regexExpressions";
 
 const Agenda = () => {
   const { regions } = useContext(EventsContext);
@@ -46,10 +46,18 @@ const Agenda = () => {
   };
 
   const filteredData = selectedTag
-    ? data.upcomingEvents.filter(
-        (e) => e.region.includes(selectedTag) || e.isOnline === true
+    ? data.upcomingEvents && Array.isArray(data.upcomingEvents)
+      ? data.upcomingEvents
+          .filter((e) => e.region.includes(selectedTag) || e.isOnline === true)
+          .sort(
+            (a, b) => new Date(a.eventDateStart) - new Date(b.eventDateStart)
+          )
+      : []
+    : data.upcomingEvents && Array.isArray(data.upcomingEvents)
+    ? [...data.upcomingEvents].sort(
+        (a, b) => new Date(a.eventDateStart) - new Date(b.eventDateStart)
       )
-    : data.upcomingEvents;
+    : [];
 
   return (
     <>
@@ -88,16 +96,27 @@ const Agenda = () => {
                   ) : (
                     <span className="noun">{e.city.replace(/\d+/g, "")}</span>
                   )}{" "}
-                  · <nobr>{dateConverterNoWeekday(e.eventDateStart)}</nobr>
+                  · <nobr>{dateConverterNoWeekday(e.eventDateStart)}</nobr> ·{" "}
+                  {e.eventDateStart < todayISO && (
+                    <span style={{ textTransform: "capitalize" }}>
+                      <strong>C’EST MAINTENANT !</strong>
+                    </span>
+                  )}
                 </p>
                 <div
                   onClick={() => handleClick(e._id)}
                   className="agenda-entry-title "
                 >
                   <h3>{e.title}</h3>
-                  <button>{showEvent[e._id] ? "fermer" : "en savoir +"}</button>
+                  <button className="desktop-only">
+                    {showEvent[e._id] ? "fermer" : "en savoir +"}
+                  </button>
                 </div>
                 {showEvent[e._id] ? <span></span> : <span>{e.shortDef}</span>}
+                <br />
+                <button className="mobile-only">
+                  {showEvent[e._id] ? "fermer" : "en savoir +"}
+                </button>
                 {showEvent[e._id] && (
                   <>
                     <div className="event-container">
@@ -121,8 +140,6 @@ const Agenda = () => {
                             <nobr>{e.city}</nobr>
                           </p>
                         )}
-
-                        {console.log("e.isFreeEntry ", e.isFreeEntry)}
 
                         {e.isFreeEntry ? (
                           <p>entrée libre</p>

@@ -23,7 +23,13 @@ const getAllEvents = async (req, res) => {
 const getUpcomingEvents = async (req, res) => {
   try {
     const upcomingEvents = await eventModel
-      .find({ eventDateStart: { $gte: today } })
+      .find({
+        $or: [
+          { eventDateStart: { $gte: today } },
+          { eventDateEnd: { $gte: today } },
+        ],
+      })
+
       .exec();
     res.status(200).json({
       number: upcomingEvents.length,
@@ -80,11 +86,11 @@ const getEventById = async (req, res) => {
 const getEventByOrganizer = async (req, res) => {
   try {
     const requestedEvents = await eventModel
-      .find({ organizerContact: req.params.organizer })
+      .find({ organizerContact: req.params.organizerContact })
       .exec();
     if (requestedEvents.length === 0) {
       res.status(200).json({
-        msg: "Pas d'évènements avec cet organisateurice",
+        msg: "Pas d'évènements avec cet organisice",
       });
     } else {
       res.status(200).json({

@@ -29,22 +29,6 @@
         }
       }
     }
-
-    .check-list-container {
-      grid-column: 1/12;
-
-      .check-list {
-        list-style-type: none;
-        padding-left: 0;
-        grid-column: 1/12;
-
-        li:not(:first-child) {
-          margin-top: $sm-space;
-          padding-top: $sm-space;
-          border-top: $border-solid darken($bg-color, 10%);
-        }
-      }
-    }
   }
 
   .react-mde-container {
@@ -124,5 +108,28 @@
   &::placeholder {
     color: $txt-color;
     opacity: 50%;
+  }
+}
+
+.check-list-container {
+  margin: $reg-space 0;
+  grid-column: 1/12;
+
+  .check-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    li {
+      display: flex;
+      align-items: center;
+      gap: $sm-space;
+      max-width: 100vw;
+    }
+
+    li:not(:first-child) {
+      margin-top: $sm-space;
+      padding-top: $sm-space;
+      border-top: $border-solid darken($bg-color, 10%);
+    }
   }
 }

@@ -46,3 +46,7 @@
     color: $txt-color;
   }
 }
+
+#chevron-icon.close {
+  transform: rotate(-90deg);
+}

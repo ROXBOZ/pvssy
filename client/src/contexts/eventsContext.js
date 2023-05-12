@@ -1,8 +1,6 @@
 import { createContext, useState } from "react";
 import { serverURL } from "../utilities/serverURL";
-
 export const EventsContext = createContext();
-
 export const EventsContextProvider = (props) => {
   const [data, setData] = useState([]);
   const baseURL = `${serverURL}/api/events`;
@@ -34,53 +32,6 @@ export const EventsContextProvider = (props) => {
     }
   };
 
-  // const handleRegionInputChange = (event) => {
-  //   const newValue = event.target.value;
-  //   setValue(newValue);
-
-  //   if (newValue.length === 0) {
-  //     setSuggestions([]);
-  //     setShowSuggestions(false);
-  //     setIconClicked(false);
-  //     return;
-  //   }
-
-  //   const matchingSuggestions = regions.filter((suggestion) =>
-  //     suggestion.toLowerCase().includes(newValue.toLowerCase())
-  //   );
-  //   setSuggestions(matchingSuggestions);
-  //   setShowSuggestions(matchingSuggestions.length > 0);
-  //   setIconClicked(true);
-  // };
-  // const handleSuggestionClick = (suggestion) => {
-  //   setValue(suggestion);
-  //   setShowSuggestions(false);
-  //   setIconClicked(false);
-  // };
-  // const toggleIconClicked = () => {
-  //   setIconClicked(!iconClicked);
-  // };
-  // const handleIconClick = () => {
-  //   toggleIconClicked();
-  //   setSuggestions([...regions]);
-  //   setShowSuggestions(showSuggestions ? false : true);
-  // };
-  // const handleKeyDown = (e) => {
-  //   if (e.key === "ArrowDown") {
-  //     e.preventDefault();
-  //     setSelectedSuggestionIndex(
-  //       (selectedSuggestionIndex + 1) % suggestions.length
-  //     );
-  //   } else if (e.key === "ArrowUp") {
-  //     e.preventDefault();
-  //     setSelectedSuggestionIndex(
-  //       (selectedSuggestionIndex - 1 + suggestions.length) % suggestions.length
-  //     );
-  //   } else if (e.key === "Enter" && selectedSuggestionIndex >= 0) {
-  //     handleSuggestionClick(suggestions[selectedSuggestionIndex]);
-  //   }
-  // };
-
   return (
     <EventsContext.Provider
       value={{
@@ -103,11 +54,6 @@ export const EventsContextProvider = (props) => {
         setSelectedSuggestionIndex,
         iconClicked,
         setIconClicked,
-        // handleRegionInputChange,
-        // handleSuggestionClick,
-        // toggleIconClicked,
-        // handleIconClick,
-        // handleKeyDown,
       }}
     >
       {props.children}
