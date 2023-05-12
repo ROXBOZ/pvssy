@@ -790,10 +790,11 @@ const AddEvent = () => {
                 newEvent.eventShortDef.length <= 120 &&
                 newEvent.eventOrganizer &&
                 newEvent.eventOrganizer.length >= 3 &&
-                newEvent.eventOrganizer.length <= 20
+                newEvent.eventOrganizer.length <= 20 &&
+                (!newEvent.eventOrganizerWebsite ||
+                  urlRegex.test(newEvent.eventOrganizerWebsite))
               )
-              //   !newEvent.eventOrganizerWebsite) ||
-              // urlRegex.test(newEvent.eventOrganizerWebsite)
+
               //       newEvent.isOnline)
               //   ? newEvent.onlineMeeting &&
               //     urlRegex.test(newEvent.onlineMeeting)
