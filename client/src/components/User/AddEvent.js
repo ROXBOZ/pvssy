@@ -24,6 +24,7 @@ const AddEvent = () => {
   const [eventType, setEventType] = useState("offline");
   const [eventIsOneDay, setEventIsOneDay] = useState(true);
   const [eventEntry, setEventEntry] = useState("gratuite");
+  const [isUniquePrice, setIsUniquePrice] = useState(true);
   const [organizerIsUserName, setOrganizerIsUserName] = useState(false);
   const [conditionsAccepted, setConditionsAccepted] = useState(null);
   const [message, setMessage] = useState("");
@@ -43,6 +44,7 @@ const AddEvent = () => {
       opts.textApi.replaceSelection("  \n");
     },
   };
+
   const linkCommand = {
     name: "link",
     icon: () => (
@@ -56,6 +58,7 @@ const AddEvent = () => {
       console.log("object");
     },
   };
+
   const handleInputChange = (e) => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
   };
@@ -65,25 +68,9 @@ const AddEvent = () => {
   };
   const submitForm = (e) => {
     e.preventDefault();
-    if (!newEvent.eventTitle) {
-      alert("Titre manquant");
-    } else if (!newEvent.eventDateTimeStart) {
-      alert("Date et/ou heure de début manquante");
-    } else if (!newEvent.eventShortDef) {
-      alert("Description 'En bref' manquante");
-    } else if (newEvent.isOnline === true && !newEvent.onlineMeeting) {
-      alert("Lien manquant pour la réunion en ligne");
-    } else if (newEvent.isOnline === false && !newEvent.eventAddress) {
-      alert("Rue et numéro manquants");
-    } else if (newEvent.isOnline === false && !newEvent.eventCity) {
-      alert("Lieu manquante");
-    } else if (newEvent.freeEntry === false && !newEvent.admissionFee) {
-      alert("Prix manquant");
-    } else {
-      userProfile && userProfile.userIsAdmin === true
-        ? addNewEvent(false)
-        : addNewEvent(true);
-    }
+    userProfile && userProfile.userIsAdmin === true
+      ? addNewEvent(false)
+      : addNewEvent(true);
   };
   const addNewEvent = async (isPending) => {
     const myHeaders = new Headers();
@@ -92,7 +79,6 @@ const AddEvent = () => {
     const raw = JSON.stringify({
       isPending: isPending,
       title: newEvent.eventTitle,
-
       dateStart: newEvent.eventDateTimeStart,
       dateEnd: newEvent.eventDateTimeEnd,
       organizer: newEvent.eventOrganizer,
@@ -158,14 +144,11 @@ const AddEvent = () => {
     <>
       <form className="grid-form" ref={formRef}>
         <h2>Ajouter un évènement</h2>
-        <p className="msg warning">
-          Pour les évènements s’étalant sur plusieurs jours, préciser les
-          horaires journaliers dans « Détails » ou créer plusieurs évènements
-          pour chaque activité/journée.
-        </p>
-
         <h3>Informations essentielles</h3>
-
+        <p className="msg info">
+          Les entrées marquée d’une astérique <span className="colored">*</span>{" "}
+          sont obligatoires .
+        </p>
         <div className="form-section">
           <label className="mandatory" htmlFor="eventTitle">
             Nom de l’évènement
@@ -200,7 +183,7 @@ const AddEvent = () => {
               onChange={(e) => {
                 setEventIsOneDay(true);
                 if (e.target.checked) {
-                  setNewEvent({ ...newEvent, isOneDay: true });
+                  setNewEvent({ ...newEvent, eventIsOneDay: true });
                 }
               }}
             />
@@ -221,7 +204,7 @@ const AddEvent = () => {
               onChange={(e) => {
                 setEventIsOneDay(false);
                 if (e.target.checked) {
-                  setNewEvent({ ...newEvent, isMoreDays: false });
+                  setNewEvent({ ...newEvent, eventIsOneDay: false });
                 }
               }}
             />
@@ -244,15 +227,7 @@ const AddEvent = () => {
               {newEvent.eventDate && newEvent.eventDate < todayISO && (
                 <p className="error msg">La date est déjà passée.</p>
               )}
-
-              {console.log("newEvent.eventDate ", newEvent.eventDate)}
-              {console.log("todayISO :", todayISO)}
-              {console.log(
-                "isMoreThan3Days(newEvent.eventDate) :",
-                isMoreThan3Days(newEvent.eventDate)
-              )}
-
-              {/* {newEvent.eventDate &&
+              {newEvent.eventDate &&
                 newEvent.eventDate > todayISO &&
                 !isMoreThan3Days(newEvent.eventDate) && (
                   <p className="msg warning">
@@ -260,7 +235,7 @@ const AddEvent = () => {
                     <br />
                     Nous ne garantissons pas sa publication.
                   </p>
-                )} */}
+                )}
 
               <label className="mandatory" htmlFor="eventTimeStart">
                 Heure de début
@@ -273,7 +248,6 @@ const AddEvent = () => {
                 required
                 className="line"
               />
-
               <label className="mandatory" htmlFor="eventDateTimeStart">
                 Heure de fin
               </label>
@@ -285,9 +259,21 @@ const AddEvent = () => {
                 required
                 className="line"
               />
+              {newEvent.eventTimeStart &&
+                newEvent.eventTimeEnd &&
+                newEvent.eventTimeStart >= newEvent.eventTimeEnd && (
+                  <p className="error msg">
+                    L’heure de début doit être antérieure à l’heure de fin.
+                  </p>
+                )}
             </>
           ) : (
             <>
+              <p className="msg warning">
+                Détaillez les horaires pour chaque jour dans « En détails » ou
+                créez un événement par journée.
+              </p>
+
               <label className="mandatory" htmlFor="eventDateTimeStart">
                 Date de début
               </label>
@@ -316,15 +302,23 @@ const AddEvent = () => {
                 onChange={handleInputChange}
                 className="line"
               />
-              {/* {newEvent.eventDateStart &&
+              {newEvent.eventDateStart &&
                 newEvent.eventDateStart > todayISO &&
                 !isMoreThan3Days(newEvent.eventDateStart) && (
                   <p className="msg warning">
                     L’évènement commence dans moins de 3 jours.
                     <br />
-                    Nous ne garantissons pas sa publication.
+                    Nous ne garantissons pas sa publication à temps.
                   </p>
-                )} */}
+                )}
+
+              {newEvent.eventDateStart &&
+                newEvent.eventDateEnd &&
+                newEvent.eventDateStart > newEvent.eventDateEnd && (
+                  <p className="msg warning">
+                    La date de fin doit être postérieure à la date de début.
+                  </p>
+                )}
             </>
           )}
 
@@ -338,15 +332,18 @@ const AddEvent = () => {
             onChange={handleInputChange}
             required
             rows="2"
+            maxLength={121}
           />
           {newEvent.eventShortDef &&
             (newEvent.eventShortDef.length < 60 ||
               newEvent.eventShortDef.length > 120) && (
               <p className="msg error">
-                La description brève doit contenir entre 60 et 120 caractères.
+                La description doit contenir entre 60 et 120 caractères.
               </p>
             )}
-          {!eventIsOneDay && <p className="msg info">Préciser heures ici  ↓</p>}
+          {!eventIsOneDay && (
+            <p className="msg info">Préciser les heures ici  ↓</p>
+          )}
           <label htmlFor="eventLongDef">En détails</label>
           <div className="react-mde-container">
             <ReactMde
@@ -386,7 +383,15 @@ const AddEvent = () => {
                 onChange={handleInputChange}
                 className="line"
                 placeholder="Nom Association organisatrice"
+                maxlength="21"
               />
+              {newEvent.eventOrganizer &&
+                (newEvent.eventOrganizer.length < 3 ||
+                  newEvent.eventOrganizer.length > 20) && (
+                  <p className="msg error">
+                    Le nom doit contenir entre 3 et 20 caractères.
+                  </p>
+                )}
               <label htmlFor="eventOrganizerWebsite">Site Internet</label>
               <input
                 name="eventOrganizerWebsite"
@@ -398,8 +403,20 @@ const AddEvent = () => {
               />
             </>
           )}
+
+          {!organizerIsUserName &&
+            newEvent.eventOrganizerWebsite &&
+            !urlRegex.test(newEvent.eventOrganizerWebsite) && (
+              <p className="msg error">
+                L’URL doit commencer par https:// ou http:// et être valide.
+              </p>
+            )}
+
           {userProfile && (
-            <div style={{ gridColumn: "6", whiteSpace: "nowrap" }}>
+            <div
+              className="input-label-container"
+              style={{ gridColumn: "6", whiteSpace: "nowrap" }}
+            >
               <input
                 className="form-check-input"
                 type="checkbox"
@@ -422,15 +439,19 @@ const AddEvent = () => {
                   }
                 }}
               />
-              <a href={`http://${userProfile.userWebsite}`}>
-                {userProfile.userName}
-              </a>
+              <label htmlFor="eventOrganizer">
+                <a href={`http://${userProfile.userWebsite}`}>
+                  {userProfile.userName}
+                </a>
+              </label>
             </div>
           )}
         </div>
         <h3>Format</h3>
         <div className="form-section">
-          <label htmlFor="eventType">Format *</label>
+          <label className="mandatory" htmlFor="eventType">
+            Format
+          </label>
 
           <div className="input-label-container">
             <input
@@ -466,7 +487,9 @@ const AddEvent = () => {
           </div>
           {eventType === "offline" && (
             <>
-              <label htmlFor="eventAddress">Adresse *</label>
+              <label className="mandatory" htmlFor="eventAddress">
+                Adresse
+              </label>
               <input
                 name="eventAddress"
                 id="eventAddress"
@@ -476,7 +499,16 @@ const AddEvent = () => {
                 required
                 className="line"
               />
-              <label htmlFor="eventCity">Lieu *</label>
+              {!newEvent.isOnline &&
+                newEvent.eventAddress &&
+                !addressRegex.test(newEvent.eventAddress) && (
+                  <p className="msg error">
+                    L’adresse doit inclure la rue et le numéro.
+                  </p>
+                )}
+              <label className="mandatory" htmlFor="eventCity">
+                Lieu
+              </label>
               <input
                 name="eventCity"
                 id="eventCity"
@@ -486,8 +518,18 @@ const AddEvent = () => {
                 required
                 className="line"
               />
+              {!newEvent.isOnline &&
+                newEvent.eventCity &&
+                !cityRegex.test(newEvent.eventCity) && (
+                  <p className="msg error">
+                    Le lieu doit inclure le code postale (4 chiffres) et la
+                    ville.
+                  </p>
+                )}
 
-              <label htmlFor="eventRegion">Canton *</label>
+              <label className="mandatory" htmlFor="eventRegion">
+                Canton
+              </label>
 
               <select
                 name="eventRegion"
@@ -506,18 +548,12 @@ const AddEvent = () => {
               </select>
             </>
           )}
-          {!newEvent.isOnline &&
-            ((newEvent.eventAddress &&
-              !addressRegex.test(newEvent.eventAddress)) ||
-              (newEvent.eventCity && !cityRegex.test(newEvent.eventCity))) && (
-              <p className="msg error">
-                L’adresse doit inclure la rue et le numéro, le lieu doit inclure
-                le code postal et la commune.{" "}
-              </p>
-            )}
+
           {eventType === "online" && (
             <>
-              <label htmlFor="onlineMeeting">Lien réunion *</label>
+              <label className="mandatory" htmlFor="onlineMeeting">
+                Lien réunion
+              </label>
               <input
                 name="onlineMeeting"
                 id="onlineMeeting"
@@ -532,7 +568,9 @@ const AddEvent = () => {
           {newEvent.isOnline &&
             newEvent.onlineMeeting &&
             !urlRegex.test(newEvent.onlineMeeting) && (
-              <p className="msg error">L’URL de la réunion n’est pas valide.</p>
+              <p className="msg error">
+                L’URL doit commencer par https:// ou http:// et être valide.
+              </p>
             )}
         </div>
         <h3>Réservations</h3>
@@ -549,8 +587,7 @@ const AddEvent = () => {
 
           {newEvent.eventTel && !swissTelRegex.test(newEvent.eventTel) && (
             <p className="msg error">
-              Le numéro de téléphone doit être suisse au format international :
-              +41 (0) ...
+              Il ne s’agit pas d’un numéro suisse valide.
             </p>
           )}
 
@@ -569,7 +606,9 @@ const AddEvent = () => {
         </div>
         <h3>Tarif d’entrée / participation</h3>
         <div className="form-section">
-          <label htmlFor="eventEntry">Entrée / participation *</label>
+          <label className="mandatory" htmlFor="eventEntry">
+            Entrée / participation
+          </label>
           <div className="input-label-container">
             <input
               className="form-check-input"
@@ -605,24 +644,98 @@ const AddEvent = () => {
 
           {eventEntry === "payante" && (
             <>
-              <label htmlFor="admissionFee">Prix d’entrée</label>
-              <input
-                name="admissionFee"
-                id="admissionFee"
-                type="number"
-                step="0.01"
-                min="0"
-                max="999.99"
-                placeholder="10-20 CHF"
-                onChange={handleInputChange}
-                required
-                className="line"
-              />
+              <label className="mandatory" htmlFor="eventEntry">
+                Type de tarification
+              </label>
+              <div className="input-label-container">
+                <input
+                  className="form-check-input"
+                  id="eventPriceRange"
+                  type="radio"
+                  name="eventPrice"
+                  checked={isUniquePrice === false}
+                  onChange={(e) => {
+                    setIsUniquePrice(false);
+                    if (e.target.checked) {
+                      setNewEvent({ ...newEvent, isUniquePrice: false });
+                    }
+                  }}
+                />
+                <label htmlFor="eventPriceRange">Fourchette</label>
+              </div>
+              <div
+                style={{
+                  gridColumn: "span 2",
+                }}
+                className="input-label-container"
+              >
+                <input
+                  className="form-check-input"
+                  id="eventUniquePrice"
+                  type="radio"
+                  name="eventPrice"
+                  checked={isUniquePrice === true}
+                  onChange={(e) => {
+                    setIsUniquePrice(true);
+                    if (e.target.checked) {
+                      setNewEvent({ ...newEvent, isUniquePrice: true });
+                    }
+                  }}
+                />
+                <label htmlFor="eventUniquePrice">Tarif unique</label>
+              </div>
+
+              {isUniquePrice ? (
+                <>
+                  <label className="mandatory" htmlFor="admissionFee">
+                    Tarif en CHF
+                  </label>
+                  <input
+                    name="admissionFee"
+                    id="admissionFee"
+                    type="number"
+                    placeholder="25,50"
+                    onChange={handleInputChange}
+                    required
+                    className="line"
+                  />
+                </>
+              ) : (
+                <>
+                  <label className="mandatory" htmlFor="admissionFee">
+                    Tarif minimum en CHF
+                  </label>
+                  <input
+                    name="admissionFee"
+                    id="admissionFee"
+                    type="number"
+                    placeholder="10"
+                    onChange={handleInputChange}
+                    required
+                    className="line"
+                  />
+                  <label className="mandatory" htmlFor="admissionFee">
+                    Tarif maximum en CHF
+                  </label>
+                  <input
+                    name="admissionFee"
+                    id="admissionFee"
+                    type="number"
+                    placeholder="20"
+                    onChange={handleInputChange}
+                    required
+                    className="line"
+                  />
+                  <p className="msg info">
+                    Préciser les infos relatives aux prix dans « En détails ».
+                  </p>
+                </>
+              )}
             </>
           )}
           {newEvent.freeEntry === false && !newEvent.admissionFee && (
             <p className="error msg">
-              Renseigner un prix ou sélectionner « Gratuit ».
+              Renseigner un chiffre ou sélectionner « gratuite ».
             </p>
           )}
         </div>
@@ -649,12 +762,65 @@ const AddEvent = () => {
           onClick={submitForm}
           type="submit"
           disabled={
+            !(
+              (newEvent.eventTitle &&
+              newEvent.eventTitle.length >= 3 &&
+              newEvent.eventTitle.length < 40 &&
+              newEvent.eventIsOneDay
+                ? newEvent.eventDate &&
+                  newEvent.eventDate > todayISO &&
+                  newEvent.eventTimeStart &&
+                  newEvent.eventTimeEnd &&
+                  newEvent.eventTimeStart < newEvent.eventTimeEnd
+                : newEvent.eventDateStart &&
+                  newEvent.eventDateStart > todayISO &&
+                  newEvent.eventDateEnd &&
+                  newEvent.eventDateStart < newEvent.eventDateEnd) &&
+              newEvent.eventShortDef &&
+              newEvent.eventShortDef.length > 60 &&
+              newEvent.eventShortDef.length < 120 &&
+              newEvent.eventOrganizer &&
+              newEvent.eventOrganizer.length > 3 &&
+              newEvent.eventOrganizer.length < 20 &&
+              newEvent.eventOrganizerWebsite &&
+              urlRegex.test(newEvent.eventOrganizerWebsite) &&
+              (newEvent.isOnline
+                ? newEvent.onlineMeeting &&
+                  urlRegex.test(newEvent.onlineMeeting)
+                : newEvent.eventAddress &&
+                  addressRegex.test(newEvent.eventAddress) &&
+                  newEvent.eventCity &&
+                  cityRegex.test(newEvent.eventCity)) &&
+              newEvent.eventTel &&
+              swissTelRegex.test(newEvent.eventTel) &&
+              newEvent.eventEmail &&
+              emailRegex.test(newEvent.eventEmail) &&
+              // (newEvent.freeEntry ? true : newEvent.admissionFee) &&
+              (userProfile && userProfile.userIsAdmin
+                ? true
+                : conditionsAccepted)
+            )
+          }
+        >
+          {userProfile && userProfile.userIsAdmin === true
+            ? "Ajouter l’évènement"
+            : "Proposer l’évènement"}
+        </button>
+
+        {/* <button
+          onClick={submitForm}
+          type="submit"
+          disabled={
             !(newEvent.eventTitle &&
             newEvent.eventTitle.length > 3 &&
             newEvent.eventTitle.length < 40 &&
-            newEvent.eventDateTimeStart &&
-            newEvent.eventDateTimeStart > todayISO &&
-            dateRegex.test(newEvent.eventDateTimeStart) &&
+            newEvent.eventDate &&
+            newEvent.eventDate > todayISO &&
+            newEvent.eventDateStart &&
+            newEvent.eventDateStart > todayISO &&
+            newEvent.eventDateStart &&
+            newEvent.eventDateEnd &&
+            newEvent.eventDateStart < newEvent.eventDateEnd &&
             newEvent.eventShortDef &&
             newEvent.eventShortDef.length > 60 &&
             newEvent.eventShortDef.length < 200 &&
@@ -681,7 +847,7 @@ const AddEvent = () => {
           {userProfile && userProfile.userIsAdmin === true
             ? "Ajouter l’évènement"
             : "Proposer l’évènement"}
-        </button>
+        </button> */}
         {message && (
           <div className={`message ${message.type}`}>{message.content}</div>
         )}
