@@ -75,3 +75,9 @@ figure {
     object-fit: cover;
   }
 }
+
+.illu-animation-xl {
+  border-radius: $border-radius-soft;
+  margin: $reg-space 0;
+  max-width: $chperline;
+}

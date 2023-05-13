@@ -96,10 +96,10 @@ const Agenda = () => {
                   ) : (
                     <span className="noun">{e.city.replace(/\d+/g, "")}</span>
                   )}{" "}
-                  · <nobr>{dateConverterNoWeekday(e.eventDateStart)}</nobr> ·{" "}
+                  · <nobr>{dateConverterNoWeekday(e.eventDateStart)}</nobr>
                   {e.eventDateStart < todayISO && (
                     <span style={{ textTransform: "capitalize" }}>
-                      <strong>C’EST MAINTENANT !</strong>
+                      <strong> · C’EST MAINTENANT !</strong>
                     </span>
                   )}
                 </p>

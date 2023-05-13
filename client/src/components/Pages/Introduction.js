@@ -18,7 +18,11 @@ const Introduction = () => {
           name="MedSexplain (AEMG)"
           url="https://aemg-ge.com/medsexplain/"
         />
-
+        <img
+          className="illu-animation-xl"
+          src={require(`../../assets/images/intro.jpg`)}
+          alt=""
+        />
         <p>
           S’il y a une chose à retenir c’est qu’il n’est pas normal d’avoir mal
           pendant les rapports sexuels. Si c’est le cas, c’est un signe que
@@ -27,6 +31,7 @@ const Introduction = () => {
           quelques jours comme une maladie chronique, qui aura des répercussions
           de longue durée.
         </p>
+
         <p>
           Un autre élément important à retenir : la douleur n’est pas « dans ta
           tête ». Les douleurs sexuelles que tu ressens sont un vrai problème de

@@ -19,6 +19,11 @@ const AutoObservation = () => {
           name="MedSexplain (AEMG)"
           url="https://aemg-ge.com/medsexplain/"
         />
+        <img
+          className="illu-animation-xl"
+          src={require(`../../assets/images/auto-obs.jpg`)}
+          alt=""
+        />
         <p>
           Pour toute question de santé, il est important de prendre le temps
           d’observer et sentir son corps et ses symptômes. Pour cela, n’hésite

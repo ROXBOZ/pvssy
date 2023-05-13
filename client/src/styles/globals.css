@@ -1239,6 +1239,12 @@ figure span a {
      object-fit: cover;
 }
 
+.illu-animation-xl {
+  border-radius: 10px;
+  margin: 2rem 0;
+  max-width: 70ch;
+}
+
 .lexique-list {
   padding-left: 0;
 }
