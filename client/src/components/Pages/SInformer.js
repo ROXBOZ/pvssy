@@ -23,11 +23,11 @@ const Sinformer = () => {
         subtitle="Des pistes pour bien observer ton corps, l’écouter, et mieux localiser tes douleurs."
       />
 
-      <div className="grid-area">
+      {/* <div className="grid-area">
         <Pictocard article={"introduction"} />
         <Pictocard article={"auto-observation"} />
         <Pictocard article={"consulter"} />
-      </div>
+      </div> */}
 
       <HeadingArea
         title="S’informer sur ses douleurs"
