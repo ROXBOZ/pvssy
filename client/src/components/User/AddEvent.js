@@ -300,8 +300,7 @@ const AddEvent = () => {
           ) : (
             <>
               <p className="msg warning">
-                Détaillez les horaires pour chaque jour dans « En détails » ou
-                créez un événement par journée.
+                Détaillez les horaires pour chaque jour dans « En détails ».
               </p>
 
               <label className="mandatory" htmlFor="eventDateTimeStart">

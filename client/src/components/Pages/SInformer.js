@@ -4,6 +4,7 @@ import Ressources from "./Ressources";
 import { HeadingArea } from "../../utilities/HeadingArea";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import Pictocard from "../Pictocard";
 
 const Sinformer = () => {
   return (
@@ -23,17 +24,10 @@ const Sinformer = () => {
       />
 
       <div className="grid-area">
-        <div className="centered">
-          <Link to="introduction">Introduction</Link>
-          <br />
-          <Link to="auto-observation">Guide d’auto-observation</Link>
-          <br />
-          <Link to="consulter">Consulter des pros de la santé</Link>
-        </div>
+        <Pictocard article={"introduction"} />
+        <Pictocard article={"auto-observation"} />
+        <Pictocard article={"consulter"} />
       </div>
-      {/* <div className="ressources-container">
-        <TitleLink to="/s-informer/introduction" title="Introduction" />
-      </div> */}
 
       <HeadingArea
         title="S’informer sur ses douleurs"

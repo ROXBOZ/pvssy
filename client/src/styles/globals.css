@@ -478,6 +478,42 @@ button:active,
   color: #43064b;
 }
 
+.picto-link {
+  grid-column: span 4;
+  width: 100%;
+  display: flex;
+  border-bottom: none;
+}
+
+.picto-card {
+  padding: 2rem;
+  border: 1px solid #ff5c3f;
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+@media screen and (max-width: 576px) {
+  .picto-card {
+    flex-direction: column;
+  }
+}
+.picto-card h3 {
+  margin: 0;
+  padding: 0;
+}
+.picto-card:hover {
+  border-color: #43064b;
+  background-color: white;
+}
+.picto-card img {
+  width: auto;
+  max-height: 6em;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+
 @media screen and (max-width: 576px) {
   .card-grid .link-card.article {
     margin-top: 0;
@@ -1243,6 +1279,7 @@ figure span a {
   border-radius: 10px;
   margin: 2rem 0;
   max-width: 70ch;
+  max-width: 100%;
 }
 
 .lexique-list {
@@ -1447,7 +1484,7 @@ a.term span {
   border-bottom: 1px solid #ce96ff;
 }
 .msg.info:before {
-  content: "☝️ ";
+  content: "💡 ";
 }
 
 .error-list {
@@ -2157,6 +2194,14 @@ h1:first-letter,
 }
 .author:before {
   content: "par ";
+}
+
+.loader {
+  height: 100vh;
+  width: 100vw;
+  position: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 * {

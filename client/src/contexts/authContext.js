@@ -112,8 +112,8 @@ export const AuthContextProvider = (props) => {
 
   if (loading) {
     return (
-      <div className="flex-center" style={{ height: "100vh", width: "100vw" }}>
-        <p className="msg pending">chargement...</p>
+      <div className="loader">
+        <p>chargement...</p>
       </div>
     );
   }

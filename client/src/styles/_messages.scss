@@ -74,7 +74,7 @@ $archived-color: dimgrey;
   &.info {
     border-bottom: $border-solid $secondary;
     &:before {
-      content: ("☝️ ");
+      content: ("💡 ");
     }
   }
 }
