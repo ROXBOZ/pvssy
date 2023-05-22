@@ -54,7 +54,6 @@ const Pains = () => {
           <nobr>as-tu mal ?</nobr>
         </p>
       </div>
-
       <CreateTags tags={painTags} />
 
       <div className="card-grid">
