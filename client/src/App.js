@@ -14,7 +14,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import Home from "./components/Pages/Home";
 import About from "./components/Pages/About";
 import Donate from "./components/Pages/Donate";
-import SInformer from "./components/Pages/SInformer";
+import SInformer from "./components/--/SInformer";
 import Agenda from "./components/Pages/Agenda";
 import GeneralConditions from "./components/Pages/GeneralConditions";
 import Pains from "./components/Pages/Pains";
@@ -58,8 +58,8 @@ function App() {
           <Header />
           <div className="title-container">
             <h1>
-              S’informer sur ses douleurs pour se réapproprier son corps et
-              sa sexualité
+              S’informer sur ses douleurs pour se réapproprier son corps
+              et sa sexualité
             </h1>
           </div>
         </div>
@@ -110,64 +110,46 @@ function App() {
                   <Routes>
                     <Route index element={<Home />} />
                     <Route path="a-propos" element={<About />} />
-                    <Route path="s-informer/douleurs" element={<Pains />} />
+                    <Route path="douleurs" element={<Pains />} />
+                    <Route path="introduction" element={<Introduction />} />
                     <Route
-                      path="s-informer/introduction"
-                      element={<Introduction />}
-                    />
-                    <Route
-                      path="s-informer/auto-observation"
+                      path="auto-observation"
                       element={<AutoObservation />}
                     />
-                    <Route
-                      path="s-informer/consulter"
-                      element={<Consultation />}
-                    />
-                    <Route path="s-informer/douleurs/:name" element={<Pain />}>
+                    <Route path="consulter" element={<Consultation />} />
+                    <Route path="douleurs/:name" element={<Pain />}>
                       <Route path="medical" element={<Article />} />
                       <Route path="sexologie" element={<Article />} />
                     </Route>
+                    <Route path="ressources/glossaire" element={<Glossary />} />
                     <Route
-                      path="s-informer/ressources/glossaire"
-                      element={<Glossary />}
-                    />
-                    <Route
-                      path="s-informer/ressources/exercices"
+                      path="ressources/exercices"
                       element={<Exercises />}
                     />
                     <Route
-                      path="s-informer/ressources/litterature-et-medias"
+                      path="ressources/litterature-et-medias"
                       element={<Medias />}
                     />
                     <Route
-                      path="s-informer/douleurs/:name/glossaire"
+                      path="douleurs/:name/glossaire"
                       element={<PainGlossary />}
                     />
                     <Route
-                      path="s-informer/douleurs/:name/glossaire/#:term"
+                      path="douleurs/:name/glossaire/#:term"
                       element={<PainGlossary />}
                     />
                     <Route
-                      path="s-informer/douleurs/:name/exercices"
+                      path="douleurs/:name/exercices"
                       element={<PainExercices />}
                     />
                     <Route
-                      path="s-informer/douleurs/:name/litterature-et-medias"
+                      path="douleurs/:name/litterature-et-medias"
                       element={<PainMedias />}
                     />
-                    <Route
-                      path="s-informer/ressources"
-                      element={<Ressources />}
-                    />
+                    <Route path="ressources" element={<Ressources />} />
                     <Route path="s-informer" element={<SInformer />} />
-                    <Route
-                      path="s-informer/ressources/annuaire"
-                      element={<Directory />}
-                    />
-                    <Route
-                      path="s-informer/annuaire/:name"
-                      element={<Pain />}
-                    />
+                    <Route path="ressources/annuaire" element={<Directory />} />
+                    <Route path="annuaire/:name" element={<Pain />} />
                     <Route path="agenda" element={<Agenda />} />
                     <Route path="login" element={<Login />} />
                     <Route path="creer-un-compte" element={<Signup />} />

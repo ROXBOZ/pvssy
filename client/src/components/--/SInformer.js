@@ -1,6 +1,6 @@
 import React from "react";
-import Pains from "./Pains";
-import Ressources from "./Ressources";
+import Pains from "../Pages/Pains";
+import Ressources from "../Pages/Ressources";
 import { HeadingArea } from "../../utilities/HeadingArea";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
@@ -23,11 +23,11 @@ const Sinformer = () => {
         subtitle="Des pistes pour bien observer ton corps, l’écouter, et mieux localiser tes douleurs."
       />
 
-      {/* <div className="grid-area">
+      <div className="grid-area">
         <Pictocard article={"introduction"} />
         <Pictocard article={"auto-observation"} />
         <Pictocard article={"consulter"} />
-      </div> */}
+      </div>
 
       <HeadingArea
         title="S’informer sur ses douleurs"

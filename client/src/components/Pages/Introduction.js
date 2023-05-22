@@ -14,10 +14,7 @@ const Introduction = () => {
       </Helmet>
       <div className="centered">
         <h1>Introduction aux douleurs</h1>
-        <Author
-          name="MedSexplain (AEMG)"
-          url="https://aemg-ge.com/medsexplain/"
-        />
+
         <img
           className="illu-animation-xl"
           src={require(`../../assets/images/intro.jpg`)}
@@ -156,12 +153,12 @@ const Introduction = () => {
           </h2>
           <ul className="smaller-text" style={{ paddingLeft: "0" }}>
             <li>
-              Martin Winckler (2020). <em>C’est mon corps</em>
-              (1ère éd.) Groupe Margot.
+              Martin Winckler (2020). <em>C’est mon corps</em> (1<sup>ère</sup>
+               éd.) Groupe Margot.
             </li>
             <li>
-              Odile Bagot (2019). <em>Vagin et Cie, on vous dit tout !</em>{" "}
-              (1ère éd.) Mango.
+              Odile Bagot (2019). <em>Vagin et Cie, on vous dit tout !</em> (1
+              <sup>ère</sup> éd.) Mango.
             </li>
           </ul>
         </p>

@@ -32,7 +32,7 @@
   &:hover {
     .card {
       border-color: $txt-color;
-      background-color: white;
+      background-color: $secondary;
     }
   }
 
@@ -90,6 +90,7 @@
   width: 100%;
   display: flex;
   border-bottom: none;
+  margin: $reg-space 0;
 }
 
 .picto-card {
@@ -112,7 +113,7 @@
 
   &:hover {
     border-color: $txt-color;
-    background-color: white;
+    background-color: $secondary;
   }
   img {
     width: auto;

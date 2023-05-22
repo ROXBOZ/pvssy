@@ -42,7 +42,7 @@
 
       grid-column: #{$grid-last-thirds};
       .show-counter {
-        color: darken($secondary, 30%);
+        color: $dark-secondary;
       }
     }
   }

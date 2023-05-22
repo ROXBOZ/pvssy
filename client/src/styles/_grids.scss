@@ -5,6 +5,19 @@
   }
 }
 
+.floater-container {
+  align-items: center;
+  @include grid;
+
+  .floater {
+    grid-column: 4/9;
+  }
+  img {
+    grid-column: 9/13;
+    max-width: 100%;
+  }
+}
+
 @media screen and (max-width: map-get($breakpoints, "lg")) {
   .grid-area {
     .centered {

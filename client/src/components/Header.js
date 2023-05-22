@@ -38,13 +38,19 @@ const Header = () => {
     return (
       <ul>
         <li>
-          <NavLink onClick={handleNavLinkClick} to="s-informer">
-            S’informer
+          <NavLink onClick={handleNavLinkClick} to="agenda">
+            Agenda
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink onClick={handleNavLinkClick} to="faire-un-don">
+            Faire un don
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={handleNavLinkClick} to="agenda">
-            Agenda
+          <NavLink onClick={handleNavLinkClick} to="devenir-membre">
+            Devenir membre
           </NavLink>
         </li>
         <li>
@@ -60,7 +66,7 @@ const Header = () => {
   return (
     <header>
       <Link to="/" className="logo">
-        pvssy talk
+        pvssy talk <sup>beta</sup>
       </Link>
       <button className="burger-menu" onClick={toggleMenu}>
         <span id="nav-icon" className={!isOpen ? "close" : "open"}>

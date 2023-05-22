@@ -7,24 +7,20 @@ const Consultation = () => {
     <div className="grid-area">
       <div className="centered">
         <Helmet>
-          <title>Consulter des pros de la santé</title>
+          <title>Qui consulter ?</title>
           <meta
             name="description"
             content="Pour poser un diagnostic, commence par consulter un ou médecin, (généraliste ou gynécologue)."
           />
         </Helmet>
-        <h1>Consulter des pros de la santé</h1>
-        <Author
-          name="MedSexplain (AEMG)"
-          url="https://aemg-ge.com/medsexplain/"
-        />
-        <h2>À quel moment?</h2>
+        <h1>Qui consulter ?</h1>
+
         <p>
           Chaque personne a un seuil de douleur plus ou moins élevé avant de se
-          décider à consulter ou non, cela reste un choix personnel. Mais si
-          cette douleur impacte ta vie sexuelle, ton désir, ton bien-être et ta
-          vie quotidienne, nous te conseillons de consulter des pros de la
-          santé. Pour poser un diagnostic, commence par consulter un ou médecin,
+          décider à consulter ou non, <u>cela reste un choix personnel</u>. Mais
+          si cette douleur impacte ta vie sexuelle, ton désir, ton bien-être et
+          ta vie quotidienne, nous te conseillons de consulter des pros de la
+          santé. Pour poser un diagnostic, commence par consulter un·e médecin,
           (généraliste ou gynécologue).
         </p>
         <p>

@@ -15,10 +15,7 @@ const AutoObservation = () => {
       </Helmet>
       <div className="centered">
         <h1>Guide d’auto-observation</h1>
-        <Author
-          name="MedSexplain (AEMG)"
-          url="https://aemg-ge.com/medsexplain/"
-        />
+
         <img
           className="illu-animation-xl"
           src={require(`../../assets/images/auto-obs.jpg`)}
@@ -45,7 +42,12 @@ const AutoObservation = () => {
           pas à faire une pause et reprendre à un autre moment. C’est ton corps,
           vas-y à ton rythme.
         </p>
-        <h2>Pour comprendre ton anatomie, voici quelques mots clés</h2>
+
+        <p>
+          <strong>
+            Pour comprendre ton anatomie, voici quelques mots clés
+          </strong>
+        </p>
 
         <figure>
           <img

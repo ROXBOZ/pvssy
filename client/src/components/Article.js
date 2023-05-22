@@ -414,11 +414,11 @@ const Article = () => {
                               </span>{" "}
                               {s.edition && (
                                 <span className="source-edition">
-                                  {" "}
                                   ({s.edition}
-                                  {s.edition === "1" ? "ère" : "ème"} éd.){" "}
+                                  <sup>{s.edition === "1" ? "ère" : "ème"}</sup>
+                                  éd.)
                                 </span>
-                              )}
+                              )}{" "}
                               <span className="source-editor">{s.editor}</span>.
                             </span>
                           </li>

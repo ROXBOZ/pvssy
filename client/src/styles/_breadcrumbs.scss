@@ -6,7 +6,7 @@
 
   .crumb {
     a {
-      color: darken($secondary, 20%);
+      color: $dark-secondary;
       border-bottom: none;
       white-space: nowrap;
     }

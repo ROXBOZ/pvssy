@@ -64,7 +64,7 @@ const Pains = () => {
               className="link-card"
               onClick={scrollToTop}
               to={{
-                pathname: `/s-informer/douleurs/${p.name.toLowerCase()}/medical`,
+                pathname: `douleurs/${p.name.toLowerCase()}/medical`,
               }}
             >
               <div className="card">

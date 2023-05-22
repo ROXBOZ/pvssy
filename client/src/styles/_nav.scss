@@ -166,7 +166,7 @@
       &.active {
         background-color: $secondary;
         &:hover {
-          background-color: darken($secondary, 5%);
+          background-color: $dark-secondary;
         }
       }
     }

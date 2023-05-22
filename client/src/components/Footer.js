@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
   //FIXME button inside a link + inline CSS
-  const currentYear = new Date().getFullYear();
+
   const location = useLocation();
   const isHome = location.pathname === "/";
 
@@ -12,18 +12,15 @@ const Footer = () => {
       <div className="banner">
         <p>
           <span className="h3">
-            partager · témoigner · proposer · diffuser · échanger · discuter ·
-            exprimer, informer · apprendre · soutenir · encourager ·
+            Nous travaillons sur un annuaire de soignant·e·sx en Suisse Romande.
+            Si tu connais des practicien·ne·sx <em>safe</em>, tu peux nous
+            envoyer un email à{" "}
+            <a href="mailto:hello@pvssy-talk.org">hello@pvssy-talk.org</a>
+            {/* partager · témoigner · proposer · diffuser · échanger · discuter ·
+            exprimer · informer · apprendre · soutenir · encourager ·
             sensibiliser · explorer · réfléchir · éduquer · inspirer ·
             influencer · défendre · promouvoir · célébrer · connecter · unir ·
-            engager · agir ? Let’s <span className="logo">pvssy talk</span>!
-          </span>
-          <span className="h3">
-            partager · témoigner · proposer · diffuser · échanger · discuter ·
-            exprimer, informer · apprendre · soutenir · encourager ·
-            sensibiliser · explorer · réfléchir · éduquer · inspirer ·
-            influencer · défendre · promouvoir · célébrer · connecter · unir ·
-            engager · agir ? Let’s <span className="logo">pvssy talk</span>!
+            engager · agir ? Let’s <span className="logo">pvssy talk</span>! */}
           </span>
         </p>
       </div>
@@ -44,12 +41,12 @@ const Footer = () => {
               Let’s <span className="logo">pvssy talk</span>
                !
             </a>
-            <div className="footer-main-buttons-container">
+            {/* <div className="footer-main-buttons-container">
               <button>devenir membre</button>
               <Link to="faire-un-don" style={{ border: "none" }}>
                 <button>faire un don</button>
               </Link>
-            </div>
+            </div> */}
           </div>
           <div className="footer-column">
             <nav>
@@ -102,9 +99,9 @@ const Footer = () => {
             </nav>
           </div>
         </div>
-        <div className="footer-bottom">
-          <p className="copyrights">© copyrights {currentYear}</p>
-        </div>
+        {/* <div className="footer-bottom">
+          <p className="smaller-text">© copyrights {currentYear}</p>
+        </div> */}
       </footer>
     </>
   );

@@ -89,9 +89,9 @@ a {
 }
 
 sup {
-  font-family: $font-bold;
-  padding: 0 0.5em;
-  color: $primary;
+  // font-family: $font-bold;
+  // padding: 0 0.5em;
+  // color: $primary;
   font-size: 60%;
 }
 
@@ -105,7 +105,7 @@ hr {
 figcaption {
   text-align: center;
   margin-top: $sm-space;
-  color: darken($secondary, 40%);
+  color: $dark-secondary;
   font-size: $smaller-text;
   display: block;
   width: 100%;

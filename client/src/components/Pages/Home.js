@@ -1,6 +1,9 @@
 import React from "react";
 import { HeadingArea } from "../../utilities/HeadingArea";
 import { Link } from "react-router-dom";
+import Pictocard from "../Pictocard";
+import Pains from "./Pains";
+import Ressources from "./Ressources";
 
 const Home = () => {
   //TODO
@@ -9,9 +12,9 @@ const Home = () => {
 
   return (
     <>
-      <HeadingArea title="Avoir mal n’est pas normal" />
-      <div className="grid-area">
-        <div className="centered">
+      <div className="floater-container">
+        <div className="floater">
+          <h2>Avoir mal n’est pas normal</h2>
           <p>
             Les douleurs sexuelles concernent{" "}
             <u>une personne à vulve sur cinq</u>. Elles peuvent toucher à la
@@ -25,12 +28,31 @@ const Home = () => {
             de soignant·e·sx <em>safe</em> pour t’accompagner dans ton parcours
             de soin.
           </p>
-          <br />
-          <Link to="/s-informer" style={{ border: "none" }}>
-            <button>Je m’informe</button>
-          </Link>
         </div>
+        <img
+          className="animation-illustration"
+          src={require(`../../assets/images/floaters/floater-2.png`)}
+          alt=""
+        />
       </div>
+      <div className="grid-area">
+        <Pictocard title="Introduction aux douleurs" article={"introduction"} />
+        <Pictocard
+          title="Guide d’auto-observation"
+          article={"guide-auto-observation"}
+        />
+        <Pictocard title="Qui consulter ?" article={"qui-consulter"} />
+      </div>
+
+      <HeadingArea
+        title="S’informer sur ses douleurs"
+        subtitle="Chaque douleur est traitée avec une approche à la fois médicale et sexologique pour te donner une vision complète. Tu trouveras également des ressources pour aller plus loin.
+      "
+        level="h2"
+      />
+
+      <Pains />
+      <Ressources />
     </>
   );
 };
