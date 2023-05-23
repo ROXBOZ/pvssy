@@ -114,7 +114,7 @@ h1.invisible {
 .pending-event-card {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #ffded8;
+  border-top: 1px solid #f2b8ad;
 }
 .pending-event-card:first-of-type {
   margin-top: 0;
@@ -275,7 +275,7 @@ h1.invisible {
   height: 1.5em;
   vertical-align: top;
   background-position: center;
-  border: 2px solid #ffb3a5;
+  border: 2px solid #ea9282;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -286,8 +286,8 @@ h1.invisible {
   filter: brightness(90%);
 }
 .form-check-input:checked {
-  background-color: #ff5c3f;
-  border-color: #ff5c3f;
+  background-color: #dc452a;
+  border-color: #dc452a;
 }
 
 .form-check-input[type=checkbox]:disabled {
@@ -299,7 +299,7 @@ h1.invisible {
 
 .form-check-input[type=radio] {
   border-radius: 50%;
-  background-color: #ff5c3f;
+  background-color: #dc452a;
 }
 .form-check-input[type=radio]:checked {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
@@ -422,7 +422,7 @@ button:active,
   flex: max-content;
   align-items: center;
   overflow: hidden;
-  background-color: #fdf9f4;
+  background-color: #f4f4f4;
   border: 1px solid #ce96ff;
   border-radius: 10px;
 }
@@ -440,7 +440,7 @@ button:active,
   grid-column: span 6;
 }
 .link-card.article .card {
-  background: radial-gradient(circle, #ff5c3f 0%, #ce96ff 30%);
+  background: radial-gradient(circle, #dc452a 0%, #ce96ff 30%);
 }
 .link-card.article.card {
   padding: 2rem;
@@ -467,7 +467,7 @@ button:active,
   color: #43064b;
 }
 .ressources-container h3:hover {
-  color: #ff5c3f;
+  color: #dc452a;
 }
 .ressources-container h3:hover:after {
   color: #43064b;
@@ -487,7 +487,7 @@ button:active,
 
 .picto-card {
   padding: 2rem;
-  border: 1px solid #ff5c3f;
+  border: 1px solid #dc452a;
   border-radius: 10px;
   width: 100%;
   display: flex;
@@ -526,7 +526,7 @@ button:active,
   gap: 2rem;
 }
 .countdown .show-counter {
-  color: #ff5c3f;
+  color: #dc452a;
   display: flex;
   gap: 2rem;
 }
@@ -538,11 +538,13 @@ button:active,
   margin-top: 2rem;
   grid-column: 1/5;
 }
+.exercises-container .exercise {
+  border-bottom: 1px solid #ce96ff;
+}
 .exercises-container .exercise .exercise-closed {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 1rem;
-  border-bottom: 1px solid #ce96ff;
   padding: 2rem 0;
   align-items: center;
 }
@@ -745,7 +747,7 @@ footer .footer-bottom .copyrights {
   left: 100%;
 }
 .banner p .logo {
-  color: #ff5c3f;
+  color: #dc452a;
   border-bottom: none;
 }
 .banner + footer {
@@ -855,7 +857,7 @@ footer .footer-bottom .copyrights {
 .grid-form input[type=file],
 .grid-form select,
 .grid-form textarea {
-  background-color: #fdf9f4;
+  background-color: #f4f4f4;
   color: #43064b;
   border: 1px solid #ce96ff;
   border-radius: 10px;
@@ -930,7 +932,7 @@ footer .footer-bottom .copyrights {
 .check-list-container .check-list li:not(:first-child) {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #f5e1c9;
+  border-top: 1px solid #dbdbdb;
 }
 
 .grid-area {
@@ -993,7 +995,7 @@ header * {
 header .logo {
   font-size: 1.5rem;
   font-family: "ESRebond";
-  color: #ff5c3f;
+  color: #dc452a;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -1059,7 +1061,7 @@ header nav.horizontal ul li .profile-in-header a:hover .user-dot {
   background-color: #6b00c9;
 }
 header nav.horizontal ul li .profile-in-header a .user-dot {
-  background-color: #ff5c3f;
+  background-color: #dc452a;
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;
@@ -1073,7 +1075,7 @@ header nav.horizontal ul li .profile-in-header a p {
     padding: 1rem;
     height: -moz-fit-content;
     height: fit-content;
-    background-color: #fdf9f4;
+    background-color: #f4f4f4;
     border-bottom: 1px solid #43064b;
     display: flex;
     align-items: center;
@@ -1087,7 +1089,7 @@ header nav.horizontal ul li .profile-in-header a p {
   }
   header .logo {
     z-index: 999;
-    color: #ff5c3f;
+    color: #dc452a;
   }
   header .burger-menu {
     justify-self: flex-start;
@@ -1154,7 +1156,7 @@ header nav.horizontal ul li .profile-in-header a p {
     top: 0;
     bottom: 0;
     height: 100vh;
-    background: #fdf9f4;
+    background: #f4f4f4;
     display: flex;
     align-items: center;
     text-align: center;
@@ -1281,7 +1283,7 @@ figure span a {
   width: 100%;
   aspect-ratio: 1/1;
   border-radius: 100%;
-  background-color: #ff5c3f;
+  background-color: #dc452a;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -1419,7 +1421,7 @@ a.term span {
   gap: 1rem;
 }
 .allLexique-term-container .glossary-column .allLexique-term .related-pain-container .related-pain {
-  border-bottom: 1px solid #ffb3a5;
+  border-bottom: 1px solid #ea9282;
 }
 .allLexique-term-container .glossary-column .allLexique-term .related-pain-container .related-pain a {
   border-bottom: none;
@@ -1488,7 +1490,7 @@ a.term span {
   content: "⌛  ";
 }
 .msg.warning {
-  border-bottom: 1px solid #ff5c3f;
+  border-bottom: 1px solid #dc452a;
 }
 .msg.warning:before {
   content: "⚠️  ";
@@ -1660,7 +1662,7 @@ a.term span {
   max-width: 100%;
 }
 .tabbed-navigation-container.sticky {
-  background-color: #fdf9f4;
+  background-color: #f4f4f4;
   margin-top: 0;
   position: fixed;
   top: 0;
@@ -1673,7 +1675,7 @@ a.term span {
   padding-top: 10vh;
 }
 .tabbed-navigation-container .tabbed-navigation {
-  background-color: #fdf9f4;
+  background-color: #f4f4f4;
   border: 1px solid #ce96ff;
   display: flex;
   justify-content: flex-start;
@@ -1854,7 +1856,7 @@ a.term span {
   gap: 0.5rem;
   flex-wrap: wrap;
   align-items: center;
-  grid-column: 4/13;
+  grid-column: 4/10;
   max-width: 90%;
 }
 
@@ -1902,7 +1904,7 @@ a.term span {
   width: fit-content;
   background-color: #43064b;
   font-size: 80%;
-  color: #fdf9f4;
+  color: #f4f4f4;
   padding: 0.25em 0.5rem;
   border-radius: 50px;
   position: absolute;
@@ -2001,7 +2003,7 @@ h4 + .subtitle {
 a {
   text-decoration: none;
   color: #43064b;
-  border-bottom: 1px solid #ffb3a5;
+  border-bottom: 1px solid #ea9282;
   width: -moz-fit-content;
   width: fit-content;
   transition: border-color 0.2s ease-in;
@@ -2047,7 +2049,7 @@ figcaption {
 /*-----Ratio Scale-----*/
 h4,
 .h4 {
-  font-family: "ESKlarheit-Medium";
+  font-family: "ESRebond";
   font-size: 1.333rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
@@ -2066,7 +2068,7 @@ h4:first-letter,
 
 h3,
 .h3 {
-  font-family: "ESKlarheit-Medium";
+  font-family: "ESRebond";
   font-size: 1.776889rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
@@ -2085,7 +2087,7 @@ h3:first-letter,
 
 h2,
 .h2 {
-  font-family: "ESKlarheit-Medium";
+  font-family: "ESRebond";
   font-size: 2.368593037rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
@@ -2104,7 +2106,7 @@ h2:first-letter,
 
 h1,
 .h1 {
-  font-family: "ESKlarheit-Medium";
+  font-family: "ESRebond";
   font-size: 3.1573345183rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
@@ -2144,7 +2146,7 @@ h1:first-letter,
   background-repeat: no-repeat;
   animation: gradient 4s infinite alternate;
   height: 100vh;
-  background: radial-gradient(circle, #ff5c3f 0%, #ce96ff 30%);
+  background: radial-gradient(circle, #dc452a 0%, #ce96ff 30%);
   cursor: url("../assets/images/cursor-auto.svg"), auto;
   display: flex;
   flex-direction: column;
@@ -2179,7 +2181,7 @@ h1:first-letter,
 }
 .landing-view header .login:hover button {
   background-color: transparent;
-  border-color: #ff5c3f;
+  border-color: #dc452a;
 }
 .landing-view .title-container {
   display: flex;
@@ -2246,7 +2248,7 @@ h1:first-letter,
 html {
   margin: 0;
   padding: 0;
-  background-color: #fdf9f4;
+  background-color: #f4f4f4;
   color: #43064b;
   font-family: "ESKlarheit-Book";
   line-height: 1.5;
@@ -2300,7 +2302,7 @@ html body .main {
 }
 
 .colored {
-  color: #ff5c3f;
+  color: #dc452a;
 }
 
 .mobile-only {
@@ -2317,7 +2319,7 @@ html body .main {
 }
 .mandatory:after {
   content: " *";
-  color: #ff5c3f;
+  color: #dc452a;
 }
 
 .breathing * {

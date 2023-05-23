@@ -3,7 +3,7 @@
   gap: $xs-space;
   flex-wrap: wrap;
   align-items: center;
-  grid-column: #{$grid-last-thirds};
+  grid-column: #{$grid-center};
   // margin: $xs-space 0;
   max-width: 90%;
 }

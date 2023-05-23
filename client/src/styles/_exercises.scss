@@ -3,10 +3,9 @@
   grid-column: 1/5;
 
   .exercise {
+    border-bottom: $border-solid $secondary;
     .exercise-closed {
       @include grid;
-
-      border-bottom: $border-solid $secondary;
       padding: $reg-space 0;
       align-items: center;
 

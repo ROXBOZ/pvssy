@@ -153,7 +153,8 @@ $level-size: $type-base-size;
 
   h#{$level},
   .h#{$level} {
-    font-family: $font-medium;
+    font-family: $font-logo;
+
     font-size: $level-size;
     line-height: calc(2px + 2ex + 2px);
     font-weight: 500;
