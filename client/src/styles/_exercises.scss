@@ -5,10 +5,10 @@
   .exercise {
     .exercise-closed {
       @include grid;
-      margin-top: $sm-space;
+
       border-bottom: $border-solid $secondary;
-      padding: $sm-space 0;
-      align-items: flex-end;
+      padding: $reg-space 0;
+      align-items: center;
 
       .pretitle {
         grid-column: #{$grid-fullwidth};

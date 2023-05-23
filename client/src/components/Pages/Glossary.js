@@ -214,7 +214,7 @@ const Glossary = () => {
                       {term.relatedPain.map((pain, index) => (
                         <span className="related-pain">
                           <span> ↗ </span>
-                          <Link key={index} to={`/s-informer/douleurs/${pain}`}>
+                          <Link key={index} to={`/douleurs/${pain}`}>
                             {pain === "Sopk" ? (
                               <span className="acronym">{pain}</span>
                             ) : (

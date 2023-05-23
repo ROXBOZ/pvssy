@@ -51,7 +51,7 @@ const About = () => {
             <br />
             <u>Romy Siegrist</u>, rédaction du contenu sexologique
             <br />
-            <u>MedSexplain (AEMGE)</u>,rédaction du contenu médical
+            <u>MedSexplain (AEMGE)</u>, rédaction du contenu médical
             <br />
             <Link
               to="https://as-takoordyal.com"

@@ -35,7 +35,7 @@ const Home = () => {
           alt=""
         />
       </div>
-      <div className="grid-area">
+      <div className="grid-area" style={{ margin: "2rem 0" }}>
         <Pictocard title="Introduction aux douleurs" article={"introduction"} />
         <Pictocard
           title="Guide d’auto-observation"

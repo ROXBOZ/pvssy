@@ -483,7 +483,6 @@ button:active,
   width: 100%;
   display: flex;
   border-bottom: none;
-  margin: 2rem 0;
 }
 
 .picto-card {
@@ -543,10 +542,9 @@ button:active,
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 1rem;
-  margin-top: 1rem;
   border-bottom: 1px solid #ce96ff;
-  padding: 1rem 0;
-  align-items: flex-end;
+  padding: 2rem 0;
+  align-items: center;
 }
 @media screen and (max-width: 576px) {
   .exercises-container .exercise .exercise-closed {
@@ -970,6 +968,10 @@ footer .footer-bottom .copyrights {
 
 @media screen and (max-width: 992px) {
   .grid-area .centered {
+    grid-column: 1/12;
+  }
+  .floater-container .floater,
+  .floater-container img {
     grid-column: 1/12;
   }
 }
@@ -2148,6 +2150,7 @@ h1:first-letter,
   flex-direction: column;
   justify-content: space-between;
   border-bottom: 1px solid #43064b;
+  margin-bottom: 4rem;
 }
 .landing-view:before {
   --size: 0;

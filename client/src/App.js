@@ -58,8 +58,8 @@ function App() {
           <Header />
           <div className="title-container">
             <h1>
-              S’informer sur ses douleurs pour se réapproprier son corps
-              et sa sexualité
+              S’informer sur ses douleurs pour se réapproprier son corps et sa
+              sexualité
             </h1>
           </div>
         </div>
@@ -113,10 +113,10 @@ function App() {
                     <Route path="douleurs" element={<Pains />} />
                     <Route path="introduction" element={<Introduction />} />
                     <Route
-                      path="auto-observation"
+                      path="guide-auto-observation"
                       element={<AutoObservation />}
                     />
-                    <Route path="consulter" element={<Consultation />} />
+                    <Route path="qui-consulter" element={<Consultation />} />
                     <Route path="douleurs/:name" element={<Pain />}>
                       <Route path="medical" element={<Article />} />
                       <Route path="sexologie" element={<Article />} />
@@ -147,7 +147,7 @@ function App() {
                       element={<PainMedias />}
                     />
                     <Route path="ressources" element={<Ressources />} />
-                    <Route path="s-informer" element={<SInformer />} />
+                    {/* <Route path="s-informer" element={<SInformer />} /> */}
                     <Route path="ressources/annuaire" element={<Directory />} />
                     <Route path="annuaire/:name" element={<Pain />} />
                     <Route path="agenda" element={<Agenda />} />

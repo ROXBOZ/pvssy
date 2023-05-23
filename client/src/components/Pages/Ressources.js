@@ -24,10 +24,10 @@ const Ressources = () => {
         </>
       )}
       <div className="ressources-container">
-        <TitleLink to="/s-informer/ressources/glossaire" title="Glossaire" />
-        <TitleLink to="/s-informer/ressources/exercices" title="Exercices" />
+        <TitleLink to="ressources/glossaire" title="Glossaire" />
+        <TitleLink to="ressources/exercices" title="Exercices" />
         <TitleLink
-          to="/s-informer/ressources/litterature-et-medias"
+          to="ressources/litterature-et-medias"
           title="Littérature et médias"
         />
       </div>

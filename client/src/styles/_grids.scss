@@ -8,7 +8,6 @@
 .floater-container {
   align-items: center;
   @include grid;
-
   .floater {
     grid-column: 4/9;
   }
@@ -21,6 +20,13 @@
 @media screen and (max-width: map-get($breakpoints, "lg")) {
   .grid-area {
     .centered {
+      grid-column: #{$grid-fullwidth};
+    }
+  }
+
+  .floater-container {
+    .floater,
+    img {
       grid-column: #{$grid-fullwidth};
     }
   }

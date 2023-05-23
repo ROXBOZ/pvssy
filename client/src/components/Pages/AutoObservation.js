@@ -104,7 +104,7 @@ const AutoObservation = () => {
           un rôle dans la continence (c’est-à-dire le fait de pouvoir retenir
           ses urines et ses selles) et également dans la sexualité.
         </p>
-        <Link to="../s-informer/ressources/glossaire">↗ voir le glossaire</Link>
+        <Link to="../ressources/glossaire">↗ voir le glossaire</Link>
 
         <h2>Prends des notes</h2>
         <p>

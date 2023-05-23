@@ -59,26 +59,23 @@ const Exercise = ({ exercise, isExerciseOpen, handleExerciseToggle }) => {
       <div className="exercise-closed">
         <p className="pretitle">{exercise.relatedPain.join(", ")}</p>
         <h2 className="h3">{exercise.title}</h2>
-        {isExerciseOpen ? <></> : <p>{exercise.intro}</p>}
         <button onClick={() => handleExerciseToggle(exercise._id)}>
           {isExerciseOpen ? "fermer" : "en savoir +"}
         </button>
       </div>
 
-      <div>
-        {isExerciseOpen && (
-          <div className="exercise-open">
-            <div className="exercise-article">
-              <div className="prealable">
-                {createParagraph(exercise.prealable)}
-              </div>
-              <div className="instructions">
-                <div>{displayInstructions(exercise.howto)}</div>
-              </div>
+      {isExerciseOpen && (
+        <div className="exercise-open">
+          <div className="exercise-article">
+            <div className="prealable">
+              {createParagraph(exercise.prealable)}
+            </div>
+            <div className="instructions">
+              <div>{displayInstructions(exercise.howto)}</div>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
