@@ -14,7 +14,7 @@ const Home = () => {
     <>
       <div className="floater-container">
         <div className="floater">
-          <h2>Avoir mal n’est pas normal</h2>
+          <h2>Avoir mal n’est pas normal</h2>
           <p>
             Les douleurs sexuelles concernent{" "}
             <u>une personne à vulve sur cinq</u>. Elles peuvent toucher à la
@@ -45,7 +45,7 @@ const Home = () => {
       </div>
 
       <HeadingArea
-        title="S’informer sur ses douleurs"
+        title="S’informer sur ses douleurs"
         subtitle="Chaque douleur est traitée avec une approche à la fois médicale et sexologique pour te donner une vision complète. Tu trouveras également des ressources pour aller plus loin.
       "
         level="h2"

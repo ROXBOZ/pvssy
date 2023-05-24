@@ -78,7 +78,7 @@ h4 + .subtitle {
 a {
   text-decoration: none;
   color: $txt-color;
-  border-bottom: $border-solid lighten($primary, 20%);
+  border-bottom: $border-solid $secondary;
   width: fit-content;
   transition: border-color $animation-transition;
   cursor: url("../assets/images/cursor-pointer.svg"), auto;
@@ -143,7 +143,7 @@ $type-ratios: (
 }
 
 $type-base-size: 1rem;
-$type-size-ratio: type-ratio("perfectFourth");
+$type-size-ratio: type-ratio("augmentedFourth");
 $type-levels: 4, 3, 2, 1;
 $type-styles: ();
 $level-size: $type-base-size;

@@ -11,7 +11,7 @@ const Footer = () => {
     return (
       <div className="banner">
         <p>
-          <span className="h3">
+          <span className="h4">
             Nous travaillons sur un annuaire de soignant·e·sx en Suisse Romande.
             Si tu connais des practicien·ne·sx <em>safe</em>, tu peux nous
             envoyer un email à{" "}

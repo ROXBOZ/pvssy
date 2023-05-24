@@ -719,7 +719,7 @@ footer .footer-bottom .copyrights {
 .banner {
   background-color: #c7fea3;
   border-top: 1px solid #43064b;
-  padding: 2rem 0;
+  padding: 1rem 0;
   white-space: nowrap;
   width: 100%;
   margin: 10vh 0 0;
@@ -737,18 +737,8 @@ footer .footer-bottom .copyrights {
   animation: transitionX 40s linear infinite;
   animation-play-state: running;
 }
-.banner p .h3 {
+.banner p * {
   font-family: "ESKlarheit-Book" !important;
-}
-.banner p:nth-child(1) {
-  left: 0;
-}
-.banner p:nth-child(2) {
-  left: 100%;
-}
-.banner p .logo {
-  color: #dc452a;
-  border-bottom: none;
 }
 .banner + footer {
   margin: 0;
@@ -2003,7 +1993,7 @@ h4 + .subtitle {
 a {
   text-decoration: none;
   color: #43064b;
-  border-bottom: 1px solid #ea9282;
+  border-bottom: 1px solid #ce96ff;
   width: -moz-fit-content;
   width: fit-content;
   transition: border-color 0.2s ease-in;
@@ -2050,15 +2040,15 @@ figcaption {
 h4,
 .h4 {
   font-family: "ESRebond";
-  font-size: 1.333rem;
+  font-size: 1.414rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
-  margin-top: calc(1.333rem);
-  margin-bottom: calc(1.333rem/ 1.5);
+  margin-top: calc(1.414rem);
+  margin-bottom: calc(1.414rem/ 1.5);
   font-size: clamp(
         1rem,
-        4.333vw + 1rem,
-        1.333rem
+        4.414vw + 1rem,
+        1.414rem
       );
 }
 h4:first-letter,
@@ -2069,15 +2059,15 @@ h4:first-letter,
 h3,
 .h3 {
   font-family: "ESRebond";
-  font-size: 1.776889rem;
+  font-size: 1.999396rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
-  margin-top: calc(1.776889rem);
-  margin-bottom: calc(1.776889rem/ 1.5);
+  margin-top: calc(1.999396rem);
+  margin-bottom: calc(1.999396rem/ 1.5);
   font-size: clamp(
-        1.19051563rem,
-        4.58637337vw + 1rem,
-        1.776889rem
+        1.33959532rem,
+        4.65980068vw + 1rem,
+        1.999396rem
       );
 }
 h3:first-letter,
@@ -2088,15 +2078,15 @@ h3:first-letter,
 h2,
 .h2 {
   font-family: "ESRebond";
-  font-size: 2.368593037rem;
+  font-size: 2.827145944rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
-  margin-top: calc(2.368593037rem);
-  margin-bottom: calc(2.368593037rem/ 1.5);
+  margin-top: calc(2.827145944rem);
+  margin-bottom: calc(2.827145944rem/ 1.5);
   font-size: clamp(
-        1.5869573348rem,
-        4.7816357022vw + 1rem,
-        2.368593037rem
+        1.8941877825rem,
+        4.9329581615vw + 1rem,
+        2.827145944rem
       );
 }
 h2:first-letter,
@@ -2107,15 +2097,15 @@ h2:first-letter,
 h1,
 .h1 {
   font-family: "ESRebond";
-  font-size: 3.1573345183rem;
+  font-size: 3.9975843648rem;
   line-height: calc(2px + 2ex + 2px);
   font-weight: 500;
-  margin-top: calc(3.1573345183rem);
-  margin-bottom: calc(3.1573345183rem/ 1.5);
+  margin-top: calc(3.9975843648rem);
+  margin-bottom: calc(3.9975843648rem/ 1.5);
   font-size: clamp(
-        2.1154141273rem,
-        5.041920391vw + 1rem,
-        3.1573345183rem
+        2.6783815244rem,
+        5.3192028404vw + 1rem,
+        3.9975843648rem
       );
 }
 h1:first-letter,
@@ -2194,8 +2184,10 @@ h1:first-letter,
   align-items: center;
 }
 .landing-view .title-container h1 {
+  color: #43064b;
   margin: 0;
-  max-width: 30ch;
+  width: 60%;
+  text-align: center;
 }
 
 @media screen and (max-width: 576px) {

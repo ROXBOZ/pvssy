@@ -63,8 +63,10 @@
     align-items: center;
 
     h1 {
+      color: $txt-color;
       margin: 0;
-      max-width: 30ch;
+      width: 60%;
+      text-align: center;
     }
   }
 }
