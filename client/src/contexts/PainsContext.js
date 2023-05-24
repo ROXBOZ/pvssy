@@ -22,11 +22,11 @@ export const PainsContextProvider = (props) => {
   const [allSources, setAllSources] = useState([]);
   const [selectedTag, setSelectedTag] = useState(null);
 
-  let painTags = ["vulve", "vagin", "utérus", "règles", "pénétration"];
+  let painTags = ["vulve", "vagin", "utérus", "règles"];
   let painList = [
     "Vaginisme",
     "Endométriose",
-    "SOPK",
+    "Syndrome des ovaires polykystiques",
     "Lichen scléreux",
     "Vaginite et mycose",
     "Sécheresse vaginale",

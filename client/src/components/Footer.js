@@ -2,11 +2,6 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
-  //FIXME button inside a link + inline CSS
-
-  const location = useLocation();
-  const isHome = location.pathname === "/";
-
   const MoodBanner = () => {
     return (
       <div className="banner">
@@ -16,11 +11,6 @@ const Footer = () => {
             Si tu connais des practicien·ne·sx <em>safe</em>, tu peux nous
             envoyer un email à{" "}
             <a href="mailto:hello@pvssy-talk.org">hello@pvssy-talk.org</a>
-            {/* partager · témoigner · proposer · diffuser · échanger · discuter ·
-            exprimer · informer · apprendre · soutenir · encourager ·
-            sensibiliser · explorer · réfléchir · éduquer · inspirer ·
-            influencer · défendre · promouvoir · célébrer · connecter · unir ·
-            engager · agir ? Let’s <span className="logo">pvssy talk</span>! */}
           </span>
         </p>
       </div>
@@ -29,7 +19,7 @@ const Footer = () => {
 
   return (
     <>
-      {isHome && <MoodBanner />}
+      <MoodBanner />
       <footer>
         <div className="footer-main">
           <div className="footer-column">

@@ -196,11 +196,7 @@ const Article = () => {
             <p className="h4">
               Ressources
               <br />
-              {painData.name === "Sopk" ? (
-                <span className="acronym">{painData.name}</span>
-              ) : (
-                <span> {painData.name}</span>
-              )}
+              <span>{painData.name}</span>
             </p>
             <ul>
               <li>

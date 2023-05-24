@@ -21,18 +21,10 @@ const CreateTags = (tags) => {
   };
 
   return (
-    <div className="grid-area">
-      <div className="tag-container">
+    <div className="tag-container">
+      <div className="tags">
         {tags.tags.map((tag, index) => {
-          return tag === "SOPK" ? (
-            <span
-              key={index}
-              className={`acronym tag ${selectedTag === tag ? "active" : ""} `}
-              onClick={() => handleFilter(tag)}
-            >
-              {tag}
-            </span>
-          ) : (
+          return (
             <span
               key={index}
               className={`tag ${selectedTag === tag ? "active" : ""} `}

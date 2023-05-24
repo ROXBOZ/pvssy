@@ -21,7 +21,6 @@
 
     a {
       color: $txt-color;
-      border: none;
     }
 
     &:before {
@@ -137,6 +136,10 @@
     white-space: nowrap;
     overflow: auto;
 
+    &:hover {
+      border: $border-solid $quarterary;
+    }
+
     p {
       display: flex;
       align-items: center;
@@ -166,7 +169,7 @@
       &.active {
         background-color: $secondary;
         &:hover {
-          background-color: $dark-secondary;
+          background-color: $quarterary;
         }
       }
     }

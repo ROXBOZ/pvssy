@@ -1,14 +1,12 @@
 /*-----Colors-----*/
 
-// $txt-color: #31064b;
-$txt-color: #43064b;
-$bg-color: #f4f4f4;
-// $primary: #ff560f;
-$primary: #dc452a;
-$secondary: #ce96ff;
-$tierary: #c7fea3;
+$txt-color: #4d4d28;
+$bg-color: #fefdf4;
+$primary: #ff560f;
+$secondary: #dcb4ff;
 $dark-secondary: darken($secondary, 40%);
-
+$tierary: #c8ffa5;
+$quarterary: #ffc3ee;
 $gradient: radial-gradient(circle, $primary 0%, $secondary 30%);
 
 /*-----Fonts-----*/
@@ -55,9 +53,16 @@ $font-medium-italic: "ESKlarheit-Medium-Italic";
 }
 $font-bold: "ESKlarheit-Bold";
 
+@font-face {
+  font-family: "ESKlarheit-Bold-Italic";
+  src: url("../assets/fonts/ESKlarheitGrotesk-BdIt.woff2") format("woff"),
+    url("../assets/fonts/ESKlarheitGrotesk-BdIt.woff2") format("woff2");
+}
+$font-bold-italic: "ESKlarheit-Bold-Italic";
+
 /*-----Typography-----*/
 
-$font-size-basis: 16.5px;
+$font-size-basis: 16px;
 $lineheight: 1.5;
 $chperline: 70ch;
 $smaller-text: 80%;
@@ -84,7 +89,7 @@ $grid-first-third: "1/4";
 $grid-last-thirds: "4/13";
 $grid-last-third: "10/13";
 $grid-first-half: "1/6";
-$grid-second-half: "6/13";
+$grid-second-half: "7/13";
 $grid-fullwidth: "1/12";
 
 /*-----Transitions-----*/

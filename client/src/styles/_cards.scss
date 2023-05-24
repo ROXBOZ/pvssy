@@ -1,5 +1,5 @@
 .card-grid {
-  margin-top: $reg-space;
+  margin: $reg-space 0 $lg-space;
   @include grid;
 }
 
@@ -14,14 +14,14 @@
     display: flex;
     flex-direction: column;
     flex: max-content;
-    align-items: center;
     overflow: hidden;
     background-color: $bg-color;
     border: $border-solid $secondary;
     border-radius: $border-radius-soft;
 
     h3 {
-      margin: $reg-space 0;
+      margin: $reg-space;
+      font-family: $font-regular;
     }
 
     img {
@@ -31,8 +31,7 @@
 
   &:hover {
     .card {
-      border-color: $txt-color;
-      background-color: $secondary;
+      color: $primary;
     }
   }
 
@@ -51,18 +50,24 @@
 }
 
 .ressources-container {
-  margin-top: $reg-space;
   overflow: hidden;
 
+  a {
+    background-color: yellow;
+  }
+
   h3 {
+    font-family: $font-regular;
     margin: 0;
-    padding-top: $sm-space;
     padding-bottom: $reg-space;
-    border-top: $border-solid $secondary;
     display: flex;
     justify-content: space-between;
     max-height: fit-content;
     cursor: pointer;
+    padding-top: $sm-space;
+    &:first-child {
+      border-top: $border-solid $secondary;
+    }
 
     &:after {
       content: "↗";
@@ -78,10 +83,6 @@
         transform: rotate(45deg);
       }
     }
-  }
-
-  a {
-    color: $txt-color;
   }
 }
 

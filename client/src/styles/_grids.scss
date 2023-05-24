@@ -5,15 +5,23 @@
   }
 }
 
-.floater-container {
-  align-items: center;
-  @include grid;
-  .floater {
-    grid-column: 4/9;
+.title-aside-container {
+  &:not(:first-child) {
+    border-top: $border-solid $secondary;
+    padding-top: $reg-space;
   }
-  img {
-    grid-column: 9/13;
-    max-width: 100%;
+  margin: 4rem 0 2rem;
+  @include grid;
+  align-items: flex-start;
+  h1,
+  h2 {
+    grid-column: #{$grid-first-half};
+    margin: 0;
+    padding: 0;
+  }
+  div {
+    padding-top: 0.75rem;
+    grid-column: #{$grid-second-half};
   }
 }
 

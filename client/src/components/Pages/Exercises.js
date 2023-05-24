@@ -33,21 +33,14 @@ const Exercises = () => {
         />
         <meta name="keywords" content="exercices, douleurs sexuelles" />
       </Helmet>
-      <HeadingArea
-        title="Exercices"
-        level="h1"
-        subtitle="Les exercices proposés ont pour but de t’aider à reconnecter avec ton
-        corps et de redécouvrir ton anatomie et ton plaisir."
-      />
-      <div className="grid-area">
-        <div className="centered">
-          <p
-            style={{
-              paddingBottom: "2rem",
-              borderBottom: "1px solid #ce96ff",
-              marginBottom: "2rem",
-            }}
-          >
+      <div className="title-aside-container">
+        <h1>Exercices</h1>
+        <div>
+          <p className="subtitle">
+            Les exercices proposés ont pour but de t’aider à reconnecter avec
+            ton corps et de redécouvrir ton anatomie et ton plaisir.
+          </p>
+          <p className="subtitle">
             Certains se font solo, d’autres à deux. Il n’y a pas d’enjeu de
             réussite ni de performance. L’échec n’existe pas car tout est
             possible dans l’intimité, et la pénétration et l’orgasme sont
@@ -60,6 +53,7 @@ const Exercises = () => {
           </p>
         </div>
       </div>
+
       <CreateTags tags={painList} />
 
       <div className="exercises-container">

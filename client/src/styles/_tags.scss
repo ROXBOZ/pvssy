@@ -1,11 +1,12 @@
 .tag-container {
+  @include grid;
+  align-items: center;
+}
+
+.tags {
+  grid-column: #{$grid-second-half};
   display: flex;
   gap: $xs-space;
-  flex-wrap: wrap;
-  align-items: center;
-  grid-column: #{$grid-center};
-  // margin: $xs-space 0;
-  max-width: 90%;
 }
 
 .tag {

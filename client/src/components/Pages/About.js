@@ -19,16 +19,17 @@ const About = () => {
           content="Association No Dolor, Anne-Soorya Takoordyal, Roxanne Borloz, Noémie Creux, Isaline Rogg, Sexopraxis, Medsexplain"
         />
       </Helmet>
+
       <HeadingArea title="À propos" level="h1" />
       <div className="grid-area">
         <div className="centered">
           <p>
-            <span className="logo">pvssy talk</span> est porté par l’association
-            à but non lucratif <u>No Dolor</u> qui a pour but d’informer sur la
-            sexualité et les douleurs sexuelles. C’est grâce à une équipe
-            impliquée et motivée à aider les patient·es concerné·es par les
-            douleurs que la plateforme existe aujourd’hui. Les contenus ont été
-            réalisés par les psycho-sexologues de{" "}
+            <span className="logo">pvssy talk</span> est un projet porté par
+            l’association No Dolor qui a pour but d’informer sur la sexualité et
+            les douleurs sexuelles. Elle est à but non lucratif. C’est grâce à
+            une équipe impliquée et motivée à aider les patient·esx concerné·esx
+            par les douleurs que la plateforme existe aujourd’hui. Le projet est
+            en collaboration avec{" "}
             <Link
               to="https://www.sexopraxis.ch"
               target="_blank"
@@ -36,7 +37,27 @@ const About = () => {
             >
               Sexopraxis
             </Link>{" "}
-            et les médecin du projet{" "}
+            et MedSexplain (AEMG).
+          </p>
+          <p>
+            <Link
+              to="https://www.sexopraxis.ch/fiona-bourdon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Fiona Bourdon
+            </Link>
+            , rédaction du contenu sexologique
+            <br />
+            <Link
+              to="https://www.sexopraxis.ch/romy-siegrist"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Romy Siegrist
+            </Link>
+            , rédaction du contenu sexologique
+            <br />
             <Link
               to="https://aemg-ge.com/medsexplain/"
               target="_blank"
@@ -44,14 +65,7 @@ const About = () => {
             >
               MedSexplain (AEMG)
             </Link>
-            .
-          </p>
-          <p>
-            <u>Fiona Bourdon</u>, rédaction du contenu sexologique
-            <br />
-            <u>Romy Siegrist</u>, rédaction du contenu sexologique
-            <br />
-            <u>MedSexplain (AEMGE)</u>, rédaction du contenu médical
+            , rédaction du contenu médical
             <br />
             <Link
               to="https://as-takoordyal.com"
@@ -71,7 +85,14 @@ const About = () => {
             </Link>
             , développeuse web
             <br />
-            <u>Isaline Rogg</u>, communication <br />
+            <Link
+              to="https://isalinerogg.ch/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Isaline Rogg
+            </Link>
+            , communication <br />
             <Link
               to="https://noemiecreux.com"
               target="_blank"

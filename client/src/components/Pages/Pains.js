@@ -41,20 +41,28 @@ const Pains = () => {
               content="Pvssy Talk t'aide à identifier les douleurs sexuelles que tu peux ressentir et à trouver des solutions."
             />
           </Helmet>
-          <HeadingArea
-            title="Douleurs"
-            level="h1"
-            subtitle="Chaque douleur est traitée avec une approche à la fois médicale et sexologique pour te donner une vision complète."
-          />
+          <div className="title-aside-container">
+            <h1>Douleurs</h1>
+            <div>
+              <p className="subtitle">
+                Chaque douleur est traitée avec une approche à la fois médicale
+                et sexologique pour te donner une vision complète.
+              </p>
+            </div>
+          </div>
         </>
       )}
-      <div className="grid-area">
-        <p className="centered">
+
+      <div>
+        <p
+          className="subtitle"
+          style={{ color: "red", gridColumn: "7/13", marginBottom: "0" }}
+        >
           Dans quelles régions de ta vulve ou dans quelles circonstances{" "}
           <nobr>as-tu mal ?</nobr>
         </p>
+        <CreateTags tags={painTags} />
       </div>
-      <CreateTags tags={painTags} />
 
       <div className="card-grid">
         {filteredData.map((p) => {
@@ -69,13 +77,7 @@ const Pains = () => {
             >
               <div className="card">
                 <img src={p.img} alt={p.name} />
-                <h3>
-                  {p.name === "Sopk" ? (
-                    <span className="acronym">{p.name}</span>
-                  ) : (
-                    <>{p.name}</>
-                  )}
-                </h3>
+                <h3 className="subtitle">{p.name}</h3>
               </div>
             </Link>
           );

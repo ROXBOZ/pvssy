@@ -41,6 +41,7 @@ import getToken from "./utilities/getToken";
 import Introduction from "./components/Pages/Introduction";
 import AutoObservation from "./components/Pages/AutoObservation";
 import Consultation from "./components/Pages/Consultation";
+import Members from "./components/Pages/Members";
 
 function App() {
   const token = getToken();
@@ -154,6 +155,7 @@ function App() {
                     <Route path="login" element={<Login />} />
                     <Route path="creer-un-compte" element={<Signup />} />
                     <Route path="faire-un-don" element={<Donate />} />
+                    <Route path="devenir-membre" element={<Members />} />
                     <Route
                       path="profile"
                       element={<ProtectedRoute />}

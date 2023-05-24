@@ -5,17 +5,21 @@
   .exercise {
     border-bottom: $border-solid $secondary;
     .exercise-closed {
-      @include grid;
-      padding: $reg-space 0;
-      align-items: center;
+      // @include grid;
+
+      display: flex;
+      padding: $reg-space 0 $sm-space;
+      align-items: flex-end;
+      justify-content: space-between;
 
       .pretitle {
         grid-column: #{$grid-fullwidth};
         width: fit-content;
+        margin-bottom: $xs-space;
       }
 
       h2 {
-        grid-column: #{$grid-first-third};
+        grid-column: 1/9;
       }
 
       h2,
@@ -36,25 +40,16 @@
     .exercise-open {
       animation: animationOpacity $animation-transition ease-in;
 
-      .exercise-img {
-        border-radius: $border-radius;
-        width: 100%;
-        aspect-ratio: 16/4.5;
-        object-fit: cover;
-        margin-bottom: $reg-space;
-      }
-
       .exercise-article {
         @include grid;
-        margin: $reg-space 0;
+        margin: $sm-space 0 $lg-space;
 
         .prealable {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           padding-right: $sm-space;
-          grid-column: #{$grid-first-third};
-          border-bottom: $border-solid $secondary;
+          grid-column: #{$grid-first-half};
 
           p {
             margin-bottom: $sm-space;
@@ -62,7 +57,7 @@
         }
 
         .instructions {
-          grid-column: #{$grid-last-thirds};
+          grid-column: #{$grid-second-half};
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -90,7 +85,7 @@
             }
 
             .instructions-step-open {
-              padding: $reg-space;
+              padding: $sm-space;
               border-radius: $border-radius-soft;
               margin-bottom: $sm-space;
               border: $border-solid $secondary;

@@ -5,7 +5,8 @@
   gap: 0 $reg-space;
 
   * {
-    grid-column: #{$grid-center};
+    font-family: $font-logo;
+    grid-column: #{$grid-fullwidth};
     height: fit-content;
   }
 
@@ -43,11 +44,12 @@ li {
   }
 }
 
-// li {
-//   margin-top: $sm-space;
-// }
+li {
+  margin-top: $sm-space;
+}
 
 .subtitle {
+  font-size: 120%;
   max-width: $chperline;
 }
 h1 + .subtitle,
@@ -71,14 +73,20 @@ h3 + .subtitle {
 }
 
 h4 + .subtitle {
-  color: violet;
+  color: red;
   font-size: 110%;
+}
+
+u {
+  text-decoration: none;
+  border-bottom: $border-solid $quarterary;
 }
 
 a {
   text-decoration: none;
   color: $txt-color;
-  border-bottom: $border-solid $secondary;
+  border-bottom: $border-solid $quarterary;
+  font-family: $font-bold;
   width: fit-content;
   transition: border-color $animation-transition;
   cursor: url("../assets/images/cursor-pointer.svg"), auto;
@@ -136,6 +144,7 @@ $type-ratios: (
   "augmentedFourth": 1.414,
   "perfectFifth": 1.5,
   "goldenRatio": 1.618,
+  "pvssyTalk": 1.45,
 );
 
 @function type-ratio($key) {
@@ -143,7 +152,7 @@ $type-ratios: (
 }
 
 $type-base-size: 1rem;
-$type-size-ratio: type-ratio("augmentedFourth");
+$type-size-ratio: type-ratio("pvssyTalk");
 $type-levels: 4, 3, 2, 1;
 $type-styles: ();
 $level-size: $type-base-size;
@@ -153,13 +162,12 @@ $level-size: $type-base-size;
 
   h#{$level},
   .h#{$level} {
-    font-family: $font-logo;
-
     font-size: $level-size;
     line-height: calc(2px + 2ex + 2px);
     font-weight: 500;
-    margin-top: calc(#{$level-size});
-    margin-bottom: calc(#{$level-size}/ 1.5);
+    font-family: $font-logo;
+    margin-top: calc(#{$level-size}* 1.25);
+    margin-bottom: calc(#{$level-size}/ 2);
 
     &:first-letter {
       text-transform: capitalize;

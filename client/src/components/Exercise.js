@@ -57,8 +57,11 @@ const Exercise = ({ exercise, isExerciseOpen, handleExerciseToggle }) => {
   return (
     <div className="exercise">
       <div className="exercise-closed">
-        <p className="pretitle">{exercise.relatedPain.join(", ")}</p>
-        <h2 className="h3">{exercise.title}</h2>
+        <div>
+          <p className="pretitle">{exercise.relatedPain.join(", ")}</p>
+          <h2 className="h3">{exercise.title}</h2>
+        </div>
+
         <button onClick={() => handleExerciseToggle(exercise._id)}>
           {isExerciseOpen ? "fermer" : "en savoir +"}
         </button>

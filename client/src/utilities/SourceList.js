@@ -31,7 +31,9 @@ export const SourceList = ({ sources }) => {
                       )}{" "}
                       <span className="source-category">[{s.category}]</span>{" "}
                       {s.editor && (
-                        <span className="source-editor">{s.editor}.</span>
+                        <nobr>
+                          <span className="source-editor">{s.editor}.</span>
+                        </nobr>
                       )}
                     </span>
                   </li>

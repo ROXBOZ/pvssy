@@ -36,7 +36,7 @@
     background: $txt-color;
   }
   &:focus {
-    outline: 2px dotted $secondary;
+    outline: 2px dotted $quarterary;
   }
 }
 
@@ -127,11 +127,6 @@ html {
 strong {
   font-family: $font-bold;
   font-weight: 500;
-}
-
-u {
-  text-decoration: none;
-  border-bottom: $border-solid $secondary;
 }
 
 .smaller-text {

@@ -16,44 +16,40 @@ const Donate = () => {
           content="faire un don, twint, paypal, virement bancaire"
         />
       </Helmet>
-      <HeadingArea
-        title="Faire un don"
-        level="h1"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-            laboriosam eveniet laudantium illum velit tenetur eius expedita
-            aliquid deleniti ab explicabo non accusantium dolorum atque, nulla
-            quibusdam error distinctio earum."
-      />
+      <div className="title-aside-container">
+        <h1 className="h2">Faire un don</h1>
+        <div>
+          <p className="subtitle">
+            L’association No Dolor a pour but de sensibiliser sur la question
+            des douleurs sexuelles. Si vous êtes sensible ou touché·ex par la
+            question et souhaitez nous soutenir, vos dons nous seront
+            particulièrement utiles pour mener à bien le développement de{" "}
+            <span className="logo">pvssy talk</span> et les projets qui en
+            découlent.
+          </p>
+        </div>
+      </div>
 
-      <div className="grid-area">
-        <div className="centered">
-          <h2 className="h3">TWINT (+ RaiseNow)</h2>
+      <div className="title-aside-container">
+        <h2 className="h3">Montants suggérés</h2>
+        <div>50, 100, 150, 300, montant personnalisé</div>
+      </div>
+      <div className="title-aside-container">
+        <h2 className="h3">Modes de paiement</h2>
+        <div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-            laboriosam eveniet laudantium illum velit tenetur eius expedita
-            aliquid deleniti ab explicabo non accusantium dolorum atque, nulla
-            quibusdam error distinctio earum.
-          </p>
-          <h2 className="h3">PayPal</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-            voluptatum esse dolore odit consectetur nobis veniam odio totam
-            corporis, officiis molestias doloribus culpa pariatur maiores
-            placeat nam reiciendis, similique tempore?
-          </p>
-          <button>Virement par Paypal</button>
-          <h2 className="h3">Virement bancaire</h2>
-          <p>
-            <strong>
-              Association NO DOLOR, Banque Cantonale Genevoise, IBAN: 12345 6789
-              1234
-            </strong>
+            <button>TWINT</button>  <button>PayPal</button>
           </p>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
-            ab omnis enim esse quod eum, rem reiciendis odit doloribus
-            voluptate. Rem officiis laborum placeat nobis id! Veritatis quis
-            suscipit aspernatur.
+            <strong>Ou par virement bancaire</strong>
+            <br />
+            Association No Dolor
+            <br />
+            Banque Raiffeisen
+            <br />
+            IBAN : CH18 8080 8006 6171 7604 4
+            <br />
+            (Indiquez vos coordonnées pour recevoir un reçu de don.)
           </p>
         </div>
       </div>

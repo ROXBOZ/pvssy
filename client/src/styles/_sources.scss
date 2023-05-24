@@ -45,9 +45,6 @@
     li {
       font-size: $smaller-text;
       line-height: $lineheight;
-      .source-title {
-        font-family: $font-regular-italic;
-      }
     }
   }
 }
@@ -64,6 +61,13 @@
       padding: $sm-space 0;
       .source-title {
         font-family: $font-regular-italic;
+      }
+
+      a {
+        font-family: $font-bold-italic !important;
+        .source-title {
+          font-family: $font-bold-italic !important;
+        }
       }
       .source-category {
         text-transform: lowercase;

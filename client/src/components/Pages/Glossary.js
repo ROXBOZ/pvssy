@@ -215,11 +215,7 @@ const Glossary = () => {
                         <span className="related-pain">
                           <span> ↗ </span>
                           <Link key={index} to={`/douleurs/${pain}`}>
-                            {pain === "Sopk" ? (
-                              <span className="acronym">{pain}</span>
-                            ) : (
-                              <span>{pain}</span>
-                            )}
+                            <span>{pain}</span>
                           </Link>
                         </span>
                       ))}

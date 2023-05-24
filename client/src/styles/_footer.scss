@@ -1,7 +1,6 @@
 footer {
   justify-content: center;
   gap: $sm-space;
-  margin: 20vh 0 0;
   background-color: $secondary;
 
   .h3 {
@@ -9,14 +8,14 @@ footer {
   }
 
   a {
+    font-family: $font-regular;
     border-color: $txt-color;
   }
 
   .footer-main {
     @include grid;
-    border-top: $border-solid;
-    padding: $reg-space;
-    align-items: center;
+    padding: $reg-space $reg-space 15vh $reg-space;
+    align-items: flex-start;
 
     .footer-column {
       display: flex;
@@ -25,20 +24,10 @@ footer {
 
       &:first-child {
         grid-column: #{$grid-first-third};
-
-        .footer-main-buttons-container {
-          display: flex;
-          gap: $xs-space;
-
-          p {
-            margin-bottom: 0;
-          }
-        }
       }
 
       &:nth-child(2) {
-        grid-column: #{$grid-last-thirds};
-        align-items: flex-end;
+        grid-column: #{$grid-last-third};
 
         nav {
           display: flex;
@@ -72,11 +61,10 @@ footer {
 
 .banner {
   background-color: $tierary;
-  border-top: $border-solid $txt-color;
   padding: $sm-space 0;
   white-space: nowrap;
   width: 100%;
-  margin: 10vh 0 0;
+  margin: 20vh 0 0;
   position: relative;
   overflow: hidden;
   height: 2rem;
@@ -90,9 +78,6 @@ footer {
     white-space: nowrap;
     animation: transitionX 40s linear infinite;
     animation-play-state: running;
-    * {
-      font-family: $font-regular !important;
-    }
   }
 
   & + footer {

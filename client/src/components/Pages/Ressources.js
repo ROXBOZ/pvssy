@@ -10,7 +10,7 @@ const Ressources = () => {
   const endsWithRessources = /ressources$/.test(currentUrl);
 
   return (
-    <div>
+    <div className="title-aside-container">
       {endsWithRessources && (
         <>
           <HeadingArea title="Ressources" level="h1" />
@@ -23,6 +23,7 @@ const Ressources = () => {
           </Helmet>
         </>
       )}
+      <h2>Ressources supplémentaires</h2>
       <div className="ressources-container">
         <TitleLink to="ressources/glossaire" title="Glossaire" />
         <TitleLink to="ressources/exercices" title="Exercices" />
