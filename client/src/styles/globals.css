@@ -372,7 +372,7 @@ button:hover,
 .button:hover {
   color: #4d4d28;
   background-color: #dcb4ff;
-  border: 1px solid;
+  border: 1px solid #dcb4ff;
 }
 button:disabled,
 .button:disabled {
@@ -475,42 +475,6 @@ button:active,
   color: #4d4d28;
   transition: 0.2s ease-in;
   transform: rotate(45deg);
-}
-
-.picto-link {
-  grid-column: span 4;
-  width: 100%;
-  display: flex;
-  border-bottom: none;
-}
-
-.picto-card {
-  padding: 2rem;
-  border: 1px solid #fd4a36;
-  border-radius: 10px;
-  width: 100%;
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-@media screen and (max-width: 576px) {
-  .picto-card {
-    flex-direction: column;
-  }
-}
-.picto-card h3 {
-  margin: 0;
-  padding: 0;
-}
-.picto-card:hover {
-  border-color: #4d4d28;
-  background-color: #dcb4ff;
-}
-.picto-card img {
-  width: auto;
-  max-height: 6em;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
 }
 
 @media screen and (max-width: 576px) {
@@ -693,7 +657,7 @@ footer .footer-bottom .copyrights {
 }
 
 .banner {
-  background-color: #c8ffa5;
+  background-color: #fd4a36;
   padding: 1rem 0;
   white-space: nowrap;
   width: 100%;
@@ -703,6 +667,9 @@ footer .footer-bottom .copyrights {
   height: 2rem;
   display: flex;
   align-items: center;
+}
+.banner * {
+  color: #fefdf4;
 }
 .banner p {
   margin-bottom: 0;
@@ -1288,11 +1255,11 @@ figure span a {
 }
 .logo-partner-container .logo-partner img {
   width: 100%;
-  max-height: 6rem;
 }
 
 .lexique-list {
   padding-left: 0;
+  grid-column: 7/13;
 }
 .lexique-list .lexique-list-item {
   align-items: flex-start;
@@ -1555,6 +1522,7 @@ a.term span {
   font-weight: 400;
   position: relative;
   line-height: 1.75;
+  margin-top: 0;
   list-style: none;
 }
 .category-submenu li a {
@@ -1796,17 +1764,9 @@ a.term span {
 
 .additional-ressources {
   margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1rem;
-}
-@media screen and (max-width: 576px) {
-  .additional-ressources {
-    grid-template-columns: 1fr;
-  }
 }
 .additional-ressources ul {
-  grid-column: 4/10;
+  grid-column: 7/13;
   padding-left: 0;
 }
 .additional-ressources ul li {
@@ -1860,7 +1820,7 @@ a.term span {
 
 .tag {
   white-space: nowrap;
-  border: 1px solid #fea59b;
+  border: 1px solid #ffc3ee;
   padding: 0.5em 1.5em;
   font-size: 80%;
   border-radius: 40px;
@@ -1868,8 +1828,8 @@ a.term span {
 }
 .tag.active, .tag:hover {
   cursor: url("../assets/images/cursor-pointer.svg"), auto;
-  background-color: #fea59b;
-  border-color: #4d4d28;
+  background-color: #ffc3ee;
+  border-color: #ffc3ee;
 }
 
 .reset {

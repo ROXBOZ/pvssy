@@ -47,7 +47,7 @@ const PainGlossary = () => {
   });
 
   return (
-    <>
+    <div>
       <Helmet>
         <title>Glossaire {painName} – Pvssy Talk</title>
         <meta
@@ -55,16 +55,23 @@ const PainGlossary = () => {
           content={`${painName}: termes et définitions liés à la douleur `}
         />
       </Helmet>
-      <HeadingArea
-        title="Glossaire"
-        level="h1"
-        color={
-          painName === "Sopk" ? painName.toUpperCase() : painName.toLowerCase()
-        }
-      />
+      <div className="title-aside-container">
+        <h1>
+          Glossaire <span className="colored">{painName.toLowerCase()}</span>
+        </h1>
+        <div>
+          <p className="subtitle">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque nam
+            in numquam alias maxime, officia necessitatibus iure est cum sit?
+            Assumenda dicta rem, voluptatum officia tempora dignissimos.
+            Ducimus, in quae!
+          </p>
+        </div>
+      </div>
+
       <div className="grid-area">
         {requestedTerms ? (
-          <div className="lexique-list centered">
+          <div className="lexique-list">
             {requestedTerms &&
               requestedTerms
                 .filter((t) => t.imgUrl)
@@ -136,7 +143,7 @@ const PainGlossary = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

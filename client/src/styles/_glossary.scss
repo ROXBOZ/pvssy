@@ -1,5 +1,6 @@
 .lexique-list {
   padding-left: 0;
+  grid-column: #{$grid-second-half};
 
   .lexique-list-item {
     align-items: flex-start;

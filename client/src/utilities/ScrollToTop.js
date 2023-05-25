@@ -10,8 +10,8 @@ const ScrollToTop = () => {
       "/profile/modifier",
       "/profile/approuver",
       "/profile/supprimer",
-      /\/s-informer\/douleurs\/.+\/medical/,
-      /\/s-informer\/douleurs\/.+\/sexologie/,
+      /\/douleurs\/.+\/medical/,
+      /\/douleurs\/.+\/sexologie/,
     ];
 
     for (const path of excludedPaths) {

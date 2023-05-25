@@ -13,7 +13,7 @@
 
 .tag {
   white-space: nowrap;
-  border: $border-solid lighten($primary, 20%);
+  border: $border-solid $quarterary;
   padding: $padding-btn;
   font-size: $smaller-text;
   border-radius: 40px;
@@ -22,8 +22,8 @@
   &.active,
   &:hover {
     cursor: url("../assets/images/cursor-pointer.svg"), auto;
-    background-color: lighten($primary, 20%);
-    border-color: $txt-color;
+    background-color: $quarterary;
+    border-color: $quarterary;
   }
 }
 

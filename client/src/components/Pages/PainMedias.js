@@ -16,15 +16,25 @@ const PainMedias = () => {
           content={`${painName}: Livres, articles, podcasts, vidéos et bandes dessinées liés à la douleur `}
         />
       </Helmet>
-      <HeadingArea
-        color={
-          painName === "Sopk" ? painName.toUpperCase() : painName.toLowerCase()
-        }
-        title="Littérature et médias"
-        level="h1"
-      />
+
       {requestedSources ? (
-        <SourceList sources={requestedSources} />
+        <>
+          <div className="title-aside-container">
+            <h1>
+              Littérature et médias{" "}
+              <span className="colored">{painName.toLowerCase()}</span>
+            </h1>
+            <div>
+              <p className="subtitle">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
+                delectus magni pariatur odio expedita similique quam aspernatur!
+                Veritatis nisi rerum modi odit commodi laudantium aspernatur
+                vitae sint? Beatae, dolorum aliquam.
+              </p>
+              <SourceList sources={requestedSources} />
+            </div>
+          </div>
+        </>
       ) : (
         <div className="grid-area">
           <div className="centered">
