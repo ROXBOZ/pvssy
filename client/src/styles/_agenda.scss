@@ -19,7 +19,6 @@
   }
 
   .event-container {
-    border-top: $border-solid;
     padding-top: $sm-space;
     @include grid;
 
@@ -28,11 +27,11 @@
       flex-direction: column;
 
       &:first-child {
-        grid-column: #{$grid-first-third};
+        grid-column: #{$grid-first-half};
         p {
           margin-bottom: 0;
-          border-bottom: $border-solid;
-          padding: $xs-space;
+          border-bottom: $border-solid $secondary;
+          padding: $xs-space 0;
 
           &:last-child {
             border-bottom: none;
@@ -40,7 +39,7 @@
         }
       }
 
-      grid-column: #{$grid-last-thirds};
+      grid-column: #{$grid-second-half};
       .show-counter {
         color: $dark-secondary;
       }

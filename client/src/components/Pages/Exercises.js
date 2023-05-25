@@ -48,12 +48,16 @@ const Exercises = () => {
             exercices, c’est normal, car on ne fait jamais ça et personne ne
             nous l’apprend. Si tu as des pensées critiques, laisse-les passer et
             accorde-toi le droit d’essayer, même plusieurs fois. Dès que tu as
-            mal, arrête. Reste à l’écoute de tes sensations, tes besoin, tes
+            mal, arrête. Reste à l’écoute de tes sensations, tes besoins, tes
             envies et tes limites.
           </p>
         </div>
       </div>
-
+      <div className="grid-area">
+        <p style={{ gridColumn: "7/13" }} className="subtitle">
+          Quelle douleur te concerne ?
+        </p>
+      </div>
       <CreateTags tags={painList} />
 
       <div className="exercises-container">

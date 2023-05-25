@@ -78,6 +78,9 @@ footer {
     white-space: nowrap;
     animation: transitionX 40s linear infinite;
     animation-play-state: running;
+    span {
+      font-family: $font-regular;
+    }
   }
 
   & + footer {

@@ -7,11 +7,13 @@
   grid-column: #{$grid-second-half};
   display: flex;
   gap: $xs-space;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .tag {
   white-space: nowrap;
-  border: $border-solid $secondary;
+  border: $border-solid lighten($primary, 20%);
   padding: $padding-btn;
   font-size: $smaller-text;
   border-radius: 40px;
@@ -20,7 +22,7 @@
   &.active,
   &:hover {
     cursor: url("../assets/images/cursor-pointer.svg"), auto;
-    background-color: $secondary;
+    background-color: lighten($primary, 20%);
     border-color: $txt-color;
   }
 }
@@ -31,12 +33,11 @@
   display: flex;
   align-items: center;
   text-transform: lowercase !important;
-  svg {
-    transition: none !important;
-    animation: none;
-  }
+  border-bottom: $border-solid $quarterary;
+  height: fit-content;
+
   &:hover {
-    color: $secondary;
+    border-bottom: none;
   }
 }
 

@@ -17,7 +17,7 @@ const Donate = () => {
         />
       </Helmet>
       <div className="title-aside-container">
-        <h1 className="h2">Faire un don</h1>
+        <h1>Faire un don</h1>
         <div>
           <p className="subtitle">
             L’association No Dolor a pour but de sensibiliser sur la question

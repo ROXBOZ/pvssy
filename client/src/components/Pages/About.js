@@ -14,16 +14,11 @@ const About = () => {
           name="description"
           content="Pvssy Talk est un projet porté par l'association No Dolor qui a pour but d’informer sur la sexualité et les douleurs sexuelles"
         />
-        <meta
-          name="keywords"
-          content="Association No Dolor, Anne-Soorya Takoordyal, Roxanne Borloz, Noémie Creux, Isaline Rogg, Sexopraxis, Medsexplain"
-        />
       </Helmet>
-
-      <HeadingArea title="À propos" level="h1" />
-      <div className="grid-area">
-        <div className="centered">
-          <p>
+      <div className="title-aside-container">
+        <h1>À propos</h1>
+        <div>
+          <p className="subtitle">
             <span className="logo">pvssy talk</span> est un projet porté par
             l’association No Dolor qui a pour but d’informer sur la sexualité et
             les douleurs sexuelles. Elle est à but non lucratif. C’est grâce à
@@ -37,15 +32,32 @@ const About = () => {
             >
               Sexopraxis
             </Link>{" "}
-            et MedSexplain (AEMG).
+            et{" "}
+            <Link
+              to="https://aemg-ge.com/medsexplain/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              MedSexplain (AEMG)
+            </Link>
+            .
           </p>
           <p>
+            <Link
+              to="https://as-takoordyal.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <nobr>Anne-Soorya</nobr> Takoordyal
+            </Link>
+            , créatrice et cheffe de projet
+            <br />
             <Link
               to="https://www.sexopraxis.ch/fiona-bourdon"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Fiona Bourdon
+              Fiona Bourdon (Sexopraxis)
             </Link>
             , rédaction du contenu sexologique
             <br />
@@ -54,7 +66,7 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Romy Siegrist
+              Romy Siegrist (Sexopraxis)
             </Link>
             , rédaction du contenu sexologique
             <br />
@@ -66,15 +78,6 @@ const About = () => {
               MedSexplain (AEMG)
             </Link>
             , rédaction du contenu médical
-            <br />
-            <Link
-              to="https://as-takoordyal.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <nobr>Anne-Soorya</nobr> Takoordyal
-            </Link>
-            , créatrice et cheffe de projet
             <br />
             <Link
               to="https://www.roxanne-borloz.net"
@@ -108,11 +111,29 @@ const About = () => {
             informations bienveillantes en fonction des besoins des
             utilisateurices.
           </p>
-          <p>
-            <strong> Nous remercions chaleureusement nos partenaires</strong>
-          </p>
+        </div>
+      </div>
+      <div className="title-aside-container">
+        <h2>Partenaires</h2>
+        <div>
           <div className="logo-partner-container">
             <LogoPartner name="Loterie Romande" url="https://www.loro.ch/fr" />
+            <LogoPartner
+              name="Pulse Incubateur HES"
+              url="https://pulse-hesge.ch/"
+            />
+            <LogoPartner
+              name="MedSexPlain"
+              url="https://aemg-ge.com/medsexplain/"
+            />
+            <LogoPartner name="Softweb" url="https://www.yoursoftweb.org/" />
+            <LogoPartner name="SexoPraxis" url="https://www.sexopraxis.ch/" />
+            <LogoPartner
+              name="Le Fesses-tival"
+              url="https://lefessestival.ch/Lieu"
+            />
+
+            <LogoPartner name="Genilem" url="https://genilem.ch/" />
           </div>
         </div>
       </div>

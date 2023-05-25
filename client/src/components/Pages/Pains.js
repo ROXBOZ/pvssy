@@ -26,7 +26,7 @@ const Pains = () => {
   // }, []);
 
   return (
-    <div>
+    <>
       {endsWithDouleurs && (
         <>
           <Helmet>
@@ -53,16 +53,14 @@ const Pains = () => {
         </>
       )}
 
-      <div>
-        <p
-          className="subtitle"
-          style={{ color: "red", gridColumn: "7/13", marginBottom: "0" }}
-        >
+      <div className="grid-area">
+        <p className="subtitle" style={{ gridColumn: "7/13" }}>
           Dans quelles régions de ta vulve ou dans quelles circonstances{" "}
           <nobr>as-tu mal ?</nobr>
         </p>
-        <CreateTags tags={painTags} />
       </div>
+
+      <CreateTags tags={painTags} />
 
       <div className="card-grid">
         {filteredData.map((p) => {
@@ -84,7 +82,7 @@ const Pains = () => {
         })}
       </div>
       {Error && <p>erreur</p>}
-    </div>
+    </>
   );
 };
 

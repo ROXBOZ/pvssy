@@ -18,6 +18,10 @@
   }
 }
 
+h1 {
+  font-family: $font-logo;
+}
+
 h2 + h3 {
   margin-top: 0;
 }
@@ -29,7 +33,7 @@ li {
 
   &.pretitle {
     text-transform: lowercase;
-    border-bottom: $secondary $border-solid;
+    border-bottom: $tierary $border-solid;
     font-family: $font-medium;
     padding-bottom: 0;
     margin-bottom: 0;
@@ -165,7 +169,6 @@ $level-size: $type-base-size;
     font-size: $level-size;
     line-height: calc(2px + 2ex + 2px);
     font-weight: 500;
-    font-family: $font-logo;
     margin-top: calc(#{$level-size}* 1.25);
     margin-bottom: calc(#{$level-size}/ 2);
 

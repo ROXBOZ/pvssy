@@ -7,7 +7,6 @@ import {
 } from "../../utilities/dateConverter";
 import CountdownTimer from "../../utilities/CountdownTimer";
 import { fromNowToDate } from "../../utilities/fromNowToDate";
-import { HeadingArea } from "../../utilities/HeadingArea";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import CreateTags from "../../utilities/CreateTags";
 import { PainsContext } from "../../contexts/PainsContext";
@@ -17,9 +16,6 @@ import { todayISO } from "../../utilities/regexExpressions";
 const Agenda = () => {
   const { regions } = useContext(EventsContext);
   const [showEvent, setShowEvent] = useState({});
-  const location = useLocation();
-  const currentUrl = location.pathname;
-  const endsWithAgenda = /agenda$/.test(currentUrl);
   const [openAccordion, setOpenAccordion] = useState(null);
   const { selectedTag } = useContext(PainsContext);
   const { fetchData, data, agendaURL } = useContext(EventsContext);
@@ -60,24 +56,28 @@ const Agenda = () => {
     : [];
 
   return (
-    <>
+    <div>
       <Helmet>
         {selectedTag ? (
           <title>Agenda ({selectedTag}) Pvssy Talk</title>
         ) : (
           <title>Agenda Pvssy Talk</title>
         )}
-
         <meta
           name="description"
           content="Participe à des évènements en lien avec les douleurs sexuelles en ligne ou en Suisse Romande."
         />
-        <meta
-          name="keywords"
-          content="Évènements en lien avec les douleurs sexuelles en Suisse Romande, Genève, Vaud, Neuchâtel, Jura, Fribourg, Valais"
-        />
       </Helmet>
-      {endsWithAgenda && <HeadingArea title="Agenda" level="h1" />}
+      <div className="title-aside-container">
+        <h1>Agenda</h1>
+        <div>
+          <p className="subtitle">
+            Des évènements autours des douleurs sexuelles en ligne ou en
+            Suisse Romande.
+          </p>
+        </div>
+      </div>
+
       <div className="noun">
         <CreateTags tags={regions} />
       </div>
@@ -87,7 +87,6 @@ const Agenda = () => {
           filteredData.map((e, index) => {
             const { eventDateInMilli, todayStartinMilli, todayEndinMilli } =
               fromNowToDate(e.eventDateStart);
-
             return (
               <div className="agenda-entry" key={index}>
                 <p className="pretitle">
@@ -225,15 +224,11 @@ const Agenda = () => {
             </div>
           </div>
         )}
+        <Link style={{ border: "none" }} to="/login">
+          <button>proposer un évènement</button>
+        </Link>
       </div>
-      <div className="grid-area">
-        <div className="centered">
-          <Link style={{ border: "none" }} to="/login">
-            <button>proposer un évènement</button>
-          </Link>
-        </div>
-      </div>
-    </>
+    </div>
   );
 };
 

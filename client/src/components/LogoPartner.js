@@ -20,7 +20,7 @@ const LogoPartner = ({ url, name }) => {
       <img
         src={require(`../assets/images/partners/${name
           .replaceAll(" ", "-")
-          .toLowerCase()}.${isHovered ? "jpg" : "png"}`)}
+          .toLowerCase()}${isHovered ? "-c.png" : ".png"}`)}
         alt={name}
       />
     </Link>

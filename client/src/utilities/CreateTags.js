@@ -21,23 +21,25 @@ const CreateTags = (tags) => {
   };
 
   return (
-    <div className="tag-container">
-      <div className="tags">
-        {tags.tags.map((tag, index) => {
-          return (
-            <span
-              key={index}
-              className={`tag ${selectedTag === tag ? "active" : ""} `}
-              onClick={() => handleFilter(tag)}
-            >
-              {tag}
-            </span>
-          );
-        })}
-        <span className="reset" onClick={() => handleReset()}>
-          <FontAwesomeIcon icon={faXmark} />
-           tout
-        </span>
+    <div>
+      <div className="tag-container">
+        <div className="tags">
+          {tags.tags.map((tag, index) => {
+            return (
+              <span
+                key={index}
+                className={`tag ${selectedTag === tag ? "active" : ""} `}
+                onClick={() => handleFilter(tag)}
+              >
+                {tag}
+              </span>
+            );
+          })}
+          <span className="reset" onClick={() => handleReset()}>
+            <FontAwesomeIcon icon={faXmark} />
+             tout
+          </span>
+        </div>
       </div>
     </div>
   );
