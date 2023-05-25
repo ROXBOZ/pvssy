@@ -657,7 +657,7 @@ footer .footer-bottom .copyrights {
 }
 
 .banner {
-  background-color: #fd4a36;
+  background-color: #c8ffa5;
   padding: 1rem 0;
   white-space: nowrap;
   width: 100%;
@@ -667,9 +667,6 @@ footer .footer-bottom .copyrights {
   height: 2rem;
   display: flex;
   align-items: center;
-}
-.banner * {
-  color: #fefdf4;
 }
 .banner p {
   margin-bottom: 0;

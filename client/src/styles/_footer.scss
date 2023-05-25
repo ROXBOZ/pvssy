@@ -60,7 +60,7 @@ footer {
 }
 
 .banner {
-  background-color: $primary;
+  background-color: $tierary;
   padding: $sm-space 0;
   white-space: nowrap;
   width: 100%;
@@ -70,10 +70,6 @@ footer {
   height: 2rem;
   display: flex;
   align-items: center;
-
-  * {
-    color: $bg-color;
-  }
 
   p {
     margin-bottom: 0;

@@ -24,9 +24,7 @@ const PainExercices = () => {
       <HeadingArea
         title="Exercices"
         level="h1"
-        color={
-          painName === "Sopk" ? painName.toUpperCase() : painName.toLowerCase()
-        }
+        color={painName.toLowerCase()}
       />
 
       <div className="exercises-container">
