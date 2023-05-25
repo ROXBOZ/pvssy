@@ -782,21 +782,6 @@ footer .footer-bottom .copyrights {
 .grid-form .form-section .msg {
   grid-column: 7/13;
 }
-.grid-form .form-section .input-label-container {
-  display: flex;
-  align-items: center;
-}
-.grid-form .form-section .input-label-container input {
-  margin-bottom: 0.25rem;
-}
-.grid-form .form-section .input-label-container.fullwidth {
-  grid-column: span 7;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.grid-form .form-section .input-label-container.fullwidth input {
-  width: 100%;
-}
 .grid-form .react-mde-container {
   grid-column: 7/13;
 }
@@ -811,41 +796,6 @@ footer .footer-bottom .copyrights {
 }
 .grid-form .react-mde .mde-text {
   border-radius: 0;
-}
-.grid-form input[type=text],
-.grid-form input[type=datetime-local],
-.grid-form input[type=date],
-.grid-form input[type=time],
-.grid-form input[type=tel],
-.grid-form input[type=number],
-.grid-form input[type=password],
-.grid-form input[type=file],
-.grid-form select,
-.grid-form textarea {
-  background-color: #fefdf4;
-  color: #4d4d28;
-  border: 1px solid #dcb4ff;
-  border-radius: 10px;
-  font-family: "ESKlarheit-Medium";
-  font-size: 100%;
-  padding: 1rem 1.5rem;
-  grid-column: 7/13;
-}
-.grid-form input[type=text].line,
-.grid-form input[type=datetime-local].line,
-.grid-form input[type=date].line,
-.grid-form input[type=time].line,
-.grid-form input[type=tel].line,
-.grid-form input[type=number].line,
-.grid-form input[type=password].line,
-.grid-form input[type=file].line,
-.grid-form select.line,
-.grid-form textarea.line {
-  border-radius: 0;
-  border-left: none;
-  border-right: none;
-  border-top: none;
-  border-bottom: 1px solid #dcb4ff;
 }
 @media screen and (max-width: 576px) {
   .grid-form .form-section {
@@ -863,6 +813,64 @@ footer .footer-bottom .copyrights {
   .grid-form h3 {
     margin-top: 4rem;
   }
+}
+
+.input-label-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.input-label-container label {
+  white-space: nowrap;
+}
+.input-label-container input {
+  margin-bottom: 0.25rem;
+}
+.input-label-container.fullwidth {
+  grid-column: span 7;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.input-label-container.fullwidth input {
+  width: 100%;
+}
+
+input[type=text],
+input[type=datetime-local],
+input[type=date],
+input[type=time],
+input[type=tel],
+input[type=number],
+input[type=password],
+input[type=file],
+select,
+textarea {
+  background-color: #fefdf4;
+  width: 100%;
+  color: #4d4d28;
+  border: 1px solid #dcb4ff;
+  border-radius: 10px;
+  font-family: "ESKlarheit-Medium";
+  font-size: 100%;
+  padding: 1rem 1.5rem;
+  grid-column: 7/13;
+}
+input[type=text].line,
+input[type=datetime-local].line,
+input[type=date].line,
+input[type=time].line,
+input[type=tel].line,
+input[type=number].line,
+input[type=password].line,
+input[type=file].line,
+select.line,
+textarea.line {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 1px solid #dcb4ff;
 }
 
 .search-bar {
@@ -897,7 +905,7 @@ footer .footer-bottom .copyrights {
 .check-list-container .check-list li:not(:first-child) {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #faf5c5;
+  border-top: 1px solid #dcb4ff;
 }
 
 .grid-area {
@@ -1437,7 +1445,7 @@ a.term span {
   width: fit-content;
   display: flex;
   gap: 0.5em;
-  padding: 0.5em 1.5em;
+  padding: 0.5rem 0;
   align-items: center;
 }
 .msg * {
@@ -1445,13 +1453,13 @@ a.term span {
   margin: 0;
 }
 .msg.success {
-  border-bottom: 1px solid mediumseagreen;
+  border-bottom: 1px solid #c8ffa5;
 }
 .msg.success:before {
   content: "👏  ";
 }
 .msg.reminder {
-  border-bottom: 1px solid DarkGoldenRod;
+  border-bottom: 1px solid #dcb4ff;
 }
 .msg.reminder:before {
   content: "🔔  ";
@@ -1463,19 +1471,19 @@ a.term span {
   content: "⌛  ";
 }
 .msg.warning {
-  border-bottom: 1px solid #ff560f;
+  border-bottom: 1px solid #ffc3ee;
 }
 .msg.warning:before {
   content: "⚠️  ";
 }
 .msg.archived {
-  border-bottom: 1px solid dimgrey;
+  border-bottom: 1px solid secondary;
 }
 .msg.archived:before {
   content: "📁  ";
 }
 .msg.error {
-  border-bottom: 1px solid crimson;
+  border-bottom: 1px solid #ff560f;
 }
 .msg.error:before {
   content: "🚩 ";
@@ -1498,7 +1506,7 @@ a.term span {
   display: block;
   padding: 0;
   line-height: 2;
-  color: crimson;
+  color: #ff560f;
   grid-column: 1/6;
 }
 .error-list:not(:empty) li {

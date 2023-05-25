@@ -1,9 +1,11 @@
+$error-color: $primary;
+
+$archived-color: secondary;
 $pending-color: $secondary;
-$warning-color: $primary;
-$success-color: mediumseagreen;
-$reminder-color: DarkGoldenRod;
-$error-color: crimson;
-$archived-color: dimgrey;
+$reminder-color: $secondary;
+
+$success-color: $tierary;
+$warning-color: $quarterary;
 
 .msg-box {
   margin: $reg-space 0;
@@ -21,7 +23,7 @@ $archived-color: dimgrey;
   width: fit-content;
   display: flex;
   gap: 0.5em;
-  padding: $padding-btn;
+  padding: $xs-space 0;
   align-items: center;
 
   * {

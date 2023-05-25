@@ -34,7 +34,7 @@ const About = () => {
             </Link>{" "}
             et{" "}
             <Link
-              to="https://aemg-ge.com/medsexplain/"
+              to="https://www.instagram.com/medsexplain/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -71,7 +71,7 @@ const About = () => {
             , rédaction du contenu sexologique
             <br />
             <Link
-              to="https://aemg-ge.com/medsexplain/"
+              to="https://www.instagram.com/medsexplain/"
               target="_blank"
               rel="noopener noreferrer"
             >

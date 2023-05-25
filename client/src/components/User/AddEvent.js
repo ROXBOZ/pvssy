@@ -445,7 +445,7 @@ const AddEvent = () => {
           {userProfile && (
             <div
               className="input-label-container"
-              style={{ gridColumn: "6", whiteSpace: "nowrap" }}
+              style={{ gridColumn: "7", whiteSpace: "nowrap" }}
             >
               <input
                 className="form-check-input"

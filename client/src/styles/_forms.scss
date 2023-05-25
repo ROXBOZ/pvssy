@@ -13,22 +13,6 @@
     .msg {
       grid-column: #{$grid-second-half};
     }
-
-    .input-label-container {
-      display: flex;
-      align-items: center;
-      input {
-        margin-bottom: 0.25rem;
-      }
-      &.fullwidth {
-        grid-column: span 7;
-        justify-content: space-between;
-        gap: $sm-space;
-        input {
-          width: 100%;
-        }
-      }
-    }
   }
 
   .react-mde-container {
@@ -47,35 +31,6 @@
 
     .mde-text {
       border-radius: 0;
-    }
-  }
-
-  input[type="text"],
-  input[type="datetime-local"],
-  input[type="date"],
-  input[type="time"],
-  input[type="tel"],
-  input[type="number"],
-  input[type="password"],
-  input[type="file"],
-  select,
-  textarea {
-    background-color: $bg-color;
-
-    color: $txt-color;
-    border: $border-solid $secondary;
-    border-radius: $border-radius-soft;
-    font-family: $font-medium;
-    font-size: 100%;
-    padding: 1rem 1.5rem;
-    grid-column: #{$grid-second-half};
-
-    &.line {
-      border-radius: 0;
-      border-left: none;
-      border-right: none;
-      border-top: none;
-      border-bottom: $border-solid $secondary;
     }
   }
 
@@ -98,6 +53,57 @@
     h3 {
       margin-top: $lg-space;
     }
+  }
+}
+
+.input-label-container {
+  display: flex;
+  gap: $xs-space;
+  align-items: center;
+
+  margin-bottom: $xs-space;
+  label {
+    white-space: nowrap;
+  }
+  input {
+    margin-bottom: 0.25rem;
+  }
+  &.fullwidth {
+    grid-column: span 7;
+    justify-content: space-between;
+    gap: $sm-space;
+    input {
+      width: 100%;
+    }
+  }
+}
+
+input[type="text"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="time"],
+input[type="tel"],
+input[type="number"],
+input[type="password"],
+input[type="file"],
+select,
+textarea {
+  background-color: $bg-color;
+  width: 100%;
+  color: $txt-color;
+  border: $border-solid $secondary;
+  border-radius: $border-radius-soft;
+  font-family: $font-medium;
+  font-size: 100%;
+  padding: 1rem 1.5rem;
+  grid-column: #{$grid-second-half};
+
+  &.line {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: $border-solid $secondary;
   }
 }
 
@@ -129,7 +135,7 @@
     li:not(:first-child) {
       margin-top: $sm-space;
       padding-top: $sm-space;
-      border-top: $border-solid darken($bg-color, 10%);
+      border-top: $border-solid $secondary;
     }
   }
 }
