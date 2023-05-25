@@ -162,9 +162,9 @@ const Glossary = () => {
         />
         <meta name="keywords" content="glossaire, douleurs sexuelles" />
       </Helmet>
-      <HeadingArea title="Glossaire" level="h1" />
 
       <div className="allLexique-term-container">
+        <h1>Glossaire</h1>
         <div className="glossary-dashboard-column">
           <div
             className={`${!isMobile && isSticky ? "fixed" : "float"}`}

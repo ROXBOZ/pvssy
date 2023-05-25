@@ -42,6 +42,19 @@ const About = () => {
             </Link>
             .
           </p>
+
+          <p>
+            <span className="logo">pvssy talk</span> est actuellement en version
+            beta. Notre objectif est de l’améliorer progressivement et avec des
+            informations bienveillantes en fonction des besoins des
+            utilisateurices.
+          </p>
+        </div>
+      </div>
+      <div className="title-aside-container">
+        <h2>Équipe</h2>
+        <div>
+          {" "}
           <p>
             <Link
               to="https://as-takoordyal.com"
@@ -104,12 +117,6 @@ const About = () => {
               Noémie Creux
             </Link>
             , illustratrice
-          </p>
-          <p>
-            <span className="logo">pvssy talk</span> est actuellement en version
-            beta. Notre objectif est de l’améliorer progressivement et avec des
-            informations bienveillantes en fonction des besoins des
-            utilisateurices.
           </p>
         </div>
       </div>

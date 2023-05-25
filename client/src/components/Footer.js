@@ -2,24 +2,8 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
-  const MoodBanner = () => {
-    return (
-      <div className="banner">
-        <p>
-          <span className="h4">
-            Nous travaillons sur un annuaire de soignant·e·sx en Suisse Romande.
-            Si tu connais des practicien·ne·sx <em>safe</em>, tu peux nous
-            envoyer un email à{" "}
-            <a href="mailto:hello@pvssy-talk.org">hello@pvssy-talk.org</a>
-          </span>
-        </p>
-      </div>
-    );
-  };
-
   return (
     <>
-      <MoodBanner />
       <footer>
         <div className="footer-main">
           <div className="footer-column">
@@ -31,12 +15,6 @@ const Footer = () => {
               Let’s <span className="logo">pvssy talk</span>
                !
             </a>
-            {/* <div className="footer-main-buttons-container">
-              <button>devenir membre</button>
-              <Link to="faire-un-don" style={{ border: "none" }}>
-                <button>faire un don</button>
-              </Link>
-            </div> */}
           </div>
           <div className="footer-column">
             <nav>

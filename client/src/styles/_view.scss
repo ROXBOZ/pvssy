@@ -13,8 +13,6 @@ $onView-color: #38284d;
   flex-direction: column;
   justify-content: space-between;
 
-  margin-bottom: $lg-space;
-
   &:before {
     --size: 0;
     left: var(--x);

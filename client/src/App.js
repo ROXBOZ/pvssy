@@ -14,7 +14,6 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import Home from "./components/Pages/Home";
 import About from "./components/Pages/About";
 import Donate from "./components/Pages/Donate";
-import SInformer from "./components/--/SInformer";
 import Agenda from "./components/Pages/Agenda";
 import GeneralConditions from "./components/Pages/GeneralConditions";
 import Pains from "./components/Pages/Pains";
@@ -47,6 +46,21 @@ function App() {
   const token = getToken();
   const location = useLocation();
   const grdRef = useRef(null);
+
+  const MoodBanner = () => {
+    return (
+      <div className="banner">
+        <p>
+          <span className="h4">
+            Nous travaillons sur un annuaire de soignant·esx en Suisse Romande.
+            Si tu connais des practicien·nexs <em>safe</em>, tu peux nous
+            envoyer un email à{" "}
+            <a href="mailto:hello@pvssy-talk.org">hello@pvssy-talk.org</a>
+          </span>
+        </p>
+      </div>
+    );
+  };
 
   const LandingView = () => {
     return (
@@ -97,7 +111,14 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-        {location.pathname === "/" ? <LandingView /> : <Header />}
+        {location.pathname === "/" ? (
+          <>
+            <LandingView />
+            <MoodBanner />
+          </>
+        ) : (
+          <Header />
+        )}
         <Helmet>
           <title>Pvssy Talk – avoir mal n'est pas normal</title>
           <meta

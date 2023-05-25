@@ -111,7 +111,7 @@ h1.invisible {
   border-bottom: none;
 }
 .agenda-entry .event-container .event-col .show-counter {
-  color: #7b00e7;
+  color: #fd4a36;
 }
 
 .pending-event-card {
@@ -178,7 +178,7 @@ h1.invisible {
     transform: translate3d(100%, 0, 0);
   }
   100% {
-    transform: translate3d(-340%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
   }
 }
 @keyframes apparition {
@@ -433,6 +433,9 @@ button:active,
 .link-card .card img {
   width: 100%;
 }
+.link-card .card:hover {
+  transform: translateY(-0.5rem) scale(1.01);
+}
 .link-card:hover .card {
   color: #fd4a36;
 }
@@ -599,6 +602,7 @@ button:active,
   }
 }
 footer {
+  margin-top: 20vh;
   justify-content: center;
   gap: 1rem;
   background-color: #dcb4ff;
@@ -661,7 +665,7 @@ footer .footer-bottom .copyrights {
   padding: 1rem 0;
   white-space: nowrap;
   width: 100%;
-  margin: 20vh 0 0;
+  margin-bottom: 4rem;
   position: relative;
   overflow: hidden;
   height: 2rem;
@@ -673,7 +677,7 @@ footer .footer-bottom .copyrights {
   padding-bottom: 0;
   position: absolute;
   white-space: nowrap;
-  animation: transitionX 40s linear infinite;
+  animation: transitionX 20s linear infinite;
   animation-play-state: running;
 }
 .banner p span {
@@ -1254,6 +1258,10 @@ figure span a {
   width: 100%;
 }
 
+.don-merci-img {
+  width: 15rem;
+}
+
 .lexique-list {
   padding-left: 0;
   grid-column: 7/13;
@@ -1292,6 +1300,9 @@ a.term span {
   .allLexique-term-container {
     grid-template-columns: 1fr;
   }
+}
+.allLexique-term-container h1 {
+  grid-column: 4/13;
 }
 .allLexique-term-container .glossary-dashboard-column {
   position: relative;
@@ -1997,7 +2008,6 @@ hr {
 figcaption {
   text-align: center;
   margin-top: 1rem;
-  color: #7b00e7;
   font-size: 80%;
   display: block;
   width: 100%;
@@ -2150,7 +2160,6 @@ h1:first-letter,
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 4rem;
 }
 .landing-view:before {
   --size: 0;

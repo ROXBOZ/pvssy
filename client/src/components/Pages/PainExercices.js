@@ -21,6 +21,7 @@ const PainExercices = () => {
           content={`${painName}: exercices liés à la douleur `}
         />
       </Helmet>
+
       <HeadingArea
         title="Exercices"
         level="h1"
@@ -28,7 +29,6 @@ const PainExercices = () => {
       />
 
       <div className="exercises-container">
-        {console.log("requestedExercises :", requestedExercises)}
         {requestedExercises ? (
           requestedExercises.map((ex) => (
             <Exercise

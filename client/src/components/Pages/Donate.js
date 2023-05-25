@@ -1,5 +1,4 @@
 import React from "react";
-import { HeadingArea } from "../../utilities/HeadingArea";
 import { Helmet } from "react-helmet";
 
 const Donate = () => {
@@ -27,6 +26,11 @@ const Donate = () => {
             <span className="logo">pvssy talk</span> et les projets qui en
             découlent.
           </p>
+          <img
+            className="don-merci-img"
+            src={require(`../../assets/images/don-merci.png`)}
+            alt="Merci"
+          />
         </div>
       </div>
 

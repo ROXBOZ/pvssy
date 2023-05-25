@@ -36,7 +36,9 @@ a.term {
 
 .allLexique-term-container {
   @include grid;
-
+  h1 {
+    grid-column: #{$grid-last-thirds};
+  }
   .glossary-dashboard-column {
     position: relative;
     grid-column: #{$grid-first-third};

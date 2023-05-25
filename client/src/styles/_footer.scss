@@ -1,4 +1,5 @@
 footer {
+  margin-top: 20vh;
   justify-content: center;
   gap: $sm-space;
   background-color: $secondary;
@@ -64,7 +65,7 @@ footer {
   padding: $sm-space 0;
   white-space: nowrap;
   width: 100%;
-  margin: 20vh 0 0;
+  margin-bottom: $lg-space;
   position: relative;
   overflow: hidden;
   height: 2rem;
@@ -76,7 +77,8 @@ footer {
     padding-bottom: 0;
     position: absolute;
     white-space: nowrap;
-    animation: transitionX 40s linear infinite;
+    animation: transitionX 20s linear infinite;
+
     animation-play-state: running;
     span {
       font-family: $font-regular;
