@@ -1,4 +1,4 @@
-$onView-color: #66283a;
+$onView-color: #38284d;
 
 .landing-view {
   font-family: $font-logo;
@@ -61,15 +61,16 @@ $onView-color: #66283a;
 
   .title-container {
     display: flex;
-    width: 100vw;
     height: 100vh;
     justify-content: center;
     padding: $reg-space;
     position: relative;
     pointer-events: none;
     align-items: center;
+    line-height: $lineheight !important;
 
     h1 {
+      font-family: $font-regular !important;
       color: $onView-color;
       margin: 0;
       width: 60%;

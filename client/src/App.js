@@ -59,8 +59,12 @@ function App() {
           <Header />
           <div className="title-container">
             <h1>
-              S’informer sur ses douleurs pour se réapproprier son corps et sa
-              sexualité
+              <span> </span>
+              <span className="logo" style={{ textTransform: "lowercase" }}>
+                pvssy talk
+              </span>{" "}
+              s’adresse aux personnes à vulve qui ressentent des
+              douleurs sexuelles
             </h1>
           </div>
         </div>
@@ -148,7 +152,6 @@ function App() {
                       element={<PainMedias />}
                     />
                     <Route path="ressources" element={<Ressources />} />
-                    {/* <Route path="s-informer" element={<SInformer />} /> */}
                     <Route path="ressources/annuaire" element={<Directory />} />
                     <Route path="annuaire/:name" element={<Pain />} />
                     <Route path="agenda" element={<Agenda />} />

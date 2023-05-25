@@ -172,6 +172,14 @@ $level-size: $type-base-size;
     margin-top: calc(#{$level-size}* 1.25);
     margin-bottom: calc(#{$level-size}/ 2);
 
+    .logo {
+      text-transform: lowercase !important;
+
+      &:first-letter {
+        text-transform: lowercase !important;
+      }
+    }
+
     &:first-letter {
       text-transform: capitalize;
     }
