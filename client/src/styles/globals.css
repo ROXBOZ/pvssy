@@ -442,30 +442,29 @@ button:active,
   text-align: center;
 }
 
-.ressources-container {
-  overflow: hidden;
+a.title-link:first-child h3 {
+  border-top: none;
+  padding-top: 0;
 }
-.ressources-container h3 {
+a.title-link h3 {
+  border-top: 1px solid #dcb4ff;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
   font-family: "ESKlarheit-Book";
-  padding-top: 1rem !important;
-  padding-bottom: 2rem !important;
   display: flex;
   justify-content: space-between;
   max-height: -moz-fit-content;
   max-height: fit-content;
   cursor: pointer;
 }
-.ressources-container h3:first-child {
-  border-top: 1px solid #dcb4ff;
-}
-.ressources-container h3:after {
+a.title-link h3:after {
   content: "↗";
   color: #4d4d28;
 }
-.ressources-container h3:hover {
+a.title-link h3:hover {
   color: #fd4a36;
 }
-.ressources-container h3:hover:after {
+a.title-link h3:hover:after {
   color: #4d4d28;
   transition: 0.2s ease-in;
   transform: rotate(45deg);

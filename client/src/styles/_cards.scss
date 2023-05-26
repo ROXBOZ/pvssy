@@ -53,21 +53,22 @@
   }
 }
 
-.ressources-container {
-  overflow: hidden;
-
+a.title-link {
+  &:first-child {
+    h3 {
+      border-top: none;
+      padding-top: 0;
+    }
+  }
   h3 {
+    border-top: $border-solid $secondary;
+    padding-top: $sm-space;
+    padding-bottom: $reg-space;
     font-family: $font-regular;
-    padding-top: $sm-space !important;
-    padding-bottom: $reg-space !important;
     display: flex;
     justify-content: space-between;
     max-height: fit-content;
     cursor: pointer;
-
-    &:first-child {
-      border-top: $border-solid $secondary;
-    }
 
     &:after {
       content: "↗";
