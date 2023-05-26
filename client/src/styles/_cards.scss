@@ -58,13 +58,13 @@
 
   h3 {
     font-family: $font-regular;
-    margin: 0;
-    padding-bottom: $reg-space;
+    padding-top: $sm-space !important;
+    padding-bottom: $reg-space !important;
     display: flex;
     justify-content: space-between;
     max-height: fit-content;
     cursor: pointer;
-    padding-top: $sm-space;
+
     &:first-child {
       border-top: $border-solid $secondary;
     }

@@ -36,7 +36,7 @@ const Home = () => {
         </div>
       </div>
       <div className="title-aside-container">
-        <h2>Commencer à s’informer</h2>
+        <h2>Par où commencer</h2>
         <div className="ressources-container">
           <TitleLink to="introduction" title="Introduction aux douleurs" />
           <TitleLink
@@ -47,7 +47,7 @@ const Home = () => {
         </div>
       </div>
       <div className="title-aside-container">
-        <h2>Apprendre sur ses douleurs</h2>
+        <h2>Mieux connaître ses douleurs</h2>
         <div>
           <p className="subtitle">
             Chaque douleur est traitée avec une approche à la fois médicale et
@@ -58,7 +58,17 @@ const Home = () => {
       </div>
 
       <Pains />
-      <Ressources />
+      <div className="title-aside-container">
+        <h2>Ressources supplémentaires</h2>
+        <div className="ressources-container">
+          <TitleLink to="ressources/glossaire" title="Glossaire" />
+          <TitleLink to="ressources/exercices" title="Exercices" />
+          <TitleLink
+            to="ressources/litterature-et-medias"
+            title="Littérature et médias"
+          />
+        </div>
+      </div>
     </>
   );
 };

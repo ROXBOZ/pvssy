@@ -1,5 +1,4 @@
 import React from "react";
-import { HeadingArea } from "../../utilities/HeadingArea";
 import { Helmet } from "react-helmet";
 
 const GeneralConditions = () => {
@@ -12,35 +11,34 @@ const GeneralConditions = () => {
           content="Conditions générales d’utilisation et de vente de Pvssy Talk."
         />
       </Helmet>
-      <HeadingArea title="Conditions générales" level="h1" />
-      <div className="grid-area">
-        <div className="CGUV centered">
-          <div>
-            <p>
-              Les présentes conditions générales d’utilisation et de vente
-              ("CGUV") sont applicables à la relation entre l’association
-              No Dolor ("No Dolor"), en tant que propriétaire du site internet
-              pvssy-talk.org (le "Site Internet") et venderesse, et vous en tant
-              qu’utilisateur·rice·x du Site Internet et client·e·x lors de
-              commande passée sur le Site Internet ou via email.
-            </p>
-            <ul>
-              <li>
-                <a href="#CGUV">
-                  Conditions générales d’utilisation et de vente
-                </a>
-              </li>
-              <li>
-                <a href="#PER">Politique d’expédition et de retours</a>
-              </li>
-              <li>
-                <a href="#PC">Politique de confidentialité</a>
-              </li>
-            </ul>
-          </div>
-
-          <h2 id="CGUV">Conditions générales d’utilisation et de vente</h2>
-          <h3 className="h4">Vocation du Site Internet</h3>
+      <div className="title-aside-container">
+        <h1>Conditions générales</h1>
+        <div>
+          <p className="subtitle">
+            Les présentes conditions générales d’utilisation et de vente
+            ("CGUV") sont applicables à la relation entre l’association No Dolor
+            ("No Dolor"), en tant que propriétaire du site internet
+            pvssy-talk.org (le "Site Internet") et venderesse, et vous en tant
+            qu’utilisateur·rice·x du Site Internet et client·e·x lors de
+            commande passée sur le Site Internet ou via email.
+          </p>
+          <ul>
+            <li>
+              <a href="#CGUV">Conditions générales d’utilisation et de vente</a>
+            </li>
+            <li>
+              <a href="#PER">Politique d’expédition et de retours</a>
+            </li>
+            <li>
+              <a href="#PC">Politique de confidentialité</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="title-aside-container">
+        <h2 id="CGUV">Conditions générales d’utilisation et de vente</h2>
+        <h3 className="h4">Vocation du Site Internet</h3>
+        <div>
           <ol>
             <li>
               <p>
@@ -142,7 +140,11 @@ const GeneralConditions = () => {
               vous mettre en relation avec ces institutions.
             </li>
           </ol>
-          <h3 className="h4">Conclusion d’un contrat</h3>
+        </div>
+      </div>
+      <div className="title-aside-container">
+        <h3 className="h4">Conclusion d’un contrat</h3>
+        <div>
           <ol>
             <li>
               La partie des présentes CGUV réglant l’utilisation du Site
@@ -162,7 +164,12 @@ const GeneralConditions = () => {
               sélectionnés.
             </li>
           </ol>
-          <h3 className="h4">Contenu et exclusion de responsabilité</h3>
+        </div>
+      </div>
+      <div className="title-aside-container">
+        <h3 className="h4">Contenu et exclusion de responsabilité</h3>
+        <div>
+          {" "}
           <ol>
             <li>
               Le contenu du Site Internet est rédigé avec soin par des
@@ -195,14 +202,25 @@ const GeneralConditions = () => {
               et/ou ressources.
             </li>
           </ol>
-          <h3 className="h4">Prix</h3>
+        </div>
+      </div>
+
+      <div className="title-aside-container">
+        <h3 className="h4">Prix</h3>
+        <div>
           <p>
             Les prix et informations indiqués pour un article, une carte cadeau
             ou un code de réduction au moment de la commande sur le Site web
             s'appliquent à la transaction. Tous les prix sur le Site Internet
             sont hors TVA.
           </p>
-          <h3 className="h4">Expédition</h3>
+        </div>
+      </div>
+
+      <div className="title-aside-container">
+        <h3 className="h4">Expédition</h3>
+        <div>
+          {" "}
           <ol>
             <li>
               Les frais d'expédition sont basés sur la destination sélectionnée.
@@ -228,7 +246,12 @@ const GeneralConditions = () => {
               si vous avez des questions.
             </li>
           </ol>
-          <h3 className="h4">Retours</h3>
+        </div>
+      </div>
+
+      <div className="title-aside-container">
+        <h3 className="h4">Retours</h3>
+        <div>
           <ol>
             <li>
               No Dolor espère que vous serez satisfait·e·x de votre commande.
@@ -273,7 +296,13 @@ const GeneralConditions = () => {
               sont non remboursables.
             </li>
           </ol>
-          <h3 className="h4">Conditions de paiement</h3>
+        </div>
+      </div>
+
+      <div className="title-aside-container">
+        <h3 className="h4">Conditions de paiement</h3>
+        <div>
+          {" "}
           <ol>
             <li style={{ color: "red" }}>
               Les paiements s'effectuent généralement par carte de crédit via
@@ -293,7 +322,12 @@ const GeneralConditions = () => {
               .
             </li>
           </ol>
-          <h3 className="h4">Informations transmises</h3>
+        </div>
+      </div>
+
+      <div className="title-aside-container">
+        <h3 className="h4">Informations transmises</h3>
+        <div>
           <p>
             Outre les informations relatives à votre carte de crédit nécessaire
             à votre paiement sur le Site Internet, No Dolor a besoin des
@@ -305,7 +339,12 @@ const GeneralConditions = () => {
             <li>Adresse email ; et</li>
             <li>Numéro de téléphone portable le cas échéant.</li>
           </ul>
-          <h3 className="h4">Traitement des données</h3>
+        </div>
+      </div>
+
+      <div className="title-aside-container">
+        <h3 className="h4">Traitement des données</h3>
+        <div>
           <ol>
             <li>
               No Dolor enregistre et traite les données personnelles transmises
@@ -351,7 +390,12 @@ const GeneralConditions = () => {
               .
             </li>
           </ol>
-          <h3 className="h4">Cookies</h3>
+        </div>
+      </div>
+
+      <div className="title-aside-container">
+        <h3 className="h4">Cookies</h3>
+        <div>
           <p>
             Le Site Internet utilise des cookies [uniquement] nécessaires à son
             bon fonctionnement. Un cookie est une information déposée sur votre
@@ -363,7 +407,12 @@ const GeneralConditions = () => {
             référer à la <a href="#PC">Politique de confidentialité</a> si vous
             souhaitez davantage d’informations.
           </p>
-          <h3 className="h4">Marketing</h3>
+        </div>
+      </div>
+
+      <div className="title-aside-container">
+        <h3 className="h4">Marketing</h3>
+        <div>
           <p>
             Si vous avez choisi de vous inscrire lors de la validation de votre
             commande, si vous vous êtes abonné·e·x à la lettre d'information de
@@ -376,7 +425,12 @@ const GeneralConditions = () => {
             </a>
             .
           </p>
-          <h3 className="h4">Propriété intellectuelle</h3>
+        </div>
+      </div>
+
+      <div className="title-aside-container">
+        <h3 className="h4">Propriété intellectuelle</h3>
+        <div>
           <p>
             L’ensemble du contenu présent sur le Site Internet, notamment les
             designs, illustrations, images, graphismes, vidéos, animations,
@@ -385,14 +439,24 @@ const GeneralConditions = () => {
             sociétés ou auteurs. Rien dans les présentes CGUV n’opère une
             session de droit de No Dolor envers vous.
           </p>
-          <h3 className="h4">Modifications des CGUV</h3>
+        </div>
+      </div>
+
+      <div className="title-aside-container">
+        <h3 className="h4">Modifications des CGUV</h3>
+        <div>
           <p>
             No Dolor se réserve le droit de modifier les présentes CGUV à tout
             moment et sans préavis (notamment pour ménager les boîtes de
             réception de ses clients et utilisateurs). La version disponible en
             ligne au moment de la commande s'applique à celle-ci.
           </p>
-          <h3 className="h4">Droit applicable et for</h3>
+        </div>
+      </div>
+
+      <div className="title-aside-container">
+        <h3 className="h4">Droit applicable et for</h3>
+        <div>
           <p>
             Sauf dispositions impératives contraires en matière de droit de la
             consommation :
@@ -407,9 +471,23 @@ const GeneralConditions = () => {
               litige.
             </li>
           </ul>
+        </div>
+      </div>
+      <div className="title-aside-container">
+        <h2 id="PER">Politique d’expédition et de retours</h2>
+        <div>
+          <p className="subtitle" style={{ color: "red" }}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro vero
+            doloribus molestias ipsa dignissimos quod aliquid, incidunt itaque,
+            consequuntur excepturi earum, asperiores nostrum nemo deserunt ut
+            rem cupiditate odio ipsum.
+          </p>
+        </div>
+      </div>
 
-          <h2 id="PER">Politique d’expédition et de retours</h2>
-          <h3 className="h4">Expéditions</h3>
+      <div className="title-aside-container">
+        <h3 className="h4">Expéditions</h3>
+        <div>
           <p>
             Les frais d'expédition sont basés sur la destination sélectionnée.
             L'expédition en Suisse est comprise dans les prix affichés.{" "}
@@ -426,7 +504,13 @@ const GeneralConditions = () => {
             Une fois votre commande expédiée, vous recevrez un numéro de suivi
             par email.
           </p>
-          <h3 className="h4">Retours</h3>
+        </div>
+      </div>
+
+      <div className="title-aside-container">
+        <h3 className="h4">Retours</h3>
+        <div>
+          {" "}
           <p>
             No Dolor espère que vous serez satisfait·e·s·x de votre commande.
             Toutefois, si pour une raison quelconque, vous n'êtes pas
@@ -469,16 +553,26 @@ const GeneralConditions = () => {
             Les articles soldés ne peuvent pas faire l’objet d’un retour et sont
             non remboursables.
           </p>
-          <h2 id="PC">Politique de confidentialité</h2>
-          <p>
+        </div>
+      </div>
+
+      <div className="title-aside-container">
+        <h2 id="PC">Politique de confidentialité</h2>
+        <div>
+          <p className="subtitle">
             Cette politique de confidentialité a pour but de vous fournir des
             informations sur l’utilisation de vos données faite par
             l’association No Dolor ("No Dolor"). Elle se tient à votre
             disposition pour toute question ou demande que vous pourriez avoir
             en lien avec l’utilisation de celles-ci.
           </p>
+        </div>
+      </div>
 
-          <h3 className="h4">Informations personnelles</h3>
+      <div className="title-aside-container">
+        <h3 className="h4">Informations personnelles</h3>
+        <div>
+          {" "}
           <ol>
             <li>
               Lorsque vous naviguez sur ou effectuez un achat en ligne depuis le
@@ -502,8 +596,13 @@ const GeneralConditions = () => {
               informations liées à ses activités.
             </li>
           </ol>
+        </div>
+      </div>
 
-          <h3 className="h4">Consentement</h3>
+      <div className="title-aside-container">
+        <h3 className="h4">Consentement</h3>
+        <div>
+          {" "}
           <ol>
             <li>
               Lorsque vos informations personnelles sont transmises à No Dolor
@@ -526,16 +625,23 @@ const GeneralConditions = () => {
               afin que No Dolor procède à un ajustement.
             </li>
           </ol>
+        </div>
+      </div>
 
-          <h3 className="h4">Divulgation</h3>
+      <div className="title-aside-container">
+        <h3 className="h4">Divulgation</h3>
+        <div>
           <p>
             En principe, No Dolor ne divulgue pas vos informations personnelles.
             Elle peut le faire si elle y est contrainte par la loi, si cela est
             nécessaire afin d’obtenir le paiement d’une créance ou encore en cas
             de violation des CGUV.
           </p>
-
-          <h3 className="h4">Hébergement</h3>
+        </div>
+      </div>
+      <div className="title-aside-container">
+        <h3 className="h4">Hébergement</h3>
+        <div>
           <ol style={{ color: "green" }}>
             <li>
               L’hébergement est géré via les services de Vercel, Inc. Le Site
@@ -548,8 +654,12 @@ const GeneralConditions = () => {
               sur un serveur sécurisé protégé par un pare-feu.
             </li>
           </ol>
+        </div>
+      </div>
 
-          <h3 className="h4">Services de tiers</h3>
+      <div className="title-aside-container">
+        <h3 className="h4">Services de tiers</h3>
+        <div>
           <ol>
             <li>
               <p>
@@ -600,17 +710,24 @@ const GeneralConditions = () => {
               générales, etc.
             </li>
           </ol>
+        </div>
+      </div>
 
-          <h3 className="h4">Sécurité</h3>
+      <div className="title-aside-container">
+        <h3 className="h4">Sécurité</h3>
+        <div>
           <p>
             No Dolor fait preuve de diligence et suit les pratiques de
             l’industrie afin de protéger vos informations personnelles et que
             celles-ci ne soient pas perdues, divulguées, détournées, consultées,
             modifiées ou détruites de façon inappropriée.{" "}
           </p>
+        </div>
+      </div>
 
-          <h3 className="h4">Cookies</h3>
-
+      <div className="title-aside-container">
+        <h3 className="h4">Cookies</h3>
+        <div>
           <ol>
             <li style={{ color: "red" }}>
               <p>Le Site internet utilise les cookies suivants :</p>
@@ -621,8 +738,12 @@ const GeneralConditions = () => {
             </li>
             <li>Vous avez l’opportunité de les accepter ou de les refuser.</li>
           </ol>
+        </div>
+      </div>
 
-          <h3 className="h4">Modifications</h3>
+      <div className="title-aside-container">
+        <h3 className="h4">Modifications</h3>
+        <div>
           <p>
             No Dolor se réserve le droit de modifier la présente Politique de
             confidentialité à tout moment et sans préavis (notamment pour
@@ -630,8 +751,11 @@ const GeneralConditions = () => {
             version disponible en ligne au moment de la navigation sur le Site
             Internet est applicable.
           </p>
-
-          <h3 className="h4">Contact</h3>
+        </div>
+      </div>
+      <div className="title-aside-container">
+        <h3 className="h4">Contact</h3>
+        <div>
           <p>
             Si vous souhaitez connaître, corriger, modifier ou supprimer toute
             information personnelle vous concernant dont No Dolor dispose,

@@ -455,14 +455,13 @@ button:active,
 }
 .ressources-container h3 {
   font-family: "ESKlarheit-Book";
-  margin: 0;
-  padding-bottom: 2rem;
+  padding-top: 1rem !important;
+  padding-bottom: 2rem !important;
   display: flex;
   justify-content: space-between;
   max-height: -moz-fit-content;
   max-height: fit-content;
   cursor: pointer;
-  padding-top: 1rem;
 }
 .ressources-container h3:first-child {
   border-top: 1px solid #dcb4ff;
@@ -907,7 +906,9 @@ textarea.line {
   }
 }
 .title-aside-container h1,
-.title-aside-container h2 {
+.title-aside-container h2,
+.title-aside-container h3,
+.title-aside-container h4 {
   grid-column: 1/7;
   margin: 0;
   padding: 0;
@@ -1772,6 +1773,14 @@ a.term span {
 
 .additional-ressources {
   margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+@media screen and (max-width: 576px) {
+  .additional-ressources {
+    grid-template-columns: 1fr;
+  }
 }
 .additional-ressources ul {
   grid-column: 7/13;

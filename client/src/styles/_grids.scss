@@ -14,7 +14,9 @@
   @include grid;
   align-items: flex-start;
   h1,
-  h2 {
+  h2,
+  h3,
+  h4 {
     grid-column: #{$grid-first-half};
     margin: 0;
     padding: 0;

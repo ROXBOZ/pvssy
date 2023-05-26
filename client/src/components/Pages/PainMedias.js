@@ -31,9 +31,9 @@ const PainMedias = () => {
                 Veritatis nisi rerum modi odit commodi laudantium aspernatur
                 vitae sint? Beatae, dolorum aliquam.
               </p>
-              <SourceList sources={requestedSources} />
             </div>
           </div>
+          <SourceList sources={requestedSources} />
         </>
       ) : (
         <div className="grid-area">

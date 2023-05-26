@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 
 const Accessibility = () => {
   return (
-    <>
+    <div>
       <Helmet>
         <title>Accessibilité – Pvssy Talk</title>
         <meta
@@ -13,15 +13,20 @@ const Accessibility = () => {
           content="Pvssy Talk met l’accent sur l’accessibilité du web, dont elle fait une valeur fondamentale. Nous l’avons donc conçue de manière à ce qu'elle soit conviviale pour toustes, quelles que soient leurs capacités physiques, visuelles, auditives ou cognitives."
         />
       </Helmet>
-      <HeadingArea level="h1" title="Accessibilité" />
-      <div className="grid-area">
-        <div className="centered">
-          <p>
+      <div className="title-aside-container">
+        <h1>Accessibilité</h1>
+        <div>
+          <p className="subtitle">
             Notre plateforme met l’accent sur l’accessibilité du web, dont elle
             fait une valeur fondamentale. Nous l’avons donc conçue de manière à
             ce qu'elle soit conviviale pour toustes, quelles que soient leurs
             capacités physiques, visuelles, auditives ou cognitives.
           </p>
+        </div>
+      </div>
+      <div className="title-aside-container">
+        <h2>Engagement</h2>
+        <div>
           <p>
             Notre équipe a respecté les normes WCAG afin de garantir une lecture
             et une navigation aisées. En outre, nous avons veillé à ce que notre
@@ -42,7 +47,7 @@ const Accessibility = () => {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

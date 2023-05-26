@@ -32,17 +32,18 @@ const Medias = () => {
           name="description"
           content="Littérature et médias recommandés par Pvssy Talk."
         />
-        <meta
-          name="keywords"
-          content="Livres, articles, podcasts, vidéos et bandes dessinées en lien avec les douleurs sexuelles"
-        />
       </Helmet>
-      <HeadingArea
-        title="Littérature et médias"
-        level="h1"
-        subtitle="gna gna gnaaa"
-      />
-
+      <div className="title-aside-container">
+        <h1>Littérature et médias</h1>
+        <div>
+          <p className="subtitle">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui rerum
+            doloribus, nostrum dolor quas hic ipsa? Recusandae consequuntur,
+            eius vel id est sunt corrupti aperiam doloribus quas voluptates quos
+            reprehenderit.
+          </p>
+        </div>
+      </div>
       <CreateTags tags={medias} />
       <SourceList sources={filteredData} />
     </div>

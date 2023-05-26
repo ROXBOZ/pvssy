@@ -51,7 +51,8 @@
 
 .additional-ressources {
   margin-top: $reg-space;
-  // @include grid;
+
+  @include grid;
   ul {
     grid-column: #{$grid-second-half};
     padding-left: 0;
