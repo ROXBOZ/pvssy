@@ -23,7 +23,7 @@ const CreateTags = (tags) => {
   return (
     <div>
       <div className="tag-container">
-        <div className="tags">
+        <div className="tags sider">
           {tags.tags.map((tag, index) => {
             return (
               <span

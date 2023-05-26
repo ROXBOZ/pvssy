@@ -54,9 +54,7 @@ const Exercises = () => {
         </div>
       </div>
       <div className="grid-area">
-        <p style={{ gridColumn: "7/13" }} className="subtitle">
-          Quelle douleur te concerne ?
-        </p>
+        <p className="subtitle sider">Quelle douleur te concerne ?</p>
       </div>
       <CreateTags tags={painList} />
 

@@ -54,7 +54,7 @@ const Pains = () => {
       )}
 
       <div className="grid-area">
-        <p className="subtitle" style={{ gridColumn: "7/13" }}>
+        <p className="subtitle sider">
           Dans quelles régions de ta vulve ou dans quelles circonstances{" "}
           <nobr>as-tu mal ?</nobr>
         </p>

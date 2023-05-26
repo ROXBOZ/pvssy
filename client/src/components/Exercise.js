@@ -33,8 +33,9 @@ const Exercise = ({ exercise, isExerciseOpen, handleExerciseToggle }) => {
                     <iframe
                       src={embedUrl}
                       title={instruction}
-                      width="560"
-                      height="315"
+                      className="video"
+                      // width="560"
+                      // height="315"
                       frameborder="0"
                       allowfullscreen
                     ></iframe>

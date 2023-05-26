@@ -22,6 +22,11 @@ h1 {
   font-family: $font-logo;
 }
 
+h2,
+h3 {
+  font-feature-settings: "ss02";
+}
+
 h2 + h3 {
   margin-top: 0;
 }
@@ -30,11 +35,11 @@ p,
 li {
   margin-top: 0;
   max-width: $chperline;
-
+  font-feature-settings: "ss02";
   &.pretitle {
     text-transform: lowercase;
     border-bottom: $tierary $border-solid;
-    font-family: $font-medium;
+
     padding-bottom: 0;
     margin-bottom: 0;
     max-width: fit-content;
@@ -101,9 +106,6 @@ a {
 }
 
 sup {
-  // font-family: $font-bold;
-  // padding: 0 0.5em;
-  // color: $primary;
   font-size: 60%;
 }
 
@@ -148,7 +150,6 @@ $type-ratios: (
   "augmentedFourth": 1.414,
   "perfectFifth": 1.5,
   "goldenRatio": 1.618,
-  "pvssyTalk": 1.45,
 );
 
 @function type-ratio($key) {
@@ -156,7 +157,7 @@ $type-ratios: (
 }
 
 $type-base-size: 1rem;
-$type-size-ratio: type-ratio("pvssyTalk");
+$type-size-ratio: type-ratio("augmentedFourth");
 $type-levels: 4, 3, 2, 1;
 $type-styles: ();
 $level-size: $type-base-size;

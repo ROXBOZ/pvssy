@@ -5,14 +5,22 @@
   }
 }
 
+.sider {
+  grid-column: #{$grid-second-half};
+  @media screen and (max-width: map-get($breakpoints, "lg")) {
+    grid-column: #{$grid-fullwidth};
+  }
+}
+
 .title-aside-container {
+  @include grid;
+  margin: 4rem 0 2rem;
+  align-items: flex-start;
+
   &:not(:first-child) {
     border-top: $border-solid $secondary;
     padding-top: $reg-space;
   }
-  margin: 4rem 0 2rem;
-  @include grid;
-  align-items: flex-start;
   h1,
   h2,
   h3,
@@ -24,6 +32,11 @@
   div {
     padding-top: 0.75rem;
     grid-column: #{$grid-second-half};
+  }
+
+  @media screen and (max-width: map-get($breakpoints, "lg")) {
+    display: flex;
+    flex-direction: column;
   }
 }
 

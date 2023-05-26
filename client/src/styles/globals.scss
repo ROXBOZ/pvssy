@@ -27,10 +27,11 @@
 @import "view";
 @import "author";
 @import "loader";
+@import "video";
 
 * {
   transition: $animation-transition;
-  font-feature-settings: "ss02", "ss11";
+  font-feature-settings: "ss11";
   &::selection {
     color: white;
     background: $txt-color;

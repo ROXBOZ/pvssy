@@ -22,11 +22,9 @@ const PainExercices = () => {
         />
       </Helmet>
 
-      <HeadingArea
-        title="Exercices"
-        level="h1"
-        color={painName.toLowerCase()}
-      />
+      <h1>
+        Exercices <span className="colored">{painName.toLowerCase()}</span>
+      </h1>
 
       <div className="exercises-container">
         {requestedExercises ? (

@@ -34,6 +34,7 @@ $onView-color: #38284d;
   }
 
   header {
+    background: transparent !important;
     position: relative;
     a,
     button {
@@ -61,7 +62,7 @@ $onView-color: #38284d;
     display: flex;
     height: 100vh;
     justify-content: center;
-    padding: $reg-space;
+
     position: relative;
     pointer-events: none;
     align-items: center;
@@ -80,10 +81,17 @@ $onView-color: #38284d;
 
 @media screen and (max-width: map-get($breakpoints, "sm")) {
   .landing-view {
-    height: 100vh;
     .title-container {
-      padding: $sm-space;
+      height: 100vh;
+      padding: $xs-space;
       width: auto !important;
+      h1 {
+        font-size: 200%;
+
+        .logo {
+          text-transform: lowercase !important;
+        }
+      }
     }
   }
 }

@@ -73,12 +73,9 @@ function App() {
           <Header />
           <div className="title-container">
             <h1>
-              <span> </span>
-              <span className="logo" style={{ textTransform: "lowercase" }}>
-                pvssy talk
-              </span>{" "}
-              s’adresse aux personnes à vulve qui ressentent des
-              douleurs sexuelles
+              <span> </span>
+              <span className="logo">pvssy talk</span> s’adresse aux personnes à
+              vulve qui ressentent des douleurs sexuelles
             </h1>
           </div>
         </div>

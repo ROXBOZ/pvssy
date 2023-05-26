@@ -1,6 +1,9 @@
 .lexique-list {
   padding-left: 0;
   grid-column: #{$grid-second-half};
+  @media screen and (max-width: map-get($breakpoints, "sm")) {
+    grid-column: #{$grid-fullwidth};
+  }
 
   .lexique-list-item {
     align-items: flex-start;
@@ -38,6 +41,9 @@ a.term {
   @include grid;
   h1 {
     grid-column: #{$grid-last-thirds};
+    @media screen and (max-width: map-get($breakpoints, "lg")) {
+      grid-column: #{$grid-fullwidth};
+    }
   }
   .glossary-dashboard-column {
     position: relative;

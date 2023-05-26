@@ -93,7 +93,6 @@ $warning-color: $quarterary;
     color: $error-color;
     grid-column: 1/6;
     li {
-      font-family: $font-medium;
       list-style: none;
       &:before {
         content: ("🚨  ");

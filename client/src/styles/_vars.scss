@@ -1,15 +1,15 @@
 /*-----Colors-----*/
 
 $txt-color: #4d4d28;
-// $txt-color: #38284d;
 $bg-color: #fefdf4;
+
 $primary: #fd4a36;
-// $primary: #ff560f;
 $secondary: #dcb4ff;
-$dark-secondary: darken($secondary, 40%);
+
+$gradient: radial-gradient(circle, $primary 0%, $secondary 30%);
+
 $tierary: #c8ffa5;
 $quarterary: #ffc3ee;
-$gradient: radial-gradient(circle, $primary 0%, $secondary 30%);
 
 /*-----Fonts-----*/
 
@@ -35,20 +35,6 @@ $font-regular: "ESKlarheit-Book";
 $font-regular-italic: "ESKlarheit-Book-Italic";
 
 @font-face {
-  font-family: "ESKlarheit-Medium";
-  src: url("../assets/fonts/ESKlarheitGrotesk-Md.woff2") format("woff"),
-    url("../assets/fonts/ESKlarheitGrotesk-Md.woff2") format("woff2");
-}
-$font-medium: "ESKlarheit-Medium";
-
-@font-face {
-  font-family: "ESKlarheit-Medium-Italic";
-  src: url("../assets/fonts/ESKlarheitGrotesk-MdIt.woff2") format("woff"),
-    url("../assets/fonts/ESKlarheitGrotesk-MdIt.woff2") format("woff2");
-}
-$font-medium-italic: "ESKlarheit-Medium-Italic";
-
-@font-face {
   font-family: "ESKlarheit-Bold";
   src: url("../assets/fonts/ESKlarheitGrotesk-Bd.woff2") format("woff"),
     url("../assets/fonts/ESKlarheitGrotesk-Bd.woff2") format("woff2");
@@ -71,16 +57,15 @@ $smaller-text: 80%;
 
 /*-----Paddings & Gap-----*/
 
-$padding-btn: 0.5em 1.5em;
 $reg-space: 2rem;
 $sm-space: $reg-space / 2;
 $xs-space: $sm-space / 2;
 $lg-space: $reg-space * 2;
+$padding-btn: 0.5em 1.5em;
 
 /*-----Borders-----*/
 
 $border-solid: 1px solid;
-
 $border-radius: 50px;
 $border-radius-soft: 10px;
 

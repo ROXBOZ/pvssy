@@ -47,12 +47,11 @@ header {
         text-transform: lowercase;
 
         a {
-          font-family: $font-medium;
           color: $txt-color;
           text-decoration: none;
           border: none;
           white-space: nowrap;
-
+          font-family: $font-regular;
           &.active,
           &:hover {
             border-bottom: $border-solid $quarterary;
@@ -104,8 +103,7 @@ header {
   header {
     padding: $sm-space;
     height: fit-content;
-    background-color: $bg-color;
-    border-bottom: $border-solid $txt-color;
+    background: $bg-color;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -204,12 +202,13 @@ header {
         background: $bg-color;
         display: flex;
         align-items: center;
-        text-align: center;
+        // text-align: center;
         justify-content: center;
         max-width: 100vw;
         font-size: var(--font-size);
 
         button {
+          margin-top: $reg-space;
           font-size: var(--font-size);
         }
 
@@ -219,11 +218,12 @@ header {
           flex-direction: column;
 
           li {
-            // font-size: 140%;
             list-style: none;
-            line-height: 3;
+            line-height: 2.5;
 
             a {
+              font-family: $font-regular;
+              font-size: 120%;
               padding: 0;
               border-bottom: none;
               color: $txt-color;
@@ -237,9 +237,6 @@ header {
               gap: $sm-space;
               border-top: $border-solid $txt-color;
               padding-top: $reg-space;
-              // button {
-              //   font-size: 140% !important;
-              // }
 
               a {
                 padding: 0;
@@ -254,8 +251,10 @@ header {
                 }
 
                 .user-dot {
-                  border: $border-solid;
-                  padding: $xs-space;
+                  margin-top: 5px;
+                  margin-left: 5px;
+                  background-color: $primary;
+                  width: 20px;
                   border-radius: 50%;
                   aspect-ratio: 1/1;
                   &:hover {

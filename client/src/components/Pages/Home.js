@@ -56,7 +56,6 @@ const Home = () => {
           </p>
         </div>
       </div>
-
       <Pains />
       <div className="title-aside-container">
         <h2>Ressources supplémentaires</h2>
