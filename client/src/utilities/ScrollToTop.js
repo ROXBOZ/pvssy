@@ -10,6 +10,7 @@ const ScrollToTop = () => {
       "/profile/modifier",
       "/profile/approuver",
       "/profile/supprimer",
+      "/#start",
       /\/douleurs\/.+\/medical/,
       /\/douleurs\/.+\/sexologie/,
     ];

@@ -44,7 +44,7 @@ const Home = () => {
           </p>
         </div>
       </div>
-      <div className="title-aside-container">
+      <div id="start" className="title-aside-container">
         <h2>Par où commencer</h2>
         <div className="ressources-container">
           <TitleLink to="introduction" title="Introduction aux douleurs" />

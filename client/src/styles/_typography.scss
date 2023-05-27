@@ -203,7 +203,7 @@ $level-size: $type-base-size;
 
       font-size: clamp(
         #{$fluid-min}rem,
-        #{$fluid-scaler} + 1rem,
+        #{$fluid-scaler} + 0.5rem,
         #{$level-size}
       );
     }

@@ -917,9 +917,7 @@ textarea.line {
 .title-aside-container div {
   padding-top: 0.75rem;
   grid-column: 7/13;
-}
-.title-aside-container div h3 {
-  line-height: 2;
+  width: 100%;
 }
 @media screen and (max-width: 992px) {
   .title-aside-container {
@@ -2061,7 +2059,7 @@ h4,
   margin-bottom: calc(1.414rem/ 2);
   font-size: clamp(
         1rem,
-        4.414vw + 1rem,
+        4.414vw + 0.5rem,
         1.414rem
       );
 }
@@ -2087,7 +2085,7 @@ h3,
   margin-bottom: calc(1.999396rem/ 2);
   font-size: clamp(
         1.33959532rem,
-        4.65980068vw + 1rem,
+        4.65980068vw + 0.5rem,
         1.999396rem
       );
 }
@@ -2113,7 +2111,7 @@ h2,
   margin-bottom: calc(2.827145944rem/ 2);
   font-size: clamp(
         1.8941877825rem,
-        4.9329581615vw + 1rem,
+        4.9329581615vw + 0.5rem,
         2.827145944rem
       );
 }
@@ -2139,7 +2137,7 @@ h1,
   margin-bottom: calc(3.9975843648rem/ 2);
   font-size: clamp(
         2.6783815244rem,
-        5.3192028404vw + 1rem,
+        5.3192028404vw + 0.5rem,
         3.9975843648rem
       );
 }

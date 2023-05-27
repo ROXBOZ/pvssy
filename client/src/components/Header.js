@@ -1,11 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState, useRef } from "react";
 import { AuthContext } from "../contexts/authContext";
 import { motion } from "framer-motion";
 
 const Header = () => {
   const { logout, userProfile } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
+  const startRef = useRef(null); // Reference to the element with id "start"
 
   const toggleMenu = () => {
     setIsOpen((prevState) => !prevState);
@@ -13,6 +14,11 @@ const Header = () => {
 
   const handleNavLinkClick = () => {
     setIsOpen(false);
+  };
+
+  const handlStarterClick = () => {
+    setIsOpen(false);
+    window.location.href = "/#start";
   };
 
   const renderProfile = () => {
@@ -35,35 +41,6 @@ const Header = () => {
     );
   };
 
-  const renderMenu = () => {
-    return (
-      <ul>
-        <li>
-          <NavLink onClick={handleNavLinkClick} to="agenda">
-            Agenda
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink onClick={handleNavLinkClick} to="faire-un-don">
-            Faire un don
-          </NavLink>
-        </li>
-        <li>
-          <NavLink onClick={handleNavLinkClick} to="devenir-membre">
-            Devenir membre
-          </NavLink>
-        </li>
-        <li>
-          <NavLink onClick={handleNavLinkClick} to="a-propos">
-            À propos
-          </NavLink>
-        </li>
-        <li>{renderProfile()}</li>
-      </ul>
-    );
-  };
-
   return (
     <motion.header
       initial={{ y: "-10vh" }}
@@ -75,7 +52,7 @@ const Header = () => {
         stiffness: 70,
       }}
     >
-      <Link to="/" className="logo">
+      <Link to="/" className="logo" onClick={handleNavLinkClick}>
         pvssy talk <sup>beta</sup>
       </Link>
       <button className="burger-menu" onClick={toggleMenu}>
@@ -87,7 +64,38 @@ const Header = () => {
         </span>
         <span className="menu-label screen-reader-text">menu</span>
       </button>
-      <nav className={isOpen ? "vertical" : "horizontal"}>{renderMenu()}</nav>
+      <nav className={isOpen ? "vertical" : "horizontal"}>
+        <ul>
+          {isOpen && (
+            <li>
+              <Link to="/#start" onClick={handlStarterClick}>
+                <span className="logo">pvssy talk</span>
+              </Link>
+            </li>
+          )}
+          <li>
+            <NavLink onClick={handleNavLinkClick} to="agenda">
+              Agenda
+            </NavLink>
+          </li>
+          <li>
+            <NavLink onClick={handleNavLinkClick} to="faire-un-don">
+              Faire un don
+            </NavLink>
+          </li>
+          <li>
+            <NavLink onClick={handleNavLinkClick} to="devenir-membre">
+              Devenir membre
+            </NavLink>
+          </li>
+          <li>
+            <NavLink onClick={handleNavLinkClick} to="a-propos">
+              À propos
+            </NavLink>
+          </li>
+          <li>{renderProfile()}</li>
+        </ul>
+      </nav>
     </motion.header>
   );
 };
