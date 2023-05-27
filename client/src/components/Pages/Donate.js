@@ -17,6 +17,11 @@ const Donate = () => {
       </Helmet>
       <div className="title-aside-container">
         <h1>Faire un don</h1>
+        <img
+          className="don-merci-img"
+          src={require(`../../assets/images/don-merci.png`)}
+          alt="Merci"
+        />
         <div>
           <p className="subtitle">
             L’association No Dolor a pour but de sensibiliser sur la question
@@ -26,26 +31,29 @@ const Donate = () => {
             <span className="logo">pvssy talk</span> et les projets qui en
             découlent.
           </p>
-          <img
-            className="don-merci-img"
-            src={require(`../../assets/images/don-merci.png`)}
-            alt="Merci"
-          />
         </div>
       </div>
 
       <div className="title-aside-container">
         <h2 className="h3">Montants suggérés</h2>
-        <div>50, 100, 150, 300, montant personnalisé</div>
+        <div>
+          <span className="highlight">50</span>
+          <span className="highlight">100</span>
+          <span className="highlight">150</span>
+          <span className="highlight">300</span>ou montant de votre choix
+        </div>
       </div>
       <div className="title-aside-container">
         <h2 className="h3">Modes de paiement</h2>
         <div>
-          <p>
-            <button>TWINT</button>  <button>PayPal</button>
+          <p style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+            <button disabled>TWINT</button>
+            <button disabled>PayPal</button>
+            <span>bientôt disponible</span>
           </p>
+          <br />
+          <strong>Virement bancaire</strong>
           <p>
-            <strong>Ou par virement bancaire</strong>
             <br />
             Association No Dolor
             <br />
@@ -53,7 +61,8 @@ const Donate = () => {
             <br />
             IBAN : CH18 8080 8006 6171 7604 4
             <br />
-            (Indiquez vos coordonnées pour recevoir un reçu de don.)
+            (N’oubliez pas d'indiquez vos coordonnées pour recevoir un reçu de
+            don.)
           </p>
         </div>
       </div>

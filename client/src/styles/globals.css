@@ -323,7 +323,7 @@ h1.invisible {
 
 @media screen and (max-width: 576px) {
   .breadcrumbs {
-    margin-top: 12vh;
+    margin-top: 15vh;
     overflow-x: auto;
   }
 }
@@ -445,7 +445,6 @@ a.title-link:first-child h3 {
 }
 a.title-link h3 {
   border-top: 1px solid #dcb4ff;
-  padding-top: 1rem;
   padding-bottom: 2rem;
   font-family: "ESKlarheit-Book";
   display: flex;
@@ -897,6 +896,11 @@ textarea.line {
     grid-template-columns: 1fr;
   }
 }
+.title-aside-container figure,
+.title-aside-container img {
+  grid-column: 1/7;
+  max-width: 80%;
+}
 .title-aside-container:not(:first-child) {
   border-top: 1px solid #dcb4ff;
   padding-top: 2rem;
@@ -912,6 +916,9 @@ textarea.line {
 .title-aside-container div {
   padding-top: 0.75rem;
   grid-column: 7/13;
+}
+.title-aside-container div h3 {
+  line-height: 2;
 }
 @media screen and (max-width: 992px) {
   .title-aside-container {
@@ -1584,7 +1591,7 @@ a.term span {
   background-color: #dcb4ff;
 }
 .share-button .copy-url-button-container .copy-url-button .link-icon {
-  color: #4d4d28;
+  color: black;
 }
 .share-button .copy-url-button-container .copy-url-button:hover {
   border: 1px solid #4d4d28 !important;
@@ -2032,6 +2039,13 @@ hr {
   border: none;
 }
 
+.highlight {
+  padding: 0.5em 1.5em;
+  background-color: #ffc3ee;
+  border-radius: 50px;
+  margin: 0 0.5rem;
+}
+
 figcaption {
   text-align: center;
   margin-top: 1rem;
@@ -2269,12 +2283,12 @@ h1:first-letter,
 }
 
 .loader {
+  background: radial-gradient(circle, #fd4a36 0%, #dcb4ff 30%);
   height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 }
 
 .video {
@@ -2283,7 +2297,7 @@ h1:first-letter,
 }
 
 * {
-  font-feature-settings: "ss11";
+  font-feature-settings: "ss11" !important;
 }
 *::-moz-selection {
   color: white;

@@ -65,7 +65,7 @@
     .copy-url-button {
       background-color: $color;
       .link-icon {
-        color: $txt-color;
+        color: black;
       }
       &:hover {
         border: $border-solid $txt-color !important;

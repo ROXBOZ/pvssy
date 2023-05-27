@@ -37,10 +37,9 @@ const Medias = () => {
         <h1>Littérature et médias</h1>
         <div>
           <p className="subtitle">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui rerum
-            doloribus, nostrum dolor quas hic ipsa? Recusandae consequuntur,
-            eius vel id est sunt corrupti aperiam doloribus quas voluptates quos
-            reprehenderit.
+            Des livres, des articles, des podcasts et des vidéos recommandés par{" "}
+            <span className="logo">Pvssy Talk</span> pour t’informer davantage
+            sur tes douleurs.
           </p>
         </div>
       </div>

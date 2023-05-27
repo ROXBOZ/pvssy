@@ -117,6 +117,14 @@ hr {
   border: none;
 }
 
+.highlight {
+  padding: $padding-btn;
+  background-color: $quarterary;
+  border-radius: $border-radius;
+
+  margin: 0 $xs-space;
+}
+
 figcaption {
   text-align: center;
   margin-top: $sm-space;

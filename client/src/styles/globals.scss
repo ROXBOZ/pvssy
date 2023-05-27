@@ -30,7 +30,7 @@
 @import "video";
 
 * {
-  font-feature-settings: "ss11";
+  font-feature-settings: "ss11" !important;
   &::selection {
     color: white;
     background: $txt-color;

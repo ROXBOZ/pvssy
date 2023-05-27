@@ -283,19 +283,18 @@ const Article = () => {
                 </>
               )}
 
-              <h2>Comment me soigner ?</h2>
-              <p style={{ color: "red" }}>!!!ERROR RESTRUCTURE</p>
+              {/* <h2>Comment me soigner ?</h2> */}
 
               {painData.auto && painData.auto.length > 0 && (
                 <>
-                  <h3>Que puis-je faire solo ?</h3>
+                  <h2>Que puis-je faire solo ?</h2>
                   {highlightParagraphs(painData.auto)}
                 </>
               )}
 
               {painData.proIntro && painData.proIntro.length > 0 && (
                 <>
-                  <h3>Qui consulter ?</h3>
+                  <h2>Qui consulter ?</h2>
                   {painData.proIntro && highlightParagraphs(painData.proIntro)}
                 </>
               )}

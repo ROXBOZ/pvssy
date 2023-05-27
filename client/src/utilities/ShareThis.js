@@ -49,7 +49,7 @@ const ShareThis = () => {
             size={30}
             round={true}
             iconFillColor={{ fill: "#1f042f" }}
-            bgStyle={{ fill: "#ce96ff" }}
+            bgStyle={{ fill: "#dcb4ff" }}
           />
           <span className="tooltiptext">Email</span>
         </a>
@@ -63,7 +63,7 @@ const ShareThis = () => {
             size={30}
             round={true}
             iconFillColor={{ fill: "#1f042f" }}
-            bgStyle={{ fill: "#ce96ff" }}
+            bgStyle={{ fill: "#dcb4ff" }}
           />
           <span className="tooltiptext">WhatsApp</span>
         </Link>
@@ -77,7 +77,7 @@ const ShareThis = () => {
             size={30}
             round={true}
             iconFillColor={{ fill: "#1f042f" }}
-            bgStyle={{ fill: "#ce96ff" }}
+            bgStyle={{ fill: "#dcb4ff" }}
           />
           <span className="tooltiptext">Telegram</span>
         </Link>

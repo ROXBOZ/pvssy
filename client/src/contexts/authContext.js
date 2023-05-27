@@ -3,6 +3,7 @@ import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import getToken from "../utilities/getToken";
 import { serverURL } from "../utilities/serverURL";
+import { motion } from "framer-motion";
 
 export const AuthContext = createContext();
 export const AuthContextProvider = (props) => {
@@ -113,8 +114,19 @@ export const AuthContextProvider = (props) => {
   if (loading) {
     return (
       <div className="loader">
-        <img src={require(`../assets/images/vulka.png`)} alt="" />
-        <p className="h3">Ça charge...</p>
+        <motion.p
+          className="h3"
+          style={{ color: "#38284d" }}
+          initial={{ scale: 1 }}
+          animate={{ scale: 1.2 }}
+          transition={{
+            repeat: Infinity,
+            duration: 1,
+            repeatType: "reverse",
+          }}
+        >
+          Ça charge...
+        </motion.p>
       </div>
     );
   }
