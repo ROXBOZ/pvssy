@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { PainsContext } from "../../contexts/PainsContext";
 import { useLocation } from "react-router-dom";
-import { HeadingArea } from "../../utilities/HeadingArea";
 import CreateTags from "../../utilities/CreateTags";
 import { Helmet } from "react-helmet";
+import { motion } from "framer-motion";
 
 const Pains = () => {
   const { data, Error } = useContext(PainsContext);
@@ -13,6 +13,20 @@ const Pains = () => {
   const endsWithDouleurs = /douleurs$/.test(currentUrl);
   const { selectedTag, painTags } = useContext(PainsContext);
 
+  const cardVariants = {
+    hidden: {
+      y: 0,
+    },
+
+    visible: {
+      y: -10,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+      },
+    },
+  };
+
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -20,10 +34,6 @@ const Pains = () => {
   const filteredData = selectedTag
     ? data.filter((p) => p.tags.includes(selectedTag))
     : data;
-
-  // useEffect(() => {
-  //   CreateTags(painTags);
-  // }, []);
 
   return (
     <>
@@ -73,10 +83,15 @@ const Pains = () => {
                 pathname: `/douleurs/${p.name.toLowerCase()}/medical`,
               }}
             >
-              <div className="card">
+              <motion.div
+                className="card"
+                variants={cardVariants}
+                initial="hidden"
+                whileHover="visible"
+              >
                 <img src={p.img} alt={p.name} />
                 <h3 className="subtitle">{p.name}</h3>
-              </div>
+              </motion.div>
             </Link>
           );
         })}

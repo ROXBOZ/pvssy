@@ -15,6 +15,12 @@ const Consultation = () => {
         </Helmet>
         <h1>Qui consulter ?</h1>
 
+        <img
+          className="illu-animation-xl"
+          src={require(`../../assets/images/consult.png`)}
+          alt=""
+        />
+
         <p>
           Chaque personne a un seuil de douleur plus ou moins élevé avant de se
           décider à consulter ou non, <u>cela reste un choix personnel</u>. Mais

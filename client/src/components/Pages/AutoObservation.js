@@ -18,7 +18,7 @@ const AutoObservation = () => {
 
         <img
           className="illu-animation-xl"
-          src={require(`../../assets/images/auto-obs.jpg`)}
+          src={require(`../../assets/images/auto-obs.png`)}
           alt=""
         />
         <p>

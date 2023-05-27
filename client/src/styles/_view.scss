@@ -69,6 +69,7 @@ $onView-color: #38284d;
     line-height: $lineheight !important;
 
     h1 {
+      font-feature-settings: "ss02";
       font-family: $font-regular !important;
       color: $onView-color;
       margin: 0;

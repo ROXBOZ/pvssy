@@ -95,7 +95,7 @@ export const AuthContextProvider = (props) => {
     setUser(null);
     setIsLoggedIn(false);
     setUserProfile(null);
-    redirectTo("/login");
+    redirectTo("/");
   };
 
   useEffect(() => {
@@ -113,7 +113,8 @@ export const AuthContextProvider = (props) => {
   if (loading) {
     return (
       <div className="loader">
-        <p>chargement...</p>
+        <img src={require(`../assets/images/vulka.png`)} alt="" />
+        <p className="h3">Ça charge...</p>
       </div>
     );
   }

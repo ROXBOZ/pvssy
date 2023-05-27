@@ -1,8 +1,8 @@
 @import "vars";
+@import "animations";
 @import "mixins";
 @import "accessibility";
 @import "agenda";
-@import "animations";
 @import "article";
 @import "bootstrap";
 @import "breadcrumbs";
@@ -30,7 +30,6 @@
 @import "video";
 
 * {
-  transition: $animation-transition;
   font-feature-settings: "ss11";
   &::selection {
     color: white;

@@ -1,4 +1,5 @@
 import "./styles/globals.css";
+import { motion } from "framer-motion";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Navigate } from "react-router-dom";
@@ -62,6 +63,22 @@ function App() {
     );
   };
 
+  const motionVariants = {
+    hidden: {
+      x: "-100vw",
+    },
+
+    visible: {
+      x: 0,
+      transition: {
+        delay: 0.5,
+        duration: 0.75,
+        type: "spring",
+        stiffness: 70,
+      },
+    },
+  };
+
   const LandingView = () => {
     return (
       <>
@@ -71,13 +88,18 @@ function App() {
           onMouseMove={handleMouseMove}
         >
           <Header />
-          <div className="title-container">
+          <motion.div
+            className="title-container"
+            variants={motionVariants}
+            initial="hidden"
+            animate="visible"
+          >
             <h1>
               <span> </span>
               <span className="logo">pvssy talk</span> s’adresse aux personnes à
               vulve qui ressentent des douleurs sexuelles
             </h1>
-          </div>
+          </motion.div>
         </div>
       </>
     );

@@ -17,7 +17,7 @@ const Introduction = () => {
 
         <img
           className="illu-animation-xl"
-          src={require(`../../assets/images/intro.jpg`)}
+          src={require(`../../assets/images/intro.png`)}
           alt=""
         />
         <p>

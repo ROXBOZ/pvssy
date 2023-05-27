@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/authContext";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const { logout, userProfile } = useContext(AuthContext);
@@ -64,7 +65,16 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <motion.header
+      initial={{ y: "-10vh" }}
+      animate={{ y: 0 }}
+      transition={{
+        delay: 0.5,
+        duration: 0.75,
+        type: "spring",
+        stiffness: 70,
+      }}
+    >
       <Link to="/" className="logo">
         pvssy talk <sup>beta</sup>
       </Link>
@@ -78,7 +88,7 @@ const Header = () => {
         <span className="menu-label screen-reader-text">menu</span>
       </button>
       <nav className={isOpen ? "vertical" : "horizontal"}>{renderMenu()}</nav>
-    </header>
+    </motion.header>
   );
 };
 

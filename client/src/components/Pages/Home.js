@@ -1,16 +1,25 @@
-import React from "react";
-import { HeadingArea } from "../../utilities/HeadingArea";
-import { Link } from "react-router-dom";
-import Pictocard from "../Pictocard";
+import React, { useRef } from "react";
 import Pains from "./Pains";
-import Ressources from "./Ressources";
 import { TitleLink } from "../../utilities/TitleLink";
+import { motion } from "framer-motion";
+
+const motionVariants = {
+  hidden: {
+    x: "-100vw",
+  },
+
+  visible: {
+    x: 0,
+    transition: {
+      delay: 0.5,
+      duration: 0.75,
+      type: "spring",
+      stiffness: 70,
+    },
+  },
+};
 
 const Home = () => {
-  //TODO
-  console.log("%chome component run again", "color:orange");
-  //FIXME button inside a link + inline CSS
-
   return (
     <>
       <div className="title-aside-container">
@@ -47,7 +56,11 @@ const Home = () => {
         </div>
       </div>
       <div className="title-aside-container">
-        <h2>Mieux connaître ses douleurs</h2>
+        <h2>
+          Mieux connaître
+          <br />
+          ses douleurs
+        </h2>
         <div>
           <p className="subtitle">
             Chaque douleur est traitée avec une approche à la fois médicale et
@@ -58,7 +71,11 @@ const Home = () => {
       </div>
       <Pains />
       <div className="title-aside-container">
-        <h2>Ressources supplémentaires</h2>
+        <h2>
+          Ressources
+          <br />
+          supplémentaires
+        </h2>
         <div className="ressources-container">
           <TitleLink to="ressources/glossaire" title="Glossaire" />
           <TitleLink to="ressources/exercices" title="Exercices" />

@@ -28,6 +28,55 @@
 /*-----Transitions-----*/
 /*-----Elevations-----*/
 /*-----Media Queries-----*/
+@keyframes animationOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes animationAccordeon {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
+@keyframes gradient {
+  0% {
+    background-size: 100%;
+    background-position: center;
+  }
+  100% {
+    background-size: 400%;
+    background-position: center;
+  }
+}
+@keyframes transitionX {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+@keyframes apparition {
+  0% {
+    color: #dcb4ff;
+  }
+  100% {
+    color: #4d4d28;
+  }
+}
+#chevron-icon.close {
+  transform: rotate(-90deg);
+}
+
 h1.invisible {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
@@ -136,55 +185,6 @@ h1.invisible {
     align-self: flex-start;
   }
 }
-@keyframes animationOpacity {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes animationAccordeon {
-  0% {
-    opacity: 0;
-    height: 0;
-  }
-  100% {
-    opacity: 1;
-    height: -moz-fit-content;
-    height: fit-content;
-  }
-}
-@keyframes gradient {
-  0% {
-    background-size: 100%;
-    background-position: center;
-  }
-  100% {
-    background-size: 400%;
-    background-position: center;
-  }
-}
-@keyframes transitionX {
-  0% {
-    transform: translate3d(100%, 0, 0);
-  }
-  100% {
-    transform: translate3d(-100%, 0, 0);
-  }
-}
-@keyframes apparition {
-  0% {
-    color: #dcb4ff;
-  }
-  100% {
-    color: #4d4d28;
-  }
-}
-#chevron-icon.close {
-  transform: rotate(-90deg);
-}
-
 .article h2:first-of-type {
   margin-top: 0;
 }
@@ -424,9 +424,6 @@ button:active,
 }
 .link-card .card img {
   width: 100%;
-}
-.link-card .card:hover {
-  transform: translateY(-0.5rem) scale(1.01);
 }
 .link-card:hover .card {
   color: #fd4a36;
@@ -2010,6 +2007,7 @@ u {
 }
 
 a {
+  font-feature-settings: "ss02";
   text-decoration: none;
   color: #4d4d28;
   border-bottom: 1px solid #ffc3ee;
@@ -2234,6 +2232,7 @@ h1:first-letter,
   line-height: 1.5 !important;
 }
 .landing-view .title-container h1 {
+  font-feature-settings: "ss02";
   font-family: "ESKlarheit-Book" !important;
   color: #38284d;
   margin: 0;
@@ -2272,9 +2271,10 @@ h1:first-letter,
 .loader {
   height: 100vh;
   width: 100vw;
-  position: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .video {
@@ -2283,7 +2283,6 @@ h1:first-letter,
 }
 
 * {
-  transition: 0.2s ease-in;
   font-feature-settings: "ss11";
 }
 *::-moz-selection {
