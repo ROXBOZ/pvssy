@@ -1,19 +1,19 @@
 import React, { useContext, useEffect } from "react";
 import { PainsContext } from "../../contexts/PainsContext";
-import { HeadingArea } from "../../utilities/HeadingArea";
 import { SourceList } from "../../utilities/SourceList";
 import CreateTags from "../../utilities/CreateTags";
 import { Helmet } from "react-helmet";
 
 const Medias = () => {
-  //NOTE - add keywords in helmet
   const { fetchAllSources, allSources } = useContext(PainsContext);
   const { selectedTag } = useContext(PainsContext);
-  const medias = ["livre", "bande dessinée", "article", "podcast", "vidéo"];
+  const { painList } = useContext(PainsContext);
 
   const filteredData = selectedTag
-    ? allSources.filter((p) => p.category.toLowerCase().includes(selectedTag))
+    ? allSources.filter((e) => e.relatedPain.includes(selectedTag))
     : allSources;
+
+  console.log("filteredData :", filteredData);
 
   useEffect(() => {
     fetchAllSources();
@@ -43,7 +43,7 @@ const Medias = () => {
           </p>
         </div>
       </div>
-      <CreateTags tags={medias} />
+      <CreateTags tags={painList} />
       <SourceList sources={filteredData} />
     </div>
   );

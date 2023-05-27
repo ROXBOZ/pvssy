@@ -445,6 +445,7 @@ a.title-link:first-child h3 {
 }
 a.title-link h3 {
   border-top: 1px solid #dcb4ff;
+  padding-top: 0.5rem;
   padding-bottom: 2rem;
   font-family: "ESKlarheit-Book";
   display: flex;
@@ -1791,40 +1792,23 @@ a.term span {
   line-height: 1.5;
 }
 
-.additional-ressources {
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1rem;
+.additional-ressources .source-list-item:not(:first-child) {
+  border-top: 1px solid #dcb4ff;
+  padding-top: 1rem;
+  margin-top: 1rem;
 }
-@media screen and (max-width: 576px) {
-  .additional-ressources {
-    grid-template-columns: 1fr;
-  }
-}
-.additional-ressources ul {
-  grid-column: 7/13;
-  padding-left: 0;
-}
-.additional-ressources ul li {
-  gap: 1.75em;
-  list-style: none;
-  padding: 1rem 0;
-}
-.additional-ressources ul li .source-title {
+.additional-ressources .source-title {
   font-family: "ESKlarheit-Book-Italic";
 }
-.additional-ressources ul li a {
+.additional-ressources a {
+  margin: 0 0.5rem;
   font-family: "ESKlarheit-Bold-Italic" !important;
 }
-.additional-ressources ul li a .source-title {
+.additional-ressources a .source-title {
   font-family: "ESKlarheit-Bold-Italic" !important;
 }
-.additional-ressources ul li .source-category {
+.additional-ressources .source-category {
   text-transform: lowercase;
-}
-.additional-ressources ul li:not(:first-child) {
-  border-top: 1px solid #dcb4ff;
 }
 
 @media screen and (max-width: 576px) {
