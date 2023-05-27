@@ -1,8 +1,7 @@
 import React from "react";
-import Author from "../../utilities/Author";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-
+import { motion } from "framer-motion";
 const AutoObservation = () => {
   return (
     <div>
@@ -49,13 +48,13 @@ const AutoObservation = () => {
 
       <div className="title-aside-container">
         <h2>Comprendre ton anatomie</h2>
-        <figure>
+        <motion.figure initial={{ scale: 1 }} onTap={{ scale: 1.3 }}>
           <img
             src={require(`../../assets/images/shemas/vulva.png`)}
             alt="shéma de la vulve"
           />
           <figcaption>ici caption explicatif</figcaption>
-        </figure>
+        </motion.figure>
         <div>
           <h3 className="colored">Vulve</h3>
           <p>

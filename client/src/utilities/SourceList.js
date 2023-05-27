@@ -17,9 +17,9 @@ export const SourceList = ({ sources }) => {
               <div className="additional-ressources">
                 {categorySources.map((s, index) => (
                   <p className="source-list-item" key={s._id} id={index}>
-                    <span className="source-author">{s.author}</span>
+                    <span className="source-author">{s.author} </span>
                     {s.year && (
-                      <span className="source-year"> ({s.year}).</span>
+                      <span className="source-year"> ({s.year}). </span>
                     )}
                     {s.url ? (
                       <Link
@@ -35,7 +35,7 @@ export const SourceList = ({ sources }) => {
                     ) : (
                       <span className="source-title">{s.title}</span>
                     )}
-                    <span className="source-category">[{s.category}]</span>{" "}
+                    <span className="source-category"> [{s.category}]</span>{" "}
                     {s.editor && (
                       <nobr>
                         <span className="source-editor">{s.editor}.</span>
