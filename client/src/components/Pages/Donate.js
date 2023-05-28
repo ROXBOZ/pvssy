@@ -10,18 +10,18 @@ const Donate = () => {
           name="description"
           content="Faire un don à Pvssy Talk pour soutenir notre travail et nous permettre de continuer à offrir des ressources gratuites et accessibles à toustes."
         />
-        <meta
-          name="keywords"
-          content="faire un don, twint, paypal, virement bancaire"
-        />
       </Helmet>
       <div className="title-aside-container">
-        <h1>Faire un don</h1>
-        <img
-          className="don-merci-img"
-          src={require(`../../assets/images/don-merci.png`)}
-          alt="Merci"
-        />
+        <h1>
+          Faire un don
+          <br />
+          <img
+            className="don-merci-img"
+            src={require(`../../assets/images/don-merci.png`)}
+            alt="Merci"
+          />
+        </h1>
+
         <div>
           <p className="subtitle">
             L’association No Dolor a pour but de sensibiliser sur la question
@@ -59,8 +59,9 @@ const Donate = () => {
             <span>bientôt disponible</span>
           </p>
           <br />
-          <strong>Virement bancaire</strong>
+
           <p>
+            <strong>Virement bancaire</strong>
             <br />
             Association No Dolor
             <br />

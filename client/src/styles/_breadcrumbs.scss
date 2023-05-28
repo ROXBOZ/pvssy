@@ -26,7 +26,7 @@
   }
 }
 
-@media screen and (max-width: map-get($breakpoints, "sm")) {
+@media screen and (max-width: map-get($breakpoints, "lg")) {
   .breadcrumbs {
     margin-top: 15vh;
     overflow-x: auto;

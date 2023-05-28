@@ -22,6 +22,10 @@
     max-width: 100%;
   }
 
+  caption {
+    text-align: center;
+  }
+
   &:not(:first-child) {
     border-top: $border-solid $secondary;
     padding-top: $reg-space;
@@ -46,6 +50,10 @@
   }
 
   @media screen and (max-width: map-get($breakpoints, "lg")) {
+    display: grid;
+  }
+
+  @media screen and (max-width: map-get($breakpoints, "sm")) {
     display: flex;
     flex-direction: column;
   }

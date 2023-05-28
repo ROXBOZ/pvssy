@@ -13,15 +13,7 @@ const Connect = () => {
 
   return (
     <div>
-      <HeadingArea
-        pretitle="Agenda"
-        title="Archives"
-        subtitle=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-            accusantium optio dolore dolorum suscipit ducimus neque quaerat!
-            Quas rellendus laudantium, excturi iusto architecto neque natus
-            adipisci, eligendi nesciunt eos odit!"
-        level="h1"
-      />
+      <HeadingArea pretitle="Agenda" title="Archives" level="h1" />
 
       <div className="card-grid">
         {data.archivedEvents &&

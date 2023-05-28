@@ -98,7 +98,7 @@ const About = () => {
             >
               Roxanne Borloz
             </Link>
-            , développeuse web
+            , webdesign, développement web
             <br />
             <Link
               to="https://isalinerogg.ch/"

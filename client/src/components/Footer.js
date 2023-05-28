@@ -26,9 +26,11 @@ const Footer = () => {
                 >
                   presse kit
                 </a>
-                <Link to="conditions-generales">conditions générales</Link>
-                <Link to="accessibilite">Accessibilité</Link>
-                <Link to="*">crédits</Link>
+                <Link className="acronym" to="conditions-generales">
+                  CGUV
+                </Link>
+                <Link to="accessibilite">accessibilité</Link>
+                <Link to="credits">crédits</Link>
               </div>
 
               <div className="nav-section">

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { motion } from "framer-motion";
 const AutoObservation = () => {
   return (
     <div>
@@ -47,14 +46,14 @@ const AutoObservation = () => {
       </div>
 
       <div className="title-aside-container">
-        <h2>Comprendre ton anatomie</h2>
-        <motion.figure whileTap={{ scale: 1.3 }}>
+        <figure>
           <img
             src={require(`../../assets/images/shemas/vulva.png`)}
             alt="shéma de la vulve"
           />
-          <figcaption>ici caption explicatif</figcaption>
-        </motion.figure>
+          <caption>lalalal</caption>
+        </figure>
+
         <div>
           <h3 className="colored">Vulve</h3>
           <p>
@@ -101,7 +100,9 @@ const AutoObservation = () => {
             pouvoir retenir ses urines et ses selles) et également dans la
             sexualité.
           </p>
-          <Link to="../ressources/glossaire">↗ voir le glossaire</Link>
+          <Link style={{ borderBottom: "none" }} to="../ressources/glossaire">
+            <button>Glossaire principal</button>
+          </Link>
         </div>
       </div>
       <div className="title-aside-container">

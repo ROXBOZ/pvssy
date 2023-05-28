@@ -475,14 +475,6 @@ const GeneralConditions = () => {
       </div>
       <div className="title-aside-container">
         <h2 id="PER">Politique d’expédition et de retours</h2>
-        <div>
-          <p className="subtitle" style={{ color: "red" }}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro vero
-            doloribus molestias ipsa dignissimos quod aliquid, incidunt itaque,
-            consequuntur excepturi earum, asperiores nostrum nemo deserunt ut
-            rem cupiditate odio ipsum.
-          </p>
-        </div>
       </div>
 
       <div className="title-aside-container">

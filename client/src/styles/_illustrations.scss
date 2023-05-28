@@ -19,7 +19,7 @@ figure {
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   max-width: 100%;
   img {
     max-width: 100%;
@@ -28,7 +28,7 @@ figure {
   span {
     padding-top: 0.5rem;
     padding-right: $border-radius;
-    font-size: $smaller-text;
+    font-size: $smaller-text !important;
     margin: 0;
     font-style: normal;
     height: fit-content;

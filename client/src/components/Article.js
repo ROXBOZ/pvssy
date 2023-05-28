@@ -251,12 +251,8 @@ const Article = () => {
                     />
 
                     <figcaption>
-                      <strong>Shéma sur le cycle menstruel</strong> : Lorem
-                      ipsum dolor, sit amet consectetur adipisicing elit. Cumque
-                      asperiores nobis in omnis labore necessitatibus unde
-                      impedit, nesciunt maxime earum iure deleniti explicabo
-                      similique, quaerat quae, aspernatur libero placeat
-                      temporibus?
+                      <strong>Shéma sur le cycle menstruel</strong> : missing
+                      caption
                     </figcaption>
                   </figure>
                 </div>

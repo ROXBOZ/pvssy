@@ -42,6 +42,7 @@ import Introduction from "./components/Pages/Introduction";
 import AutoObservation from "./components/Pages/AutoObservation";
 import Consultation from "./components/Pages/Consultation";
 import Members from "./components/Pages/Members";
+import Credits from "./components/Pages/Credits";
 
 function App() {
   const token = getToken();
@@ -212,6 +213,7 @@ function App() {
                       path="conditions-generales"
                       element={<GeneralConditions />}
                     />
+                    <Route path="credits" element={<Credits />} />
                     <Route path="accessibilite" element={<Accessibility />} />
                     <Route path="*" element={<NotFound />} />
                     <Route

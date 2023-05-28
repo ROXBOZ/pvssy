@@ -54,7 +54,8 @@ li {
 }
 
 li {
-  margin-top: $sm-space;
+  margin-top: $xs-space;
+  list-style-type: disc;
 }
 
 .subtitle {
@@ -89,10 +90,6 @@ h4 + .subtitle {
 u {
   text-decoration: none;
   border-bottom: $border-solid $quarterary;
-}
-
-li {
-  list-style-type: disc;
 }
 
 a {

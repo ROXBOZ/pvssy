@@ -48,6 +48,12 @@ const Members = () => {
             individuels; 100.- pour les membres collectifs) de soutien à
             l'association.
           </p>
+          <a
+            style={{ borderBottom: "none" }}
+            href="mailto:hello@pvssy-talk.org"
+          >
+            <button>nous contacter</button>
+          </a>
         </div>
       </div>
     </div>

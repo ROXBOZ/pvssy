@@ -243,7 +243,7 @@ h1.invisible {
   grid-column: 4/10;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 992px) {
   .article-container {
     display: flex;
     flex-direction: column-reverse;
@@ -321,7 +321,7 @@ h1.invisible {
   display: none;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 992px) {
   .breadcrumbs {
     margin-top: 15vh;
     overflow-x: auto;
@@ -902,6 +902,9 @@ textarea.line {
   grid-column: 1/7;
   max-width: 100%;
 }
+.title-aside-container caption {
+  text-align: center;
+}
 .title-aside-container:not(:first-child) {
   border-top: 1px solid #dcb4ff;
   padding-top: 2rem;
@@ -923,6 +926,11 @@ textarea.line {
   margin: 0.5rem 0 2rem;
 }
 @media screen and (max-width: 992px) {
+  .title-aside-container {
+    display: grid;
+  }
+}
+@media screen and (max-width: 576px) {
   .title-aside-container {
     display: flex;
     flex-direction: column;
@@ -1044,7 +1052,7 @@ header nav.horizontal ul li .profile-in-header a p {
     position: fixed;
     left: 0;
     right: 0;
-    width: auto;
+    max-width: auto;
     z-index: 9999;
   }
   header .logo {
@@ -1202,7 +1210,7 @@ figure {
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   max-width: 100%;
 }
 figure img {
@@ -1211,7 +1219,7 @@ figure img {
 figure span {
   padding-top: 0.5rem;
   padding-right: 50px;
-  font-size: 80%;
+  font-size: 80% !important;
   margin: 0;
   font-style: normal;
   height: -moz-fit-content;
@@ -1700,7 +1708,7 @@ a.term span {
   background-color: #ffc3ee;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 992px) {
   .category-submenu {
     width: auto;
     border-top: 1px solid;
@@ -1958,7 +1966,8 @@ li.pretitle + h3 {
 }
 
 li {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  list-style-type: disc;
 }
 
 .subtitle {
@@ -1995,10 +2004,6 @@ h4 + .subtitle {
 u {
   text-decoration: none;
   border-bottom: 1px solid #ffc3ee;
-}
-
-li {
-  list-style-type: disc;
 }
 
 a {

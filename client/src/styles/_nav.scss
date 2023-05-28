@@ -177,7 +177,7 @@
   }
 }
 
-@media screen and (max-width: map-get($breakpoints, "sm")) {
+@media screen and (max-width: map-get($breakpoints, "lg")) {
   .category-submenu {
     width: auto;
     border-top: $border-solid;

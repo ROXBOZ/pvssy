@@ -61,7 +61,7 @@
   }
 }
 
-@media screen and (max-width: map-get($breakpoints, "sm")) {
+@media screen and (max-width: map-get($breakpoints, "lg")) {
   .article-container {
     display: flex;
     flex-direction: column-reverse;
