@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 
 export const SourceList = ({ sources }) => {
-  const categories = ["livre", "bande dessinée", "article", "podcast", "vidéo"];
+  const categories = [
+    "livre",
+    "bande dessinée",
+    "article",
+    "podcast",
+    "vidéo",
+    "porno éthique et féministe",
+  ];
 
   return (
     <div>
