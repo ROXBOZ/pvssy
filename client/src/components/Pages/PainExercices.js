@@ -3,6 +3,7 @@ import { PainsContext } from "../../contexts/PainsContext";
 import { HeadingArea } from "../../utilities/HeadingArea";
 import Exercise from "../Exercise";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const PainExercices = () => {
   const { requestedExercises, painName } = useContext(PainsContext);
@@ -22,10 +23,16 @@ const PainExercices = () => {
         />
       </Helmet>
 
-      <h1>
-        Exercices <span className="colored">{painName.toLowerCase()}</span>
-      </h1>
-
+      <div className="title-aside-container">
+        <h1>
+          Exercices <span className="colored">{painName.toLowerCase()}</span>
+        </h1>
+        <div>
+          <Link style={{ borderBottom: "none" }} to="/ressources/exercices">
+            <button>Tous les exercices</button>
+          </Link>
+        </div>
+      </div>
       <div className="exercises-container">
         {requestedExercises ? (
           requestedExercises.map((ex) => (

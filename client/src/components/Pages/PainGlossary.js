@@ -60,12 +60,9 @@ const PainGlossary = () => {
           Glossaire <span className="colored">{painName.toLowerCase()}</span>
         </h1>
         <div>
-          <p className="subtitle">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque nam
-            in numquam alias maxime, officia necessitatibus iure est cum sit?
-            Assumenda dicta rem, voluptatum officia tempora dignissimos.
-            Ducimus, in quae!
-          </p>
+          <Link style={{ borderBottom: "none" }} to="/ressources/glossaire">
+            <button>Glossaire principal</button>
+          </Link>
         </div>
       </div>
 

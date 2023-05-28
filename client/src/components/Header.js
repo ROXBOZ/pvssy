@@ -1,12 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
-import { useContext, useState, useRef } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/authContext";
 import { motion } from "framer-motion";
 
 const Header = () => {
   const { logout, userProfile } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
-  const startRef = useRef(null); // Reference to the element with id "start"
 
   const toggleMenu = () => {
     setIsOpen((prevState) => !prevState);
@@ -15,7 +14,6 @@ const Header = () => {
   const handleNavLinkClick = () => {
     setIsOpen(false);
   };
-
   const handlStarterClick = () => {
     setIsOpen(false);
     window.location.href = "/#start";

@@ -11,9 +11,9 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { HeadingArea } from "../../utilities/HeadingArea";
 import { AuthContext } from "../../contexts/authContext";
 import { Helmet } from "react-helmet";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 const Glossary = () => {
   const [allTerms, setAllTerms] = useState(null);
@@ -212,7 +212,10 @@ const Glossary = () => {
                     </h3>
                     <div className="related-pain-container">
                       {term.relatedPain.map((pain, index) => (
-                        <span className="related-pain">
+                        <span
+                          style={{ whiteSpace: "nowrap" }}
+                          className="related-pain"
+                        >
                           <span> ↗ </span>
                           <Link key={index} to={`/douleurs/${pain}`}>
                             <span>{pain}</span>

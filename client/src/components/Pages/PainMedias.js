@@ -3,6 +3,7 @@ import { PainsContext } from "../../contexts/PainsContext";
 import { HeadingArea } from "../../utilities/HeadingArea";
 import { SourceList } from "../../utilities/SourceList";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const PainMedias = () => {
   const { painName, requestedSources } = useContext(PainsContext);
@@ -25,12 +26,12 @@ const PainMedias = () => {
               <span className="colored">{painName.toLowerCase()}</span>
             </h1>
             <div>
-              <p className="subtitle">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
-                delectus magni pariatur odio expedita similique quam aspernatur!
-                Veritatis nisi rerum modi odit commodi laudantium aspernatur
-                vitae sint? Beatae, dolorum aliquam.
-              </p>
+              <Link
+                style={{ borderBottom: "none" }}
+                to="/ressources/litterature-et-medias"
+              >
+                <button>Inventaire complet</button>
+              </Link>
             </div>
           </div>
           <SourceList sources={requestedSources} />

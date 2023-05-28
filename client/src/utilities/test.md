@@ -1,7 +1,9 @@
-C’est l’organe interne qui relie la vulve à l’utérus. C’est le conduit par lequel s’écoule (entre autres) le sang menstruel.
+La vulvodynie est une douleur à la vulve qui dure plus de trois mois, sans aucune cause infectieuse, dermatologique, ou autre.
+La douleur peut être présente pendant les rapports sexuels, ou en dehors, ou les deux. Elle touche 8-10% des personnes avec un utérus, quel que soit leur âge.
 
-Ses parois se touchent au repos, mais elles s’élargissent lors de pénétrations avec les doigts, tampons, pénis, objets, et également lors du passage d’un bébé. Il a donc la capacité de s’adapter à son contenu. Les premiers centimètres sont rugueux, parfois irréguliers et deviennent ensuite lisses.
+On distingue trois sous-catégories :
 
-Le vagin n’est pas fait de muscles, c’est le périnée qui permet sa contraction, dans ses premiers centimètres (fais l’essai si ça t’intéresse: contracte ton périnée avec un doigt à l’intérieur. Seul le début du vagin se contracte).
-
-La muqueuse est normalement humide, mais cela peut varier selon les périodes de la vie. La lubrification augmente lors de la grossesse, mais diminue lors de la ménopause. Des traitements médicamenteux et d’autres causes psychologiques peuvent également avoir un impact sur la lubrification naturelle de ton vagin.
+- la vulvodynie généralisée : quand les symptômes sont ressentis au niveau de la vulve entière
+- la vestibulodynie ; quand les douleurs touchent le vestibule vulvaire
+- la clitorodynie : quand les douleurs se concentrent sur le clitoris.
+  La douleur ressentie est très personnelle. Elle peut être constante et généralisée à toute la vulve, ou liée à une maladie déjà présente, ou encore localisée à une seule partie de la vulve. Elle peut être spontanée, c’est à dire qu’elle apparaît sans raison ni sans qu’il ait eu contact, ou elle peut être provoquée (par exemple, quand on touche la zone). Mais elle peut aussi être mixte : parfois spontanée, parfois provoquée.

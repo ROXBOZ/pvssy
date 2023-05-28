@@ -91,6 +91,10 @@ u {
   border-bottom: $border-solid $quarterary;
 }
 
+li {
+  list-style-type: disc;
+}
+
 a {
   font-feature-settings: "ss02";
   text-decoration: none;
