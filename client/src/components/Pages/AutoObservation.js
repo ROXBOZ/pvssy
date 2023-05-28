@@ -48,7 +48,7 @@ const AutoObservation = () => {
 
       <div className="title-aside-container">
         <h2>Comprendre ton anatomie</h2>
-        <motion.figure initial={{ scale: 1 }} onTap={{ scale: 1.3 }}>
+        <motion.figure whileTap={{ scale: 1.3 }}>
           <img
             src={require(`../../assets/images/shemas/vulva.png`)}
             alt="shéma de la vulve"

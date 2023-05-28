@@ -19,7 +19,7 @@
   figure,
   img {
     grid-column: #{$grid-first-half};
-    max-width: 80%;
+    max-width: 100%;
   }
 
   &:not(:first-child) {
@@ -39,6 +39,10 @@
     padding-top: 0.75rem;
     grid-column: #{$grid-second-half};
     width: 100%;
+
+    h3 + p {
+      margin: $xs-space 0 $reg-space;
+    }
   }
 
   @media screen and (max-width: map-get($breakpoints, "lg")) {

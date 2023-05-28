@@ -172,7 +172,7 @@ const Introduction = () => {
           >
             Bibliographie
           </h2>
-          <ul className="smaller-text" style={{ paddingLeft: "0" }}>
+          <ul className="smaller-text" style={{ paddingLeft: "0.5rem" }}>
             <li>
               Martin Winckler (2020). <em>C’est mon corps</em> (1
               <sup>ère</sup>

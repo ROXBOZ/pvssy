@@ -900,7 +900,7 @@ textarea.line {
 .title-aside-container figure,
 .title-aside-container img {
   grid-column: 1/7;
-  max-width: 80%;
+  max-width: 100%;
 }
 .title-aside-container:not(:first-child) {
   border-top: 1px solid #dcb4ff;
@@ -918,6 +918,9 @@ textarea.line {
   padding-top: 0.75rem;
   grid-column: 7/13;
   width: 100%;
+}
+.title-aside-container div h3 + p {
+  margin: 0.5rem 0 2rem;
 }
 @media screen and (max-width: 992px) {
   .title-aside-container {
@@ -2024,7 +2027,6 @@ hr {
   padding: 0.5em 1.5em;
   background-color: #ffc3ee;
   border-radius: 50px;
-  margin: 0 0.5rem;
 }
 
 figcaption {

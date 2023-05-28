@@ -36,7 +36,14 @@ const Donate = () => {
 
       <div className="title-aside-container">
         <h2 className="h3">Montants suggérés</h2>
-        <div>
+        <div
+          style={{
+            display: "flex",
+            gap: "0.5rem",
+            flexWrap: "wrap",
+            alignItems: "center",
+          }}
+        >
           <span className="highlight">50</span>
           <span className="highlight">100</span>
           <span className="highlight">150</span>

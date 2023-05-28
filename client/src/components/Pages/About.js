@@ -1,6 +1,4 @@
-//refactored 04.05.2023
 import React from "react";
-import { HeadingArea } from "../../utilities/HeadingArea";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import LogoPartner from "../LogoPartner";
@@ -17,6 +15,7 @@ const About = () => {
       </Helmet>
       <div className="title-aside-container">
         <h1>À propos</h1>
+
         <div>
           <p className="subtitle">
             <span className="logo">pvssy talk</span> est un projet porté par
