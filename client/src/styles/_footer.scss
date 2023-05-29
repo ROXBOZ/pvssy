@@ -72,16 +72,17 @@ footer {
   display: flex;
   align-items: center;
 
-  p {
+  .marquee-content {
     margin-bottom: 0;
-    padding-bottom: 0;
+    padding: 0;
     position: absolute;
     white-space: nowrap;
-    animation: transitionX 20s linear infinite;
-
+    animation: transitionX 40s linear infinite;
+    animation-delay: 0;
     animation-play-state: running;
+    font-family: $font-regular;
     span {
-      font-family: $font-regular;
+      margin: 0 1rem;
     }
   }
 

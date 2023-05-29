@@ -76,6 +76,9 @@ const Agenda = () => {
             Des évènements autours des douleurs sexuelles en ligne ou en
             Suisse Romande.
           </p>
+          <Link style={{ marginTop: "2rem", border: "none" }} to="/login">
+            <button>proposer un évènement</button>
+          </Link>
         </div>
       </div>
 
@@ -84,9 +87,6 @@ const Agenda = () => {
       </div>
 
       <div>
-        <Link style={{ border: "none" }} to="/login">
-          <button>proposer un évènement</button>
-        </Link>
         {data.upcomingEvents && filteredData.length > 0 ? (
           filteredData.map((e, index) => {
             const { eventDateInMilli, todayStartinMilli, todayEndinMilli } =
@@ -111,15 +111,13 @@ const Agenda = () => {
                   className="agenda-entry-title "
                 >
                   <h3>{e.title}</h3>
-                  <button className="desktop-only">
-                    {showEvent[e._id] ? "fermer" : "en savoir +"}
-                  </button>
+                  <button>{showEvent[e._id] ? "fermer" : "en savoir +"}</button>
                 </div>
                 {showEvent[e._id] ? <span></span> : <span>{e.shortDef}</span>}
                 <br />
-                <button className="mobile-only">
+                {/* <button className="mobile-only">
                   {showEvent[e._id] ? "fermer" : "en savoir +"}
-                </button>
+                </button> */}
                 {showEvent[e._id] && (
                   <>
                     <div className="event-container">

@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/authContext";
-import { motion } from "framer-motion";
 
 const Header = () => {
   const { logout, userProfile } = useContext(AuthContext);
@@ -40,14 +39,7 @@ const Header = () => {
   };
 
   return (
-    <motion.header
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{
-        delay: 0.5,
-        duration: 0.75,
-      }}
-    >
+    <header>
       <Link to="/" className="logo" onClick={handleNavLinkClick}>
         pvssy talk <sup>beta</sup>
       </Link>
@@ -92,7 +84,7 @@ const Header = () => {
           <li>{renderProfile()}</li>
         </ul>
       </nav>
-    </motion.header>
+    </header>
   );
 };
 

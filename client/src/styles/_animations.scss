@@ -30,11 +30,11 @@
   }
 }
 @keyframes transitionX {
-  0% {
-    transform: translate3d(100%, 0, 0);
+  from {
+    transform: translateX(0);
   }
-  100% {
-    transform: translate3d(-100%, 0, 0);
+  to {
+    transform: translateX(calc(-100% - 1rem));
   }
 }
 @keyframes apparition {

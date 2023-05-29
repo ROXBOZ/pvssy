@@ -52,14 +52,46 @@ function App() {
   const MoodBanner = () => {
     return (
       <div className="banner">
-        <p>
+        <div className="marquee-content">
           <span className="h4">
             Nous travaillons sur un annuaire de soignant·esx en Suisse Romande.
             Si tu connais des practicien·nexs <em>safe</em>, tu peux nous
             envoyer un email à{" "}
             <a href="mailto:hello@pvssy-talk.org">hello@pvssy-talk.org</a>
           </span>
-        </p>
+          <span className="h4">
+            Nous travaillons sur un annuaire de soignant·esx en Suisse Romande.
+            Si tu connais des practicien·nexs <em>safe</em>, tu peux nous
+            envoyer un email à{" "}
+            <a href="mailto:hello@pvssy-talk.org">hello@pvssy-talk.org</a>
+          </span>
+          <span className="h4">
+            Nous travaillons sur un annuaire de soignant·esx en Suisse Romande.
+            Si tu connais des practicien·nexs <em>safe</em>, tu peux nous
+            envoyer un email à{" "}
+            <a href="mailto:hello@pvssy-talk.org">hello@pvssy-talk.org</a>
+          </span>
+        </div>
+        <div className="marquee-content" aria-hidden="true">
+          <span className="h4">
+            Nous travaillons sur un annuaire de soignant·esx en Suisse Romande.
+            Si tu connais des practicien·nexs <em>safe</em>, tu peux nous
+            envoyer un email à{" "}
+            <a href="mailto:hello@pvssy-talk.org">hello@pvssy-talk.org</a>
+          </span>
+          <span className="h4">
+            Nous travaillons sur un annuaire de soignant·esx en Suisse Romande.
+            Si tu connais des practicien·nexs <em>safe</em>, tu peux nous
+            envoyer un email à{" "}
+            <a href="mailto:hello@pvssy-talk.org">hello@pvssy-talk.org</a>
+          </span>
+          <span className="h4">
+            Nous travaillons sur un annuaire de soignant·esx en Suisse Romande.
+            Si tu connais des practicien·nexs <em>safe</em>, tu peux nous
+            envoyer un email à{" "}
+            <a href="mailto:hello@pvssy-talk.org">hello@pvssy-talk.org</a>
+          </span>
+        </div>
       </div>
     );
   };
@@ -100,7 +132,7 @@ function App() {
             <h1>
               <span> </span>
               <span className="logo">pvssy talk</span> s’adresse aux personnes à
-              vulve qui ressentent des douleurs sexuelles
+              vulve qui souffrent des douleurs sexuelles
             </h1>
           </motion.div>
         </div>

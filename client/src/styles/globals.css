@@ -58,11 +58,11 @@
   }
 }
 @keyframes transitionX {
-  0% {
-    transform: translate3d(100%, 0, 0);
+  from {
+    transform: translateX(0);
   }
-  100% {
-    transform: translate3d(-100%, 0, 0);
+  to {
+    transform: translateX(calc(-100% - 1rem));
   }
 }
 @keyframes apparition {
@@ -111,6 +111,7 @@ h1.invisible {
   cursor: url("../assets/images/cursor-pointer.svg"), auto;
   display: flex;
   flex-direction: column;
+  padding-bottom: 1rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid #dcb4ff;
 }
@@ -652,16 +653,18 @@ footer .footer-bottom .copyrights {
   display: flex;
   align-items: center;
 }
-.banner p {
+.banner .marquee-content {
   margin-bottom: 0;
-  padding-bottom: 0;
+  padding: 0;
   position: absolute;
   white-space: nowrap;
-  animation: transitionX 20s linear infinite;
+  animation: transitionX 40s linear infinite;
+  animation-delay: 0;
   animation-play-state: running;
-}
-.banner p span {
   font-family: "ESKlarheit-Book";
+}
+.banner .marquee-content span {
+  margin: 0 1rem;
 }
 .banner + footer {
   margin: 0;
@@ -2220,11 +2223,11 @@ h1:first-letter,
   color: #38284d;
 }
 .landing-view header .login button {
-  border-color: #fd4a36;
+  border-color: #c8ffa5;
 }
 .landing-view header .login:hover button {
   background-color: transparent;
-  border-color: #c8ffa5;
+  border-color: #ffc3ee;
 }
 .landing-view .title-container {
   display: flex;
@@ -2362,6 +2365,7 @@ html body .main {
 }
 
 .mobile-only {
+  margin-top: 1rem;
   display: none;
 }
 
@@ -2371,6 +2375,7 @@ html body .main {
   }
   .mobile-only {
     display: block;
+    margin-bottom: 1rem;
   }
 }
 .mandatory:after {
