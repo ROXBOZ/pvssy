@@ -1,7 +1,7 @@
 import painModel from "../models/painModel.js";
 
 const getAllPains = async (req, res) => {
-  // res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Origin", "*"); //
   try {
     console.log("process.env.PORT :", process.env.PORT);
     const allPains = await painModel.find({});

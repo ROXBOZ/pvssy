@@ -53,6 +53,11 @@ li {
   }
 }
 
+ul,
+ol {
+  margin-top: 0;
+}
+
 li {
   margin-top: $xs-space;
   list-style-type: disc;

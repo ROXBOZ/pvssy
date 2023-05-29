@@ -1,9 +1,9 @@
 .agenda-entry {
-  margin-top: $reg-space;
+  margin-top: $lg-space;
   cursor: url("../assets/images/cursor-pointer.svg"), auto;
   display: flex;
   flex-direction: column;
-  padding-bottom: $sm-space;
+  // padding-bottom: $sm-space;
   margin-bottom: $reg-space;
   border-bottom: $border-solid $secondary;
 

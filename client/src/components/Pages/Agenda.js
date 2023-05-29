@@ -70,6 +70,7 @@ const Agenda = () => {
       </Helmet>
       <div className="title-aside-container">
         <h1>Agenda</h1>
+
         <div>
           <p className="subtitle">
             Des évènements autours des douleurs sexuelles en ligne ou en
@@ -83,6 +84,9 @@ const Agenda = () => {
       </div>
 
       <div>
+        <Link style={{ border: "none" }} to="/login">
+          <button>proposer un évènement</button>
+        </Link>
         {data.upcomingEvents && filteredData.length > 0 ? (
           filteredData.map((e, index) => {
             const { eventDateInMilli, todayStartinMilli, todayEndinMilli } =
@@ -224,9 +228,6 @@ const Agenda = () => {
             </div>
           </div>
         )}
-        <Link style={{ border: "none" }} to="/login">
-          <button>proposer un évènement</button>
-        </Link>
       </div>
     </div>
   );

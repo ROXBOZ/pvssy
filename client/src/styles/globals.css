@@ -107,11 +107,10 @@ h1.invisible {
 }
 
 .agenda-entry {
-  margin-top: 2rem;
+  margin-top: 4rem;
   cursor: url("../assets/images/cursor-pointer.svg"), auto;
   display: flex;
   flex-direction: column;
-  padding-bottom: 1rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid #dcb4ff;
 }
@@ -1957,6 +1956,11 @@ li.pretitle + h2,
 li.pretitle + h3 {
   margin-top: 0;
   padding-top: 0.25em;
+}
+
+ul,
+ol {
+  margin-top: 0;
 }
 
 li {

@@ -221,21 +221,25 @@ const Article = () => {
                 </>
               )}
 
-              {[1, 2].map((num, index) => {
-                const shemaDef = painData[`shemaDef${num}`];
+              {[1, 2, 3].map((num, index) => {
+                if (index < 3) {
+                  // Limit the iteration to three elements
+                  const shemaDef = painData[`shemaDef${num}`];
 
-                return (
-                  shemaDef.length > 0 && (
-                    <figure key={index} className="shema-container">
-                      <img
-                        className="shema"
-                        src={shemaDef[0]}
-                        alt={`shéma ${painData.name} : ${shemaDef[1]}`}
-                      />
-                      <figcaption>{shemaDef[1]}</figcaption>
-                    </figure>
-                  )
-                );
+                  return (
+                    shemaDef &&
+                    shemaDef.length > 0 && (
+                      <figure key={index} className="shema-container">
+                        <img
+                          className="shema"
+                          src={shemaDef[0]}
+                          alt={`shéma ${painData.name} : ${shemaDef[1]}`}
+                        />
+                        <figcaption>{shemaDef[1]}</figcaption>
+                      </figure>
+                    )
+                  );
+                }
               })}
 
               {painData.tags.includes("règles") && (
