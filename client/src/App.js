@@ -66,16 +66,18 @@ function App() {
 
   const motionVariants = {
     hidden: {
-      x: "-100vw",
+      // x: "-100vw",
+      scale: 0,
     },
 
     visible: {
-      x: 0,
+      // x: 0,
+      scale: 1,
       transition: {
         delay: 0.5,
         duration: 0.75,
-        type: "spring",
-        stiffness: 70,
+        // type: "spring",
+        // stiffness: 70,
       },
     },
   };

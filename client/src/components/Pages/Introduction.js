@@ -34,7 +34,7 @@ const Introduction = () => {
 
           <p className="subtitle">
             Un autre élément important à retenir : la douleur n’est pas « dans
-            ta tête ». Les douleurs sexuelles que tu ressens sont un vrai
+            ta tête ». Les douleurs sexuelles que tu ressens sont un vrai
             problème de santé et tu as le droit à une prise en charge adaptée.
             Ce n’est pas de ta faute si tu souffres de douleurs sexuelles.
           </p>

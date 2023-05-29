@@ -49,9 +49,9 @@ const AutoObservation = () => {
         <figure>
           <img
             src={require(`../../assets/images/shemas/vulva.png`)}
-            alt="shéma de la vulve"
+            alt="illustration anatomique d'une vulve"
           />
-          <caption>lalalal</caption>
+          <caption>illustration anatomique d'une vulve</caption>
         </figure>
 
         <div>

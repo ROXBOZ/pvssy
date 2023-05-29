@@ -425,9 +425,6 @@ button:active,
 .link-card .card img {
   width: 100%;
 }
-.link-card:hover .card {
-  color: #fd4a36;
-}
 .link-card.article {
   grid-column: span 6;
 }
@@ -457,9 +454,6 @@ a.title-link h3 {
 a.title-link h3:after {
   content: "↗";
   color: #4d4d28;
-}
-a.title-link h3:hover {
-  color: #fd4a36;
 }
 a.title-link h3:hover:after {
   color: #4d4d28;

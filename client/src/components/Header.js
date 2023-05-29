@@ -41,13 +41,11 @@ const Header = () => {
 
   return (
     <motion.header
-      initial={{ y: "-10vh" }}
-      animate={{ y: 0 }}
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
       transition={{
         delay: 0.5,
         duration: 0.75,
-        type: "spring",
-        stiffness: 70,
       }}
     >
       <Link to="/" className="logo" onClick={handleNavLinkClick}>
@@ -67,7 +65,7 @@ const Header = () => {
           {isOpen && (
             <li>
               <Link to="/#start" onClick={handlStarterClick}>
-                <span className="logo">pvssy talk</span>
+                Accueil
               </Link>
             </li>
           )}
