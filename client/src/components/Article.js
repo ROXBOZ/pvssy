@@ -21,7 +21,7 @@ const Article = () => {
   const [isSticky, setIsSticky] = useState(false);
 
   const menstrualReminder = [
-    " Pendant la seconde phase, nommée phase lutéale, la progestérone va induire une modification des cellules de l’endomètre qui vont former des glandes sécrétant des nutriments qui vont permettre la survie de l’embryon en cas d’implantation. Sans implantation, la progestérone va chuter après 10 jours, ce qui va provoquer une contraction des artères de l’endomètre ce qui va induire une diminution de l’arrivée de sang dans le tissu et la mort des cellules qui vont partir avec les menstruations et laisser un endomètre très fin.",
+    "La première phase du cycle menstruel est la phase proliférative : l’œstrogène (une hormone sexuelle) va permettre la multiplication des cellules de l’endomètre pour qu’il atteigne une épaisseur suffisante et qu’un embryon puisse s’implanter. L’œstrogène agit sur la prolifération massive des cellules et stimule aussi les cellules responsables de l’endométriose. Ces cellules se comportent comme du tissu utérin, mais en dehors de la cavité utérine. Pendant la seconde phase du cycle menstruel, la phase lutéale, la progestérone (une autre hormone sexuelle) provoque une modification des cellules de l’endomètre qui vont former des glandes pour secréter des nutriments. Ces nutriments vont permettre à l’embryon de survivre dans l’utérus. Si aucun embryon ne s’implante, la quantité de progestérone chute après 10 jours. Cela va provoquer une contraction des artères de l’endomètre et réduire l’arrivée de sang. Les cellules vont alors mourir, et s’éliminer avec les menstruations pour laisser un endomètre très fin.",
   ];
 
   // const imgSrc = (painName, section, num) => {
@@ -396,7 +396,9 @@ const Article = () => {
                           <li data-icon="→" key={s._id} id={index}>
                             <span className="source-list-item">
                               <span className="source-author">{s.author}</span>
-                              <span className="source-year"> ({s.year}). </span>
+                              {s.year && (
+                                <span className="source-year">({s.year}).</span>
+                              )}
                               <span className="source-title">
                                 {s.url ? (
                                   <Link to={s.url}>{s.title}</Link>

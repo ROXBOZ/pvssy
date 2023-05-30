@@ -24,7 +24,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  presse kit
+                  presskit
                 </a>
                 <Link className="acronym" to="conditions-generales">
                   CGUV

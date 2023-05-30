@@ -43,6 +43,7 @@ import AutoObservation from "./components/Pages/AutoObservation";
 import Consultation from "./components/Pages/Consultation";
 import Members from "./components/Pages/Members";
 import Credits from "./components/Pages/Credits";
+import UnderConstruction from "./components/Pages/UnderConstruction";
 
 function App() {
   const token = getToken();
@@ -98,18 +99,14 @@ function App() {
 
   const motionVariants = {
     hidden: {
-      // x: "-100vw",
       scale: 0,
     },
 
     visible: {
-      // x: 0,
       scale: 1,
       transition: {
         delay: 0.5,
-        duration: 0.75,
-        // type: "spring",
-        // stiffness: 70,
+        duration: 1,
       },
     },
   };
@@ -132,7 +129,7 @@ function App() {
             <h1>
               <span> </span>
               <span className="logo">pvssy talk</span> s’adresse aux personnes à
-              vulve qui souffrent des douleurs sexuelles
+              vulve qui souffrent de douleurs sexuelles
             </h1>
           </motion.div>
         </div>
@@ -188,6 +185,11 @@ function App() {
               <PainsContextProvider>
                 <TermsContextProvider>
                   <Routes>
+                    <Route
+                      path="under-construction"
+                      element={<UnderConstruction />}
+                    />
+
                     <Route index element={<Home />} />
                     <Route path="a-propos" element={<About />} />
                     <Route path="douleurs" element={<Pains />} />
