@@ -118,17 +118,17 @@ const GeneralConditions = () => {
                   financements obtenus exclusivement de sources publiques ou de
                   consommateur·rice·s·x ;
                 </li>
-                <li style={{ color: "red" }}>
+                {/* <li style={{ color: "red" }}>
                   collaborations avec […] afin de rédiger le contenu du Site
                   Internet ; et
-                </li>
+                </li> */}
                 <li>
                   en traitant les données strictement conformément à sa
                   politique de confidentialité et en collaborant avec des
-                  fournisseurs basés en Suisse.{" "}
-                  <span style={{ color: "red" }}>
+                  fournisseurs basés en Suisse.
+                  {/* <span style={{ color: "red" }}>
                     herbergement USA = fournisseur ???
-                  </span>
+                  </span> */}
                 </li>
               </ul>
             </li>
@@ -286,11 +286,11 @@ const GeneralConditions = () => {
               remboursement sera effectué sur la même carte. Il peut s'écouler
               jusqu'à 14 jours avant que l'argent ne soit crédité.
             </li>
-            <li style={{ color: "red" }}>
+            {/* <li style={{ color: "red" }}>
               Si vous souhaitez échanger une commande expédiée en-dehors de la
               Suisse, veuillez noter que No Dolor vous facturera à nouveau […].-
               pour les frais d'expédition et de manutention.
-            </li>
+            </li> */}
             <li>
               Les articles soldés ne peuvent pas faire l’objet d’un retour et
               sont non remboursables.
@@ -302,12 +302,11 @@ const GeneralConditions = () => {
       <div className="title-aside-container">
         <h3 className="h4">Conditions de paiement</h3>
         <div>
-          {" "}
           <ol>
-            <li style={{ color: "red" }}>
+            {/* <li style={{ color: "red" }}>
               Les paiements s'effectuent généralement par carte de crédit via
               Stripe directement sur le Site Internet.
-            </li>
+            </li> */}
             <li>
               Toutefois, pour les commandes en Suisse, No Dolor propose
               également un paiement à l'avance par virement bancaire. Lorsque
@@ -536,11 +535,11 @@ const GeneralConditions = () => {
             remboursement sera effectué sur la même carte. Il peut s'écouler
             jusqu'à 14 jours avant que l'argent ne soit crédité.
           </p>
-          <p style={{ color: "red" }}>
+          {/* <p style={{ color: "red" }}>
             Si vous souhaitez échanger une commande expédiée en-dehors de la
             Suisse, veuillez noter que No Dolor vous facturera à nouveau […].-
             pour les frais d'expédition et de manutention.
-          </p>
+          </p> */}
           <p>
             Les articles soldés ne peuvent pas faire l’objet d’un retour et sont
             non remboursables.
@@ -634,7 +633,7 @@ const GeneralConditions = () => {
       <div className="title-aside-container">
         <h3 className="h4">Hébergement</h3>
         <div>
-          <ol style={{ color: "green" }}>
+          <ol>
             <li>
               L’hébergement est géré via les services de Vercel, Inc. Le Site
               Internet est hébergé aux États Unis par Amazon, Inc.
@@ -657,12 +656,12 @@ const GeneralConditions = () => {
               <p>
                 Le Site internet a recours aux services de fournisseurs tiers :
               </p>
-              <ul style={{ color: "red" }}>
-                <li>
+              <ul>
+                {/* <li>
                   Strapi comme Content Management System (à checker si il faut
                   le lister car ça fonctionne complètement differement que
                   Wordpress)
-                </li>
+                </li> */}
                 <li>PayPay, TWINT, Stripe, MailChimp ?</li>
                 <li>Matomo ?</li>
               </ul>
@@ -721,10 +720,14 @@ const GeneralConditions = () => {
         <h3 className="h4">Cookies</h3>
         <div>
           <ol>
-            <li style={{ color: "red" }}>
+            <li>
               <p>Le Site internet utilise les cookies suivants :</p>
               <ul>
-                <li>[cookie 1], [qui permet de …]</li>
+                <li>
+                  Matomo, qui permet de récolter des données éthiques sur
+                  l’utilisation du site tout en préservant la vie privée de nos
+                  client-es.
+                </li>
                 <li>[cookie 2], [qui permet de …]</li>
               </ul>
             </li>

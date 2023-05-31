@@ -89,6 +89,10 @@ figure {
     img {
       width: 100%;
     }
+
+    @media screen and (max-width: map-get($breakpoints, "sm")) {
+      max-width: 100%;
+    }
   }
 }
 

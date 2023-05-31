@@ -1276,6 +1276,11 @@ figure span a {
 .logo-partner-container .logo-partner img {
   width: 100%;
 }
+@media screen and (max-width: 576px) {
+  .logo-partner-container .logo-partner {
+    max-width: 100%;
+  }
+}
 
 .don-merci-img {
   width: 15rem;
