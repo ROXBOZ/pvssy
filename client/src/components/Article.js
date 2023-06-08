@@ -255,8 +255,8 @@ const Article = () => {
                     />
 
                     <figcaption>
-                      <strong>Shéma sur le cycle menstruel</strong> : missing
-                      caption
+                      <strong>Shéma sur le cycle menstruel</strong> : shéma du
+                      cycle menstruel
                     </figcaption>
                   </figure>
                 </div>

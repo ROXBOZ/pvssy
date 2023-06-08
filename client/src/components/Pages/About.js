@@ -53,7 +53,6 @@ const About = () => {
       <div className="title-aside-container">
         <h2>Équipe</h2>
         <div>
-          {" "}
           <p>
             <Link
               to="https://as-takoordyal.com"
@@ -116,6 +115,8 @@ const About = () => {
               Noémie Creux
             </Link>
             , illustratrice
+            <br />
+            <u>Laure Bonnevie</u> , relecture et corrections
           </p>
         </div>
       </div>
