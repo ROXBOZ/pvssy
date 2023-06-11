@@ -273,14 +273,6 @@ function App() {
             color: "#fefdf4",
             borderRadius: ".25em",
           }}
-          // enableDeclineButton
-          // declineButtonText="Je refuse"
-          // declineButtonStyle={{
-          //   backgroundColor: "#c8ffa5",
-          //   color: "#4d4d28",
-          //   border: "1px solid #4d4d28",
-          //   borderRadius: ".25em",
-          // }}
         >
           <span className="logo">pvssy talk</span> utilise des cookies dans le
           but d’améliorer l’expérience de ses utilisateurices.

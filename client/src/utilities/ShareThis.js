@@ -91,7 +91,7 @@ const ShareThis = () => {
             <FontAwesomeIcon className="link-icon" icon={faLink} />
             <span className="tooltiptext">
               <p>{isCopied === true ? "URL copiée" : "copier"}</p>
-            </span>{" "}
+            </span>
           </div>
         </div>
       </div>
