@@ -61,7 +61,6 @@ export const AuthContextProvider = (props) => {
   };
 
   const getProfile = async () => {
-    console.log("%cgetprofile", "color:red");
     try {
       setLoading(true);
       const myHeaders = new Headers();

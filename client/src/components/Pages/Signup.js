@@ -15,21 +15,24 @@ const SignupForm = () => {
     seePassword,
     inputValue,
   } = useContext(AuthContext);
-  const [newUser, setNewUser] = useState({});
+
+  // const [newUser, setNewUser] = useState({});
   const [conditionsAccepted, setConditionsAccepted] = useState(null);
   const [message, setMessage] = useState("");
 
   const redirectTo = useNavigate();
+
+  console.log("newUser.userName :", inputValue.userName);
 
   const signup = async (e) => {
     e.preventDefault();
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     const raw = JSON.stringify({
-      userName: newUser.userName,
-      userEmail: newUser.userEmail,
-      userWebsite: newUser.userWebsite,
-      userPassword: newUser.userPassword,
+      userName: inputValue.userName,
+      userEmail: inputValue.userEmail,
+      userWebsite: inputValue.userWebsite,
+      userPassword: inputValue.userPassword,
       userIsAdmin: false,
     });
 
@@ -45,7 +48,7 @@ const SignupForm = () => {
         requestOptions
       );
       const result = await response.json();
-      console.log("result", result);
+      console.log("result :", result);
       setMessage({
         type: "success",
         content: (
